@@ -1,0 +1,21 @@
+{
+  "courses": [
+    {"num": 1, "slug": "claude-with-the-anthropic-api", "name": "Building with the Claude API"},
+    {"num": 2, "slug": "claude-code-in-action", "name": "Claude Code in Action"},
+    {"num": 3, "slug": "claude-101", "name": "Claude 101"},
+    {"num": 4, "slug": "introduction-to-claude-cowork", "name": "Introduction to Claude Cowork"},
+    {"num": 5, "slug": "ai-fluency-framework-foundations", "name": "AI Fluency: Framework & Foundations"},
+    {"num": 6, "slug": "introduction-to-model-context-protocol", "name": "Introduction to MCP"},
+    {"num": 7, "slug": "ai-fluency-for-educators", "name": "AI Fluency for Educators"},
+    {"num": 8, "slug": "ai-fluency-for-students", "name": "AI Fluency for Students"},
+    {"num": 9, "slug": "model-context-protocol-advanced-topics", "name": "MCP Advanced Topics"},
+    {"num": 10, "slug": "claude-in-amazon-bedrock", "name": "Claude with Amazon Bedrock"},
+    {"num": 11, "slug": "claude-with-google-vertex", "name": "Claude with Google Vertex AI"},
+    {"num": 12, "slug": "teaching-ai-fluency", "name": "Teaching AI Fluency"},
+    {"num": 13, "slug": "ai-fluency-for-nonprofits", "name": "AI Fluency for Nonprofits"},
+    {"num": 14, "slug": "introduction-to-agent-skills", "name": "Introduction to Agent Skills"},
+    {"num": 15, "slug": "introduction-to-subagents", "name": "Introduction to Subagents"},
+    {"num": 16, "slug": "ai-capabilities-and-limitations", "name": "AI Capabilities and Limitations"},
+    {"num": 17, "slug": "claude-code-101", "name": "Claude Code 101"}
+  ]
+}

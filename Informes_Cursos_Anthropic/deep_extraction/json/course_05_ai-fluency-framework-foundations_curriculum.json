@@ -1,0 +1,39 @@
+{
+  "course_num": 5,
+  "slug": "ai-fluency-framework-foundations",
+  "title": "AI Fluency: Framework & Foundations",
+  "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+  "subtitle": "Learn to collaborate with AI systems effectively, efficiently, ethically, and safely",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T13:59:00Z",
+  "source_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 14, "hours_of_video": 1.1, "quizzes": 1, "certificate": true},
+  "sections": [
+    {
+      "section_num": 1,
+      "name": "AI Fundamentals & Framework",
+      "lessonCount": "10 lessons",
+      "description": "Establish foundational understanding of generative AI systems and why developing AI fluency matters for effective collaboration. Introduces the 4D Framework as a structured approach to human-AI interaction, covering core capabilities and limitations of current AI technologies. Provides the conceptual grounding needed to approach AI tools strategically rather than reactively.",
+      "previewImages": [
+        "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/01-01-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/01-02-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/01-03-medium.webp"
+      ]
+    },
+    {
+      "section_num": 2,
+      "name": "Practical AI Skills",
+      "lessonCount": "10 lessons",
+      "description": "Develop hands-on competencies for effective AI collaboration through the four core areas of the framework: delegation, description, discernment, and diligence. Learn systematic approaches to project planning with AI, crafting effective prompts, evaluating outputs critically, and iterating through the description-discernment loop. Emphasizes practical application across creative, business, and educational contexts.",
+      "previewImages": [
+        "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/02-01-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/02-02-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/02-03-medium.webp"
+      ]
+    }
+  ],
+  "total_sections": 2,
+  "individual_lessons_requires_login": true
+}

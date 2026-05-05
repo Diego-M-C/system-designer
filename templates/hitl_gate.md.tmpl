@@ -1,0 +1,40 @@
+<!-- HITL Gate template — used by orchestrator and child orchestrator at every blocking gate -->
+<!-- Rendered inside <final_output> block so the user terminal sees it -->
+
+=== HITL GATE #{{gate_number}} ===
+Phase: {{phase_name}}
+Session: {{session_id}}
+Decision required: {{decision_one_liner}}
+
+Context (≤3 sentences):
+{{context_summary}}
+
+Options:
+[A] {{option_a_label}} — fit ≈{{option_a_fit_pct}}%
+    Pros: {{option_a_pros}}
+    Cons: {{option_a_cons}}
+
+[B] {{option_b_label}} — fit ≈{{option_b_fit_pct}}%
+    Pros: {{option_b_pros}}
+    Cons: {{option_b_cons}}
+
+[C] {{option_c_label}} — fit ≈{{option_c_fit_pct}}%
+    Pros: {{option_c_pros}}
+    Cons: {{option_c_cons}}
+
+{{optional_d_block}}
+{{optional_e_block}}
+
+Note: fit % across options are independent fit estimates per option, not probabilities of mutually exclusive outcomes. They may sum to >100% or <100%.
+
+My recommendation: [{{recommended_letter}}]
+Reason (≤2 sentences): {{recommendation_reason}}
+Self-confidence in this recommendation: ≈{{recommendation_confidence_pct}}%
+Backed by: {{recommendation_backing}}
+
+Reply with:
+- A letter [A]–[E] to choose that option,
+- Free text to propose an alternative (logged + recommendation re-evaluated),
+- "STOP" to abort this session.
+
+=== /HITL GATE ===

@@ -1,0 +1,49 @@
+{
+  "course_num": 2,
+  "slug": "claude-code-in-action",
+  "title": "Claude Code in Action",
+  "url": "https://anthropic.skilljar.com/claude-code-in-action",
+  "subtitle": "Practical walkthrough of using Claude Code to accelerate your development workflow",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T13:57:00Z",
+  "source_url": "https://anthropic.skilljar.com/claude-code-in-action",
+  "auth_required_for_lessons": true,
+  "stats": {
+    "lectures": 15,
+    "hours_of_video": 1,
+    "quizzes": 1,
+    "certificate": true
+  },
+  "about": "This course covers Claude Code, a command-line AI assistant that uses language models to perform development tasks. You'll learn how Claude Code reads files, executes commands, and modifies code through its tool system, along with techniques for managing context, creating custom workflows, extending Claude Code with hooks, and integrating with external services.",
+  "learning_objectives": [
+    "Use Claude Code's core tools for file manipulation, command execution, and code analysis",
+    "Manage context effectively using /init, Claude.md files, and @ mentions",
+    "Control conversation flow with a variety of hotkeys and commands",
+    "Enable Plan Mode and Thinking Mode for complex tasks requiring deeper analysis",
+    "Create custom commands for automating repetitive development workflows",
+    "Extend Claude Code with MCP servers to add browser automation and other capabilities",
+    "Set up GitHub integration for automated PR reviews and issue handling",
+    "Write hooks to add additional behavior into Claude Code"
+  ],
+  "prerequisites": [
+    "Basic familiarity with command line interfaces",
+    "Access to Claude Code and an API key"
+  ],
+  "audience": "Engineers who want to speed up their development workflow with AI assistance",
+  "sections": [
+    {
+      "section_num": 1,
+      "name": "Claude Code in action",
+      "lessonCount": "10 lessons",
+      "description": "Complete guide to using Claude Code effectively. Starts with understanding how coding assistants work, then moves through setup, context management, making changes, and advanced features like MCP servers, GitHub integration, and hook implementations.",
+      "previewImages": [
+        "https://d7juhi4i8fsw0.cloudfront.net/images/claude-code-in-action/01-01-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/claude-code-in-action/01-02-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/claude-code-in-action/01-03-medium.webp"
+      ]
+    }
+  ],
+  "total_sections": 1,
+  "individual_lessons_requires_login": true
+}

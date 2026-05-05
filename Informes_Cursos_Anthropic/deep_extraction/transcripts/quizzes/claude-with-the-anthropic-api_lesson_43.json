@@ -1,0 +1,17 @@
+{
+  "lesson_title": "Quiz on tool use with Claude",
+  "course": "claude-with-the-anthropic-api",
+  "lesson_idx": 43,
+  "state": "completed",
+  "score": "7 of 7 Correct",
+  "question_count": 7,
+  "questions": [
+    {"question_text": "How can you tell if Claude wants to make another tool call in a conversation?", "type": "multiple_choice", "options": [{"text": "Check if the response contains the word \"tool\"", "is_correct": false}, {"text": "Check if the response is longer than usual", "is_correct": false}, {"text": "Look at the stop_reason field for \"tool_use\"", "is_correct": true}, {"text": "Count the number of message blocks", "is_correct": false}]},
+    {"question_text": "When Claude uses a tool, what type of message structure does it return?", "type": "multiple_choice", "options": [{"text": "Multi-block messages with text and tool use blocks", "is_correct": true}, {"text": "Simple text-only responses", "is_correct": false}, {"text": "JSON data without any text", "is_correct": false}, {"text": "Error messages only", "is_correct": false}]},
+    {"question_text": "What is the main purpose of a JSON schema when working with Claude tools?", "type": "multiple_choice", "options": [{"text": "To format the final response for users", "is_correct": false}, {"text": "To tell Claude what arguments your function expects and how to use it", "is_correct": true}, {"text": "To store the results of tool function calls", "is_correct": false}, {"text": "To encrypt data between Claude and your server", "is_correct": false}]},
+    {"question_text": "What problem does the batch tool solve?", "type": "multiple_choice", "options": [{"text": "It makes tools run faster", "is_correct": false}, {"text": "It translates tool results into different languages", "is_correct": false}, {"text": "It reduces the number of back-and-forth communications when multiple tools are needed", "is_correct": true}, {"text": "It automatically fixes errors in tool responses", "is_correct": false}]},
+    {"question_text": "What is the correct sequence of steps in the tool use workflow?", "type": "multiple_choice", "options": [{"text": "Initial Request > Tool Request > Data Retrieval > Final Response", "is_correct": true}, {"text": "Tool Request > Initial Request > Final Response > Data Retrieval", "is_correct": false}, {"text": "Final Response > Initial Request > Tool Request > Data Retrieval", "is_correct": false}, {"text": "Data Retrieval > Tool Request > Initial Request > Final Response", "is_correct": false}]},
+    {"question_text": "Claude can only access information from its training data by default. What allows Claude to get current, real-time information?", "type": "multiple_choice", "options": [{"text": "Making educated guesses based on patterns", "is_correct": false}, {"text": "Searching through its training data more carefully", "is_correct": false}, {"text": "Asking the user to provide more details", "is_correct": false}, {"text": "Using tools to access external information", "is_correct": true}]},
+    {"question_text": "What makes Claude's built-in text editor and web search tools different from custom tools?", "type": "multiple_choice", "options": [{"text": "Claude provides the schema, but you may still need to implement some functionality", "is_correct": true}, {"text": "They require special API keys", "is_correct": false}, {"text": "They only work with specific file types", "is_correct": false}, {"text": "They cost more to use", "is_correct": false}]}
+  ]
+}

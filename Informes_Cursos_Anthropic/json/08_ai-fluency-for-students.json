@@ -1,0 +1,109 @@
+{
+  "id": "08",
+  "slug": "ai-fluency-for-students",
+  "title": "AI Fluency for students",
+  "url": "https://anthropic.skilljar.com/ai-fluency-for-students",
+  "category": "fluency-framework",
+  "difficulty": "beginner",
+  "domain": "AI Fluency",
+  "tags": [
+    "students",
+    "4d-framework",
+    "learning",
+    "career-planning"
+  ],
+  "stats": {
+    "total_lessons": 6,
+    "sections": 3,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 5,
+    "modular_text_lessons": 6,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 32333,
+    "modular_chars": 27126,
+    "total_content_chars": 59459
+  },
+  "sections": [
+    {
+      "title": "Introduction and AI Fluency Framework",
+      "lesson_count": 2
+    },
+    {
+      "title": "AI Fluency Framework applications for students",
+      "lesson_count": 2
+    },
+    {
+      "title": "Conclusion & certificate",
+      "lesson_count": 2
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction and AI Fluency Framework",
+      "title": "Welcome to AI Fluency for students",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students/326790",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Introduction and AI Fluency Framework",
+      "title": "AI Fluency Framework",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students/326791",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "AI Fluency Framework applications for students",
+      "title": "AI as a learning partner",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students/326792",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "AI Fluency Framework applications for students",
+      "title": "AI in career planning",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students/326793",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Conclusion & certificate",
+      "title": "Being the human in the loop",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students/327248",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Conclusion & certificate",
+      "title": "Certificate of completion",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students/327232",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:27:10.143Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 5,
+    "quiz_extractions_added": 0
+  }
+}

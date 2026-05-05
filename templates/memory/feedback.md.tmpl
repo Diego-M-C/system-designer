@@ -1,0 +1,35 @@
+---
+name: feedback patterns
+description: Validated guidance from the user — corrections and confirmations — that should shape future behaviour
+type: feedback
+---
+
+# Feedback log
+
+> Both **corrections** ("don't do X") and **confirmations** ("yes that's the right approach") are saved here. Confirmations are quieter signals — watch for them and record. Each entry includes *Why* (the reason given, often a past incident or strong preference) and *How to apply* (when/where the rule kicks in), so future-you can judge edge cases.
+
+## Active feedback
+
+### FB-001 · {{feedback_title_1}}
+
+- **Rule:** {{feedback_rule_1}}
+- **Source:** session {{feedback_source_session_1}} · {{feedback_source_date_1}}
+- **Why:** {{feedback_why_1}}
+- **How to apply:** {{feedback_how_1}}
+- **Confidence the rule holds project-wide:** ≈{{feedback_confidence_1}}%
+
+### FB-002 · {{feedback_title_2}}
+
+- **Rule:** {{feedback_rule_2}}
+- **Source:** session {{feedback_source_session_2}}
+- **Why:** {{feedback_why_2}}
+- **How to apply:** {{feedback_how_2}}
+- **Confidence:** ≈{{feedback_confidence_2}}%
+
+<!-- Append new entries below. -->
+
+## Conventions
+
+- New feedback (correction or confirmation) MUST include *Why* and *How to apply*.
+- If feedback turns out wrong / superseded, mark the entry as `STATUS: superseded by FB-NNN` rather than deleting.
+- Feedback patterns recurring ≥3 times across sessions deserve promotion to `CLAUDE.md` operating constraints.

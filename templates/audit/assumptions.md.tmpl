@@ -1,0 +1,39 @@
+# Assumptions log — {{system_name}}
+
+> Every assumption made during scaffolding (and throughout the project's life) is logged here with rationale + verification plan + confidence. The user signs off at Gate #2 after reviewing this list.
+
+**Captured at:** {{TEMPORAL_NOW}}
+
+---
+
+## Generator-time assumptions (Session 0001)
+
+| ID | Assumption | Why made | Verification plan | Confidence | Status |
+|---|---|---|---|---|---|
+| A-001 | User has read+write access to `<target_path>` | required for scaffolding | first fs.write attempt | ≈99% | verified at scaffold |
+| A-002 | Executor LLM has fs tools (read/write/list/mkdir) | core P1 contract | tool inventory at phase 1 | ≈95% | verified at phase 1 |
+| A-003 | "Today" = `now()` from executor | temporal_context required | call `now()` in phase 1 | ≈98% | verified at phase 1 |
+| A-004 | User has authority to deploy under EU AI Act jurisdiction declared | compliance is the user's responsibility | explicit confirmation at Gate #2 | ≈70% | pending Gate #2 |
+| A-005 | Stack chosen at interview is current as of `temporal_context` | freshness | library_docs fetch dates | ≈85% | verified at fetch |
+| A-006 | EU AI Act risk class declared is correct | conservative default = high | manual review at Gate #2 | ≈80% | pending Gate #2 |
+| A-007 | All interview answers are truthful | data quality | n/a (good-faith trust) | ≈90% | n/a |
+| A-008 | The intent fits within "scaffolding" scope (not implementation) | generator boundary | explicit confirmation at Gate #1 | ≈95% | verified at Gate #1 |
+
+## Project-life assumptions (added by sessions)
+
+<!-- Append per session new assumptions surfaced. Each requires verification plan + confidence + status. -->
+
+## Conventions
+
+- Every assumption is **explicit** (no implicit assumptions) — if it's load-bearing, it's logged.
+- Every assumption has a **verification plan** (how do we know it's true?).
+- Every assumption has a **confidence** (≈X%).
+- Every assumption has a **status**: pending | verified | falsified | superseded.
+- If an assumption is falsified, log the impact + remediation in `tracking/decisions.md`.
+- Falsified assumptions on critical-severity items trigger HITL escalation immediately.
+
+## User sign-off
+
+- **Gate #2 sign-off received:** {{gate_2_signoff}}
+- **Sign-off at:** {{gate_2_signoff_at}}
+- **User comments:** {{gate_2_signoff_comments}}

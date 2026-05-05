@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "audit_sheet_spec",
+  "purpose": "Structural specification of audit/audit_sheet.xlsx — the audit_designer agent renders this JSON to .xlsx (or to .csv + .md sidecar fallback). Living document: rows append session by session.",
+  "system_name": "{{system_name}}",
+  "generated_at": "{{TEMPORAL_NOW}}",
+  "format_versions": {
+    "xlsx_target": "1",
+    "csv_md_fallback_target": "1"
+  },
+  "designed_for": {
+    "auditors_count_min": 3,
+    "auditors_count_max": 10,
+    "parallel_independence": true,
+    "meta_jury_aggregation": true
+  },
+
+  "sheets": [
+    {
+      "name": "00_README",
+      "purpose": "How to use this audit sheet (audience: 3–10 human auditors)",
+      "rows": [
+        ["Section", "Description"],
+        ["Purpose", "Living EU AI Act audit sheet for {{system_name}}. Each row is a verifiable item."],
+        ["Status values", "pass | fail | partial | not_applicable | pending"],
+        ["Auditor convention", "Each auditor fills their own column (auditor_1, auditor_2, ..., meta_jury)."],
+        ["Independence rule", "Auditors fill their column without seeing others until meta_jury phase."],
+        ["Disagreement rule", "Rows where ≥2 auditors disagree → escalate to human at session checkpoint."],
+        ["Living-doc rule", "Sessions append rows; rows are never deleted, only superseded (link old → new in 'superseded_by_row_id')."]
+      ]
+    },
+    {
+      "name": "01_Risk_Management_Art_9",
+      "article": "EU AI Act Art. 9",
+      "checklist_source": "../../Checklists y ejemplos/Gestión de riesgos_Checklist.xlsx + 05.01 Ejemplo ilustrativo del desarrollo de un sistema de gestión de riesgos.xlsx",
+      "min_rows_high_risk": 12,
+      "columns": ["row_id", "session_id", "item", "evidence_link", "status_auditor_1", "confidence_auditor_1_pct", "status_auditor_2", "confidence_auditor_2_pct", "status_auditor_3", "confidence_auditor_3_pct", "status_meta_jury", "comments", "superseded_by_row_id", "added_at"]
+    },
+    {
+      "name": "02_Data_Governance_Art_10",
+      "article": "EU AI Act Art. 10",
+      "checklist_source": "../../Checklists y ejemplos/Gobernanza del dato_Checklist.xlsx",
+      "min_rows_high_risk": 14,
+      "columns": "same as 01"
+    },
+    {
+      "name": "03_Technical_Documentation_Art_11",
+      "article": "EU AI Act Art. 11 + Annex IV",
+      "checklist_source": "../../Checklists y ejemplos/Documentación tecnica_Checklist.xlsx",
+      "min_rows_high_risk": 18,
+      "columns": "same as 01"
+    },
+    {
+      "name": "04_Record_Keeping_Art_12",
+      "article": "EU AI Act Art. 12",
+      "checklist_source": "../../Checklists y ejemplos/Registros_Checklist.xlsx",
+      "min_rows_high_risk": 8,
+      "columns": "same as 01"
+    },
+    {
+      "name": "05_Transparency_Art_13_50",
+      "article": "EU AI Act Art. 13 + 50",
+      "checklist_source": "../../Checklists y ejemplos/Transparencia_Checklist.xlsx",
+      "min_rows_high_risk": 10,
+      "columns": "same as 01"
+    },
+    {
+      "name": "06_Human_Oversight_Art_14",
+      "article": "EU AI Act Art. 14",
+      "checklist_source": "../../Checklists y ejemplos/Supervisión Humana_Checklist.xlsx",
+      "min_rows_high_risk": 8,
+      "columns": "same as 01"
+    },
+    {
+      "name": "07_Accuracy_Art_15a",
+      "article": "EU AI Act Art. 15 (accuracy)",
+      "checklist_source": "../../Checklists y ejemplos/Precision_Checklist.xlsx",
+      "min_rows_high_risk": 6,
+      "columns": "same as 01"
+    },
+    {
+      "name": "08_Robustness_Art_15b",
+      "article": "EU AI Act Art. 15 (robustness)",
+      "checklist_source": "../../Checklists y ejemplos/Solidez_Checklist.xlsx",
+      "min_rows_high_risk": 6,
+      "columns": "same as 01"
+    },
+    {
+      "name": "09_Cybersecurity_Art_15c",
+      "article": "EU AI Act Art. 15 (cybersecurity)",
+      "checklist_source": "../../Checklists y ejemplos/Ciberseguridad_Checklist.xlsx",
+      "min_rows_high_risk": 8,
+      "columns": "same as 01"
+    },
+    {
+      "name": "10_Quality_Management_Art_17",
+      "article": "EU AI Act Art. 17",
+      "checklist_source": "../../Checklists y ejemplos/Gestión de Calidad_Checklist.xlsx",
+      "min_rows_high_risk": 10,
+      "columns": "same as 01"
+    },
+    {
+      "name": "11_Post_Market_Monitoring_Art_72",
+      "article": "EU AI Act Art. 72",
+      "checklist_source": "../../Checklists y ejemplos/Vigilancia Poscomercializacion_Checklist.xlsx",
+      "min_rows_high_risk": 6,
+      "columns": "same as 01"
+    },
+    {
+      "name": "12_Incident_Management_Art_73",
+      "article": "EU AI Act Art. 73",
+      "checklist_source": "../../Checklists y ejemplos/Gestión de incidentes_Checklist.xlsx",
+      "min_rows_high_risk": 6,
+      "columns": "same as 01"
+    },
+    {
+      "name": "99_Status_Log",
+      "purpose": "Append-only status-transition log: row_id, from_status, to_status, by_auditor, at, evidence",
+      "columns": ["row_id", "from_status", "to_status", "by_auditor", "at", "evidence_link", "session_id"]
+    }
+  ],
+
+  "totals": {
+    "min_rows_high_risk": 112,
+    "min_rows_limited_risk": 18,
+    "min_rows_minimal_risk": 4
+  },
+
+  "fallback_format": {
+    "csv": "audit/audit_sheet.csv (one row per audit row, all sheets concatenated with sheet_name column)",
+    "md": "audit/audit_sheet.md (human-readable mirror, regenerated on each csv update)",
+    "trigger": "if executor lacks xlsx writer capability"
+  },
+
+  "rendering_instructions_for_audit_designer_agent": [
+    "1. Read ../references/eu_ai_act_mapping.md to determine applicable Articles per eu_ai_act_risk.",
+    "2. For each applicable Article, read the corresponding checklist .xlsx in ../../Checklists y ejemplos/.",
+    "3. Extract ≥min_rows_<risk_class> items from each checklist, mapped to AuditRow schema (system_generator.json#/definitions/AuditRow).",
+    "4. Render to xlsx via xlsx.write or fallback to csv+md.",
+    "5. Initialise all status fields to 'pending'; add row to 99_Status_Log with from_status=null, to_status=pending.",
+    "6. Append session_id 0001_bootstrap to every row added in this initial render.",
+    "7. After render, verify mapping_completeness_pct = (rows_emitted / total.min_rows_<risk_class>) * 100; target ≥95% for high-risk.",
+    "8. Log result to audit/self_audit.md#audit_sheet_initialisation."
+  ]
+}

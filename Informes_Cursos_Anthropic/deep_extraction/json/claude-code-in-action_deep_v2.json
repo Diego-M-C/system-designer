@@ -1,0 +1,886 @@
+{
+  "course_slug": "claude-code-in-action",
+  "course_title": "Claude Code in Action",
+  "course_url": "https://anthropic.skilljar.com/claude-code-in-action",
+  "extracted_at": "2026-04-11T11:31:56.137Z",
+  "section_count": 4,
+  "total_lessons": 21,
+  "sections": [
+    {
+      "title": "What is Claude Code?",
+      "lesson_count": 3
+    },
+    {
+      "title": "Getting hands on",
+      "lesson_count": 9
+    },
+    {
+      "title": "Hooks and the SDK",
+      "lesson_count": 7
+    },
+    {
+      "title": "Wrapping up",
+      "lesson_count": 2
+    }
+  ],
+  "lessons": [
+    {
+      "index": 1,
+      "section": "What is Claude Code?",
+      "title": "Introduction",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303233",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:31:56.137Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Introduction",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "rLVnV1aS",
+          "video_title": "001 - Introduction.mp4",
+          "duration_s": 38,
+          "available_caption_languages": [
+            "English",
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Hello and welcome. My name is Stephen Grider\n\nand I'm a member of Technical Staff at Anthropic. In\n\nthis course, we're going to get to you up to speed with Claude Code. And\n\nbefore we get into anything too technical, I want to give you a\n\nquick overview on what will be learning. This\n\ncourse is organized into four sections. We're\n\ngoing to first spend some time to understand exactly what\n\na coding assistant is. We'll then take a look at Claude\n\nCode itself and understand what makes it stand out among\n\nall the different coding assistants on the market.\n\nOnce we've established that, we'll walk through the use of Claude Code\n\non a typical project and get some hands-on experience.\n\nFinally, we'll wrap things up by seeing how you can get the most\n\nout of Claude Code on your own projects."
+        }
+      ],
+      "total_transcript_chars": 793,
+      "errors": []
+    },
+    {
+      "index": 2,
+      "section": "What is Claude Code?",
+      "title": "What is a coding assistant?",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303235",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:31:57.825Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "What is a coding assistant?",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "WQnSCLF3",
+          "video_title": "002 - What is a Coding Assistant?.mp4",
+          "duration_s": 353,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "In this video, we're going to get a better understanding\n\nof what a coding assistant is. Yes,\n\na coding assistant is a tool that writes code, but I want\n\nto give you a deeper understanding of what's going on behind the scenes.\n\nYou see, by understanding what a coding assistant really\n\ndoes and how it works, you'll have a greater appreciation\n\nof what makes a truly amazing assistant to\n\ncomplement your team. Here's one way that you\n\ncan picture what a coding assistant is doing. An assistant\n\nis first given a task. In this case, maybe the assistant\n\nneeds to fix a bug based upon some kind of error message.\n\nThis task is passed off internally to a language model, which\n\nneeds to figure out how to solve the issue. Now, different\n\nlanguage models solve problems in very different styles depending\n\nupon the complexity of the task. But in many cases, they\n\nwork very much like how a human would work. It\n\nfirst might need to gather context by understanding what the error\n\nis referring to, what area in the code base is throwing the error,\n\nand what files seem to be relevant. Once\n\nit has gathered that information, it then needs to formulate a\n\nplan on how it will actually accomplish the task.\n\nIn this case, it might decide to change some code and then run\n\nor write a test to verify that the issue is actually\n\nfixed. Finally, it will take an action. In\n\nthis case, that might be updating a file and running\n\nthe test. Now, I want to give you some more information\n\non this entire process. In particular, I'd\n\nlike you to notice that the first and last steps here\n\nrequire the coding assistant to actually do something.\n\nIn other words, to actually gather information from the outside world\n\nor affect the outside world in some way. For\n\nexample, to gather context, the assistant needs to maybe\n\nread a file or fetch some documentation online.\n\nAnd for taking an action, the assistant might need to actually\n\nrun a command or edit a file. Now\n\nhaving a language model actually do these things\n\nis a little bit trickier than it actually sounds.\n\nLet me help you understand why that is. Let's\n\nimagine that we are interacting with a language model directly,\n\nso it's not running inside of any coding assistant or anything\n\nlike that. Let's then imagine that we asked this\n\nlanguage model directly what code is written inside\n\nthe main.go file. Language\n\nmodels running outside the context of any coding\n\nassistant or similar tool do not inherently\n\nhave the ability to say read a file or write\n\na command or anything like that. Language\n\nmodels take in content like text and they return\n\ntext. That's it. That's the entire extent\n\nof their capabilities. And this is true of all language\n\nmodels. So if you were to send some text\n\ninto a plain language model asking to read a file,\n\nit would most likely respond by saying that it doesn't have\n\nthe ability to read any files. So let me show\n\nyou what coding assistance and many, many other tools\n\nout there do to actually allow a language model to,\n\nquote unquote, read a file. So here's what happens. Whenever\n\nyou send a request off to your coding assistant, the coding\n\nassistant behind the scenes is going to automatically append\n\na lot of text into your request.\n\nIn this particular case, we can imagine that the coding assistant\n\nis going to add on some text that says something like, if you,\n\nlanguage model, want to read a file, respond with\n\nthis very carefully formatted message. For\n\nexample, maybe something like, read file, colon,\n\nand then the name of a file to read. So in this\n\ncase, the language model would hopefully realize that in order\n\nto answer our question, it needs to respond\n\nby reading that file. So it might respond with, read\n\nfile colon main.go. Now the coding\n\nassistant would be in charge of receiving this very carefully\n\nformatted message and realizing that the language model wants\n\nto take some kind of action by reading a file. So\n\nthe coding assistant would then be responsible for actually a read\n\nin the file and sending the contents of that file\n\nback into the language model. Now that the language\n\nmodel has received the actual contents of that file, it\n\ncan write a final response that gets sent back to us.\n\nin which it might say, well, I read this file and it\n\ncontains some amount of code, whatever else, whatever's inside\n\nthat file. This entire system of giving\n\na language model these extra little instructions\n\nasking it to respond in a very well formatted or carefully\n\nformatted way is referred to as tool use.\n\nSo tools are used to give models extra capabilities.\n\nThe model is responsible for responding in a very particular\n\nway. And then something like our coding assistant would be responsible\n\nfor actually doing whatever was promised. So\n\nactually reading a file, writing a file, or whatever else.\n\nAgain, this is how every single language model out\n\nthere works. They all work with this idea of tool use.\n\nNow, here's the critical part to understand. The Claude series\n\nof models, so Opus, Sonnet, and Haiku,\n\nare particularly strong at understanding what\n\ntools do, when they're called, and actually using\n\nthem to effectively complete tasks and using them\n\nin really interesting combinations to complete\n\nmore advanced or complex tasks.\n\nClaude's strong tool use is the absolute core strength\n\nof Claude code as a coding assistant. Here's why.\n\nFirst, as I just mentioned, with better tool use,\n\nClaude can handle more complex tasks.\n\nSecond, Claude code itself is extensible, so\n\nit's really easy to add in new tools to Claude. And\n\nClaude will happily make use of those tools.\n\nThis is especially important for continued relevance,\n\ngiven the fast changes that we're seeing in the world of development.\n\nIn other words, Claude Code is an assistant that\n\nwill change with you in the years to come. And\n\nfinally, with improved tool use, you often get better\n\nsecurity because Claude can effectively search\n\nyour code base to find relevant code without relying\n\nupon indexing, which often relies upon sending\n\nyour entire code base to outside servers.\n\nLet's do a quick review on what we learned inside this video\n\naround what a coding assistant really is. So remember,\n\ncoding assistants use language models internally to complete\n\ndifferent tasks. These language models, they need\n\nto know how to use tools to work on the\n\nvast majority of tasks that they are given. Tools are used to read\n\nfiles, write files, run commands, and essentially everything\n\nelse that doesn't just involve generating some text.\n\nNot all language models make use of tools at the\n\nsame level, and this has a big impact on the\n\noverall efficiency of a coding assistant."
+        }
+      ],
+      "total_transcript_chars": 6664,
+      "errors": []
+    },
+    {
+      "index": 3,
+      "section": "What is Claude Code?",
+      "title": "Claude Code in action",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303242",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:31:59.448Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Claude Code in action",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "3IQrknws",
+          "video_title": "003 - Claude Code in Action.mp4",
+          "duration_s": 505,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Just a moment ago, I made some pretty big claims by saying that\n\nClaude was an expert at making use of tools. And\n\nthat Claude code was easily extensible. Naturally,\n\nyou might be a little skeptical, so I'd like to give you a few\n\nquick demonstrations. On this table are the\n\ndefault tools that are available in Claude code. It\n\nhas all the abilities you would expect, like reading files,\n\nwriting files, running commands, and so on. I'm\n\ngoing to show you a couple of tasks completed using\n\nClaude Code. And in each case, it will use\n\nthis set of tools in rather intelligent ways. And\n\nin at least one task, I'll even give Claude an\n\nadditional new set of tools to make use of.\n\nNot only will this process give you a good idea of what Claude\n\ncode can do right out of the box, but hopefully\n\nyou will also see how easily you can extend Claude\n\ncode with more functionality. Here's my\n\nfirst task for Claude code. I'm going to ask it to find\n\nand optimize performance issues in the chalk library.\n\nIn case you're not familiar with it, chalk is a JavaScript package.\n\nHere's the documentation for it. Now this is a very\n\nsmall library that has one very simple purpose.\n\nAll it does is print out text in nicely formatted\n\ncolors, so like exactly as you see in this example screenshot\n\nright here. So you can give the text colors or backgrounds\n\nand formatting, all that kind of stuff. Now, this\n\nmight sound like a really simple and silly package,\n\nbut here's the thing. It turns out this is actually the fifth\n\nmost downloaded package in the entire JavaScript ecosystem.\n\nLast week in particular, it had 429\n\nmillion downloads. So this package is used\n\nfar and wide to put it simply. If\n\nI could find any way to optimize anything inside\n\nthis package, well, it would probably be worth the effort.\n\nSo I'm going to ask Claude to run the benchmarks, identify\n\nthe worst performing cases, use some profiling tools\n\nto figure out why those cases are running so slowly, and then\n\nfix them. We'll then see that Claude is going to use a wide\n\nvariety of different tools to intelligently tackle this problem.\n\nIt'll form up a 2DList to track its progress,\n\nexecute commands to run the benchmarks, write a file to better\n\nzoom in on one particular case, use a CPU\n\nprofiler to understand why that case is running so slowly,\n\nand then implement some improvements. By the end,\n\nwe'll get a 3.9 times improvement in throughput\n\nin one particular operation around this library. Here's\n\nanother example of how well Claude can string together different\n\ntool calls to complete a rather complex task. I'm\n\ngoing to give it a data set inside the CSV file. All\n\nthe data inside of here contains information about different users\n\nof a video streaming platform. And I'm going to ask it to\n\njust do a general analysis, maybe identify some causes\n\nof churn on the platform. And I want all this analysis\n\nto be done inside of a Jupyter notebook. Here's\n\nmy data set. I'm then going to ask Claude to run\n\nthe analysis and let's see how it does. This is\n\na great example of where effective tool use is really\n\nimportant. You see, it's not really enough that\n\nClaude just writes code into a notebook. Claude can\n\nalso execute code in different cells and view the results\n\nof those executions. That means that Claude\n\ncan take some initial look at the data in the notebook and\n\nthen customize each successive cell to hone\n\nin on some particular details. Next\n\nup, I'd like to show you an example of a task where I extend Claude\n\nCode's capabilities by giving it access to a new set\n\nof tools. I built a small app that will\n\ngenerate UI components based upon some description entered\n\non the left side of the screen. The generated component\n\nis then displayed on the right side. Now, the app can\n\ngenerate good looking components quite easily, but\n\nthe chat interface on the left and the header at the top\n\nare not looking so nice. So\n\nI'm going to use Claude Code to improve the styling. If\n\nI just asked it to fix the styling and the chat interface in the\n\nheader, it would likely do a fine job. But remember,\n\nmy goal here is to show you how easy it is to\n\nadd additional functionality to Claude Code. So along\n\nwith this styling task, I'm going to also give Claude Code\n\naccess to a new set of tools provided by\n\nsomething called the Playwright MCP server, which\n\nI'll tell you more about later on. These tools allow\n\nClaude to directly open and control a browser.\n\nSo here's what that process looks like in action. I'm\n\ngoing to ask Claude to improve the styling of my app and make\n\nuse of a browser to do so. It'll then open\n\na browser on the right-hand side of the screen. Navigate to my\n\napp, it'll take a screenshot to view the current styling,\n\nand then update the styling. We could even ask\n\nClaude to take another screenshot of the page when\n\nit was complete and iterate on the design a couple of times\n\nto really get a nice design that really pops. And\n\nbefore long, we've got something that actually looks pretty reasonable.\n\nThere's one last set of demonstrations that I like to give you. Remember\n\nwhat I mentioned a moment ago. Claude's ability to\n\nutilize tools so well is what will allow Claude code\n\nto grow with you and your team in the future. Let\n\nme show you an example of that right away. Claude has\n\na very close integration with GitHub. You can set up Claude\n\ncode to run inside of a GitHub action,\n\nwhere it will be executed automatically based upon certain\n\nevents, like creating a pull request or\n\nwhen directly mentioned inside an issue. When\n\nClaude Code runs on GitHub, it not only gets\n\nto view and run your code, but it also\n\ngets to access a new set of tools for interacting\n\nwith GitHub, like the ability to create comments\n\nor create commits or pull requests and so on. You\n\ncan use this integration to automatically review pull\n\nrequests. Let me show you an example. Let me first\n\nset up a little scenario for you. Let's imagine that we are\n\nbuilding out some infrastructure on AWS, and all\n\nof our infrastructure is to find inside of a set of terraform\n\nfiles, which are committed and stored on GitHub.\n\nBecause all of our infrastructure is to find inside of terraform\n\nfiles, Claude Code has a really good idea of how\n\ninformation is flowing through our infrastructure.\n\nAnd let's imagine that in the SAP, I have a DynamoDB\n\ntable. If you're not familiar with those, it's kind of like a normal database\n\ntable. Inside there, I'm storing some different information\n\nabout users, including maybe plans viewed and\n\na registration date. And for maybe some\n\nreason, we want to share just that plans viewed and\n\nregistration date information with some internal\n\nmarketing team, but also some external\n\nmarketing team as well. So some other company has\n\naccess to the data that we are writing in this bucket.\n\nSo it's really important for us to always be aware of what information\n\nis being written into that bucket over time. Nightly,\n\nwe might have a Lambda function, pull out all the different users\n\nthat have been added into that table, and then extract just\n\nplans for you and the registration date, and store\n\nthat in the S3 bucket so these two marketing teams\n\ncan access that information. Now let's\n\nimagine that months later on, the internal\n\nmarketing team asks us to also store the email\n\ninside of this S3 bucket as well. So we might\n\ngo into the Lambda function and add in just one single line\n\nof code that takes the user's email and stores it inside\n\nthe bucket. And because this is months later on,\n\nwe might have completely forgotten that this S3 bucket\n\nis shared with a external marketing partner. So\n\nnow at this point in time, we are putting personally identifiable\n\ninformation into this bucket, which is accessible\n\nby a separate company. This is a big no-no. Definitely\n\nsomething we would not want to do. But at the same time, this\n\nis an error that does occur, and it's kind\n\nof hard to catch if we don't have a good idea of exactly\n\nwhat's going on with this S3 bucket. Well,\n\nit turns out that Claude Code can catch this kind\n\nof scenario inside of a pull request quite easily,\n\nspecifically because all of our infrastructure is defined inside\n\nof those terraform files. So here's a quick example.\n\nI built that project that I just showed you in that diagram. I\n\ncreated a pull request to add in the\n\nuser's email inside of the Lambda function. So the only\n\nline of code that I changed was that right there. I'm saying that\n\nfor every user, I want to get their email and add that into\n\nthe bucket as well. Now, Claude\n\nhas an excellent idea of my infrastructure. So\n\nit was able, inside of a automated review, this\n\nwe're seeing right here, to take a look at all the changes I made\n\ninside this pull request. It was able to figure out exactly\n\nhow my infrastructure works, and it was able to identify\n\nthat I am exposing some PII to\n\na partner. So it has listed out the data flow\n\nright here, the exact steps that occur. and goes\n\ninto great detail on how this bucket is shared with a\n\nexternal partner. Catching issues like this\n\nduring development instead of after we deploy this\n\nchange is an amazing benefit to using Claude\n\nCode's integration on GitHub. I'm going to go into\n\na lot of detail later on and show you exactly how to set\n\nup a flow exactly like this. I think\n\nthat we've now got a good idea of what Claude Code can do thanks\n\nto its excellent ability to make use of tools. Remember,\n\nyou really want to think of Claude Code as a flexible assistant\n\nthat can be customized, grow, and change over time to\n\nmeet the needs of your team."
+        }
+      ],
+      "total_transcript_chars": 9584,
+      "errors": []
+    },
+    {
+      "index": 4,
+      "section": "Getting hands on",
+      "title": "Claude Code setup",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/301614",
+      "types": [
+        "lesson-modular"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:01.470Z",
+      "extraction_method": "modular_text",
+      "title_from_player": "Claude Code setup",
+      "modular_text": "Time to get Claude Code set up locally!\nFull setup directions can be found here: https://code.claude.com/docs/en/quickstart\nIn short, you'll need to do the following:\n\nInstall Claude Code\n\nMacOS (Homebrew): brew install --cask claude-code\nMacOS, Linux, WSL: curl -fsSL https://claude.ai/install.sh | bash\nWindows CMD: curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd\n\nAfter installation, run claude at your terminal. The first time you run this command you will be prompted to authenticate\n\nIf you're making use of AWS Bedrock or Google Cloud Vertex, there is some additional setup:\n\nSpecial directions for AWS Bedrock: https://code.claude.com/docs/en/amazon-bedrock\nSpecial directions for Google Cloud Vertex: https://code.claude.com/docs/en/google-vertex-ai",
+      "modular_html": "\n            \n                    <p><strong><span style=\"font-size: 18pt;\">Time to get Claude Code set up locally!</span></strong></p>\n<p><span style=\"font-size: 16pt;\">Full setup directions can be found here: <a href=\"https://code.claude.com/docs/en/quickstart\" target=\"_self\">https://code.claude.com/docs/en/quickstart</a></span></p>\n<p><span style=\"font-size: 21.3333px;\">In short, you'll need to do the following:</span></p>\n<ol>\n<li><span style=\"font-size: 21.3333px;\"><code><span style=\"color: #222222; font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;\"><span style=\"font-weight: 400;\">Install Claude Code</span></span></code></span>\n<ol>\n<li><span style=\"font-size: 21.3333px;\"><code><span style=\"color: #222222; font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;\"><span style=\"font-weight: 400;\">MacOS (Homebrew): </span></span><span style=\"color: #222222; font-family: Lato, Helvetica Neue, Helvetica, Arial, sans-serif;\"><code>brew install --cask claude-code</code></span></code></span></li>\n<li><span style=\"font-size: 21.3333px;\">MacOS, Linux, WSL:&nbsp;</span><span style=\"font-size: 16pt;\"><code>curl -fsSL https://claude.ai/install.sh | bash</code></span></li>\n<li><span style=\"font-size: 16pt;\"><span style=\"font-size: 21.3333px;\">Windows CMD:&nbsp;</span><code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></span></li>\n</ol>\n</li>\n<li><span style=\"font-size: 21.3333px;\">After installation, run <code>claude</code> at your terminal. The first time you run this command you will be prompted to authenticate</span></li>\n</ol>\n<p><span style=\"font-size: 21.3333px;\">If you're making use of AWS Bedrock or Google Cloud Vertex, there is some additional setup:</span></p>\n<ul>\n<li><span style=\"font-size: 21.3333px;\">Special directions for AWS Bedrock: <a href=\"https://code.claude.com/docs/en/amazon-bedrock\" target=\"_self\">https://code.claude.com/docs/en/amazon-bedrock</a></span></li>\n<li><span style=\"font-size: 21.3333px;\">Special directions for Google Cloud Vertex: <a href=\"https://code.claude.com/docs/en/google-vertex-ai\" target=\"_self\">https://code.claude.com/docs/en/google-vertex-ai</a></span></li>\n</ul>\n            \n        ",
+      "modular_html_length": 2246,
+      "images": [],
+      "external_links": [
+        {
+          "href": "https://code.claude.com/docs/en/quickstart",
+          "text": "https://code.claude.com/docs/en/quickstart"
+        },
+        {
+          "href": "https://code.claude.com/docs/en/amazon-bedrock",
+          "text": "https://code.claude.com/docs/en/amazon-bedrock"
+        },
+        {
+          "href": "https://code.claude.com/docs/en/google-vertex-ai",
+          "text": "https://code.claude.com/docs/en/google-vertex-ai"
+        }
+      ],
+      "code_blocks": [
+        "Install Claude Code",
+        "MacOS (Homebrew): brew install --cask claude-code",
+        "brew install --cask claude-code",
+        "curl -fsSL https://claude.ai/install.sh | bash",
+        "curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd",
+        "claude"
+      ],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 5,
+      "section": "Getting hands on",
+      "title": "Project setup",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/301615",
+      "types": [
+        "lesson-modular"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:02.698Z",
+      "extraction_method": "modular_text",
+      "title_from_player": "Project setup",
+      "modular_text": "Working with Claude Code is more interesting if you have a project to work with.\nI've put together a small project to explore with Claude Code. It is the same UI generation app shown in a previous video. Note: you don't have to run this project. You can always follow along with the remainder of the course with your own code base if you wish!\nSetup\nThis project requires a small amount of setup:\n\nEnsure you have Node JS installed locally. Link to installation directions.\nDownload the zip file called uigen.zip attached to this lecture and extract it\nIn the project directory, run npm run setup to install dependencies and set up a local SQLite database\nOptional: this project uses Claude through the Anthropic API to generate UI components. If you want to fully test out the app, you will need to provide an API key to access the Anthropic API. This is optional. If no API key is provided, the app will still generate some static fake code. Here's how you can set the api key:\n\nGet an Anthropic API key at https://console.anthropic.com/\nPlace your API key in the .env file.\n\nStart the project by running npm run dev",
+      "modular_html": "\n            \n                    <p><span style=\"font-size: 16pt;\">Working with Claude Code is more interesting if you have a project to work with.</span></p>\n<p><span style=\"font-size: 16pt;\">I've put together a small project to explore with Claude Code. It is the same UI generation app shown in a previous video.&nbsp;<strong>Note:</strong> you don't have to run this project. You can always follow along with the remainder of the course with your own code base if you wish!</span></p>\n<p><span style=\"text-decoration: underline;\"><span style=\"font-size: 18pt;\"><strong>Setup</strong></span></span></p>\n<p><span style=\"font-size: 16pt;\">This project requires a small amount of setup:</span></p>\n<ol>\n<li><span style=\"font-size: 16pt;\">Ensure you have Node JS installed locally. <a href=\"https://nodejs.org/en/download\" target=\"_self\">Link to installation directions</a>.</span></li>\n<li><span style=\"font-size: 16pt;\">Download the zip file called <code>uigen.zip</code> attached to this lecture and extract it</span></li>\n<li><span style=\"font-size: 16pt;\">In the project directory, run <code>npm run setup</code> to install dependencies and set up a local SQLite database</span></li>\n<li><span style=\"font-size: 21.3333px;\"><strong>Optional: </strong>this project uses Claude through the Anthropic API to generate UI components. If you want to fully test out the app, you will need to provide an API key to access the Anthropic API. <em>This is optional. If no API key is provided, the app will still generate some static fake code. </em>Here's how you can set the api key:</span>\n<ol>\n<li><span style=\"font-size: 16pt;\">Get an Anthropic API key at <a href=\"https://console.anthropic.com/\" target=\"_self\">https://console.anthropic.com/</a></span></li>\n<li><span style=\"font-size: 21.3333px;\">Place your API key in the <code>.env</code> file.</span></li>\n</ol>\n</li>\n<li><span style=\"font-size: 21.3333px;\">Start the project by running <code>npm run dev</code></span></li>\n</ol>\n            \n        ",
+      "modular_html_length": 2004,
+      "images": [],
+      "external_links": [
+        {
+          "href": "https://nodejs.org/en/download",
+          "text": "Link to installation directions"
+        },
+        {
+          "href": "https://console.anthropic.com/",
+          "text": "https://console.anthropic.com/"
+        }
+      ],
+      "code_blocks": [
+        "uigen.zip",
+        "npm run setup",
+        ".env",
+        "npm run dev"
+      ],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 6,
+      "section": "Getting hands on",
+      "title": "Adding context",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303241",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:03.705Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Adding context",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "wWHe1PIF",
+          "video_title": "004 - Adding Context.mp4",
+          "duration_s": 314,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "I've got my code editor open inside that small project,\n\nand I'm going to start up the development server with a NPM run\n\ndev. And when I run that, I'm going to be able to\n\nnavigate to a local host 3000 inside my browser\n\nand see the application running. So here it is right here. We\n\nare going to use Claude to do a little bit of work on this project.\n\nBut first, there's something really critical I want you to understand around\n\nusing Claude. Specifically, I want you to walk away\n\nfrom this course with a strong understanding of context management.\n\nYou see, inside of your typical project, there might be dozens or\n\nhundreds of files, each with a tremendous amount\n\nof information. Whenever we ask Claude a question\n\nor give it a task, there is some ideal amount of\n\ninformation that Claude needs. Just enough\n\nto help to understand how to answer your question or complete your task.\n\nAs soon as we start adding in additional information that's\n\nnot relevant, Claude's effectiveness will start\n\nto decrease. So it is really important for us to\n\nhelp guide Claude towards relevant files or\n\ndocumentation inside of our project. Claude code can\n\ncertainly work without any handholding, but you'll get the best\n\nresults if you provide just a little bit of guidance.\n\nSo for the remainder of this video, I'm going to give you a bunch of different tips\n\non how to give Claude the best context possible. To\n\nget started, inside my editor, I've opened up my terminal, and\n\nI'm going to start Claude Code up by running the Claude\n\ncommand. Whenever you run Claude Code\n\nin a project for the first time, I highly recommend running\n\nthe slash init command. This gets\n\nClaude to take a deep look at your entire code base. It'll\n\nfigure out the purpose of the project, the general architecture,\n\nrelevant commands, critical files, and so on. After\n\nthis search, it'll summarize its findings and place them\n\ninto a file called Claude.md.\n\nWhen Claude tries to create this file, it will ask for permission.\n\nYou can either hit Enter to accept, or if you don't\n\nwant to have to grant permission to every file write request,\n\nyou can also press Shift Tab, which will allow\n\nClaude Code to freely write files in your project.\n\nI would encourage you to open up the Claude MD file that was generated\n\nand take a look at its contents. As I mentioned, the\n\ncontents of this file are included in every request we make off\n\nthe Claude. This file really has two different purposes.\n\nFirst, it helps Claude better understand your codebase so\n\nit can find relevant code more quickly. And second, it\n\nserves as a location where you can give Claude some general\n\nguidance. Just so you know, there are multiple\n\nClaude MD files that Claude Code will make use of. There\n\nis a project level, a local level, and a machine\n\nlevel. The project level is what we just generated\n\nby running the slash init command. We are generally\n\ngoing to commit this file to source control, like Git. We're\n\ngoing to share this file with other engineers and just have some project\n\nspecific directions that we want to hand off to Claude. Optionally,\n\nwe can also create a Claude local MD file.\n\nThis file is not going to be committed and you're generally not going\n\nto share with any other engineers. Inside this file,\n\nyou might put in some personal instructions that you want\n\nClaude to follow just for you. Finally,\n\nyou can have a global Claude MD file on your machine.\n\nThis file will contain instructions or be applied to all\n\nprojects that you run locally. Now, I\n\nkeep on mentioning giving Claude special or custom instructions.\n\nSo let me show you an example of that. Let's imagine that\n\nClaude is using comments way too often in the code that it writes.\n\nWe can address this by updating our Claude MD file.\n\nWe can either manually modify the file or a little\n\nbit of a shortcut is inside of Claude Code we\n\ncould put in a pound sign. This puts us in\n\nmemory mode. This allows us to edit one of our\n\nClaude MD files intelligently. So we can put\n\nin a request like, don't write comments so often. I'll\n\nthen specify that I want to add this instruction to the project\n\nClaude MD file, and Claude is then going to merge\n\nthis instruction into that file intelligently. If\n\nI then open the file up and do a search, I'll see that in\n\nfact, yes, it did add in that new instruction.\n\nNow that we've created our Claude MD file, I want to give you a\n\nbetter understanding of how to pull in specific context\n\ninto a conversation. Let's imagine that we want to better\n\nunderstand how the authentication system in this project works.\n\nWe could just ask Claude to tell us about it, in which case, we would\n\nsearch over our codebase and find files relevant\n\nto the authentication system. That would definitely work, but\n\nit would just take some amount of time. Alternatively,\n\nif we already know some files that are relevant for\n\nthe authentication system, we could mention them using\n\nthe ATT character. When we mention a file,\n\nit will be automatically included inside of our request off to\n\nClaude. This is an excellent technique for\n\npointing Claude in a specific direction. You\n\ncan use the same syntax to also mention files\n\ninside of Claude MD. Let me show you an example of\n\nwhy that is really useful. inside of the Prisma\n\nfolder of this project, there's a file called schema.prisma.\n\nThis file contains a complete definition of all the different\n\ntables and types of records that exist inside the SQLite\n\ndatabase that is used to store information inside this project.\n\nBecause this information is so important and relevant\n\nto so many aspects of this project, I might decide\n\nto mention this file inside of my Claude MD\n\nfile. Let me show you how I do that. First,\n\nI'll enter a pound to enter memory mode. I'll then\n\nmention that schema file, and specifically, tell Claude\n\nto reference that file any time it needs to better understand\n\nthe structure of data inside the database. Once\n\nthe update is complete, I'm going to take a look at the Claude MD file\n\nand just verify that the note was added. When you mention\n\na file like this, its contents are automatically included\n\ninside of your request. So if I ask what attributes\n\nthe user has, Claude can immediately answer without\n\nreading the schema file."
+        }
+      ],
+      "total_transcript_chars": 6267,
+      "errors": []
+    },
+    {
+      "index": 7,
+      "section": "Getting hands on",
+      "title": "Making changes",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303236",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:05.072Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Making changes",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "v2XzmjpP",
+          "video_title": "005 - Making Changes.mp4",
+          "duration_s": 244,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Let's try making a couple of changes to this project.\n\nAlong the way, I'll show you some useful features around Claude Code.\n\nThe first thing I'd like to do is move this placeholder text over\n\nhere on the left-hand side down to the center of this panel.\n\nTo help Claude understand exactly what content I want\n\nmoved, I'm going to take a screenshot of\n\nthat area right there, and then I'm going to paste\n\nit into Claude Code using Ctrl V.\n\nNote that it's Control-V and not Command-V\n\nthat you might be used to on Mac OS. Control-V is\n\nused specifically to paste in a screenshot. I\n\ncan then ask Claude to center that placeholder. After\n\na little bit of searching, Claude is able to make the styling update.\n\nAnd then back inside the browser, yeah, looks great. Let\n\nme show you the next thing I would like to change in this app. I'm going to ask\n\nfor a card component that displays a title and some description.\n\nThe card is generated without any issue, but there is one\n\nawkward thing. On left hand side in the chat interface,\n\nthere's String Replace Editor. That little panel\n\nright there is meant to indicate to the user that a file is being\n\ncreated. But right now it's using a very technical term\n\nString Replace Editor for the tool that is being used behind the scenes.\n\nI would like to show a user a little more friendly text here and\n\njust tell the user that a file is being created and the name of\n\nthe file. And of course, we should also handle cases where\n\nmaybe this chatbot is editing a file or deleting\n\na file and other stuff like that. To help guide Claude's\n\nattention, I'm going to once again take a screenshot of this so\n\nit understands exactly what I'm talking about. Then, back\n\nover here, I'm going to paste that image in and ask Claude\n\nto replace that particular text with some more\n\nuser-friendly message. Now, this is a little\n\nbit of a tricky task that will require Claude to do\n\na decent amount of research in this project to complete.\n\nWhenever you give Claude a harder task, there are two\n\nways that you can easily boost Claude's intelligence. The\n\nfirst way is to enable Plan mode. Plan mode\n\nis enabled by pressing Shift-Tab twice, or\n\njust once if you are already auto-accepting file edits.\n\nIn Plan mode, Claude will do much more research\n\nover the contents of your project, reading more files\n\nand coming up with a detailed plan on how to complete your\n\ntask. After completing the plan, Claude will\n\ntell you exactly what it wants to do to complete your task.\n\nAt that point, you can either accept this plan, and Claude will\n\nimplement it, or you can redirect Claude in some\n\nway, maybe it missed some file, or didn't consider\n\nsome scenario. The second way in which we can boost\n\nClaude's intelligence is by enabling thinking. This\n\nturns on Claude's extended thinking feature, allowing\n\nit to reason more about a particular task. To\n\nenable thinking, there are a handful of different trigger phrases.\n\nEach one gives Claude a progressively larger token\n\nbudget to think with. Given that this is a trickier task,\n\nI might ask Claude to ultra-think about the best way to implement\n\nit. The last thing to understand is that planning\n\nand thinking can be used together. So in addition to\n\nthis ultra-think, I'm going to also turn on Plan mode\n\nas well. And now I'm going to run this and we'll see how well\n\nClaude can implement this feature. Now, you might\n\nbe wondering when you should use planning and when you should use\n\nthinking. Think of these two as handling\n\nbreadth-first depth. Planning mode is useful\n\nwhen you have a task that requires a wide understanding\n\nof your codebase and requires looking at different areas.\n\nIt's also useful when working on a task that requires several\n\nsteps to complete. Thinking, on either hand, is\n\nuseful when you are focusing on a particular tricky\n\nbit of logic or troubleshooting a difficult\n\nbug. The second question you might have is whether\n\nyou should just enable thinking and planning all the time.\n\nWell, you certainly can, just keep in mind that planning\n\nand thinking consume additional tokens, so there\n\nis a cost associated with using them. After\n\na couple of minutes of work, it looks like the feature is complete. So\n\nI'm going to go back over to my editor and test this out. So\n\nright away, we can see that we get some better status information here\n\nthan what we have before. Users are now being told that a file\n\nis being created. And if I send in a followed request,\n\nmaybe to change the title. Hopefully\n\nnow on the follow-up, we'll see something about editing that file.\n\nSo there we go. So now we're editing the app.jsx file.\n\nWell, I would say Claude definitely succeeded in implementing\n\nthis feature. Now that we have made some changes to this\n\nproject, we should probably commit our changes. Claude\n\nCode is a solid Git Assistant. We can ask it to\n\nstage and commit our changes and it will write a\n\ndescriptive commit message for us."
+        }
+      ],
+      "total_transcript_chars": 4934,
+      "errors": []
+    },
+    {
+      "index": 8,
+      "section": "Getting hands on",
+      "title": "Course satisfaction survey",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303701",
+      "types": [
+        "lesson-quiz"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:07.587Z",
+      "extraction_method": "metadata_only",
+      "title_from_player": "Course satisfaction survey",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 9,
+      "section": "Getting hands on",
+      "title": "Controlling context",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303237",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:08.756Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Controlling context",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "pIw5RYqx",
+          "video_title": "006 - Controlling Context.mp4",
+          "duration_s": 217,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "In this video, I'd like to show you a couple of different techniques\n\nfor controlling and directing the flow of conversation. Here's\n\na basic example right away. I'm going to ask Claude\n\nto write tests for some functions written into a authentication\n\nfile. Claude quickly comes up with a plan for authoring\n\nseveral different tests. However, I know that testing\n\nthis file is a little tough, and I'd like Claude\n\nto only test one thing at a time. To interrupt\n\nClaude, I can press escape. This will stop Claude\n\nin its tracks, allowing me to suggest a different path.\n\nCombining Escape, along with memories, is a really\n\npowerful way to fix errors that Claude makes repeatedly. Here's\n\nan example. I'm going to ask Claude to write tests for the\n\nsame file again. This time around, it will attempt to\n\nread a test configuration file that doesn't actually\n\nexist. Now, this is an error that I've seen\n\nClaude make before on this project. So to\n\nstop this mistake from being repeated, I'll very quickly hit\n\nEscape. I'll then use the pound shortcut to add\n\nin a memory about the correct name of this test config\n\nfile. And now, I probably won't have to see this error\n\nagain. Some of these conversation\n\ncontrol shortcuts seem like they're just for convenience.\n\nBut use correctly, they can really improve Claude's\n\nability to work effectively and stay on task. So\n\nlet me show you a more practical example. Inside\n\nthe auth.ts file, there are four different functions.\n\nAnd I would like to get Claude to write tests for each of them one\n\nat a time, first starting on a function called create\n\nsession. Claude will definitely attempt to write the tests,\n\nbut as it is running them, it runs into an error and\n\nspends a little bit of time debugging it. It turns out\n\nthere was a package that I forgot to install. Eventually\n\nthe tests are completed and working, and it's time\n\nto start working on the next set of tests. But\n\nhere's the thing. In my conversation history, there\n\nis now a lot of back and forth around that broken package.\n\nNow this is a bunch of context that is not at\n\nall relevant to writing the next set of tests.\n\nIdeally, we would be able to jump back in time and\n\ngo back to the previous message we sent and just update\n\nit to say, write test for a git session. Now,\n\nthe benefit here is that we maintain the context where Claude\n\nalready took a look at the contents of the auth.ts file.\n\nAnd it already knows what we're talking about when we refer to git session.\n\nAnd because we dumped all those extra messages that were just about debugging,\n\nwe're not going to have as much distraction going on here. So\n\nagain, Claude can really just stay focused in on task.\n\nTo go back in the conversation history, hit Escape twice.\n\nThis will show you all the different messages that you have set, so you\n\ncan rewind back to a previous point in time and skip\n\nover some intermediate conversation. Claude\n\nis now going to start working on the next set of tests. This\n\ntime around, Claude stays super focused, but unfortunately,\n\nit runs into a number of issues. It eventually resolves\n\nthem and gets the test to pass. Now at this\n\npoint, Claude has been working by itself for several minutes and\n\nhas a really good idea of how to write tests for this file.\n\nAt the same time, once again, we have a bunch of context\n\nin this conversation history. When it is time\n\nto write tests for the next function, I want to use\n\na command called compact. The compact\n\ncommand will take all the messages in the current conversation\n\nand summarize them. Compact is really useful\n\nwhen Claude has learned a lot about the current task\n\nand you want to maintain that knowledge as it goes into the next\n\ntask. The last context-related\n\ncommand to be aware of is the Clear command. Clear\n\nwill dump the entire conversation history, allowing you to start\n\noff from scratch. Clear is most useful anytime\n\nyou're about to start on a completely different task unrelated\n\nto the current one. I recommend using these shortcuts\n\nquite a bit, particularly when you are changing between tasks\n\nor anytime you are having a long-running conversation with Claude.\n\nIn the remainder of this course, we'll use them several times to\n\nmake sure that Claude stays on task and focused."
+        }
+      ],
+      "total_transcript_chars": 4254,
+      "errors": []
+    },
+    {
+      "index": 10,
+      "section": "Getting hands on",
+      "title": "Custom commands",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303234",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:14.043Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Custom commands",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "ChNLn8eT",
+          "video_title": "007 - Custom Commands.mp4",
+          "duration_s": 104,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "When you run Claude Code, you can enter in a forward\n\nslash and see a bunch of commands that are built into Claude Code\n\nby default. In addition to these default commands,\n\nyou can easily add your own custom commands as well. Custom\n\ncommands are useful for automating repetitive tasks that\n\nyou find yourself running frequently. Let me show you an example of how\n\nto make one. Inside of my project directory,\n\nI'm going to find the .Claude folder. Inside there, I'll\n\nmake a new directory called commands. And then inside\n\nthat, I'll make a new file called audit.md.\n\nThe name of the file that we create, in this case audit,\n\nis going to be the name of the command we eventually run. The\n\ngoal of this command is going to be to audit all the different dependencies\n\nthat have been installed into this project, update them\n\nif there are any vulnerabilities, and then run\n\ntests to make sure that nothing actually broke. Once\n\nyou have created the command file, you'll then restart Claude\n\nCode. Don't forget to restart it. When you reopen\n\nClaude Code, put in slash audit. This\n\nwill then display the command that you just created. You can then\n\nrun this, and in this case, it will do exactly what we ask Claude\n\nto do. It'll run a command, see if there are any vulnerable\n\npackages, fix them if necessary, and then run\n\ntests. Commands can also receive arguments. Let\n\nme show you an example. I'm going to make another command called write\n\ntest. Whenever I run this command, I want to have\n\nsome tests created for a very particular file inside\n\nmy project. Inside of the command text, I'm going\n\nto put in a placeholder of dollar sign arguments. Whenever\n\nI run the command, if I pass in a path to a file, that\n\npath will be inserted at dollar sign arguments.\n\nSo now I can restart Claude Code again and then execute\n\nthe write test command. Now, to be clear,\n\nthe arguments we pass in don't have to be a file\n\npath. It can be any string we want to pass in. So\n\nI might casually ask for tests for a file in some particular\n\nfolder, giving Claude just a little bit of direction on\n\nwhere to look."
+        }
+      ],
+      "total_transcript_chars": 2097,
+      "errors": []
+    },
+    {
+      "index": 11,
+      "section": "Getting hands on",
+      "title": "MCP servers with Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303239",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:19.468Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "MCP servers with Claude Code",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "EkzVe83z",
+          "video_title": "008 - Extending Claude Code with MCP Servers.mp4",
+          "duration_s": 173,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "You can add new tools and capabilities to Claude Code\n\nthrough the use of MCP servers. These\n\nMCP servers either run remotely or locally\n\non your machine. A very popular MCP\n\nserver named Playwright gives Claude Code the\n\nability to control a browser. Let me show you how to\n\nadd it to Claude Code, and then we'll use it to develop\n\nour app a little bit more. To install the server at\n\nyour terminal, not inside of Claude Code, we'll execute\n\nClaude MCP Add. And then a name\n\nfor this MCP server, I'm going to name it playwright. And\n\nthen after the name, we'll add in a command that will start up\n\nthe server locally on your machine. We can then start\n\nClaude Code and ask it to open a browser and navigate\n\nto our application at localhost 3000.\n\nBefore the browser opens, you might notice that you are required to give\n\npermission for that tool to run. If you get tired\n\nof all those permission pop-ups, you can open up the Claude\n\ndirectory inside their settings.local.json.\n\nAnd then inside of the allow array, you can add in a\n\nstring of MCP underscore underscore,\n\nnotice there are two underscores there, playwright. This\n\nallows Claude Code to make use of this MCP server and\n\nthe tools inside of it in any way it wants without requiring\n\nyou to provide permission every time. If I restart\n\nClaude Code and then ask it to open a browser again,\n\nit will do so without requiring me to give permission. There\n\nare incredible number of ways that you can use the Playwright MCP\n\nserver. Let me show you one that would be really applicable to the\n\nproject we are working on right now. Back inside\n\nmy editor, I'm going to find the SRC, Lib, prompts,\n\ngeneration.tsx file. This is the prompt\n\nthat is used to actually generate the components that you ask\n\nfor inside of our app. So I want to allow\n\nClaude Code to make use of the browser, generate\n\na component on its own, and then tweak this prompt\n\non its own based upon the generated component. And\n\nhopefully, we'll end up with some better looking components\n\nbeing generated out of our app. So let me show you how\n\nwe would do that. Back inside of Claude Code, I'm going to ask\n\nit to navigate to localos3000.\n\nattempt to generate a component, take a look at the\n\ngenerated source code and evaluate the styling, and\n\nthen update our prompt inside that generation.tsx\n\nfile, and hopefully we'll end up with some at\n\nthe end of the day better styling on our generated components.\n\nSo let's see how it does. Claude is going to first open\n\nup the browser. It's going to attempt to generate a component.\n\nAnd looking at some of the commentary from Claude here, it looks like\n\nit's not quite so happy. You might actually notice\n\nthat it complains about a very common style that's used in\n\napplications like this, a purple to blue kind\n\nof gradient. Claude is then going to update\n\nour prompt and then try to generate a new component.\n\nAnd I'll be honest with you, this actually gave\n\na much better result than I ever expected. This\n\ntestimonial card actually looks really, really great. Based\n\non these results alone, you can immediately get a sense that\n\nMCP servers really open the door to a lot of interesting\n\nuse cases. And I highly recommend you look into some\n\nMCP servers that might aid Claude in developing\n\nwhatever kind of project you personally are working on."
+        }
+      ],
+      "total_transcript_chars": 3321,
+      "errors": []
+    },
+    {
+      "index": 12,
+      "section": "Getting hands on",
+      "title": "Github integration",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303240",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:20.542Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Github integration",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "ZzNXo5m0",
+          "video_title": "009 - Github Integration.mp4",
+          "duration_s": 220,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Claude code has an official GitHub integration that\n\nallows Claude code to run inside of a GitHub action.\n\nYou can set up this integration by running slash install\n\nGitHub app. This will walk you through a couple of steps.\n\nFirst, you'll need to install the Claude code app on GitHub.\n\nNext, you'll need to add in an API key. And then\n\nafter this, a pull request will be automatically generated.\n\nThis pull request adds in two different GitHub actions.\n\nThe first action adds in mentioning support. So\n\nfrom an issue or a pull request, you can mention Claude\n\nwith @Claude and give Claude some kind of task\n\nto run. The second action adds in support\n\nfor reviewing pull requests. So whenever you create a pull request,\n\nClaude code will automatically run and review the proposed\n\nchanges. Both of these actions can be customized,\n\nand you can also add in additional actions to trigger based\n\non other types of events. Let me show you how you\n\ncan customize the mentioning feature. First, we\n\njust merged in those two action config files to\n\nour repository on GitHub. So I need to pull\n\nthose changes down to my local machine. Then inside\n\nof the newly created GitHub workflows directory, I'll\n\nsee these two action config files. One adds\n\nin support for the pull request review, and the other adds\n\nin support for handling mentions. Now, here's how\n\nI want to customize the mention functionality. Whenever\n\nI mention Claude inside of an issue or a pull request,\n\nI wanted to be able to run the project and use the Playwright\n\nMCP server to access the app inside\n\nof a web browser, all inside of a GitHub action.\n\nTo make this work, I'll first add in a step before\n\nClaude code runs in this workflow. I'll run\n\nthe setup command and then start the development server up.\n\nThen I'm going to update the Claude code configuration. I'll\n\nadd in some custom instructions. These are passed directly\n\nto Claude and they allow us to provide some additional\n\ndirections or context. In this case, I'll\n\ntell Claude that the development server is already running and\n\nthat I can use the Playwright MCP server to access\n\nthe app in the browser if needed. Then I\n\nwill add in some configuration to set up the Playwright MCP\n\nserver itself. There is one other thing to be aware\n\nof here. When you're running Claude Code inside of an action,\n\nwe have to specifically list out all the permissions that\n\nwe want to grant Claude Code. And there's one tricky\n\naspect to this. If you're using an MCP\n\nserver, you have to individually list out each\n\ntool from each MCP server that you want\n\nto allow. There is no shortcut for permissions\n\nlike we saw previously. Unfortunately, the Playwright\n\nMCP server has many different tools, so they each\n\nneed to be listed out. Once I've finished with\n\nthis configuration update, I'll be sure to commit these changes and\n\npush them. Now it's time to test out this updated\n\nworkflow. I'm going to give Claude a little task.\n\nIn our actual app, see these two buttons up here. Right\n\nnow they work fine. I can toggle between the preview and the code\n\npanels without issue. But I'm going to pretend as though\n\nthey weren't working as intended. I'm going to take a\n\nscreenshot with that button right there. I'm going to make an\n\nissue. I'm going to paste in the screenshots. And I'm\n\ngoing to mention Claude with @Claude and ask it\n\nto verify that the two buttons are working as intended.\n\nI'll then create the issue and wait. Now, it is\n\ngoing to take a minute or two for the action to actually start up\n\nand for Claude's response. Remember, as we just saw in\n\nthe action, we are now setting up the entire app and\n\nstarting it running before Claude Code even starts to\n\nrun at all. But eventually, Claude\n\nwill respond. It will very often create a checklist\n\nof steps to accomplish the given task. In this case,\n\nit is going to attempt to visit the app, manually test out\n\nthe button, and fix any issues that it finds. Claude\n\nwill notice that the buttons actually are working just fine, and\n\nso it's going to terminate early with the message documenting\n\nits findings. Now, this is just a small\n\nexample of how you can use Claude Code's GitHub integration.\n\nI recommend you spend some time to think about how you can custom\n\ntailor it for your own particular project."
+        }
+      ],
+      "total_transcript_chars": 4282,
+      "errors": []
+    },
+    {
+      "index": 13,
+      "section": "Hooks and the SDK",
+      "title": "Introducing hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312000",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:22.284Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Introducing hooks",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "3uGhMBFx",
+          "video_title": "010 - Introducing Hooks.mp4",
+          "duration_s": 217,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "In this video, we're going to take a look at hooks.\n\nThese allow you to run commands before or after Claude\n\nattempts to run a tool. Hooks can be used to implement\n\nreally interesting and very useful functionality.\n\nFor example, after Claude decides to write a file,\n\nyou can automatically run a code formatter on\n\nthe created file, or you can run tests after\n\na file is edited, or you can block Claude\n\nfrom reading particular files. The possibilities\n\nare really endless, and I've got a couple of good\n\nexamples lined up to show you some ideas of\n\nhow you might use hooks on your particular project.\n\nFirst, however, let me help you understand exactly how\n\nhooks work. As a reminder, when you ask Claude\n\ncode something, your query is sent off to the Claude model\n\nalong with some tool definitions. The Claude model\n\nmight then decide to run a tool by providing a carefully\n\nformatted response. And at that point,\n\nit is up to Claude code to run the requested tool, maybe\n\nin this case to read a file, and then respond with the result\n\nof that tool call. Now hooks give\n\nus the ability to execute code just before\n\nor just after the tool execution.\n\nHooks that run before a tool are referred to as\n\npre-tool use hooks because they run before\n\nthe tool. And hooks that run after the tool are\n\nreferred to as post-tool use for the same reason.\n\nTo define hooks, we add configuration to the Claude\n\nSettings file. Remember that there are several different\n\nsettings files, one for global use across all\n\nprojects on your machine, one for your particular project\n\nthat gets shared with other engineers, and one for just you\n\non a particular project. You can add hooks,\n\neither by writing them out by hand, inside\n\nthis file, or by using the built-in slash hooks\n\ncommand inside of Claude Code itself. The\n\nconfiguration itself looks like what you see on\n\nthe right-hand side of the screen. Let me walk you through this example\n\nfile just to give you a better idea of what's going\n\non. So first, notice that there are two\n\ndistinct sections inside of this file. One\n\nsection lists out all the commands that should be executed before\n\na tool use. Remember, those are referred to as pre-tool\n\nuse hooks. The other section lists out all the different\n\ncommands that should be executed after a tool\n\nuse. And again, those are post-tool use hooks.\n\nIn each of these sections, we provide a matcher. This\n\nindicates which tool use types we are looking for.\n\nSo in this case, I want to find uses of the read\n\ntool. Whenever Claude Code attempts to read\n\na file, I want to run the command you see listed\n\nthere. Likewise, inside the post tool\n\nuse section, after a use of the write, edit,\n\nor multi-edit tools, there's a different command\n\nthat I want to run. Now, here's the important part.\n\nHere's what hooks are really intended to do. Those\n\ncommands you saw will be given details about the tool call\n\nthat Claude wants to run. In the case of a\n\npre-tool use hook, you can inspect what\n\nClaude wants to do. And if for any reason\n\nyou don't want to allow it, you can block the tool use operation\n\nand send an error message back to Claude. In\n\nthe case of a post tool use hook, the tool call\n\nhas already occurred, so it's too late to block it. But\n\nyou can do some follow-up operation based upon the tool\n\ncall, like maybe format a file that was just edited.\n\nYou can also provide some message back to Claude about\n\nthat tool use. For example, you might decide to\n\nrun a separate program to check the code quality\n\nof the edit, or maybe do a type check,\n\nand then provide that feedback back to Claude. Claude\n\nmight then take that feedback and make an update\n\nto the file that it just wrote to. If you're still\n\nconfused about hooks or what they are intended to do, that\n\nis absolutely okay. Wrapping your head around hooks\n\ncan be really challenging. So let's come back in a moment\n\nand work on a sample project with hooks."
+        }
+      ],
+      "total_transcript_chars": 3914,
+      "errors": []
+    },
+    {
+      "index": 14,
+      "section": "Hooks and the SDK",
+      "title": "Defining hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312002",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:23.864Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Defining hooks",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "qzgBYFlx",
+          "video_title": "011 - Defining Hooks.mp4",
+          "duration_s": 224,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "To get a better idea of how hooks work, we're\n\ngoing to take a look at a new sample project. Attach this\n\nlecture as a file called Query.zip. I'd\n\nencourage you to download this project and open your code editor\n\ninside of it. Once you've got your editor open, at\n\nyour terminal, Run, NPM, Run, Setup.\n\nThis is going to install a couple of dependencies and get a\n\ncouple of hooks ready for use. To better understand\n\nhooks, we're going to make our own inside of this project. So\n\nhere's what I want our hook to do. Inside the\n\nroot directory of our project is a file called .env.\n\nThis file contains some sensitive information. And\n\nout of an abundance of caution, I want to completely\n\nprevent Claude from ever reading this file directly.\n\nLet me show you a couple of diagrams to help you understand how\n\nwe're going to put this hook together. Step one is to\n\ndecide on whether we need a pre-tool use or a\n\npost-tool use hook. In this scenario, we\n\nwant to prevent Claude from ever reading a particular file.\n\nIf we make a post-tool use block, then we will\n\nhave executed our hook or ran our command after\n\nClaude already read the file. So in this case, we\n\ndefinitely need a pre-tool use hook to make\n\nsure that we can prevent the read operation from occurring.\n\nThe next thing we need to do is decide exactly which\n\nkind of tool calls we want to watch for. I've\n\ngot a list of all the different current tool names on the right\n\nhand side of this diagram. Now, memorizing all\n\nthe different tool names that are included inside of Claude\n\nCode can be really challenging, especially since you can\n\nadd your own custom tools through the use of MCP\n\nservers. So let me show you a little trick you can use\n\nhere. If I go back over and open up Claude\n\nCode, I can directly ask Claude for a bullet\n\npoint list of all the different tool names that it has access\n\nto right now. Out of all these different tools, there\n\nare two that can be used to very easily read the contents of a\n\nfile. First, there's the retool, and then it's\n\neasy to miss, but this one can actually read the contents of a file\n\nas well, the GREP tool. GREP can search the\n\ncontents of a file. So we really want to watch\n\nfor tool calls for the retool and the GREP\n\ntool. Next up, we need to write out a command\n\nthat is going to receive some information about the tool called\n\nthat Claude wants to make. Here's how that part works. We're\n\ngoing to write out a command, Claude is going to automatically execute\n\nit. And then on standard in to that process,\n\nClaude is going to feed in some tool called data as\n\nJSON. I've got an example of some tool called data\n\non the top right hand side. So it's going to be a big JSON\n\nobject that has some information about the tool name and\n\nthe input to that tool. In this case, the tool name\n\nis read, so Claude is trying to call the read tool, and\n\nit might be trying to read specifically a file path pointing\n\nto that .e and v file. And again, that's the\n\nfile that we want to prevent a read operation for. So\n\nthen inside of our program or our command, we need\n\nto receive this information through standard in, parse\n\nthat JSON, and then read the tool name, the\n\ntool input arguments, and so on, and decide what\n\nwe want to do with this tool call. Then\n\nonto step four. In step four, after our\n\ncommand receives that proposed tool called data, we're\n\nthen going to exit. And our exit code is\n\ngoing to provide a signal back to Claude Code. An\n\nexit code of zero means everything is OK, and\n\nwe want to allow this tool call to occur. An\n\nexit code of two, however, is a sign-to-Claude\n\nCode that we want to block this tool call. And\n\nthat specifically only applies for the pre-tool use\n\nhooks. Because remember, only in a pre-tool use hook\n\ncan we actually block a tool call. If we exit\n\nwith a code of two, then any standard air\n\nlogs that we generated inside of our command during that time will\n\nalso be sent as feedback to Claude. So we\n\ncan both deny the tool call and give Claude a reason\n\nat the same time as well. So that's the entire\n\nprocess. And I know once again, there's a lot of stuff\n\ngoing on here. So let's go through this entire process\n\nof wiring everything up needed for this hook inside of\n\nour project to understand how all these steps come together."
+        }
+      ],
+      "total_transcript_chars": 4279,
+      "errors": []
+    },
+    {
+      "index": 15,
+      "section": "Hooks and the SDK",
+      "title": "Implementing a hook",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312003",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:25.612Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Implementing a hook",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "WpOJxKsp",
+          "video_title": "012 - Implementing a Hook.mp4",
+          "duration_s": 254,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Let's put together our custom hook. Remember, the entire\n\ngoal here is to prevent Claude from ever reading the contents\n\nof the .env file. In the last video, we\n\ndiscussed many of the different configuration options we'll need to\n\nset, so in this video, we'll be mostly focused on the implementation.\n\nTo get started, inside the . Claude directory, I'm\n\ngoing to open up the settings.local.json file.\n\nRemember, inside of here, we have a list of pre-tool\n\nuse hooks and post-tool use hooks.\n\nAs we discussed a moment ago, we want to make a pre-tool\n\nuse hook so that we can prevent Claude from ever reading the contents\n\nof that particular file. I already added in\n\na little configuration section right here for us, just to\n\nsave us a little bit of typing. All we need to do is\n\nfill in the matcher and the command. First\n\nis the matcher. So the matcher is going to be the tools\n\nthat we want to watch for. In our case, as\n\nwe discussed, we want to watch for calls to the read\n\nand the grep tools. I'm\n\ngoing to separate those two tool names with a pipe symbol.\n\nSo that's not an L or a capital I. It is\n\na symbol right above the return key on your keyboard. Then,\n\nnext up, we need to provide a command to run whenever\n\nClaude attempts to call those two tools. We\n\ncould put in here any command you want, so it can be a CLI,\n\nit can be a call to a shell script, absolutely anything.\n\nTo follow the pattern that I've already established inside the rest\n\nof this file, I'm going to call a node.js\n\nscript that I placed ahead of time inside the hooks directory\n\nof this project. So inside the hooks directory, I\n\nput together for us a read_hook.js\n\nfile. This is the file that I want to run whenever\n\nClaude attempts to call one of those two tools.\n\nSo to call that, I'm going to replace the true right here, which\n\nis just a placeholder for right now, with node\n\n./hooks/\n\nread_hook.js. I'm\n\ngoing to save this file and that's all we have to do inside\n\nof here. Next up, we need to actually implement\n\nthe command that's going to run anytime Claude tries to call the\n\nread or the grep tools. So that's going to be the read_hook.js\n\nfile. At the top of this file, I've got some code\n\nthat's going to read from standard in and parse that data\n\nas JSON. So this tool args\n\nobject right here, that's going to be the big JSON object I showed\n\nyou in this diagram back over here. So it's going to have properties\n\nlike session ID, the tool name, the tool input,\n\nand so on. So all we really need to do is\n\ntake a look at that file path right there and decide whether\n\nor not it is trying to read the .env file. If\n\nit is, then we want to make sure that we exit from\n\nour program or our command here with an exit code\n\nof two. And hopefully also log some information\n\nout to Claude that says, sorry, but you can't read that file.\n\nSo you'll notice that back over here, I've already got some code that's going to read that\n\nfile path. You'll also notice that there is a\n\nfallback of looking at toolInput.path\n\nright here. I'll tell you why that's added in in just\n\na moment. So now let's implement the to-do\n\nstatement. We'll say if readPath includes '.env',\n\nthat means that Claude must be trying to read the .env\n\nfile. And if that's the case, then I want to make\n\nsure that we block that operation and provide some logging\n\nfeedback to Claude. So I'm going to first add in a\n\nconsole.error, specifically a console.error,\n\nbecause we want to log to standard error. Remember, that's\n\nhow we provide some feedback to Claude. And I'll say something\n\nlike, \"You cannot read the .env\n\nfile.\" And then I'll do a process.exit(2).\n\nSo now to test this out, I'm going to save the file. I'm\n\ngoing to open up Claude Code. If you already have it\n\nopen, make sure you restart Claude Code. You\n\nhave to restart it to have any changes to your hooks take effect.\n\nI'm going to ask Claude to read the .env\n\nfile. And it's probably going to attempt\n\nto, but as it attempts to read it, we're going to\n\nsend back an error that says \"You cannot read the .env file.\"\n\nAnd Claude is hopefully going to realize that, sorry, you can't\n\nactually read this. As a matter of fact, it's even able to recognize\n\nthat it was prevented by a read hook. Now,\n\nour hook should also be working on grep operations as\n\nwell. So if I ask Claude to try the\n\ngrep tool, This should also\n\nhopefully be forbidden as well. So let's see how it\n\ndoes. And yep, same thing, it is now forbidden.\n\nSo that is a working hook that we have put together. Now\n\nthis hook is not terribly useful, and I'm going to show you\n\na much more useful hook in just a moment."
+        }
+      ],
+      "total_transcript_chars": 4602,
+      "errors": []
+    },
+    {
+      "index": 16,
+      "section": "Hooks and the SDK",
+      "title": "Gotchas around hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312423",
+      "types": [
+        "lesson-modular"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:28.625Z",
+      "extraction_method": "modular_text",
+      "title_from_player": "Gotchas around hooks",
+      "modular_text": "You may notice that after running the npm run dev command there are two settings.json files in the .claude directory. Let me explain what's going on there.\nThe Claude Code documentation lists some recommendations around hooks security:\n\nOne of the recommendations is to use absolute paths (rather than relative paths) for scripts. This helps mitigate path interception and binary planting attacks.\nThis recommendation also makes it much more challenging to share settings.json files. The reason is simple: the absolute path to any of the hook scripts on your machine will likely be different from the absolute path on my machine, simply because we will probably place the project in separate directories. \nTo solve this problem, our project has a settings.example.json file. Inside of it, the script references contain a $PWD placeholder. When we run npm run setup, some dependencies are installed, but it also runs an init-claude.js script placed inside the scripts directory. This script will replace those $PWD placeholder with the absolute path to the project on your machine, copy the settings.example.json file, and rename it to settings.local.json.\nThis script allows us to share settings.json files but still use the recommended absolute paths!",
+      "modular_html": "\n            \n                    <p>You may notice that after running the <code>npm run dev</code> command there are two <code>settings.json</code> files in the <code>.claude</code> directory. Let me explain what's going on there.</p>\n<p>The Claude Code documentation lists some recommendations around hooks security:</p>\n<p><img src=\"https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1752683124%2FScreenshot+2025-07-16+at+10.25.07%E2%80%AFAM.1752683124012.png\" alt=\"\" width=\"416\" height=\"228\" /></p>\n<p>One of the recommendations is to use absolute paths (rather than relative paths) for scripts. This helps mitigate <a href=\"https://attack.mitre.org/techniques/T1574/007/\" target=\"_self\">path interception</a> and <a href=\"https://owasp.org/www-community/attacks/Binary_planting\" target=\"_self\">binary planting</a> attacks.</p>\n<p>This recommendation also makes it much more challenging to share <code>settings.json</code> files.&nbsp;The reason is simple: the absolute path to any of the hook scripts on&nbsp;<strong>your</strong> machine will likely be different from the absolute <strong>path</strong> on my machine, simply because we will probably place the project in separate directories.&nbsp;</p>\n<p>To solve this problem, our project has a <code>settings.example.json</code> file. Inside of it, the script references contain a <code>$PWD</code> placeholder. When we run <code>npm run setup</code>, some dependencies are installed, but it also runs an <code>init-claude.js</code> script placed inside the scripts directory. This script will replace those <code>$PWD</code> placeholder with the absolute path to the project on your machine, copy the <code>settings.example.json</code> file, and rename it to <code>settings.local.json</code>.</p>\n<p>This script allows us to share settings.json files but still use the recommended absolute paths!&nbsp;</p>\n            \n        ",
+      "modular_html_length": 1947,
+      "images": [
+        "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1752683124%2FScreenshot+2025-07-16+at+10.25.07%E2%80%AFAM.1752683124012.png"
+      ],
+      "external_links": [
+        {
+          "href": "https://attack.mitre.org/techniques/T1574/007/",
+          "text": "path interception"
+        },
+        {
+          "href": "https://owasp.org/www-community/attacks/Binary_planting",
+          "text": "binary planting"
+        }
+      ],
+      "code_blocks": [
+        "npm run dev",
+        "settings.json",
+        ".claude",
+        "settings.json",
+        "settings.example.json",
+        "$PWD",
+        "npm run setup",
+        "init-claude.js",
+        "$PWD",
+        "settings.example.json",
+        "settings.local.json"
+      ],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 17,
+      "section": "Hooks and the SDK",
+      "title": "Useful hooks!",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312004",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:30.053Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Useful hooks!",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "fXIRG62r",
+          "video_title": "013 - Useful Hooks!.mp4",
+          "duration_s": 693,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "In this video, I'd like to show you some really useful\n\nhooks that you might want to use on your own projects. These\n\nhooks are intended to address some common weak points\n\nin Claude Code. To help you understand how the first one\n\nworks, let me give you a quick demonstration of a problem\n\nthat Claude Code sometimes runs into, especially\n\non larger projects. So inside the SRC\n\ndirectory, I'm going to find schema.ts.\n\nInside of here, there's just one single function called create\n\nschema. This function is called from the main.ts\n\nfile, specifically right here. Now,\n\nI'm going to go back to the schema.ts file and I'm going to update\n\nthe function definition. I'm going to say that if you\n\never want to call this function, you must also pass\n\nin a verbose argument that must be of\n\ntype Boolean. Now, as soon as I add in this change,\n\nif I go back to the main.ts file, I'm going to get a\n\ntype of error because I just updated the definition of\n\nthis function, but I have not actually added in\n\na value for verbose. So the error\n\nright here says specifically argument for verbose\n\nwas not provided. Now, I'm\n\ngoing to undo that change very quickly. I'm going to\n\nclose the main.ts file. I'm then going to open\n\nup Claude Code and ask it to make the exact same\n\nchange. Now if I run this, Claude Code is\n\ngoing to have absolutely no issue making this edit whatsoever. But\n\nit's going to update this file and then unfortunately after\n\nmaking that change, so there's the new verbose true right\n\nthere. Unfortunately, Claude won't go around the project\n\nand try to find where that function is actually called and try to\n\nupdate any of the different call sites. So if I now open\n\nup main.ts, we'll see that we do, in fact, have\n\nan error over here. And Claude didn't really catch this,\n\nunfortunately. So the first hook that I want to show you\n\nwill fix this solution super easily.\n\nIn case you're not familiar with TypeScript, and if you're not, that's totally\n\nfine. If I close out of Claude Code and run the\n\ncommand, TSC-dash-noemit,\n\nthat's going to run a type check on my entire project. And\n\nin this type check, we can see that the error is very\n\nevident right here. So it's complaining about our call\n\nto create schema from that main.ts file.\n\nSo my idea for a hook is really simple. I\n\nthink that any time that we edit a TypeScript file,\n\nwe should run the TypeScript type checker and see\n\nif there are any distinct errors. If there are,\n\nwe should attempt to feed these errors back into Claude\n\nimmediately inside of a post-tool use hook.\n\nAnd hopefully, this will give Claude a signal and tell it that there\n\nis a type error that it just introduced, that\n\nit probably needs to go and fix somewhere else inside of our project.\n\nNow, I already put this hook together for us, fortunately, just\n\nto save us a little bit of time inside the hooks,\n\nTSC.js file. So inside this file,\n\nI've got a bunch of logic put together to run the TypeScript type checker,\n\ntake any errors that found, and pass them back into\n\nClaude. At present, I disabled\n\nthis hook just so I can give you that demonstration you just saw. So\n\nI disabled it by adding the process exit 0 right there.\n\nI'm going to delete that. And now this hook should be working AOK.\n\nSo if I now go back to the schema.ts\n\nfile, Remove that verbose flag, restart\n\nClaude Code, and ask it to make\n\nthe same change once again. It\n\nwill make the change. And then hopefully this time, it will immediately\n\nget that feedback from the TypeScript type checker saying,\n\nhey, you've got an error somewhere else in the project that you've just introduced.\n\nAnd hopefully, Claude will go and fix it. So we can\n\nsee right here, there's the edit that was made. We got\n\nsome edit operation feedback from the hook that we put together.\n\nSo it found an issue inside of one of our different files.\n\nAnd Claude is now saying, OK, I understand. I introduced\n\nan error. I need to fix the call to create\n\nschema inside of main.ts.\n\nAnd then the next update it makes is going to attempt to go into\n\nthat file and update that function call to\n\nadd in that missing argument. So this is\n\na hook that you might want to try implementing on your own personal\n\nprojects. Now, even though this hook was implemented\n\nspecifically for TypeScript, it still works for any\n\nother kind of typed language where you can run a type\n\nchecker very easily. Even if you're using an untyped\n\nlanguage, you might even implement the same idea of functionality\n\nusing tests instead of running a type checker. So\n\nevery time an edit is made, you could run your test to make\n\nsure that the edit is OK. Now, the next\n\nhook that I would like to show you is a little bit more challenging\n\nto explain, but once you get the idea behind it, I think\n\nthat you will definitely find this next one really\n\nhelpful, particularly in larger projects. To\n\nhelp you understand this other hook, I want to give you a little bit of background\n\non this project. Inside of the SRC query\n\ndirectory, there are many different files. Each\n\nof these different files contains many different SQL queries\n\nwritten inside of different functions. Inside\n\nof the orderqueries.ts file in particular,\n\nI want to point out that there is a function inside of here called\n\ngit pending orders. This query goes through\n\na database that contains some e-commerce related\n\ndata. And in theory, it's going to find all the different\n\norders that have been created that are in a pending state.\n\nSo just keep that function in mind for a moment. Okay,\n\nso I'm going to show you a couple of good diagrams really quickly to help you understand\n\na common problem that starts to arise inside of larger\n\nprojects. So in this diagram, I've got my\n\nlist of different query files on the left-hand side, and as we saw,\n\neach of those different query files contains many different queries.\n\nInside of that order queries file in particular is the\n\ngit pending orders function. So we've already got\n\na query put together that will attempt to find some\n\ndifferent pending orders. Now, if I go\n\nto Claude and ask it to update the main.ts\n\nfile to print out all the different orders that have been\n\nin a pending state for longer than three days, in\n\na perfect world, Claude would find the order\n\nqueries.ts file. It would find that existing query\n\nand it would make use of it as opposed to writing\n\nout a brand new query. So that's what we want.\n\nAnd we'll see that if we make use of Claude right now and ask\n\nit to do exactly that, We're going to get\n\nexactly the result we want. So I'm going to ask Claude in the main.ts\n\nfile, print out orders that have been pending. Now,\n\nto Claude's credit, it is going to take a look at the\n\ndifferent query files that exist. It's going to find the order queries\n\nfile. And then inside there, it's going to recognize that there\n\nis already a query called get pending orders. And\n\nit's going to attempt to use that function as opposed\n\nto creating a new query. We didn't want a new\n\nquery. We wanted Claude to use the existing\n\nfunction. So when we gave Claude a very focused\n\nand directed task, it was able to understand that,\n\nyeah, I probably shouldn't write a new query. It should at least\n\ntake a look at some of the ones that already exist. And that was definitely\n\ngood. Now I'm going to give Claude a little bit\n\nof a curve ball. I'm going to purposefully make this task\n\na little bit more difficult. First, I'm going to run slash\n\nclear to clear out all the context that we've gained. Then,\n\nI'd like you to take a look at the task.md file.\n\nInside this file, I put together a prompt that is still going to\n\nask Claude to find orders that have been pending for a while,\n\nbut I've also wrapped it up in some larger project.\n\nI'm asking Claude to write out a Slack integration\n\nthat's going to message a specific channel once\n\na day with all the different orders that have been pending for too\n\nlong. So in this scenario, we still want to find orders\n\nof been pending for too long, but now I've wrapped it inside\n\nthis larger task. And if I take this\n\ntask and then feed it into Claude,\n\nagain, after doing that slash clear operation, we're\n\ngoing to see that this time around, unfortunately, it's\n\nnot going to stay quite as focused, and it's going to end up\n\ntrying to write out a brand new Git pending\n\norders query, which is, again, not what we want,\n\nbecause that would be a duplicating code throughout our project.\n\nIf I let this run for a bit, I will eventually see that, yes,\n\nit does, in fact, make a brand new query called Git\n\norders pending too long. So this is\n\nan example of where a Claude kind of lost focus and\n\ndecided to write a brand new query as opposed to reusing\n\nan existing one. Again, we've got some duplicate code\n\nhere, which is probably not what we want. In\n\naddition, it didn't only create the new query, it also\n\ncreated a brand new file, which is also probably something we don't\n\nwant. We'd probably want this order-related query to\n\nbe added to the order queries file. So\n\nnow that we understand the issue here, let me show you how we could fix this potentially\n\nby making use of a hook. All right, so\n\nwhenever Claude attempts to write, edit, or\n\nuse the multi-edit tool to modify something inside\n\nthe queries directory specifically, I'm going to\n\nrun the following hook. First, inside this hook, I'm\n\ngoing to launch a brand new separate copy of\n\nClaude Code. I'm going to ask this new copy\n\nto take a look at the change that was just made and take\n\na look at some of the existing code inside the queries directory and\n\nsee if a similar query is already inside there.\n\nThen if there is an existing query, then\n\nI'm going to take that feedback and send it back to the original\n\ncopy of Claude and I'm going to ask Claude to maybe\n\ndecide to fix the situation. So remove the added\n\nquery and make use of the one that already exists. So\n\nthis is going to allow us to make sure that the queries folder generally\n\nstays clean and doesn't have a bunch of duplicate code\n\ninside of it. So let me show you how this would work\n\nin action. First, I'm going to flip back over here.\n\nI'm going to delete the brand new order alerts.\n\nqueries.ts file that was made and\n\nthe slack.ts file that was made as well. Then\n\nI'm going to find inside the hooks directory the query hook\n\nfile. So I already put this hook together for us. Right\n\nnow it is currently disabled because I got a process.exit\n\nat the very top. So let's walk through this hook\n\nreally quickly. First, I'm going to tell this thing that\n\nit's only going to review changes to the SRC queries\n\ndirectory. Then, a little bit lower, I'm going to check\n\nand see if the change that was just made was made to the queries\n\ndirectory. After that, I've then got a long\n\nprompt here that is asking Claude to do a review\n\non the change that was just made. And then after that is\n\nwhere I'm launching Claude Code programmatically. Specifically,\n\nthese lines right here. This is making\n\nuse of the Claude Code TypeScript SDK. I can\n\ngive you a lot more information on it in just a little bit. For right\n\nnow, just understand that this right here is essentially the same\n\nas us making use of Claude Code at the terminal.\n\nOnce Claude Code runs, and I get a response back out of it, I\n\ncheck and see if Claude decides that, yeah, the changes look\n\nokay, or maybe we've got a duplicate query. And\n\nif we do, then we're going to exit early with an exit code\n\nof two, which is going to give this feedback back\n\nto Claude and hopefully tell it that it needs to make a change.\n\nSo now that I've got this additional hook put together\n\nand enabled by removing that process exit zero at the\n\ntop, I'm going to again restart Claude Code and\n\nthen run the same query again. And hopefully\n\nthis time it might initially put in\n\nthat duplicate query, but then our hook right here is going to\n\nrun and hopefully tell it, hey, we don't want that duplicate code.\n\nYou should make use of some already existing query to\n\nimplement this functionality. Now, Claude Code\n\nis once again going to attempt to create a brand new, completely\n\nseparate query file, not making use of the old\n\nquery that already existed. When it tries to create that\n\nfile, however, our hook is going to run. It's\n\ngoing to launch that separate copy of Claude Code, which is going to do\n\nsome research and find that there is, in fact, an existing\n\nquery that can be reused. It's going to provide\n\nsome advice and say, hey, you could probably go and update this\n\nother existing query to suit your purposes perfectly.\n\nAnd we'll see some feedback from Claude, our primary instance that\n\nwe are interacting with saying, ah, yes, there is\n\nthis existing query. Let's just modify\n\nthat existing query rather than attempting to\n\nwrite out a brand new one. Now the downside\n\nto this hook is that it's going to take some additional time and\n\nexpense to run every single time that I want to edit something\n\ninside the queries directory. But the upside is that\n\nI'm going to end up with a lot less duplicate code inside\n\nof my queries directory. So it really comes down to a set of trade-offs\n\nfor you deciding whether or not you want to implement something like this in your\n\nown project. If you do, I would at least recommend\n\ndoing what I showed you inside of the query hook.\n\nSo this one right here, and only watching maybe a handful\n\nof directories like really important folders inside of your project,\n\njust to minimize the amount of extra work that is being\n\ndone."
+        }
+      ],
+      "total_transcript_chars": 13481,
+      "errors": []
+    },
+    {
+      "index": 18,
+      "section": "Hooks and the SDK",
+      "title": "Another useful hook",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312427",
+      "types": [
+        "lesson-modular"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:31.119Z",
+      "extraction_method": "modular_text",
+      "title_from_player": "Another useful hook",
+      "modular_text": "There are more hooks beyond the PreToolUse and PostToolUse hooks discussed in this course. There are also:\n\nNotification - Runs when Claude Code sends a notification, which occurs when Claude needs permission to use a tool, or after Claude Code has been idle for 60 seconds\nStop - Runs when Claude Code has finished responding\nSubagentStop - Runs when a subagent (these are displayed as a \"Task\" in the UI) has finished\nPreCompact - Runs before a compact operation occurs, either manual or automatic\nUserPromptSubmit - Runs when the user submits a prompt, before Claude processes it\nSessionStart - Runs when starting or resuming a session\nSessionEnd - Runs when a session ends\n\nHere's the confusing part:\n\nThe stdin input to your commands will change based upon the type of hook being executed (PreToolUse, PostToolUse, Notification, etc)\nThe tool_input contained in that will differ based upon the tool that was called (in the case of PreToolUse and PostToolUse hooks)\n\nFor example, here's a sample of some stdin input to a hook, where the hook is a PostToolUse that was watching for uses of the TodoWrite tool. For reference, that is the tool that Claude uses to keep track of to-do items.\n{\n \"session_id\": \"9ecf22fa-edf8-4332-ae85-b6d5456eda64\",\n \"transcript_path\": \"<path_to_transcript>\",\n \"hook_event_name\": \"PostToolUse\",\n \"tool_name\": \"TodoWrite\",\n \"tool_input\": {\n \"todos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n },\n \"tool_response\": {\n \"oldTodos\": [],\n \"newTodos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n }\n}\nAnd for comparison, here's an example of the input to a Stop hook:\n{\n \"session_id\": \"af9f50b6-f042-4773-b3e2-c3a4814765ce\",\n \"transcript_path\": \"<path_to_transcript>\",\n \"hook_event_name\": \"Stop\",\n \"stop_hook_active\": false\n}\nAs you can see, the stdin input to your command will differ significantly based upon the hook (PreToolUse, PostToolUse, Stop, etc) and the matcher used (in the case of PreToolUse and PostToolUse). This can make writing hooks challenging - you might not know the exact structure of the input to your command!\nTo handle this challenge, try making a helper hook like this:\n\"PostToolUse\": [ // Or \"PreToolUse\" or \"Stop\", etc\n {\n \"matcher\": \"*\",\n \"hooks\": [\n {\n \"type\": \"command\",\n \"command\": \"jq . > post-log.json\"\n }\n ]\n },\n]\nNotice the provided command. It will write the input to this hook to the post-log.json file, which allows you to inspect exactly what would have been fed into your command! This makes it a lot easier for you to understand what data your command should inspect.",
+      "modular_html": "\n            \n                    <p>There are more hooks beyond the <code>PreToolUse</code> and <code>PostToolUse</code> hooks discussed in this course. There are also:</p>\n<ul>\n<li><code>Notification</code> - Runs when Claude Code sends a notification, which occurs when Claude needs permission to use a tool, or after Claude Code has been idle for 60 seconds</li>\n<li><code>Stop</code> - Runs when Claude Code has finished responding</li>\n<li><code>SubagentStop</code> - Runs when a subagent (these are displayed as a \"Task\" in the UI) has finished</li>\n<li><code>PreCompact</code> - Runs before a compact operation occurs, either manual or automatic</li>\n<li><code>UserPromptSubmit</code> - Runs when the user submits a prompt, before Claude processes it</li>\n<li><code>SessionStart</code> - Runs when starting or resuming a session</li>\n<li><code>SessionEnd</code> - Runs when a session ends</li>\n</ul>\n<p><strong>Here's the confusing part:</strong></p>\n<ol>\n<li>The stdin input to your commands will change based upon the type of hook being executed (<code>PreToolUse</code>, <code>PostToolUse</code>, <code>Notification</code>, etc)</li>\n<li>The <code>tool_input</code> contained in that will differ based upon the tool that was called (in the case of <code>PreToolUse</code> and <code>PostToolUse</code> hooks)</li>\n</ol>\n<p>For example, here's a sample of some stdin input to a hook, where the hook is a <code>PostToolUse</code> that was watching for uses of the <code>TodoWrite</code> tool. For reference, that is the tool that Claude uses to keep track of to-do items.</p>\n<pre class=\"language-javascript\"><code>{\n  \"session_id\": \"9ecf22fa-edf8-4332-ae85-b6d5456eda64\",\n  \"transcript_path\": \"&lt;path_to_transcript&gt;\",\n  \"hook_event_name\": \"PostToolUse\",\n  \"tool_name\": \"TodoWrite\",\n  \"tool_input\": {\n    \"todos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n  },\n  \"tool_response\": {\n    \"oldTodos\": [],\n    \"newTodos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n  }\n}</code></pre>\n<p>And for comparison, here's an example of the input to a <code>Stop</code> hook:</p>\n<pre class=\"language-javascript\"><code>{\n  \"session_id\": \"af9f50b6-f042-4773-b3e2-c3a4814765ce\",\n  \"transcript_path\": \"&lt;path_to_transcript&gt;\",\n  \"hook_event_name\": \"Stop\",\n  \"stop_hook_active\": false\n}</code></pre>\n<p><span style=\"font-size: 14pt;\"><strong>As you can see, the stdin input to your command will differ significantly based upon the hook (<code>PreToolUse</code>, <code>PostToolUse</code>, <code>Stop</code>, etc)&nbsp;<em>and</em> the matcher used (in the case of <code>PreToolUse</code> and <code>PostToolUse</code>). This can make writing hooks challenging - you might not know the exact structure of the input to your command!</strong></span></p>\n<p>To handle this challenge, try making a helper hook like this:</p>\n<pre class=\"language-javascript\"><code>\"PostToolUse\": [ // Or \"PreToolUse\" or \"Stop\", etc\n  {\n    \"matcher\": \"*\",\n    \"hooks\": [\n      {\n        \"type\": \"command\",\n        \"command\": \"jq . &gt; post-log.json\"\n      }\n    ]\n  },\n]</code></pre>\n<p>Notice the provided command. It will write the input to this hook to the <code>post-log.json</code> file, which allows you to inspect exactly what would have been fed into your command! <strong>This makes it a lot easier for you to understand what data your command should inspect.</strong></p>\n            \n        ",
+      "modular_html_length": 3471,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [
+        "PreToolUse",
+        "PostToolUse",
+        "Notification",
+        "Stop",
+        "SubagentStop",
+        "PreCompact",
+        "UserPromptSubmit",
+        "SessionStart",
+        "SessionEnd",
+        "PreToolUse",
+        "PostToolUse",
+        "Notification",
+        "tool_input",
+        "PreToolUse",
+        "PostToolUse",
+        "PostToolUse",
+        "TodoWrite",
+        "{\n  \"session_id\": \"9ecf22fa-edf8-4332-ae85-b6d5456eda64\",\n  \"transcript_path\": \"<path_to_transcript>\",\n  \"hook_event_name\": \"PostToolUse\",\n  \"tool_name\": \"TodoWrite\",\n  \"tool_input\": {\n    \"todos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n  },\n  \"tool_response\": {\n    \"oldTodos\": [],\n    \"newTodos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n  }\n}",
+        "{\n  \"session_id\": \"9ecf22fa-edf8-4332-ae85-b6d5456eda64\",\n  \"transcript_path\": \"<path_to_transcript>\",\n  \"hook_event_name\": \"PostToolUse\",\n  \"tool_name\": \"TodoWrite\",\n  \"tool_input\": {\n    \"todos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n  },\n  \"tool_response\": {\n    \"oldTodos\": [],\n    \"newTodos\": [{ \"content\": \"write a readme\", \"status\": \"pending\", \"priority\": \"medium\", \"id\": \"1\" }]\n  }\n}",
+        "Stop",
+        "{\n  \"session_id\": \"af9f50b6-f042-4773-b3e2-c3a4814765ce\",\n  \"transcript_path\": \"<path_to_transcript>\",\n  \"hook_event_name\": \"Stop\",\n  \"stop_hook_active\": false\n}",
+        "{\n  \"session_id\": \"af9f50b6-f042-4773-b3e2-c3a4814765ce\",\n  \"transcript_path\": \"<path_to_transcript>\",\n  \"hook_event_name\": \"Stop\",\n  \"stop_hook_active\": false\n}",
+        "PreToolUse",
+        "PostToolUse",
+        "Stop",
+        "PreToolUse",
+        "PostToolUse",
+        "\"PostToolUse\": [ // Or \"PreToolUse\" or \"Stop\", etc\n  {\n    \"matcher\": \"*\",\n    \"hooks\": [\n      {\n        \"type\": \"command\",\n        \"command\": \"jq . > post-log.json\"\n      }\n    ]\n  },\n]",
+        "\"PostToolUse\": [ // Or \"PreToolUse\" or \"Stop\", etc\n  {\n    \"matcher\": \"*\",\n    \"hooks\": [\n      {\n        \"type\": \"command\",\n        \"command\": \"jq . > post-log.json\"\n      }\n    ]\n  },\n]",
+        "post-log.json"
+      ],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 19,
+      "section": "Hooks and the SDK",
+      "title": "The Claude Code SDK",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312001",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:32.039Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "The Claude Code SDK",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "T2S0k8f2",
+          "video_title": "014 - The Claude Code SDK.mp4",
+          "duration_s": 166,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "As we are looking at the query review hook\n\na moment ago, we got a brief look at the Claude code SDK.\n\nThe SDK allows you to use Claude code programmatically.\n\nYou can use the SDK via the CLI, TypeScript\n\nlibrary or Python library. This is the exact\n\nsame Claude code that you will already use at the terminal. It\n\nhas all the same tools and will use them to complete a given\n\ntask. The SDK is most useful\n\nas part of a larger pipeline or tool as we saw\n\nin that hook a moment to go. You can easily wiring\n\nClaude Code as part of a larger process to add\n\nin a bunch of intelligence to some given workflow. I'd\n\nlike to give you a quick demonstration of the TypeScript\n\nSDK in particular by adding it into our existing\n\nproject. Back inside of my editor, I'm\n\ngoing to find the SDK.ts file inside of the root\n\nproject directory. Inside of here, I put together just\n\na little bit of code to get us started with the SDK. I'm\n\ngoing to update the prompt at the top and ask Claude to\n\nlook for duplicate queries inside the SRC\n\nqueries directory. Then I'm going to save this file and\n\nto run it, I'll open up my terminal and execute NPMRun\n\nSDK. Now, this is not a built-in\n\ncommand or anything like that just so you know, but in the scenes, it just executes\n\nthis file as a normal TypeScript file. I just put\n\ntogether this little shortcut for us to make running a TypeScript file\n\na little bit easier. When we run this, we'll see the raw\n\nconversation between our local copy of Claude Code and\n\nthe Claude Language model, message by message. Eventually,\n\nwe'll get kicked back to the command line. The very last message\n\nprinted out will contain the final response from Claude.\n\nNow there is a little bit of a gotcha around the SDK.\n\nAnd that is that by default, it only has read abilities.\n\nSo in other words, it can only read files, directories,\n\ndo grep operations, and so on. It does not\n\nhave the ability to write or edit or create and\n\nso on files. To give it right permissions,\n\nyou can either manually add in right permissions to the query\n\ncall right here, or alternatively, you can add in\n\nsome permission settings to your settings file\n\ninside of your dot-Claude directory. Let me show you how\n\nwe can allow the SDK to use the edit tool\n\nwithin this project. I'm going to find the prompt argument\n\nright here. Right after it, I'll add in options, put\n\nin an object, allow tools, that'll\n\nbe an array, and I'll put in edit. I'm\n\ngoing to update the prompt at the top and I'll ask it to\n\nadd a description to the package.json\n\nfile. Now I'm going to save this and\n\nrun npmrunsdk once again. And\n\nthen once it is complete, I can open up the\n\npackage.json file and I will see that it did in fact\n\nadd in a description. So now definitely has the ability\n\nto edit files. As I mentioned earlier,\n\nthe Claude Code SDK is most useful as\n\npart of other tools. So I would encourage you to think\n\nof opportunities to use it in helper commands, scripts,\n\nor probably most notably hooks inside of your\n\nown projects."
+        }
+      ],
+      "total_transcript_chars": 3010,
+      "errors": []
+    },
+    {
+      "index": 20,
+      "section": "Wrapping up",
+      "title": "Quiz on Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/308391",
+      "types": [
+        "lesson-quiz"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:33.861Z",
+      "extraction_method": "metadata_only",
+      "title_from_player": "Quiz on Claude Code",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 21,
+      "section": "Wrapping up",
+      "title": "Summary and next steps",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303238",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:35.073Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Summary and next steps",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "IiL1DO8v",
+          "video_title": "010 - Wrap Up.mp4",
+          "duration_s": 53,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "I hope you've enjoyed this overview of Claude\n\nCode. Before we finish up, I want to give you some advice on\n\nwhere to go from here. First, keep in mind that\n\nClaude Code is constantly changing and in active\n\ndevelopment. So keep an eye on the homepage of Claude\n\nCode. I've got the address to it right there. And watch for new features\n\nand techniques to come out. Secondly, I really recommend\n\nyou experiment. There's a lot of different ways to customize\n\nClaude Code and really tailor it to your particular use case.\n\nTry to author some custom commands or put extra instructions\n\nin your Claude MD file. And also try out a couple\n\nof different MCP servers beyond the ones we looked at inside\n\nthis course. Finally, automate.\n\nTake a look at the GitHub integration, and think of some\n\ndifferent common tasks that you go through all the time, and think\n\nof some ways you can delegate those to Claude automatically based\n\nupon events that occur inside of your GitHub repository.\n\nWell, again, I hope you enjoyed this course, and enjoy\n\nyour time working with Claude Code."
+        }
+      ],
+      "total_transcript_chars": 1070,
+      "errors": []
+    }
+  ],
+  "stats": {
+    "total_lessons": 21,
+    "lessons_with_video": 15,
+    "lessons_with_transcript": 15,
+    "lessons_with_modular_text": 4,
+    "lessons_with_youtube": 0,
+    "lessons_with_code": 4,
+    "total_transcript_chars": 72552,
+    "errors": 0
+  }
+}

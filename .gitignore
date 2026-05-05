@@ -1,0 +1,42 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python (in case contributors run local tooling)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Atomic-write residue (should never be committed)
+*.tmp
+
+# Generated child systems (we never commit downstream outputs)
+generated/
+out/
+*-output/
+
+# Logs
+*.log
+
+# Local secrets (never commit)
+.env
+.env.local
+secrets/
+
+# OS
+*.bak
+
+# Don't ignore the dashboard or tests directory contents
+!dashboard/
+!tests/
+
+# Don't ignore .claude/commands
+!.claude/
+!.claude/commands/

@@ -1,0 +1,102 @@
+{
+  "id": "14",
+  "slug": "introduction-to-agent-skills",
+  "title": "Introduction to agent skills",
+  "url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+  "category": "agent-development",
+  "difficulty": "intermediate",
+  "domain": "Agent Development",
+  "tags": [
+    "skills",
+    "claude-code",
+    "SKILL.md",
+    "plugins",
+    "enterprise"
+  ],
+  "stats": {
+    "total_lessons": 6,
+    "sections": 1,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 6,
+    "modular_text_lessons": 6,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 18556,
+    "modular_chars": 32791,
+    "total_content_chars": 51347
+  },
+  "sections": [
+    {
+      "title": "(uncategorized)",
+      "lesson_count": 6
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "(uncategorized)",
+      "title": "What are skills?",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434525",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "(uncategorized)",
+      "title": "Creating your first skill",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434527",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "(uncategorized)",
+      "title": "Configuration and multi-file skills",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434526",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "(uncategorized)",
+      "title": "Skills vs. other Claude Code features",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434528",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "(uncategorized)",
+      "title": "Sharing skills",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434529",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "(uncategorized)",
+      "title": "Troubleshooting skills",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434530",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:25:13.976Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 6,
+    "quiz_extractions_added": 0
+  }
+}

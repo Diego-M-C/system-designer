@@ -1,0 +1,51 @@
+# Decisions log — {{system_name}}
+
+> Append-only log of strategic decisions. Each entry is a short ADR (Architecture Decision Record) with calibrated alternatives + rationale.
+>
+> **Format:** ADR-NNN — title — date — session — alternatives — chosen — rationale — confidence.
+>
+> **Long-form ADRs:** if a decision needs >300 words, store full ADR in `docs/decisions/ADR-NNN-<slug>.md` and reference it here with link.
+
+---
+
+## ADR-001 — {{adr_001_title}}
+
+- **Date:** {{adr_001_date}}
+- **Session:** {{adr_001_session}}
+- **Status:** {{adr_001_status}} (proposed | accepted | superseded by ADR-NNN | deprecated)
+- **Trigger:** {{adr_001_trigger}}
+
+**Alternatives:**
+- [A] {{adr_001_alt_a}} — fit ≈{{adr_001_alt_a_pct}}% — {{adr_001_alt_a_pros_cons}}
+- [B] {{adr_001_alt_b}} — fit ≈{{adr_001_alt_b_pct}}% — {{adr_001_alt_b_pros_cons}}
+- [C] {{adr_001_alt_c}} — fit ≈{{adr_001_alt_c_pct}}% — {{adr_001_alt_c_pros_cons}}
+
+**Chosen:** [{{adr_001_chosen_letter}}] {{adr_001_chosen_label}}
+**Rationale:** {{adr_001_rationale}}
+**Self-confidence:** ≈{{adr_001_confidence_pct}}%
+**Cited reference:** {{adr_001_citation}}
+**Long-form:** {{adr_001_longform_ref}}
+
+---
+
+<!-- ADR-NNN entries appended sequentially. New entries go ABOVE this comment marker. -->
+
+## Conventions
+
+- New decisions append at top (most recent first) for `tracking/decisions.md`; long-form mirrors in `docs/decisions/` keep their own files.
+- Every ADR MUST have ≥3 alternatives with calibrated fit %.
+- Every ADR MUST cite its evidence (EU AI Act article, Anthropic doc, internal artifact, external research).
+- Superseding ADRs link from the old entry: `Status: superseded by ADR-NNN`.
+- Self-confidence < 70% on any ADR triggers HITL review at the next session checkpoint (per P2).
+- Forbidden tokens in rationale: "best", "always", "guaranteed", "certain". Use calibrated language.
+
+## Index by area
+
+- Architecture: ADR-{{architecture_adrs}}
+- Stack / dependencies: ADR-{{stack_adrs}}
+- Data / privacy: ADR-{{data_adrs}}
+- Security: ADR-{{security_adrs}}
+- LLM integration: ADR-{{llm_adrs}}
+- Compliance / EU AI Act: ADR-{{compliance_adrs}}
+- Observability: ADR-{{observability_adrs}}
+- HITL / governance: ADR-{{governance_adrs}}

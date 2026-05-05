@@ -1,0 +1,20 @@
+{
+  "course_num": 8,
+  "slug": "ai-fluency-for-students",
+  "title": "AI Fluency for Students",
+  "url": "https://anthropic.skilljar.com/ai-fluency-for-students",
+  "subtitle": "This course empowers students to develop AI Fluency skills that enhance learning, career planning, and academic success through responsible AI collaboration.",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:02:00Z",
+  "source_url": "https://anthropic.skilljar.com/ai-fluency-for-students",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 5, "hours_of_video": 0.5, "quizzes": 0, "certificate": true},
+  "sections": [
+    {"section_num": 1, "name": "Introduction and AI Fluency Framework", "lessonCount": "2 lessons", "description": "A summary of Delegation, Description, Discernment, and Diligence applied to student contexts"},
+    {"section_num": 2, "name": "AI Fluency Framework applications for students", "lessonCount": "2 lessons", "description": "Applying the 4D framework to learning and career planning."},
+    {"section_num": 3, "name": "Conclusion", "lessonCount": "1 lessons", "description": "Developing personal commitments for responsible AI collaboration and maintaining agency."}
+  ],
+  "total_sections": 3,
+  "individual_lessons_requires_login": true
+}

@@ -1,0 +1,513 @@
+[
+  {
+    "course": "ai-fluency-for-educators",
+    "lesson_idx": 1,
+    "title": "Introduction to AI Fluency for Educators",
+    "youtube_id": "hJONtvW1fyw",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-educators",
+    "lesson_idx": 2,
+    "title": "AI Fluency Framework review",
+    "youtube_id": "7tR7modJioQ",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-educators",
+    "lesson_idx": 3,
+    "title": "Applying AI Fluency to course design and learning outcomes",
+    "youtube_id": "cVFLuBbnbMo",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-educators",
+    "lesson_idx": 4,
+    "title": "Applying AI Fluency to learning materials and assignments",
+    "youtube_id": "YTUywmN2N4s",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 1,
+    "title": "Welcome to AI Fluency for nonprofits",
+    "youtube_id": "qrhPJNbRT-Q",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 2,
+    "title": "The 4D Framework",
+    "youtube_id": "EgF7VcznCOc",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 3,
+    "title": "Researching with AI",
+    "youtube_id": "WB7FArPxgHU",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 4,
+    "title": "Writing with AI",
+    "youtube_id": "OQzANXIckWo",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 5,
+    "title": "Understanding privacy and data",
+    "youtube_id": "e-9J17_yo0c",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 6,
+    "title": "Data analysis with AI",
+    "youtube_id": "Zzn-g8lvLMA",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 7,
+    "title": "Workflow augmentation",
+    "youtube_id": "vjXso6GR8Sk",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 8,
+    "title": "Integration",
+    "youtube_id": "rl8lEM-uyrQ",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 9,
+    "title": "Next steps",
+    "youtube_id": "hAhXWIvYCoE",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-students",
+    "lesson_idx": 1,
+    "title": "Welcome to AI Fluency for students",
+    "youtube_id": "tDC9UiRW1uw",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-students",
+    "lesson_idx": 2,
+    "title": "AI Fluency Framework",
+    "youtube_id": "7tR7modJioQ",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-students",
+    "lesson_idx": 3,
+    "title": "AI as a learning partner",
+    "youtube_id": "I8WMCkz9eig",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-students",
+    "lesson_idx": 4,
+    "title": "AI in career planning",
+    "youtube_id": "XFVBp3eQnuQ",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-for-students",
+    "lesson_idx": 5,
+    "title": "Being the human in the loop",
+    "youtube_id": "UlkRm95PmXg",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 1,
+    "title": "Introduction to AI Fluency",
+    "youtube_id": "JpGtOfSgR-c",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 2,
+    "title": "Why do we need AI Fluency?",
+    "youtube_id": "4szRHy_CT7s",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 3,
+    "title": "The 4D Framework",
+    "youtube_id": "W4Ua6XFfX9w",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 4,
+    "title": "Generative AI fundamentals",
+    "youtube_id": "RyvXxApfHkk",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 5,
+    "title": "Capabilities & limitations",
+    "youtube_id": "W5cga7xipRI",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 6,
+    "title": "A closer look at Delegation",
+    "youtube_id": "EljzyfdYkrc",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 8,
+    "title": "A closer look at Description",
+    "youtube_id": "DmgujoZ1mmk",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 9,
+    "title": "Effective prompting techniques",
+    "youtube_id": "2YCaBqP8muw",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 10,
+    "title": "A closer look at Discernment",
+    "youtube_id": "Y0KidGr9Z2Y",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 12,
+    "title": "A closer look at Diligence",
+    "youtube_id": "QbLf2zb3oPc",
+    "has_modular": true
+  },
+  {
+    "course": "ai-fluency-framework-foundations",
+    "lesson_idx": 13,
+    "title": "Conclusion",
+    "youtube_id": "ytEN_iAk09c",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 1,
+    "title": "What is Claude?",
+    "youtube_id": "VHsp6Hp7Stw",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 2,
+    "title": "Your first conversation with Claude",
+    "youtube_id": "0vZ_UVLhSQQ",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 3,
+    "title": "Getting better results",
+    "youtube_id": "Zzn-g8lvLMA",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 5,
+    "title": "Introduction to projects",
+    "youtube_id": "GJ5jTgcbRHA",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 7,
+    "title": "Working with skills",
+    "youtube_id": "LpGpwhORWr0",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 8,
+    "title": "Connecting your tools",
+    "youtube_id": "_jjSS0qGFbI",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 8,
+    "title": "Connecting your tools",
+    "youtube_id": "QTfoYDzqXn0",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 10,
+    "title": "Research mode for deep dives",
+    "youtube_id": "R-KJgjIrh24",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 12,
+    "title": "Other ways to work with Claude",
+    "youtube_id": "s-avRazvmLg",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 12,
+    "title": "Other ways to work with Claude",
+    "youtube_id": "tI1uzSJuSxc",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 12,
+    "title": "Other ways to work with Claude",
+    "youtube_id": "8ZRTSIRWLu4",
+    "has_modular": true
+  },
+  {
+    "course": "claude-101",
+    "lesson_idx": 12,
+    "title": "Other ways to work with Claude",
+    "youtube_id": "IypXvHej9eY",
+    "has_modular": true
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 1,
+    "title": "What is Claude Code?",
+    "youtube_id": "fl1DSmwQKKY",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 2,
+    "title": "How Claude Code works",
+    "youtube_id": "6bs5b4FltCU",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 3,
+    "title": "Installing Claude Code",
+    "youtube_id": "0kILa02vKuI",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 4,
+    "title": "Your first prompt",
+    "youtube_id": "gbetp6D7J_Q",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 5,
+    "title": "The explore \u2192 plan \u2192 code \u2192 commit workflow",
+    "youtube_id": "xJQuF02NAK8",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 6,
+    "title": "Context management",
+    "youtube_id": "eW3oTyfeWZ0",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 7,
+    "title": "Code review",
+    "youtube_id": "RKsADl0ZC3Y",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 8,
+    "title": "The CLAUDE.md file",
+    "youtube_id": "O0FGCxkHM-U",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 9,
+    "title": "Subagents",
+    "youtube_id": "jKErNxuxPXg",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 10,
+    "title": "Skills",
+    "youtube_id": "bjdBVZa66oU",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 11,
+    "title": "MCP",
+    "youtube_id": "kkBFmwkDazdo",
+    "has_modular": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 12,
+    "title": "Hooks",
+    "youtube_id": "IkaPHiMDazM",
+    "has_modular": false
+  },
+  {
+    "course": "introduction-to-agent-skills",
+    "lesson_idx": 1,
+    "title": "What are skills?",
+    "youtube_id": "bjdBVZa66oU",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-agent-skills",
+    "lesson_idx": 2,
+    "title": "Creating your first skill",
+    "youtube_id": "Wx6_vjFFyHM",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-agent-skills",
+    "lesson_idx": 3,
+    "title": "Configuration and multi-file skills",
+    "youtube_id": "98KaK_rn5rQ",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-agent-skills",
+    "lesson_idx": 4,
+    "title": "Skills vs. other Claude Code features",
+    "youtube_id": "IgNN4v0BJdU",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-agent-skills",
+    "lesson_idx": 5,
+    "title": "Sharing skills",
+    "youtube_id": "OCBi3eScNLk",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-agent-skills",
+    "lesson_idx": 6,
+    "title": "Troubleshooting skills",
+    "youtube_id": "YBa1cwaG7is",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-claude-cowork",
+    "lesson_idx": 1,
+    "title": "What is Cowork?",
+    "youtube_id": "UAmKyyZ-b9E",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-claude-cowork",
+    "lesson_idx": 5,
+    "title": "Plugins: Cowork as a specialist",
+    "youtube_id": "bjdBVZa66oU",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-claude-cowork",
+    "lesson_idx": 7,
+    "title": "File & document tasks",
+    "youtube_id": "LpGpwhORWr0",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-subagents",
+    "lesson_idx": 1,
+    "title": "What are subagents?",
+    "youtube_id": "jKErNxuxPXg",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-subagents",
+    "lesson_idx": 2,
+    "title": "Creating a subagent",
+    "youtube_id": "arD6qEWa2Xc",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-subagents",
+    "lesson_idx": 3,
+    "title": "Designing effective subagents",
+    "youtube_id": "WPxWKT_OaU4",
+    "has_modular": true
+  },
+  {
+    "course": "introduction-to-subagents",
+    "lesson_idx": 4,
+    "title": "Using subagents effectively",
+    "youtube_id": "n5LoKZ8Oa-A",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 1,
+    "title": "Welcome & approaches to teaching AI Fluency",
+    "youtube_id": "tbNz5IaoNl8",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 2,
+    "title": "The Delegation-Diligence loop",
+    "youtube_id": "Z6UB6BEXJTs",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 3,
+    "title": "The Description-Discernment loop",
+    "youtube_id": "HD_zv4mh0vA",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 4,
+    "title": "How do we assess the 4Ds?",
+    "youtube_id": "jskB42hvdPI",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 5,
+    "title": "Designing assignments for AI Fluency",
+    "youtube_id": "zqho5KSgnjw",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 6,
+    "title": "AI's impact and your discipline",
+    "youtube_id": "biNOM9jAkFY",
+    "has_modular": true
+  },
+  {
+    "course": "teaching-ai-fluency",
+    "lesson_idx": 7,
+    "title": "Applying discipline expertise to AI Fluency",
+    "youtube_id": "BUj8mjy6oxI",
+    "has_modular": true
+  }
+]

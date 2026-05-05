@@ -1,0 +1,15 @@
+{
+  "lesson_title": "Quiz on prompt engineering techniques",
+  "course": "claude-with-the-anthropic-api",
+  "lesson_idx": 30,
+  "state": "completed",
+  "score": "5 of 5 Correct",
+  "question_count": 5,
+  "questions": [
+    {"question_text": "You want Claude to create a workout plan. Which opening line works better?", "type": "multiple_choice", "options": [{"text": "\"Create a 30-minute workout plan for beginners\"", "is_correct": true}, {"text": "\"Do you know anything about exercise?\"", "is_correct": false}, {"text": "\"I was wondering about workouts and fitness stuff\"", "is_correct": false}, {"text": "\"What kind of workout should I do?\"", "is_correct": false}]},
+    {"question_text": "Claude keeps missing sarcastic comments when analyzing social media posts. What's the best way to fix this?", "type": "multiple_choice", "options": [{"text": "Ask it to guess when something might be sarcastic", "is_correct": false}, {"text": "Provide examples showing sarcastic posts labeled as negative", "is_correct": true}, {"text": "Tell it to \"be more careful about sarcasm\"", "is_correct": false}, {"text": "Make the prompt longer with more instructions", "is_correct": false}]},
+    {"question_text": "What is prompt engineering?", "type": "multiple_choice", "options": [{"text": "Training AI models on new datasets", "is_correct": false}, {"text": "Improving a prompt to get more reliable, higher-quality outputs", "is_correct": true}, {"text": "Programming AI models from scratch using code", "is_correct": false}, {"text": "Building the hardware infrastructure for AI systems", "is_correct": false}]},
+    {"question_text": "\"Providing sample input/output pairs to guide AI responses\" describes which prompt engineering technique?", "type": "multiple_choice", "options": [{"text": "Being clear and direct", "is_correct": false}, {"text": "Iterative refinement", "is_correct": false}, {"text": "XML structuring", "is_correct": false}, {"text": "One-shot or multi-shot prompting", "is_correct": true}]},
+    {"question_text": "What is the main purpose of using XML tags in prompts?", "type": "multiple_choice", "options": [{"text": "To reduce the token count of prompts", "is_correct": false}, {"text": "To increase the processing speed of AI models", "is_correct": false}, {"text": "To add structure and clarity, especially when including large amounts of content", "is_correct": true}, {"text": "To make prompts look more professional", "is_correct": false}]}
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "lesson_title": "Course Quiz",
+  "course": "ai-capabilities-and-limitations",
+  "lesson_idx": 14,
+  "question_count": 13,
+  "questions": [
+    {
+      "question_number": "Question 1:",
+      "question_text": "What does the pretraining stage produce?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "A search engine that retrieves facts", "is_correct": false},
+        {"text": "A document completer that predicts what comes next", "is_correct": true},
+        {"text": "A model with no knowledge at all", "is_correct": false},
+        {"text": "A helpful assistant that follows instructions", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 2:",
+      "question_text": "Which of these is a \"fingerprint\" left by fine-tuning?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "The context window size", "is_correct": false},
+        {"text": "Token prediction", "is_correct": false},
+        {"text": "The knowledge cutoff", "is_correct": false},
+        {"text": "Sycophancy — agreeing too readily under pushback", "is_correct": true}
+      ]
+    },
+    {
+      "question_number": "Question 3:",
+      "question_text": "When generative AI writes an answer, what is it fundamentally doing?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "Searching a database for the best match", "is_correct": false},
+        {"text": "Running calculations to derive the answer", "is_correct": false},
+        {"text": "Consulting a list of verified facts", "is_correct": false},
+        {"text": "Predicting what text comes next, one fragment at a time", "is_correct": true}
+      ]
+    },
+    {
+      "question_number": "Question 4:",
+      "question_text": "Where does hallucination tend to concentrate?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "In specific details like names, dates, citations, and URLs", "is_correct": true},
+        {"text": "In general explanations of common concepts", "is_correct": false},
+        {"text": "In the opening sentence of a response", "is_correct": false},
+        {"text": "In formatting and structure", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 5:",
+      "question_text": "What does the \"knowledge cutoff\" mean?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "The model's training data has a fixed end date — it knows nothing after that unless it connects to another source", "is_correct": true},
+        {"text": "The model can only handle a limited number of topics", "is_correct": false},
+        {"text": "The model forgets information over long conversations", "is_correct": false},
+        {"text": "The model refuses to answer certain topics", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 6:",
+      "question_text": "How is Working Memory different from the other three properties?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "It improves automatically over time", "is_correct": false},
+        {"text": "It has a cliff rather than a gradual degradation — things work until they suddenly don't", "is_correct": true},
+        {"text": "It only matters for coding tasks", "is_correct": false},
+        {"text": "It can't be extended by product features", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 7:",
+      "question_text": "What does \"letter over spirit\" describe?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "The model prioritizing length over quality", "is_correct": false},
+        {"text": "The model following an instruction literally but missing what you actually meant", "is_correct": true},
+        {"text": "The model generating text that's too formal", "is_correct": false},
+        {"text": "The model refusing to follow any instructions", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 8:",
+      "question_text": "A hallucinated citation (a paper that doesn't exist) is which two properties colliding?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "Working Memory + Steerability", "is_correct": false},
+        {"text": "Knowledge + Steerability", "is_correct": false},
+        {"text": "Next Token Prediction + Knowledge", "is_correct": true},
+        {"text": "Next Token Prediction + Working Memory", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 9:",
+      "question_text": "What does \"calibrated trust\" mean in practice?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "Trusting AI more as you use it more", "is_correct": false},
+        {"text": "Never using AI for important tasks", "is_correct": false},
+        {"text": "Always verifying every AI output", "is_correct": false},
+        {"text": "Locating your task on each property's continuum and adjusting your habits accordingly", "is_correct": true}
+      ]
+    },
+    {
+      "question_number": "Question 10:",
+      "question_text": "How do the four properties relate to the 4D Framework?",
+      "type": "multiple_choice",
+      "options": [
+        {"text": "The 4Ds are what you do; the properties are what you're responding to when you do them", "is_correct": true},
+        {"text": "They're unrelated — two separate systems", "is_correct": false},
+        {"text": "The properties only apply to Discernment", "is_correct": false},
+        {"text": "They replace the 4Ds entirely", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 11:",
+      "question_text": "How confident do you feel in your ability to apply the AI Capabilities and Limitations Framework concepts to your daily work?",
+      "type": "survey",
+      "options": [
+        {"text": "Extremely unconfident", "is_correct": false},
+        {"text": "Not very confident", "is_correct": false},
+        {"text": "Neutral", "is_correct": false},
+        {"text": "Somewhat confident", "is_correct": false},
+        {"text": "Very confident", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 12:",
+      "question_text": "How likely are you to recommend this course to a friend or colleague?",
+      "type": "survey",
+      "options": [
+        {"text": "Not likely", "is_correct": false},
+        {"text": "Neutral", "is_correct": false},
+        {"text": "Very unlikely", "is_correct": false},
+        {"text": "Somewhat likely", "is_correct": false},
+        {"text": "Very likely", "is_correct": false}
+      ]
+    },
+    {
+      "question_number": "Question 13:",
+      "question_text": "Please share any feedback to help us improve this or future courses",
+      "type": "open_ended",
+      "options": []
+    }
+  ]
+}

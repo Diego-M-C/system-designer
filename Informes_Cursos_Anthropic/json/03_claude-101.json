@@ -1,0 +1,196 @@
+{
+  "id": "03",
+  "slug": "claude-101",
+  "title": "Claude 101",
+  "url": "https://anthropic.skilljar.com/claude-101",
+  "category": "foundations",
+  "difficulty": "beginner",
+  "domain": "Foundations",
+  "tags": [
+    "introduction",
+    "fundamentals",
+    "claude-features"
+  ],
+  "stats": {
+    "total_lessons": 14,
+    "sections": 5,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 7,
+    "modular_text_lessons": 14,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 28731,
+    "modular_chars": 90201,
+    "total_content_chars": 118932
+  },
+  "sections": [
+    {
+      "title": "Meet Claude",
+      "lesson_count": 4
+    },
+    {
+      "title": "Organizing your work and knowledge",
+      "lesson_count": 3
+    },
+    {
+      "title": "Expanding Claude's reach",
+      "lesson_count": 3
+    },
+    {
+      "title": "Putting it all together",
+      "lesson_count": 2
+    },
+    {
+      "title": "Conclusion & certificate",
+      "lesson_count": 2
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Meet Claude",
+      "title": "What is Claude?",
+      "url": "https://anthropic.skilljar.com/claude-101/383389",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Meet Claude",
+      "title": "Your first conversation with Claude",
+      "url": "https://anthropic.skilljar.com/claude-101/383390",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Meet Claude",
+      "title": "Getting better results",
+      "url": "https://anthropic.skilljar.com/claude-101/383392",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Meet Claude",
+      "title": "Claude desktop app: Chat, Cowork, Code",
+      "url": "https://anthropic.skilljar.com/claude-101/440908",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Organizing your work and knowledge",
+      "title": "Introduction to projects",
+      "url": "https://anthropic.skilljar.com/claude-101/383393",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Organizing your work and knowledge",
+      "title": "Creating with artifacts",
+      "url": "https://anthropic.skilljar.com/claude-101/383394",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Organizing your work and knowledge",
+      "title": "Working with skills",
+      "url": "https://anthropic.skilljar.com/claude-101/383396",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Expanding Claude's reach",
+      "title": "Connecting your tools",
+      "url": "https://anthropic.skilljar.com/claude-101/383397",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Expanding Claude's reach",
+      "title": "Enterprise search",
+      "url": "https://anthropic.skilljar.com/claude-101/383398",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Expanding Claude's reach",
+      "title": "Research mode for deep dives",
+      "url": "https://anthropic.skilljar.com/claude-101/383399",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Putting it all together",
+      "title": "Claude in action: use-cases by role",
+      "url": "https://anthropic.skilljar.com/claude-101/383401",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Putting it all together",
+      "title": "Other ways to work with Claude",
+      "url": "https://anthropic.skilljar.com/claude-101/383402",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Conclusion & certificate",
+      "title": "What's next?",
+      "url": "https://anthropic.skilljar.com/claude-101/385338",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Conclusion & certificate",
+      "title": "Certificate of completion",
+      "url": "https://anthropic.skilljar.com/claude-101/385349",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:23:37.694Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 7,
+    "quiz_extractions_added": 0
+  }
+}

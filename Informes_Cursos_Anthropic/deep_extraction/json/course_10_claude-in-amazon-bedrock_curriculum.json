@@ -1,0 +1,41 @@
+{
+  "course_num": 10,
+  "slug": "claude-in-amazon-bedrock",
+  "title": "Claude with Amazon Bedrock",
+  "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock",
+  "subtitle": "This comprehensive course covers the full spectrum of working with Anthropic models using Amazon Bedrock",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:04:00Z",
+  "source_url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 85, "hours_of_video": 8, "quizzes": 10, "certificate": true},
+  "about": "This course covers using Claude models through AWS Bedrock API, from basic requests through advanced agent implementations. You'll learn to make API calls, implement tool use, build RAG pipelines, work with MCP servers, and leverage features like Claude Code and computer use for automation.",
+  "learning_objectives": [
+    "Make requests to Claude models via AWS Bedrock using boto3",
+    "Implement multi-turn conversations, streaming responses, and structured data extraction",
+    "Build and evaluate prompts using automated testing pipelines with objective scoring",
+    "Create custom tools and handle multi-step tool execution workflows",
+    "Design RAG systems with text chunking, embeddings, and hybrid search (semantic + BM25)",
+    "Connect Claude to external services using MCP (Model Context Protocol) servers",
+    "Use Claude Code for automated development workflows and parallelized task execution",
+    "Configure and optimize features like prompt caching, extended thinking, and image processing",
+    "Implement computer use for automated testing and UI interaction"
+  ],
+  "prerequisites": [
+    "Proficiency in Python programming",
+    "Basic knowledge of handling JSON data",
+    "AWS account with Bedrock access"
+  ],
+  "audience": "Devs who want to add AI features to their apps",
+  "sections": [
+    {"section_num": 1, "name": "Getting started with Amazon Bedrock", "lessonCount": "16 lessons", "description": "Start here for the fundamentals. Covers API authentication, basic requests, conversation management, system prompts, and structured output generation."},
+    {"section_num": 2, "name": "Prompt engineering & evaluation", "lessonCount": "16 lessons", "description": "Learn to write prompts that actually work. Focuses on prompting strategies, evaluation frameworks, and systematic testing approaches."},
+    {"section_num": 3, "name": "Tool use with Claude", "lessonCount": "14 lessons", "description": "Extend Claude with custom tools and functions. Build apps with function calling, multi-turn tool interactions, batch tool calling, and leverage built-in utilities."},
+    {"section_num": 4, "name": "Retrieval augmented generation", "lessonCount": "10 lessons", "description": "Implementation guide for production RAG systems. Covers text chunking, embeddings, hybrid search with BM25, multi-index architectures, reranking, and contextual retrieval."},
+    {"section_num": 5, "name": "Model Context Protocol (MCP)", "lessonCount": "12 lessons", "description": "The protocol for building modular AI applications. Define custom tools and resources, implement MCP servers and clients, handle the full integration lifecycle."},
+    {"section_num": 6, "name": "Claude Code & Computer Use", "lessonCount": "8 lessons", "description": "Two powerful Anthropic tools in action. Claude Code accelerates development workflows, Computer Use automates UI interactions. Includes MCP integration patterns."}
+  ],
+  "total_sections": 6,
+  "individual_lessons_requires_login": true
+}

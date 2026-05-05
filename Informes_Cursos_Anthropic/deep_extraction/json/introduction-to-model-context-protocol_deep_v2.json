@@ -1,0 +1,578 @@
+{
+  "course_slug": "introduction-to-model-context-protocol",
+  "course_title": "Introduction to Model Context Protocol",
+  "course_url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+  "extracted_at": "2026-04-11T11:32:42.659Z",
+  "section_count": 4,
+  "total_lessons": 14,
+  "sections": [
+    {
+      "title": "Introduction",
+      "lesson_count": 3
+    },
+    {
+      "title": "Hands-on with MCP servers",
+      "lesson_count": 4
+    },
+    {
+      "title": "Connecting with MCP clients",
+      "lesson_count": 5
+    },
+    {
+      "title": "Assessment and wrap Up",
+      "lesson_count": 2
+    }
+  ],
+  "lessons": [
+    {
+      "index": 1,
+      "section": "Introduction",
+      "title": "Welcome to the course",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/303756",
+      "types": [
+        "lesson-modular"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:42.659Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Welcome to the course",
+      "modular_text": null,
+      "modular_html": "\n            \n                <sjwc-video\n                    player-complete-callback=\"lessonPlayerCompleteCallback\"\n                    video-id=\"yddVFhdH\"\n                    type=\"VIDEO_JWPLAYER\"\n                    player-id=\"Akyo8gQO\"\n                    token=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6Ii92Mi9tZWRpYS95ZGRWRmhkSCIsImp0aSI6IlJtdUJQYjdaYjNJdyIsImlhdCI6MTc3NTkwNzE2MywiZXhwIjoxNzc1OTEwNzYzfQ.0RN4_s4kLlbPahZwmBMD4acfmTMQwTstwT-rzyHH4RQ\"\n                    processing-copy=\"This video is still being processed. Please check back later and refresh the page.\"\n                    error-copy=\"Uh oh! Something went wrong, please try again.\"\n                    aspect-ratio=\"1.7777777777777777\"\n                    fullscreen-lesson=\"false\"\n                />\n            \n        ",
+      "modular_html_length": 810,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "yddVFhdH",
+          "video_title": "001 - Welcome to the Course.mp4",
+          "duration_s": 64,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Welcome to this course focused on getting started with\n\nmodel context protocol. My name is Stephen Grider\n\nand I'll be guiding you through everything you need to know around MCP.\n\nLet's first begin by understanding exactly what we'll cover in\n\nthe coming videos. We'll first get an overview\n\non MCP and understand what problems it is intended\n\nto solve. We'll then start to look at the basics\n\nof MCP architecture by covering the responsibilities\n\nof MCP clients and servers. Then\n\nit is on to the three basic components of an MCP\n\nserver. First, we'll look at tools, which are intended\n\nto be consumed by language models. After\n\nthat, we'll study resources, which allow a server to\n\nshare data with clients. And finally, prompts,\n\nwhich will provide tune directions to language\n\nmodels. Now there's a lot of content for\n\nus to get through, so there are a couple of requirements on\n\nyour side. First, you need to have some basic Python\n\nknowledge. Second, we will be writing out some code,\n\nand this will require a local Python installation. We\n\nwill be managing our project with the UV CLI.\n\nAnd if you don't have it installed, I recommend grabbing it now. I'll\n\nget a link to it on the screen."
+        }
+      ],
+      "total_transcript_chars": 1195,
+      "errors": []
+    },
+    {
+      "index": 2,
+      "section": "Introduction",
+      "title": "Introducing MCP",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296689",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:44.356Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Introducing MCP",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "4vuPZkGf",
+          "video_title": "09 - 001 - Introducing MCP.mp4",
+          "duration_s": 280,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "In this module, we are going to focus on model context\n\nprotocol. MCP is a communication layer\n\ndesigned to provide Claude with context and tools\n\nwithout requiring you, the developer, to write a\n\nbunch of tedious code. When you first get started\n\nwith MCP, you will see diagrams that look like this very\n\noften. It shows two major elements of\n\nMCP, namely the client and the server. The\n\nserver often contains a number of internal components,\n\nnamed tools, resources, and prompts. And\n\nthere's a lot of terminology here. So to help you understand\n\nall of this, we're going to imagine that we are building\n\na small app and see how MCP fits\n\ninto it. Our sample app is going to be another\n\nchat interface. It's going to allow a user\n\nto chat with Claude about their GitHub data.\n\nSo if a user asks a question like what open\n\npull request do I have across all my different repositories,\n\nthe expectation is that Claude is probably going\n\nto make use of a tool to reach out to GitHub,\n\naccess the user's account, and see what open pull\n\nrequests they have, maybe open repositories\n\nor whatever else. The point here is that we would implement\n\nthis probably by using a set of tools. Now,\n\none thing I want to mention really quickly is that GitHub has\n\na tremendous amount of functionality. There\n\nare repositories, pull requests, issues,\n\nprojects, and tons of other things. So\n\nto have a complete GitHub chatbot, we would\n\nreally have to author a tremendous number of\n\ntools. If we wanted to build that sample app, we\n\nwould be on a hook for authoring all these schemas and\n\nall these functions. And this is all code that you and\n\nI, as developers, would have to write, test,\n\nand maintain. That's a lot of effort, a lot\n\nof burden being placed on us. This\n\nchallenge of making developers maintain a big\n\nset of integrations is one of the primary difficulties\n\nthat model context aims to solve. MCP\n\nshifts the burden of defining and running tools\n\nfrom your server to something else called an MCP\n\nserver. So no longer would you and I have to author\n\nthis tool right here. Instead, it would be authored and\n\nexecuted somewhere else inside of this MCP\n\nserver. These MCP servers can really be thought of\n\nas like an interface to some outside service. So\n\nI might have a GitHub MCP server that provides\n\naccess to data and functionality provided by specifically\n\nGitHub, where essentially wrapping up a ton of functionality\n\naround GitHub and placing it into this MCP server\n\nin the form of a set of tools. So at this point,\n\nwe have a very basic understanding of what a MCP\n\nserver is. It gives us access to a set of tools\n\nthat exposes functionality related to some outside\n\nservice. And the benefit here is that you and\n\nI do not have to author all these different tool schemas\n\nand functions and so on. Now that we\n\nhave this basic understanding, I want to address some\n\nvery common questions that a lot of people have\n\nwhen they first learn about MCP servers. So,\n\nthree common questions that seem to always come up. The first\n\ncommon question is, who authors these MCP servers?\n\nThe answer is anyone. Anyone can make an MCP\n\nserver implementation. But very often, you'll\n\nfind that service providers make their own official\n\nimplementation. So for example, AWS might\n\ndecide to release their own official MCP server\n\nimplementation, and inside of it, it might have a wide\n\nvariety of different tools available for you to\n\nuse. The second common question is, how\n\nis using a MCP server different than just\n\ncalling a services API directly? Well,\n\nas we just saw, if we wanted to call a API\n\ndirectly, such as GitHub, then we would\n\nhave to author this tool ourselves.\n\nAnd now we can call\n\nGitHub directly. So what did we gain here? Well,\n\nall that really changed was we are now having to author the\n\nschema ourselves and the function implementation ourselves.\n\nSo simply by adding in the MCP server, we\n\nare saving ourselves a little bit time. The final column\n\nquestion is more of a common criticism\n\nthat you're going to see people have around MCP. And\n\nthis criticism is most often coming from people who don't\n\nquite understand what MCP is all about. So\n\nvery often, you will see people saying MCP and\n\ntool use are the same thing. Well, as I have just\n\nlaid out to you, MCP servers and tool use,\n\nthey are complimentary. They are different things, but\n\nthey are complimentary. The idea behind MCP\n\nis that you do not have to author the tool function\n\nand the tool schema. That is something is done for you\n\nby someone else and is being wrapped up inside of this MCP\n\nserver. So at some level, yeah,\n\nthey're kind of similar because we are talking about tool use\n\nin both cases, but MCP servers are really\n\ntalking about who is doing the actual work. So\n\nif you ever see this criticism, again, it's usually because\n\npeople don't quite understand what MCP is all about."
+        }
+      ],
+      "total_transcript_chars": 4874,
+      "errors": []
+    },
+    {
+      "index": 3,
+      "section": "Introduction",
+      "title": "MCP clients",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296690",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:45.745Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "MCP clients",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "lD9pJECt",
+          "video_title": "09 - 002 - MCP Clients.mp4",
+          "duration_s": 296,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "The next portion of model context protocol that we're going to investigate\n\nis the client. The purpose of the client is\n\nto provide a means of communication between your server\n\nand an MCP server. This client is going to\n\nbe your access point to all the tools implemented by that server.\n\nNow MCP is transport agnostic. This\n\nis a fancy term that just says that the client and the\n\nserver can communicate over a variety of different\n\nprotocols. A very common way to run an MCP\n\nserver right now is on the same physical machine as\n\nthe MCP client. And if these two things are running\n\non the same machine, then they can communicate over standard\n\ninput output. And that's what we are going to be setting up\n\nlater on inside this section. There are,\n\nhowever, other ways we can connect the MCP client\n\nwith the MCP server. So they can also connect\n\nover HTTP or Web Sockets or\n\nany of a number of other varieties or techniques.\n\nOnce a connection has been formed between the client and the\n\nserver, they communicate by exchanging messages.\n\nThe exact messages that are allowed are all defined inside\n\nof the MCP spec. Some of the message types\n\nthat you and I are going to be focusing are the list\n\ntools request and the list tools result.\n\nAs you guessed, list tools request is sent from the client\n\nto the server and asks the server to list out all the different tools\n\nthat it provides. The server would then respond with\n\na list tools result message, which contains\n\na list of all the different tools that it can provide.\n\nTwo other common message types that you and I are going to see are\n\nthe call tool request and call tool result.\n\nThe first will ask the server to run a tool with some\n\nparticular arguments, and the second will contain the result\n\nof the tool run. Now, at this point\n\nin time, we've got this idea of a server and\n\na client. But I suspect it's probably\n\nnot really clear how all this stuff really works together. So\n\nhere's what we're going to do in the remainder of this video. We\n\nare going to walk through an example call between\n\na lot of different things. So it's going to be kind of an involved\n\nprocess. But we're going to imagine the communication that goes on between\n\na user or a server that we're putting together.\n\nAn MCP client, the MCP server, GitHub\n\nas some provider that we're trying to access some data from, and\n\nClaude. So let's get to it. Again, Stephen Grider, first\n\nthing we would expect to happen is a user to submit some kind of query\n\nor question to our server, like what repositories do\n\nI have? At this point, it would be up to our server\n\nto make a request off to Claude. But in that\n\nrequest, we want to list out all the different tools that Claude has\n\naccess to. So before our server can make the request\n\noff to Claude, it's first going to go through a little side detour\n\nthrough the MCP client and the server. So here's what\n\nhappens. The server is going to realize that it\n\nneeds to see a list of tools to send off\n\nto Claude, along with the user's query. So it's going to\n\nask the MCP client to get a list of tools. The\n\nMCP client, in turn, is going to send a list\n\ntools request off to the server, and the server\n\nwill respond with a list tools result.\n\nNow that our MCP client has a list of the tools,\n\nit will give that list of tools back to the server. And\n\nnow our server has everything it needs to make an initial\n\nrequest off to Claude. It has both the original\n\nmessage from the user and a list of tools to include.\n\nSo our server can make a request off to Claude with that query\n\nand the set of tools. Claude is going to take a look\n\nat the tools and realize, you know what, in order to answer\n\nthe user's original question right here, I really want\n\nto call a tool. So Claude would respond\n\nwith some tool use message part. At\n\nthis point, our server is going to realize that Claude wants\n\nto run a tool. But our server is no longer\n\nreally in charge of executing any tools. Instead,\n\nour tools are going to be executed by the MCP server.\n\nSo in order to run the tool that Claude is asking\n\nfor, our server is going to ask the MCP client\n\nto run a tool with some particular arguments that were\n\nprovided by Claude. The MCP client, however,\n\ndoesn't actually run the tool. It's going to send a call\n\ntool request off to the MCP server. The\n\nMCP server will receive that request and make\n\na follow request off to GitHub. So\n\nthis is where we would actually be getting a list of repositories\n\nthat belong to this particular user. GitHub\n\nwould respond with that list of repositories. Then\n\nthe MCP server would wrap up that data\n\ninside of a call tool result and send\n\nthat back to the MCP client. Then the MCP\n\nclient in turn would hand the result off to our server.\n\nNow our server has the list of repositories\n\nand it can make a follow up request to Claude with\n\nthe tool result part inside of a user\n\nmessage. So this tool result would include the list\n\nof repositories that Claude was asking for.\n\nAnd now Claude has all the information it needs to formulate\n\na final response. So it'll write out some text\n\nof something like your repositories are, and then send that back\n\nto our server, and our server would send it on back to our\n\nuser. All right, so this flow,\n\nyes, it is rather complicated. The reason I want\n\nto show you this is that we are going to see all these different\n\npieces as you and I start to implement our own\n\ncustom MCP client and MCP\n\nserver a little bit later on."
+        }
+      ],
+      "total_transcript_chars": 5460,
+      "errors": []
+    },
+    {
+      "index": 4,
+      "section": "Hands-on with MCP servers",
+      "title": "Project setup",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296694",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:48.253Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Project setup",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "V0ugJQ2w",
+          "video_title": "09 - 003 - Project Setup.mp4",
+          "duration_s": 189,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "To better understand some aspects of MCP,\n\nwe are going to start to implement our own CLI-based\n\nchatbot. This is going to give us a better idea of\n\nhow clients and servers actually work together. In\n\nthis video, I want to do a little bit of project setup and just help\n\nyou understand exactly what we're going to make. I've got\n\na lot of product description over here of what we're going to build.\n\nWe're going to go through all this over time. Right now, I just want\n\nyou to get a high-level understanding. So as I\n\nmentioned, it's going to be a CLI-based chatbot.\n\nWe're going to allow users to work with a collection of documents.\n\nThese are going to be fake documents. They're just going to be stored in memory.\n\nWe're going to build out a small MCP client\n\nthat is going to connect to our own custom MCP\n\nserver. For right now, the server is going to have two\n\ntools implemented inside of it. One tool to\n\nread the contents of a document, and one tool to\n\nupdate the contents of a document. Again, these\n\ndocuments are here on the right-hand side. They're all fake, so\n\nthey are going to be persisted only in memory. That's it.\n\nNow, before we go any further, there is a very\n\nimportant note, something I really want you to understand\n\naround this entire process. And that is that\n\non a normal project, typically we\n\nwould be implementing either a client or\n\nan MCP server. So on a real project,\n\nwe might be authoring just an MCP server to\n\ndistribute to the world and allow developers to access some\n\nservice that we have built up. Alternatively, we might be building\n\na project where we make only a MCP\n\nclient. And the intent here would be that we would be connecting\n\nto some outside MCP servers that\n\nhave already been implemented by some other engineers. So\n\nin this project, we are making both a client and\n\na server. And we're just doing that in one project so\n\nyou get a better understanding of how this stuff actually works\n\ntogether. All right, now that we have this disclaimer\n\nout of the way, let's go through just a little bit of setup.\n\nAttached to this video, you should find a file named\n\nCLIproject.zip inside there is\n\nsome starter code for our project. Make sure you download\n\nthat zip file, extract it, and then open up your\n\ncode editor inside of that project directory.\n\nJust to save a little bit of time, I have already done so. So\n\nI've already got my code editor open inside of that small\n\nproject. Inside this project, I would encourage you to\n\ntake a look at the readme.md file. Inside\n\nhere, I've placed some setup directions. So it's going to walk you\n\nthrough the process of making sure you put your API\n\nkey into the .emv file inside this project.\n\nAnd it's also going to walk you through the process of installing dependencies, either\n\nwith uv or without uv. Once you\n\nhave gone through all this setup, you can then run the starter project\n\nright away. To do so inside of your terminal,\n\nmake sure that you are inside of your project directory.\n\nSo I called my project MCP. And inside there,\n\nI've got all my different project files and folders. To\n\nrun the project, we will run uv run main.py\n\nif you're making use of uv. If you are\n\nnot making use of uv, then it'll be just python\n\nmain.py. Now I'm making use of\n\nuv. So I'm going to do a uv run main.py.\n\nAnd then when I run that, I should see a chat prompt\n\nappear. And if I ask what's one plus one,\n\nI should see a response rather quickly. That is it\n\nfor our setup. So now we can start to focus on adding\n\nin some new features to this application."
+        }
+      ],
+      "total_transcript_chars": 3543,
+      "errors": []
+    },
+    {
+      "index": 5,
+      "section": "Hands-on with MCP servers",
+      "title": "Defining tools with MCP",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296697",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:49.648Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Defining tools with MCP",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "FBu6iTjn",
+          "video_title": "09 - 004 - Defining Tools with MCP.mp4",
+          "duration_s": 423,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Let's start to make an MCP server for our\n\nCLI chatbot. As you saw, the\n\nCLI itself already works, and we can already chat with\n\nClaude, but there's no additional functionality around the MCP\n\nserver tied to it just yet. So we're going to work on adding\n\nin this MCP server that is going to have two tools\n\nin it for right now. It's going to have one tool to read a document\n\nand one tool to update the contents of a document.\n\nThe implementation of the server is going to be placed into the MCP\n\nserver.py file inside of the root project\n\ndirectory. Inside of here, I've already gone through a little\n\nbit of work to set up a basic MCP server. And\n\nthen I defined a collection of documents that are going to exist\n\nonly in memory. And then finally, I put together some\n\ndifferent to-do items. So these are different tasks that you\n\nand I are going to complete inside of this file. For\n\nright now, as I just mentioned, we're going to be working only on these first\n\ntwo items, writing out two tools. Now\n\nwe have authored tools in the past, and we saw that,\n\noh, there's a lot of syntax there. There's those big JSON\n\nschemas. But I got good news for you here. In\n\nthis project, we're making use of the official MCP\n\nPython SDK. So that's what this MCP\n\npackages we're making use inside of here. This\n\nMCP package is going to create our MCP server\n\nfor us with just one line of code, like what you see right\n\nthere. This SDK also makes\n\nit really easy to define tools. To define\n\na tool, all we have to do is write out what you see on the right-hand\n\nside over here. This will make a tool named add\n\nintegers with this description and\n\ntwo arguments that are going to be required to be passed into\n\nit. Once we write out a tool definition like\n\nthis, behind the scenes, Anthropic is going to generate\n\na tool JSON schema for us, which\n\nwe can take and pass off to Claude. So\n\nright away, as you can see, it starts to get a lot easier to do\n\nsome basic things like defined tools. Now, as I\n\nmentioned, our first task is going to be to implement these two\n\ndifferent tools. So let's go back over to our MCP\n\nserver.py file right away, and we're going to start to implement\n\nthe first tool of reading a document. So\n\nthe only goal here is to take in the name of some document\n\nand return the contents of it. All of our\n\ndocuments are already placed inside of this docs dictionary.\n\nThe keys are the IDs or essentially names\n\nof a document, and the value is a document's contents. So\n\nour tool is really simple. We're going to take in one\n\nof these strings, look up the appropriate value\n\ninside this docs dictionary, and then return it. That's all\n\nwe need to do. So to implement this,\n\nI'm going to find the first to do and right underneath it, I'm\n\ngoing to define a new tool by writing out at\n\nmcp.tool. I'm going\n\nto give this tool a name of read_contents\n\nand a description of read the contents of\n\na document and return it as a string. And\n\nremember, in a perfect world, we put in a really fleshed\n\nout description right here to make sure it's super clear to Claude,\n\nexactly when to use this tool. But right now, just\n\nas usual, to save a little bit of time and keep you from\n\nhaving to type out a bunch of text here, I'm just going to leave in a very\n\nsimple description. then I will define my\n\nactual tool function. So this is the function to run\n\nwhenever we decide to run this tool. I\n\nwill call it read_document. It's\n\ngoing to take in a argument of doc_id that\n\nis going to be a string. I'm\n\ngoing to set that to a field with a description\n\nof ID of the document to\n\nread. And then we need to make sure that we import\n\nthis field class at the top. So I'm going to\n\ngo up to the top and add an import\n\nfrom pydantic import field.\n\nthen back down here inside of the function\n\nbody, I'm going to put in my actual implementation. So\n\nthe first thing I'm going to do is just make sure I handle the case in\n\nwhich Claude asks for a document that doesn't actually exist.\n\nSo I'll say if doc_id not\n\nin docs. So in other words, if the provided\n\ndocument ID is not found as a key inside of this dictionary,\n\nthen I'm going to raise a ValueError with\n\na f-string of \"doc with id {doc_id} not found.\"\n\nID not found. And\n\nthen if we get past that check, I'll go ahead and return the actual\n\ndocument. So I'll return docs[doc_id].\n\nAnd that's it, that's all it takes to define a tool. So\n\nwe've specified the name of the tool, its description,\n\nthe argument that is expected, its type,\n\nand a description for that argument as well. All\n\nthese different decorators and field types and whatnot\n\nare all going to be taken together by this Python MCP\n\nSDK, and it's going to generate a JSON\n\nschema for us. Now that we've implemented\n\nthis first tool, I'm going to remove the to-do right there.\n\nAnd then we will implement our other tool, the one to\n\nedit a document. So we're going to repeat\n\nthe exact same process. I'll say MCP\n\ndot tool. I'll give it a name of edit_document\n\nwith a description of edit a document\n\nby replacing a string in the document's\n\ncontents or semi-content with a new string.\n\nThen for the implementation, I'll call this function edit_doc.\n\nOr so we'll be consistent, call edit_document. And\n\nthen we're going to take in a couple of different arguments here. First\n\nis going to be a document ID and then a old\n\nstring to find and then a new string to replace\n\nthe old string with. So let's write this all\n\nout. We're going to have a doc_id. That\n\nwill be a string with a description\n\nof ID of the\n\ndocument. that will\n\nbe edited. old_\n\nstring will be a string with\n\na description of the text to replace\n\nmust match exactly including\n\nwhite space. And\n\nthen our new_string. the\n\nnew text to insert in place of\n\nthe old text. So our document editing here is\n\njust a very simple find and replace. That's it. Once\n\nagain, inside of here, I'm going to make sure that Claude\n\nis asking for a document that actually exists. So if doc_id\n\nnot in docs, raise\n\nValueError with a f-string\n\nof \"doc with id {doc_id} not\n\nfound.\" And then if we do find the correct\n\ndocument, here's how we will do our edit. We'll say docs\n\n[doc_id] = docs[doc_id].replace(old_string, new_string)\n\nreplace old_string with new_string.\n\nAnd that's it. All\n\nright. So just like that, we have put together two tool implementations\n\nreally, really quickly. I can't repeat it enough, defining\n\ntools with this MCP Python SDK is\n\na lot easier than writing out the schema definition manually.\n\nNow that we've got both tools put together, I'm going to delete the\n\nTudu right there. Okay, so this\n\nis a good start. We have put together our MCP\n\nserver and we've implemented two tools inside of it."
+        }
+      ],
+      "total_transcript_chars": 6678,
+      "errors": []
+    },
+    {
+      "index": 6,
+      "section": "Hands-on with MCP servers",
+      "title": "The server inspector",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296693",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:50.777Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "The server inspector",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "MVLgtQpv",
+          "video_title": "09 - 005 - The Server Inspector.mp4",
+          "duration_s": 232,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "We have put together some functionality inside of our MCP\n\nserver, but we have no idea if it works, so it'd be really\n\ngreat if we could test this out somehow. It turns out that\n\nby using this Python SDK, we automatically\n\nget access to an in-browser debugger, so\n\nwe can make sure that this server is working as expected.\n\nLet me show you how to use it really quickly. Back inside\n\nmy terminal, I went to make sure that I have my Python\n\nenvironment activated. Remember, the ReadMe\n\ndocument goes into detail on the exact command to run\n\nto make sure that you have activated that environment. Once\n\nyou are sure that it is activated, we'll run MCP,\n\nDev, and then the name of the file that contains\n\nour server. In this case, it is MCPServer.py.\n\nOnce I run that, I'll then be told that I have a server listening\n\non port 6277, and I'll be given a direct\n\nact address to actually access it. I'm\n\ngoing to open up that address inside my browser. And\n\nonce you go there, you'll see something that looks like this. This\n\nis the MCP Inspector. Now right away, there's\n\nsomething important I want you to understand here. This inspector\n\nis in active development. So by the time you\n\nare watching this video, what you see on the screen right now might\n\nbe very, very different than what I am showing. Nonetheless,\n\nit's probably still going to have some very similar functionality.\n\nOn the left-hand side, you'll see a Connect button. That\n\nis going to start up your MCP server, so that file\n\nthat we just edited. I'm going to click on\n\nConnect, and then right away, we'll see a couple of different\n\nthings on the screen appear. I first want you to notice\n\nthe top menu bar up here. It lists out resources,\n\nprompts, tools, and some other stuff. Again,\n\nthe UI might change by the time you watch this video,\n\nso if you do not see this menu bar up here, all we are really\n\nlooking for here is some Tools section.\n\nOnce I click on Tools, I will click on List Tools,\n\nand I'll see the name of the tools that we just put together.\n\nIf I click on one, the right-hand panel is then going to\n\nchange. And I can use this panel over here to\n\nmanually invoke one of my tools to make sure that\n\nit is working as expected. So this\n\nis how we can do some live development on our MCP\n\nserver without actually having to wire it up to a real\n\napplication. In order to use\n\nthe Read.Contents tool, all we have to do is put\n\nin a document ID. If I go back over\n\nto my editor and\n\ngo up to the docs dictionary right here, I can\n\ncopy one of these document IDs so I\n\nwill take out deposition.md. I\n\nwill put it in as the doc ID and then click\n\non run tool. I should then see run\n\ntool of success with the contents of the document.\n\nAnd that is it right there. I can verify it. So same\n\nexact string is what I see right there. We\n\ncan use this same exact technique to test out the other\n\ntool as well. So I will change over to\n\nthe edit document tool. Now I'll put\n\nin my document ID. My\n\nold string that I want to replace, how about replace the\n\nword deposition? Actually, I have an easier word to type out.\n\nHow about just this? That'll be a little bit easier.\n\nSo my old string is this. Remember,\n\nthat is going to be a capital sensitive, and I'm going to replace\n\nit with a report. And\n\nif I run the tool, I'll then be given a success. Remember,\n\nthat tool does not actually return the document's\n\ncontents. It just edits the document. So\n\nnow to verify that the edit was done correctly, I\n\ncan go back over to the redock contents\n\ntool, run that one again with the same document\n\nID, and I should see a report\n\ndeposition, and then blah, blah, blah. All\n\nright, so as you can see, this MCP inspector allows\n\nus to very easily debug a MCP\n\nserver that we are implementing without actually having to wire\n\nthe server up to an actual application. As\n\nyou start building your own MCP servers, I expect you'll\n\nbe using this inspector tool quite a bit. And we'll\n\nprobably use it a little bit more inside of this module, just\n\nto make sure that our server development is going along pretty well."
+        }
+      ],
+      "total_transcript_chars": 4069,
+      "errors": []
+    },
+    {
+      "index": 7,
+      "section": "Hands-on with MCP servers",
+      "title": "Course satisfaction survey",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297281",
+      "types": [
+        "lesson-quiz"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:51.901Z",
+      "extraction_method": "metadata_only",
+      "title_from_player": "Course satisfaction survey",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 8,
+      "section": "Connecting with MCP clients",
+      "title": "Implementing a client",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296696",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:53.210Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Implementing a client",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "j2PUF6Fx",
+          "video_title": "09 - 006 - Implementing a Client.mp4",
+          "duration_s": 446,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Now that our server is in a good place, we're going to shift gears\n\na little bit and start working on our MCP client.\n\nThe client can be found inside the MCP client.py\n\nfile inside the root project directory. Now before we do\n\nanything inside this file, I just want to give you a very quick reminder\n\nhere. Remember what I told you about earlier. Usually\n\nin a typical project, we are either making use of a client\n\nor we are implementing a server. It's just in this\n\none particular project that we are working on that we are doing both. Again,\n\njust so you can see both sides of the puzzle. Now\n\nthe MCP client itself inside of this\n\nfile is consisting of a single class. You'll notice\n\nthere is a lot of code inside of here and it doesn't look quite as\n\npretty as some of the code we just wrote out inside of the server.\n\nSo let me tell you exactly what's going on inside this file and exactly\n\nwhy it is so large. Okay, so\n\ninside this file, we are making the MCP\n\nclient class. This class is going to wrap\n\nup something called a client session. The client session\n\nis the actual connection to our MCP server.\n\nThis client session is a part of the MCP\n\nPython SDK. So again, this session\n\nis what gives us this connection to the outside server.\n\nThe session itself requires a little bit of resource cleanup.\n\nIn other words, whenever we close down our program or decide\n\nthat we don't need the server anymore, we have to go through a little bit of\n\na cleanup process. And I have already written out\n\na lot of that cleanup code inside of the MCP\n\nclient class. So that's really why this class\n\nexists at all, just to make that cleanup a little\n\nbit easier. You can see some of that cleanup code inside\n\nof the Connect function and down a little bit lower.\n\nat the cleanup, async enter, and async\n\nexit functions as well. So it's very common\n\npractice to not just make use of this\n\nclient session directly, instead very common to\n\nwrap it up inside of a larger class that's going to manage some of\n\nthis different resource stuff for you. The\n\nnext thing I want to clarify is why this client exists\n\nat all. So in other words, what is the client really doing\n\nfor us here? Well, remember, this full that\n\nwe looked at a little bit ago. So we had our code right\n\nhere. And at certain points in time, we needed, say,\n\na list of tools to send off to Claude. And then later\n\non after that, we also needed to run a tool\n\nthat was requested by Claude. In order\n\nto reach out to our MCP server and get this list\n\nof tools or to run a tool, that's where we\n\nare making use of the MCP client. So we can imagine\n\nthat this client is exposing some functionality that\n\nbelongs to the server to the rest of our codebase. So\n\ninside of our codebase, inside this project, specifically inside\n\nof the core directory, there is a lot of code already\n\ninside there that I put together that is making use of\n\nthis class. So there is some other code that's going to\n\ncall Some of the different functions you see inside of here,\n\nlike list tools, call tool, list prompts, get prompt, and so\n\non. For right now, in this video, we're going to focus on implementing\n\ntwo functions, list tools and call tool.\n\nSo as you just saw in the diagram, we looked at a moment ago, these\n\ntwo functions are going to be used in different parts of our code base\n\nto get a list of tools to provide off to Claude, and\n\nthen eventually call a tool whenever Claude requests to call\n\na tool. Implementing these two functions is going to\n\nbe really simple and straightforward. So let me show you how we're going\n\nto do it. We'll first begin with list tools. I'm\n\ngoing to remove the two do inside there and replace\n\nit with result is awaitself.session.\n\nI'm going to call that like a function list underscore\n\ntools. And then I will return result\n\ndot tools. And that's it. So\n\nthis is going to get access to our session, which is our\n\nactual connection to the MCP server. It's going to\n\ncall a built-in function to get a definition or a list\n\nof all the different tools that are implemented by that server. I'm\n\ngoing to get back result and then just return the tools and\n\nthat's it. Then we can implement call\n\ntool right here in a very similar fashion. So this will\n\nbe return a\n\nwaitself.session, call\n\ntool, tool name, and tool input.\n\nOnce again, getting access to the session, that is our\n\nconnection to the server, and I'm going to attempt to call\n\na very specific tool, the name the tool we passed in,\n\nalong with the input parameters or input arguments to it, that\n\nwere provided by Claude. Now, at this point\n\nin time, I would like to test out these two functions really quickly.\n\nTo do so, we're going to go down to the bottom of this file, where\n\nI put together a very small testing harness for us. So\n\ndown here, you'll notice I put together this\n\ntesting block, so we can run this MCP\n\nclient.py file directly. And if we do so, we're\n\ngoing to form a connection to our MCP server, and\n\nthen we can just run some commands against it and just see what we get\n\nback. Notice that in your version of the code,\n\nthere's a comment in there about changing the command and args\n\nright here in case you are not making use of Uvicorn. So\n\nif you're not using Uvicorn, make sure you take a look at that comment.\n\nInside of this with block, I'm going\n\nto add in a little bit of testing code. So I'll\n\nsay result is await underscore\n\nclient list tools. And\n\nthen I'm going to just print out the result that we get\n\nback. So this should start\n\nup a copy of our MCP server, then\n\nattempt to get a list of all the different tools that are defined\n\nby it, and then just print out the result. To\n\ntest this out, I will flip back over to my terminal and\n\ndo a uvicorn run, MCP underscore\n\nclient.py. And as usual, if you\n\nare not making use of uvicorn, you'll just do a Python\n\nMCP client.py. Okay, so I'll run\n\nthat, and there is our list of tool\n\ndefinitions. So I can see inside of here that I have the read.contents\n\ntool, which we put together a little bit ago, and our edit\n\ndocument tool as well. Each one has a description\n\nand an input schema as well.\n\nSo this is our tool definition, which will eventually\n\nbe passed off to Claude. Now before we move on, there's\n\none other thing I want to test. Remember, we\n\njust implemented the function that's going to allow us to\n\nlist out some tools and pass them off to Claude and\n\nthe function that's going to allow us to call a tool that is implemented\n\nby the MCP server and then pass the result off to Claude\n\nas well. I have already implemented the code that is\n\ngoing to call list tools and call tool\n\nfor us somewhere else inside this project. So now\n\nthat we have added in this functionality, now that we have defined\n\nthese tools and the ability to call a particular tool, we\n\ncan now run our CLI again and attempt\n\nto get Claude to make use of these tools. In other\n\nwords, we can ask Claude to inspect the contents\n\nof some particular document and even edit a document.\n\nSo let me show you how we do that. Inside of my\n\nMCP server, I just want to give you a reminder that there is\n\na document with a ID of report.pdf,\n\nand it has some texture of something like a 20 meter\n\ncondenser tower. I'm going to go back over\n\nto my terminal, and I'm going to run\n\nmy project with a uvicorn run main.py.\n\nAnd then I'm going to ask Claude what is the contents\n\nof the report.pdf document.\n\nAnd make sure you put in exactly report.pdf\n\nhere. And when we run this, we're\n\nsending off along with the request our list of tools.\n\nClaude is going to decide to use the read document tool.\n\nAnd it's going to get the contents of the document. And then we will see\n\nthat yes, Claude was able to get the contents of\n\nthat document. We are told that the report is something\n\nabout a 20 meter condenser tower. All\n\nright, so at this point, we have added in some functionality around\n\nour client. Remember, the client is what allows\n\nus to access some functionality that is implemented inside\n\nof the MCP server. At this point in time, we have\n\nbeen able to list out some tools that are created\n\nby the server and execute a tool that has been implemented\n\nby the server."
+        }
+      ],
+      "total_transcript_chars": 8158,
+      "errors": []
+    },
+    {
+      "index": 9,
+      "section": "Connecting with MCP clients",
+      "title": "Defining resources",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296699",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:54.763Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Defining resources",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "IhbXDBxu",
+          "video_title": "09 - 007 - Defining Resources.mp4",
+          "duration_s": 585,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "In this video, we're going to move on to the next major feature inside\n\nof MCP servers, which is Resources. To\n\nhelp you understand resources, we're going to be implementing another\n\nfeature inside of our project. Here's what we're going to add in.\n\nI want to allow a user to mention a document\n\nby putting in an @ symbol and then the name of a document.\n\nWhenever they do so, I want to automatically fetch the\n\ncontents of that document and insert it into the prompt\n\nthat we send off to Claude. So in total, there's kind\n\nof two aspects to this feature. Whenever user types\n\nout the @ symbol inside the message, we're going to automatically\n\nshow a list of all the different documents that they can mention\n\ninside of a little autocomplete window. Then whenever\n\nuser submits a message with a mention inside of\n\nit, we're going to automatically get the contents of that document\n\nand insert it into the prompt that we send off to Claude.\n\nSo for example, if a user says something like what's\n\nin the @report.pdf file, I\n\nwould want to assemble a prompt like this and send it to Claude.\n\nSo we're going to have the query inside there from the user, and\n\nthen we're also going to tell Claude that the user might have referenced\n\nsome document, and here is the contents of the document.\n\nSo the approach here or the idea here is that we will\n\nnot have to rely upon Claude to go and make\n\nuse of some tool to figure out what is inside of the\n\nreport.pdf file. Instead, the user can just\n\npreemptively mention the file, and we're going to automatically\n\ninsert some context ahead of time. Now, one thing I\n\nwant to clarify here is that we're kind of talking about two\n\nseparate features. The first feature is that whenever\n\na user types in the @ symbol, we really need\n\nthe MCVP server to give us a list of all the\n\ndifferent documents that the user can possibly mention.\n\nAnd then the second aspect here is that whenever a\n\nuser submits a message that contains a mention, then\n\nwe need the MCP server to give us the contents of a single\n\ndocument. To get this information out of our MCP server,\n\nwe are going to be making use of resources. Resources\n\nallow our MCP server to expose some amount\n\nof data to the client. We usually define one resource\n\nfor each distinct read operation. So in\n\nour example, we need to get a list of documents and\n\nread the contents of a single document. So we would\n\nprobably end up making two separate resources. One\n\nresource would be responsible for returning just a list\n\nof document names so we can put them inside the autocomplete,\n\nand then we would probably make another resource that will expose\n\nthe contents of a single document based upon its\n\ndocument ID. When we define these\n\nresources, they are going to be accessed through our MCP\n\nclient. So the entire flow that we're going to eventually\n\nput together here, whenever user types in something\n\nlike what's in the @ and then presumably\n\nthey're going to put in something right there, as soon as they type in that @\n\ncharacter, we need to display a list of document\n\nnames to put in the auto complete. So our\n\ncode is going to reach out to the MCP client,\n\nwhich in turn is going to send a read resource\n\nrequest off to the MCP server.\n\nInside of that read resource request, we're going to include\n\nsomething called the URI. That is essentially\n\nthe address of the resource we want to read.\n\nThis URI gets defined whenever we put together\n\nour resource initially. So the URI is that\n\nright there. When we send\n\noff this read resource request, the MCP\n\nserver is going to look at the exact URI that we put inside\n\nof here, and then run the function we\n\nput together right there. Take the result and\n\nsend it back to us inside of a read resource\n\nresult message. We can then take the data\n\ninside there and display it inside of our autocomplete or do\n\nwhatever else we need to do with it. There are two different\n\ntypes of resources, direct and templated. You'll\n\nalso sometimes see direct resources referred to as static\n\nresources. A direct resource just has\n\na static URI, so it's always going to be the exact\n\nsame thing, such as docs, colon slash slash documents.\n\nA templated resource will have one or more parameters\n\ninside of its URI. So for example, we might have documents\n\nslash, and then kind of a wildcard right here. So\n\nwe can put in any document ID we want to. And\n\nwhenever we ask for this resource, that document\n\nID right there inside the URI will be automatically parsed\n\nby the Python MCP SDK and\n\nprovided as a keyword argument to our function.\n\nThe keyword argument will have the exact same name of whatever\n\nstring you put in right there. So Doc ID right there will\n\nbe Doc ID right there. As\n\nyou can probably guess, we'll make use of templated resources anytime\n\nthat we want to allow a little bit more selection or variety\n\nor customization in what someone is asking for\n\nout of our MCP server. Implementing resources\n\nis pretty straightforward. So let's go back over to our editor and we're\n\ngoing to add in some resources to our server right away.\n\nAll right, so back over inside my editor, I will find the MCP\n\nserver.py file. I'm then going to scroll down a\n\nlittle bit and I'm going to find some comments for writing\n\na resource to return all document IDs and\n\nwriting a resource to return the contents of a particular\n\ndocument. Now for this first one right here, I\n\nput in the comment Document IDs. Remember\n\nfor us, our document IDs are essentially the\n\nname of the document. So for us, we're really just returning\n\nthese IDs. They're going to serve the purpose of the name. That\n\nmeans we can put them directly into that autocomplete element.\n\nAll right, so to make our resource, I'm going to delete\n\nthat to do. and then I'll add in an MCP.resource.\n\nThe first argument is going to be the URI for accessing\n\nthis thing. Again, it's kind of equivalent to a route handler.\n\nSo I will use docs, colon slash\n\nslash documents, and I'm also going\n\nto add in a MIME type of application\n\nslash JSON. A resource can\n\nreturn any type of data, so it can be plain text,\n\nit can be JSON, it can be binary data, anything.\n\nIt's up to us to kind of give our client a hint\n\nas to what kind of data we are returning. To do\n\nso, we're going to define this MIME type. A MIME\n\ntype of application slash JSON is a hint to\n\nour client, who's eventually going to ask for this resource\n\nright here, that we're going to be sending back a string that\n\ncontains some structured JSON data. And\n\nso it would be up to our client to de-serialize\n\nthat data, or essentially turn it into some usable data\n\nstructure. Underneath that decorator, I'll\n\nwrite out my function of list_docs, and\n\nI'm going to return a list of strings. And\n\nthen inside there, I will return list_docs\n\nkeys. So just take all the keys out of that dictionary and\n\nturn it into a list, and I'm going to return it. Now,\n\nyou'll notice that we are not returning distinct JSON here.\n\nIn other words, we're not actually returning a string. The MCP\n\nPython SDK is going to automatically take whatever we return\n\nand turn it into a string for us. All\n\nright, let's take care of our second resource. So I'm going\n\nto delete that comment and then replace it with MCP\n\nresource, docs, colon\n\nslash slash documents. And then this time I\n\nwant a templated resource because I'm putting in this\n\nwildcard right here. And\n\nthen my mind type this time around, just for a little\n\nbit of variety, I'm going to be returning plain\n\ntext because it's going to be just the contents of the document.\n\nAnd I'm not going to wrap it up in any kind of structure. Now,\n\njust so you know, in a real application, something\n\nlike read a document, I would probably return\n\nan entire document record. So some kind of\n\ndictionary that contains maybe the ID, the\n\ncontent, the author name, the author ID, and\n\nstuff like that. But just for the sake of an example, I'm\n\ngoing to return just the text at the document to show\n\nyou how we would normally return plain text. So\n\nin this scenario, my MIME type would be text slash plane,\n\nand then I will make fetch_doc.\n\nI'm going to take doc_id, which is going to be a string,\n\nand I'm going to return a string. Once again, whatever\n\nword you put right there, it's going to show up as a\n\nkeyword argument inside of your function. If we\n\nadded in some additional parameters inside of here, such\n\nas maybe doc_type or something like that, it would\n\njust show up as an additional keyword argument\n\nlike so. Then\n\ninside of here, I'm going to first make sure that the ID that this person\n\nis asking for actually exists. So if doc_id\n\nnot in docs, I'm\n\ngoing to raise a ValueError with\n\nan f-string that says doc with ID not\n\nfound. And then if we get past that check, I'll\n\nreturn docs[doc_id]. And\n\nthat's it. Now let's try testing this stuff out inside\n\nof our MCP Inspector once again. So\n\nremember at our terminal, we can run the command UVicorn,\n\nmcptest.mcpserver:app --reload.\n\nThat's going to start up a web server at port 6277\n\nor C_VI 6274 as the default. So I'm going\n\nto make sure I open that up inside my browser. Here\n\nwe go. I'll click connect. I'll then find\n\nresources. And then I should be able to list\n\nout all the different resources that are available. Now when\n\nI list out resources, this is going to be specifically static\n\nor direct resources. So I'll see only docs\n\nslash documents. And then I can separately list\n\nout all my different resource templates. And so I'll see\n\nthat I have one resource template of fetch_doc.\n\nI can first try to run the slash documents\n\nright here. We'll see what we get back. So this\n\nis the actual message, the exact structure that\n\ngets returned from our MCP server. You'll\n\nnotice that it has a text property and inside there is all\n\nthe data that we are returning serialized as JSON\n\nstring. So again, it would be up to us inside\n\nof our CLI application to take this text right here and\n\ndeserialize it from this JSON string into\n\na usable list of strings. Then\n\nwe can also test out fetch_doc. So I'll click on that.\n\nI have to enter a doc ID. So I'm going to put in.\n\nI want to read the report.pdf\n\nfile. And I'll read\n\nthe resource. And now I should see the contents\n\nof that particular document. And you'll notice this\n\nis around. Once again, I get a text slash plain. So that's\n\na hint to me that this is plain text. And I should\n\nnot attempt to deserialize it from JSON in\n\nany way."
+        }
+      ],
+      "total_transcript_chars": 10424,
+      "errors": []
+    },
+    {
+      "index": 10,
+      "section": "Connecting with MCP clients",
+      "title": "Accessing resources",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296695",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:55.838Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Accessing resources",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "hA05m4TZ",
+          "video_title": "09 - 008 - Accessing Resources.mp4",
+          "duration_s": 278,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "We have defined two separate resources inside of\n\nour MCP server. So now our client needs\n\nthe ability to request these resources. To\n\ndo so, we're going to add in a single function inside\n\nof our MCP client. And remember, this\n\nMCP client is going to have some functionality that we're\n\nputting together that is going to be used by the rest of our application.\n\nAnd I've already put together that code already. So somewhere\n\nelse inside this project, something is going to try\n\nto make use of this function that we're about to add into\n\nthe MCP client. To get started, I'm going\n\nto open up the MCP client file again. I'm\n\ngoing to scroll down and find\n\nread resource right here. So\n\nour goal inside here is to read a particular\n\nresource by making a request off to our MCP server\n\nand then parse the contents that come back depending upon its\n\nmind type and then just return whatever data\n\nwe get. So you'll notice that a argument\n\nto it is the URI. This is going to be the URI of\n\nthe resource that we want to fetch from the server.\n\nIn order to make request, just to get all\n\nof our types nicely, we're going to add two imports\n\nat the very top of the file. I'm going to add in an\n\nimport for the JSON module. And from\n\nPyDientTik, I will import any URL.\n\nThen I'll go back down to\n\nour read resource function. I'm going to clear\n\nout the comment in the return statement. Then I'll\n\nget a result from calling a wait. Self\n\nsession. I want to read resource. And\n\nthen again, this is really just to get the types to work out. We're\n\ngoing to put in a any URL with the input\n\nURI. Then\n\nI'm going to take from that result. response\n\nor excuse me, result contents\n\nat zero. And I want to make this clear\n\nright here why we were adding this in. So just a moment ago inside\n\nof our inspector, we saw the response we get back. So\n\nthis is essentially that result variable. Result\n\nhas a contents list. And there's going\n\nto be a list of elements inside there. We really only care about\n\nthe very first one. So I want to get the first dictionary.\n\nI want to access the type property and the mind\n\ntype. I want specifically the MIME type because\n\nit's going to help me understand what kind of data we got back. If\n\nit is JSON, then I want to make sure I parse the text\n\nas JSON and return that result. So let me show\n\nyou how we're going to do that. I'm going to add in a\n\nif is instance of\n\nresource types text resource\n\ncontents. And inside there, if\n\nresource, mime, type is\n\nequal to application JSON. So this\n\nis our hint in use. If the server told us that it's\n\ngiving us back some JSON, we need to make sure that we parse\n\nthe text content as JSON. So\n\nI will return in that case a JSON loads of resource.text.\n\nAnd then otherwise, if we don't fall into that if statement and return\n\nearly, I want to just return resource.text.\n\nSo in this scenario, we'd be returning the text as just plain\n\ntext or not parsing anything. So this would really\n\nbe the case in which we get back the contents of a single\n\ndocument. All right, so\n\nthat should really be it. We've got our read resource\n\nput together. Now again, I want to remind you, I\n\nknow I've said this several times, but I just want to remind you because I\n\nthink it might be a little bit unclear. The code that we're\n\nwriting inside of the MCP client is being used from several\n\nother places inside of this code base. So\n\nsomewhere else in this code base, we're going to be calling that\n\nfunction that we just put together to get the list of document\n\nnames and then eventually get the contents of a document\n\nto put into a prompt. So at this point,\n\neverything should essentially work because the rest of the work has already\n\nbeen done for us. So with that in mind, let's\n\ngo back over to our terminal and we're gonna test out our CLI application\n\nagain and see if this mention feature works. Okay,\n\nso back over here, I'll do a uvrun\n\nmain.py and now I should be able to say something\n\nlike what's in the at and there\n\nwe go, I see my list of resources and I can use the arrow\n\nkey to scroll through. Once I am at a resource,\n\nI like, I'll just hit space and we'll insert\n\nthat resource. So what's in the report.pdf\n\ndocument And now, I can tell you\n\nthat everything is working as expected here. In other\n\nwords, the contents of this document is being sent off\n\nto Claude inside the prompt. So if I submit this,\n\nI should see an immediate response and it's going to tell me what is inside\n\nof Report PDF. So this time around, Claude did\n\nnot have to use a tool to read the contents of\n\nthe document. All right, so that is resources.\n\nAgain, we make use of resources to expose some\n\namount of information from our MCP server."
+        }
+      ],
+      "total_transcript_chars": 4681,
+      "errors": []
+    },
+    {
+      "index": 11,
+      "section": "Connecting with MCP clients",
+      "title": "Defining prompts",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296698",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:57.421Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Defining prompts",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "iTkIPnL7",
+          "video_title": "09 - 009 - Defining Prompts.mp4",
+          "duration_s": 464,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Last major focus we're going to have inside of our MCP server\n\nis going to be on prompts. Once again, just like\n\nwe did with resources, we're going to implement a small feature\n\ninside of our project. And we're going to use this feature to\n\nunderstand what prompts are all about, just like we did with\n\nresources a moment ago. Let me tell you about the feature we're\n\ngoing to add into our program. We're going to add in\n\nsupport for slash commands. So\n\nfor example, I want to have a format command. I've\n\ngot some screenshots over here of how it's going to work.\n\nWhenever user types into slash, we're going to list out some number\n\nof commands that are supported by our application. For\n\nright now, we're going to have just one command called format. So\n\nif I type in just slash, I should see a little autocomplete\n\nright here, and the only autocomplete option should be format.\n\nIf I then select Format, I should be prompted\n\nto add in some document ID after it. So\n\none of our different document names like report.pdf or\n\nwhatever else. Then whenever user runs\n\nthis command, the goal is to get Claude to\n\nreformat this document using Markdown\n\nsyntax. So in other words, take the plain\n\nstring that we have without any special formatting tied to\n\nit inside of each of our documents right now. Remember,\n\ninside of our MCP server, our current document\n\ncontent is just plain text. We want to feed\n\nthis into Claude and somehow get Claude to rewrite\n\nit using Markdown syntax. So I would\n\nexpect to see some output like this, something that says, I'll\n\nhelp you reform out the document. Claude is then going\n\nto use a tool to read the contents of the document. And\n\nthen finally, inside the final response, I want to see the content\n\nof that document rewritten down here in Markdown\n\nsyntax. Now, there's something interesting about\n\nthis feature that I want to point out. The real core\n\nof this feature, like the real goal here, is to allow\n\na user to reformat a document into\n\nMarkdown syntax. And that is an operation\n\nthat actually doesn't require you and I,\n\nthe developers, to write out any code to implement.\n\nWhat do I mean by that? Well, a user can already\n\nlaunch our CLI and say something like reformat\n\nthe report.pedia file in\n\nmarkdown syntax.\n\nI use your can already do this. No issue whatsoever.\n\nAnd Claude is going to do a reasonable job of it. It's going to take\n\nthe contents of our document and reformat it into markdown.\n\nAnd as you can see right here, it worked entirely perfectly.\n\nSo what are we really doing with this feature? Well,\n\nthe thought process here is that if we just left this up to\n\nusers and allowed them to manually type in something\n\nlike convert this to Markdown, they might get a OK\n\nresult, but they might get much better result\n\nif they had a really strong prompt that is custom\n\ntailored for this particular scenario of converting a\n\ndocument into Markdown. So a user might be a lot\n\nhappier if you and I sat down as\n\nthe MCP server authors and wrote out and\n\ntested and evaluated and went through the entire process of evaluating\n\nour really thorough, fantastic prompts\n\nlike the one you see on the right hand side. So again, just\n\nrepeat, yes, a user can execute this entire workflow\n\non their own, but if they use this fancy prompt over\n\nhere, instead, well, I think they would be all the better.\n\nThis is the real goal of the prompts feature inside\n\nof MCP servers. The thought here is that\n\nahead of time, we can define a set of prompts inside\n\nof our server that are custom tailored to whatever\n\nour server is really specialized to do. In our case,\n\nour server is all about managing documents, reading\n\ndocuments, editing documents, and so on. So we might\n\ndecide to add in a set of prompts that are very\n\nhigh quality that have been evaluated and tested, and\n\nwe know that they work in a wide variety of different scenarios. We\n\ncan then expose these prompts for use inside\n\nof any client application, like the CLI app that\n\nwe are putting together right now. Now, one thing I want to point\n\nout here is that we could develop this prompt and just\n\nput it directly into our CLI code base.\n\nThat is totally possible. We could do that, obviously. But\n\nagain, the thought here is that your MCP server that\n\nmight specialize in some particular task might\n\nexpose some number of prompts that people can just come and use\n\nwithout having to worry about developing them ahead of time.\n\nTo define a prompt inside of our MCP server, we're going to write\n\nout a little bit of syntax very similar to the tools and\n\nresources we have already put together. We will use the prompt\n\ndecorator. We'll add a name to the prompt and\n\noptionally a description as well. Then whenever\n\nthe client asks for this prompt, we'll send back a list\n\nof messages. These are actual user and assistant\n\nmessages. So we can take the messages and send them off\n\nto Claude directly. All right, so let's go over\n\nto our server, and we're gonna try putting together our own prompt.\n\nAnd just like you see right here, it's gonna be all about taking the contents of\n\na document and somehow rewriting it in Markdown\n\nformat. Okay, so back inside my editor,\n\nI'm gonna find my MCP server file. I'm gonna go down\n\na little bit to the comment about rewriting\n\na document in Markdown format. I'll\n\ndelete that to do, and then I'll add\n\nin a MCP prompt, the\n\nname of format, and\n\na description of rewrites the contents\n\nof the document in Markdown format.\n\nI'll then add in an actual implementation. So\n\nformat document, I can receive\n\nas an argument a doc ID, and\n\nthen optionally we can add in a field description here\n\nas well, just like we did with our tool earlier\n\non. So I can optionally add in a field with\n\na description of ID of the\n\ndocument to format. And I'm also going to add\n\nin a type annotation of string. Just make sure that's\n\nreally clear as well. From this function, we are going to return\n\na list of messages.\n\nI'm going to make sure I add in an import for this base thing at\n\nthe top right away. So right underneath\n\nthe existing MCP server import, I will add in from\n\nMCP server fast MCP\n\nprompts import base. Then\n\nback down at the bottom. Inside of here, we're going to define\n\nour very well-tested, very well-evaluated prompt.\n\nI wrote a prompt out ahead of time. I'm going to paste it in like\n\nso. So this prompt is just asking Claude\n\nto take in a document ID. Implicitly,\n\nwe are kind of asking Claude to fetch the document ID's\n\ncontents using the redocument tool. And then after\n\ngetting that document, just go ahead and rewrite it with Markdown syntax.\n\nAnd finally, after rewriting it, edit the document\n\nas well to save those updates inside of our server.\n\nNow, after defining this prompt, we're then going\n\nto return a list of messages. So down here,\n\nI'm going to return a list with base\n\nuser message, and I'm going to feed in\n\nour prompt that we just wrote out to it, like so.\n\nNow I'm going to save this file, and then let's go start\n\nup our MCP development inspector and test\n\nout this prompt from that interface. So at my\n\nterminal, I'll run that same command again, and then\n\nnavigate to that address inside of my browser. I'll\n\nmake sure I connect to my server. I'll then find the\n\nprompts section. I'm going to list out all the different\n\nprompts that are available to us. And at this point in time, we have one\n\nprompt, just format. So I click on\n\nformat, and then I have to enter in a document ID right here.\n\nLet's, this time around, maybe we'll put in a\n\ndocument ID of how about outlook.pdf.\n\nSo I'll put that in. And then get\n\nprompt. And then here is our list of messages.\n\nSo these have been put together ahead of time. I've got one\n\nmessage part here. So a text part with\n\nour full prompt right there. We could see that\n\nthe document ID was interpolated into it. Now\n\nthat we have these messages, we can send them off to Claude.\n\nAnd hopefully we're going to get back some appropriate kind of response.\n\nSo once again, the entire idea here behind these\n\nprompts, we might implement inside of our MCP server, is\n\nthat the prompts we are defining are going to be well-tested,\n\nwell-evaluated, really specialized to one particular\n\nuse case."
+        }
+      ],
+      "total_transcript_chars": 8202,
+      "errors": []
+    },
+    {
+      "index": 12,
+      "section": "Connecting with MCP clients",
+      "title": "Prompts in the client",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296692",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:58.493Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "Prompts in the client",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "97X42Z8O",
+          "video_title": "09 - 010 - Prompts in the Client.mp4",
+          "duration_s": 181,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "Our last major task is to implement some functionality\n\ninside of our MCP client and allow us to list\n\nout all the different prompts that are defined inside the MCP\n\nserver and also get a particular prompt\n\nwith some variables interpolated into it. So\n\nlet's first implement list prompts. I will delete the\n\ncomment and replace it with a result is\n\nawait, self, session,\n\nlist prompts, and then I will return\n\nresult.prompts. And that's pretty much it.\n\nAnd then get prompt. Now to be clear, when we get a\n\nindividual prompt, we're going to be given some number of arguments.\n\nThese arguments will eventually show up inside\n\nof our prompt function. So for example, inside\n\na format document right here, we expect to receive a document\n\nID. Inside of this args\n\ndictionary, the expectation is that there will be a document\n\nID key. And that will be passed in to\n\nthe appropriate function over here. And then we will get that\n\nvalue interpolated into the prompt itself. So\n\ninside the get prompt function, I will get a result\n\nfrom self session, get\n\nprompt. I'm going to pass in the prompt name. That's the\n\nname of the prompt I want to retrieve. And then I'll pass in the\n\narguments. And then I will return result\n\n.messages. So those are the messages coming\n\nback. They form some kind of conversation that we want to\n\nfeed directly into Claude. And that's\n\nit. That's all we have to do for our client. So\n\nnow we can test this out inside of the CLI itself. I'll\n\nflip back over, run the project again. And\n\nnow if I put in a slash right here, I'll see that I\n\ncan access this format command. Now format\n\nis really just the name of the prompt that we're going to invoke.\n\nSo if I select that and then hit space, I'll\n\nthen be asked to select one of the different documents and\n\nyou'll go with plan.md. I'll hit enter.\n\nAnd then we're taking that entire prompt, really just\n\nthat single user message, and finiate directly\n\ninto Claude. So Claude now has the instructions\n\nto go and reformat a document into Markdown syntax.\n\nAnd it has also been given the ID of the document that\n\nwe want to reformat. So the first thing it needs to do here\n\nis go and fetch that document's contents. And it\n\nwill do so by using the Git document tool.\n\nAnd then finally, Claude is going to respond with the markdown\n\nversion of this document. So here is the document\n\nwith a bunch of markdown syntax inside of it. All\n\nright, since it looked like this work just fine, let's do a\n\nquick recap on prompts and make sure we understand what they are all\n\nabout. We begin by writing out an\n\nevaluating a prompt that has some relevancy\n\nto our MCP server's purpose. In our case,\n\nwe were making a document server. So having some functionality\n\nor something about rewriting a document in a different\n\nstyle, I think it kind of makes sense.\n\nOnce we have put our prompt together, we'll define a prompt\n\ninside the MCP server. And then our client can\n\nask for that prompt at any point in time. When\n\nwe ask for the prompt, we will put in some number of arguments\n\nthat will be provided to this prompting function\n\nright here as keyword arguments. And then our function\n\ncan make use of those keyword arguments inside the prompt itself."
+        }
+      ],
+      "total_transcript_chars": 3207,
+      "errors": []
+    },
+    {
+      "index": 13,
+      "section": "Assessment and wrap Up",
+      "title": "Final assessment on MCP",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297196",
+      "types": [
+        "lesson-modular"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:32:59.676Z",
+      "extraction_method": "modular_text",
+      "title_from_player": "Final assessment on MCP",
+      "modular_text": "Loading...",
+      "modular_html": "\n            \n                \n\n\n<div  class=\"course-scrollable-content course-text-content quiz\" data-quiz=\"i21u9dt0azxu\">\n\n    <div class=\"loading\">\n        <div class=\"text-center spin\">\n            <i class=\"fa fa-spinner fa-spin\" aria-hidden=\"true\"></i>\n        </div>\n        <div class=\"text-center\">\n            <h2 class=\"sj-text-quiz-loading\"><span>Loading...</span></h2>\n        </div>\n    </div>\n</div>\n\n<script>\n    var question_start_time;\n    var question_finish_time;\n    var count;\n    var quiz_response_id;\n    var question_id;\n    var button_clicked = false;\n\n    // Should ONLY be set in startQuiz().\n    var initialQuizLoad;\n    var startQuizTime;\n\n    // Null on initial load, then initialized in quiz_question.html\n    var endQuizTimeInMs;\n    var countdownIntervalId;\n\n    const wrapperSelector = \"div.quiz[data-quiz=i21u9dt0azxu]\";\n\n    function disableButtons() {\n        button_clicked = true;\n        $(wrapperSelector + \" button\").attr('disabled', true);\n    }\n\n    function enableButtons() {\n        button_clicked = false;\n        $(wrapperSelector + \" button\").attr('disabled', false);\n    }\n\n    function showQuiz(data) {\n        if (data.success) {\n            // \n            // \n            if (data.force_refresh) {\n                location.reload();\n            }\n\n            $('.quiz').html(data.quiz_html);\n\n            \n\n            count = data.count;\n            quiz_response_id = data.quiz_response_id;\n            question_id = data.question_id;\n            question_start_time = new Date();\n            \n                if (data.unlock_next_lesson) {\n                    unlockNextLesson(data);\n                }\n            \n\n            Prism.highlightAll();\n        } else {\n            console.error(data.error_msg);\n        }\n        enableButtons();\n    }\n\n    function getRequestData(submit) {\n        var requestData = {\n            'lesson_id': '37j9zhykhzg2e',\n        \n            'published_course_id': '3ep4q1d5v7hue',\n        \n            'quiz_response_id': quiz_response_id,\n            'question_id': question_id\n        };\n        \n            requestData['quiz_id'] = 'i21u9dt0azxu';\n        \n        if (submit) {\n            \n            var answer = $('input[name=\"answer\"]:checked');\n            if (answer.length > 0) {\n                requestData['answer'] = $(answer[0]).val();\n            }\n            var chosen_answers = $('input[name=\"chosen_answers\"]:checked');\n            if (chosen_answers.length > 0) {\n                requestData['chosen_answers'] = [];\n                chosen_answers.each( function(i, li) {\n                    requestData['chosen_answers'].push($(li).val());\n                });\n            }\n            var response_text = $('input[name=\"response_text\"], textarea[name=\"response_text\"]');\n            if (response_text.length > 0) {\n                requestData['response_text'] = $(response_text[0]).val();\n            }\n\n            const linearScaleChoiceRadioSelector = 'input[name=\"linear-scale-question\"]'\n            const selectedLinearScaleAnswer = document.querySelector(`${linearScaleChoiceRadioSelector}:checked`);\n            if (selectedLinearScaleAnswer) {\n              requestData['answer'] = selectedLinearScaleAnswer.value;\n            }\n\n            const $uploadedContentInput = document.querySelector('#id_uploaded_content');\n            if ($uploadedContentInput) {\n              requestData['uploaded_content'] = $uploadedContentInput.value;\n            }\n\n            requestData['question_number'] = count;\n            requestData['start_time'] = question_start_time ? question_start_time.toISOString() : null;\n            requestData['finish_time'] = question_finish_time ? question_finish_time.toISOString() : null;\n        }\n        else {\n            \n            requestData['question_number'] = count - 2;\n        }\n        return requestData;\n    }\n\n    function startQuiz(goToStart, initialLoad) {\n        var requestData = {\n            'lesson_id': '37j9zhykhzg2e',\n            \n                'published_course_id': '3ep4q1d5v7hue',\n            \n        };\n\n        \n            requestData['quiz_id'] = 'i21u9dt0azxu';\n        \n\n        if (initialLoad) {\n            requestData['load'] = true\n        }\n\n        else if (goToStart) {\n            requestData['go_to_start'] = true\n        }\n        else {\n            endQuizTimeInMs = undefined;\n            initialQuizLoad = true;\n            startQuizTime = new Date();\n            requestData['start_time'] = startQuizTime.toISOString();\n        }\n\n        \n            var url = '/quiz/start_quiz';\n        \n\n        $.post(url, requestData)\n            .done(function (data) {\n                showQuiz(data);\n            })\n            .fail(function() {\n                enableButtons();\n            });\n    }\n\n    function answerQuestion() {\n        if (!button_clicked) {\n            disableButtons();\n            question_finish_time = new Date();\n            var requestData = getRequestData(true);\n            \n                var url = '/quiz/next_question';\n            \n\n            $.ajax({\n                url: url,\n                type: 'POST',\n                data: requestData,\n                dataType: 'json',\n                traditional: true\n            })\n            .done(function (data) {\n                showQuiz(data);\n                \n                    courseCompletionCallback(data);\n                \n            })\n            .fail(function () {\n                enableButtons();\n            });\n        }\n    }\n\n    function padWithZero(num) {\n        return (num >= 0 && num < 10) ? \"0\" + num : num + \"\";\n    }\n\n    function setupQuizClickHandlers() {\n        $(wrapperSelector).on('click', '.create_quiz', function () {\n            if (!button_clicked) {\n                disableButtons();\n                startQuiz(false, false);\n            }\n        });\n\n        $(wrapperSelector).on('click', '.redirect_to_start_page', function() {\n            if (!button_clicked) {\n                disableButtons();\n                startQuiz(true, false);\n            }\n        });\n\n        $(wrapperSelector).on('click', '#answer_question', answerQuestion);\n\n        $(wrapperSelector).on('click', '#prev_question', function () {\n            if (!button_clicked) {\n                disableButtons();\n                var requestData = getRequestData(false);\n\n                \n                    var url = '/quiz/prev_question';\n                \n\n                $.post(url, requestData)\n                    .done(function (data) {\n                        showQuiz(data);\n                    })\n                    .fail(function () {\n                        enableButtons();\n                    });\n            }\n\n        });\n\n        $(wrapperSelector).on('click', '.show_answers_toggle, .hide_answers_toggle', function () {\n            $('.question-responses').slideToggle('fast');\n            $('.hide_answers_toggle').toggle();\n            $('.show_answers_toggle').toggle();\n        });\n\n        $(wrapperSelector).on('keyup', 'input[type=text]', function(e) {\n            if (e.keyCode == 13) {\n                $(this).blur();\n                answerQuestion();\n            }\n        });\n    }\n\n    $(document).ready(function () {\n        setupQuizClickHandlers();\n        startQuiz(false, true);\n    });\n</script>\n            \n        ",
+      "modular_html_length": 7362,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [],
+      "total_transcript_chars": 0,
+      "errors": []
+    },
+    {
+      "index": 14,
+      "section": "Assessment and wrap Up",
+      "title": "MCP review",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296691",
+      "types": [
+        "lesson-video"
+      ],
+      "complete": true,
+      "extracted_at": "2026-04-11T11:33:00.853Z",
+      "extraction_method": "video_meta_only",
+      "title_from_player": "MCP review",
+      "modular_text": null,
+      "modular_html": null,
+      "modular_html_length": 0,
+      "images": [],
+      "external_links": [],
+      "code_blocks": [],
+      "iframes": [],
+      "youtube_ids": [],
+      "videos": [
+        {
+          "platform": "jwplayer",
+          "media_id": "uVeYx90Y",
+          "video_title": "09 - 011 - MCP Review.mp4",
+          "duration_s": 252,
+          "available_caption_languages": [
+            "English",
+            "French",
+            "German",
+            "Japanese",
+            "Korean",
+            "Portuguese",
+            "Spanish"
+          ],
+          "transcript_english": "We are all done with our project, but before we move on, I want\n\nto do a quick recap on the three server primitives\n\nthat we learned about. So tools, resources, and prompts.\n\nIn particular, I want to highlight something interesting about each of\n\nthese. Namely, what part of an app is really\n\nresponsible for running each? In other words, in\n\na typical application, who is really running each\n\nof these things and who benefits from them? Well,\n\nwe would say that tools are model controlled. This\n\nmeans that Claude alone is really responsible for\n\ndeciding when to run a given tool. Resources\n\nare app controlled. In other words, some code\n\nrunning inside of your app is going to decide that\n\nit needs some data provided by a resource. It will\n\nbe your app's code that decides to execute a resource\n\nand use the return data in some way, maybe by\n\nusing that data in the UI or something like that. In\n\nour case, we fetch a resource and then use\n\nthat data inside the UI to provide a list of autocomplete\n\noptions. We also fetch a resource\n\nto augment a prompt. Both of those things were really application-related\n\ncode that was authored by you and I to\n\nput together. And finally, prompts\n\nare really user-controlled. So a user decides\n\nwhen a prompt is going to run. A user might\n\nstart the invocation of a prompt by clicking on some UI\n\nelement, like a button or a menu option,\n\nor they might make use of a slash command, which is what we\n\ndid. The reason I highlight what is controlling each\n\nof these is to give you some idea of their purpose.\n\nSo if you ever need to add capabilities to\n\nClaude, you're probably going to want to look at\n\nimplementing some tools inside of your MCP server or\n\nconsuming some server's tools through\n\nyour MCP client. If you ever\n\nwant to get some data into your app for the purposes of showing\n\ncontent in UI or something similar, then you\n\nprobably want to use a resource. And if you ever\n\nwant to implement some kind of predefined workflow, you\n\nprobably want to look at prompts. Now\n\nyou can see examples of all these ideas inside\n\nof the official Claude interface at\n\nClaude.ai. So here's what it currently looks\n\nlike for me. You'll notice that underneath the\n\nmain chat input are some buttons right here. If\n\nI click on one, and then click on one of these\n\nexamples, you'll see that I immediately dove\n\ninto a chat. So this was a user-controlled\n\naction. I, as the user, decided to start\n\noff this particular workflow, and I'm making use of a\n\nprompt that was probably already written ahead of time\n\nand probably has been optimized in some way. So\n\nto implement that list of buttons right there, we would probably want\n\nto put together a series of different prompts inside of a MCP\n\nserver. Likewise, if I go back and\n\nmaybe click on this little tab right here, the plus button,\n\nyou'll notice that I have a add from Google Drive button.\n\nNow, I'm not going to click on it because it's going to show some of my internal\n\ndocuments. But if I click on that button, I'm going to see some\n\ndocuments that I can add into this chat as some context.\n\nKnowing what documents to actually render in that list,\n\nand then whenever I click on one, automatically injecting its\n\ncontents into the context of this chat, that is all\n\napplication-related code. So it is solely\n\nthe application that needs to know the list of documents\n\nto render here. And that's, again, specifically\n\nUI-related elements. So to implement\n\nthat listing of documents from Google Drive, I\n\nwould probably look at implementing a resource inside\n\nof an MCP server. And then, finally, if I\n\nenter in a message to this chat of something like,\n\nwhat is squared three use JavaScript to calculate the value\n\nand send it off, I'm clearly expecting Claude\n\nto somehow execute some JavaScript code, which would\n\nlikely be done through the use of a tool. In\n\nthis case, the decision to use a tool was 100% model\n\ncontrolled. It is the model that decided to use some\n\nJavaScript tool execution. To implement something\n\nlike this inside of an MCP server, we'd likely\n\nwant to, you guessed it, provide a tool.\n\nSo in total, that's our three different server\n\nprimitives. And each one is really intended to\n\nbe used by a different portion of your overall application.\n\nSo we got tools which are generally going to serve your model,\n\nresources, which are generally going to serve your app,\n\nand prompts which are going to serve your users. And\n\nonce again, these are high level guidelines. And the only reason\n\nI mentioned them is to just give you a sense of when\n\nyou should use each of these primitives, depending upon what\n\nyou are trying to put together."
+        }
+      ],
+      "total_transcript_chars": 4647,
+      "errors": []
+    }
+  ],
+  "stats": {
+    "total_lessons": 14,
+    "lessons_with_video": 12,
+    "lessons_with_transcript": 12,
+    "lessons_with_modular_text": 1,
+    "lessons_with_youtube": 0,
+    "lessons_with_code": 0,
+    "total_transcript_chars": 65138,
+    "errors": 0
+  }
+}

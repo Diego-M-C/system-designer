@@ -1,0 +1,495 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "system-designer",
+  "version": "0.1.0",
+  "schema_version": 1,
+  "release_date": "2026-04-29",
+  "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, and on-demand orchestration. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
+
+  "principles": [
+    {
+      "id": "P1",
+      "name": "Portability",
+      "rule": "Every artifact emitted runs in any LLM with file-system access. No Claude Code-only APIs, no proprietary hooks, no MCP-mandatory dependencies in runtime. Fallbacks mandatory for every optional capability.",
+      "enforcement": "portability_scan in self_audit; deduct 5pts per Claude Code-specific dep, 10pts per platform-only API; target score >=95"
+    },
+    {
+      "id": "P2",
+      "name": "Calibrated probabilities",
+      "rule": "Every output, decision, alternative, estimate, KPI target, prediction MUST carry a confidence % or range. Forbidden tokens: 'best', 'always', 'guaranteed', bare numerics without uncertainty band.",
+      "enforcement": "calibration_scan in self_audit (regex + LLM check); target violations = 0"
+    },
+    {
+      "id": "P3",
+      "name": "On-demand generation",
+      "rule": "Nothing emitted for show. Each artifact is emitted only if the interview phase confirms it is needed.",
+      "enforcement": "interview_answers cross-referenced against artifacts_emitted in audit/self_audit.md"
+    },
+    {
+      "id": "P4",
+      "name": "Prompt-architect dependency",
+      "rule": "Every prompt this skill emits — including this skill's own master orchestrator — is composed through prompt_architect/SKILL.md. No raw, un-audited prompts exit.",
+      "enforcement": "every emitted *.md prompt has a corresponding row in audit/self_audit.md with rubric pass/fail"
+    },
+    {
+      "id": "P5",
+      "name": "Living documentation",
+      "rule": "Every emitted artifact is a living document. tracking/project.json, tracking/sessions/*, tracking/decisions.md, tracking/errors.md, audit/audit_sheet.xlsx are updated on every relevant action.",
+      "enforcement": "child system's CLAUDE.md inherits the same rule; static-doc invariant violation flagged at audit"
+    }
+  ],
+
+  "dependencies": {
+    "hard": {
+      "prompt_architect": {
+        "path": "./prompt_architect/SKILL.md",
+        "required": true,
+        "purpose": "Composes every prompt emitted (P4)"
+      },
+      "tag_taxonomy": {
+        "path": "./prompt_architect/prompt_editor_skill.json",
+        "required": true,
+        "purpose": "Authoritative source for valid prompt tags"
+      },
+      "prompt_architect_references": {
+        "path": "./prompt_architect/references/",
+        "required": true,
+        "files": [
+          "tag-order.md",
+          "tier-spines.md",
+          "cache-breakpoints.md",
+          "thinking-modes.md",
+          "best-practice-anchors.md"
+        ]
+      },
+      "system_generator_references": {
+        "path": "./references/",
+        "required": true,
+        "files": [
+          "calibrated_probabilities.md",
+          "portable_invocation.md",
+          "ai_error_catalog.md",
+          "eu_ai_act_mapping.md",
+          "scientific_report_format.md"
+        ]
+      },
+      "templates": {
+        "path": "./templates/",
+        "required": true
+      },
+      "wizard": {
+        "path": "./wizard/",
+        "required": true,
+        "files": [
+          "interview_questions.json",
+          "defaults.json"
+        ]
+      }
+    },
+    "soft": {
+      "context7_mcp": {
+        "purpose": "Library docs fetching primary path",
+        "fallback": "fetch() against URLs in templates/library_docs_manifest.tmpl"
+      },
+      "xlsx_write": {
+        "purpose": "Excel emission for audit_sheet",
+        "fallback": "CSV + MD sidecar with same data"
+      },
+      "parallel_subagent_spawn": {
+        "purpose": "3 parallel auditors",
+        "fallback": "sequential execution; documented in audit/self_audit.md#parallelism_fallbacks"
+      }
+    },
+    "reference": {
+      "eu_ai_act_corpus": {
+        "path": "./EU_AI_Act_guides/",
+        "purpose": "Regulatory base; AESIA implementation guides"
+      },
+      "eu_ai_act_checklists": {
+        "path": "./Checklists y ejemplos/",
+        "files_count": 13,
+        "purpose": "Per-area audit checklists; referenced from generated audit_sheet.xlsx"
+      },
+      "audit_example": {
+        "path": "./Ejemplo de hoja de AUDITORIA_HUMANA.xlsx",
+        "purpose": "Structure to mimic when generating audit_sheet"
+      },
+      "anthropic_corpus": {
+        "path": "./Informes_Cursos_Anthropic/",
+        "purpose": "17-course Anthropic best-practice corpus + master ref"
+      }
+    }
+  },
+
+  "phases": [
+    {"id": 1, "name": "read_context", "blocking": false, "outputs": ["scratchpad/context_loaded.json"]},
+    {"id": 2, "name": "interview", "blocking": false, "outputs": ["tracking/project.json#interview_answers"], "interruptible": true, "resumable": true},
+    {"id": 3, "name": "planning_brief", "blocking": false, "outputs": ["audit/planning_brief_session_0.md", "audit/planning_brief_session_0.json"]},
+    {"id": 4, "name": "GATE_1", "blocking": true, "type": "hitl_gate", "input_required": "user_approval"},
+    {"id": 5, "name": "scaffold", "blocking": false, "outputs": ["target_path/<all mandatory artifacts>"]},
+    {"id": 6, "name": "compose_prompts", "blocking": false, "outputs": ["target_path/<all child prompts>", "audit/self_audit.md#per_prompt_rubric"]},
+    {"id": 7, "name": "fetch_library_docs", "blocking": false, "outputs": ["target_path/library_docs/<lib>/<version>/"]},
+    {"id": 8, "name": "seed_tracking", "blocking": false, "outputs": ["target_path/tracking/", "target_path/memory/", "target_path/tracking/errors_catalog.json"]},
+    {"id": 9, "name": "emit_audit_sheet", "blocking": false, "outputs": ["target_path/audit/audit_sheet.xlsx", "target_path/audit/eu_ai_act_mapping.md"]},
+    {"id": 10, "name": "self_audit", "blocking": false, "outputs": ["target_path/audit/self_audit.md", "target_path/audit/evaluation_session_0.json"]},
+    {"id": 11, "name": "reflection", "blocking": false, "outputs": ["target_path/audit/reflection_session_0.md"]},
+    {"id": 12, "name": "GATE_2", "blocking": true, "type": "hitl_gate", "input_required": "user_approval"},
+    {"id": 13, "name": "handoff", "blocking": false, "outputs": ["target_path/HANDOFF.md"], "terminal": true}
+  ],
+
+  "hitl_gates": [
+    {
+      "id": 1,
+      "phase_after": "planning_brief",
+      "blocking": true,
+      "purpose": "Approve plan + alternatives before scaffolding",
+      "format_template": "templates/hitl_gate.md.tmpl",
+      "min_alternatives": 3,
+      "max_alternatives": 5,
+      "calibration_required": true,
+      "user_responses": ["letter_choice", "alternative_freeform", "STOP"]
+    },
+    {
+      "id": 2,
+      "phase_after": "reflection",
+      "blocking": true,
+      "purpose": "Approve generated tree + reflection before handoff",
+      "format_template": "templates/hitl_gate.md.tmpl",
+      "user_responses": ["APPROVE", "request_changes_freeform", "STOP"]
+    }
+  ],
+
+  "artifacts": {
+    "mandatory": [
+      {"path": "CLAUDE.md", "template": "templates/CLAUDE.md.tmpl", "purpose": "Child orchestrator entry-point"},
+      {"path": "README.md", "template": "templates/README.md.tmpl"},
+      {"path": "SPEC.md", "template": "templates/SPEC.md.tmpl"},
+      {"path": "SPEC.json", "template": "templates/SPEC.json.tmpl"},
+      {"path": "ARCHITECTURE.md", "template": "templates/ARCHITECTURE.md.tmpl"},
+      {"path": "HANDOFF.md", "template": "templates/HANDOFF.md.tmpl", "emitted_in_phase": "handoff"},
+
+      {"path": "tracking/project.json", "template": "templates/tracking/project.json.tmpl", "living": true},
+      {"path": "tracking/project.md", "template": "templates/tracking/project.md.tmpl", "living": true},
+      {"path": "tracking/kpis.json", "template": "templates/tracking/kpis.json.tmpl", "living": true},
+      {"path": "tracking/decisions.md", "template": "templates/tracking/decisions.md.tmpl", "living": true},
+      {"path": "tracking/errors.md", "template": "templates/tracking/errors.md.tmpl", "living": true},
+      {"path": "tracking/errors_catalog.json", "template": "templates/tracking/errors_catalog.json.tmpl", "living": true, "preloaded_count": 25, "auto_extending": true},
+
+      {"path": "tracking/sessions/0001_bootstrap/session.json", "template": "templates/tracking/session.json.tmpl"},
+      {"path": "tracking/sessions/0001_bootstrap/session.md", "template": "templates/tracking/session.md.tmpl"},
+      {"path": "tracking/sessions/0001_bootstrap/kpis.json", "template": "templates/tracking/kpis.json.tmpl"},
+      {"path": "tracking/sessions/0001_bootstrap/errors.jsonl", "init": "empty_jsonl"},
+      {"path": "tracking/sessions/0001_bootstrap/observations.jsonl", "init": "empty_jsonl"},
+      {"path": "tracking/sessions/0001_bootstrap/scratch.md", "init": "empty_md"},
+      {"path": "tracking/sessions/0001_bootstrap/checkpoint_decision.md", "template": "templates/tracking/checkpoint_decision.md.tmpl"},
+      {"path": "tracking/sessions/0001_bootstrap/inputs_outputs_perf.json", "template": "templates/tracking/inputs_outputs_perf.json.tmpl"},
+      {"path": "tracking/sessions/0001_bootstrap/phase.log", "init": "empty_log"},
+
+      {"path": "memory/MEMORY.md", "template": "templates/memory/MEMORY.md.tmpl"},
+      {"path": "memory/user.md", "template": "templates/memory/user.md.tmpl"},
+      {"path": "memory/project.md", "template": "templates/memory/project.md.tmpl"},
+      {"path": "memory/feedback.md", "template": "templates/memory/feedback.md.tmpl"},
+      {"path": "memory/reference.md", "template": "templates/memory/reference.md.tmpl"},
+
+      {"path": "audit/audit_sheet.xlsx", "template": "templates/audit/audit_sheet.xlsx.tmpl", "living": true, "incremental": true, "fallback": "audit/audit_sheet.csv + audit/audit_sheet.md"},
+      {"path": "audit/eu_ai_act_mapping.md", "template": "templates/audit/eu_ai_act_mapping.md.tmpl"},
+      {"path": "audit/self_audit.md", "template": "templates/audit/self_audit.md.tmpl"},
+      {"path": "audit/reflection_session_0.md", "template": "templates/audit/reflection_session_0.md.tmpl"},
+      {"path": "audit/evaluation_session_0.json", "template": "templates/audit/evaluation_session_0.json.tmpl"},
+      {"path": "audit/checklists/", "kind": "references_only", "source": "../Checklists y ejemplos/"},
+      {"path": "audit/assumptions.md", "template": "templates/audit/assumptions.md.tmpl"},
+
+      {"path": "docs/decisions/", "kind": "directory_with_README", "purpose": "1 ADR per strategic decision"},
+      {"path": "docs/architecture/", "kind": "directory_with_README"},
+      {"path": "docs/reports/imrad.md.tmpl", "template": "templates/reports/imrad.md.tmpl"},
+      {"path": "docs/reports/tripod_ai.md.tmpl", "template": "templates/reports/tripod_ai.md.tmpl"},
+
+      {"path": "library_docs/MANIFEST.md", "template": "templates/library_docs/MANIFEST.md.tmpl"}
+    ],
+    "on_demand": [
+      {"id": "child_orchestrator", "trigger": "interview.on_demand.orchestrator == true", "outputs": ["CLAUDE.md (autonomous orchestrator content)", ".claude/settings.json"]},
+      {"id": "skills_pack", "trigger": "interview.on_demand.skills_needed[].length > 0", "outputs": [".claude/skills/<skill_name>/SKILL.md (one per declared skill, each composed via prompt-architect)"]},
+      {"id": "agents_pack", "trigger": "interview.on_demand.agents_needed[].length > 0", "outputs": [".claude/agents/<agent_name>.md (each composed via prompt-architect)"]},
+      {"id": "tools_pack", "trigger": "interview.on_demand.custom_tools_needed[].length > 0", "outputs": ["tools/scripts/<tool_name>.{py,ts}", "tools/prompts/<tool_name>.md"]},
+      {"id": "dashboard_static_html", "trigger": "interview.dashboard == 'static_html'", "outputs": ["dashboard/index.html", "dashboard/build.{py,sh}"]},
+      {"id": "dashboard_streamlit", "trigger": "interview.dashboard == 'streamlit'", "outputs": ["dashboard/app.py", "dashboard/requirements.txt"]},
+      {"id": "dashboard_nextjs", "trigger": "interview.dashboard == 'nextjs'", "outputs": ["dashboard/<full nextjs scaffold>"]},
+      {"id": "git_init", "trigger": "interview.git_init == true", "outputs": [".git/", ".gitignore", "initial commit 'scaffold v0.1'"]},
+      {"id": "test_harness", "trigger": "interview.stack.language is set", "outputs": ["tests/<framework-specific scaffold>"]}
+    ]
+  },
+
+  "self_audit": {
+    "rubric": [
+      {"id": "tier_declared", "rule": "Every emitted prompt has tier declaration in metadata"},
+      {"id": "tag_count_in_tolerance", "rule": "Simple ±2 absolute; Medium/Complex ±20%"},
+      {"id": "canonical_order", "rule": "12-step spine respected"},
+      {"id": "mandatory_floor", "rule": "Complex prompts contain all 13 floor tags", "applies_to": "Complex"},
+      {"id": "tags_exist", "rule": "Every tag exists in prompt_editor_skill.json"},
+      {"id": "input_after_instructions", "rule": "<input> placed after all instruction blocks"},
+      {"id": "xml_well_formed", "rule": "No unclosed/mismatched tags; no duplicates"},
+      {"id": "calibration_clean", "rule": "Zero un-probabilistic assertions in templates"},
+      {"id": "portability_clean", "rule": "Zero Claude Code-specific runtime references"},
+      {"id": "bilingual_rule", "rule": "Prose ES, identifiers EN"},
+      {"id": "reasoning_separated", "rule": "Internal reasoning separated from <final_output>"},
+      {"id": "thinking_exclusivity", "rule": "<thinking> XML tag and extended-thinking API not both enabled"},
+      {"id": "temporal_placeholder", "rule": "<temporal_context> uses {{TEMPORAL_NOW}} placeholder, not hardcoded date"},
+      {"id": "cache_breakpoint_documented", "rule": "Cache-breakpoint placement documented"}
+    ],
+    "scans": {
+      "calibration_regex": "\\b(best|always|never|guaranteed|certain|impossible|definitely)\\b",
+      "portability_regex": "\\b(mcp__|TodoWrite|SubagentType|Skill\\(|claude_code_specific|EnterPlanMode)\\b"
+    },
+    "thresholds": {
+      "coverage_mandatory_artifacts_pct": 100,
+      "prompt_architect_audit_first_pass_rate_pct": 85,
+      "calibration_violations_max": 0,
+      "portability_score_min": 95,
+      "eu_ai_act_mapping_completeness_pct_high_risk": 95,
+      "max_audit_iterations_per_prompt": 3
+    }
+  },
+
+  "metrics": {
+    "kpis_per_session": [
+      "duration_estimated_min",
+      "duration_actual_min",
+      "errors_count",
+      "errors_by_severity",
+      "hitl_decisions_count",
+      "tests_created_count",
+      "coverage_added_pct",
+      "files_modified_count",
+      "tokens_consumed_estimate",
+      "rollbacks_count",
+      "tech_debt_added",
+      "eu_ai_act_audit_score_pct",
+      "agent_self_confidence_pct"
+    ],
+    "kpis_per_project": [
+      "sessions_completed",
+      "sessions_aborted",
+      "total_decisions_logged",
+      "total_errors_caught",
+      "total_errors_added_to_catalog",
+      "audit_pass_rate_pct",
+      "library_doc_freshness_days_p50",
+      "tokens_consumed_total"
+    ]
+  },
+
+  "token_budget": {
+    "default_max_tokens_per_run": 250000,
+    "warning_threshold_pct": 80,
+    "behaviour_at_warning": "emit warning to user via <final_output> at next gate; offer continue / pause / abort",
+    "behaviour_at_max": "emit partial-state report; STOP; ask for budget increase"
+  },
+
+  "calibration_rules": {
+    "forbidden_tokens_in_emitted_prose": ["best", "always", "guaranteed", "certain", "definitely", "impossible"],
+    "required_for_estimates": ["% confidence", "± range", "min-max bracket"],
+    "fit_percent_sum_constraint": "fit % across alternatives need NOT sum to 100; they are fit estimates per option, not probabilities of mutually exclusive outcomes",
+    "confidence_thresholds": {
+      "auto_proceed_min_pct": 90,
+      "hitl_required_below_pct": 70,
+      "refuse_below_pct": 50
+    }
+  },
+
+  "portability_rules": {
+    "tier_a_strict": "no Claude Code-specific identifiers in any runtime artifact",
+    "tier_b_relaxed": "Claude Code-specific identifiers allowed in optional convenience layers (e.g., .claude/commands/) only if equivalent platform-agnostic alternative also provided",
+    "abstract_tools_required": ["fs.read", "fs.write", "fs.list", "fs.mkdir", "fetch", "now", "prompt_architect"],
+    "fallback_required_for": ["xlsx.write", "context7.fetch", "parallel_subagent_spawn"]
+  },
+
+  "stop_conditions": [
+    {"id": "user_abort", "trigger": "user response in {STOP, abort, cancel}"},
+    {"id": "audit_unrecoverable", "trigger": "self_audit.failed_mandatory and retries >= 3"},
+    {"id": "permission_error", "trigger": "fs.write permission denied"},
+    {"id": "gate_2_approved", "trigger": "Gate #2 user response = APPROVE", "terminal_action": "emit HANDOFF.md and STOP"},
+    {"id": "token_budget_exceeded", "trigger": "tokens_consumed > token_budget.default_max_tokens_per_run"},
+    {"id": "calibration_overflow", "trigger": "calibration_violations > 5 after 3 fix attempts"}
+  ],
+
+  "error_codes": {
+    "E001": "fs.write failure after retry",
+    "E002": "prompt_architect audit fail after 3 iterations",
+    "E003": "library doc fetch fail (all sources exhausted)",
+    "E004": "SystemSpec schema validation fail",
+    "E005": "network unavailable (fetch_library_docs phase skipped)",
+    "E006": "gate response invalid",
+    "E007": "calibration violation in user-supplied template",
+    "E008": "portability violation in user-supplied template",
+    "E009": "eu_ai_act_mapping_completeness below threshold",
+    "E010": "phase order violation (resumption mismatch)"
+  },
+
+  "definitions": {
+    "SystemSpec": {
+      "type": "object",
+      "required": ["system_name", "intent", "domain", "eu_ai_act_risk", "stack", "target_path"],
+      "properties": {
+        "system_name": {"type": "string", "pattern": "^[a-z0-9-]{1,40}$"},
+        "intent": {"type": "string", "maxLength": 600},
+        "domain": {"type": "string", "enum": ["healthcare", "fintech", "legal", "public_sector", "research", "other"]},
+        "eu_ai_act_risk": {"type": "string", "enum": ["high", "limited", "minimal"], "default": "high"},
+        "stack": {
+          "type": "object",
+          "required": ["language"],
+          "properties": {
+            "language": {"type": "string"},
+            "frameworks": {"type": "array", "items": {"type": "string"}},
+            "libraries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "version", "fetch_url_primary"],
+                "properties": {
+                  "name": {"type": "string"},
+                  "version": {"type": "string"},
+                  "fetch_url_primary": {"type": "string"},
+                  "fetch_url_fallback": {"type": "string"},
+                  "required": {"type": "boolean", "default": true}
+                }
+              }
+            }
+          }
+        },
+        "granularity": {"type": "string", "enum": ["macro_A", "meso_B", "micro_C", "checkpoint_D", "hybrid_B_D"], "default": "hybrid_B_D"},
+        "auditors_count": {"type": "integer", "minimum": 3, "maximum": 10, "default": 3},
+        "auditor_mode": {"type": "string", "enum": ["sequential", "parallel_independent", "parallel_with_meta_jury", "parallel_with_human_tiebreaker", "configurable"], "default": "parallel_with_meta_jury"},
+        "dashboard": {"type": "string", "enum": ["none", "static_html", "streamlit", "nextjs"], "default": "static_html"},
+        "language_pair": {"type": "string", "enum": ["es_only", "en_only", "es_prose_en_code", "es_project_en_public"], "default": "es_prose_en_code"},
+        "git_init": {"type": "boolean"},
+        "target_path": {"type": "string"},
+        "on_demand": {
+          "type": "object",
+          "properties": {
+            "orchestrator": {"type": "boolean", "default": true},
+            "skills_needed": {"type": "array", "items": {"type": "string"}},
+            "agents_needed": {"type": "array", "items": {"type": "string"}},
+            "custom_tools_needed": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+
+    "Session": {
+      "type": "object",
+      "required": ["id", "deliverable", "status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[0-9]{4}_[a-z0-9_]+$"},
+        "deliverable": {"type": "string"},
+        "scope": {"type": "string"},
+        "status": {"type": "string", "enum": ["planned", "in_progress", "checkpoint_pending", "completed", "aborted"]},
+        "started_at": {"type": "string", "format": "date-time"},
+        "completed_at": {"type": "string", "format": "date-time"},
+        "kpis": {"$ref": "#/definitions/SessionKPIs"},
+        "checkpoint_decision": {"type": "string"}
+      }
+    },
+
+    "SessionKPIs": {
+      "type": "object",
+      "properties": {
+        "duration_estimated_min": {"type": "object", "properties": {"min": {"type": "number"}, "max": {"type": "number"}}},
+        "duration_actual_min": {"type": "number"},
+        "errors_count": {"type": "integer"},
+        "errors_by_severity": {"type": "object", "properties": {"info": {"type": "integer"}, "warn": {"type": "integer"}, "error": {"type": "integer"}, "critical": {"type": "integer"}}},
+        "hitl_decisions_count": {"type": "integer"},
+        "tests_created_count": {"type": "integer"},
+        "coverage_added_pct": {"type": "number"},
+        "files_modified_count": {"type": "integer"},
+        "tokens_consumed_estimate": {"type": "object", "properties": {"min": {"type": "integer"}, "max": {"type": "integer"}}},
+        "rollbacks_count": {"type": "integer"},
+        "tech_debt_added": {"type": "object", "properties": {"tag": {"type": "string"}, "estimate_0_10": {"type": "number"}}},
+        "eu_ai_act_audit_score_pct": {"type": "number"},
+        "agent_self_confidence_pct": {"type": "number"}
+      }
+    },
+
+    "HITLGate": {
+      "type": "object",
+      "required": ["id", "phase", "alternatives", "user_response"],
+      "properties": {
+        "id": {"type": "integer"},
+        "phase": {"type": "string"},
+        "presented_at": {"type": "string", "format": "date-time"},
+        "alternatives": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["letter", "label", "fit_pct", "pros", "cons"],
+            "properties": {
+              "letter": {"type": "string", "pattern": "^[A-E]$"},
+              "label": {"type": "string"},
+              "fit_pct": {"type": "number", "minimum": 0, "maximum": 100},
+              "pros": {"type": "array", "items": {"type": "string"}},
+              "cons": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "recommendation": {"type": "string"},
+        "recommendation_confidence_pct": {"type": "number"},
+        "user_response": {"type": "string"},
+        "responded_at": {"type": "string", "format": "date-time"},
+        "rationale_logged_to": {"type": "string"}
+      }
+    },
+
+    "AuditRow": {
+      "type": "object",
+      "required": ["id", "session_id", "area", "eu_ai_act_article", "checklist_ref", "item", "status", "auditor"],
+      "properties": {
+        "id": {"type": "string"},
+        "session_id": {"type": "string"},
+        "area": {"type": "string", "enum": ["risk_management", "data_governance", "technical_documentation", "record_keeping", "transparency", "human_oversight", "accuracy_robustness", "cybersecurity", "quality_management", "post_market_monitoring", "registers", "precision", "solidity"]},
+        "eu_ai_act_article": {"type": "string"},
+        "checklist_ref": {"type": "string"},
+        "item": {"type": "string"},
+        "evidence_link": {"type": "string"},
+        "status": {"type": "string", "enum": ["pass", "fail", "partial", "not_applicable", "pending"]},
+        "auditor": {"type": "string"},
+        "auditor_confidence_pct": {"type": "number"},
+        "comments": {"type": "string"}
+      }
+    },
+
+    "ErrorCatalogEntry": {
+      "type": "object",
+      "required": ["id", "pattern_name", "severity", "description", "prevention", "auto_detection"],
+      "properties": {
+        "id": {"type": "string"},
+        "pattern_name": {"type": "string"},
+        "severity": {"type": "string", "enum": ["info", "warn", "error", "critical"]},
+        "description": {"type": "string"},
+        "example": {"type": "string"},
+        "prevention": {"type": "string"},
+        "auto_detection": {"type": "string", "description": "regex / heuristic / LLM check spec"},
+        "first_seen_session": {"type": "string"},
+        "occurrences": {"type": "integer", "default": 0},
+        "preloaded": {"type": "boolean", "default": false}
+      }
+    }
+  },
+
+  "compatible_models": {
+    "minimum": "any LLM with >=128K context, file-system tools, instruction-following >= Claude 3.5 Sonnet baseline",
+    "recommended_orchestrator": ["claude-opus-4-7", "claude-sonnet-4-6"],
+    "recommended_child_systems": ["claude-sonnet-4-6", "claude-haiku-4-5-20251001 (with strict HITL)"],
+    "tested_executors": ["Claude Code", "Cursor", "Cline", "Gemini CLI", "Copilot CLI", "Codex"]
+  },
+
+  "metadata": {
+    "author": "AGENC_IA / Sistem_designer",
+    "license_default": "MIT",
+    "repository": "local",
+    "portability_tier": "A",
+    "changelog": [
+      {"version": "0.1.0", "date": "2026-04-29", "notes": "initial heart: SKILL.md + master orchestrator + system_generator.json"}
+    ]
+  }
+}

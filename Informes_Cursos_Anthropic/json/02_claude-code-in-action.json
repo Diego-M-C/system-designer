@@ -1,0 +1,265 @@
+{
+  "id": "02",
+  "slug": "claude-code-in-action",
+  "title": "Claude Code in Action",
+  "url": "https://anthropic.skilljar.com/claude-code-in-action",
+  "category": "developer-tools",
+  "difficulty": "intermediate",
+  "domain": "Developer Tools",
+  "tags": [
+    "claude-code",
+    "cli",
+    "git",
+    "github",
+    "mcp",
+    "automation"
+  ],
+  "stats": {
+    "total_lessons": 21,
+    "sections": 4,
+    "jw_transcripts": 15,
+    "youtube_transcripts": 0,
+    "modular_text_lessons": 4,
+    "quiz_assessments": 1,
+    "jw_chars": 72552,
+    "youtube_chars": 0,
+    "modular_chars": 5795,
+    "total_content_chars": 78347
+  },
+  "sections": [
+    {
+      "title": "What is Claude Code?",
+      "lesson_count": 3
+    },
+    {
+      "title": "Getting hands on",
+      "lesson_count": 9
+    },
+    {
+      "title": "Hooks and the SDK",
+      "lesson_count": 7
+    },
+    {
+      "title": "Wrapping up",
+      "lesson_count": 2
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "What is Claude Code?",
+      "title": "Introduction",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303233",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "What is Claude Code?",
+      "title": "What is a coding assistant?",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303235",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "What is Claude Code?",
+      "title": "Claude Code in action",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303242",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Getting hands on",
+      "title": "Claude Code setup",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/301614",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Getting hands on",
+      "title": "Project setup",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/301615",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Getting hands on",
+      "title": "Adding context",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303241",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Getting hands on",
+      "title": "Making changes",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303236",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Getting hands on",
+      "title": "Course satisfaction survey",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303701",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Getting hands on",
+      "title": "Controlling context",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303237",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Getting hands on",
+      "title": "Custom commands",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303234",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Getting hands on",
+      "title": "MCP servers with Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303239",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Getting hands on",
+      "title": "Github integration",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303240",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Hooks and the SDK",
+      "title": "Introducing hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312000",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Hooks and the SDK",
+      "title": "Defining hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312002",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 15,
+      "section": "Hooks and the SDK",
+      "title": "Implementing a hook",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312003",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 16,
+      "section": "Hooks and the SDK",
+      "title": "Gotchas around hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312423",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 17,
+      "section": "Hooks and the SDK",
+      "title": "Useful hooks!",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312004",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 18,
+      "section": "Hooks and the SDK",
+      "title": "Another useful hook",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312427",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 19,
+      "section": "Hooks and the SDK",
+      "title": "The Claude Code SDK",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/312001",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 20,
+      "section": "Wrapping up",
+      "title": "Quiz on Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/308391",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": true
+    },
+    {
+      "index": 21,
+      "section": "Wrapping up",
+      "title": "Summary and next steps",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action/303238",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:31:56.137Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 0,
+    "quiz_extractions_added": 1
+  }
+}

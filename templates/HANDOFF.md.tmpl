@@ -1,0 +1,124 @@
+# HANDOFF — Generator → {{system_name}}
+
+> The **system-designer** generator has finished scaffolding `{{system_name}}`. From this point on, the child orchestrator (`CLAUDE.md`) is in charge. The generator does NOT continue developing the system.
+>
+> **Read this once, at the start of session 0002.** Then never read it again.
+
+---
+
+## What was scaffolded
+
+Generated on **{{TEMPORAL_NOW}}** by **system-designer v{{generator_version}}**, in {{actual_duration_min}} minutes (estimate was {{estimated_duration_min}} ± {{estimated_duration_range}} min).
+
+### Mandatory artifacts emitted (✅ = present)
+
+{{mandatory_artifacts_checklist}}
+
+### On-demand artifacts emitted
+
+{{on_demand_artifacts_checklist}}
+
+### Library docs fetched
+
+{{library_docs_summary}}
+
+(Each library has `library_docs/<lib>/<version>/` with index + key sections. Re-fetch threshold: {{library_freshness_threshold_days}} days. Last fetch dates in `library_docs/MANIFEST.md`.)
+
+## Self-audit summary
+
+| Check | Result |
+|---|---|
+| Coverage of mandatory artifacts | {{coverage_pct}}% (target 100%) |
+| prompt-architect audit first-pass rate | {{audit_first_pass_pct}}% (target ≥85%) |
+| Calibration violations | {{calibration_violations}} (target 0) |
+| Portability score | {{portability_score}}/100 (target ≥95) |
+| EU AI Act mapping completeness | {{ai_act_completeness_pct}}% (target ≥95% for high-risk) |
+| Total time to handoff | {{actual_duration_min}} min |
+| Tokens consumed (estimate ±20%) | {{tokens_consumed_estimate}} ({{tokens_min}}–{{tokens_max}}) |
+
+Full report: `audit/self_audit.md`. Reflection: `audit/reflection_session_0.md`. Evaluation: `audit/evaluation_session_0.json`.
+
+## How to invoke the child orchestrator
+
+1. **Drag the `{{system_name}}/` folder** into your LLM (Claude Code, Cursor, Cline, Gemini CLI, Copilot CLI, Codex) OR `cd {{system_name}}/`.
+2. **Send the prompt:**
+
+   ```
+   Continue {{system_name}} from current state. Read CLAUDE.md, then tracking/project.json, then proceed with the next planned session per SPEC.md#sessions_plan.
+   ```
+
+3. The orchestrator inherits the contract in `CLAUDE.md` and runs sessions one by one.
+
+## Mandatory dependencies at runtime
+
+- LLM with **≥128K context** and file-system tools (read/write/list/mkdir).
+- (Optional) Web fetch for library doc refresh; no fetch → skip refresh + log.
+- (Optional) `xlsx` writer for `audit/audit_sheet.xlsx`; no writer → CSV+MD fallback.
+- (Optional) Parallel sub-agent spawning for 3-auditor mode; no spawning → sequential fallback.
+
+Models recommended:
+
+- Orchestrator: {{orchestrator_model_recommended}} (e.g., Claude Opus 4.x or Sonnet 4.x).
+- Sub-tasks (skill execution, single-prompt work): {{sub_task_model_recommended}}.
+
+## First 3 sessions planned
+
+| ID | Deliverable | Estimated duration | KPI focus | HITL checkpoint topic |
+|---|---|---|---|---|
+| 0002_{{deliverable_2}} | {{deliverable_2_desc}} | {{est_2_min}}–{{est_2_max}} min | {{kpi_focus_2}} | {{hitl_topic_2}} |
+| 0003_{{deliverable_3}} | {{deliverable_3_desc}} | {{est_3_min}}–{{est_3_max}} min | {{kpi_focus_3}} | {{hitl_topic_3}} |
+| 0004_{{deliverable_4}} | {{deliverable_4_desc}} | {{est_4_min}}–{{est_4_max}} min | {{kpi_focus_4}} | {{hitl_topic_4}} |
+
+These come from `SPEC.md#sessions_plan` and may be re-prioritised at any HITL checkpoint.
+
+## Where to look
+
+| Need | Look in |
+|---|---|
+| What we're building | `SPEC.md` + `SPEC.json` |
+| How we're building | `ARCHITECTURE.md` |
+| Current state | `tracking/project.json` |
+| Past decisions | `tracking/decisions.md` + `docs/decisions/` |
+| Past errors caught | `tracking/errors.md` + `tracking/errors_catalog.json` |
+| Past sessions | `tracking/sessions/` |
+| Audit status | `audit/audit_sheet.xlsx` (or `.csv` + `.md` fallback) |
+| EU AI Act mapping | `audit/eu_ai_act_mapping.md` |
+| Library docs | `library_docs/<lib>/<version>/` |
+| Memory (user prefs, project facts) | `memory/MEMORY.md` |
+| Living reports | `docs/reports/cumulative.md` |
+| Final report (when ready) | `docs/reports/{{report_standard}}.md` |
+
+## Resumption protocol (if interrupted)
+
+1. Read `tracking/project.json#current_phase` and `current_session_id`.
+2. Read the session's `phase.log` and find the last completed phase marker.
+3. Resume from the next phase declared in `system_generator.json#/phases` (for generator phases) OR the next session in `SPEC.md#sessions_plan` (for child sessions).
+4. Append a `resumed_at` marker to `tracking/sessions/<id>/phase.log`.
+
+## HITL escalation points (memorise these)
+
+The orchestrator MUST pause and ask the human at:
+
+- Self-confidence on a strategic decision < 70% (P2).
+- Calibration scan finds violations after 3 fix attempts.
+- prompt-architect audit fails 3× on the same prompt.
+- New library being introduced not yet in `library_docs/MANIFEST.md`.
+- EU AI Act risk class change requested.
+- Any session checkpoint (always).
+- Any conflict between user input and `<alignment_rules>` of any active prompt.
+
+Contact protocol: `<final_output>` block in the LLM response, asking for letter/freeform reply.
+
+## What this generator is NOT responsible for, going forward
+
+- Writing `src/` code (child orchestrator's job).
+- Running tests (child orchestrator's job).
+- Deploying the system (child orchestrator + ops).
+- Updating spec / architecture (handled by ADR process in `docs/decisions/`).
+- Final audit (3 auditors + jury, executed at decommission per `SPEC.md#milestones.Mfinal`).
+
+## Acknowledgement
+
+You (the human reading this) accept the handoff by starting session 0002. The generator's last action was emitting this file at {{TEMPORAL_NOW}}. The generator process now stops.
+
+— **system-designer v{{generator_version}}**

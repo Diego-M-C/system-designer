@@ -1,0 +1,73 @@
+{
+  "courseTitle": "Building with the Claude API",
+  "sectionCount": 13,
+  "totalLessons": 2,
+  "sections": [
+    {
+      "title": "Introduction",
+      "lessons": [
+        {
+          "title": "Welcome to the course",
+          "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287818",
+          "complete": true,
+          "iconClass": "fa fa-check-circle"
+        }
+      ]
+    },
+    {
+      "title": "Anthropic overview",
+      "lessons": []
+    },
+    {
+      "title": "Accessing Claude with the API",
+      "lessons": [
+        {
+          "title": "Getting an API key",
+          "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/296766",
+          "complete": true,
+          "iconClass": "fa fa-check-circle"
+        }
+      ]
+    },
+    {
+      "title": "Prompt evaluation",
+      "lessons": []
+    },
+    {
+      "title": "Prompt engineering techniques",
+      "lessons": []
+    },
+    {
+      "title": "Tool use with Claude",
+      "lessons": []
+    },
+    {
+      "title": "RAG and Agentic Search",
+      "lessons": []
+    },
+    {
+      "title": "Features of Claude",
+      "lessons": []
+    },
+    {
+      "title": "Model Context Protocol",
+      "lessons": []
+    },
+    {
+      "title": "Anthropic apps - Claude Code and computer use",
+      "lessons": []
+    },
+    {
+      "title": "Agents and workflows",
+      "lessons": []
+    },
+    {
+      "title": "Final assessment",
+      "lessons": []
+    },
+    {
+      "title": "Wrapping up!",
+      "lessons": []
+    }
+  ]
+}

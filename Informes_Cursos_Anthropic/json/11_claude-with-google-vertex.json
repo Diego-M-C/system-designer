@@ -1,0 +1,1021 @@
+{
+  "id": "11",
+  "slug": "claude-with-google-vertex",
+  "title": "Claude with Google Cloud's Vertex AI",
+  "url": "https://anthropic.skilljar.com/claude-with-google-vertex",
+  "category": "cloud-integration",
+  "difficulty": "intermediate-advanced",
+  "domain": "Cloud Integration",
+  "tags": [
+    "gcp",
+    "vertex-ai",
+    "api",
+    "rag",
+    "tool-use",
+    "computer-use"
+  ],
+  "stats": {
+    "total_lessons": 93,
+    "sections": 13,
+    "jw_transcripts": 81,
+    "youtube_transcripts": 0,
+    "modular_text_lessons": 1,
+    "quiz_assessments": 0,
+    "jw_chars": 645825,
+    "youtube_chars": 0,
+    "modular_chars": 1264,
+    "total_content_chars": 647089
+  },
+  "sections": [
+    {
+      "title": "Introduction",
+      "lesson_count": 1
+    },
+    {
+      "title": "Anthropic overview",
+      "lesson_count": 1
+    },
+    {
+      "title": "Accessing Claude with the API",
+      "lesson_count": 14
+    },
+    {
+      "title": "Prompt evaluation",
+      "lesson_count": 8
+    },
+    {
+      "title": "Prompt engineering techniques",
+      "lesson_count": 7
+    },
+    {
+      "title": "Tool use with Claude",
+      "lesson_count": 14
+    },
+    {
+      "title": "Retrieval Augmented Generation",
+      "lesson_count": 10
+    },
+    {
+      "title": "Features of Claude",
+      "lesson_count": 8
+    },
+    {
+      "title": "Model Context Protocol",
+      "lesson_count": 12
+    },
+    {
+      "title": "Anthropic apps - Claude Code and computer use",
+      "lesson_count": 8
+    },
+    {
+      "title": "Agents and workflows",
+      "lesson_count": 8
+    },
+    {
+      "title": "Final assessment",
+      "lesson_count": 1
+    },
+    {
+      "title": "Wrapping up!",
+      "lesson_count": 1
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction",
+      "title": "Welcome to the course",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289145",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Anthropic overview",
+      "title": "Overview of Claude models",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289146",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Accessing Claude with the API",
+      "title": "Accessing the API",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289151",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Accessing Claude with the API",
+      "title": "Vertex AI Setup",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/307525",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Accessing Claude with the API",
+      "title": "Making a request",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289155",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Accessing Claude with the API",
+      "title": "Multi-turn conversations",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289156",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Accessing Claude with the API",
+      "title": "Chat exercise",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289150",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Accessing Claude with the API",
+      "title": "System prompts",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289153",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Accessing Claude with the API",
+      "title": "System prompts exercise",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289157",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Accessing Claude with the API",
+      "title": "Temperature",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289154",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Accessing Claude with the API",
+      "title": "Course satisfaction survey",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/297285",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Accessing Claude with the API",
+      "title": "Response streaming",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289162",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Accessing Claude with the API",
+      "title": "Controlling model output",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289160",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Accessing Claude with the API",
+      "title": "Structured data",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289158",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 15,
+      "section": "Accessing Claude with the API",
+      "title": "Structured data exercise",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289152",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 16,
+      "section": "Accessing Claude with the API",
+      "title": "Quiz on accessing Claude with the API",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289281",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 17,
+      "section": "Prompt evaluation",
+      "title": "Prompt evaluation",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289159",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 18,
+      "section": "Prompt evaluation",
+      "title": "A typical eval workflow",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289161",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 19,
+      "section": "Prompt evaluation",
+      "title": "Generating test datasets",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289163",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 20,
+      "section": "Prompt evaluation",
+      "title": "Running the eval",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289166",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 21,
+      "section": "Prompt evaluation",
+      "title": "Model based grading",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289168",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 22,
+      "section": "Prompt evaluation",
+      "title": "Code based grading",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289167",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 23,
+      "section": "Prompt evaluation",
+      "title": "Exercise on prompt evals",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289164",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 24,
+      "section": "Prompt evaluation",
+      "title": "Quiz on prompt evaluation",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289279",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 25,
+      "section": "Prompt engineering techniques",
+      "title": "Prompt engineering",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289169",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 26,
+      "section": "Prompt engineering techniques",
+      "title": "Being clear and direct",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289170",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 27,
+      "section": "Prompt engineering techniques",
+      "title": "Being specific",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289165",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 28,
+      "section": "Prompt engineering techniques",
+      "title": "Structure with XML tags",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289171",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 29,
+      "section": "Prompt engineering techniques",
+      "title": "Providing examples",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289177",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 30,
+      "section": "Prompt engineering techniques",
+      "title": "Exercise on prompting",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289173",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 31,
+      "section": "Prompt engineering techniques",
+      "title": "Quiz on prompt engineering techniques",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289278",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 32,
+      "section": "Tool use with Claude",
+      "title": "Introducing tool use",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289172",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 33,
+      "section": "Tool use with Claude",
+      "title": "Project overview",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289175",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 34,
+      "section": "Tool use with Claude",
+      "title": "Tool functions",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289176",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 35,
+      "section": "Tool use with Claude",
+      "title": "Tool schemas",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289174",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 36,
+      "section": "Tool use with Claude",
+      "title": "Handling message blocks",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289179",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 37,
+      "section": "Tool use with Claude",
+      "title": "Sending tool results",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289184",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 38,
+      "section": "Tool use with Claude",
+      "title": "Multi-turn conversations with tools",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289178",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 39,
+      "section": "Tool use with Claude",
+      "title": "Implementing multiple turns",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289182",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 40,
+      "section": "Tool use with Claude",
+      "title": "Using multiple tools",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289185",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 41,
+      "section": "Tool use with Claude",
+      "title": "The batch tool",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289189",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 42,
+      "section": "Tool use with Claude",
+      "title": "Tools for structured data",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289181",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 43,
+      "section": "Tool use with Claude",
+      "title": "The text edit tool",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289180",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 44,
+      "section": "Tool use with Claude",
+      "title": "The web search tool",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289183",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 45,
+      "section": "Tool use with Claude",
+      "title": "Quiz on tool use with Claude",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289280",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 46,
+      "section": "Retrieval Augmented Generation",
+      "title": "Introducing Retrieval Augmented Generation",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289191",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 47,
+      "section": "Retrieval Augmented Generation",
+      "title": "Text chunking strategies",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289208",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 48,
+      "section": "Retrieval Augmented Generation",
+      "title": "Text embeddings",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289188",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 49,
+      "section": "Retrieval Augmented Generation",
+      "title": "The full RAG flow",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289190",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 50,
+      "section": "Retrieval Augmented Generation",
+      "title": "Implementing the RAG flow",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289186",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 51,
+      "section": "Retrieval Augmented Generation",
+      "title": "BM25 lexical search",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289195",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 52,
+      "section": "Retrieval Augmented Generation",
+      "title": "A Multi-index RAG pipeline",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289193",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 53,
+      "section": "Retrieval Augmented Generation",
+      "title": "Reranking results",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289192",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 54,
+      "section": "Retrieval Augmented Generation",
+      "title": "Contextual retrieval",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289187",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 55,
+      "section": "Retrieval Augmented Generation",
+      "title": "Quiz on Retrieval Augmented Generation",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289277",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 56,
+      "section": "Features of Claude",
+      "title": "Extended thinking",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289197",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 57,
+      "section": "Features of Claude",
+      "title": "Image support",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289203",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 58,
+      "section": "Features of Claude",
+      "title": "PDF support",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289198",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 59,
+      "section": "Features of Claude",
+      "title": "Citations",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289202",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 60,
+      "section": "Features of Claude",
+      "title": "Prompt caching",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289196",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 61,
+      "section": "Features of Claude",
+      "title": "Rules of prompt caching",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289194",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 62,
+      "section": "Features of Claude",
+      "title": "Prompt caching in action",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289200",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 63,
+      "section": "Features of Claude",
+      "title": "Quiz on features of Claude",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289275",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 64,
+      "section": "Model Context Protocol",
+      "title": "Introducing MCP",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289201",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 65,
+      "section": "Model Context Protocol",
+      "title": "MCP clients",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289204",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 66,
+      "section": "Model Context Protocol",
+      "title": "Project setup",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289199",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 67,
+      "section": "Model Context Protocol",
+      "title": "Defining tools with MCP",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289235",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 68,
+      "section": "Model Context Protocol",
+      "title": "The server inspector",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289207",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 69,
+      "section": "Model Context Protocol",
+      "title": "Implementing a client",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289206",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 70,
+      "section": "Model Context Protocol",
+      "title": "Defining resources",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289248",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 71,
+      "section": "Model Context Protocol",
+      "title": "Accessing resources",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289247",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 72,
+      "section": "Model Context Protocol",
+      "title": "Defining prompts",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289249",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 73,
+      "section": "Model Context Protocol",
+      "title": "Prompts in the client",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289209",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 74,
+      "section": "Model Context Protocol",
+      "title": "MCP review",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289205",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 75,
+      "section": "Model Context Protocol",
+      "title": "Quiz on Model Context Protocol",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289276",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 76,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Anthropic apps",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289230",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 77,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Claude Code setup",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289232",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 78,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Claude Code in action",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289246",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 79,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Enhancements with MCP servers",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289231",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 80,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Parallelizing Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289241",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 81,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Automated debugging",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289238",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 82,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "Computer use",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289233",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 83,
+      "section": "Anthropic apps - Claude Code and computer use",
+      "title": "How computer use works",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289234",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 84,
+      "section": "Agents and workflows",
+      "title": "Agents and workflows",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289244",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 85,
+      "section": "Agents and workflows",
+      "title": "Parallelization workflows",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289236",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 86,
+      "section": "Agents and workflows",
+      "title": "Chaining workflows",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289239",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 87,
+      "section": "Agents and workflows",
+      "title": "Routing workflows",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289242",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 88,
+      "section": "Agents and workflows",
+      "title": "Agents and tools",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289243",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 89,
+      "section": "Agents and workflows",
+      "title": "Environment inspection",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289237",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 90,
+      "section": "Agents and workflows",
+      "title": "Workflows vs agents",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289245",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 91,
+      "section": "Agents and workflows",
+      "title": "Quiz on agents and workflows",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289274",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 92,
+      "section": "Final assessment",
+      "title": "Final assessment quiz",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/290880",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 93,
+      "section": "Wrapping up!",
+      "title": "Course Wrap Up",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289240",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:38:02.947Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 0,
+    "quiz_extractions_added": 0
+  }
+}

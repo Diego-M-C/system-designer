@@ -1,0 +1,207 @@
+{
+  "id": "09",
+  "slug": "model-context-protocol-advanced-topics",
+  "title": "Model Context Protocol: Advanced Topics",
+  "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+  "category": "mcp",
+  "difficulty": "advanced",
+  "domain": "Model Context Protocol",
+  "tags": [
+    "mcp",
+    "sampling",
+    "notifications",
+    "transport",
+    "stdio",
+    "sse",
+    "http",
+    "production"
+  ],
+  "stats": {
+    "total_lessons": 15,
+    "sections": 4,
+    "jw_transcripts": 10,
+    "youtube_transcripts": 0,
+    "modular_text_lessons": 4,
+    "quiz_assessments": 0,
+    "jw_chars": 65394,
+    "youtube_chars": 0,
+    "modular_chars": 61,
+    "total_content_chars": 65455
+  },
+  "sections": [
+    {
+      "title": "Introduction",
+      "lesson_count": 1
+    },
+    {
+      "title": "Core MCP features",
+      "lesson_count": 7
+    },
+    {
+      "title": "Transports and communication",
+      "lesson_count": 5
+    },
+    {
+      "title": "Assessment and next steps",
+      "lesson_count": 2
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction",
+      "title": "Let's get started!",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296349",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Core MCP features",
+      "title": "Sampling",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296288",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Core MCP features",
+      "title": "Sampling walkthrough",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/295172",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Core MCP features",
+      "title": "Log and progress notifications",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296284",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Core MCP features",
+      "title": "Notifications walkthrough",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/291036",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Core MCP features",
+      "title": "Roots",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296289",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Core MCP features",
+      "title": "Roots walkthrough",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/295839",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Core MCP features",
+      "title": "Survey",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/297276",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Transports and communication",
+      "title": "JSON message types",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296290",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Transports and communication",
+      "title": "The STDIO transport",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296291",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Transports and communication",
+      "title": "The StreamableHTTP transport",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296287",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Transports and communication",
+      "title": "StreamableHTTP in depth",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296286",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Transports and communication",
+      "title": "State and the StreamableHTTP transport",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296285",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Assessment and next steps",
+      "title": "Assessment on MCP concepts",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296301",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 15,
+      "section": "Assessment and next steps",
+      "title": "Wrapping up",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296350",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:33:08.253Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 0,
+    "quiz_extractions_added": 0
+  }
+}

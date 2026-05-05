@@ -1,0 +1,16 @@
+{
+  "lesson_title": "Quiz on Model Context Protocol",
+  "course": "claude-with-the-anthropic-api",
+  "lesson_idx": 71,
+  "state": "completed",
+  "score": "6 of 6 Correct",
+  "question_count": 6,
+  "questions": [
+    {"question_text": "You've created an MCP server and want to test your tools before connecting them to Claude. What's the best way to do this?", "type": "multiple_choice", "options": [{"text": "Testing isn't needed for tools, Claude can figure out how to use them", "is_correct": false}, {"text": "Connect to Claude immediately", "is_correct": false}, {"text": "Use the MCP Inspector in your browser", "is_correct": true}, {"text": "Test in production", "is_correct": false}]},
+    {"question_text": "You're building a document system where users can type @document_name to reference files. What MCP feature is best for exposing the document contents?", "type": "multiple_choice", "options": [{"text": "Tools", "is_correct": false}, {"text": "Clients", "is_correct": false}, {"text": "Prompts", "is_correct": false}, {"text": "Resources", "is_correct": true}]},
+    {"question_text": "Your MCP server and client need to communicate. What's the most common way they connect during development?", "type": "multiple_choice", "options": [{"text": "Through a database", "is_correct": false}, {"text": "Over the internet", "is_correct": false}, {"text": "Through standard input/output on the same machine", "is_correct": true}, {"text": "Using email", "is_correct": false}]},
+    {"question_text": "You're building a chatbot that needs to access GitHub data. What is the main benefit of using MCP instead of writing your own GitHub integration?", "type": "multiple_choice", "options": [{"text": "MCP requires less memory", "is_correct": false}, {"text": "MCP handles the tool definitions and execution for you", "is_correct": true}, {"text": "MCP only works with GitHub", "is_correct": false}, {"text": "MCP makes your chatbot run faster", "is_correct": false}]},
+    {"question_text": "You want to create a tool for your MCP server that reads document contents. Using the Python SDK, what's the easiest way to define this tool?", "type": "multiple_choice", "options": [{"text": "Write a complex JSON schema manually", "is_correct": false}, {"text": "Send an HTTP request", "is_correct": false}, {"text": "Use the @mcp.tool decorator on a function", "is_correct": true}, {"text": "Create a separate configuration file", "is_correct": false}]},
+    {"question_text": "You want to provide users with a high-quality, pre-tested instruction for formatting documents. What MCP feature should you use?", "type": "multiple_choice", "options": [{"text": "Resources", "is_correct": false}, {"text": "Sessions", "is_correct": false}, {"text": "Tools", "is_correct": false}, {"text": "Prompts", "is_correct": true}]}
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "{{session_id}}",
+  "deliverable": "{{deliverable}}",
+  "scope": "{{scope}}",
+  "status": "{{status}}",
+  "started_at": "{{TEMPORAL_NOW}}",
+  "completed_at": null,
+
+  "objective_one_liner": "{{objective}}",
+
+  "predecessor_session": "{{predecessor_session_id}}",
+
+  "session_kpis_ref": "tracking/sessions/{{session_id}}/kpis.json",
+  "errors_log_ref": "tracking/sessions/{{session_id}}/errors.jsonl",
+  "observations_log_ref": "tracking/sessions/{{session_id}}/observations.jsonl",
+  "scratch_ref": "tracking/sessions/{{session_id}}/scratch.md",
+  "phase_log_ref": "tracking/sessions/{{session_id}}/phase.log",
+  "checkpoint_decision_ref": "tracking/sessions/{{session_id}}/checkpoint_decision.md",
+  "io_perf_ref": "tracking/sessions/{{session_id}}/inputs_outputs_perf.json",
+
+  "phases_planned": [
+    "PLAN",
+    "EXECUTE",
+    "TEST",
+    "DOCUMENT",
+    "AUDIT_ROW_APPEND",
+    "CHECKPOINT_HITL"
+  ],
+  "phases_completed": [],
+
+  "files_touched": [],
+  "scripts_created": [],
+  "scripts_modified": [],
+  "tests_created": [],
+  "decisions_made": [],
+  "audit_rows_appended": [],
+  "errors_caught_in_session": [],
+  "errors_added_to_catalog_this_session": [],
+  "library_docs_referenced": [],
+  "library_docs_freshly_fetched": [],
+
+  "estimated_minutes": {"min": null, "max": null, "confidence_pct": 70},
+  "actual_minutes": null,
+
+  "self_confidence_pct_at_close": null,
+  "calibration_self_check": "pending",
+
+  "checkpoint": {
+    "alternatives_presented_n": null,
+    "user_choice": null,
+    "user_response_at": null,
+    "rationale_logged_ref": null
+  },
+
+  "notes_md_ref": "tracking/sessions/{{session_id}}/session.md"
+}

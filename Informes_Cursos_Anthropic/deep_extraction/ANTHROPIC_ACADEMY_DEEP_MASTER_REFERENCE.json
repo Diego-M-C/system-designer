@@ -1,0 +1,1085 @@
+{
+  "version": "2.0-deep",
+  "generated": "2026-04-10",
+  "source": "https://anthropic.skilljar.com/",
+  "extraction_method": "dom_text via Playwright MCP (public pages only)",
+  "auth_state": "not_logged_in",
+  "total_courses": 17,
+  "total_lectures_marketed": 364,
+  "total_hours_marketed": 32.45,
+  "courses": [
+    {
+      "course_num": 1,
+      "slug": "claude-with-the-anthropic-api",
+      "title": "Building with the Claude API",
+      "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api",
+      "subtitle": "This comprehensive course covers the full spectrum of working with Anthropic models using the Claude API",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T13:56:00Z",
+      "source_url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 84,
+        "hours_of_video": 8.1,
+        "quizzes": 10,
+        "certificate": true
+      },
+      "about": "This course provides comprehensive coverage of the Claude API, from basic usage through advanced agent architectures. You'll learn to integrate Claude into applications, implement tool calling, build RAG pipelines, and design both deterministic workflows and flexible agent systems.",
+      "learning_objectives": [
+        "Make API requests to Claude models and handle responses",
+        "Implement multi-turn conversations, streaming, and structured output generation",
+        "Build and evaluate prompts systematically using automated testing pipelines",
+        "Create custom tools and integrate Claude with external services",
+        "Design and implement RAG systems with hybrid search and reranking",
+        "Use MCP (Model Context Protocol) to connect Claude to various data sources",
+        "Understand common workflows and agent architectures"
+      ],
+      "prerequisites": [
+        "Proficiency in Python programming",
+        "Basic knowledge of handling JSON data",
+        "Access to an Anthropic API key"
+      ],
+      "audience": "Software engineers who need to integrate Claude into production applications. Whether you're building chatbots, automation tools, or AI-powered features, this course covers the implementation patterns you'll need.",
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Getting started with Claude",
+          "lessonCount": "16 lessons",
+          "description": "Start here for the fundamentals. Covers API authentication, basic requests, conversation management, system prompts, and structured output generation.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/02-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/02-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/02-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 2,
+          "name": "Prompt engineering & evaluation",
+          "lessonCount": "16 lessons",
+          "description": "Learn to write prompts that actually work. Focuses on prompting strategies, evaluation frameworks, and systematic testing approaches.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/03-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/03-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/03-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 3,
+          "name": "Tool use with Claude",
+          "lessonCount": "14 lessons",
+          "description": "Extend Claude with custom tools and functions. Build apps with function calling, multi-turn tool interactions, batch tool calling, and leverage built-in utilities.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/04-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/04-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/04-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 4,
+          "name": "Retrieval augmented generation",
+          "lessonCount": "10 lessons",
+          "description": "Implementation guide for production RAG systems. Covers text chunking, embeddings, hybrid search with BM25, multi-index architectures, reranking, and contextual retrieval.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/05-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/05-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/05-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 5,
+          "name": "Model Context Protocol (MCP)",
+          "lessonCount": "12 lessons",
+          "description": "The protocol for building modular AI applications. Define custom tools and resources, implement MCP servers and clients, handle the full integration lifecycle.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/06-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/06-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/06-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 6,
+          "name": "Claude Code & Computer Use",
+          "lessonCount": "8 lessons",
+          "description": "Two powerful Anthropic tools in action. Claude Code accelerates development workflows, Computer Use automates UI interactions. Includes MCP integration patterns.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/07-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/07-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/07-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 7,
+          "name": "Agents and workflows",
+          "lessonCount": "11 lessons",
+          "description": "Architecture patterns for autonomous AI systems. Understand parallel execution, operation chaining, conditional routing, and effective debugging strategies.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/08-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/08-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-with-the-anthropic-api/08-03-medium.webp"
+          ]
+        }
+      ],
+      "total_sections": 7,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 2,
+      "slug": "claude-code-in-action",
+      "title": "Claude Code in Action",
+      "url": "https://anthropic.skilljar.com/claude-code-in-action",
+      "subtitle": "Practical walkthrough of using Claude Code to accelerate your development workflow",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T13:57:00Z",
+      "source_url": "https://anthropic.skilljar.com/claude-code-in-action",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 15,
+        "hours_of_video": 1,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "about": "This course covers Claude Code, a command-line AI assistant that uses language models to perform development tasks. You'll learn how Claude Code reads files, executes commands, and modifies code through its tool system, along with techniques for managing context, creating custom workflows, extending Claude Code with hooks, and integrating with external services.",
+      "learning_objectives": [
+        "Use Claude Code's core tools for file manipulation, command execution, and code analysis",
+        "Manage context effectively using /init, Claude.md files, and @ mentions",
+        "Control conversation flow with a variety of hotkeys and commands",
+        "Enable Plan Mode and Thinking Mode for complex tasks requiring deeper analysis",
+        "Create custom commands for automating repetitive development workflows",
+        "Extend Claude Code with MCP servers to add browser automation and other capabilities",
+        "Set up GitHub integration for automated PR reviews and issue handling",
+        "Write hooks to add additional behavior into Claude Code"
+      ],
+      "prerequisites": [
+        "Basic familiarity with command line interfaces",
+        "Access to Claude Code and an API key"
+      ],
+      "audience": "Engineers who want to speed up their development workflow with AI assistance",
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Claude Code in action",
+          "lessonCount": "10 lessons",
+          "description": "Complete guide to using Claude Code effectively. Starts with understanding how coding assistants work, then moves through setup, context management, making changes, and advanced features like MCP servers, GitHub integration, and hook implementations.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-code-in-action/01-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-code-in-action/01-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/claude-code-in-action/01-03-medium.webp"
+          ]
+        }
+      ],
+      "total_sections": 1,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 3,
+      "slug": "claude-101",
+      "title": "Claude 101",
+      "url": "https://anthropic.skilljar.com/claude-101",
+      "description": "Learn how to use Claude for everyday work tasks, understand core features, and explore resources for more advanced learning on other topics.",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T13:51:00Z",
+      "source_url": "https://anthropic.skilljar.com/claude-101",
+      "auth_required_for_lessons": true,
+      "chapters": [
+        {
+          "chapter_num": 1,
+          "chapter": "Meet Claude",
+          "lessons": [
+            {
+              "num": 1,
+              "title": "What is Claude?",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 2,
+              "title": "Your first conversation with Claude",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 3,
+              "title": "Getting better results",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 4,
+              "title": "Claude desktop app: Chat, Cowork, Code",
+              "type": "text",
+              "time": ""
+            }
+          ]
+        },
+        {
+          "chapter_num": 2,
+          "chapter": "Organizing your work and knowledge",
+          "lessons": [
+            {
+              "num": 5,
+              "title": "Introduction to projects",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 6,
+              "title": "Creating with artifacts",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 7,
+              "title": "Working with skills",
+              "type": "text",
+              "time": ""
+            }
+          ]
+        },
+        {
+          "chapter_num": 3,
+          "chapter": "Expanding Claude's reach",
+          "lessons": [
+            {
+              "num": 8,
+              "title": "Connecting your tools",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 9,
+              "title": "Enterprise search",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 10,
+              "title": "Research mode for deep dives",
+              "type": "text",
+              "time": ""
+            }
+          ]
+        },
+        {
+          "chapter_num": 4,
+          "chapter": "Putting it all together",
+          "lessons": [
+            {
+              "num": 11,
+              "title": "Claude in action: use-cases by role",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 12,
+              "title": "Other ways to work with Claude",
+              "type": "text",
+              "time": ""
+            }
+          ]
+        },
+        {
+          "chapter_num": 5,
+          "chapter": "Conclusion & certificate",
+          "lessons": [
+            {
+              "num": 13,
+              "title": "What's next?",
+              "type": "text",
+              "time": ""
+            },
+            {
+              "num": 14,
+              "title": "Certificate of completion",
+              "type": "certificate",
+              "time": ""
+            }
+          ]
+        }
+      ],
+      "total_chapters": 5,
+      "total_lessons": 14
+    },
+    {
+      "course_num": 4,
+      "slug": "introduction-to-claude-cowork",
+      "title": "Introduction to Claude Cowork",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+      "description": "Learn to work alongside Claude on your real files and projects. This hands-on course covers the Cowork task loop, plugins and skills, file and research workflows, and how to steer multi-step work responsibly — so you're productive in your first week.",
+      "template": "sj",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T13:58:00Z",
+      "source_url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+      "auth_required_for_lessons": true,
+      "chapters": [
+        {
+          "chapter_num": 1,
+          "chapter": "Meet Claude Cowork",
+          "lessons": [
+            {
+              "num": 1,
+              "title": "What is Cowork?",
+              "type": "text"
+            },
+            {
+              "num": 2,
+              "title": "Getting set up",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "chapter_num": 2,
+          "chapter": "Running your first task",
+          "lessons": [
+            {
+              "num": 3,
+              "title": "The task loop",
+              "type": "text"
+            },
+            {
+              "num": 4,
+              "title": "Giving Cowork context",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "chapter_num": 3,
+          "chapter": "Making Claude Cowork yours",
+          "lessons": [
+            {
+              "num": 5,
+              "title": "Plugins: Cowork as a specialist",
+              "type": "text"
+            },
+            {
+              "num": 6,
+              "title": "Scheduled tasks",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "chapter_num": 4,
+          "chapter": "Claude Cowork in practice",
+          "lessons": [
+            {
+              "num": 7,
+              "title": "File & document tasks",
+              "type": "text"
+            },
+            {
+              "num": 8,
+              "title": "Research & analysis at scale",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "chapter_num": 5,
+          "chapter": "Working responsibly",
+          "lessons": [
+            {
+              "num": 9,
+              "title": "Permissions, usage, & choosing your model",
+              "type": "text"
+            },
+            {
+              "num": 10,
+              "title": "Troubleshooting & next steps",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "chapter_num": 6,
+          "chapter": "Check your understanding",
+          "lessons": []
+        }
+      ],
+      "total_chapters": 6,
+      "total_lessons": 10
+    },
+    {
+      "course_num": 5,
+      "slug": "ai-fluency-framework-foundations",
+      "title": "AI Fluency: Framework & Foundations",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+      "subtitle": "Learn to collaborate with AI systems effectively, efficiently, ethically, and safely",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T13:59:00Z",
+      "source_url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 14,
+        "hours_of_video": 1.1,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "AI Fundamentals & Framework",
+          "lessonCount": "10 lessons",
+          "description": "Establish foundational understanding of generative AI systems and why developing AI fluency matters for effective collaboration. Introduces the 4D Framework as a structured approach to human-AI interaction, covering core capabilities and limitations of current AI technologies. Provides the conceptual grounding needed to approach AI tools strategically rather than reactively.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/01-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/01-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/01-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 2,
+          "name": "Practical AI Skills",
+          "lessonCount": "10 lessons",
+          "description": "Develop hands-on competencies for effective AI collaboration through the four core areas of the framework: delegation, description, discernment, and diligence. Learn systematic approaches to project planning with AI, crafting effective prompts, evaluating outputs critically, and iterating through the description-discernment loop. Emphasizes practical application across creative, business, and educational contexts.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/02-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/02-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/ai-fluency-framework-foundations/02-03-medium.webp"
+          ]
+        }
+      ],
+      "total_sections": 2,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 6,
+      "slug": "introduction-to-model-context-protocol",
+      "title": "Introduction to Model Context Protocol",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+      "subtitle": "Learn how to build modular AI applications using MCP to connect Claude with external tools and data sources",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:00:00Z",
+      "source_url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 16,
+        "hours_of_video": 1,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "about": "This course covers MCP, a protocol for connecting Claude to external services and data sources without manually writing tool schemas. You'll learn to build both MCP servers that expose tools, resources, and prompts, and MCP clients that consume them. The course includes a hands-on project where you implement a document management system using MCP.",
+      "learning_objectives": [
+        "Understand MCP architecture and the client-server communication model",
+        "Build MCP servers that expose tools using the Python SDK",
+        "Implement MCP clients to connect your applications to MCP servers",
+        "Create resources for exposing data and prompts for pre-defined workflows",
+        "Test and debug MCP servers using the MCP Inspector",
+        "Choose between tools, resources, and prompts based on control patterns",
+        "Handle resource cleanup and async communication in MCP implementations"
+      ],
+      "prerequisites": [
+        "Basic Python programming experience",
+        "Understanding of async/await patterns",
+        "Familiarity with API concepts"
+      ],
+      "audience": "Engineers who want to integrate Claude with external tools and services without writing tons of boilerplate integration code",
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "MCP fundamentals & server development",
+          "lessonCount": "8 lessons",
+          "description": "Start with understanding MCP's architecture and why it exists. Build your first MCP server with tools using the Python SDK, then test it with the built-in inspector.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/01-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/01-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/01-03-medium.webp"
+          ]
+        },
+        {
+          "section_num": 2,
+          "name": "MCP client implementation & advanced features",
+          "lessonCount": "8 lessons",
+          "description": "Build the client side to communicate with MCP servers. Implement resources for direct data access and prompts for pre-built instructions. See how everything connects in a complete application flow.",
+          "previewImages": [
+            "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/02-01-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/02-02-medium.webp",
+            "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/02-03-medium.webp"
+          ]
+        }
+      ],
+      "total_sections": 2,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 7,
+      "slug": "ai-fluency-for-educators",
+      "title": "AI Fluency for Educators",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-educators",
+      "subtitle": "This course empowers faculty, instructional designers, and educational leaders to apply AI Fluency into their own teaching practice and institutional strategy.",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:01:00Z",
+      "source_url": "https://anthropic.skilljar.com/ai-fluency-for-educators",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 4,
+        "hours_of_video": 0.4,
+        "quizzes": 0,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Introduction and AI Fluency Framework",
+          "lessonCount": "2 lessons",
+          "description": "A summary of Delegation, Description, Discernment, and Diligence applied to student contexts"
+        },
+        {
+          "section_num": 2,
+          "name": "AI Fluency Framework applications for educators",
+          "lessonCount": "2 lessons",
+          "description": "Applying the 4D framework to course design and learning materials."
+        }
+      ],
+      "total_sections": 2,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 8,
+      "slug": "ai-fluency-for-students",
+      "title": "AI Fluency for Students",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-students",
+      "subtitle": "This course empowers students to develop AI Fluency skills that enhance learning, career planning, and academic success through responsible AI collaboration.",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:02:00Z",
+      "source_url": "https://anthropic.skilljar.com/ai-fluency-for-students",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 5,
+        "hours_of_video": 0.5,
+        "quizzes": 0,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Introduction and AI Fluency Framework",
+          "lessonCount": "2 lessons",
+          "description": "A summary of Delegation, Description, Discernment, and Diligence applied to student contexts"
+        },
+        {
+          "section_num": 2,
+          "name": "AI Fluency Framework applications for students",
+          "lessonCount": "2 lessons",
+          "description": "Applying the 4D framework to learning and career planning."
+        },
+        {
+          "section_num": 3,
+          "name": "Conclusion",
+          "lessonCount": "1 lessons",
+          "description": "Developing personal commitments for responsible AI collaboration and maintaining agency."
+        }
+      ],
+      "total_sections": 3,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 9,
+      "slug": "model-context-protocol-advanced-topics",
+      "title": "Model Context Protocol: Advanced Topics",
+      "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+      "subtitle": "Deep dive into MCP's advanced features including sampling, notifications, and transport implementations",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:03:00Z",
+      "source_url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 15,
+        "hours_of_video": 1.1,
+        "quizzes": 2,
+        "certificate": true
+      },
+      "about": "This course covers the technical implementation of MCP servers and clients, from basic message passing to production deployment strategies. You'll learn how MCP enables language models like Claude to interact with external tools and data sources through standardized protocols, transports, and message formats.",
+      "learning_objectives": [
+        "Implement MCP servers with tool functions, logging, and progress notifications",
+        "Handle bidirectional communication between MCP clients and servers",
+        "Configure file system access using the roots permission model",
+        "Work with both stdio and HTTP transports for local and remote deployments",
+        "Implement sampling callbacks to enable server-initiated LLM requests",
+        "Debug message flows using JSON-RPC message types",
+        "Deploy scalable MCP servers using stateless HTTP configurations",
+        "Troubleshoot common issues when transitioning from development to production"
+      ],
+      "prerequisites": [
+        "Basic understanding of MCP servers and clients",
+        "Familiarity with async programming patterns"
+      ],
+      "audience": "Engineers building production MCP servers who need to understand the protocol's advanced capabilities",
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Core MCP features",
+          "lessonCount": "8 lessons",
+          "description": "Learn the advanced features that make MCP servers more powerful. Covers sampling to offload AI costs to clients, implementing progress notifications for better UX, and using roots to safely handle file access."
+        },
+        {
+          "section_num": 2,
+          "name": "Transports and communication",
+          "lessonCount": "7 lessons",
+          "description": "Understand how MCP messages flow between clients and servers. Explores the JSON message protocol, STDIO transport for local development, and the complexities of StreamableHTTP including when to sacrifice features for scalability."
+        }
+      ],
+      "total_sections": 2,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 10,
+      "slug": "claude-in-amazon-bedrock",
+      "title": "Claude with Amazon Bedrock",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock",
+      "subtitle": "This comprehensive course covers the full spectrum of working with Anthropic models using Amazon Bedrock",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:04:00Z",
+      "source_url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 85,
+        "hours_of_video": 8,
+        "quizzes": 10,
+        "certificate": true
+      },
+      "about": "This course covers using Claude models through AWS Bedrock API, from basic requests through advanced agent implementations. You'll learn to make API calls, implement tool use, build RAG pipelines, work with MCP servers, and leverage features like Claude Code and computer use for automation.",
+      "learning_objectives": [
+        "Make requests to Claude models via AWS Bedrock using boto3",
+        "Implement multi-turn conversations, streaming responses, and structured data extraction",
+        "Build and evaluate prompts using automated testing pipelines with objective scoring",
+        "Create custom tools and handle multi-step tool execution workflows",
+        "Design RAG systems with text chunking, embeddings, and hybrid search (semantic + BM25)",
+        "Connect Claude to external services using MCP (Model Context Protocol) servers",
+        "Use Claude Code for automated development workflows and parallelized task execution",
+        "Configure and optimize features like prompt caching, extended thinking, and image processing",
+        "Implement computer use for automated testing and UI interaction"
+      ],
+      "prerequisites": [
+        "Proficiency in Python programming",
+        "Basic knowledge of handling JSON data",
+        "AWS account with Bedrock access"
+      ],
+      "audience": "Devs who want to add AI features to their apps",
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Getting started with Amazon Bedrock",
+          "lessonCount": "16 lessons",
+          "description": "Start here for the fundamentals. Covers API authentication, basic requests, conversation management, system prompts, and structured output generation."
+        },
+        {
+          "section_num": 2,
+          "name": "Prompt engineering & evaluation",
+          "lessonCount": "16 lessons",
+          "description": "Learn to write prompts that actually work. Focuses on prompting strategies, evaluation frameworks, and systematic testing approaches."
+        },
+        {
+          "section_num": 3,
+          "name": "Tool use with Claude",
+          "lessonCount": "14 lessons",
+          "description": "Extend Claude with custom tools and functions. Build apps with function calling, multi-turn tool interactions, batch tool calling, and leverage built-in utilities."
+        },
+        {
+          "section_num": 4,
+          "name": "Retrieval augmented generation",
+          "lessonCount": "10 lessons",
+          "description": "Implementation guide for production RAG systems. Covers text chunking, embeddings, hybrid search with BM25, multi-index architectures, reranking, and contextual retrieval."
+        },
+        {
+          "section_num": 5,
+          "name": "Model Context Protocol (MCP)",
+          "lessonCount": "12 lessons",
+          "description": "The protocol for building modular AI applications. Define custom tools and resources, implement MCP servers and clients, handle the full integration lifecycle."
+        },
+        {
+          "section_num": 6,
+          "name": "Claude Code & Computer Use",
+          "lessonCount": "8 lessons",
+          "description": "Two powerful Anthropic tools in action. Claude Code accelerates development workflows, Computer Use automates UI interactions. Includes MCP integration patterns."
+        }
+      ],
+      "total_sections": 6,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 11,
+      "slug": "claude-with-google-vertex",
+      "title": "Claude with Google Cloud's Vertex AI",
+      "url": "https://anthropic.skilljar.com/claude-with-google-vertex",
+      "subtitle": "This comprehensive course covers the full spectrum of working with Anthropic models using Google Cloud's Vertex AI",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:05:00Z",
+      "source_url": "https://anthropic.skilljar.com/claude-with-google-vertex",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 85,
+        "hours_of_video": 8,
+        "quizzes": 10,
+        "certificate": true
+      },
+      "about": "This course covers using Claude models through Google Cloud's Vertex AI platform. You'll implement core API features like streaming and tool use, build systematic prompt evaluation pipelines, understand RAG systems, and investigate agent architectures.",
+      "learning_objectives": [
+        "Set up and authenticate Claude through Vertex AI using the Anthropic SDK",
+        "Select appropriate Claude models based on intelligence, speed, and cost trade-offs",
+        "Write and systematically evaluate prompts using objective scoring metrics",
+        "Implement tool calling for web search, file operations, and custom functionality",
+        "Build RAG pipelines with text chunking, embeddings, and hybrid search",
+        "Use advanced features like extended thinking, citations, and prompt caching",
+        "Connect Claude to external services using MCP (Model Context Protocol)",
+        "Design workflows for known task sequences and agents for flexible problem-solving"
+      ],
+      "prerequisites": [
+        "Proficiency in Python programming",
+        "Basic knowledge of handling JSON data",
+        "A Google Cloud account with Vertex AI access"
+      ],
+      "audience": "Devs who want to add AI features to their apps",
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Getting started with Claude",
+          "lessonCount": "16 lessons",
+          "description": "Start here for the fundamentals. Covers API authentication, basic requests, conversation management, system prompts, and structured output generation."
+        },
+        {
+          "section_num": 2,
+          "name": "Prompt engineering & evaluation",
+          "lessonCount": "16 lessons",
+          "description": "Learn to write prompts that actually work. Focuses on prompting strategies, evaluation frameworks, and systematic testing approaches."
+        },
+        {
+          "section_num": 3,
+          "name": "Tool use with Claude",
+          "lessonCount": "14 lessons",
+          "description": "Extend Claude with custom tools and functions. Build apps with function calling, multi-turn tool interactions, batch tool calling, and leverage built-in utilities."
+        },
+        {
+          "section_num": 4,
+          "name": "Retrieval augmented generation",
+          "lessonCount": "10 lessons",
+          "description": "Implementation guide for production RAG systems. Covers text chunking, embeddings, hybrid search with BM25, multi-index architectures, reranking, and contextual retrieval."
+        },
+        {
+          "section_num": 5,
+          "name": "Model Context Protocol (MCP)",
+          "lessonCount": "12 lessons",
+          "description": "The protocol for building modular AI applications. Define custom tools and resources, implement MCP servers and clients, handle the full integration lifecycle."
+        },
+        {
+          "section_num": 6,
+          "name": "Claude Code & Computer Use",
+          "lessonCount": "8 lessons",
+          "description": "Two powerful Anthropic tools in action. Claude Code accelerates development workflows, Computer Use automates UI interactions. Includes MCP integration patterns."
+        },
+        {
+          "section_num": 7,
+          "name": "Agents and workflows",
+          "lessonCount": "11 lessons",
+          "description": "Architecture patterns for autonomous AI systems. Understand parallel execution, operation chaining, conditional routing, and effective debugging strategies."
+        }
+      ],
+      "total_sections": 7,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 12,
+      "slug": "teaching-ai-fluency",
+      "title": "Teaching AI Fluency",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+      "subtitle": "This course empowers academic faculty, instructional designers, and others to teach and assess AI Fluency in instructor-led settings.",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:05:30Z",
+      "source_url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 7,
+        "hours_of_video": 0.6,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Teaching approaches",
+          "lessonCount": "3 lessons",
+          "description": "Scaffolding student AI Fluency through the 4D Framework."
+        },
+        {
+          "section_num": 2,
+          "name": "Assessment & Assignment",
+          "lessonCount": "2 lessons",
+          "description": "Designing assessments and assignments that develop and measure student AI Fluency alongside disciplinary expertise."
+        },
+        {
+          "section_num": 3,
+          "name": "AI's impact and your discipline",
+          "lessonCount": "2 lessons",
+          "description": "Building institutional capacity for responsible and meaningful AI integration in pedagogy, assessment, and curricula across disciplines."
+        }
+      ],
+      "total_sections": 3,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 13,
+      "slug": "ai-fluency-for-nonprofits",
+      "title": "AI Fluency for Nonprofits",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+      "subtitle": "This course empowers nonprofit professionals to develop AI fluency in order to increase organizational impact and efficiency while staying true to their mission and values.",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:06:00Z",
+      "source_url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 9,
+        "hours_of_video": 0.9,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Introduction",
+          "lessonCount": "2 lessons",
+          "description": "Define AI Fluency and learn the four interconnected competencies—Delegation, Description, Discernment, and Diligence—that form the foundation of this course."
+        },
+        {
+          "section_num": 2,
+          "name": "Description-Discernment",
+          "lessonCount": "2 lessons",
+          "description": "Practice crafting context-rich prompts and critically evaluating AI outputs through research and writing examples."
+        },
+        {
+          "section_num": 3,
+          "name": "Delegation-Diligence",
+          "lessonCount": "2 lessons",
+          "description": "Make thoughtful decisions about what tasks to delegate to AI while taking responsibility for high-stakes considerations like data privacy and analytical accuracy."
+        },
+        {
+          "section_num": 4,
+          "name": "Putting it all together",
+          "lessonCount": "3 lessons",
+          "description": "Apply all four dimensions of the 4D Framework to automate workflows and integrate AI thoughtfully into your organization."
+        }
+      ],
+      "total_sections": 4,
+      "individual_lessons_requires_login": true
+    },
+    {
+      "course_num": 14,
+      "slug": "introduction-to-agent-skills",
+      "title": "Introduction to Agent Skills",
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+      "description": "Learn how to build, configure, and share Skills in Claude Code — reusable markdown instructions that Claude automatically applies to the right tasks at the right time. This course takes you from creating your first Skill to distributing them across teams and troubleshooting common issues.",
+      "template": "sj",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:07:00Z",
+      "source_url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+      "auth_required_for_lessons": true,
+      "chapters": [
+        {
+          "chapter_num": 1,
+          "chapter": "(Overview)",
+          "lessons": [
+            {
+              "num": 1,
+              "title": "What are skills?",
+              "type": "text"
+            },
+            {
+              "num": 2,
+              "title": "Creating your first skill",
+              "type": "text"
+            },
+            {
+              "num": 3,
+              "title": "Configuration and multi-file skills",
+              "type": "text"
+            },
+            {
+              "num": 4,
+              "title": "Skills vs. other Claude Code features",
+              "type": "text"
+            },
+            {
+              "num": 5,
+              "title": "Sharing skills",
+              "type": "text"
+            },
+            {
+              "num": 6,
+              "title": "Troubleshooting skills",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "total_chapters": 1,
+      "total_lessons": 6
+    },
+    {
+      "course_num": 15,
+      "slug": "introduction-to-subagents",
+      "title": "Introduction to Subagents",
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents",
+      "description": "Learn how to use and create sub-agents in Claude Code to manage context, delegate tasks, and build specialized workflows that keep your main conversation clean and focused.",
+      "template": "sj",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:08:00Z",
+      "source_url": "https://anthropic.skilljar.com/introduction-to-subagents",
+      "auth_required_for_lessons": true,
+      "chapters": [
+        {
+          "chapter_num": 1,
+          "chapter": "(Overview)",
+          "lessons": [
+            {
+              "num": 1,
+              "title": "What are subagents?",
+              "type": "text"
+            },
+            {
+              "num": 2,
+              "title": "Creating a subagent",
+              "type": "text"
+            },
+            {
+              "num": 3,
+              "title": "Designing effective subagents",
+              "type": "text"
+            },
+            {
+              "num": 4,
+              "title": "Using subagents effectively",
+              "type": "text"
+            }
+          ]
+        }
+      ],
+      "total_chapters": 1,
+      "total_lessons": 4
+    },
+    {
+      "course_num": 16,
+      "slug": "ai-capabilities-and-limitations",
+      "title": "AI Capabilities and Limitations",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+      "subtitle": "An introductory course about how AI works",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:08:30Z",
+      "source_url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+      "auth_required_for_lessons": true,
+      "stats": {
+        "lectures": 13,
+        "hours_of_video": 0.25,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "Getting started",
+          "lessonCount": "3 lessons",
+          "description": "The word 'AI' covers a lot of ground. This section narrows it to the kind of system you'll actually be working with — large language models — and explains how two training stages, pretraining and fine-tuning, turn a raw text predictor into the helpful assistant you interact with. Along the way you'll meet the four-property framework that organizes the rest of the course."
+        },
+        {
+          "section_num": 2,
+          "name": "Next Token Prediction",
+          "lessonCount": "2 lessons",
+          "description": "Every answer an AI gives is built one token at a time, by predicting what should come next. This section shows what that means in practice: why the model is excellent at well-worn paths like summarizing or reformatting, why it can produce things that sound true but aren't, and how to recognize when a task is pushing into territory where prediction alone isn't enough."
+        },
+        {
+          "section_num": 3,
+          "name": "Knowledge",
+          "lessonCount": "2 lessons",
+          "description": "A model knows what was in its training data — frequently, recently, and consistently. This section unpacks what that implies: it's strong on mainstream topics and popular languages, weaker on anything rare, recent, niche, or contested. You'll practice judging where a question sits on that spectrum, so you know when to trust the answer and when to bring your own sources."
+        },
+        {
+          "section_num": 4,
+          "name": "Working Memory",
+          "lessonCount": "2 lessons",
+          "description": "The context window is the model's working memory: everything it can pay attention to right now, and nothing else. This section covers what fits, what quietly falls off the edge, why attention isn't uniform across a long document, and why a fresh session doesn't remember the last one. You'll learn to size up a task against the window before you start, instead of discovering the limit mid-conversation."
+        },
+        {
+          "section_num": 5,
+          "name": "Steerability",
+          "lessonCount": "2 lessons",
+          "description": "Your instructions are how you steer — but not all instructions land equally. Short, concrete, verifiable asks ('respond as a table', 'under 100 words') work reliably; long reasoning chains, abstract requests, and demands for native precision are where steering starts to slip. This section helps you tell the difference and rewrite a wobbly instruction into one the model can actually follow."
+        },
+        {
+          "section_num": 6,
+          "name": "Putting it all together and next steps",
+          "lessonCount": "2 lessons",
+          "description": "Real tasks rarely test one property at a time. A long contract review strains working memory while reaching past the model's knowledge; a vague creative brief tests steerability right where next-token prediction wants to fill in something plausible. This section shows you how the four properties collide, and gives you a diagnostic for any unexpected output: name which property is in play, place the task on its spectrum, and apply a targeted fix instead of just trying again."
+        }
+      ],
+      "total_sections": 6,
+      "individual_lessons_requires_login": true,
+      "key_framework": {
+        "name": "Four-property framework for LLMs",
+        "properties": [
+          "Next Token Prediction",
+          "Knowledge",
+          "Working Memory",
+          "Steerability"
+        ]
+      }
+    },
+    {
+      "course_num": 17,
+      "slug": "claude-code-101",
+      "title": "Claude Code 101",
+      "url": "https://anthropic.skilljar.com/claude-code-101",
+      "subtitle": "Learn how to use Claude Code effectively in your daily development workflow.",
+      "template": "clp",
+      "extraction_method": "dom_text",
+      "extraction_timestamp": "2026-04-10T14:09:00Z",
+      "source_url": "https://anthropic.skilljar.com/claude-code-101",
+      "auth_required_for_lessons": true,
+      "note": "This is the 17th course discovered on the homepage, not in the original 16-course list but extracted for completeness",
+      "stats": {
+        "lectures": 12,
+        "hours_of_video": 1.5,
+        "quizzes": 1,
+        "certificate": true
+      },
+      "sections": [
+        {
+          "section_num": 1,
+          "name": "What is Claude Code?",
+          "lessonCount": "2 lessons",
+          "description": "Before you write your first prompt, it helps to know what's actually happening when Claude Code runs. This section explains what separates an AI coding agent from a chat-based assistant, then walks through the agentic loop — gather context, take action, verify results — and the tools and permissions that govern each step. You'll come away with a mental model that makes everything in the rest of the course click."
+        },
+        {
+          "section_num": 2,
+          "name": "Your first prompt",
+          "lessonCount": "2 lessons",
+          "description": "Get Claude Code running wherever you already work — in the terminal, inside VS Code or JetBrains, in Claude Desktop, or on the web. Then write your first prompt and see how approval mode, auto-accept, and Plan Mode change the way Claude responds, so you can pick the right level of oversight for the task in front of you."
+        },
+        {
+          "section_num": 3,
+          "name": "Daily workflows",
+          "lessonCount": "3 lessons",
+          "description": "This is where Claude Code becomes part of how you ship. Learn the Explore → Plan → Code → Commit rhythm for tackling real tasks, use the context-management commands to keep long sessions fast and focused, and put Claude to work reviewing code — your own and your teammates' — before it lands."
+        },
+        {
+          "section_num": 4,
+          "name": "Customizing Claude Code",
+          "lessonCount": "5 lessons",
+          "description": "Out of the box, Claude Code is general-purpose. This section shows you how to make it yours: write a CLAUDE.md file so it remembers your project's conventions, build subagents and skills for the workflows you repeat, wire in external systems through MCP servers, and add hooks for deterministic guardrails. By the end you'll have a setup tuned to the way your team actually works."
+        }
+      ],
+      "total_sections": 4,
+      "individual_lessons_requires_login": true
+    }
+  ]
+}

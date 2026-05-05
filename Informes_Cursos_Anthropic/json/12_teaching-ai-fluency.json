@@ -1,0 +1,133 @@
+{
+  "id": "12",
+  "slug": "teaching-ai-fluency",
+  "title": "Teaching AI Fluency",
+  "url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+  "category": "fluency-framework",
+  "difficulty": "intermediate",
+  "domain": "AI Fluency",
+  "tags": [
+    "teaching",
+    "4d-framework",
+    "instructor-led",
+    "assessment"
+  ],
+  "stats": {
+    "total_lessons": 8,
+    "sections": 4,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 7,
+    "modular_text_lessons": 8,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 59696,
+    "modular_chars": 36466,
+    "total_content_chars": 96162
+  },
+  "sections": [
+    {
+      "title": "Introduction and approaches to teaching AI Fluency",
+      "lesson_count": 3
+    },
+    {
+      "title": "Assessing AI Fluency",
+      "lesson_count": 2
+    },
+    {
+      "title": "AI's Impact on disciplinary content",
+      "lesson_count": 2
+    },
+    {
+      "title": "Conclusion & certificate",
+      "lesson_count": 1
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction and approaches to teaching AI Fluency",
+      "title": "Welcome & approaches to teaching AI Fluency",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327277",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Introduction and approaches to teaching AI Fluency",
+      "title": "The Delegation-Diligence loop",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327278",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Introduction and approaches to teaching AI Fluency",
+      "title": "The Description-Discernment loop",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327279",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Assessing AI Fluency",
+      "title": "How do we assess the 4Ds?",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327280",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Assessing AI Fluency",
+      "title": "Designing assignments for AI Fluency",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327281",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "AI's Impact on disciplinary content",
+      "title": "AI's impact and your discipline",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327282",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "AI's Impact on disciplinary content",
+      "title": "Applying discipline expertise to AI Fluency",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327284",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Conclusion & certificate",
+      "title": "Certificate of completion",
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327285",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:27:43.143Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 7,
+    "quiz_extractions_added": 0
+  }
+}

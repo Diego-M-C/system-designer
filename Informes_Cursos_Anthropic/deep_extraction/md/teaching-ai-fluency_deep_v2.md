@@ -1,0 +1,665 @@
+# Teaching AI Fluency
+
+> **Source:** [https://anthropic.skilljar.com/teaching-ai-fluency](https://anthropic.skilljar.com/teaching-ai-fluency)
+> **Category:** fluency-framework | **Difficulty:** intermediate | **Domain:** AI Fluency
+> **Tags:** teaching, 4d-framework, instructor-led, assessment
+> **Extracted:** 2026-04-11 | **Version:** v3 (with YouTube transcripts + quiz content)
+
+---
+
+## Extraction Statistics
+
+| Metric | Value |
+|--------|------:|
+| Total Lessons | 8 |
+| Sections | 4 |
+| JW Player Transcripts | 0 |
+| YouTube Transcripts | 7 |
+| Modular Text Lessons | 8 |
+| Quiz Assessments | 0 |
+| JW Transcript Chars | 0 |
+| YouTube Transcript Chars | 59,696 |
+| Modular Text Chars | 36,466 |
+| **Total Content** | **96,162** |
+
+## Curriculum Structure
+
+- **Introduction and approaches to teaching AI Fluency** (3 lessons)
+- **Assessing AI Fluency** (2 lessons)
+- **AI's Impact on disciplinary content** (2 lessons)
+- **Conclusion & certificate** (1 lessons)
+
+---
+
+## Complete Lesson Content
+
+### Introduction and approaches to teaching AI Fluency
+
+#### Lesson 1: Welcome & approaches to teaching AI Fluency
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327277](https://anthropic.skilljar.com/teaching-ai-fluency/327277)
+
+**Video:** Lesson 1A: Introduction to teaching AI Fluency | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 60 minutes
+By the end of this lesson you'll be able to:
+
+Select and adapt teaching approaches for teaching the AI Fluency Framework to your students
+Design learning experiences using linear, non-linear, focused, or loop-based approaches
+
+Welcome & approaches to teaching AI Fluency
+
+This video welcomes educators who have already been working with the AI Fluency Framework and are ready to teach it to others. It covers the structure of the course and introduces four distinct approaches for teaching the AI Fluency Framework: the linear approach (moving step-by-step from Delegation through Description, Discernment, to Diligence), the non-linear approach (starting anywhere and moving flexibly between competencies), the focused approach (deep diving into a single competency), and the two-loops approach (teaching the framework as nested strategic and tactical processes). The video emphasizes that the AI Fluency Framework operates on two levels, as it both describes what happens when people work with AI and guides them toward better practices. Understanding this dual nature is crucial for teaching, as students need to grasp both how AI interactions work and how to improve them.
+Key takeaways
+
+The AI Fluency Framework serves as both a descriptive model and a normative guide for AI interaction
+Four teaching approaches offer different entry points suited to different student contexts and learning objectives
+The linear approach works best for beginners who need structure and sequential building of skills
+More experienced students benefit from non-linear or loop-based approaches that reflect real-world complexity, or focused approaches that provide greater depth
+Your choice of approach should match your students' readiness, available time, and learning goals
+
+Exercises
+This exercise helps you establish your teaching context and explore how each approach might work for your students.
+Step 1: Mapping Your Teaching Context (10 minutes)
+Start a conversation with Claude (for convenience, we will refer to Claude in many of these examples. However, there is nothing in this course that requires you to use any specific language model or any particular company’s product. You can work with whichever is your preferred AI assistant or indeed a combination of several different models/products.)
+Before you begin:
+
+Share the fluency summary attached to this lesson with the AI so it can understand which Framework you mean
+Share the video transcripts (see Lesson 1 resources) with the AI so they understand the four teaching approaches
+
+Opening the conversation:
+
+Begin by explaining that you're an educator preparing to teach the AI Fluency Framework
+Share essential information about your teaching situation and course details
+Describe your students' backgrounds (protecting personal data, of course), their typical experience with AI, and their motivations for learning
+Discuss any specific constraints you face such as limited class time, technology access, or institutional policies
+
+Key areas to explore with the AI:
+
+Ask the AI to help you think through what makes your teaching context unique
+Discuss your students' likely strengths and challenges when learning about AI collaboration
+Explore what success would look like for your students after completing your instruction
+Consider what resources and support systems you have available
+
+Create a teaching context document:
+
+Ask the AI to synthesize this discussion into a structured summary of your teaching context 
+Review this summary to ensure it captures all essential elements
+Save this document and reuse when starting new teaching conversations (such as those in lessons 2 and 3) with your AI partner to quickly establish context
+
+Step 2: Designing with Different Approaches (20 minutes)
+Continue your conversation to explore how each approach would work for your context. 
+Designing using a linear approach:
+
+Work with the AI to sketch out how you'd teach the 4Ds sequentially (Delegation to Description to Discernment to Diligence) in your context
+Ask the AI to help you identify specific activities for each competency, and the transitions between them, that would best resonate with your students
+Discuss potential challenges with the AI about this structured approach for your particular students
+
+Designing using a non-linear approach:
+
+Work with the AI to identify a few subject-relevant scenarios that would enable your students to engage in this approach.
+Explore with the AI which D might be the best starting point for a specific scenario/your students and why
+Work with the AI to map out criteria for which competency to address at different points in the workflow based on your students’ goals and constraints
+
+Designing using a focused approach:
+
+Identify which single D would provide the most value given your constraints
+Plan how to dive deep into all three sub-components of your chosen competency
+Design activities that thoroughly explore your chosen D from multiple angles
+
+Note that we’ll work on designing loop-based lessons in parts 2 and 3 of this lesson.
+What's next
+In the next lesson, we'll explore the Delegation-Diligence loop, a framework for responsible design and decision-making in AI collaboration.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] Hello and welcome to teaching AI fluency. I'm Zoe. &gt;&gt; I'm Maggie Vo. &gt;&gt; I'm Joe Feller. My name is Rick Don. &gt;&gt; If you're here, you've already been working with the AI fluency framework. &gt;&gt; Maybe you've discovered something powerful in how it helps you think about AI collaboration. &gt;&gt; And now you're wondering, how do I share this with my students? That's exactly what this course is about. Whether you're teaching students or fellow educators, this course will equip you with pedagogical strategies, assessment approaches, and ways to effectively communicate the AI fluency framework to others. Before we dive into the course, let's make sure we're on the same page about the nature of the framework. The framework operates on two levels. First, it describes what actually happens when people work with AI. the decisions, the communication, the evaluation, the responsibility. It gives us a map of the territory. Second, it also guides people towards better practice. It doesn't just describe what people do. It shows them what they should do to work with AI effectively, efficiently, ethically, and safely. This dual nature is crucial for teaching AI fluency. Your students need to understand both how AI interactions work and how to make those interactions work better. The framework gives us a language and a structure for both. We've organized this course around three essential questions every educator faces when introducing AI fluency. &gt;&gt; In this lesson, we ask, how can we introduce the framework to students? We'll look at pedigogy and different ways of exploring the framework with your students. &gt;&gt; In lesson two, we ask how do we know if students are getting it? We'll look at assessment and how to measure and evaluate AI fluency. &gt;&gt; And finally, in lesson three, we ask, how do we connect this to what we're already teaching? &gt;&gt; We'll look at curriculum and how to integrate AI fluency within a field or discipline. For the rest of this video, we will look at pedigogy and different ways of exploring the framework with our students. In our experience, we found it useful to share the AI fluency framework with students using four different entry points or approaches. These strategies each add conceptual richness and depth of detail to support learning for different groups and different contexts. The most straightforward approach is to treat the framework as a linear process in which we move from delegation to description to discernment to diligence. For students just starting to learn how to work with AI, this approach feels natural, manageable, and intuitive. It's similar to how you might have first learned the framework yourself. This waterfall style approach helps students build a basic process for their AI interactions and to approach the competencies sequentially. For example, you might structure a four-part assignment where part one focuses on delegation and working through project planning. Part two develops description skills through hands-on workshops where they interact directly with AI. Part three builds discernment through evaluating AI outputs together. And part four addresses diligence through ethical discussions and transparency practices. Each part builds on the previous, creating a structured learning journey. The second approach acknowledges that the 4Ds aren't actually a fixed sequence. Rather, they're an interconnected system, which means you can start anywhere and bounce around as needed. For students with more AI experience, this approach adds real world complexity and flexibility. Consider these scenarios. Sometimes the problems that we perceive through discernment leads to entirely new delegation decisions. For example, a student evaluating AI generated code might realize that the AI system they chose isn't suited for their programming paradigm, prompting them to reconsider their AI assistant selection. or sometimes diligence directly shapes your description strategy. For example, when working on sensitive data, privacy requirements might dictate that students craft prompts without sensitive information, fundamentally changing how they communicate with AI. Or sometimes description challenges reveal gaps in our delegation. For example, a student struggling to articulate what they want from an AI partner might realize they haven't clearly defined their own project goals, sending them back to revisit fundamental delegation questions. This more holistic approach helps students understand AI fluency as an adaptive and responsive practice, not a rigid checklist, preparing them for the messy realities of actual AI collaboration. This approach lends itself to projects and case-based learning, presenting students with real AI collaboration scenarios and letting them discover which competencies are needed and when. The third approach involves deep explorations of just one competency at a time. This is a good approach for specialized purposes like a discussion or a skill building session. You can spend an entire workshop on just description exploring concrete techniques for all three subcomponents with hands-on practice. Or you could focus a discussion seminar entirely on diligence. You could run three sessions on discernment alone. One on evaluating AI generated content for accuracy and utility, what we call product discernment. Another on evaluating AI's problem solving approach, what we call process discernment. and the third, assessing whether an AI's communication style is helping or hindering the collaboration process itself or performance discernment. This deep focus approach builds sophisticated evaluation skills that are relevant across many interactions. This more focused approach helps students master a specific area allowing for nuanced exploration of techniques, edge cases, and discipline specific applications without the cognitive load of juggling all four Ds simultaneously. The fourth approach, understanding AI fluency as nested processes or loops, represents the most conceptually rich understanding of how the AI fluency framework can be applied in practice. Once students grasp the basics, this approach helps them think more deeply about fluent AI interaction. Here's how this approach works. We can break human AI interaction into two decision spaces. The delegation diligence loop handles the big picture. It involves strategic and ethical decision-making. What am I trying to do? How should I divide work between myself and AI? Which systems align with my values? How do I ensure responsible collaboration? The description discernment loop handles the momentto- moment decisions. It involves the tactical iterative work of AI collaboration. How do I communicate this specific need? Is this output meeting my standards? How do I refine my approach? In practice, these two loops constantly inform each other. Strategic decisions shape tactical execution and tactical discoveries reshape strategic thinking. Teaching AI fluency is about helping students develop values, judgment, and practical skills while fostering more thoughtful approaches to human AI collaboration. We've kept this course fairly flexible as we don't know your situation, your subject or students or your constraints. But we will try to give you what you need to apply these approaches to your specific context. In our next video, we'll look at the delegation diligence loop and how to teach responsible design and decision making in AI collaboration. After that, we'll examine the description discernment loop and how to help students build effective collaboration environments with AI. Together we can help our students navigate this transformative technology with competence and confidence.
+
+**Resources & Links:**
+
+
+---
+
+#### Lesson 2: The Delegation-Diligence loop
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327278](https://anthropic.skilljar.com/teaching-ai-fluency/327278)
+
+**Video:** Lesson 1B: The Delegation-Diligence loop | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 40 minutes
+By the end of this lesson you'll be able to:
+
+Help students leverage the Delegation-Diligence loop for responsible design and decision making
+
+The Delegation-Diligence loop
+
+This video explores how to teach the Delegation-Diligence loop as a framework for responsible design and decision-making in AI collaboration. The loop addresses strategic and ethical questions about whether, when, and how to use AI, moving beyond "how do I use AI?" to "how do I make good decisions about AI?" The video demonstrates the two-way relationship between these competencies: Delegation decisions raise Diligence questions, and Diligence considerations reshape Delegation strategies. It provides concrete strategies for helping students recognize these connections, including step-by-step guides for navigating the loop in both directions and exercises that make the connections visible. The video emphasizes that when students understand how these competencies work together, they learn to see constraints not as limitations but as creative catalysts that clarify and strengthen their collaboration choices.
+Key takeaways
+
+The Delegation-Diligence loop handles big-picture strategic and ethical decision-making about AI use
+Delegation and Diligence each informs and shapes the other — the loop runs both ways
+Teaching through scenarios helps students see connections rather than treating competencies as checkboxes
+Students who master this loop develop clear rationales for their choices and can articulate why their approach aligns with goals and values
+Accountability and transparency enhance rather than limit creative possibilities with AI
+
+Exercises
+This exercise helps you create a concrete lesson plan for teaching the Delegation-Diligence loop.
+Step 1: Creating Your Loop Scenario (10 minutes)
+Continue the conversation from Exercise 1, and let your AI partner know that you are designing a Delegation-Diligence loop focused lesson:
+
+Work with the AI to create a realistic scenario/workflow from your discipline
+Include specific details that will enable students to think about nature of work, human and AI capabilities and limitation, ethics, transparency, and accountability
+
+Create decision points where students must navigate between strategic choices and ethical considerations
+Plan how students will document their thinking as they work through the scenario
+
+Part 2: Structuring the Learning Experience (20 minutes)
+Designing the forward flow (Delegation to Diligence):
+
+Create a structured worksheet or guide that helps students start with problem awareness and platform selection
+Design prompts that help students recognize when their Delegation decisions raise ethical questions
+Include checkpoints where students must consider transparency and accountability
+Plan how students will document the connection between their strategic choices and ethical implications
+
+Designing the reverse flow (Diligence to Delegation):
+
+Create a variation where students start with ethical constraints or transparency requirements
+Design activities that show how these constraints can clarify and improve task delegation
+Include reflection prompts that help students see accountability as empowering rather than limiting
+Plan how students will recognize that responsible practices enhance rather than restrict possibilities
+
+(Optional) Export as executable plan :
+
+Ask the AI to help you compile your scenario, activities, and assessment into a complete lesson plan
+Include clear learning objectives that emphasize loop thinking
+Provide step-by-step facilitation notes for yourself
+Create student-facing materials including worksheets and reflection prompts
+
+What's next
+In the next lesson, we'll explore the Description-Discernment loop, which focuses on the moment-to-moment craft of building cognitive environments where humans and AI work together effectively.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] Let's explore how to teach the delegation diligence loop as a framework for responsible design and decision-making in AI collaboration. This is where students learn to think beyond how do I use AI to how do I make good decisions about AI together with the description discernment loop. These are the most powerful ways AI fluency can be applied in practice. If you've been teaching the framework sequentially, this is where things get really interesting. Students start seeing how the pieces connect and not just how they follow each other. The delegation diligence loop requires us to think beyond our immediate interaction with AI. It's where students consider the broader context. Is this task best suited to AI human collaboration, AI automation, or should it be human only? And if you do use AI, which AI systems align with my values and my needs? And how do I ensure my collaboration is both successful and responsible? And these aren't just theoretical questions. They're the ones your students will face every time they consider using AI for schoolwork, creative projects, or eventually in their careers. Let's explore how delegation and diligence work together to enable fluent collaboration with AI. Remember how delegation and diligence each have three subcomponents? Here's where they start interacting with each other. Responsible design and decision-m emerges from the interplay of these six subcategories. In delegation, students learn to recognize what they're trying to accomplish, also known as problem awareness. Understand what different AI tools can do. Platform awareness. and make strategic choices about who does what. Task delegation. In diligence, students consider ethics during collaboration, also known as creation diligence. Figure out appropriate transparency about AI's role in their work, transparency diligence, and take responsibility for outcomes and the final product, deployment diligence. But the real aha moment comes in realizing that these aren't separate lists. They're part of one conversation. When students learn that effective collaboration with AI isn't just about what we can do, but what we should do given the context, constraints, and consequences, it transforms AI from an instrument into a thoughtfully integrated partner for meaningful work. But students want to see connections, not just checkboxes. Let's trace how the loop might flow from delegation to diligence. For example, a student begins by defining their goal. Let's say they're writing a policy brief on digital privacy. This would be problem awareness. They research available AI systems comparing capabilities for data analysis and writing support. This would be platform awareness. They decide to collaborate with AI on the initial research synthesis but reserve policy recommendations for themselves. Task delegation. These delegation decisions immediately raise diligence questions. Can they share policy stakeholder information with the chosen AI system? This is creation diligence. How will they acknowledge AI's role to maintain credibility and integrity? This is transparency diligence. What factchecking processes ensure accuracy of data? This is deployment diligence. Here's a step-by-step guide to help students navigate from delegation to diligence. Start with objectives and resources. Have your students ask themselves, "What am I trying to accomplish? Problem awareness. What AI systems are available to me?" platform awareness and how might I divide this work task delegation then have them ask diligence questions given my platform choice what ethical considerations arise who needs to know about AI's involvement how much detail what are the consequences if I'm not transparent about this how will I verify quality and accuracy the loop also runs powerfully in reverse diligence considerations often reshape delegation strategies Consider a student working on a community project who realizes they have deep responsibilities to represent voices accurately. That's deployment diligence. This accountability clarifies their approach and may naturally lead to the conclusion that AI can help analyze interview patterns, but the student needs to control the narrative interpretation. Responsibility drives better delegation. Similarly, embracing transparency can enhance rather than limit collaboration. A student who commits to detailed documentation of AI contributions, transparency, diligence, discovers this clarity helps them delegate more effectively. They can confidently expand collaboration with AI because they've established clear boundaries and attribution guidelines. Help your students understand that accountability enhances agency and creativity. Here's a stepby-step guide to reverse the flow and help students navigate from diligence to delegation. Start by identifying values and constraints. Have students ask themselves, "What are my ethical obligations? Creation diligence. What transparency is required or expected in this context?" That's transparency diligence. And what am I ultimately responsible for? What is my deployment diligence? Let these shape their delegation choices by then having them ask, "How should I structure my work with AI, if at all, to meet these obligations? Which AI systems align with these values and guidelines? What work must remain human to maintain integrity? A good way to teach these connections is through applied scenarios that make them visible. Here's an example exercise. Present students with a project brief and have them work through both directions of the loop. First, have them start with delegation. What's their goal? Which AI platforms might work? How would they divide the tasks? Then push into diligence. What ethical concerns arise? Who needs transparency? How do they ensure accuracy? Then flip it. Start with diligence constraints like your school requires all AI used to be clearly labeled. How does this reshape their delegation strategy? Have the students compare the two approaches? Which revealed insights the other might have missed? You can also help students train their eyes to recognize when their delegation diligence work is going well. For example, when delegation and diligence work well together, students develop clear ration for their choices. They can articulate not just what they're doing with AI, but why their approach aligns with their goals and values. Furthermore, rather than seeing diligence as limiting, students can discover how ethical boundaries actually clarify and strengthen their delegation decisions. Constraints become creative catalysts to spark better ideas. Students who mastered this loop can also confidently expand their AI collaboration because they've established clear frameworks for responsibility. They know what they're accountable for and have systems to ensure quality. The delegation diligence loop teaches students that responsible collaboration with AI requires thinking beyond the immediate task. It requires understanding the work deeply, choosing systems thoughtfully, and embracing responsibility as a source of clarity and creativity. When students understand how good decisions create both ethical clarity and better outcomes, they learn to balance what AI can do with what they should do. Not by choosing one over the other, but by understanding that both work together. In our next video, we'll explore the description discernment loop where students learn about the momentto- moment craft of building collaborative environments where humans and AI can work together effectively. While delegation diligence provides the strategic foundation, description discernment brings AI integrated projects to life.
+
+**Resources & Links:**
+
+
+---
+
+#### Lesson 3: The Description-Discernment loop
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327279](https://anthropic.skilljar.com/teaching-ai-fluency/327279)
+
+**Video:** Lesson 1C: The Description-Discernment loop | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 40 minutes
+By the end of this lesson you'll be able to:
+
+Help students leverage the Delegation-Diligence loop for responsible design and decision making
+
+The Description-Discernment loop
+
+This video examines the Description-Discernment loop, which focuses on the moment-to-moment craft of building cognitive environments where humans and AI work together effectively. Moving beyond single prompts to sustained conversations, this loop teaches students to build shared context and understanding with AI. The video focuses on Product, Process, and Performance as three lenses for understanding collaboration—what we're creating, how we're approaching it, and how we're interacting. It emphasizes that students often arrive thinking about "prompt tricks" but need to develop a more sophisticated understanding of building genuine collaborative relationships with AI. The video provides strategies for teaching cognitive environment building, including designing assignments that require multiple interactions over time, sharing your own AI collaboration process, and encouraging students to document the evolution of their interactions. It concludes by showing how the two loops work together, with Delegation-Diligence setting strategic direction and Description-Discernment filling that container with rich, iterative interaction.
+Key takeaways
+
+The Description-Discernment loop transforms AI interaction from commands to conversations that use context to build cognitive environments
+Product, Process, and Performance operate as different lenses for understanding the same collaborative process
+Teaching this loop means helping students move beyond automation to genuine augmentation
+Successful cognitive environments include shared vocabulary, established interaction patterns, and mechanisms for building on previous exchanges
+The two loops work as nested systems—strategic decisions create the container that tactical interactions fill
+
+Exercises
+This exercise helps you create a concrete lesson plan for teaching the Description-Discernment loop.
+Part 1: Creating Your Loop Scenario (10 minutes)
+Continue the conversation from Exercise 2, and let your AI partner know that you are designing a Description-Discernment loop focused lesson based on the same scenario as in the previous exercise.
+Developing a scenario for your students:
+
+Discuss with the AI the need to shift from the Delegation-Diligence loop to the Description-Discernment loop
+Work with the AI to create elements that help students explore how Product, Process, and Performance descriptions evolve through Discernment and iteration
+
+Plan how students will document the evolution of their shared context with AI
+
+Part 2: Structuring the Learning Experience (20 minutes)
+Designing the Product evolution:
+
+Work with AI to create a progression where students start with vague goals and iteratively clarify them
+Discuss how to help students recognize when and how their vision of "good" is evolving
+Include checkpoints where students document how their product understanding changes
+
+Designing the Process development:
+
+Work with AI to create a progression where students develop shared problem-solving methods with AI over time
+Discuss how to help students recognize when and how their preferred problem-solving approach is evolving
+Include checkpoints where students document how their Process understanding changes
+
+Designing the Performance relationship:
+
+Work with AI to create a progression where students experiment with different interaction styles and their effects
+Discuss how to help students recognize when and how AI behaviors are appropriate and useful to their goals
+Include checkpoints where students document how their Process understanding changes over time
+
+(Optional) Export as executable plan :
+
+Ask the AI to help you compile your scenario, activities, and assessment into a complete lesson plan
+Include clear learning objectives that emphasize loop thinking
+Provide step-by-step facilitation notes for yourself
+Create student-facing materials including worksheets and reflection prompts
+
+Reflection
+
+Which approaches best fit your learning objectives for your students?
+Which approaches best fit your personal teaching style and preferences?
+
+What's next
+In the next lesson, we'll explore how to assess AI Fluency in your students. You'll learn to apply outcome, process, and reflection-based assessment strategies and create rubrics that capture the 4D competencies.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] Hello, I'm Joe Feller. Let's explore the description discernment loop, the part of the AI fluency framework that students often find the most immediately applicable and useful. While the delegation diligence loop handles the bigger picture, this loop is about the momentto- moment craft of building collaborative environments where humans and AI can work together effectively. When students think about AI skills or literacy, they tend to think about clever hacks and prompting tricks. This offers a more sophisticated and enduring approach, preparing students for professional AI interaction now and into the future. Let's start with some fundamental framing. A lot of AI interaction advice focuses on crafting the perfect prompt. And while prompt engineering is useful, thinking in terms of the description discernment loop invites us to think bigger about conversations, about commands. This is important because it fundamentally changes the mindset of how students approach AI. We're teaching them to not simply engage in an input output exchange as if they were typing commands into an operating system or app. Instead, we're teaching them to build context and a shared understanding with AI about the world and the tasks at hand. On a practical level, this change of mindset will allow students to communicate more effectively with AI both now and into the future without copy pasting prompts from others or following very specific step-by-step guides. Furthermore, we're actually teaching them to build the overarching cognitive environment in which they interact with AI. The context that we give an AI system directly impacts how it processes its training data and how it responds to our prompts. In a similar way, when you have a great conversation with a colleague, you build on each other's ideas. You develop shortorthhand. You know when to push back and when to encourage. You learn to think together. And that's what we mean by a cognitive environment. That's what we're trying to teach students to create with AI. These environments may include shared vocabulary and references that evolve over time, well-defined goals, values, processes, and methods. established patterns of interaction that enable both human and AI to perform to the best of their ability and mechanisms for building on previous interactions. This is real collaboration where their knowledge deepens, their process evolves, and innovative thinking and problem solving emerges. And you definitely can't get there with a single prompt, no matter how well engineered. Now, with that in mind, let's look at the loop. The description discernment loop includes three interconnected elements, product, process, and performance. These operate like different lenses for understanding the same collaborative process. Different workflows will require different levels of attention on each. Product focused collaboration starts with clearly articulating what we're trying to create together and then rigorously evaluating the result. But this isn't a one-time specification and quality check. Product focused interactions should have an evolving understanding of what good looks like. In many cases, it's not just trying to improve the AI understanding. Students will actually be improving their own understanding as well. This is when we move beyond automation and into augmentation. For example, a student has been instructed to use AI to help them write about social media's impacts on teens. They might begin with a very broad prompt such as, "Help me write about social media and teenagers, a generic prompt that will yield a very generic response." But through discernment, the student realizes this isn't what they actually wanted. And so their next description gets more specific and contextrich. Maybe now it becomes, "Help me write about social media and teenagers. I'm exploring how teams present different versions of themselves across platforms. Each version both improves the final item produced and provides greater mental clarity to the student who's better articulating their goals. Over time, they might arrive at something uniquely suited for their needs with identifiable product, process, and performance descriptions. For example, help me write about social media and teenagers. craft this analysis through the lens of how teens present different versions of themselves across platforms. We want readers to understand the psychological toll of maintaining these different personas. Now the student and AI partners can engage with the actual product goal through loops like these. Students can clarify their own thinking and revise product descriptions through collaborative exploration. Process focused collaboration is about developing shared approaches to thinking and problem solving that again evolve through practice. Consider a student who was asked to work with AI to analyze some documents. They might begin with no process description at all or something vague like analyze this step by step. But after some trial and error and discussing the approach with their AI assistant, they develop richer instructions for how the AI should approach the work at hand. In this example, they might end up creating process descriptions like when we analyze each document, let's start by identifying the author's context and discussing how this context might influence the content of the document. After that, we'll look at the content itself, both what's said and any notable emissions. Then, we'll consider multiple interpretations and discuss each of these before settling on our conclusions. Process discernment evaluates whether our collaboration is working. It means asking questions like, is the process uncovering insights that we might miss alone? Is the process becoming more sophisticated over time? In our example, the student might realize that their AI partner excels at finding patterns across documents, but needs guidance when considering emotional and cultural contexts. This recognition shapes how they refine their collaborative process and how they might approach engaging with this specific AI model in the future. Finally, performance is about the relationship between the student and the AI assistant. We want to create dynamics that enable both students and AI to contribute their best thinking and to do their best work. For example, a student might initially approach AI very formally and generically, but as they develop their collaborative relationship, multiple iterations of performance description and discernment may lead to something more nuanced and personal. Like, remember that I always learn best when you act as a kind but rigorous skeptic. So when I propose ideas, help me find the weak points, but always in a way that builds my confidence. Or you know how much I love piano, so use analogies from music to help make these concepts stick. Or this is a creative task, so let's keep some humor in the work. I think more creatively when I'm relaxed. Through discernment, students can refine these dynamics further. They need to continually assess whether a specific dynamic serves the collaboration's goals. For example, maybe our hypothetical student decides over time, actually save the skepticism for after I've developed my initial ideas. I need some space to explore first without critique. How do we help students develop these sophisticated collaboration skills? Here are some key strategies. First, go beyond the single prompt. Single prompt exercises simply don't support the building of cognitive environments. Design assignments that require multiple interactions over time in a single chat where context accumulates and relationships develop. Then design assignments that require multiple interactions across several chats so that students begin to understand what context is preserved, if any, and what context needs to be reestablished. Second, we encourage you to share your own process. Let students see your AI collaborations and show how your understanding deepens across exchanges. Let students see how you build shared language, refine methods, and adjust interaction dynamics. Third, encourage reflection. Have students document the evolution of their collaboration, not just the outputs. How did shared understanding develop? What interaction patterns emerged? When did they need to reset or redirect? Importantly, how did the three Ps of product, process, and performance actually interact in practice? We also need to help students train their eye to recognize these two positive signs of strong collaboration. First, shared language. As collaboration and context deepens, shorthand references to complex ideas, problem framings, reusable solution patterns, and other items from earlier conversations become common. Like with human colleagues with whom you share experience, this shared language makes collaboration easier and richer. Second, an exploration mindset. Initial interactions might be quite formal, almost like programming, but as trust and experience builds, students collaboration with AI can become more agile and exploratory. A rigid command focused style like do X and then do Y evolves into something more flexible, interactive, and contextaware. The outcomes of these collaboration patterns can really start to surprise students. Students can go beyond getting what they asked for to discovering what they didn't know to ask. The description discernment loop teaches students that meaningful AI collaboration means building environments where human intelligence and AI combine in powerful ways. By teaching students to see description and discernment as an ongoing interconnected practice, we prepare them for the kind of sustained sophisticated collaboration that produces extraordinary results. Remember what each partner brings to this collaboration. Humans contribute contextrich judgment, creativity, ethical reasoning, emotional intelligence, and the values that determine what matters. AI partners offer vast knowledge synthesis, tireless exploration, pattern recognition across domains, and the ability to hold complexity without being overwhelmed. When these strengths combine in well-designed cognitive environments, the results transcend what either partner could achieve alone. Here's how the two loops that we discussed fit together to work in concert. The delegation diligence loop sets the strategic direction. What are we building? Which AI assistant suits our needs? How do we work responsibly? This creates the container for collaboration. The description discernment loop fills that container with rich evolving interaction within the boundaries set by our strategic decisions. We build cognitive environments that enable extraordinary collaborative thinking and creation. We've now explored all four entry points into the AI fluency framework with a very close look at the two-loop approach. In our next lesson, we'll examine how to assess AI fluency. But before we move on, remember that the cognitive environments your students build with AI will shape how they think, create, and solve problems throughout their careers. We're going beyond teaching a technical skill. We're cultivating a new form of intellectual partnership.
+
+**Resources & Links:**
+
+
+---
+
+### Assessing AI Fluency
+
+#### Lesson 4: How do we assess the 4Ds?
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327280](https://anthropic.skilljar.com/teaching-ai-fluency/327280)
+
+**Video:** Lesson 2A: How do we assess the 4Ds? | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 40 minutes
+By the end of this lesson you'll be able to:
+
+Apply outcome, process, and reflection-based assessment strategies to evaluate AI Fluency
+Create rubrics that capture the 4D competencies in your specific teaching context
+
+How do we assess the 4Ds?
+
+This video explores three complementary approaches to assessing AI Fluency: outcome-based (focusing on what students produce through AI collaboration), process-based (examining how students work with AI over time), and reflection-based (evaluating metacognitive awareness). The video demonstrates how to apply these three approaches to each of the 4Ds, providing specific examples of what to look for and how to evaluate student development. For Delegation, we assess goal-setting, task breakdown, tool selection; for Description, we evaluate conversation quality and iterative refinement; for Discernment, we look at critical evaluation skills; and for Diligence, we examine ethical decision-making and accountability. The video emphasizes that combining all three assessment approaches provides the most complete picture of student AI Fluency development.
+Key takeaways
+
+Effective AI Fluency assessment combines outcome, process, and reflection approaches for a complete picture
+Each of the 4Ds requires different types of evidence and assessment strategies
+Outcome assessments focus on products created, process assessments examine the journey, and reflection assessments evaluate metacognitive awareness
+Observable actions and concrete artifacts are more reliable than assumptions about understanding
+Assessment should be a learning opportunity, not just measurement
+
+Exercises
+This exercise helps you create a practical rubric for assessing AI Fluency in your specific course context.
+Step 1: Establishing Your Assessment Foundation (5 minutes)
+Start a new conversation with Claude or continue the conversation from Lesson 1:
+Setting up the conversation:
+
+Provide the AI with the transcripts from the two lesson videos.
+If starting fresh, share your teaching context and explain you're working on assessment for teaching AI Fluency
+If continuing, remind the AI you're now focusing on assessment strategies for your course
+Describe a specific assignment or project you're planning where students will use AI
+Explain which aspects of AI Fluency are most important for this particular assignment
+
+Identifying your assessment priorities:
+
+Discuss with the AI which of the 4Ds (and sub-competencies) are most relevant to your assignment goals
+Explore what success looks like for your students in this specific context
+Consider what common challenges or misconceptions you expect them to encounter
+Determine what evidence would convince you that students have developed fluency
+
+Step 2: Selecting Assessment Approaches (10 minutes)
+Work with the AI to map assessment approaches to competencies:
+For each D you're assessing, explore:
+
+Whether outcome-based measures would work (what products would demonstrate competence?)
+Whether process-based measures are feasible (can you access and evaluate chat logs?)
+Whether reflection-based measures add value (what questions would reveal/promote understanding?)
+Which combination of approaches gives you the clearest picture of student development?
+
+Making practical decisions:
+
+Discuss with the AI what's actually assessable given your time and resources
+Consider which elements could be peer-assessed or self-assessed
+Identify what you need to assess directly versus what students can document
+Plan how to balance comprehensive assessment with grading efficiency
+
+Step 3: Creating Observable Indicators (10 minutes)
+Develop specific, observable criteria with the AI:
+Defining performance levels:
+
+Work with the AI to create three clear levels (such as emerging, developing, proficient)
+For each level, describe what you would actually see in student work
+Use language specific to your course and assignment rather than generic terms
+Include concrete examples from your subject area where helpful
+
+Writing clear indicators:
+
+Transform abstract concepts into observable behaviors
+Replace vague terms like "good understanding" with specific actions
+Connect indicators directly to your assignment requirements
+Ensure each indicator is something you can actually evaluate
+
+Step 4: Formatting Your Rubric (5 minutes)
+Create the final rubric document:
+
+Ask the AI to help structure your rubric in a clear, usable format
+Review with the AI whether each criterion is clearly distinguishable
+Check that the progression between levels is logical and achievable
+Verify that the rubric aligns with your stated learning objectives
+Consider how you'll communicate this rubric to students
+Ensure the language is clear for both you and your students
+
+What's next
+In the next lesson, we'll focus on designing assignments that help students both develop and demonstrate AI Fluency.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] Hello, I'm Joe Feller. Let's look at one of the trickiest questions in teaching AI fluency. How do we actually assess it? How can we tell the difference between a student who's just figured out some clever prompts and one who's developing real collaborative skills? We need to understand what AI fluency looks like in practice and to distinguish between surface level AI interaction and deep collaborative competency. We have found three general approaches that work well together. Outcomebased assessments focus on what students produce through AI collaboration. We're assessing whether students achieve their stated goals through human AI partnership. Process-based assessments examine how students work with AI over time. This captures iteration patterns, recovery from failed attempts, and methodological sophistication. We're interested in what happens during the collaboration, not just what it produces. Reflection-based assessments focus on metacognitive awareness when students think about their own thinking process. We're interested in students conclusions about why certain strategies worked or didn't, what they learned, and how they might apply that learning to future interactions. We believe the most effective AI fluency assessments integrate all three approaches. They assess not just what students can produce with AI, but how they think and grow as AI collaborators. Let's take a look at each of the four Ds from these perspectives. As you know, delegation is about setting goals and deciding whether, when, and how to engage with AI. Outcomebased assessments might ask, did the delegation plan make sense? Were the goals realistic? Did they pick the right tool for the job? Process-based assessments could involve reviewing annotated chat logs where students work through the delegation process with an AI assistant, showing how they explored options and made decisions. And reflection-based assessments could ask students to explain their choices. What else did they consider? And how did the delegation decisions shape everything that followed? Here's how we might assess description and a student's ability to effectively communicate to prompt useful AI behaviors and outputs. Outcomebased assessments can examine the quality of prompts created and the AI response. Are the instructions clear? Do they provide good context? We might also assess the evolution of prompts from initial to final versions. Process-based assessments involve rubric supported analysis of conversation logs showing iterative refinement, documentation of failed approaches and pivots that hopefully lead to breakthroughs, as well as evidence of building shared context over time. And reflection-based assessments can explore students analysis of which description techniques work best and why. their recognition of how different tasks require different communication approaches and insights about the relationship between description quality and output quality. We might explicitly ask them to reflect on these topics with questions such as which communication strategies work best and why? How did you adapt your approach for different tasks? For discernment, we're focused on students ability to accurately assess the usefulness of AI outputs and behaviors. Outcomebased assessments might have students annotating AI outputs to mark what's strong and what needs improvement. You could also have students keep decision logs, explaining which parts of the AI output were kept or modified or discarded. Processbased assessments look for inline evaluation comments in chat logs. evidence of catching and correcting AI errors and pattern recognition across multiple interactions. This allows you to see students develop their critical eye in real time. Reflectionbased assessments focus on students analysis of their evaluation criteria and how it evolved, discussion of the issues that they initially missed and lessons learned, and comparison of their discernment strategies across different task types. Finally, let's look at diligence. Taking responsibility for what we do with AI and how we do it. Outcomebased assessments evaluate things like the quality and completeness of diligence statements, appropriate attribution and transparency documentation, and evidence of factchecking and verification processes. You can ask questions like how do they attribute AI's role in their work? or what verification processes do they use and was it effective at catching errors and quality issues? Processbased assessments examine data handling practices that are visible in chat logs or ethical decisionmaking before, during, and after collaboration, intentional handling of sensitive information, and the documentation of permission seeking or constraint checking. Reflection-based assessments explore students discussion of any ethical dilemmas they encountered. How do they understand their responsibilities within the bounds of their AI collaboration? What ethical challenges surprised them? And how do they plan on using these learnings to improve responsible AI use in future work? Let's bring together all of these concepts and look at how we might assess an assignment in practice. Imagine that we asked students to write an essay on the impacts of Gen AI on society with the support of an AI assistant. They were told to submit the final essay, a link to their interactions with the AI, a diligence statement, and a learning journal discussing their experience. We're going to assess the work from all three angles from an outcomebased perspective. We'll look at the essay itself and the diligence statement. and we'll ask questions like, does the essay address the brief? Are there clear signs of strong human oversight in the final version? Is the process of AI collaboration transparently presented in the statement? From a process-based perspective, we can look at the AI interaction itself and what happened behind the scenes. We'll ask questions like, did the student effectively build shared context with the AI? How did the student refine their prompting over time? and is there evidence of pivoting and process correction in response to error, misunderstandings, or lack of clarity? Finally, from a reflection-based perspective, we'll look at the learning journal. We'll ask questions like, can the student explain what worked well and what didn't, and can they state lessons learned to improve future AI collaboration? Assessing AI fluency requires us to look beyond only final products to understand how students demonstrate collaborative competencies with AI. Here are some principles that work well. Combine outcome, process, and reflection approaches to get a complete picture. Focus on observable actions and concrete artifacts rather than assumptions about understanding. Remember that different competencies may benefit from different assessment approaches. Most importantly, make assessment a learning opportunity, not just a measurement. Help students recognize and find value in their own growth in AI collaboration. Now that we've discussed how we might assess the 4Ds, we'll next explore designing assignments based on the AI fluency framework.
+
+**Resources & Links:**
+
+
+---
+
+#### Lesson 5: Designing assignments for AI Fluency
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327281](https://anthropic.skilljar.com/teaching-ai-fluency/327281)
+
+**Video:** Lesson 2B: Designing assignments for AI Fluency | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 40 minutes
+By the end of this lesson you'll be able to:
+
+Design assignments that help students both develop and demonstrate AI Fluency
+Manage the increased volume and complexity of AI-enhanced student work
+
+Designing assignments for AI Fluency
+
+This video focuses on designing assignments that help students both develop and demonstrate AI Fluency. It emphasizes three key principles: authenticity (creating assignments that mirror real-world AI collaboration), iteration (building in opportunities for refinement that showcase growth), and pedagogical transparency (being clear about assessing the collaboration process, not just outputs). The video presents various assignment types including outcome-based assignments (like improving AI outputs or comparing different AI systems), process-based assignments (such as annotated chat logs or recorded narrations), and reflection-based assignments (including learning journals and personal policy statements). It also addresses practical strategies for managing the increased volume of content that AI-enhanced assignments generate, such as using detailed rubrics, emphasizing peer review, conducting lightning round conferences, and selective sampling of student work.
+Key takeaways
+
+Effective AI Fluency assignments emphasize authenticity, iteration, and pedagogical transparency
+Outcome-based assignments focus on products but reveal collaboration skills
+Process-based assignments make invisible decision-making visible through documentation
+Reflection-based assignments develop metacognitive awareness but need variety to avoid fatigue
+Managing increased volume requires strategic approaches like rubrics, peer review, and selective sampling
+
+Exercises
+This exercise helps you create a comprehensive assignment that develops and assesses AI Fluency.
+Step 1: Assignment Architecture (10 minutes)
+Continue your conversation from Exercise 1 about assessment design:
+Connecting to your rubric:
+
+Reference the rubric you just created and the competencies it emphasizes
+Discuss with the AI what type of assignment/component would best allow students to demonstrate these competencies
+Consider whether you want to focus on outcome, process, reflection, or a combination
+Explore how this assignment fits within your broader course structure
+
+Selecting assignment components:
+
+Review the different assignment components discussed in the videos with the AI
+Choose 2-3 components that work together coherently for your purposes
+Adapt these components to feel natural within your course context
+Ensure the workload is manageable for both students and yourself
+Work with the AI to ensure the assignment mirrors real-world AI collaboration in your field and build in genuine problems where AI partnership adds value
+
+Step 2: Building in Iteration and Growth (10 minutes)
+Design opportunities for refinement and development:
+
+Discuss with the AI where students should pause and refine their work
+Plan checkpoints that allow students to learn from early attempts
+
+Create templates or guides for students to capture key decision moments
+
+Design support structures for students who struggle with reflection
+
+Step 3: Implementation Planning (10 minutes)
+Finalize the practical details:
+
+Work with the AI to draft assignment instructions that are specific but not overwhelming
+Include clear statements about what you're assessing (process and reflection, not just output)
+Specify deliverables, formats, and submission requirements
+Connect the assignment explicitly to AI Fluency development
+
+Discuss with the AI how to keep the grading manageable, including planning which elements you'll assess in detail versus review quickly, exploring peer review components that add value without adding burden, and considering how to use sampling or conferences instead of extensive written feedback
+
+Lesson reflection
+
+What challenges do you anticipate in implementing these assessments?
+How will you communicate the value of process and reflection to students?
+
+What's next
+In the next lesson, we'll examine AI's specific impact on curriculum, pedagogy, and assessment in your field.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] Hello, I'm Joe Feller. Let's explore how to design assignments that help students both develop and demonstrate AI fluency. As you design assignments, keep these principles in mind. Authenticity. Create assignments that mirror real world AI collaboration rather than artificial exercises. Students should tackle genuine problems where AI partnership actually adds value. Iteration. Build in opportunities for refinement that showcase growth over time. Singleshot assignments miss the iterative nature of fluent AI collaboration. Build in chances for students to refine, rethink, and try again. Pedagogical transparency. Be clear that you're assessing the quality of the collaboration process and students own reflections, not just the outputs. Students need to understand that you care about how they're learning to work with AI, not just what they produce. Now, let's look at some approaches to building assignments informed by the AI fluency framework. We'll use the three assessment approaches discussed in the last video. outcomebased, process-based, and reflectionbased. Outcomebased assignments focused on what students produce through AI collaboration. Here are some effective approaches. One, improving AI outputs. Give students a mediocre AI output and have them transform it into something excellent. They'll use discernment to identify problems and description to guide improvements. This assignment raises awareness of discernment of pre-existing content as a starting point for AI interaction. Two, product comparison. Have students use multiple AI systems or modes like extended thinking or image to image to tackle the same task, then analyze the different outputs. They document which works best for specific purposes and why. This builds both platform awareness and discernment skills and teaches students very quickly the core differences between different AI systems. Constraintbased challenges give students specific output requirements, format, length, style, audience, and have them work with AI to meet these constraints. They submit both their final product and the prompts that achieved it. This develops description skills as students learn to communicate precise specifications. To build creation diligence skills as well, you can add specific ethical, legal, or professional standards as constraints. Peer product review. Have students set their own goals, create with AI, and then swap and critique against the stated goals. This builds product discernment and goal awareness, and it can be valuable for students to get exposure to each other's approaches. Process-based assignments are challenging. How do we make human AI interaction, which can be very private and fleeting, visible, and easy to assess? Well, here are some suggestions for helping students document their process. Annotated chat logs. Students submit records of AI interactions, annotating key moments of insight, challenge, and growth. They highlight turning points where their approach changed, breakthroughs in their own understanding, and recovery from failure. Recorded narrations. Students can record themselves working with AI in real time using audio or screen capture. Narrating their decision-making process as they go. They explain why they're making specific choices, what they're looking for in responses, and how they're evaluating outputs. Process playbooks. Students build their own AI strategy guides by creating personal reference documents, recording their strategies and prompts for different types of tasks or which techniques work in which contexts or where to go for help when they need guidance. What works for research, what works for creative writing or for problem solving. This document will be a key reference item for their continued growth. AI assisted or peer debrief. Have students share a chat log with an AI partner and ask the AI to discuss the chat log with them. Alternatively, students can do this exercise with another student as a discussant. Or you could have students do this activity with both peers and AI partners and then compare the insights for greater depth. All of the above techniques enable students to make invisible decisionmaking visible. As a result, students can improve their delegation, description, discernment, and diligence competencies through observing their own process. Reflectionbased assignments are central to developing AI fluency. The challenge is to offer a diverse selection of approaches so that students can develop and demonstrate metacognitive awareness without developing reflection fatigue. Here are some options. Guided inquiry. Provide students with specific questions to reflect on a particular assignment. Make it an inviting process where students feel free to share their honest critiques and complaints as well as their positive experiences working with AI systems. Learning journals. Students self assess their 4D development at multiple points across the course, providing specific evidence for their observations as appropriate. We recommend encouraging creativity and inviting multiple modes of reflection including videos, infographics, mind maps, and so on. Scenarios and case studies present students with realistic hypothetical scenarios or real world case studies that challenge them to apply their own learnings to specific issues in AI design, use, and impacts. It can be something as simple and vague as your new boss wants you to use AI for hiring decisions. What's your advice or approach? Personal policy statements. If you only have room for one reflective assignment, we suggest that you have students create a personal policy statement based on their experiences in which they develop their own values, strategies, and methods for fluent AI collaboration. Such statements require very deep reflection and more importantly help students feel empowered and accountable for their AI interactions. This assignment is well suited to peer discussion. Now, time to get real. These are all useful assignments, but they can generate a lot more content than traditional assignments. So, here's how you can manage some of that volume. First, use detailed deliverable-based rubrics. Have clear, very granular deliverables that you can quickly verify students have completed. Well, this approach requires tight alignment between the chosen deliverables and the learning outcomes, but they can save you hours. Second, emphasize self and peer review. With proper guidance, students are often best positions to observe their own development or that of their peers. Well-designed self and peerreview assignments can focus student thinking and condense voluminous AI generated outputs into something faculty can respond to in a useful and timely manner. Third, lightning route conferences. Consider replacing some written feedback with brief conferences where students present their key insights. Five minutes of discussion and insight sharing can be more valuable than extensive written comments. Finally, selective sampling. You don't need to read every word of every chat log. Teach your students to identify and flag key moments for your attention. Designing AI fluency assignments is about creating opportunities for genuine learning through the practical application of the framework itself. In summary, we encourage you to focus on authenticity, iteration, and pedagogical transparency. Outcomebased assignments are the most straightforward and are the key to assessing description and discernment competency. Processbased assignments should make human AI interaction visible and easy to assess. and reflection-based assignments require variety to stay fresh and avoid reflection fatigue. Finally, we need to plan ahead to manage higher than usual volumes of content. In our next lesson, we'll explore what students need to know to stay in the loop when working with AI and how to integrate AI fluency into specific disciplines and curricula.
+
+**Resources & Links:**
+
+
+---
+
+### AI's Impact on disciplinary content
+
+#### Lesson 6: AI's impact and your discipline
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327282](https://anthropic.skilljar.com/teaching-ai-fluency/327282)
+
+**Video:** Lesson 3A: AI's impact and your discipline | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 40 minutes
+By the end of this lesson you'll be able to:
+
+Analyze AI's specific impacts on curriculum, pedagogy, and assessment in your field
+Create a position paper articulating your perspective on AI's role in your discipline
+
+AI's impact and your discipline
+
+This video examines how AI impacts different disciplines in unique ways across curriculum, pedagogy, and assessment. It emphasizes that your disciplinary expertise—understanding your field's core values, methods, and ways of thinking—is essential for navigating these disruptions. The video explores three key questions: What gets automated in your field? Where does human-AI partnership add the most value? How do we prepare students to manage and remain accountable for AI systems in their future careers? It acknowledges that disruption isn't uniform—perhaps your curriculum stays stable while assessments transform, or your pedagogy evolves while core content remains constant. The video provides frameworks for analyzing these impacts, emphasizing that some disruptions are opportunities to leverage while others are problems to solve, and your expertise determines which is which.
+Key takeaways
+
+AI impacts curriculum, pedagogy, and assessment differently across disciplines
+Your disciplinary, pedagogical, and assessment expertise are the foundation for meaningful AI integration
+Understanding what gets automated, where partnership adds value, and how to maintain accountability is crucial
+Impact and disruption patterns vary—some areas transform while others remain stable
+AI Fluency amplifies rather than replaces disciplinary expertise
+
+Exercises
+This exercise helps you systematically analyze AI's impact on your discipline and articulate your position. The timing is just a reference - take your time and make your conversations meaningful.
+Step 1: Exploring AI's Impact on Your Curriculum (10 minutes)
+Start a conversation with Claude (or continue from previous lessons):
+Setting up the conversation:
+
+Provide the AI with the transcripts from this course
+Share your teaching and disciplinary context and explain you're analyzing AI's impact on your specific discipline
+Tell the AI you'll be creating a position paper that articulates your perspective on these changes
+
+Exploring curriculum disruption:
+
+Explore with the AI which routine tasks in your field AI currently automates or may likely automate soon
+Discuss how these automations may change which foundational concepts become more or less important for students
+Work through specific examples of when students ask "Why learn XYZ when AI can do it?" and develop compelling, discipline-specific answers
+Identify which human skills become even more crucial as AI handles routine work
+Consider where human-AI collaboration could add the most value in your field
+Discuss what new competencies students need to work effectively with AI in your discipline
+
+Step 2: Examining Pedagogical Transformation (10 minutes)
+Continue your analysis focusing on teaching methods:
+Identifying enhancement opportunities:
+
+Explore with the AI specific ways AI could enable better learning experiences in your field
+Discuss pedagogical possibilities that seemed impossible before AI (e.g. personalized tutoring, immediate feedback, interactive simulations)
+Distinguish between where AI genuinely helps students learn versus just making things easier/faster
+Consider how AI might help address persistent challenges in teaching your subject
+
+Assessing risks and maintaining rigor:
+
+Work with the AI to identify where AI might short-circuit genuine learning in your discipline
+Discuss which pedagogical approaches should be avoided or modified with AI's presence
+Explore how to maintain academic rigor when AI can complete many traditional assignments
+Consider which learning experiences must remain human-centered to preserve their value
+Plan how to help students use AI as a learning tool rather than a learning substitute
+
+Step 3: Reimagining Assessment Strategies (10 minutes)
+Focus on the assessment challenges and opportunities:
+Designing authentic assessment in the AI age:
+
+Discuss with the AI what demonstrates genuine understanding in your field when students have AI access
+Explore how to assess process, growth, and critical thinking alongside final products
+Consider what new forms of assessment become possible with AI
+Identify ways to value creativity, judgment, and synthesis in assessment
+
+Maintaining integrity while embracing innovation:
+
+Work with the AI to brainstorm assessments that can't be shortcut with AI
+Explore where AI collaboration might actually enhance demonstration of mastery
+Discuss how to distinguish between appropriate and inappropriate AI use in your field
+Consider how to design assessments that encourage responsible AI use while demonstrating individual understanding
+
+Step 4: Synthesizing Your Position (10 minutes)
+Create your position paper:
+Developing your stance:
+
+Ask the AI to help you synthesize your discussion into a coherent position paper
+Include your perspective on curriculum evolution, pedagogical transformation, and assessment innovation
+Articulate clear principles for how AI should and shouldn't be used in your discipline
+Add specific examples and rationales that will resonate with your colleagues
+
+What's next
+In the next lesson, we'll focus on applying your disciplinary knowledge to make the AI Fluency Framework specific to your field. You'll work with colleagues to develop discipline-specific applications of the 4Ds.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] We've explored how to teach and to assess AI fluency. Now, let's take a step back to get a better understanding of something that's on all of our minds. How is AI changing what we teach? And what do we do about it? This video examines how AI disrupts our specific disciplines and how we might respond. The next video will explore embedding your subject expertise into the 4Ds. Together, they will help you effectively integrate AI fluency with your broader curriculum while staying true to what matters in your field. AI fluency isn't about automating away your expertise. It's about amplifying what we know and do best by augmenting our capabilities, knowledge, insights, and judgment through thoughtful partnership. Our disciplinary knowledge doesn't become obsolete. It becomes the foundation for unprecedented achievement. This is the message we must embody and help our students understand. Let's consider for a moment what our graduates will face. What gets automated? which routine tasks in their future careers are likely to be automated by AI and what does that mean for what we teach today and how we teach it. Next, where's the potential partnership? Where will human AI collaboration be most impactful? These may become priority areas for developing both domain expertise and AI fluency together. Lastly, who's in charge? When AI does work independently in their field, how do students manage and remain accountable for what it does? And how can we prepare them for this? Today, AI creates disruption, both positive and negative, in every discipline, across our curricula, our pedagogy, and our assessment practices. But the disruption isn't uniform. For example, maybe your curriculum stays stable while your assessments transform, or your pedagogy might evolve while your core curriculum stays constant. Some disruptions are opportunities to be leveraged, others are problems to solve. Understanding which is which is where your expertise comes in. Let's dig a little deeper. Your response to AI disruption builds on three types of expertise you already have. First, your disciplinary expertise. You understand not just your field's content, but its core values, methods, and ways of thinking. You know which skills are foundational versus peripheral, which concepts unlock future learning, and what makes someone truly fluent in your discipline. You also have your pedagogical expertise. You know where students in your field typically struggle, achieve breakthroughs, and develop mastery. You understand the emotional journey of learning your subject, where students resist, where they get excited, and where they need support. You also have your assessment expertise. You know how to recognize genuine understanding when you see it. You can design evaluations that reveal deep learning whether AI is involved or not. Now, let's turn to AI's impact on our work and start with curriculum. AI doesn't replace disciplinary knowledge, but it does challenge us to reconsider what we teach, when and how, and why we teach it. It forces us to ask hard questions. What does domain mastery mean in an AI context? How do we help students develop the judgment, creativity, and deep personal understanding to recognize when AI generates quality content or is genuinely helpful to them? The fundamentals stay fundamentals, but students will question why they need this knowledge at all. They might ask, why learn research methods when AI can search for me? Or why study writing when AI generates text? We need compelling discipline specific answers that connect deep learning to enhanced capability and the students own goals. Take time to work with your colleagues to deeply assess AI's impact on your curriculum. Identify what in your discipline AI systems are capable of automating. Determine which foundational concepts become more or less important when AI handles routine tasks. Identify how AI augmentation changes and it can improve best practices in your discipline and determine which foundational concepts become more or less important with the involvement of AI, including how to help students direct AI agents effectively. AI will also transform how we teach and how our students learn. Personalized tutoring at scale, interactive simulations, immediate feedback, things we dreamed about just a few years ago as tools to support student learning are suddenly possible. AI based edtech applications challenge our assumptions about classroom dynamics, homework, and the very nature of teaching relationships. But as we all know, not all AI enhancement actually enhances learning. Some AI systems genuinely help students learn. Others just shortcut it. The key is understanding which is which in your specific context. Accordingly, in your discipline, you need to define how AI either enhances or diminishes different types of learning, however it's used. Together with your peers, it will be important to figure out how AI systems can enable learning and teaching in your discipline. How AI systems can inhibit learning and teaching in your discipline. And for both of these, consider which teacher and student collaborations with AI best leverage AI's potential as an educational assistant. We encourage you to consider AI as an interactive environment or partner for learning activities. Finally, determine which pedagogical approaches best leverage AI's potential for your specific teaching practice and which should be actively avoided and discouraged. Perhaps most urgently, AI challenges how we measure learning. When students can generate essays in seconds, what are we actually assessing? How do we create evaluations that honor individual growth, creativity, and problem solving? We need to consider how to authentically assess both AI assisted and human-only performances of understanding and mastery. And hopefully we emerge with a clearer understanding of what skills are core to mastery in our fields with richer measurement methodology that may involve AI in the assessment process. Again, your expertise here is essential. You know what genuine understanding looks like in your field. Now, this is the biggest, most challenging disruption AI creates for educators. These are difficult but vital tasks for effectively building on your expertise to create new assessments. Identify what an authentic demonstration of learning looks like in AI assisted work. Determine how to create assignments that students can't shortcut with AI tools. Is there a different kind of assessment that can demonstrate even deeper understanding when students work with AI to accomplishment? Identify how assessments can value process and growth, not just products. and determine where AI collaboration enhances versus undermines learning objectives. How can we adapt to lean into the knowledge that students will likely turn to AI regardless and perhaps pivot to assessing their skills in critical thinking and working with AI and not without it. We know all of that is easier said than done. We encourage you to talk to your students and work with your colleagues and institutions to create assessment strategies that work for your specific institution and needs. In every discipline, humans bring irreplaceable capabilities to bear. Domain expertise, real world context, judgment in ambiguous and messy situations, creative problem solving, ethical reasoning and relationship building. Our job is to ensure that AI amplifies these capabilities. This AI fluency works both ways. The deeper your subject matter expertise, the better you can identify meaningful AI applications. The more fluently you work with AI, the further you can push your discipline's boundaries. Here are three things to keep in mind as you consider AI's effect on your field. AI disrupts our students futures and our teaching in both exciting and concerning ways. Responding effectively requires leaning into the critical assessment of the technology from developing AI fluency via practice to collaborating with colleagues on building an intentional strategy around AI for your specific context. AI fluency begins and ends with your expertise and you are well positioned to drive change for the better for your institution and for your students futures in terms of how they work with AI.
+
+**Resources & Links:**
+
+
+---
+
+#### Lesson 7: Applying discipline expertise to AI Fluency
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327284](https://anthropic.skilljar.com/teaching-ai-fluency/327284)
+
+**Video:** Lesson 3B: Applying discipline expertise to AI Fluency | Teaching AI Fluency | **Platform:** youtube
+
+What you'll learn
+Estimated time: 40 minutes
+By the end of this lesson you'll be able to:
+
+Apply your disciplinary expertise to create field-specific applications of the 4Ds
+Collaborate with colleagues to build shared understanding of AI Fluency in your department
+
+Applying discipline expertise to AI Fluency
+
+This video demonstrates how to apply your deep disciplinary knowledge to make the AI Fluency Framework specific to your field. It emphasizes that developing discipline-specific AI Fluency happens through making tacit knowledge explicit—articulating what quality looks like, how experts communicate, what problems matter, and what standards apply. The video shows how to work with colleagues to build shared understanding of each D in your discipline: defining quality criteria for Discernment, mapping communication norms for Description, understanding work decomposition for Delegation, and codifying ethical standards for Diligence. It emphasizes that this deep disciplinary work creates a feedback loop where students who can articulate quality standards can better evaluate any output, those who understand methods can guide any process, and those who've internalized ethics can navigate any collaboration responsibly. The video concludes by noting that preparing students to be irreplaceable means developing these uniquely human capabilities.
+Key takeaways
+
+Making tacit disciplinary knowledge (e.g. best practices, ethics, research genres, etc.) explicit prepares students for effective AI collaboration
+Each of the 4Ds requires discipline-specific interpretation and application
+Collaborative work with colleagues builds shared understanding and stronger frameworks
+Students who understand quality, methods, and ethics in your field can better direct AI
+The goal is preparing students to be irreplaceable by developing uniquely human capabilities
+
+Exercises
+For our final exercise we’re going to give our AI partners a break and just talk to our human colleagues!  
+However, having all participants work through the exercise from the previous lesson individually will facilitate these conversations.
+In whatever manner makes sense for your context, schedule some organized time to work through the 4D framework with your colleagues. 
+Here are some suggested topics to help guide your discussion: 
+For Discernment - "What does quality look like in our field?"
+
+Work together to articulate what excellence means in your discipline beyond vague terms
+Identify specific features that distinguish outstanding work from mediocre work
+Discuss how to teach students to recognize these quality markers
+Document criteria that could help students evaluate both human and AI-generated work
+
+For Description - "How do we communicate in our discipline?"
+
+Map the key products in your field with precision (e.g. not just "reports" but specific artefacts and why they matter)
+Document the thought processes experts use when approaching problems in your field
+Identify the behavioral norms and conventions that define professional practice
+Explore how to make these communication patterns explicit for students
+
+For Delegation - "What work happens in our field?"
+
+Break down typical tasks in your discipline into component parts
+Identify which elements require human judgment, creativity, or expertise
+Discuss where AI could automate, augment, or act as an agent
+Create decision frameworks for when and how to involve AI in disciplinary work
+
+For Diligence - "What are our field's values and standards?"
+
+Codify ethical frameworks specific to your discipline
+Clarify transparency norms and disclosure expectations
+Discuss accountability standards and professional responsibilities
+Consider how these apply when AI is involved in the work
+
+Building a shared document:
+
+Compile the discipline-specific interpretations of each D
+Include concrete examples from your field for each competency
+Add teaching strategies that colleagues suggest for developing these competencies
+Identify areas where you have consensus and where perspectives differ
+Consider how to share this work with students to make AI Fluency concrete
+Discuss how to integrate these discipline-specific 4Ds into curriculum
+Consider how to assess whether these frameworks are helping students
+Agree on next steps to continue the discussion and implement new initiatives
+
+What's next
+You've completed our teaching AI Fluency course! Take the final quiz in the next lesson to earn a certificate of completion.
+Feedback
+As you progress through the course, we'd love to hear from you about how you are using concepts from the course in your life, work, or classes and any feedback you may have. Share your feedback here.
+Acknowledgments and license
+Copyright 2025 Rick Dakan, Joseph Feller, and Anthropic. Released under the CC BY-NC-SA 4.0 license. This course is based on The AI Fluency Framework by Dakan and Feller.Supported in part by the Higher Education Authority, Ireland, through the National Forum for the Enhancement of Teaching and Learning.
+
+**Video Transcript (YouTube via yt-dlp):**
+
+[Music] Let's talk about how your deep discipline knowledge can shape the AI fluency framework for your specific context. Interestingly enough, everything we'll discuss can happen without touching an AI system. We're building human capacity and helping students and ourselves articulate what we know, how we know it, and why it matters. This foundational work is what makes us irreplaceable, and keeps humans in the loop, so to speak. Think of it this way. You can't partner with AI in your field effectively until you can articulate what quality looks like, how experts communicate, what problems matter, and what standards apply. Let's explore how the 4Ds can help develop this crucial awareness. We're going to start with discernment this time, which is one of the most important human competencies in the AI era. We need to deeply understand what good looks like in our field. And we need a robust vocabulary to describe good to our AI assistants and to each other. Discernment, the ability to evaluate quality, has always mattered in education. Now with AI generating endless content, it's essential. But only humans can judge what truly serves our goals and values. In education, we need to define these goals and values explicitly within our disciplinary context. Build better quality criteria together with your colleagues and students and work to articulate what excellence means in your field. Move beyond vague terms like wellargued or creative. Build detailed rubrics that capture deep quality markers. What specific moves make a philosophy paper compelling? What precise features make an engineering solution elegant? Document these criteria in ways students can internalize and apply. Collect outstanding work from your discipline, such as published papers, professional portfolios, and breakthrough solutions. But don't just show them. Systematically analyze them with your students. Markup texts, diagram structures, decode decisions. Help students see what you see when you recognize excellence. Create annotation guides that make expert thinking visible. Diagnose failures together. Equally important is studying what doesn't work or what excellence isn't. Collect flawed examples. Failed arguments, buggy code, ineffective designs. Examine them forensically. Where exactly does this proof break down? Why doesn't this solution scale? What makes this composition fall flat? How does this fail to meet industry standards? Understanding failure modes builds evaluative skills students will need whether working alone or with AI. Every field has its own ways of communicating that embody its values and methods. Making this tacit knowledge explicit via these collaborative practices naturally results in strong description skills. When working with AI, you can map your discipline's products. Document the key products in your field with precision. Don't just say lab reports. Specify exact sections, conventions, and why they matter. Create templates that reveal underlying logic. Why does a methods section come before results? What work does passive voice do in scientific writing? Have students reverse engineer professional outputs to understand their deep structure. Also, reveal to students how experts think. Make the processes experts in your field use to approach problems visible. How does a historian evaluate sources? Trace each micro decision. How does a designer move from concept to prototype? Document each iteration. Have students interview practitioners and create flowcharts of expert thinking. This metacognitive work builds awareness they'll need for any collaboration with others in their field, human or AI. Lastly, name your norms. surface the behaviors that define your field. Scientists don't just research, they follow specific protocols for skepticism, replication, and peer review. Artists don't just create, they experiment, critique, and revise. What does it mean to think like a mathematician in concrete, observable terms? Build these behavioral modes of performance with your students. Before students can work effectively with AI or with anyone, they need to understand what work happens in your discipline and why it matters. This is where students can develop the ability to decompose complex work into understandable components, allowing them to better understand when to delegate work to AI in their field and when not to. Reveal the anatomy of problems. Teach students to break down challenges in your field into component parts. Take a typical task like writing a literature review. What knowledge is required? What skills? What judgment calls? Create problem anatomy diagrams and then think about where and how AI can be applied. Writing a literature review involves finding sources. Is that automatable? What about evaluating relevance? How can AI augment that process? There's also synthesizing arguments. Does that require human judgment? And can crafting the final narrative be done collaboratively with AI? Map the AI possibilities explicitly. Create detailed maps of what can be automated, augmented, or delegated to AI agents. What routine tasks could AI automate? Data cleaning, initial drafts, pattern recognition. Where does human AI collaboration add value? Design iteration, hypothesis generation, literature synthesis. What might an AI agent act independently on your behalf? monitoring experiments, filtering information, giving students initial feedback before turning in an assignment. Have students debate these boundaries using real examples. Design decision trees. Create decision frameworks for when and how to involve AI or any tool or collaborator. If analyzing qualitative data, where does software help versus hinder? If solving engineering problems, when does simulation replace prototyping? Build these trees through case studies. Making delegation decisions explicit and defendable. Now, let's talk about diligence. Every field has ethical standards, professional expectations, and integrity requirements. Making these explicit prepares students for responsible practice with or without AI. Codify ethical frameworks. Move beyond general academic integrity. What does do no harm mean in your field? If AI helps analyze patient data, how do we ensure privacy? If AI assists in legal research, how do we maintain client confidentiality? Build case studies that explore these edges and create ethical decision matrices students can apply to novel situations they may encounter in their professional futures. Clarify transparency. Work with students to research and document these norms. When must methods be fully disclosed? When is process intentionally obscured? Create disclosure templates for common scenarios in your field based on existing practice now applied to AI. How would you site AI's assistance in a research paper versus a creative portfolio versus a business report? Co-create accountability. What does responsible practice look like in your discipline's AI enhanced future? Why do these practices matter? Draft classroom policies together. Create honor codes that address AI collaboration. Develop peerreview protocols that check for appropriate human oversight. This co-creation process builds buyin and deeper understanding of why accountability matters. This deep disciplinary work creates a powerful feedback loop. Students who can articulate quality standards can better evaluate any output, human or AI. Those who understand disciplinary methods can guide any process more effectively with humans and AI. Those who internalized professional ethics can navigate any collaboration responsibly again with humans or AI. And we benefit too. Thinking through the lens of the 4Ds forces us to make tacic knowledge explicit. Considering AI capabilities helps us value uniquely human contributions. Preparing for an AI enhanced future makes us better teachers and practitioners today. The four Ds provide a framework for developing discipline specific expertise. For discernment, we can work to define and recognize quality through collaborative rubrics, exemplar analysis, and failure diagnosis. For description, we can have students master their fields communication by mapping outputs, decoding processes, and naming behaviors that work and don't work. For delegation, we can help students understand the processes involved in their work through problem decomposition, automation mapping, and decision frameworks. And for diligence, we can teach students to embody their fields values through ethical frameworks, transparency norms, and co-created policies. These competencies prepare students for whatever comes next. Not only through an understanding of how they can best work with AI, but also provides them the metacognition skills necessary to apply this process to any change they may encounter in their future, technological or otherwise. Throughout this course, we've explored teaching and assessing through the AI fluency framework, engaged meaningfully with AI's impact on teaching and learning, discussed how to make the 4Ds discipline specific, and built a foundation for teaching meaningful human AI collaboration. Your expertise, your ability to recognize quality, communicate precisely, can decompose problems and uphold values. That is what makes you essential. By making this expertise explicit, and teachable, you're giving students the foundation they need to thrive. The future needs humans who can think critically, communicate clearly, collaborate wisely, and act responsibly. You're not preparing your students to be replaced by AI. You're preparing them to be irreplaceable. We appreciate you taking this journey with us.
+
+**Resources & Links:**
+
+
+---
+
+### Conclusion & certificate
+
+#### Lesson 8: Certificate of completion
+
+*Source:* [https://anthropic.skilljar.com/teaching-ai-fluency/327285](https://anthropic.skilljar.com/teaching-ai-fluency/327285)
+
+Loading...
+
+---
+
+*Extracted from Anthropic Academy via authenticated session | Deep Extraction v3 | 2026-04-12*

@@ -1,0 +1,57 @@
+# Checkpoint decision — Session {{session_id}}
+
+> HITL checkpoint at session close (granularity D component). Captures the alternatives presented, the choice, the rationale, and the calibrated confidence. Mandatory before opening the next session.
+
+**Session:** {{session_id}}
+**Deliverable:** {{deliverable}}
+**Captured at:** {{TEMPORAL_NOW}}
+
+---
+
+## Decision
+
+**Title:** {{decision_title}}
+**Decision required because:** {{decision_trigger}}
+
+## Alternatives presented at gate
+
+| Letter | Option | Fit % | Pros | Cons |
+|---|---|---|---|---|
+| A | {{option_a_label}} | ≈{{option_a_fit_pct}}% | {{option_a_pros}} | {{option_a_cons}} |
+| B | {{option_b_label}} | ≈{{option_b_fit_pct}}% | {{option_b_pros}} | {{option_b_cons}} |
+| C | {{option_c_label}} | ≈{{option_c_fit_pct}}% | {{option_c_pros}} | {{option_c_cons}} |
+| {{option_d_letter}} | {{option_d_label}} | ≈{{option_d_fit_pct}}% | {{option_d_pros}} | {{option_d_cons}} |
+| {{option_e_letter}} | {{option_e_label}} | ≈{{option_e_fit_pct}}% | {{option_e_pros}} | {{option_e_cons}} |
+
+(Note: fit % are independent estimates, not probabilities of mutually exclusive outcomes.)
+
+## Recommendation by orchestrator
+
+- **Recommended:** [{{recommended_letter}}] {{recommended_label}}
+- **Reason:** {{recommendation_reason}}
+- **Self-confidence:** ≈{{recommendation_confidence_pct}}%
+- **Backed by:** {{recommendation_backing_citation}}
+
+## User decision
+
+- **User chose:** [{{user_chosen_letter}}] {{user_chosen_label}}
+- **Responded at:** {{user_response_at}}
+- **User's freeform notes (if any):** {{user_freeform_notes}}
+
+## Final rationale (consolidated)
+
+{{final_rationale}}
+
+## Implications for next session
+
+- **Next session:** {{next_session_id}} — {{next_session_deliverable}}
+- **Estimate:** {{next_session_estimate_min}}–{{next_session_estimate_max}} min
+- **KPIs to watch:** {{next_session_kpi_focus}}
+- **Risks raised by this decision:** {{risks_raised}}
+
+## Cross-references
+
+- ADR: `docs/decisions/ADR-{{adr_number}}-{{adr_slug}}.md`
+- Audit row(s) generated: {{audit_rows_generated}}
+- Errors-catalog entries created: {{errors_catalog_entries_created}}
+- Memory entries updated: {{memory_entries_updated}}

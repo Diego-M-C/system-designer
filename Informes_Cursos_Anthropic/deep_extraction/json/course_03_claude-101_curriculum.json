@@ -1,0 +1,59 @@
+{
+  "course_num": 3,
+  "slug": "claude-101",
+  "title": "Claude 101",
+  "url": "https://anthropic.skilljar.com/claude-101",
+  "description": "Learn how to use Claude for everyday work tasks, understand core features, and explore resources for more advanced learning on other topics.",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T13:51:00Z",
+  "source_url": "https://anthropic.skilljar.com/claude-101",
+  "auth_required_for_lessons": true,
+  "chapters": [
+    {
+      "chapter_num": 1,
+      "chapter": "Meet Claude",
+      "lessons": [
+        {"num": 1, "title": "What is Claude?", "type": "text", "time": ""},
+        {"num": 2, "title": "Your first conversation with Claude", "type": "text", "time": ""},
+        {"num": 3, "title": "Getting better results", "type": "text", "time": ""},
+        {"num": 4, "title": "Claude desktop app: Chat, Cowork, Code", "type": "text", "time": ""}
+      ]
+    },
+    {
+      "chapter_num": 2,
+      "chapter": "Organizing your work and knowledge",
+      "lessons": [
+        {"num": 5, "title": "Introduction to projects", "type": "text", "time": ""},
+        {"num": 6, "title": "Creating with artifacts", "type": "text", "time": ""},
+        {"num": 7, "title": "Working with skills", "type": "text", "time": ""}
+      ]
+    },
+    {
+      "chapter_num": 3,
+      "chapter": "Expanding Claude's reach",
+      "lessons": [
+        {"num": 8, "title": "Connecting your tools", "type": "text", "time": ""},
+        {"num": 9, "title": "Enterprise search", "type": "text", "time": ""},
+        {"num": 10, "title": "Research mode for deep dives", "type": "text", "time": ""}
+      ]
+    },
+    {
+      "chapter_num": 4,
+      "chapter": "Putting it all together",
+      "lessons": [
+        {"num": 11, "title": "Claude in action: use-cases by role", "type": "text", "time": ""},
+        {"num": 12, "title": "Other ways to work with Claude", "type": "text", "time": ""}
+      ]
+    },
+    {
+      "chapter_num": 5,
+      "chapter": "Conclusion & certificate",
+      "lessons": [
+        {"num": 13, "title": "What's next?", "type": "text", "time": ""},
+        {"num": 14, "title": "Certificate of completion", "type": "certificate", "time": ""}
+      ]
+    }
+  ],
+  "total_chapters": 5,
+  "total_lessons": 14
+}

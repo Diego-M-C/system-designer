@@ -1,0 +1,17 @@
+{
+  "lesson_title": "Quiz on features of Claude",
+  "course": "claude-with-the-anthropic-api",
+  "lesson_idx": 59,
+  "state": "completed",
+  "score": "6 of 7 Correct",
+  "question_count": 7,
+  "questions": [
+    {"question_text": "What is the Files API used for?", "type": "multiple_choice", "options": [{"text": "Scanning files for viruses and malware", "is_correct": false}, {"text": "Compressing large files to reduce API costs", "is_correct": false}, {"text": "Converting files between different formats automatically", "is_correct": false}, {"text": "Uploading files ahead of time and referencing them later instead of encoding them directly in messages", "is_correct": true}]},
+    {"question_text": "You're making many requests with the same large system prompt. What feature would make your requests faster and cheaper?", "type": "multiple_choice", "options": [{"text": "PDF processing", "is_correct": false}, {"text": "Citations", "is_correct": false}, {"text": "Extended thinking", "is_correct": false}, {"text": "Prompt caching", "is_correct": true}]},
+    {"question_text": "What is the primary purpose of citations in Claude?", "type": "multiple_choice", "options": [{"text": "To create a clear trail from Claude's response back to specific parts of source documents", "is_correct": true}, {"text": "To compress large documents for faster processing", "is_correct": false}, {"text": "To count the number of words in a document", "is_correct": false}, {"text": "To automatically generate footnotes for academic papers", "is_correct": false}]},
+    {"question_text": "When Claude uses extended thinking, what two parts do you get in the response?", "type": "multiple_choice", "options": [{"text": "Reasoning process and final answer", "is_correct": true}, {"text": "Problem and solution", "is_correct": false}, {"text": "Input and output", "is_correct": false}, {"text": "Question and answer", "is_correct": false}]},
+    {"question_text": "You want Claude to analyze a PDF document. What's the main difference from sending an image?", "type": "multiple_choice", "options": [{"text": "Change the type to \"document\" and media_type to \"application/pdf\"", "is_correct": true}, {"text": "PDFs cost more to process", "is_correct": false}, {"text": "You can only send text, not images in PDFs", "is_correct": false}, {"text": "PDFs require special permission", "is_correct": false}]},
+    {"question_text": "What is a key limitation of Claude's Code Execution tool?", "type": "multiple_choice", "options": [{"text": "It can only run JavaScript code", "is_correct": false}, {"text": "It has no network access and runs in an isolated Docker container", "is_correct": true}, {"text": "It requires users to provide their own execution environment", "is_correct": false}, {"text": "It can only process text files", "is_correct": false}]},
+    {"question_text": "You want to cache your system prompt. What's the minimum requirement for caching to work?", "type": "multiple_choice", "options": [{"text": "You must make at least 5 requests", "is_correct": false}, {"text": "You must use extended thinking", "is_correct": false}, {"text": "The content must be under 500 tokens", "is_correct": false}, {"text": "The content must be at least 1024 tokens long", "is_correct": true}]}
+  ]
+}

@@ -1,0 +1,56 @@
+# Library docs MANIFEST — {{system_name}}
+
+> Pinned libraries, versions, and last-fetch dates. Living document — updated when a library is added, upgraded, or re-fetched.
+>
+> **Freshness rule:** any library whose `last_fetched_at` is older than `library_freshness_threshold_days` ({{library_freshness_threshold_days}} days) triggers a re-fetch warning at session start.
+
+---
+
+## Index
+
+| Library | Pinned version | Last fetched at | Days since fetch | Source primary | Source fallback | Path | Required |
+|---|---|---|---|---|---|---|---|
+{{libraries_table}}
+
+## Per-library detail
+
+### {{lib_1_name}} v{{lib_1_version}}
+
+- **Pinned at session:** {{lib_1_pinned_session}}
+- **Last fetched:** {{lib_1_last_fetched}} ({{lib_1_days_since}} days ago)
+- **Source primary:** {{lib_1_source_primary}}
+- **Source fallback:** {{lib_1_source_fallback}}
+- **Path:** `library_docs/{{lib_1_name}}/{{lib_1_version}}/`
+- **Sections fetched:** {{lib_1_sections}}
+- **API index:** `library_docs/{{lib_1_name}}/{{lib_1_version}}/api_index.json`
+- **Why this version:** {{lib_1_version_rationale}} (alternatives considered + fit %: see `docs/decisions/ADR-{{lib_1_adr}}-{{lib_1_slug}}.md`)
+- **Calibration:** confidence in version choice ≈{{lib_1_confidence}}%
+
+<!-- Append per-library blocks. -->
+
+## Re-fetch protocol
+
+```
+1. At session start, the orchestrator checks last_fetched_at for each library.
+2. If days_since > library_freshness_threshold_days:
+   a. Log warning to tracking/sessions/<id>/observations.jsonl.
+   b. Trigger context7.fetch (primary) → fetch (fallback) for that library.
+   c. Replace library_docs/<lib>/<version>/ with fresh content.
+   d. Update last_fetched_at in this MANIFEST.
+   e. Diff old vs new docs; surface API breaking changes via tracking/errors_catalog.json (AIE-004) if any.
+3. Log all updates to tracking/sessions/<id>/library_doc_updates.jsonl.
+```
+
+## Offline-mode behaviour
+
+If network unavailable:
+- Skip re-fetch.
+- Log to `library_docs/OFFLINE.md` with timestamp + libraries with stale docs.
+- Continue session with existing docs.
+- Surface at next HITL gate.
+
+## Changelog
+
+| Date | Library | Action | Version | Session |
+|---|---|---|---|---|
+| {{TEMPORAL_NOW}} | (initial) | scaffold | (initial pins) | 0001_bootstrap |

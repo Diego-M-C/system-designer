@@ -1,0 +1,69 @@
+# EU AI Act mapping — {{system_name}}
+
+> Concrete instantiation of `references/eu_ai_act_mapping.md` for THIS system. Generated at scaffold time, updated when applicable Articles change (e.g., system scope expands).
+
+**System:** {{system_name}}
+**Domain:** {{domain}}
+**Risk class:** {{eu_ai_act_risk}}
+**Generated:** {{TEMPORAL_NOW}}
+**Mapping completeness target:** {{ai_act_completeness_target}}%
+**Mapping completeness achieved:** {{ai_act_completeness_achieved}}%
+
+---
+
+## Applicable Articles (per risk class)
+
+{{applicable_articles_table}}
+
+## Article → Checklist → Audit-sheet area mapping
+
+| Article | Checklist file (referenced) | Audit-sheet area | Min rows | Rows actually emitted | Auditor recommended | Status |
+|---|---|---|---|---|---|---|
+| Art. 9 | `Gestión de riesgos_Checklist.xlsx` + `05.01 Ejemplo ilustrativo del desarrollo de un sistema de gestión de riesgos.xlsx` | `01_Risk_Management_Art_9` | 12 | {{rows_emitted_art_9}} | risk SME | {{status_art_9}} |
+| Art. 10 | `Gobernanza del dato_Checklist.xlsx` | `02_Data_Governance_Art_10` | 14 | {{rows_emitted_art_10}} | data steward | {{status_art_10}} |
+| Art. 11 | `Documentación tecnica_Checklist.xlsx` | `03_Technical_Documentation_Art_11` | 18 | {{rows_emitted_art_11}} | tech lead | {{status_art_11}} |
+| Art. 12 | `Registros_Checklist.xlsx` | `04_Record_Keeping_Art_12` | 8 | {{rows_emitted_art_12}} | DevOps / SRE | {{status_art_12}} |
+| Art. 13/50 | `Transparencia_Checklist.xlsx` | `05_Transparency_Art_13_50` | 10 | {{rows_emitted_art_13}} | UX / product | {{status_art_13}} |
+| Art. 14 | `Supervisión Humana_Checklist.xlsx` | `06_Human_Oversight_Art_14` | 8 | {{rows_emitted_art_14}} | safety lead | {{status_art_14}} |
+| Art. 15 (accuracy) | `Precision_Checklist.xlsx` | `07_Accuracy_Art_15a` | 6 | {{rows_emitted_art_15a}} | ML lead | {{status_art_15a}} |
+| Art. 15 (robustness) | `Solidez_Checklist.xlsx` | `08_Robustness_Art_15b` | 6 | {{rows_emitted_art_15b}} | ML lead | {{status_art_15b}} |
+| Art. 15 (cybersecurity) | `Ciberseguridad_Checklist.xlsx` | `09_Cybersecurity_Art_15c` | 8 | {{rows_emitted_art_15c}} | security lead | {{status_art_15c}} |
+| Art. 17 | `Gestión de Calidad_Checklist.xlsx` | `10_Quality_Management_Art_17` | 10 | {{rows_emitted_art_17}} | QMS lead | {{status_art_17}} |
+| Art. 72 | `Vigilancia Poscomercializacion_Checklist.xlsx` | `11_Post_Market_Monitoring_Art_72` | 6 | {{rows_emitted_art_72}} | SRE / product | {{status_art_72}} |
+| Art. 73 | `Gestión de incidentes_Checklist.xlsx` | `12_Incident_Management_Art_73` | 6 | {{rows_emitted_art_73}} | incident commander | {{status_art_73}} |
+
+## Cross-references (other regulations applicable to {{system_name}})
+
+{{cross_references_block}}
+
+## Auditor configuration
+
+- **Mode:** {{auditor_mode}}
+- **Count:** {{auditors_count}}
+- **Independence rule:** auditors fill their column without seeing others' until meta-jury phase.
+- **Meta-jury role:** consolidate; flag disagreements ≥2 auditors → HITL escalation.
+- **Auditor agents:** composed via `prompts/09_three_auditors_jury.md` of the generator (each with distinct `<persona>` for diversity-of-thought).
+
+## Living-doc rhythm
+
+- **Bootstrap (Session-0001):** baseline rows above.
+- **Per session that touches a high-risk surface:** new rows added with `session_id` set.
+- **Per milestone:** full audit run of relevant rows.
+- **At decommission:** final audit, all rows snapshotted as `audit/audit_sheet_final_<date>.xlsx`.
+
+## Mapping completeness self-test
+
+```
+completeness_pct = (rows_emitted_total / sum_min_rows_for_risk_class) * 100
+```
+
+Threshold:
+- High-risk: ≥95% (current achieved: {{ai_act_completeness_achieved}}%) — {{ai_act_status_high}}
+- Limited-risk: ≥85%
+- Minimal-risk: ≥50%
+
+Below threshold → ❌ in `audit/self_audit.md` → iterate ≤3 times → escalate at Gate #2.
+
+## Open items / TODO
+
+{{open_audit_items}}

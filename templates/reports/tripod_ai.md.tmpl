@@ -1,0 +1,221 @@
+# {{system_name}} — TRIPOD-AI Report
+
+> Extended TRIPOD reporting for predictive systems with AI/ML methods. Use for healthcare predictive systems and similar high-stakes prediction domains.
+>
+> **Standard:** TRIPOD-AI (extension of TRIPOD 2015). 22 mandatory items + AI/ML-specific additions.
+
+---
+
+## Title (TRIPOD-AI item 1a + 1b)
+
+**Title:** {{report_title}} — A {{prediction_type}} prediction model using {{ai_method}}.
+
+(*Identifies as a prediction model and the AI/ML method used — TRIPOD-AI 1a.*)
+
+## Abstract (TRIPOD-AI item 2)
+
+{{abstract_tripod_compliant}}
+
+## Background and objectives
+
+### 3a · Source of data
+
+{{source_of_data}}
+
+### 3b · Specify objective
+
+{{specify_objective_with_ai_context}}
+
+## Methods
+
+### 4a · Key dates
+
+- Data collection start: {{data_collection_start}}
+- Data collection end: {{data_collection_end}}
+- Model lock-down date: {{model_lockdown}}
+- Validation period: {{validation_period}}
+
+### 4b · Setting
+
+{{setting}}
+
+### 5a · Eligibility criteria
+
+{{eligibility}}
+
+### 5b · Pre-processing for AI
+
+{{ai_preprocessing}}
+
+### 6a · Outcome predicted
+
+{{outcome_predicted}}
+
+### 6b · Assessment + scoring
+
+{{outcome_assessment}}
+
+### 7a · Predictors / features
+
+{{predictors_with_engineering}}
+
+### 7b · Feature engineering / embeddings
+
+{{feature_engineering}}
+
+### 8a · Sample size justification
+
+{{sample_size_justification}}
+
+### 9 · Missing-data handling
+
+{{missing_data_handling}}
+
+### 10a · Statistical analysis methods (general)
+
+{{statistical_methods}}
+
+### 10b · Model building (variable selection, hyperparameters, regularisation)
+
+{{model_building_full_specification}}
+
+### 10c · Internal validation method
+
+{{internal_validation}}
+
+### 10d · AI/ML-specific items
+
+- **Architecture:** {{ai_architecture}}
+- **Training procedure:** {{training_procedure}}
+- **Hyperparameter search:** {{hp_search}}
+- **Early stopping criteria:** {{early_stopping}}
+- **Augmentation:** {{augmentation}}
+- **Computational infrastructure:** {{compute_infra}}
+- **Training time:** {{training_time}}
+
+### 11 · Risk-group definition (if applicable)
+
+{{risk_groups}}
+
+### 12 · Model performance measures
+
+- Discrimination: {{discrimination_metrics}}
+- Calibration: {{calibration_metrics}}
+- Clinical / domain utility: {{utility_metrics}}
+
+### 13 · Model presentation method
+
+{{model_presentation}} — full model card at `docs/architecture/model_card.md`.
+
+### 14 · Subgroup / fairness analysis
+
+{{fairness_subgroups}}
+
+### 15 · External validation status
+
+{{external_validation_status}}
+
+### 16 · Interpretability methods
+
+{{interpretability_methods}}
+
+## Results
+
+### 17 · Sample flow diagram (CONSORT-style)
+
+{{sample_flow_diagram}}
+
+### 18 · Participants characteristics
+
+{{participants_table}}
+
+### 19 · Model presentation (coefficients / decision tree / model card)
+
+{{model_full_presentation}}
+
+### 20 · Model performance (with CIs)
+
+{{performance_with_CIs}}
+
+### 21 · Subgroup performance
+
+{{subgroup_performance}}
+
+### 22 · Calibration over time (drift)
+
+{{calibration_drift}}
+
+### 23 · Errors caught during development
+
+{{errors_caught_summary}}
+
+### 24 · Audit results summary (EU AI Act mapping)
+
+{{audit_summary_eu_ai_act}}
+
+## Discussion
+
+### 25 · Interpretation
+
+{{interpretation_with_objectives_and_limits}}
+
+### 26 · Potential clinical / deployer use + implications
+
+{{deployer_implications}}
+
+### 27 · Limitations
+
+{{limitations_at_least_3_severity_mitigation}}
+
+## Conclusions
+
+{{conclusions_calibrated}}
+
+## Other (TRIPOD-AI items 28–33)
+
+### 28 · Supplementary information
+
+- Audit sheet snapshot: `audit/audit_sheet.xlsx` (or `.csv` + `.md` fallback)
+- Decisions log: `tracking/decisions.md`
+- Errors catalog: `tracking/errors_catalog.json`
+- Self-audit: `audit/self_audit*.md`
+
+### 29 · Funding
+
+{{funding}}
+
+### 30 · Code availability
+
+{{code_availability}}
+
+### 31 · Data availability
+
+{{data_availability_with_dpa_ref}}
+
+### 32 · Model availability
+
+{{model_availability}}
+
+### 33 · Reproducibility statement
+
+- **Source:** {{repo_url}} @ commit `{{commit_hash}}`
+- **Library versions:** `library_docs/MANIFEST.md`
+- **Random seeds:** {{seeds}}
+- **Compute env:** {{compute_env}}
+- **How to reproduce:** see `README.md#quickstart`
+
+## Conflicts of interest
+
+{{coi}}
+
+## Acknowledgements
+
+{{acknowledgements}}
+
+## References
+
+{{references_verified}}
+
+---
+
+*Quality gate before publication: calibration scan ✓, citation verification ✓, TRIPOD-AI 22-item compliance ✓, EU AI Act audit consistency ✓, reproducibility ✓, HITL final review ✓.*

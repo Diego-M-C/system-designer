@@ -1,0 +1,20 @@
+# MEMORY · {{system_name}}
+
+> Index of memory files. Auto-loaded into the orchestrator's context at session start. Lines after 200 may be truncated by the executor — keep entries to a single line each.
+>
+> **Memory types:** `user` (about user role/preferences) · `feedback` (validated corrections + confirmations) · `project` (facts about ongoing work / motivations / deadlines) · `reference` (pointers to external resources).
+
+- [user role + preferences](user.md) — who is this for + how they like to work
+- [project facts + motivations](project.md) — non-obvious project context
+- [feedback patterns](feedback.md) — validated guidance from past sessions
+- [external references](reference.md) — Linear / Slack / Grafana / docs pointers
+
+<!-- Add one line per memory file you create. Keep ≤150 characters per line. -->
+
+## Conventions
+
+- Each memory file has frontmatter: `name` · `description` · `type`.
+- Update or remove memories that turn out wrong (do not stack contradictions).
+- Memories ARE NOT for: code patterns, file paths, conventions (read the code), git history, ephemeral task state.
+- Before recommending from memory: verify the file/function/flag still exists. Memory is frozen-in-time.
+- Read this file before any session-start action; let memories guide tone, depth, and approach.

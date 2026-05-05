@@ -1,0 +1,37 @@
+{
+  "course_num": 4,
+  "slug": "introduction-to-claude-cowork",
+  "title": "Introduction to Claude Cowork",
+  "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+  "description": "Learn to work alongside Claude on your real files and projects. This hands-on course covers the Cowork task loop, plugins and skills, file and research workflows, and how to steer multi-step work responsibly — so you're productive in your first week.",
+  "template": "sj",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T13:58:00Z",
+  "source_url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+  "auth_required_for_lessons": true,
+  "chapters": [
+    {"chapter_num": 1, "chapter": "Meet Claude Cowork", "lessons": [
+      {"num": 1, "title": "What is Cowork?", "type": "text"},
+      {"num": 2, "title": "Getting set up", "type": "text"}
+    ]},
+    {"chapter_num": 2, "chapter": "Running your first task", "lessons": [
+      {"num": 3, "title": "The task loop", "type": "text"},
+      {"num": 4, "title": "Giving Cowork context", "type": "text"}
+    ]},
+    {"chapter_num": 3, "chapter": "Making Claude Cowork yours", "lessons": [
+      {"num": 5, "title": "Plugins: Cowork as a specialist", "type": "text"},
+      {"num": 6, "title": "Scheduled tasks", "type": "text"}
+    ]},
+    {"chapter_num": 4, "chapter": "Claude Cowork in practice", "lessons": [
+      {"num": 7, "title": "File & document tasks", "type": "text"},
+      {"num": 8, "title": "Research & analysis at scale", "type": "text"}
+    ]},
+    {"chapter_num": 5, "chapter": "Working responsibly", "lessons": [
+      {"num": 9, "title": "Permissions, usage, & choosing your model", "type": "text"},
+      {"num": 10, "title": "Troubleshooting & next steps", "type": "text"}
+    ]},
+    {"chapter_num": 6, "chapter": "Check your understanding", "lessons": []}
+  ],
+  "total_chapters": 6,
+  "total_lessons": 10
+}

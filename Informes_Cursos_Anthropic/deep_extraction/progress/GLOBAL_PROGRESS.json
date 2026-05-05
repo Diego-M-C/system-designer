@@ -1,0 +1,48 @@
+{
+  "status": "completed",
+  "phase": 4,
+  "courses_completed": [
+    "claude-with-the-anthropic-api",
+    "claude-code-in-action",
+    "introduction-to-model-context-protocol",
+    "model-context-protocol-advanced-topics",
+    "claude-in-amazon-bedrock",
+    "claude-with-google-vertex",
+    "introduction-to-agent-skills",
+    "introduction-to-subagents",
+    "introduction-to-claude-cowork",
+    "claude-code-101",
+    "claude-101",
+    "ai-fluency-framework-foundations",
+    "ai-capabilities-and-limitations",
+    "ai-fluency-for-educators",
+    "ai-fluency-for-students",
+    "ai-fluency-for-nonprofits",
+    "teaching-ai-fluency"
+  ],
+  "total_courses": 17,
+  "total_lessons_extracted": 417,
+  "lessons_with_jw_video_transcript": 266,
+  "lessons_with_modular_text": 101,
+  "lessons_with_youtube_metadata": 69,
+  "total_transcript_chars": 1776562,
+  "total_modular_text_chars": 443531,
+  "total_content_chars": 2220093,
+  "errors_count": 0,
+  "start_time": "2026-04-10T14:30:00Z",
+  "completion_time": "2026-04-10T15:30:00Z",
+  "auth_user": "Diego Muñoz Casinos",
+  "extraction_method_summary": {
+    "jw_player_srt_captions": "266 lessons - English captions fetched directly from cdn.jwplayer.com SRT files via authenticated browser fetch",
+    "modular_html_text": "101 lessons - sjwc-lesson-content-item HTML parsed via DOMParser, style/script stripped",
+    "youtube_oembed_metadata": "69 lessons - YouTube embeds: video id + title + author captured via oEmbed (CORS blocks transcripts)",
+    "quiz_lessons": "35 quizzes - structure detected, questions extracted where rendered server-side"
+  },
+  "deliverables": {
+    "per_course_json": "deep_extraction/json/<slug>_deep_v2.json (17 files)",
+    "per_course_md": "deep_extraction/md/<slug>_deep_v2.md (17 files)",
+    "master_md": "deep_extraction/ENGINEERING_INTELLIGENCE_V2.md",
+    "master_json": "deep_extraction/ENGINEERING_INTELLIGENCE_V2.json",
+    "all_curricula_index": "deep_extraction/progress/all_curricula.json"
+  }
+}

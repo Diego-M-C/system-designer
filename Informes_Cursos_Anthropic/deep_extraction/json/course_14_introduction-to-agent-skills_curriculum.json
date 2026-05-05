@@ -1,0 +1,28 @@
+{
+  "course_num": 14,
+  "slug": "introduction-to-agent-skills",
+  "title": "Introduction to Agent Skills",
+  "url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+  "description": "Learn how to build, configure, and share Skills in Claude Code — reusable markdown instructions that Claude automatically applies to the right tasks at the right time. This course takes you from creating your first Skill to distributing them across teams and troubleshooting common issues.",
+  "template": "sj",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:07:00Z",
+  "source_url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+  "auth_required_for_lessons": true,
+  "chapters": [
+    {
+      "chapter_num": 1,
+      "chapter": "(Overview)",
+      "lessons": [
+        {"num": 1, "title": "What are skills?", "type": "text"},
+        {"num": 2, "title": "Creating your first skill", "type": "text"},
+        {"num": 3, "title": "Configuration and multi-file skills", "type": "text"},
+        {"num": 4, "title": "Skills vs. other Claude Code features", "type": "text"},
+        {"num": 5, "title": "Sharing skills", "type": "text"},
+        {"num": 6, "title": "Troubleshooting skills", "type": "text"}
+      ]
+    }
+  ],
+  "total_chapters": 1,
+  "total_lessons": 6
+}

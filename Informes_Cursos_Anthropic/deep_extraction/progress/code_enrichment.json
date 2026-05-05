@@ -1,0 +1,17 @@
+{
+  "audit_version": "3.0",
+  "generated_at": "2026-04-10",
+  "total_new_code_blocks": 1,
+  "note": "Code blocks found via re-parsing HTML that were not in the original code_blocks arrays",
+  "code_blocks": [
+    {
+      "language": "",
+      "code": "C:/Users/&lt;your-user&gt;/.claude/skills",
+      "chars": 41,
+      "source": "code_tag_inline",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 1,
+      "lesson_title": "What are skills?"
+    }
+  ]
+}

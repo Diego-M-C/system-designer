@@ -1,0 +1,1609 @@
+{
+  "audit_version": "3.0",
+  "generated_at": "2026-04-10",
+  "total_links": 188,
+  "domain_distribution": [
+    {
+      "domain": "docs.google.com",
+      "count": 52
+    },
+    {
+      "domain": "forms.gle",
+      "count": 42
+    },
+    {
+      "domain": "claude.com",
+      "count": 39
+    },
+    {
+      "domain": "anthropic.skilljar.com",
+      "count": 11
+    },
+    {
+      "domain": "support.claude.com",
+      "count": 9
+    },
+    {
+      "domain": "www.anthropic.com",
+      "count": 7
+    },
+    {
+      "domain": "support.anthropic.com",
+      "count": 4
+    },
+    {
+      "domain": "code.claude.com",
+      "count": 3
+    },
+    {
+      "domain": "github.com",
+      "count": 3
+    },
+    {
+      "domain": "claude.ai",
+      "count": 2
+    },
+    {
+      "domain": "Claude.ai",
+      "count": 2
+    },
+    {
+      "domain": "console.anthropic.com",
+      "count": 2
+    },
+    {
+      "domain": "privacy.anthropic.com",
+      "count": 1
+    },
+    {
+      "domain": "trust.anthropic.com",
+      "count": 1
+    },
+    {
+      "domain": "www-cdn.anthropic.com",
+      "count": 1
+    },
+    {
+      "domain": "ringling.libguides.com",
+      "count": 1
+    },
+    {
+      "domain": "projecteuler.net",
+      "count": 1
+    },
+    {
+      "domain": "docs.claude.com",
+      "count": 1
+    },
+    {
+      "domain": "nodejs.org",
+      "count": 1
+    },
+    {
+      "domain": "attack.mitre.org",
+      "count": 1
+    },
+    {
+      "domain": "owasp.org",
+      "count": 1
+    },
+    {
+      "domain": "console.cloud.google.com",
+      "count": 1
+    },
+    {
+      "domain": "cloud.google.com",
+      "count": 1
+    },
+    {
+      "domain": "www.youtube.com",
+      "count": 1
+    }
+  ],
+  "links": [
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 1,
+      "lesson_title": "Intro to AI Capabilities and Limitations"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 2,
+      "lesson_title": "What We Mean by AI"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 3,
+      "lesson_title": "How AI Gets Its Character"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 4,
+      "lesson_title": "Next Token Prediction"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 6,
+      "lesson_title": "Knowledge"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 8,
+      "lesson_title": "Working Memory"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 10,
+      "lesson_title": "Steerability"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 12,
+      "lesson_title": "When Properties Collide"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 13,
+      "lesson_title": "Next Steps"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 1,
+      "lesson_title": "Introduction to AI Fluency for Educators"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 1,
+      "lesson_title": "Introduction to AI Fluency for Educators"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+      "text": "AI Fluency: Framework &amp; Foundations course",
+      "domain": "anthropic.skilljar.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 2,
+      "lesson_title": "AI Fluency Framework review"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 2,
+      "lesson_title": "AI Fluency Framework review"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 2,
+      "lesson_title": "AI Fluency Framework review"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 3,
+      "lesson_title": "Applying AI Fluency to course design and learning outcomes"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 3,
+      "lesson_title": "Applying AI Fluency to course design and learning outcomes"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+      "text": "AI Fluency: Framework &amp; Foundations course",
+      "domain": "anthropic.skilljar.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 4,
+      "lesson_title": "Applying AI Fluency to learning materials and assignments"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+      "text": "Teaching AI Fluency course",
+      "domain": "anthropic.skilljar.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 4,
+      "lesson_title": "Applying AI Fluency to learning materials and assignments"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 4,
+      "lesson_title": "Applying AI Fluency to learning materials and assignments"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-educators",
+      "lesson_index": 4,
+      "lesson_title": "Applying AI Fluency to learning materials and assignments"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 1,
+      "lesson_title": "Welcome to AI Fluency for nonprofits"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 2,
+      "lesson_title": "The 4D Framework"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 3,
+      "lesson_title": "Researching with AI"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 4,
+      "lesson_title": "Writing with AI"
+    },
+    {
+      "url": "https://privacy.anthropic.com",
+      "text": "privacy.anthropic.com",
+      "domain": "privacy.anthropic.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 5,
+      "lesson_title": "Understanding privacy and data"
+    },
+    {
+      "url": "https://trust.anthropic.com",
+      "text": "trust.anthropic.com",
+      "domain": "trust.anthropic.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 5,
+      "lesson_title": "Understanding privacy and data"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 5,
+      "lesson_title": "Understanding privacy and data"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 6,
+      "lesson_title": "Data analysis with AI"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 7,
+      "lesson_title": "Workflow augmentation"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 8,
+      "lesson_title": "Integration"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/category/nonprofits",
+      "text": "https://claude.com/resources/use-cases/category/nonprofits",
+      "domain": "claude.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 9,
+      "lesson_title": "Next steps"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+      "text": "AI Fluency: Framework &amp; Foundations",
+      "domain": "anthropic.skilljar.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 9,
+      "lesson_title": "Next steps"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=header",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-nonprofits",
+      "lesson_index": 9,
+      "lesson_title": "Next steps"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 1,
+      "lesson_title": "Welcome to AI Fluency for students"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 1,
+      "lesson_title": "Welcome to AI Fluency for students"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+      "text": "here",
+      "domain": "anthropic.skilljar.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 2,
+      "lesson_title": "AI Fluency Framework"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 2,
+      "lesson_title": "AI Fluency Framework"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 2,
+      "lesson_title": "AI Fluency Framework"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 3,
+      "lesson_title": "AI as a learning partner"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 3,
+      "lesson_title": "AI as a learning partner"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 4,
+      "lesson_title": "AI in career planning"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 4,
+      "lesson_title": "AI in career planning"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 5,
+      "lesson_title": "Being the human in the loop"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "ai-fluency-for-students",
+      "lesson_index": 5,
+      "lesson_title": "Being the human in the loop"
+    },
+    {
+      "url": "https://claude.ai/redirect/website.v1.1689607e-ad9e-4f0e-81a3-7d5a59a1059a",
+      "text": "claude.ai",
+      "domain": "claude.ai",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 1,
+      "lesson_title": "Introduction to AI Fluency"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 1,
+      "lesson_title": "Introduction to AI Fluency"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 2,
+      "lesson_title": "Why do we need AI Fluency?"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 3,
+      "lesson_title": "The 4D Framework"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 4,
+      "lesson_title": "Generative AI fundamentals"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 5,
+      "lesson_title": "Capabilities & limitations"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 6,
+      "lesson_title": "A closer look at Delegation"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 7,
+      "lesson_title": "Project planning and Delegation"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 8,
+      "lesson_title": "A closer look at Description"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 9,
+      "lesson_title": "Effective prompting techniques"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 10,
+      "lesson_title": "A closer look at Discernment"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 11,
+      "lesson_title": "The Description-Discernment loop"
+    },
+    {
+      "url": "https://www-cdn.anthropic.com/0e37fa9da01fab7a5478a2194d352027794c1b89.pdf",
+      "text": "diligence statement",
+      "domain": "www-cdn.anthropic.com",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 12,
+      "lesson_title": "A closer look at Diligence"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 12,
+      "lesson_title": "A closer look at Diligence"
+    },
+    {
+      "url": "https://ringling.libguides.com/ai/framework",
+      "text": "https://ringling.libguides.com/ai/framework",
+      "domain": "ringling.libguides.com",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 13,
+      "lesson_title": "Conclusion"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 13,
+      "lesson_title": "Conclusion"
+    },
+    {
+      "url": "https://projecteuler.net/",
+      "text": "https://projecteuler.net/",
+      "domain": "projecteuler.net",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 15,
+      "lesson_title": "Additional activities"
+    },
+    {
+      "url": "https://forms.gle/zURqLbVgdDqGhHZk9",
+      "text": "Share your feedback here.",
+      "domain": "forms.gle",
+      "course": "ai-fluency-framework-foundations",
+      "lesson_index": 15,
+      "lesson_title": "Additional activities"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases",
+      "text": "use-case gallery",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+      "text": "AI Capabilities",
+      "domain": "anthropic.skilljar.com",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://Claude.ai",
+      "text": "Claude.ai",
+      "domain": "Claude.ai",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://claude.com/product/claude-code",
+      "text": "Claude Code",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://claude.com/claude-and-slack",
+      "text": "Claude and Slack",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://claude.com/claude-for-excel",
+      "text": "Claude for Excel",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/claude-code-in-action",
+      "text": "Claude Code in Action",
+      "domain": "anthropic.skilljar.com",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 1,
+      "lesson_title": "What is Claude?"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "Take our free AI Fluency course",
+      "domain": "www.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 2,
+      "lesson_title": "Your first conversation with Claude"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases",
+      "text": "use-case gallery",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 2,
+      "lesson_title": "Your first conversation with Claude"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 2,
+      "lesson_title": "Your first conversation with Claude"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "AI Fluency course",
+      "domain": "www.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 3,
+      "lesson_title": "Getting better results"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 3,
+      "lesson_title": "Getting better results"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 4,
+      "lesson_title": "Claude desktop app: Chat, Cowork, Code"
+    },
+    {
+      "url": "https://support.anthropic.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+      "text": "Anthropic Help Center",
+      "domain": "support.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 5,
+      "lesson_title": "Introduction to projects"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 5,
+      "lesson_title": "Introduction to projects"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 6,
+      "lesson_title": "Creating with artifacts"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/12512176-what-are-skills",
+      "text": "Anthropic Help Center",
+      "domain": "support.claude.com",
+      "course": "claude-101",
+      "lesson_index": 7,
+      "lesson_title": "Working with skills"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 7,
+      "lesson_title": "Working with skills"
+    },
+    {
+      "url": "https://claude.ai/download",
+      "text": "Claude Desktop app",
+      "domain": "claude.ai",
+      "course": "claude-101",
+      "lesson_index": 8,
+      "lesson_title": "Connecting your tools"
+    },
+    {
+      "url": "https://support.anthropic.com/en/articles/11176164-pre-built-web-connectors-using-remote-mcp",
+      "text": "Anthropic Help Center",
+      "domain": "support.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 8,
+      "lesson_title": "Connecting your tools"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 8,
+      "lesson_title": "Connecting your tools"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/12489464-using-enterprise-search",
+      "text": "Anthropic Help Center",
+      "domain": "support.claude.com",
+      "course": "claude-101",
+      "lesson_index": 9,
+      "lesson_title": "Enterprise search"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 9,
+      "lesson_title": "Enterprise search"
+    },
+    {
+      "url": "https://support.anthropic.com/en/articles/11088861-using-research-on-claude-ai",
+      "text": "Anthropic Help Center",
+      "domain": "support.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 10,
+      "lesson_title": "Research mode for deep dives"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 10,
+      "lesson_title": "Research mode for deep dives"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/generate-project-status-reports",
+      "text": "Generate project status reports",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/analyze-patterns-in-user-feedback",
+      "text": "Analyze patterns in user feedback",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/package-your-brand-guidelines-in-a-skill",
+      "text": "Package your brand guidelines in a skill",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/build-a-battle-card-library",
+      "text": "Build a battle card library",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/prepare-for-sales-deals",
+      "text": "Prepare for sales deals",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/create-sales-reports",
+      "text": "Create sales reports",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/analyze-campaign-performance",
+      "text": "Analyze campaign performance",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/adapt-content-across-platforms",
+      "text": "Adapt content across platforms",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/build-financial-models",
+      "text": "Build financial models",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/draft-investment-memos",
+      "text": "Draft investment memos",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/understand-and-extend-an-inherited-spreadsheet",
+      "text": "Understand and extend an inherited spreadsheet",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/create-new-hire-onboarding-guides",
+      "text": "Create new hire onboarding guides",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/track-discovery-timelines-and-analyze-patterns",
+      "text": "Track discovery timelines and analyze patterns",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/plan-your-literature-review",
+      "text": "Plan your literature review",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/verify-statistics-from-raw-data",
+      "text": "Verify statistics from raw data",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases",
+      "text": "Use Case Gallery",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 11,
+      "lesson_title": "Claude in action: use-cases by role"
+    },
+    {
+      "url": "https://Claude.ai",
+      "text": "Claude.ai",
+      "domain": "Claude.ai",
+      "course": "claude-101",
+      "lesson_index": 12,
+      "lesson_title": "Other ways to work with Claude"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "claude-101",
+      "lesson_index": 12,
+      "lesson_title": "Other ways to work with Claude"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "AI Fluency courses",
+      "domain": "www.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+      "text": "AI Capabilities and Limitations",
+      "domain": "anthropic.skilljar.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases",
+      "text": "Use Case Gallery",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://support.anthropic.com/",
+      "text": "Anthropic Help Center",
+      "domain": "support.anthropic.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "text": "Prompting documentation",
+      "domain": "docs.claude.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/claude-code-in-action",
+      "text": "Claude Code in Action",
+      "domain": "anthropic.skilljar.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+      "text": "Introduction to Claude Cowork",
+      "domain": "anthropic.skilljar.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://claude.com/connectors",
+      "text": "Connector Directory",
+      "domain": "claude.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSfQaHi3t78qf7Jx7GubgMhCvurP5C7CcnaFxEwqBYl5nWyGKA/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSfQaHi3t78qf7Jx7GubgMhCvurP5C7CcnaFxEwqBYl5nWyGKA/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "here",
+      "domain": "docs.google.com",
+      "course": "claude-101",
+      "lesson_index": 13,
+      "lesson_title": "What's next?"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/quickstart",
+      "text": "https://code.claude.com/docs/en/quickstart",
+      "domain": "code.claude.com",
+      "course": "claude-code-in-action",
+      "lesson_index": 4,
+      "lesson_title": "Claude Code setup"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/amazon-bedrock",
+      "text": "https://code.claude.com/docs/en/amazon-bedrock",
+      "domain": "code.claude.com",
+      "course": "claude-code-in-action",
+      "lesson_index": 4,
+      "lesson_title": "Claude Code setup"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/google-vertex-ai",
+      "text": "https://code.claude.com/docs/en/google-vertex-ai",
+      "domain": "code.claude.com",
+      "course": "claude-code-in-action",
+      "lesson_index": 4,
+      "lesson_title": "Claude Code setup"
+    },
+    {
+      "url": "https://nodejs.org/en/download",
+      "text": "Link to installation directions",
+      "domain": "nodejs.org",
+      "course": "claude-code-in-action",
+      "lesson_index": 5,
+      "lesson_title": "Project setup"
+    },
+    {
+      "url": "https://console.anthropic.com/",
+      "text": "https://console.anthropic.com/",
+      "domain": "console.anthropic.com",
+      "course": "claude-code-in-action",
+      "lesson_index": 5,
+      "lesson_title": "Project setup"
+    },
+    {
+      "url": "https://attack.mitre.org/techniques/T1574/007/",
+      "text": "path interception",
+      "domain": "attack.mitre.org",
+      "course": "claude-code-in-action",
+      "lesson_index": 16,
+      "lesson_title": "Gotchas around hooks"
+    },
+    {
+      "url": "https://owasp.org/www-community/attacks/Binary_planting",
+      "text": "binary planting",
+      "domain": "owasp.org",
+      "course": "claude-code-in-action",
+      "lesson_index": 16,
+      "lesson_title": "Gotchas around hooks"
+    },
+    {
+      "url": "https://console.cloud.google.com/vertex-ai/dashboard",
+      "text": "https://console.cloud.google.com/vertex-ai/dashboard",
+      "domain": "console.cloud.google.com",
+      "course": "claude-with-google-vertex",
+      "lesson_index": 4,
+      "lesson_title": "Vertex AI Setup"
+    },
+    {
+      "url": "https://cloud.google.com/sdk/docs/install",
+      "text": "https://cloud.google.com/sdk/docs/install",
+      "domain": "cloud.google.com",
+      "course": "claude-with-google-vertex",
+      "lesson_index": 4,
+      "lesson_title": "Vertex AI Setup"
+    },
+    {
+      "url": "https://console.anthropic.com/",
+      "text": "https://console.anthropic.com/",
+      "domain": "console.anthropic.com",
+      "course": "claude-with-the-anthropic-api",
+      "lesson_index": 4,
+      "lesson_title": "Getting an API key"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 1,
+      "lesson_title": "What are skills?"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 2,
+      "lesson_title": "Creating your first skill"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 3,
+      "lesson_title": "Configuration and multi-file skills"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 4,
+      "lesson_title": "Skills vs. other Claude Code features"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 5,
+      "lesson_title": "Sharing skills"
+    },
+    {
+      "url": "https://forms.gle/RvHPBwQt9ZmcDc1P9",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 6,
+      "lesson_title": "Troubleshooting skills"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "AI Fluency course",
+      "domain": "www.anthropic.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 1,
+      "lesson_title": "What is Cowork?"
+    },
+    {
+      "url": "https://claude.com/resources/tutorials/claude-cowork-a-research-preview",
+      "text": "Claude Cowork: a research preview",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 1,
+      "lesson_title": "What is Cowork?"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 1,
+      "lesson_title": "What is Cowork?"
+    },
+    {
+      "url": "https://claude.com/download",
+      "text": "Claude Desktop app",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://claude.com/pricing",
+      "text": "check your plan details",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://claude.com/claude-for-chrome",
+      "text": "Claude in Chrome",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://claude.com/resources/tutorials/simplify-your-browsing-experience-with-claude-for-chrome",
+      "text": "Chrome tutorial",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/build-analysis-from-browser-charts-and-folder-data",
+      "text": "Build analysis from browser charts and folder data",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/13345190",
+      "text": "Getting started with Cowork",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/13455879",
+      "text": "Cowork for Team/Enterprise",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "AI Fluency course",
+      "domain": "www.anthropic.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 3,
+      "lesson_title": "The task loop"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 3,
+      "lesson_title": "The task loop"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-cowork",
+      "text": "Full setup guide",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 4,
+      "lesson_title": "Giving Cowork context"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 4,
+      "lesson_title": "Giving Cowork context"
+    },
+    {
+      "url": "https://www.youtube.com/playlist?list=PLmWCw1CzcFim_hkruZSlABOUOAAQ5JMyo",
+      "text": "Skills video course on YouTube",
+      "domain": "www.youtube.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/12512176",
+      "text": "What are Skills",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://claude.com/resources/tutorials/teach-claude-your-way-of-working-using-skills",
+      "text": "Teach Claude your way of working",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills",
+      "text": "Introduction to Agent Skills",
+      "domain": "anthropic.skilljar.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://claude.com/plugins",
+      "text": "Plugin directory",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/13837440-use-plugins-in-cowork",
+      "text": "Use plugins in Cowork",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://claude.com/resources/tutorials/how-to-customize-plugins-in-cowork",
+      "text": "How to customize plugins in Cowork",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://claude.com/resources/tutorials/how-to-build-a-plugin-from-scratch-in-cowork",
+      "text": "Build a plugin from scratch",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://claude.com/blog/cowork-plugins",
+      "text": "Cowork plugins announcement",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "text": "Knowledge-work plugins on GitHub",
+      "domain": "github.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://github.com/anthropics/financial-services-plugins",
+      "text": "Financial-services plugins on GitHub",
+      "domain": "github.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork",
+      "text": "more on scheduled tasks",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 6,
+      "lesson_title": "Scheduled tasks"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 6,
+      "lesson_title": "Scheduled tasks"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/",
+      "text": "Cowork use-case gallery",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 7,
+      "lesson_title": "File & document tasks"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 7,
+      "lesson_title": "File & document tasks"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 8,
+      "lesson_title": "Research & analysis at scale"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "AI Fluency course",
+      "domain": "www.anthropic.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 9,
+      "lesson_title": "Permissions, usage, & choosing your model"
+    },
+    {
+      "url": "https://claude.com/resources/tutorials/choosing-the-right-claude-model",
+      "text": "Choosing the right Claude model",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 9,
+      "lesson_title": "Permissions, usage, & choosing your model"
+    },
+    {
+      "url": "https://claude.com/pricing",
+      "text": "plans and pricing",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 9,
+      "lesson_title": "Permissions, usage, & choosing your model"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 9,
+      "lesson_title": "Permissions, usage, & choosing your model"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/13345190",
+      "text": "Getting started with Cowork",
+      "domain": "support.claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://claude.com/resources/use-cases/",
+      "text": "Cowork use-case gallery",
+      "domain": "claude.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "text": "github.com/anthropics/knowledge-work-plugins",
+      "domain": "github.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://www.anthropic.com/ai-fluency",
+      "text": "AI Fluency course",
+      "domain": "www.anthropic.com",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://forms.gle/sY9ou5fqZBd3TjHF8",
+      "text": "here",
+      "domain": "forms.gle",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 1,
+      "lesson_title": "Welcome & approaches to teaching AI Fluency"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 1,
+      "lesson_title": "Welcome & approaches to teaching AI Fluency"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 2,
+      "lesson_title": "The Delegation-Diligence loop"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 2,
+      "lesson_title": "The Delegation-Diligence loop"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 3,
+      "lesson_title": "The Description-Discernment loop"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 3,
+      "lesson_title": "The Description-Discernment loop"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 4,
+      "lesson_title": "How do we assess the 4Ds?"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 4,
+      "lesson_title": "How do we assess the 4Ds?"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 5,
+      "lesson_title": "Designing assignments for AI Fluency"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 5,
+      "lesson_title": "Designing assignments for AI Fluency"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 6,
+      "lesson_title": "AI's impact and your discipline"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 6,
+      "lesson_title": "AI's impact and your discipline"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&amp;ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 7,
+      "lesson_title": "Applying discipline expertise to AI Fluency"
+    },
+    {
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLScUKtBMYFxnHE30yCMAuJ55ntOmfWckEFpHLYuLVBwgtBnmcw/viewform?usp=sharing&ouid=109248321071652123872",
+      "text": "Share your feedback here.",
+      "domain": "docs.google.com",
+      "course": "teaching-ai-fluency",
+      "lesson_index": 7,
+      "lesson_title": "Applying discipline expertise to AI Fluency"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "system_name": "{{system_name}}",
+  "system_version": "{{system_version}}",
+  "generated_at": "{{TEMPORAL_NOW}}",
+  "generator": {
+    "name": "system-designer",
+    "version": "{{generator_version}}"
+  },
+  "intent": "{{intent}}",
+  "domain": "{{domain}}",
+  "eu_ai_act_risk": "{{eu_ai_act_risk}}",
+  "report_standard": "{{report_standard}}",
+  "granularity": "{{granularity}}",
+  "auditor_mode": "{{auditor_mode}}",
+  "auditors_count": {{auditors_count}},
+  "language_pair": "{{language_pair}}",
+  "stack": {
+    "language": "{{stack.language}}",
+    "frameworks": {{stack.frameworks_json_array}},
+    "libraries_pinned_in": "library_docs/MANIFEST.md"
+  },
+  "stakeholders": {{stakeholders_json}},
+  "goals": {{goals_json}},
+  "scope": {
+    "in_scope": {{in_scope_json}},
+    "out_of_scope": {{out_of_scope_json}},
+    "out_of_scope_redirect": "{{out_of_scope_redirect_target}}"
+  },
+  "non_goals": {{non_goals_json}},
+  "risks": {{risks_json}},
+  "functional_requirements": {{fr_json}},
+  "non_functional_requirements": {
+    "performance": {"p95_latency_ms_target": {{p95_target_ms}}, "confidence_pct": {{conf_nfr1}}},
+    "reliability": {"availability_pct_target": {{availability_target}}, "confidence_pct": {{conf_nfr2}}},
+    "security": {"owasp_critical_max": 0, "confidence_pct": {{conf_nfr3}}},
+    "privacy": {"pii_redaction_pct_target": 100, "confidence_pct": {{conf_nfr4}}},
+    "calibration": {"output_with_pct_target": 100, "confidence_pct": {{conf_nfr5}}},
+    "portability": {"tier": "A", "confidence_pct": {{conf_nfr6}}},
+    "eu_ai_act": {"mapping_completeness_pct_target": {{ai_act_completeness_target}}, "confidence_pct": {{conf_nfr7}}}
+  },
+  "data": {
+    "inputs": {{data_inputs_json}},
+    "outputs": {{data_outputs_json}}
+  },
+  "architecture_summary_ref": "ARCHITECTURE.md",
+  "library_manifest_ref": "library_docs/MANIFEST.md",
+  "sessions_plan": {{sessions_plan_json}},
+  "milestones": {{milestones_json}},
+  "reproducibility": {
+    "seeds": {{seeds_json_array}},
+    "configs_path": "SPEC.json#configs",
+    "compute_env": "{{compute_env}}",
+    "library_freshness_threshold_days": {{library_freshness_threshold_days}}
+  },
+  "configs": {
+    "token_budget_per_session": {{token_budget_per_session}},
+    "hitl_confidence_threshold_pct": 70,
+    "auto_proceed_confidence_threshold_pct": 90,
+    "calibration_violations_max": 0,
+    "audit_sheet_format": "xlsx_with_csv_md_fallback",
+    "library_doc_freshness_threshold_days": {{library_freshness_threshold_days}}
+  },
+  "compliance": {
+    "eu_ai_act": {
+      "risk_class": "{{eu_ai_act_risk}}",
+      "applicable_articles": {{applicable_articles_json}},
+      "checklists_referenced": {{checklists_referenced_json}},
+      "mapping_doc": "audit/eu_ai_act_mapping.md",
+      "audit_sheet": "audit/audit_sheet.xlsx"
+    },
+    "additional_regulations": {{additional_regulations_json}}
+  },
+  "open_questions": {{open_questions_json}},
+  "changelog": [
+    {"date": "{{TEMPORAL_NOW}}", "version": "0.1.0", "change": "scaffold", "session": "0001_bootstrap", "author": "system-designer"}
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "id": "16",
+  "slug": "ai-capabilities-and-limitations",
+  "title": "AI Capabilities and Limitations",
+  "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+  "category": "fluency-framework",
+  "difficulty": "beginner",
+  "domain": "AI Fluency",
+  "tags": [
+    "capabilities",
+    "limitations",
+    "mental-model",
+    "generative-ai"
+  ],
+  "stats": {
+    "total_lessons": 14,
+    "sections": 6,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 0,
+    "modular_text_lessons": 13,
+    "quiz_assessments": 1,
+    "jw_chars": 0,
+    "youtube_chars": 0,
+    "modular_chars": 70830,
+    "total_content_chars": 70830
+  },
+  "sections": [
+    {
+      "title": "Getting started",
+      "lesson_count": 3
+    },
+    {
+      "title": "Next Token Prediction",
+      "lesson_count": 2
+    },
+    {
+      "title": "Knowledge",
+      "lesson_count": 2
+    },
+    {
+      "title": "Working Memory",
+      "lesson_count": 2
+    },
+    {
+      "title": "Steerability",
+      "lesson_count": 2
+    },
+    {
+      "title": "Putting it all together and next steps",
+      "lesson_count": 3
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Getting started",
+      "title": "Intro to AI Capabilities and Limitations",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456128",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Getting started",
+      "title": "What We Mean by AI",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456427",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Getting started",
+      "title": "How AI Gets Its Character",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456439",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Next Token Prediction",
+      "title": "Next Token Prediction",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456447",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Next Token Prediction",
+      "title": "Try it out",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456450",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Knowledge",
+      "title": "Knowledge",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456452",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Knowledge",
+      "title": "Try it out",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456454",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Working Memory",
+      "title": "Working Memory",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456455",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Working Memory",
+      "title": "Try it out",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/457834",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Steerability",
+      "title": "Steerability",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456457",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Steerability",
+      "title": "Try it out",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456460",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Putting it all together and next steps",
+      "title": "When Properties Collide",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456459",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Putting it all together and next steps",
+      "title": "Next Steps",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456461",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Putting it all together and next steps",
+      "title": "Course Quiz",
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456462",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": true
+    }
+  ],
+  "extracted_at": "2026-04-11T11:26:23.017Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 0,
+    "quiz_extractions_added": 1
+  }
+}

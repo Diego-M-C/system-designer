@@ -1,0 +1,55 @@
+{
+  "course_num": 6,
+  "slug": "introduction-to-model-context-protocol",
+  "title": "Introduction to Model Context Protocol",
+  "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+  "subtitle": "Learn how to build modular AI applications using MCP to connect Claude with external tools and data sources",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:00:00Z",
+  "source_url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 16, "hours_of_video": 1, "quizzes": 1, "certificate": true},
+  "about": "This course covers MCP, a protocol for connecting Claude to external services and data sources without manually writing tool schemas. You'll learn to build both MCP servers that expose tools, resources, and prompts, and MCP clients that consume them. The course includes a hands-on project where you implement a document management system using MCP.",
+  "learning_objectives": [
+    "Understand MCP architecture and the client-server communication model",
+    "Build MCP servers that expose tools using the Python SDK",
+    "Implement MCP clients to connect your applications to MCP servers",
+    "Create resources for exposing data and prompts for pre-defined workflows",
+    "Test and debug MCP servers using the MCP Inspector",
+    "Choose between tools, resources, and prompts based on control patterns",
+    "Handle resource cleanup and async communication in MCP implementations"
+  ],
+  "prerequisites": [
+    "Basic Python programming experience",
+    "Understanding of async/await patterns",
+    "Familiarity with API concepts"
+  ],
+  "audience": "Engineers who want to integrate Claude with external tools and services without writing tons of boilerplate integration code",
+  "sections": [
+    {
+      "section_num": 1,
+      "name": "MCP fundamentals & server development",
+      "lessonCount": "8 lessons",
+      "description": "Start with understanding MCP's architecture and why it exists. Build your first MCP server with tools using the Python SDK, then test it with the built-in inspector.",
+      "previewImages": [
+        "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/01-01-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/01-02-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/01-03-medium.webp"
+      ]
+    },
+    {
+      "section_num": 2,
+      "name": "MCP client implementation & advanced features",
+      "lessonCount": "8 lessons",
+      "description": "Build the client side to communicate with MCP servers. Implement resources for direct data access and prompts for pre-built instructions. See how everything connects in a complete application flow.",
+      "previewImages": [
+        "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/02-01-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/02-02-medium.webp",
+        "https://d7juhi4i8fsw0.cloudfront.net/images/introduction-to-model-context-protocol/02-03-medium.webp"
+      ]
+    }
+  ],
+  "total_sections": 2,
+  "individual_lessons_requires_login": true
+}

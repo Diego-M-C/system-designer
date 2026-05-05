@@ -1,0 +1,57 @@
+# Project state — {{system_name}}
+
+> Human-readable mirror of `tracking/project.json`. Auto-regenerated on every project-state change. Do NOT edit by hand — edit the JSON.
+
+**Last updated:** {{last_updated_at}}
+**Current phase:** {{current_phase}}
+**Current session:** {{current_session_id}}
+**Gate status:** {{gate_status}}
+
+---
+
+## At a glance
+
+- **System:** {{system_name}} v{{system_version}}
+- **Generated:** {{generated_at}}
+- **Domain:** {{domain}} · **EU AI Act risk:** {{eu_ai_act_risk}}
+- **Stack:** {{stack_summary}}
+
+## Sessions
+
+| ID | Deliverable | Status | Started | Completed | KPIs |
+|---|---|---|---|---|---|
+{{sessions_table}}
+
+## Running KPIs (project-level)
+
+- Sessions completed: {{sessions_completed}}
+- Sessions aborted: {{sessions_aborted}}
+- Total decisions logged: {{total_decisions_logged}}
+- Total errors caught: {{total_errors_caught}}
+- Total errors added to catalog (auto-extension): {{total_errors_added_to_catalog}}
+- Audit pass rate: {{audit_pass_rate_pct}}%
+- Library doc freshness (p50 days since last fetch): {{library_doc_freshness_days_p50}}
+- Tokens consumed (project total estimate): {{tokens_consumed_total}}
+
+## Errors summary
+
+- Total: {{errors_total}}
+- By severity: info {{errors_info}} · warn {{errors_warn}} · error {{errors_error}} · critical {{errors_critical}}
+- Catalog: `tracking/errors_catalog.json` ({{catalog_count}} entries, {{preloaded_count}} preloaded + {{auto_added_count}} added by sessions)
+
+## Compliance state
+
+- **EU AI Act risk:** {{eu_ai_act_risk}}
+- **Mapping completeness:** {{mapping_completeness_pct}}% (target ≥95% for high-risk)
+- **Last audit session:** {{last_audit_session}}
+- **Next audit milestone:** {{next_audit_milestone}}
+
+## Pointers
+
+- Spec: [`SPEC.md`](../SPEC.md) · [`SPEC.json`](../SPEC.json)
+- Architecture: [`ARCHITECTURE.md`](../ARCHITECTURE.md)
+- Decisions: [`decisions.md`](decisions.md)
+- Errors: [`errors.md`](errors.md) · [`errors_catalog.json`](errors_catalog.json)
+- Memory: [`MEMORY.md`](../memory/MEMORY.md)
+- Audit sheet: [`audit/audit_sheet.xlsx`](../audit/audit_sheet.xlsx) (fallback: `.csv` + `.md`)
+- Cumulative report: [`docs/reports/cumulative.md`](../docs/reports/cumulative.md)

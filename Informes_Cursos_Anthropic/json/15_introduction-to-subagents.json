@@ -1,0 +1,81 @@
+{
+  "id": "15",
+  "slug": "introduction-to-subagents",
+  "title": "Introduction to subagents",
+  "url": "https://anthropic.skilljar.com/introduction-to-subagents",
+  "category": "agent-development",
+  "difficulty": "intermediate",
+  "domain": "Agent Development",
+  "tags": [
+    "subagents",
+    "claude-code",
+    "delegation",
+    "context-management"
+  ],
+  "stats": {
+    "total_lessons": 4,
+    "sections": 1,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 4,
+    "modular_text_lessons": 4,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 12861,
+    "modular_chars": 18268,
+    "total_content_chars": 31129
+  },
+  "sections": [
+    {
+      "title": "(uncategorized)",
+      "lesson_count": 4
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "(uncategorized)",
+      "title": "What are subagents?",
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents/450698",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "(uncategorized)",
+      "title": "Creating a subagent",
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents/450699",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "(uncategorized)",
+      "title": "Designing effective subagents",
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents/450700",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "(uncategorized)",
+      "title": "Using subagents effectively",
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents/450701",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:25:27.053Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 4,
+    "quiz_extractions_added": 0
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "system-designer-defaults",
+  "version": "0.1.0",
+  "purpose": "Sensible defaults for interview questions when the user types 'default' or 'skip'. Used by 01_interview_agent.md. Defaults reflect calibrated recommendations for a generic high-stakes SDD project; the interview agent surfaces them with fit % and asks for confirmation.",
+
+  "eu_ai_act_risk": {
+    "value": "high",
+    "rationale": "Conservative default. Most domains we target (healthcare, fintech, legal, public_sector) presume high-risk per Annex III.",
+    "confidence_pct": 80
+  },
+
+  "stack": {
+    "language": {
+      "by_domain": {
+        "healthcare": {"value": "python", "fit_pct": 80, "rationale": "Mature ML/data ecosystem; clinical libraries (pydicom, monai, scikit-learn)."},
+        "fintech": {"value": "python", "fit_pct": 60, "rationale": "Strong data ecosystem; alt: TypeScript for trading APIs / front-end."},
+        "legal": {"value": "python", "fit_pct": 65, "rationale": "NLP libraries dominate."},
+        "public_sector": {"value": "python", "fit_pct": 65, "rationale": "Wide gov-tech adoption."},
+        "research": {"value": "python", "fit_pct": 85, "rationale": "Default of academia."},
+        "other": {"value": "python", "fit_pct": 60, "rationale": "Generic safe choice."}
+      },
+      "global_default": "python"
+    },
+    "frameworks_by_domain": {
+      "healthcare": ["fastapi", "pydantic", "sqlalchemy", "alembic", "anthropic-python-sdk"],
+      "fintech": ["fastapi", "pydantic", "sqlalchemy", "alembic", "polars", "anthropic-python-sdk"],
+      "legal": ["fastapi", "pydantic", "anthropic-python-sdk", "sqlalchemy"],
+      "public_sector": ["fastapi", "pydantic", "sqlalchemy", "alembic", "anthropic-python-sdk"],
+      "research": ["pytest", "pydantic", "polars", "scikit-learn", "anthropic-python-sdk"],
+      "other": ["fastapi", "pydantic", "anthropic-python-sdk"]
+    },
+    "libraries_by_domain": {
+      "healthcare": ["fastapi", "pydantic", "sqlalchemy", "alembic", "postgres", "timescaledb", "tenacity", "tiktoken", "anthropic-python-sdk", "pytest"],
+      "fintech": ["fastapi", "pydantic", "sqlalchemy", "alembic", "postgres", "redis-py", "celery", "polars", "tenacity", "tiktoken", "anthropic-python-sdk", "pytest"],
+      "legal": ["fastapi", "pydantic", "sqlalchemy", "anthropic-python-sdk", "pytest", "tenacity"],
+      "public_sector": ["fastapi", "pydantic", "sqlalchemy", "alembic", "postgres", "anthropic-python-sdk", "pytest"],
+      "research": ["pydantic", "polars", "duckdb", "scikit-learn", "xgboost", "pytest", "anthropic-python-sdk"],
+      "other": ["fastapi", "pydantic", "anthropic-python-sdk", "pytest"]
+    }
+  },
+
+  "granularity": {
+    "value": "hybrid_B_D",
+    "rationale": "Sesión = 1 entregable verificable + cierre obligatorio en HITL checkpoint. Trazabilidad de B + governance de D.",
+    "confidence_pct": 85
+  },
+
+  "auditors_count": {
+    "value": 3,
+    "rationale": "Mínimo robusto para meta-jurado (3 auditores + 1 jury). Más auditores = más coste sin ganancia marginal.",
+    "confidence_pct": 80
+  },
+
+  "auditor_mode": {
+    "value": "parallel_with_meta_jury",
+    "rationale": "Independencia entre auditores + síntesis IA del jurado. HITL solo cuando ≥2 auditores discrepan.",
+    "confidence_pct": 75
+  },
+
+  "dashboard": {
+    "value": "static_html",
+    "rationale": "Sin servidor; regenera en cada commit; consultable en navegador local. Equilibrio entre utilidad y coste.",
+    "confidence_pct": 65
+  },
+
+  "language_pair": {
+    "value": "es_prose_en_code",
+    "rationale": "Prosa, decisiones, informes en español (legibilidad humana, regulador AESIA). Código, tests, identifiers en inglés (interoperabilidad).",
+    "confidence_pct": 85
+  },
+
+  "git_init": {
+    "value": "ASK",
+    "rationale": "No se asume; el usuario debe responder explícitamente.",
+    "confidence_pct": null
+  },
+
+  "target_path": {
+    "value": "{{cwd}}/{{system_name}}/",
+    "rationale": "Subcarpeta del directorio actual con el nombre del sistema.",
+    "confidence_pct": 90
+  },
+
+  "on_demand": {
+    "orchestrator": {"value": true, "confidence_pct": 80},
+    "skills_needed": {"value": [], "confidence_pct": 50, "note": "El usuario puede dejarlo vacío y añadir skills sesión por sesión."},
+    "agents_needed": {"value": [], "confidence_pct": 50, "note": "Igual que skills."},
+    "custom_tools_needed": {"value": [], "confidence_pct": 50}
+  },
+
+  "executor_platform": {
+    "value": "agnostic",
+    "rationale": "Default = Tier A portability. Si el usuario nombra un platform específico, se añade la capa de conveniencia .claude/* (Tier B) además del runtime portable.",
+    "confidence_pct": 75
+  },
+
+  "token_budget_per_session": {
+    "value": 250000,
+    "rationale": "Holgado para Sonnet/Opus 200K context con buffer. Reduce a 150000 si usas un modelo menor.",
+    "confidence_pct": 70
+  },
+
+  "library_freshness_threshold_days": {
+    "value": 7,
+    "rationale": "Re-fetch semanal balancea freshness vs ruido. Domínios fast-moving (LLM SDKs) recomendado: 3 días. Domínios estables: 30 días.",
+    "confidence_pct": 75
+  },
+
+  "stakeholders_template": "- Sponsor: [TODO]\n- Product owner: [TODO]\n- End-user representative: [TODO]\n- Compliance / legal: [TODO]\n- Tech lead: [TODO]",
+
+  "goals_placeholder": "G1 | [métrica] | [target] | confidence ≈[%]\nG2 | [métrica] | [target] | confidence ≈[%]\nG3 | [métrica] | [target] | confidence ≈[%]",
+
+  "out_of_scope_placeholder": "- [Cosa que NO haremos #1]\n- [Cosa que NO haremos #2]\n- [Cosa que NO haremos #3]",
+
+  "risks_placeholder": "R1 | [riesgo] | prob ≈[%] | impact [low/med/high] | mitigation [TODO]\nR2 | [riesgo] | prob ≈[%] | impact [low/med/high] | mitigation [TODO]\nR3 | [riesgo] | prob ≈[%] | impact [low/med/high] | mitigation [TODO]",
+
+  "sessions_plan_placeholder": "S0002 | [primer entregable post-bootstrap] | est [min]–[max] min | KPIs: [...]\nS0003 | [...] | est [...]\nS0004 | [...] | est [...]",
+
+  "seeds": {
+    "value": [42, 1337, 31415],
+    "rationale": "Convención de academia (42), hex/leet (1337), pi-related (31415). Tres seeds permite triplicate runs sin colisión común.",
+    "confidence_pct": 60
+  },
+
+  "compute_env": {
+    "value": "Local CPU / Linux / Python 3.13 (TODO: confirmar)",
+    "rationale": "Placeholder seguro; el usuario debe confirmar al primer despliegue.",
+    "confidence_pct": 40
+  },
+
+  "additional_regulations_by_domain": {
+    "healthcare": ["GDPR", "MDR 2017/745", "ISO 13485 (if device)", "ISO 42001"],
+    "fintech": ["GDPR", "DORA 2022/2554", "PSD2/PSD3", "ISO 42001"],
+    "legal": ["GDPR", "ISO 42001"],
+    "public_sector": ["GDPR", "ISO 42001", "national e-gov frameworks"],
+    "research": ["GDPR (if personal data)", "Helsinki Declaration (if human subjects)"],
+    "other": ["GDPR (if personal data)"]
+  },
+
+  "report_standard_by_domain": {
+    "healthcare": {
+      "predictive_default": "tripod_ai",
+      "trial_default": "consort_ai",
+      "diagnostic_default": "stard_ai",
+      "protocol_default": "spirit_ai",
+      "fallback": "imrad"
+    },
+    "fintech": "imrad",
+    "legal": "imrad",
+    "public_sector": "imrad",
+    "research": "imrad",
+    "other": "imrad"
+  },
+
+  "calibration_rules_inherited": "All defaults above carry confidence_pct. The interview agent surfaces the default WITH its confidence and rationale; user accepts, adjusts, or overrides freeform."
+}

@@ -1,0 +1,195 @@
+{
+  "id": "06",
+  "slug": "introduction-to-model-context-protocol",
+  "title": "Introduction to Model Context Protocol",
+  "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol",
+  "category": "mcp",
+  "difficulty": "intermediate",
+  "domain": "Model Context Protocol",
+  "tags": [
+    "mcp",
+    "protocol",
+    "tools",
+    "resources",
+    "prompts",
+    "python-sdk"
+  ],
+  "stats": {
+    "total_lessons": 14,
+    "sections": 4,
+    "jw_transcripts": 12,
+    "youtube_transcripts": 0,
+    "modular_text_lessons": 1,
+    "quiz_assessments": 1,
+    "jw_chars": 65138,
+    "youtube_chars": 0,
+    "modular_chars": 10,
+    "total_content_chars": 65148
+  },
+  "sections": [
+    {
+      "title": "Introduction",
+      "lesson_count": 3
+    },
+    {
+      "title": "Hands-on with MCP servers",
+      "lesson_count": 4
+    },
+    {
+      "title": "Connecting with MCP clients",
+      "lesson_count": 5
+    },
+    {
+      "title": "Assessment and wrap Up",
+      "lesson_count": 2
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction",
+      "title": "Welcome to the course",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/303756",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Introduction",
+      "title": "Introducing MCP",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296689",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Introduction",
+      "title": "MCP clients",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296690",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Hands-on with MCP servers",
+      "title": "Project setup",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296694",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Hands-on with MCP servers",
+      "title": "Defining tools with MCP",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296697",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Hands-on with MCP servers",
+      "title": "The server inspector",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296693",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Hands-on with MCP servers",
+      "title": "Course satisfaction survey",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297281",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Connecting with MCP clients",
+      "title": "Implementing a client",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296696",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Connecting with MCP clients",
+      "title": "Defining resources",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296699",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Connecting with MCP clients",
+      "title": "Accessing resources",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296695",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Connecting with MCP clients",
+      "title": "Defining prompts",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296698",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Connecting with MCP clients",
+      "title": "Prompts in the client",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296692",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Assessment and wrap Up",
+      "title": "Final assessment on MCP",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297196",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": true
+    },
+    {
+      "index": 14,
+      "section": "Assessment and wrap Up",
+      "title": "MCP review",
+      "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296691",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:32:42.659Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 0,
+    "quiz_extractions_added": 1
+  }
+}

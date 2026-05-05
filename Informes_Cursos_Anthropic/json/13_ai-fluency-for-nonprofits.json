@@ -1,0 +1,157 @@
+{
+  "id": "13",
+  "slug": "ai-fluency-for-nonprofits",
+  "title": "AI Fluency for nonprofits",
+  "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+  "category": "fluency-framework",
+  "difficulty": "beginner",
+  "domain": "AI Fluency",
+  "tags": [
+    "nonprofits",
+    "4d-framework",
+    "fundraising",
+    "mission-driven"
+  ],
+  "stats": {
+    "total_lessons": 10,
+    "sections": 5,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 9,
+    "modular_text_lessons": 9,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 52142,
+    "modular_chars": 47033,
+    "total_content_chars": 99175
+  },
+  "sections": [
+    {
+      "title": "Introduction and AI Fluency framework",
+      "lesson_count": 2
+    },
+    {
+      "title": "The Description-Discernment loop",
+      "lesson_count": 2
+    },
+    {
+      "title": "The Delegation-Diligence loop",
+      "lesson_count": 2
+    },
+    {
+      "title": "Putting it all together",
+      "lesson_count": 2
+    },
+    {
+      "title": "Conclusion and certificate",
+      "lesson_count": 2
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction and AI Fluency framework",
+      "title": "Welcome to AI Fluency for nonprofits",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376918",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Introduction and AI Fluency framework",
+      "title": "The 4D Framework",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376879",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "The Description-Discernment loop",
+      "title": "Researching with AI",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376881",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "The Description-Discernment loop",
+      "title": "Writing with AI",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376882",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "The Delegation-Diligence loop",
+      "title": "Understanding privacy and data",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376883",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "The Delegation-Diligence loop",
+      "title": "Data analysis with AI",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376885",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Putting it all together",
+      "title": "Workflow augmentation",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376886",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Putting it all together",
+      "title": "Integration",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376887",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Conclusion and certificate",
+      "title": "Next steps",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376888",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Conclusion and certificate",
+      "title": "Course Quiz",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376934",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:27:26.714Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 9,
+    "quiz_extractions_added": 0
+  }
+}

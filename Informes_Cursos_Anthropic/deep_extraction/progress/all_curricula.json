@@ -1,0 +1,3947 @@
+{
+  "claude-with-the-anthropic-api": {
+    "title": "Building with the Claude API",
+    "sectionCount": 13,
+    "totalLessons": 85,
+    "sections": [
+      {
+        "title": "Introduction",
+        "lessons": [
+          {
+            "title": "Welcome to the course",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287818",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Anthropic overview",
+        "lessons": [
+          {
+            "title": "Overview of Claude models",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287722",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Accessing Claude with the API",
+        "lessons": [
+          {
+            "title": "Accessing the API",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287726",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Getting an API key",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/296766",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Making a request",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287725",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Multi-Turn conversations",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287735",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Chat exercise",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287727",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "System prompts",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287733",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "System prompts exercise",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287724",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Temperature",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287728",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Course satisfaction survey",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/297284",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Response streaming",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287734",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Structured data",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287732",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Structured data exercise",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287729",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on accessing Claude with the API",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289117",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Prompt evaluation",
+        "lessons": [
+          {
+            "title": "Prompt evaluation",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287731",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "A typical eval workflow",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287736",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Generating test datasets",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287739",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Running the eval",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287743",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Model based grading",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287742",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Code based grading",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287737",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Exercise on prompt evals",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287738",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on prompt evaluation",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289118",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Prompt engineering techniques",
+        "lessons": [
+          {
+            "title": "Prompt engineering",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287745",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Being clear and direct",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287744",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Being specific",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287740",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Structure with XML tags",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287741",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Providing examples",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287746",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Exercise on prompting",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287748",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on prompt engineering techniques",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289121",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Tool use with Claude",
+        "lessons": [
+          {
+            "title": "Introducing tool use",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287747",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Project overview",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287751",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Tool functions",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287756",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Tool schemas",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287753",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Handling message blocks",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287757",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Sending tool results",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287752",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Multi-turn conversations with tools",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287750",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Implementing multiple turns",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287758",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Using multiple tools",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287749",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Fine grained tool calling",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/313160",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The text edit tool",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287760",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The web search tool",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287755",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on tool use with Claude",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289122",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "RAG and Agentic Search",
+        "lessons": [
+          {
+            "title": "Introducing Retrieval Augmented Generation",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287763",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Text chunking strategies",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287776",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Text embeddings",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287759",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The full RAG flow",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287764",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Implementing the RAG flow",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287761",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "BM25 lexical search",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287767",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "A Multi-Index RAG pipeline",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287766",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Features of Claude",
+        "lessons": [
+          {
+            "title": "Extended thinking",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287773",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Image support",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287778",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "PDF support",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287768",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Citations",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287771",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Prompt caching",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287772",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Rules of prompt caching",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287770",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Prompt caching in action",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287774",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Code execution and the Files API",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287777",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on features of Claude",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289124",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Model Context Protocol",
+        "lessons": [
+          {
+            "title": "Introducing MCP",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287780",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "MCP clients",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287775",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Project setup",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287785",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining tools with MCP",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287797",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The server inspector",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287781",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Implementing a client",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287793",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining resources",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287782",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Accessing resources",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287783",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining prompts",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287784",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Prompts in the client",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287786",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "MCP review",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287790",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on Model Context Protocol",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289126",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Anthropic apps - Claude Code and computer use",
+        "lessons": [
+          {
+            "title": "Anthropic apps",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287787",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Claude Code setup",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287788",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Claude Code in action",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287805",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Enhancements with MCP servers",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287792",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Agents and workflows",
+        "lessons": [
+          {
+            "title": "Agents and workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287796",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Parallelization workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287804",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Chaining workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287800",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Routing workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287801",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Agents and tools",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287803",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Environment inspection",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287798",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Workflows vs agents",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287794",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Quiz on Agents and Workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289130",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Final assessment",
+        "lessons": [
+          {
+            "title": "Final Assessment",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/290899",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Wrapping up!",
+        "lessons": [
+          {
+            "title": "Course Wrap Up",
+            "href": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/287802",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "claude-code-in-action": {
+    "title": "Claude Code in Action",
+    "sectionCount": 4,
+    "totalLessons": 21,
+    "sections": [
+      {
+        "title": "What is Claude Code?",
+        "lessons": [
+          {
+            "title": "Introduction",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303233",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "What is a coding assistant?",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303235",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Claude Code in action",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303242",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Getting hands on",
+        "lessons": [
+          {
+            "title": "Claude Code setup",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/301614",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Project setup",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/301615",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Adding context",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303241",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Making changes",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303236",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Course satisfaction survey",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303701",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Controlling context",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303237",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Custom commands",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303234",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "MCP servers with Claude Code",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303239",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Github integration",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303240",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Hooks and the SDK",
+        "lessons": [
+          {
+            "title": "Introducing hooks",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312000",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining hooks",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312002",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Implementing a hook",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312003",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Gotchas around hooks",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312423",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Useful hooks!",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312004",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Another useful hook",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312427",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The Claude Code SDK",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/312001",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Wrapping up",
+        "lessons": [
+          {
+            "title": "Quiz on Claude Code",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/308391",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Summary and next steps",
+            "href": "https://anthropic.skilljar.com/claude-code-in-action/303238",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "introduction-to-model-context-protocol": {
+    "title": "Introduction to Model Context Protocol",
+    "sectionCount": 4,
+    "totalLessons": 14,
+    "sections": [
+      {
+        "title": "Introduction",
+        "lessons": [
+          {
+            "title": "Welcome to the course",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/303756",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Introducing MCP",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296689",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "MCP clients",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296690",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Hands-on with MCP servers",
+        "lessons": [
+          {
+            "title": "Project setup",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296694",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining tools with MCP",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296697",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The server inspector",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296693",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Course satisfaction survey",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297281",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Connecting with MCP clients",
+        "lessons": [
+          {
+            "title": "Implementing a client",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296696",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining resources",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296699",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Accessing resources",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296695",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Defining prompts",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296698",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Prompts in the client",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296692",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Assessment and wrap Up",
+        "lessons": [
+          {
+            "title": "Final assessment on MCP",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297196",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "MCP review",
+            "href": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/296691",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "model-context-protocol-advanced-topics": {
+    "title": "Model Context Protocol: Advanced Topics",
+    "sectionCount": 4,
+    "totalLessons": 15,
+    "sections": [
+      {
+        "title": "Introduction",
+        "lessons": [
+          {
+            "title": "Let's get started!",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296349",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Core MCP features",
+        "lessons": [
+          {
+            "title": "Sampling",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296288",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Sampling walkthrough",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/295172",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Log and progress notifications",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296284",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Notifications walkthrough",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/291036",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Roots",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296289",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Roots walkthrough",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/295839",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Survey",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/297276",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Transports and communication",
+        "lessons": [
+          {
+            "title": "JSON message types",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296290",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The STDIO transport",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296291",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The StreamableHTTP transport",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296287",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "StreamableHTTP in depth",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296286",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "State and the StreamableHTTP transport",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296285",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Assessment and next steps",
+        "lessons": [
+          {
+            "title": "Assessment on MCP concepts",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296301",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Wrapping up",
+            "href": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296350",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "claude-in-amazon-bedrock": {
+    "title": "Claude with Amazon Bedrock",
+    "sectionCount": 11,
+    "totalLessons": 83,
+    "sections": [
+      {
+        "title": "Course introduction",
+        "lessons": [
+          {
+            "title": "Introduction to the course",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/241929",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Overview of Claude Models",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/303332",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Working with the API",
+        "lessons": [
+          {
+            "title": "Accessing the API",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276716",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Making a request",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276719",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Multi-Turn conversations",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276722",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Chat bot exercise",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276725",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "System prompts",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276726",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "System prompt exercise",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276717",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Temperature",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276720",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Streaming",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276721",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Controlling model output",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276723",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structured data",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276724",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structured data exercise",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276718",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on working with the API",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289293",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Prompt evaluations",
+        "lessons": [
+          {
+            "title": "Prompt evaluation",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276731",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "A typical eval workflow",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276732",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Generating test datasets",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276733",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Running the eval",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276736",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Model based grading",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276738",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Code based grading",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276735",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Exercise on prompt evals",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276734",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on prompt evaluations",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289297",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Prompt engineering",
+        "lessons": [
+          {
+            "title": "Prompt engineering",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276749",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Being clear and direct",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276743",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Being specific",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276745",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structure with XML tags",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276744",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Providing examples",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276747",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Exercise on prompting",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276746",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on prompt engineering",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289298",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Tool use",
+        "lessons": [
+          {
+            "title": "Introducing tool use",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276756",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Tool functions",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276757",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "JSON Schema for tools",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276758",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Handling tool use responses",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276764",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Running tool functions",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276762",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Sending tool results",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276760",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Multi-Turn conversations with tools",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276759",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Adding multiple tools",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276761",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Batch tool use",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276766",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structured data with tools",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276765",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Flexible tool extraction",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276763",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The text editor tool",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276767",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on tool use",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289296",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Retrieval Augmented Generation",
+        "lessons": [
+          {
+            "title": "Introducing Retrieval Augmented Generation",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276780",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Text chunking strategies",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276782",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Text embeddings",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276777",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The full RAG flow",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276774",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Implementing the RAG flow",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276781",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "BM25 lexical search",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276776",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "A multi-search RAG pipeline",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276779",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Reranking results",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276775",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Contextual retrieval",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276778",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on Retrieval Augmented Generation",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289295",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Features of Claude",
+        "lessons": [
+          {
+            "title": "Extended thinking",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276788",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Image support",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276789",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "PDF support",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/308839",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Citations",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/308840",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Prompt caching",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276786",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Rules of prompt caching",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276785",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Prompt caching in action",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276787",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on features of Claude",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289300",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Model Context Protocol",
+        "lessons": [
+          {
+            "title": "Introducing MCP",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276798",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "MCP clients",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276793",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Project setup",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276792",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Defining tools with MCP",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276800",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The server inspector",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276796",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Implementing a client",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276802",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Defining resources",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276799",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Accessing resources",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276797",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Defining prompts",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276801",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Prompts in the client",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276795",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "MCP review",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276794",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on Model Context Protocol",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289299",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Agents",
+        "lessons": [
+          {
+            "title": "Agents overview",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276804",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Claude Code setup",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276809",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Claude Code in action",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276811",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Enhancements with MCP servers",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276806",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Parallelizing Claude Code",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276810",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Automated debugging",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276812",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Computer Use",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276807",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "How Computer Use works",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276805",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Qualities of agents",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276808",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Final assessment",
+        "lessons": [
+          {
+            "title": "Final assessment quiz",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/290881",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Wrap up",
+        "lessons": [
+          {
+            "title": "Course wrap up",
+            "href": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276827",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "claude-with-google-vertex": {
+    "title": "Claude with Google Cloud's Vertex AI",
+    "sectionCount": 13,
+    "totalLessons": 93,
+    "sections": [
+      {
+        "title": "Introduction",
+        "lessons": [
+          {
+            "title": "Welcome to the course",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289145",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Anthropic overview",
+        "lessons": [
+          {
+            "title": "Overview of Claude models",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289146",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Accessing Claude with the API",
+        "lessons": [
+          {
+            "title": "Accessing the API",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289151",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Vertex AI Setup",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/307525",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Making a request",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289155",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Multi-turn conversations",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289156",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Chat exercise",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289150",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "System prompts",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289153",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "System prompts exercise",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289157",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Temperature",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289154",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Course satisfaction survey",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/297285",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Response streaming",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289162",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Controlling model output",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289160",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structured data",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289158",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structured data exercise",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289152",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on accessing Claude with the API",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289281",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Prompt evaluation",
+        "lessons": [
+          {
+            "title": "Prompt evaluation",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289159",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "A typical eval workflow",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289161",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Generating test datasets",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289163",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Running the eval",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289166",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Model based grading",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289168",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Code based grading",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289167",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Exercise on prompt evals",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289164",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on prompt evaluation",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289279",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Prompt engineering techniques",
+        "lessons": [
+          {
+            "title": "Prompt engineering",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289169",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Being clear and direct",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289170",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Being specific",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289165",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Structure with XML tags",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289171",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Providing examples",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289177",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Exercise on prompting",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289173",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on prompt engineering techniques",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289278",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Tool use with Claude",
+        "lessons": [
+          {
+            "title": "Introducing tool use",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289172",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Project overview",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289175",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Tool functions",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289176",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Tool schemas",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289174",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Handling message blocks",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289179",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Sending tool results",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289184",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Multi-turn conversations with tools",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289178",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Implementing multiple turns",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289182",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Using multiple tools",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289185",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The batch tool",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289189",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Tools for structured data",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289181",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The text edit tool",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289180",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The web search tool",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289183",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on tool use with Claude",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289280",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Retrieval Augmented Generation",
+        "lessons": [
+          {
+            "title": "Introducing Retrieval Augmented Generation",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289191",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Text chunking strategies",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289208",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Text embeddings",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289188",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The full RAG flow",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289190",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Implementing the RAG flow",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289186",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "BM25 lexical search",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289195",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "A Multi-index RAG pipeline",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289193",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Reranking results",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289192",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Contextual retrieval",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289187",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on Retrieval Augmented Generation",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289277",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Features of Claude",
+        "lessons": [
+          {
+            "title": "Extended thinking",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289197",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Image support",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289203",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "PDF support",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289198",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Citations",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289202",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Prompt caching",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289196",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Rules of prompt caching",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289194",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Prompt caching in action",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289200",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on features of Claude",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289275",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Model Context Protocol",
+        "lessons": [
+          {
+            "title": "Introducing MCP",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289201",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "MCP clients",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289204",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Project setup",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289199",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Defining tools with MCP",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289235",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The server inspector",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289207",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Implementing a client",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289206",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Defining resources",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289248",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Accessing resources",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289247",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Defining prompts",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289249",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Prompts in the client",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289209",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "MCP review",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289205",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on Model Context Protocol",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289276",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Anthropic apps - Claude Code and computer use",
+        "lessons": [
+          {
+            "title": "Anthropic apps",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289230",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Claude Code setup",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289232",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Claude Code in action",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289246",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Enhancements with MCP servers",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289231",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Parallelizing Claude Code",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289241",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Automated debugging",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289238",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Computer use",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289233",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "How computer use works",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289234",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Agents and workflows",
+        "lessons": [
+          {
+            "title": "Agents and workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289244",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Parallelization workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289236",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Chaining workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289239",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Routing workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289242",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Agents and tools",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289243",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Environment inspection",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289237",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Workflows vs agents",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289245",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Quiz on agents and workflows",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289274",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Final assessment",
+        "lessons": [
+          {
+            "title": "Final assessment quiz",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/290880",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Wrapping up!",
+        "lessons": [
+          {
+            "title": "Course Wrap Up",
+            "href": "https://anthropic.skilljar.com/claude-with-google-vertex/289240",
+            "types": [
+              "lesson-video"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "introduction-to-agent-skills": {
+    "title": "Introduction to agent skills",
+    "sectionCount": 1,
+    "totalLessons": 6,
+    "sections": [
+      {
+        "title": "(uncategorized)",
+        "lessons": [
+          {
+            "title": "What are skills?",
+            "href": "https://anthropic.skilljar.com/introduction-to-agent-skills/434525",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Creating your first skill",
+            "href": "https://anthropic.skilljar.com/introduction-to-agent-skills/434527",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Configuration and multi-file skills",
+            "href": "https://anthropic.skilljar.com/introduction-to-agent-skills/434526",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Skills vs. other Claude Code features",
+            "href": "https://anthropic.skilljar.com/introduction-to-agent-skills/434528",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Sharing skills",
+            "href": "https://anthropic.skilljar.com/introduction-to-agent-skills/434529",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Troubleshooting skills",
+            "href": "https://anthropic.skilljar.com/introduction-to-agent-skills/434530",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "introduction-to-subagents": {
+    "title": "Introduction to subagents",
+    "sectionCount": 1,
+    "totalLessons": 4,
+    "sections": [
+      {
+        "title": "(uncategorized)",
+        "lessons": [
+          {
+            "title": "What are subagents?",
+            "href": "https://anthropic.skilljar.com/introduction-to-subagents/450698",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Creating a subagent",
+            "href": "https://anthropic.skilljar.com/introduction-to-subagents/450699",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Designing effective subagents",
+            "href": "https://anthropic.skilljar.com/introduction-to-subagents/450700",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Using subagents effectively",
+            "href": "https://anthropic.skilljar.com/introduction-to-subagents/450701",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "introduction-to-claude-cowork": {
+    "title": "Introduction to Claude Cowork",
+    "sectionCount": 6,
+    "totalLessons": 11,
+    "sections": [
+      {
+        "title": "Meet Claude Cowork",
+        "lessons": [
+          {
+            "title": "What is Cowork?",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444164",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Getting set up",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444165",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Running your first task",
+        "lessons": [
+          {
+            "title": "The task loop",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444166",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Giving Cowork context",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444167",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Making Claude Cowork yours",
+        "lessons": [
+          {
+            "title": "Plugins: Cowork as a specialist",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444168",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Scheduled tasks",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444169",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Claude Cowork in practice",
+        "lessons": [
+          {
+            "title": "File & document tasks",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444170",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Research & analysis at scale",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444171",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Working responsibly",
+        "lessons": [
+          {
+            "title": "Permissions, usage, & choosing your model",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444173",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Troubleshooting & next steps",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444174",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Check your understanding",
+        "lessons": [
+          {
+            "title": "Quiz on Claude Cowork",
+            "href": "https://anthropic.skilljar.com/introduction-to-claude-cowork/452288",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "claude-code-101": {
+    "title": "Claude Code 101",
+    "sectionCount": 5,
+    "totalLessons": 13,
+    "sections": [
+      {
+        "title": "What is Claude Code?",
+        "lessons": [
+          {
+            "title": "What is Claude Code?",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469788",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "How Claude Code works",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469789",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Your first prompt",
+        "lessons": [
+          {
+            "title": "Installing Claude Code",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469790",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Your first prompt",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469791",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Daily workflows",
+        "lessons": [
+          {
+            "title": "The explore → plan → code → commit workflow",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469792",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Context management",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469793",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Code review",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469794",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Customizing Claude Code",
+        "lessons": [
+          {
+            "title": "The CLAUDE.md file",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469795",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Subagents",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469796",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Skills",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469848",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "MCP",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469797",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Hooks",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469798",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Quiz",
+        "lessons": [
+          {
+            "title": "Course quiz",
+            "href": "https://anthropic.skilljar.com/claude-code-101/469849",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "claude-101": {
+    "title": "Claude 101",
+    "sectionCount": 5,
+    "totalLessons": 14,
+    "sections": [
+      {
+        "title": "Meet Claude",
+        "lessons": [
+          {
+            "title": "What is Claude?",
+            "href": "https://anthropic.skilljar.com/claude-101/383389",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Your first conversation with Claude",
+            "href": "https://anthropic.skilljar.com/claude-101/383390",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Getting better results",
+            "href": "https://anthropic.skilljar.com/claude-101/383392",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Claude desktop app: Chat, Cowork, Code",
+            "href": "https://anthropic.skilljar.com/claude-101/440908",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Organizing your work and knowledge",
+        "lessons": [
+          {
+            "title": "Introduction to projects",
+            "href": "https://anthropic.skilljar.com/claude-101/383393",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Creating with artifacts",
+            "href": "https://anthropic.skilljar.com/claude-101/383394",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Working with skills",
+            "href": "https://anthropic.skilljar.com/claude-101/383396",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Expanding Claude's reach",
+        "lessons": [
+          {
+            "title": "Connecting your tools",
+            "href": "https://anthropic.skilljar.com/claude-101/383397",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Enterprise search",
+            "href": "https://anthropic.skilljar.com/claude-101/383398",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Research mode for deep dives",
+            "href": "https://anthropic.skilljar.com/claude-101/383399",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Putting it all together",
+        "lessons": [
+          {
+            "title": "Claude in action: use-cases by role",
+            "href": "https://anthropic.skilljar.com/claude-101/383401",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Other ways to work with Claude",
+            "href": "https://anthropic.skilljar.com/claude-101/383402",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Conclusion & certificate",
+        "lessons": [
+          {
+            "title": "What's next?",
+            "href": "https://anthropic.skilljar.com/claude-101/385338",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Certificate of completion",
+            "href": "https://anthropic.skilljar.com/claude-101/385349",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "ai-fluency-framework-foundations": {
+    "title": "AI Fluency: Framework & Foundations",
+    "sectionCount": 10,
+    "totalLessons": 15,
+    "sections": [
+      {
+        "title": "Introduction to AI Fluency",
+        "lessons": [
+          {
+            "title": "Introduction to AI Fluency",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291863",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "The AI Fluency Framework",
+        "lessons": [
+          {
+            "title": "Why do we need AI Fluency?",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291870",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "The 4D Framework",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291876",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Deep Dive 1: What is Generative AI? (Part 1)",
+        "lessons": [
+          {
+            "title": "Generative AI fundamentals",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291879",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Capabilities & limitations",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291880",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Delegation",
+        "lessons": [
+          {
+            "title": "A closer look at Delegation",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291883",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Project planning and Delegation",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291886",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Description",
+        "lessons": [
+          {
+            "title": "A closer look at Description",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291891",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Deep Dive 2: Effective prompting techniques",
+        "lessons": [
+          {
+            "title": "Effective prompting techniques",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291895",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Discernment",
+        "lessons": [
+          {
+            "title": "A closer look at Discernment",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291898",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "The Description-Discernment loop",
+        "lessons": [
+          {
+            "title": "The Description-Discernment loop",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291901",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Diligence",
+        "lessons": [
+          {
+            "title": "A closer look at Diligence",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291904",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Conclusion & certificate",
+        "lessons": [
+          {
+            "title": "Conclusion",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291908",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Certificate of completion",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/309598",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Additional activities",
+            "href": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/314863",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "ai-capabilities-and-limitations": {
+    "title": "AI Capabilities and Limitations",
+    "sectionCount": 6,
+    "totalLessons": 14,
+    "sections": [
+      {
+        "title": "Getting started",
+        "lessons": [
+          {
+            "title": "Intro to AI Capabilities and Limitations",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456128",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "What We Mean by AI",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456427",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "How AI Gets Its Character",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456439",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Next Token Prediction",
+        "lessons": [
+          {
+            "title": "Next Token Prediction",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456447",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Try it out",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456450",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Knowledge",
+        "lessons": [
+          {
+            "title": "Knowledge",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456452",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Try it out",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456454",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Working Memory",
+        "lessons": [
+          {
+            "title": "Working Memory",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456455",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Try it out",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/457834",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Steerability",
+        "lessons": [
+          {
+            "title": "Steerability",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456457",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Try it out",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456460",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          }
+        ]
+      },
+      {
+        "title": "Putting it all together and next steps",
+        "lessons": [
+          {
+            "title": "When Properties Collide",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456459",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Next Steps",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456461",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": true
+          },
+          {
+            "title": "Course Quiz",
+            "href": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456462",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": true
+          }
+        ]
+      }
+    ]
+  },
+  "ai-fluency-for-educators": {
+    "title": "AI Fluency for educators",
+    "sectionCount": 3,
+    "totalLessons": 5,
+    "sections": [
+      {
+        "title": "Introduction and AI Fluency Framework",
+        "lessons": [
+          {
+            "title": "Introduction to AI Fluency for Educators",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-educators/326777",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "AI Fluency Framework review",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-educators/326779",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "AI Fluency applications for educators",
+        "lessons": [
+          {
+            "title": "Applying AI Fluency to course design and learning outcomes",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-educators/326781",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Applying AI Fluency to learning materials and assignments",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-educators/326782",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Conclusion & certificate",
+        "lessons": [
+          {
+            "title": "Certificate of completion",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-educators/326786",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "ai-fluency-for-students": {
+    "title": "AI Fluency for students",
+    "sectionCount": 3,
+    "totalLessons": 6,
+    "sections": [
+      {
+        "title": "Introduction and AI Fluency Framework",
+        "lessons": [
+          {
+            "title": "Welcome to AI Fluency for students",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-students/326790",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "AI Fluency Framework",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-students/326791",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "AI Fluency Framework applications for students",
+        "lessons": [
+          {
+            "title": "AI as a learning partner",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-students/326792",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "AI in career planning",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-students/326793",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Conclusion & certificate",
+        "lessons": [
+          {
+            "title": "Being the human in the loop",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-students/327248",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Certificate of completion",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-students/327232",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "ai-fluency-for-nonprofits": {
+    "title": "AI Fluency for nonprofits",
+    "sectionCount": 5,
+    "totalLessons": 10,
+    "sections": [
+      {
+        "title": "Introduction and AI Fluency framework",
+        "lessons": [
+          {
+            "title": "Welcome to AI Fluency for nonprofits",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376918",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The 4D Framework",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376879",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "The Description-Discernment loop",
+        "lessons": [
+          {
+            "title": "Researching with AI",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376881",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Writing with AI",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376882",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "The Delegation-Diligence loop",
+        "lessons": [
+          {
+            "title": "Understanding privacy and data",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376883",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Data analysis with AI",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376885",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Putting it all together",
+        "lessons": [
+          {
+            "title": "Workflow augmentation",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376886",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Integration",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376887",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Conclusion and certificate",
+        "lessons": [
+          {
+            "title": "Next steps",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376888",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Course Quiz",
+            "href": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376934",
+            "types": [
+              "lesson-quiz"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  },
+  "teaching-ai-fluency": {
+    "title": "Teaching AI Fluency",
+    "sectionCount": 4,
+    "totalLessons": 8,
+    "sections": [
+      {
+        "title": "Introduction and approaches to teaching AI Fluency",
+        "lessons": [
+          {
+            "title": "Welcome & approaches to teaching AI Fluency",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327277",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The Delegation-Diligence loop",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327278",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "The Description-Discernment loop",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327279",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Assessing AI Fluency",
+        "lessons": [
+          {
+            "title": "How do we assess the 4Ds?",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327280",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Designing assignments for AI Fluency",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327281",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "AI's Impact on disciplinary content",
+        "lessons": [
+          {
+            "title": "AI's impact and your discipline",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327282",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          },
+          {
+            "title": "Applying discipline expertise to AI Fluency",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327284",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      },
+      {
+        "title": "Conclusion & certificate",
+        "lessons": [
+          {
+            "title": "Certificate of completion",
+            "href": "https://anthropic.skilljar.com/teaching-ai-fluency/327285",
+            "types": [
+              "lesson-modular"
+            ],
+            "complete": false
+          }
+        ]
+      }
+    ]
+  }
+}

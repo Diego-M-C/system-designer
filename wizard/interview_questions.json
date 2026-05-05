@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "system-designer-interview",
+  "version": "0.1.0",
+  "purpose": "Interview script run by 01_interview_agent.md against the user. Produces a SystemSpec (system_generator.json#/definitions/SystemSpec). Conducted in Spanish prose; identifiers / enum values in English (D-13C bilingual rule).",
+  "rendering_rules": {
+    "one_question_at_a_time": true,
+    "show_progress": "Pregunta N de M",
+    "skip_token": "skip",
+    "stop_token": "STOP",
+    "default_token": "default",
+    "freeform_alternative_allowed": true,
+    "calibration_for_user_estimates": "if user provides a numeric estimate, agent confirms with a range and asks for confidence level"
+  },
+  "phases": [
+    {
+      "id": "essentials",
+      "label": "Identidad del sistema",
+      "min_required": 4
+    },
+    {
+      "id": "compliance",
+      "label": "Cumplimiento y riesgo"
+    },
+    {
+      "id": "stack",
+      "label": "Stack técnico"
+    },
+    {
+      "id": "methodology",
+      "label": "Metodología SDD"
+    },
+    {
+      "id": "audit",
+      "label": "Configuración de auditoría"
+    },
+    {
+      "id": "ergonomics",
+      "label": "Dashboard, idioma, integración"
+    },
+    {
+      "id": "on_demand",
+      "label": "Componentes on-demand"
+    },
+    {
+      "id": "spec_seed",
+      "label": "Datos para semilla del SPEC"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q01_system_name",
+      "phase": "essentials",
+      "prompt": "Nombre del sistema (kebab-case, ≤40 caracteres). Ej.: 'oncology-triage-assistant', 'fraud-detector-eu'.",
+      "type": "text",
+      "required": true,
+      "validation": {"pattern": "^[a-z0-9-]{1,40}$"},
+      "default_ref": null,
+      "writes_to": "system_name"
+    },
+    {
+      "id": "Q02_intent",
+      "phase": "essentials",
+      "prompt": "Describe la intención del sistema en 1–3 frases. ¿Qué hace? ¿Para quién? ¿Qué problema resuelve?",
+      "type": "long_text",
+      "required": true,
+      "validation": {"max_length": 600},
+      "writes_to": "intent"
+    },
+    {
+      "id": "Q03_domain",
+      "phase": "essentials",
+      "prompt": "Dominio del sistema. Si tu caso encaja con varios, elige el dominante.",
+      "type": "single",
+      "required": true,
+      "options": [
+        {"value": "healthcare", "label": "Sanidad / clínica / biotech"},
+        {"value": "fintech", "label": "Financiero / banca / seguros"},
+        {"value": "legal", "label": "Legal / regulatorio"},
+        {"value": "public_sector", "label": "Sector público / administración"},
+        {"value": "research", "label": "Investigación / academia"},
+        {"value": "other", "label": "Otro (especifica en la siguiente)"}
+      ],
+      "writes_to": "domain"
+    },
+    {
+      "id": "Q03b_domain_other",
+      "phase": "essentials",
+      "depends_on": {"Q03_domain": "other"},
+      "prompt": "Especifica el dominio exacto.",
+      "type": "text",
+      "required": true,
+      "writes_to": "domain_other"
+    },
+    {
+      "id": "Q04_eu_ai_act_risk",
+      "phase": "compliance",
+      "prompt": "Clasificación EU AI Act preliminar. Por defecto: high (conservador). Cambiar requiere justificación que se registrará en decisions.md.",
+      "type": "single",
+      "required": true,
+      "options": [
+        {"value": "high", "label": "High-risk (Annex III) — recomendado por defecto", "fit_pct_default": 70},
+        {"value": "limited", "label": "Limited-risk (Art. 50 transparencia)", "fit_pct_default": 20},
+        {"value": "minimal", "label": "Minimal-risk", "fit_pct_default": 10}
+      ],
+      "default_ref": "eu_ai_act_risk",
+      "calibration_required": true,
+      "downgrade_warning": "Si eliges 'limited' o 'minimal' y el dominio sugiere high-risk, te pediré confirmación + justificación.",
+      "writes_to": "eu_ai_act_risk"
+    },
+    {
+      "id": "Q04b_risk_downgrade_rationale",
+      "phase": "compliance",
+      "depends_on": {"Q04_eu_ai_act_risk": ["limited", "minimal"]},
+      "prompt": "Justifica por qué este sistema NO es high-risk según Annex III. Esta razón se guardará en decisions.md como ADR.",
+      "type": "long_text",
+      "required": true,
+      "writes_to": "risk_downgrade_rationale"
+    },
+    {
+      "id": "Q05_stack_language",
+      "phase": "stack",
+      "prompt": "Lenguaje principal. Pulsa 'default' para que recomiende 3 alternativas con fit %.",
+      "type": "single_or_default",
+      "options": [
+        {"value": "python", "label": "Python", "fit_pct_default": 70},
+        {"value": "typescript", "label": "TypeScript / Node", "fit_pct_default": 20},
+        {"value": "rust", "label": "Rust", "fit_pct_default": 5},
+        {"value": "go", "label": "Go", "fit_pct_default": 5},
+        {"value": "other", "label": "Otro (especifica)"}
+      ],
+      "default_ref": "stack.language",
+      "writes_to": "stack.language"
+    },
+    {
+      "id": "Q06_stack_frameworks",
+      "phase": "stack",
+      "prompt": "Frameworks principales (separa por comas). Si pulsas 'default', recomendaré según dominio + lenguaje.",
+      "type": "multi_or_default",
+      "default_ref": "stack.frameworks_by_domain",
+      "writes_to": "stack.frameworks"
+    },
+    {
+      "id": "Q07_stack_libraries",
+      "phase": "stack",
+      "prompt": "Librerías clave (separa por comas con versión opcional, ej.: 'pandas==2.2,xgboost==2.1'). Pulsa 'default' para inferir desde dominio + frameworks. Las URLs de fetch están en library_docs_manifest.tmpl.",
+      "type": "multi_or_default",
+      "default_ref": "stack.libraries_by_domain",
+      "validation": "each item must resolve to a name in templates/library_docs_manifest.tmpl OR be added explicitly with primary URL",
+      "writes_to": "stack.libraries"
+    },
+    {
+      "id": "Q08_granularity",
+      "phase": "methodology",
+      "prompt": "Granularidad de sesión SDD. Por defecto: hybrid_B_D (sesión = 1 entregable verificable, cierre obligatorio en HITL checkpoint).",
+      "type": "single_or_default",
+      "options": [
+        {"value": "macro_A", "label": "Macro (1 sesión = 1 fase entera, ~8 sesiones totales)", "fit_pct_default": 10},
+        {"value": "meso_B", "label": "Meso por entregable (~40–60 sesiones)", "fit_pct_default": 25},
+        {"value": "micro_C", "label": "Micro por commit (~200–400 sesiones)", "fit_pct_default": 5},
+        {"value": "checkpoint_D", "label": "Por checkpoint humano (~30–80 sesiones)", "fit_pct_default": 25},
+        {"value": "hybrid_B_D", "label": "Híbrido B+D (entregable + cierre obligatorio en HITL) — recomendado", "fit_pct_default": 75}
+      ],
+      "default_ref": "granularity",
+      "writes_to": "granularity"
+    },
+    {
+      "id": "Q09_token_budget_per_session",
+      "phase": "methodology",
+      "prompt": "Token budget por sesión (estimación, ±20% range). Por defecto: 250 000.",
+      "type": "number_or_default",
+      "default_ref": "token_budget_per_session",
+      "validation": {"min": 50000, "max": 1000000},
+      "writes_to": "token_budget_per_session"
+    },
+    {
+      "id": "Q10_library_freshness_threshold_days",
+      "phase": "methodology",
+      "prompt": "Días después de los cuales una librería se re-fetchea. Por defecto: 7.",
+      "type": "number_or_default",
+      "default_ref": "library_freshness_threshold_days",
+      "validation": {"min": 1, "max": 90},
+      "writes_to": "library_freshness_threshold_days"
+    },
+    {
+      "id": "Q11_auditors_count",
+      "phase": "audit",
+      "prompt": "Número de auditores (3–10). Por defecto: 3.",
+      "type": "number_or_default",
+      "default_ref": "auditors_count",
+      "validation": {"min": 3, "max": 10},
+      "writes_to": "auditors_count"
+    },
+    {
+      "id": "Q12_auditor_mode",
+      "phase": "audit",
+      "prompt": "Modo de los auditores.",
+      "type": "single_or_default",
+      "options": [
+        {"value": "sequential", "label": "Secuenciales (auditor 2 lee informe del 1)", "fit_pct_default": 10},
+        {"value": "parallel_independent", "label": "Paralelos independientes + consolidación humana", "fit_pct_default": 25},
+        {"value": "parallel_with_meta_jury", "label": "Paralelos + meta-jurado IA — recomendado", "fit_pct_default": 60},
+        {"value": "parallel_with_human_tiebreaker", "label": "Paralelos + humano tiebreaker", "fit_pct_default": 30},
+        {"value": "configurable", "label": "Configurable por sesión"}
+      ],
+      "default_ref": "auditor_mode",
+      "writes_to": "auditor_mode"
+    },
+    {
+      "id": "Q13_dashboard",
+      "phase": "ergonomics",
+      "prompt": "¿Quieres dashboard para visualizar tracking / KPIs / errores en navegador?",
+      "type": "single_or_default",
+      "options": [
+        {"value": "none", "label": "No (solo MD/JSON consultables)", "fit_pct_default": 30},
+        {"value": "static_html", "label": "HTML estático regenerado en cada commit (sin servidor)", "fit_pct_default": 50},
+        {"value": "streamlit", "label": "Streamlit (Python, navegador)", "fit_pct_default": 15},
+        {"value": "nextjs", "label": "Next.js + tRPC + WebSocket (real-time, producción)", "fit_pct_default": 5}
+      ],
+      "default_ref": "dashboard",
+      "writes_to": "dashboard"
+    },
+    {
+      "id": "Q14_language_pair",
+      "phase": "ergonomics",
+      "prompt": "Idioma de los artefactos.",
+      "type": "single_or_default",
+      "options": [
+        {"value": "es_only", "label": "Solo español", "fit_pct_default": 20},
+        {"value": "en_only", "label": "Solo inglés", "fit_pct_default": 15},
+        {"value": "es_prose_en_code", "label": "Bilingüe: prosa/decisiones/informes ES, código/tests/identifiers EN — recomendado", "fit_pct_default": 70},
+        {"value": "es_project_en_public", "label": "ES para proyecto, EN para entregables públicos", "fit_pct_default": 25}
+      ],
+      "default_ref": "language_pair",
+      "writes_to": "language_pair"
+    },
+    {
+      "id": "Q15_git_init",
+      "phase": "ergonomics",
+      "prompt": "¿Inicializar repositorio git? (no se hace push, solo `git init` + commit inicial).",
+      "type": "boolean",
+      "required": true,
+      "writes_to": "git_init"
+    },
+    {
+      "id": "Q16_target_path",
+      "phase": "ergonomics",
+      "prompt": "Ruta donde se generará el sistema-hijo. Por defecto: subcarpeta del CWD con el nombre del sistema (`./<system_name>/`).",
+      "type": "text_or_default",
+      "default_ref": "target_path",
+      "writes_to": "target_path"
+    },
+    {
+      "id": "Q17_orchestrator_needed",
+      "phase": "on_demand",
+      "prompt": "¿El sistema-hijo necesita un orquestador autónomo (CLAUDE.md activo) o es una librería/microservicio sin sesiones recurrentes?",
+      "type": "boolean",
+      "required": true,
+      "default_ref": "on_demand.orchestrator",
+      "writes_to": "on_demand.orchestrator"
+    },
+    {
+      "id": "Q18_skills_needed",
+      "phase": "on_demand",
+      "prompt": "¿Qué skills domain-specific necesita el sistema-hijo? (separa por comas, vacío = ninguna). Cada skill se compone vía prompt-architect. Ejemplos: 'patient-history-extractor, drug-interaction-checker, triage-prioritizer'.",
+      "type": "multi_or_empty",
+      "writes_to": "on_demand.skills_needed"
+    },
+    {
+      "id": "Q19_agents_needed",
+      "phase": "on_demand",
+      "prompt": "¿Qué subagentes necesita el sistema-hijo? (separa por comas, vacío = ninguno). Cada uno se compone vía prompt-architect. Ejemplos: 'data-validator, model-trainer, evaluation-runner'.",
+      "type": "multi_or_empty",
+      "writes_to": "on_demand.agents_needed"
+    },
+    {
+      "id": "Q20_custom_tools_needed",
+      "phase": "on_demand",
+      "prompt": "¿Qué herramientas / scripts custom necesita el sistema? (vacío = ninguno).",
+      "type": "multi_or_empty",
+      "writes_to": "on_demand.custom_tools_needed"
+    },
+    {
+      "id": "Q21_stakeholders",
+      "phase": "spec_seed",
+      "prompt": "Stakeholders clave (formato libre, una línea por stakeholder con rol). Pulsa 'default' para usar plantilla con TODOs.",
+      "type": "long_text_or_default",
+      "default_ref": "stakeholders_template",
+      "writes_to": "stakeholders"
+    },
+    {
+      "id": "Q22_goals_top_3",
+      "phase": "spec_seed",
+      "prompt": "Top 3 goals del sistema con métrica de éxito. Formato: 'goal | métrica | target'. Ej.: 'Reducir tiempo de triage | minutos por caso | ≤5 min'. Pulsa 'default' para placeholders.",
+      "type": "long_text_or_default",
+      "default_ref": "goals_placeholder",
+      "writes_to": "goals_top_3"
+    },
+    {
+      "id": "Q23_out_of_scope_top_3",
+      "phase": "spec_seed",
+      "prompt": "Top 3 cosas que el sistema EXPLÍCITAMENTE NO HARÁ (anti-hallucination boundary).",
+      "type": "long_text_or_default",
+      "default_ref": "out_of_scope_placeholder",
+      "writes_to": "out_of_scope_top_3"
+    },
+    {
+      "id": "Q24_top_risks",
+      "phase": "spec_seed",
+      "prompt": "Top 3 riesgos que ya prevés, cada uno con probabilidad estimada (0–100%) e impacto (low/med/high).",
+      "type": "long_text_or_default",
+      "default_ref": "risks_placeholder",
+      "writes_to": "top_risks"
+    },
+    {
+      "id": "Q25_first_3_sessions",
+      "phase": "spec_seed",
+      "prompt": "¿Tienes claro cuáles son las 3 primeras sesiones (deliverables) tras el bootstrap? Si no, recomendaré una división plausible al final.",
+      "type": "long_text_or_default",
+      "default_ref": "sessions_plan_placeholder",
+      "writes_to": "first_3_sessions"
+    },
+    {
+      "id": "Q26_executor_platform",
+      "phase": "ergonomics",
+      "prompt": "¿En qué plataforma ejecutarás el sistema-hijo? (afecta solo a la capa de conveniencia .claude/, no al runtime — runtime es siempre LLM-agnóstico).",
+      "type": "single_or_default",
+      "options": [
+        {"value": "claude_code", "label": "Claude Code (genera .claude/skills + agents + commands como conveniencia)"},
+        {"value": "cursor", "label": "Cursor"},
+        {"value": "cline", "label": "Cline (VS Code)"},
+        {"value": "gemini_cli", "label": "Gemini CLI"},
+        {"value": "copilot_cli", "label": "Copilot CLI"},
+        {"value": "codex", "label": "Codex"},
+        {"value": "agnostic", "label": "Agnóstico (no genera capa de conveniencia)"}
+      ],
+      "default_ref": "executor_platform",
+      "writes_to": "executor_platform"
+    },
+    {
+      "id": "Q27_reproducibility_seeds",
+      "phase": "methodology",
+      "prompt": "Random seeds a usar (separa por comas). Pulsa 'default' para [42, 1337, 31415].",
+      "type": "multi_or_default",
+      "default_ref": "seeds",
+      "writes_to": "reproducibility.seeds"
+    },
+    {
+      "id": "Q28_compute_env",
+      "phase": "methodology",
+      "prompt": "Entorno de cómputo (1 línea descriptiva, ej.: 'AWS r6i.2xlarge / Linux / Python 3.13').",
+      "type": "text_or_default",
+      "default_ref": "compute_env",
+      "writes_to": "compute_env"
+    },
+    {
+      "id": "Q29_additional_regulations",
+      "phase": "compliance",
+      "prompt": "Regulaciones adicionales aplicables además de EU AI Act (separa por comas). Ej.: 'GDPR, MDR, ISO 42001'. 'default' lo infiere desde domain.",
+      "type": "multi_or_default",
+      "default_ref": "additional_regulations_by_domain",
+      "writes_to": "additional_regulations"
+    },
+    {
+      "id": "Q30_report_standard",
+      "phase": "compliance",
+      "prompt": "Estándar del informe científico final.",
+      "type": "single_or_default",
+      "options": [
+        {"value": "imrad", "label": "IMRaD (universal fallback)"},
+        {"value": "tripod_ai", "label": "TRIPOD-AI (sistemas predictivos en sanidad y similares)"},
+        {"value": "consort_ai", "label": "CONSORT-AI (ensayos clínicos con IA)"},
+        {"value": "stard_ai", "label": "STARD-AI (estudios diagnósticos con IA)"},
+        {"value": "spirit_ai", "label": "SPIRIT-AI (protocolo de ensayo clínico con IA)"}
+      ],
+      "default_ref": "report_standard_by_domain",
+      "writes_to": "report_standard"
+    }
+  ],
+  "post_interview_actions": [
+    "Validate the resulting SystemSpec against system_generator.json#/definitions/SystemSpec.",
+    "If validation fails: re-prompt only the failing fields.",
+    "Persist to tracking/project.json#interview_answers IMMEDIATELY (resumability invariant).",
+    "Compute eu_ai_act_risk default check: if domain in {healthcare, fintech, legal, public_sector} AND user chose limited/minimal → require Q04b_risk_downgrade_rationale.",
+    "Trigger 03_planning_brief generation."
+  ]
+}

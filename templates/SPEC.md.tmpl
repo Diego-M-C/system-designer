@@ -1,0 +1,172 @@
+# SPEC — {{system_name}}
+
+> Spec-Driven Development specification. This is the **canonical source of truth** for what `{{system_name}}` is, does, and is held accountable to.
+>
+> **Living document.** Updated every session. Sidecar: `SPEC.json` (machine-readable validator).
+>
+> **Rule:** code that contradicts this spec is wrong by definition. Either fix the code or update the spec via an ADR (`docs/decisions/`) — never silently diverge.
+
+---
+
+## 0 · Metadata
+
+- **System name:** {{system_name}}
+- **Version:** {{system_version}}
+- **Generated:** {{TEMPORAL_NOW}}
+- **Domain:** {{domain}}
+- **EU AI Act risk class:** {{eu_ai_act_risk}}
+- **Report standard:** {{report_standard}}
+- **Granularity:** {{granularity}}
+- **Auditor mode:** {{auditor_mode}} · count {{auditors_count}}
+- **Language pair:** {{language_pair}}
+
+## 1 · Intent
+
+{{intent}}
+
+## 2 · Stakeholders
+
+| Role | Person / org | Decision authority | Confidence in role assignment |
+|---|---|---|---|
+| Sponsor | {{stakeholder_sponsor}} | strategic | ≈{{confidence_sponsor}}% |
+| Product owner | {{stakeholder_po}} | requirement priority | ≈{{confidence_po}}% |
+| End-user representative | {{stakeholder_user_rep}} | UX/UI sign-off | ≈{{confidence_user_rep}}% |
+| Compliance / legal | {{stakeholder_compliance}} | EU AI Act sign-off | ≈{{confidence_compliance}}% |
+| Tech lead | {{stakeholder_tech}} | architecture sign-off | ≈{{confidence_tech}}% |
+| AI collaborator | LLM ({{model_orchestrator}}) | execution per CLAUDE.md | n/a |
+
+## 3 · Goals (numbered + measurable)
+
+| ID | Goal | Success metric | Target | Confidence |
+|---|---|---|---|---|
+| G1 | {{goal_1}} | {{metric_1}} | ≥{{target_1}} | ≈{{confidence_g1}}% |
+| G2 | {{goal_2}} | {{metric_2}} | ≥{{target_2}} | ≈{{confidence_g2}}% |
+| … | … | … | … | … |
+
+## 4 · Scope
+
+### In scope
+
+- {{in_scope_item_1}}
+- {{in_scope_item_2}}
+- …
+
+### Out of scope (anti-hallucination boundary)
+
+- {{out_of_scope_item_1}}
+- {{out_of_scope_item_2}}
+- …
+
+### On out-of-scope request
+
+Decline politely + redirect to `{{out_of_scope_redirect_target}}` (e.g., backlog, sister-project, manual handling).
+
+## 5 · Non-goals
+
+What this system EXPLICITLY does NOT optimise for:
+
+- {{non_goal_1}}
+- {{non_goal_2}}
+
+## 6 · Risks (≥3 with calibrated probability)
+
+| ID | Risk | Probability | Impact | Mitigation |
+|---|---|---|---|---|
+| R1 | {{risk_1}} | ≈{{prob_r1}}% | {{impact_r1}} | {{mitigation_r1}} |
+| R2 | {{risk_2}} | ≈{{prob_r2}}% | {{impact_r2}} | {{mitigation_r2}} |
+| R3 | {{risk_3}} | ≈{{prob_r3}}% | {{impact_r3}} | {{mitigation_r3}} |
+
+## 7 · Functional requirements (FR)
+
+| ID | Requirement | Priority | Acceptance test | Confidence in spec | Session targeted |
+|---|---|---|---|---|---|
+| FR-001 | {{fr_1}} | MUST | {{acceptance_1}} | ≈{{conf_fr1}}% | S{{session_fr1}} |
+| FR-002 | {{fr_2}} | SHOULD | {{acceptance_2}} | ≈{{conf_fr2}}% | S{{session_fr2}} |
+| … | … | … | … | … | … |
+
+Use MoSCoW: MUST / SHOULD / COULD / WON'T.
+
+## 8 · Non-functional requirements (NFR)
+
+| ID | Category | Requirement | Target | Verification | Confidence |
+|---|---|---|---|---|---|
+| NFR-001 | Performance | p95 latency | ≤{{p95_target_ms}} ms | load test | ≈{{conf_nfr1}}% |
+| NFR-002 | Reliability | availability | ≥{{availability_target}}% | SLO monitor | ≈{{conf_nfr2}}% |
+| NFR-003 | Security | OWASP top-10 | 0 critical | SAST + DAST | ≈{{conf_nfr3}}% |
+| NFR-004 | Privacy | PII redaction | 100% on outbound | scanner | ≈{{conf_nfr4}}% |
+| NFR-005 | Calibration | output % presence | 100% | regex scan | ≈{{conf_nfr5}}% |
+| NFR-006 | Portability | runtime LLM-agnostic | tier A | self-test | ≈{{conf_nfr6}}% |
+| NFR-007 | EU AI Act | mapping completeness | ≥{{ai_act_completeness_target}}% | self-test | ≈{{conf_nfr7}}% |
+
+## 9 · Inputs / outputs / data flow
+
+### Data inputs
+
+| Source | Format | PII? | Retention | EU AI Act Art. 10 ref |
+|---|---|---|---|---|
+| {{input_source_1}} | {{format_1}} | {{pii_1}} | {{retention_1}} | {{art10_ref_1}} |
+
+### Data outputs
+
+| Sink | Format | Consumer | EU AI Act Art. 13/50 transparency |
+|---|---|---|---|
+| {{output_sink_1}} | {{format_1}} | {{consumer_1}} | {{transparency_ref_1}} |
+
+### Data flow diagram
+
+See `ARCHITECTURE.md#data_flow` (mermaid).
+
+## 10 · Architecture summary
+
+See `ARCHITECTURE.md`. High-level:
+
+- Layers: {{architecture_layers}}
+- Persistence: {{persistence_choice}} (alternatives considered, fit% in `docs/decisions/ADR-001-persistence.md`)
+- Compute: {{compute_choice}}
+- Deployment: {{deployment_target}}
+
+## 11 · Library / dependency manifest
+
+See `library_docs/MANIFEST.md`. Pinned versions, last-fetch dates, fallback URLs.
+
+## 12 · Sessions plan (rolling — updated each checkpoint)
+
+| ID | Deliverable | Status | Estimate (range) | Actual | KPI snapshot |
+|---|---|---|---|---|---|
+| 0001_bootstrap | Project scaffolded by generator | ✅ | n/a | n/a | see session |
+| 0002_{{deliverable_2}} | {{deliverable_desc_2}} | planned | {{est_2_min}}–{{est_2_max}} min | — | — |
+| 0003_{{deliverable_3}} | {{deliverable_desc_3}} | planned | {{est_3_min}}–{{est_3_max}} min | — | — |
+| … | … | … | … | … | … |
+
+## 13 · Milestones
+
+| ID | Name | Sessions included | Audit checkpoint | Report cadence |
+|---|---|---|---|---|
+| M1 | {{milestone_1}} | 0001–{{m1_end}} | 3-auditor parallel + jury | mid-project IMRaD draft |
+| M2 | {{milestone_2}} | … | … | … |
+| Mfinal | Decommission | — | full final audit | publication-ready report |
+
+## 14 · Reproducibility
+
+- **Source:** see `git` (if initialised) or `tracking/project.json#last_commit_hash`.
+- **Library versions:** `library_docs/MANIFEST.md` frozen per session.
+- **Random seeds:** {{seed_list}}
+- **Configs:** see `SPEC.json#configs`.
+- **Compute env:** {{compute_env}}.
+- **How to reproduce:** see `README.md#quickstart`.
+
+## 15 · Calibration commitment
+
+This spec, every output of this system, and every recommendation made by its orchestrator carries calibrated probabilities (P2). Forbidden: "best", "always", "guaranteed". Required: % confidence + alternatives + ranges. Reference: `docs/architecture/calibrated_probabilities.md`.
+
+## 16 · Open questions / TODO
+
+| ID | Question | Owner | Target session | Confidence in resolution |
+|---|---|---|---|---|
+| OQ-001 | {{open_q_1}} | {{owner_1}} | S{{target_session_1}} | ≈{{conf_oq1}}% |
+
+## 17 · Changelog
+
+| Date | Version | Change | Session | Author |
+|---|---|---|---|---|
+| {{TEMPORAL_NOW}} | 0.1.0 | scaffold | 0001_bootstrap | system-designer |

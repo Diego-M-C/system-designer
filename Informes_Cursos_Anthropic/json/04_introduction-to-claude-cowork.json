@@ -1,0 +1,172 @@
+{
+  "id": "04",
+  "slug": "introduction-to-claude-cowork",
+  "title": "Introduction to Claude Cowork",
+  "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork",
+  "category": "developer-tools",
+  "difficulty": "beginner-intermediate",
+  "domain": "Developer Tools",
+  "tags": [
+    "cowork",
+    "files",
+    "plugins",
+    "skills",
+    "task-loop"
+  ],
+  "stats": {
+    "total_lessons": 11,
+    "sections": 6,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 1,
+    "modular_text_lessons": 10,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 2396,
+    "modular_chars": 35201,
+    "total_content_chars": 37597
+  },
+  "sections": [
+    {
+      "title": "Meet Claude Cowork",
+      "lesson_count": 2
+    },
+    {
+      "title": "Running your first task",
+      "lesson_count": 2
+    },
+    {
+      "title": "Making Claude Cowork yours",
+      "lesson_count": 2
+    },
+    {
+      "title": "Claude Cowork in practice",
+      "lesson_count": 2
+    },
+    {
+      "title": "Working responsibly",
+      "lesson_count": 2
+    },
+    {
+      "title": "Check your understanding",
+      "lesson_count": 1
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Meet Claude Cowork",
+      "title": "What is Cowork?",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444164",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Meet Claude Cowork",
+      "title": "Getting set up",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444165",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Running your first task",
+      "title": "The task loop",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444166",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Running your first task",
+      "title": "Giving Cowork context",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444167",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Making Claude Cowork yours",
+      "title": "Plugins: Cowork as a specialist",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444168",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Making Claude Cowork yours",
+      "title": "Scheduled tasks",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444169",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Claude Cowork in practice",
+      "title": "File & document tasks",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444170",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Claude Cowork in practice",
+      "title": "Research & analysis at scale",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444171",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Working responsibly",
+      "title": "Permissions, usage, & choosing your model",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444173",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Working responsibly",
+      "title": "Troubleshooting & next steps",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444174",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Check your understanding",
+      "title": "Quiz on Claude Cowork",
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/452288",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:24:31.315Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 1,
+    "quiz_extractions_added": 0
+  }
+}

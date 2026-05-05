@@ -1,0 +1,254 @@
+[
+  {
+    "course": "ai-capabilities-and-limitations",
+    "lesson_idx": 14,
+    "title": "Course Quiz",
+    "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456462",
+    "has_content": false
+  },
+  {
+    "course": "ai-fluency-for-nonprofits",
+    "lesson_idx": 10,
+    "title": "Course Quiz",
+    "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits/376934",
+    "has_content": false
+  },
+  {
+    "course": "claude-code-101",
+    "lesson_idx": 13,
+    "title": "Course quiz",
+    "url": "https://anthropic.skilljar.com/claude-code-101/469849",
+    "has_content": false
+  },
+  {
+    "course": "claude-code-in-action",
+    "lesson_idx": 8,
+    "title": "Course satisfaction survey",
+    "url": "https://anthropic.skilljar.com/claude-code-in-action/303701",
+    "has_content": false
+  },
+  {
+    "course": "claude-code-in-action",
+    "lesson_idx": 20,
+    "title": "Quiz on Claude Code",
+    "url": "https://anthropic.skilljar.com/claude-code-in-action/308391",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 14,
+    "title": "Quiz on working with the API",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289293",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 22,
+    "title": "Quiz on prompt evaluations",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289297",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 29,
+    "title": "Quiz on prompt engineering",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289298",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 42,
+    "title": "Quiz on tool use",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289296",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 52,
+    "title": "Quiz on Retrieval Augmented Generation",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289295",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 60,
+    "title": "Quiz on features of Claude",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289300",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 72,
+    "title": "Quiz on Model Context Protocol",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289299",
+    "has_content": false
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 82,
+    "title": "Final assessment quiz",
+    "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/290881",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 11,
+    "title": "Course satisfaction survey",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/297285",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 16,
+    "title": "Quiz on accessing Claude with the API",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289281",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 24,
+    "title": "Quiz on prompt evaluation",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289279",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 31,
+    "title": "Quiz on prompt engineering techniques",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289278",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 45,
+    "title": "Quiz on tool use with Claude",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289280",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 55,
+    "title": "Quiz on Retrieval Augmented Generation",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289277",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 63,
+    "title": "Quiz on features of Claude",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289275",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 75,
+    "title": "Quiz on Model Context Protocol",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289276",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 91,
+    "title": "Quiz on agents and workflows",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/289274",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 92,
+    "title": "Final assessment quiz",
+    "url": "https://anthropic.skilljar.com/claude-with-google-vertex/290880",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 11,
+    "title": "Course satisfaction survey",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/297284",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 15,
+    "title": "Quiz on accessing Claude with the API",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289117",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 23,
+    "title": "Quiz on prompt evaluation",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289118",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 30,
+    "title": "Quiz on prompt engineering techniques",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289121",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 43,
+    "title": "Quiz on tool use with Claude",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289122",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 59,
+    "title": "Quiz on features of Claude",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289124",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 71,
+    "title": "Quiz on Model Context Protocol",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289126",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 83,
+    "title": "Quiz on Agents and Workflows",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/289130",
+    "has_content": false
+  },
+  {
+    "course": "claude-with-the-anthropic-api",
+    "lesson_idx": 84,
+    "title": "Final Assessment",
+    "url": "https://anthropic.skilljar.com/claude-with-the-anthropic-api/290899",
+    "has_content": false
+  },
+  {
+    "course": "introduction-to-claude-cowork",
+    "lesson_idx": 11,
+    "title": "Quiz on Claude Cowork",
+    "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/452288",
+    "has_content": false
+  },
+  {
+    "course": "introduction-to-model-context-protocol",
+    "lesson_idx": 7,
+    "title": "Course satisfaction survey",
+    "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297281",
+    "has_content": false
+  },
+  {
+    "course": "introduction-to-model-context-protocol",
+    "lesson_idx": 13,
+    "title": "Final assessment on MCP",
+    "url": "https://anthropic.skilljar.com/introduction-to-model-context-protocol/297196",
+    "has_content": true
+  },
+  {
+    "course": "model-context-protocol-advanced-topics",
+    "lesson_idx": 14,
+    "title": "Assessment on MCP concepts",
+    "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics/296301",
+    "has_content": false
+  }
+]

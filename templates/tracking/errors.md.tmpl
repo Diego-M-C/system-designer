@@ -1,0 +1,47 @@
+# Errors log — {{system_name}}
+
+> Human-readable narrative of errors caught across sessions. Live document — appended on every error caught. Machine-readable counterpart: `errors_catalog.json` (catalog of patterns) + `tracking/sessions/<id>/errors.jsonl` (per-session occurrences).
+>
+> **Goal:** every error caught is documented, classified, fixed, and (if novel) added to the catalog so it cannot happen silently again. This is what makes the catalog *living* (P5).
+
+---
+
+## Index
+
+- Total errors caught (all sessions): {{total_errors_caught}}
+- By severity: info {{by_sev_info}} · warn {{by_sev_warn}} · error {{by_sev_error}} · critical {{by_sev_critical}}
+- Patterns added to catalog by sessions (auto-extension): {{auto_added_count}}
+
+## Recent errors (last 10)
+
+| ID | Pattern | Severity | Session | Fix status | Caught at |
+|---|---|---|---|---|---|
+| {{err_id_1}} | {{err_pattern_1}} | {{err_sev_1}} | {{err_session_1}} | {{err_fix_1}} | {{err_at_1}} |
+
+(Full history: `tracking/sessions/<id>/errors.jsonl` aggregated.)
+
+## Error narrative entries
+
+<!-- Append per-error entries below. New entries go ABOVE this marker. -->
+
+### ERR-{{err_seq}} · {{err_pattern_name}}
+
+- **Session:** {{err_session}}
+- **Severity:** {{err_severity}}
+- **Caught at:** {{err_caught_at}}
+- **Pattern (catalog ref):** AIE-{{aie_id}} · {{aie_pattern_name}}
+- **Triggering action:** {{err_triggering_action}}
+- **What happened (≤3 sentences):** {{err_description}}
+- **Fix applied:** {{err_fix}}
+- **Verification:** {{err_verification}}
+- **Time-to-fix:** {{err_time_to_fix_min}} min
+- **Lesson (if novel):** {{err_lesson}} (added to catalog: {{err_added_to_catalog}})
+
+---
+
+## Conventions
+
+- Every error caught is logged here at session close (TEST or DOCUMENT phase), even if fixed within the session.
+- Critical-severity errors trigger an immediate HITL escalation at next checkpoint.
+- A pattern is "novel" when no AIE-NNN entry in `errors_catalog.json` matches the cause. Novel patterns are added to the catalog with `preloaded: false` and `first_seen_session: <id>`.
+- The catalog is auto-extending; this narrative file is **the human story**. Both must be in sync.

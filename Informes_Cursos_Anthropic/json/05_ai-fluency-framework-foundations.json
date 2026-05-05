@@ -1,0 +1,230 @@
+{
+  "id": "05",
+  "slug": "ai-fluency-framework-foundations",
+  "title": "AI Fluency: Framework & Foundations",
+  "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations",
+  "category": "fluency-framework",
+  "difficulty": "beginner",
+  "domain": "AI Fluency",
+  "tags": [
+    "4d-framework",
+    "delegation",
+    "description",
+    "discernment",
+    "diligence",
+    "ethics",
+    "safety"
+  ],
+  "stats": {
+    "total_lessons": 15,
+    "sections": 10,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 11,
+    "modular_text_lessons": 15,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 62209,
+    "modular_chars": 58428,
+    "total_content_chars": 120637
+  },
+  "sections": [
+    {
+      "title": "Introduction to AI Fluency",
+      "lesson_count": 1
+    },
+    {
+      "title": "The AI Fluency Framework",
+      "lesson_count": 2
+    },
+    {
+      "title": "Deep Dive 1: What is Generative AI? (Part 1)",
+      "lesson_count": 2
+    },
+    {
+      "title": "Delegation",
+      "lesson_count": 2
+    },
+    {
+      "title": "Description",
+      "lesson_count": 1
+    },
+    {
+      "title": "Deep Dive 2: Effective prompting techniques",
+      "lesson_count": 1
+    },
+    {
+      "title": "Discernment",
+      "lesson_count": 1
+    },
+    {
+      "title": "The Description-Discernment loop",
+      "lesson_count": 1
+    },
+    {
+      "title": "Diligence",
+      "lesson_count": 1
+    },
+    {
+      "title": "Conclusion & certificate",
+      "lesson_count": 3
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction to AI Fluency",
+      "title": "Introduction to AI Fluency",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291863",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "The AI Fluency Framework",
+      "title": "Why do we need AI Fluency?",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291870",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "The AI Fluency Framework",
+      "title": "The 4D Framework",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291876",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Deep Dive 1: What is Generative AI? (Part 1)",
+      "title": "Generative AI fundamentals",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291879",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Deep Dive 1: What is Generative AI? (Part 1)",
+      "title": "Capabilities & limitations",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291880",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Delegation",
+      "title": "A closer look at Delegation",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291883",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Delegation",
+      "title": "Project planning and Delegation",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291886",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Description",
+      "title": "A closer look at Description",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291891",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Deep Dive 2: Effective prompting techniques",
+      "title": "Effective prompting techniques",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291895",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Discernment",
+      "title": "A closer look at Discernment",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291898",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "The Description-Discernment loop",
+      "title": "The Description-Discernment loop",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291901",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Diligence",
+      "title": "A closer look at Diligence",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291904",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Conclusion & certificate",
+      "title": "Conclusion",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291908",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Conclusion & certificate",
+      "title": "Certificate of completion",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/309598",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 15,
+      "section": "Conclusion & certificate",
+      "title": "Additional activities",
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/314863",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:25:48.958Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 11,
+    "quiz_extractions_added": 0
+  }
+}

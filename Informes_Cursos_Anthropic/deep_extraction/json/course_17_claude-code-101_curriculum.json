@@ -1,0 +1,22 @@
+{
+  "course_num": 17,
+  "slug": "claude-code-101",
+  "title": "Claude Code 101",
+  "url": "https://anthropic.skilljar.com/claude-code-101",
+  "subtitle": "Learn how to use Claude Code effectively in your daily development workflow.",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:09:00Z",
+  "source_url": "https://anthropic.skilljar.com/claude-code-101",
+  "auth_required_for_lessons": true,
+  "note": "This is the 17th course discovered on the homepage, not in the original 16-course list but extracted for completeness",
+  "stats": {"lectures": 12, "hours_of_video": 1.5, "quizzes": 1, "certificate": true},
+  "sections": [
+    {"section_num": 1, "name": "What is Claude Code?", "lessonCount": "2 lessons", "description": "Before you write your first prompt, it helps to know what's actually happening when Claude Code runs. This section explains what separates an AI coding agent from a chat-based assistant, then walks through the agentic loop — gather context, take action, verify results — and the tools and permissions that govern each step. You'll come away with a mental model that makes everything in the rest of the course click."},
+    {"section_num": 2, "name": "Your first prompt", "lessonCount": "2 lessons", "description": "Get Claude Code running wherever you already work — in the terminal, inside VS Code or JetBrains, in Claude Desktop, or on the web. Then write your first prompt and see how approval mode, auto-accept, and Plan Mode change the way Claude responds, so you can pick the right level of oversight for the task in front of you."},
+    {"section_num": 3, "name": "Daily workflows", "lessonCount": "3 lessons", "description": "This is where Claude Code becomes part of how you ship. Learn the Explore → Plan → Code → Commit rhythm for tackling real tasks, use the context-management commands to keep long sessions fast and focused, and put Claude to work reviewing code — your own and your teammates' — before it lands."},
+    {"section_num": 4, "name": "Customizing Claude Code", "lessonCount": "5 lessons", "description": "Out of the box, Claude Code is general-purpose. This section shows you how to make it yours: write a CLAUDE.md file so it remembers your project's conventions, build subagents and skills for the workflows you repeat, wire in external systems through MCP servers, and add hooks for deterministic guardrails. By the end you'll have a setup tuned to the way your team actually works."}
+  ],
+  "total_sections": 4,
+  "individual_lessons_requires_login": true
+}

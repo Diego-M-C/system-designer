@@ -1,0 +1,161 @@
+# ARCHITECTURE — {{system_name}}
+
+> How we build {{system_name}}. This document describes structure, components, data flow, deployment, and the rationale behind each choice with calibrated alternatives.
+>
+> **Living document.** Updated when architectural decisions change. Each change is mirrored in `docs/decisions/` as an ADR.
+
+---
+
+## 0 · Architectural principles inherited
+
+- **P1 Portability** — runtime LLM-agnostic (Tier A).
+- **P2 Calibration** — every architectural claim quantified.
+- **P3 On-demand** — no component "just in case".
+- **P4 prompt-architect** — every prompt audited.
+- **P5 Living docs** — `tracking/` + `memory/` + `audit/` updated continuously.
+
+## 1 · System context
+
+```mermaid
+graph TB
+  subgraph External
+    user[End user]
+    integrator[Integrator system]
+    regulator[Regulator / auditor]
+  end
+  subgraph "{{system_name}}"
+    api[API layer]
+    domain[Domain logic]
+    persistence[(Persistence)]
+    llm[LLM provider]
+    observability[Observability]
+  end
+  user -->|requests| api
+  integrator -->|api| api
+  api --> domain
+  domain --> persistence
+  domain -->|inference| llm
+  domain --> observability
+  regulator -->|audit| observability
+```
+
+## 2 · Layers
+
+| Layer | Responsibility | Technology | Rationale (alternatives + fit %) |
+|---|---|---|---|
+| API | inbound HTTP / event entry | {{api_layer_tech}} | {{api_layer_rationale}} |
+| Domain | business logic | {{domain_layer_tech}} | {{domain_layer_rationale}} |
+| Persistence | durable storage | {{persistence_tech}} | {{persistence_rationale}} |
+| LLM | inference | {{llm_provider}} | {{llm_rationale}} |
+| Observability | logs / traces / metrics | {{observability_tech}} | {{observability_rationale}} |
+
+Each rationale references its ADR in `docs/decisions/ADR-NNN-*.md` with ≥3 alternatives + fit %.
+
+## 3 · Component diagram
+
+```mermaid
+graph LR
+  {{component_diagram_mermaid}}
+```
+
+## 4 · Data flow
+
+```mermaid
+sequenceDiagram
+  {{data_flow_sequence_mermaid}}
+```
+
+Annotations:
+- Every PII transition marked with `🛡 redact` (Art. 10 + GDPR).
+- Every LLM call marked with `🤖 llm` + budget check.
+- Every external call marked with `🌐 ext` + retry policy.
+
+## 5 · Storage / schema
+
+See `SPEC.json#data` for input/output specs. Persistence schema:
+
+```sql
+{{schema_ddl}}
+```
+
+Migration tool: {{migration_tool}}. All schema changes via migrations (AIE-024 prevention).
+
+## 6 · Compute / deployment
+
+| Aspect | Choice | Alternatives + fit | ADR |
+|---|---|---|---|
+| Hosting | {{hosting}} | … | ADR-{{adr_hosting}} |
+| Orchestration | {{orchestration_tech}} | … | ADR-{{adr_orchestration}} |
+| CI/CD | {{cicd_tech}} | … | ADR-{{adr_cicd}} |
+| Scaling | {{scaling_strategy}} | … | ADR-{{adr_scaling}} |
+
+## 7 · LLM integration architecture
+
+- **Models used:** {{models_used}}
+- **Budget per request:** {{tokens_per_request_budget}} tokens (with ±20% range)
+- **Retry / fallback:** {{retry_strategy}}
+- **Caching:** {{cache_strategy}} (Anthropic prompt caching `cache_control` if applicable; ≤4 breakpoints; see `prompt_architect/references/cache-breakpoints.md`)
+- **Tool definitions location:** `tools/prompts/<tool>.md` (each composed via prompt-architect)
+- **Subagent topology:** {{subagent_topology}}
+
+## 8 · Observability
+
+- **Logs:** structured JSON; redacted PII; level via env var.
+- **Traces:** OpenTelemetry; trace propagation across LLM calls; spans annotated with confidence %.
+- **Metrics:** the 11 KPIs from `tracking/kpis.json` exported to {{metrics_backend}}.
+- **Dashboards:** {{dashboard_choice}} ({{dashboard_path}}).
+- **Alerts:** {{alerts}}.
+
+## 9 · Security architecture
+
+- **AuthN:** {{authn}}
+- **AuthZ:** {{authz}}
+- **Secrets:** {{secrets_manager}}; never in code (AIE-008 prevention).
+- **Network:** {{network_policy}}
+- **PII handling:** redaction pre-LLM (AIE-011 prevention); DPA in `audit/dpa.md`.
+- **Threat model:** {{threat_model_doc_ref}}.
+
+## 10 · EU AI Act compliance architecture
+
+- **Art. 9 risk management** — risk register at `audit/risk_register.md`, reviewed each milestone.
+- **Art. 10 data governance** — lineage tracked in `tracking/data_lineage.jsonl`.
+- **Art. 11 technical documentation** — this file + `SPEC.md` + `audit/audit_sheet.xlsx`.
+- **Art. 12 record-keeping** — `tracking/sessions/*` + structured logs retained {{retention_period}}.
+- **Art. 13/50 transparency** — user-facing notice template at `tools/prompts/user_disclosure.md`.
+- **Art. 14 human oversight** — HITL gates at every session checkpoint + `<70%` confidence trigger.
+- **Art. 15 accuracy / robustness / cybersecurity** — see NFR-001..006 in `SPEC.md`.
+- **Art. 17 quality management** — `audit/audit_sheet.xlsx` + checklists at `audit/checklists/`.
+- **Art. 72 post-market monitoring** — `tracking/post_market_monitor.jsonl` + alerts.
+- **Art. 73 incident management** — runbook at `docs/runbooks/incident.md`.
+
+## 11 · Anti-patterns explicitly avoided
+
+- Mock-based testing of integration points where real DB / API is feasible (AIE-021 prevention).
+- Single-LLM-vendor lock at orchestration level (P1).
+- Silent defaults on schema validation (P2 / AIE-013 prevention).
+- Hardcoded dates / versions in templates (P5 / AIE-030 prevention).
+- Premature abstraction (rule: 3 similar lines is better than a premature interface).
+
+## 12 · Versioning + rollback
+
+- **Code:** semver in `SPEC.json#system_version`.
+- **Prompts:** `<version>` + `<rollback_ref>` in metadata of each prompt.
+- **Schema:** migration files in `migrations/`.
+- **Library pins:** `library_docs/MANIFEST.md` rev-locked per session.
+- **Rollback procedure:** `docs/runbooks/rollback.md`.
+
+## 13 · Performance budget
+
+| Path | p50 target | p95 target | p99 target | Alert threshold | Confidence |
+|---|---|---|---|---|---|
+| {{path_1}} | ≤{{p50_1}} ms | ≤{{p95_1}} ms | ≤{{p99_1}} ms | {{alert_1}} | ≈{{conf_1}}% |
+
+## 14 · Decision log pointer
+
+Every architecturally-significant decision is in `docs/decisions/` as an ADR. Convention: `ADR-NNN-<slug>.md`. ADR template at `docs/decisions/_template.md` (generated by report writer on first use).
+
+## 15 · Changelog
+
+| Date | Version | Change | Session | ADR |
+|---|---|---|---|---|
+| {{TEMPORAL_NOW}} | 0.1.0 | initial scaffold | 0001_bootstrap | — |

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "purpose": "Curated source-URL manifest for library docs fetching. Used by 04_library_docs_fetcher.md when context7.fetch is unavailable. Provides primary + fallback URLs per common library so the fetcher does not need to guess.",
+  "generated_at": "2026-04-29",
+  "schema_version": 1,
+
+  "libraries": {
+    "anthropic-python-sdk": {
+      "primary": "https://docs.anthropic.com/en/api/getting-started",
+      "fallback": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-python/main/README.md",
+      "github_release_api": "https://api.github.com/repos/anthropics/anthropic-sdk-python/releases/latest"
+    },
+    "anthropic-typescript-sdk": {
+      "primary": "https://docs.anthropic.com/en/api/getting-started",
+      "fallback": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/README.md",
+      "github_release_api": "https://api.github.com/repos/anthropics/anthropic-sdk-typescript/releases/latest"
+    },
+    "openai-python-sdk": {
+      "primary": "https://platform.openai.com/docs/api-reference",
+      "fallback": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+      "github_release_api": "https://api.github.com/repos/openai/openai-python/releases/latest"
+    },
+    "fastapi": {
+      "primary": "https://fastapi.tiangolo.com/",
+      "fallback": "https://raw.githubusercontent.com/fastapi/fastapi/master/README.md",
+      "github_release_api": "https://api.github.com/repos/fastapi/fastapi/releases/latest"
+    },
+    "pydantic": {
+      "primary": "https://docs.pydantic.dev/latest/",
+      "fallback": "https://raw.githubusercontent.com/pydantic/pydantic/main/README.md",
+      "github_release_api": "https://api.github.com/repos/pydantic/pydantic/releases/latest"
+    },
+    "sqlalchemy": {
+      "primary": "https://docs.sqlalchemy.org/en/latest/",
+      "fallback": "https://raw.githubusercontent.com/sqlalchemy/sqlalchemy/main/README.rst",
+      "github_release_api": "https://api.github.com/repos/sqlalchemy/sqlalchemy/releases/latest"
+    },
+    "alembic": {
+      "primary": "https://alembic.sqlalchemy.org/en/latest/",
+      "fallback": "https://raw.githubusercontent.com/sqlalchemy/alembic/main/README.rst",
+      "github_release_api": "https://api.github.com/repos/sqlalchemy/alembic/releases/latest"
+    },
+    "postgres": {
+      "primary": "https://www.postgresql.org/docs/current/",
+      "fallback": "https://www.postgresql.org/files/documentation/",
+      "release_url": "https://www.postgresql.org/docs/release/"
+    },
+    "timescaledb": {
+      "primary": "https://docs.timescale.com/",
+      "fallback": "https://github.com/timescale/timescaledb/blob/main/README.md",
+      "github_release_api": "https://api.github.com/repos/timescale/timescaledb/releases/latest"
+    },
+    "redis-py": {
+      "primary": "https://redis.io/docs/clients/python/",
+      "fallback": "https://raw.githubusercontent.com/redis/redis-py/master/README.md",
+      "github_release_api": "https://api.github.com/repos/redis/redis-py/releases/latest"
+    },
+    "celery": {
+      "primary": "https://docs.celeryq.dev/en/stable/",
+      "fallback": "https://raw.githubusercontent.com/celery/celery/main/README.rst",
+      "github_release_api": "https://api.github.com/repos/celery/celery/releases/latest"
+    },
+    "pytest": {
+      "primary": "https://docs.pytest.org/en/stable/",
+      "fallback": "https://raw.githubusercontent.com/pytest-dev/pytest/main/README.rst",
+      "github_release_api": "https://api.github.com/repos/pytest-dev/pytest/releases/latest"
+    },
+    "tenacity": {
+      "primary": "https://tenacity.readthedocs.io/en/latest/",
+      "fallback": "https://raw.githubusercontent.com/jd/tenacity/main/README.rst"
+    },
+    "openai-tiktoken": {
+      "primary": "https://github.com/openai/tiktoken",
+      "fallback": "https://raw.githubusercontent.com/openai/tiktoken/main/README.md"
+    },
+    "polars": {
+      "primary": "https://docs.pola.rs/",
+      "fallback": "https://raw.githubusercontent.com/pola-rs/polars/main/README.md",
+      "github_release_api": "https://api.github.com/repos/pola-rs/polars/releases/latest"
+    },
+    "duckdb": {
+      "primary": "https://duckdb.org/docs/",
+      "fallback": "https://raw.githubusercontent.com/duckdb/duckdb/main/README.md"
+    },
+    "scikit-learn": {
+      "primary": "https://scikit-learn.org/stable/documentation.html",
+      "fallback": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/README.rst"
+    },
+    "xgboost": {
+      "primary": "https://xgboost.readthedocs.io/en/latest/",
+      "fallback": "https://raw.githubusercontent.com/dmlc/xgboost/master/README.md"
+    },
+    "pytorch": {
+      "primary": "https://pytorch.org/docs/stable/",
+      "fallback": "https://raw.githubusercontent.com/pytorch/pytorch/main/README.md"
+    },
+    "transformers": {
+      "primary": "https://huggingface.co/docs/transformers/index",
+      "fallback": "https://raw.githubusercontent.com/huggingface/transformers/main/README.md"
+    },
+    "langchain": {
+      "primary": "https://python.langchain.com/docs/",
+      "fallback": "https://raw.githubusercontent.com/langchain-ai/langchain/master/README.md"
+    },
+    "langgraph": {
+      "primary": "https://langchain-ai.github.io/langgraph/",
+      "fallback": "https://raw.githubusercontent.com/langchain-ai/langgraph/main/README.md"
+    },
+    "vercel-ai-sdk": {
+      "primary": "https://sdk.vercel.ai/docs/introduction",
+      "fallback": "https://raw.githubusercontent.com/vercel/ai/main/README.md"
+    },
+    "next.js": {
+      "primary": "https://nextjs.org/docs",
+      "fallback": "https://raw.githubusercontent.com/vercel/next.js/canary/README.md"
+    },
+    "streamlit": {
+      "primary": "https://docs.streamlit.io/",
+      "fallback": "https://raw.githubusercontent.com/streamlit/streamlit/develop/README.md"
+    },
+    "openpyxl": {
+      "primary": "https://openpyxl.readthedocs.io/en/stable/",
+      "fallback": "https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/README.rst"
+    }
+  },
+
+  "fetch_protocol": {
+    "step_1": "Try context7.fetch(library_name, version) if MCP available",
+    "step_2": "If unavailable: HTTP GET to libraries.<name>.primary",
+    "step_3": "If 404 / network error: HTTP GET to libraries.<name>.fallback",
+    "step_4": "If still fails: optionally pull github_release_api for release notes only",
+    "step_5": "If full fail: write library_docs/MISSING.md + escalate at next HITL gate"
+  },
+
+  "extension_protocol": "Sessions adding a new library to SystemSpec.stack.libraries MUST also append the source URLs to this manifest BEFORE the first fetch. The 04_library_docs_fetcher.md agent will fail-fast if a library is requested but not in this manifest."
+}

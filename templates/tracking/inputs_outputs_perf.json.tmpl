@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "scope": "session",
+  "session_id": "{{session_id}}",
+  "captured_at": "{{TEMPORAL_NOW}}",
+  "purpose": "For every script created or updated this session, record sample inputs, observed outputs, and performance metrics. Goal: reproducibility + transparency (P5) and detection of regressions session-to-session.",
+
+  "scripts": [
+    {
+      "script_path": "{{script_path}}",
+      "language": "{{script_language}}",
+      "purpose_one_liner": "{{script_purpose}}",
+      "version_tag": "{{script_version_or_commit}}",
+
+      "test_cases": [
+        {
+          "case_id": "TC-001",
+          "name": "{{case_name}}",
+          "input": {{case_input_json}},
+          "expected_output": {{case_expected_output_json}},
+          "observed_output": {{case_observed_output_json}},
+          "match": "{{case_match_status}}",
+          "match_method": "{{case_match_method}}",
+
+          "performance": {
+            "latency_ms": {"observed": {{latency_observed}}, "p50_5runs": {{latency_p50}}, "p95_5runs": {{latency_p95}}, "confidence_pct": 80},
+            "memory_mb_peak": {{memory_peak_mb}},
+            "cpu_pct_peak": {{cpu_peak_pct}},
+            "tokens_consumed": {"min": {{tokens_min}}, "max": {{tokens_max}}, "estimate": {{tokens_estimate}}},
+            "external_calls_count": {{external_calls}}
+          },
+
+          "deterministic": {{is_deterministic}},
+          "seed_if_random": {{seed_value}},
+          "environment": {
+            "python_version_or_runtime": "{{runtime_version}}",
+            "library_versions_pinned_in": "library_docs/MANIFEST.md"
+          }
+        }
+      ],
+
+      "regressions_vs_previous_session": [],
+      "improvements_vs_previous_session": [],
+      "notes": "{{notes}}"
+    }
+  ],
+
+  "summary": {
+    "scripts_total": 0,
+    "test_cases_total": 0,
+    "match_rate_pct": null,
+    "regressions_total": 0,
+    "improvements_total": 0,
+    "calibration_check": "all numerics carry % or range — verified at session close"
+  }
+}

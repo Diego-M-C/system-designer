@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "system_name": "{{system_name}}",
+  "system_version": "{{system_version}}",
+  "generated_at": "{{TEMPORAL_NOW}}",
+  "last_updated_at": "{{TEMPORAL_NOW}}",
+  "generator_version": "{{generator_version}}",
+
+  "current_phase": "scaffold",
+  "current_session_id": "0001_bootstrap",
+  "gate_status": "pre_gate_1",
+
+  "spec_ref": "SPEC.md",
+  "spec_json_ref": "SPEC.json",
+  "architecture_ref": "ARCHITECTURE.md",
+
+  "interview_answers": {{interview_answers_json}},
+
+  "sessions": [
+    {
+      "id": "0001_bootstrap",
+      "deliverable": "Project scaffolded by generator",
+      "status": "in_progress",
+      "started_at": "{{TEMPORAL_NOW}}",
+      "completed_at": null,
+      "kpis_ref": "tracking/sessions/0001_bootstrap/kpis.json",
+      "checkpoint_decision_ref": "tracking/sessions/0001_bootstrap/checkpoint_decision.md"
+    }
+  ],
+
+  "artifacts_emitted": [],
+
+  "audit_results": [],
+
+  "errors_seen_summary": {
+    "total": 0,
+    "by_severity": {"info": 0, "warn": 0, "error": 0, "critical": 0},
+    "catalog_ref": "tracking/errors_catalog.json"
+  },
+
+  "kpis_running": {
+    "sessions_completed": 0,
+    "sessions_aborted": 0,
+    "total_decisions_logged": 0,
+    "total_errors_caught": 0,
+    "total_errors_added_to_catalog": 0,
+    "audit_pass_rate_pct": null,
+    "library_doc_freshness_days_p50": null,
+    "tokens_consumed_total": 0
+  },
+
+  "library_docs_manifest_ref": "library_docs/MANIFEST.md",
+  "memory_index_ref": "memory/MEMORY.md",
+  "audit_sheet_ref": "audit/audit_sheet.xlsx",
+  "audit_sheet_fallback_ref": "audit/audit_sheet.csv",
+
+  "compliance": {
+    "eu_ai_act_risk": "{{eu_ai_act_risk}}",
+    "mapping_doc_ref": "audit/eu_ai_act_mapping.md",
+    "mapping_completeness_pct": null,
+    "last_audit_session": null,
+    "next_audit_milestone": "{{next_audit_milestone}}"
+  },
+
+  "configs": {
+    "token_budget_per_session": {{token_budget_per_session}},
+    "hitl_confidence_threshold_pct": 70,
+    "auto_proceed_confidence_threshold_pct": 90,
+    "library_freshness_threshold_days": {{library_freshness_threshold_days}},
+    "calibration_violations_max_per_session": 0
+  },
+
+  "temporal_bootstrap": "{{TEMPORAL_NOW}}",
+  "last_commit_hash": null,
+
+  "phase_log_index": {
+    "0001_bootstrap": "tracking/sessions/0001_bootstrap/phase.log"
+  }
+}

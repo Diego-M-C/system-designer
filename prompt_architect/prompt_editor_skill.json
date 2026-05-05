@@ -1,0 +1,1549 @@
+{
+  "skill_name": "Prompt Editor Pro",
+  "version": "1.0.0",
+  "description": "Complete prompt engineering system — all tags, categories, detailed info, and saved prompts. Use this to generate structured prompts with XML tags following prompt engineering best practices.",
+  "instructions": "When generating prompts, use this JSON as reference. Follow the tag structure, respect the recommended order (Identity → Context → Task → Constraints → Reasoning → Output → Control), and include the detail info (justification, useCases, recommendations, limitations) to make informed decisions about which tags to use.",
+
+  "tag_categories": {
+    "identity":    { "label": "Identity",      "icon": "User",           "color": "#e879f9", "purpose": "Define WHO the AI is" },
+    "objective":   { "label": "Objective",     "icon": "Target",         "color": "#fb923c", "purpose": "Define WHAT to accomplish" },
+    "instruction": { "label": "Instruction",   "icon": "ListChecks",     "color": "#ff8c42", "purpose": "Define HOW to do it" },
+    "cognition":   { "label": "Cognition",     "icon": "Brain",          "color": "#22d3ee", "purpose": "Define HOW to think" },
+    "knowledge":   { "label": "Knowledge",     "icon": "Database",       "color": "#4ade80", "purpose": "Provide CONTEXT and info" },
+    "data":        { "label": "Data & Input",  "icon": "FileInput",      "color": "#34d399", "purpose": "Define INPUT data and specs" },
+    "agentic":     { "label": "Agentic",       "icon": "Bot",            "color": "#f472b6", "purpose": "Agent tools and workflows" },
+    "output":      { "label": "Output",        "icon": "Layout",         "color": "#a78bfa", "purpose": "Define OUTPUT format" },
+    "control":     { "label": "Control Flow",  "icon": "GitBranch",      "color": "#f87171", "purpose": "Define FLOW and conditions" },
+    "safety":      { "label": "Safety",        "icon": "Shield",         "color": "#fbbf24", "purpose": "Define BOUNDARIES and guardrails" },
+    "evaluation":  { "label": "Evaluation",    "icon": "ClipboardCheck", "color": "#38bdf8", "purpose": "Define QUALITY criteria" },
+    "meta":        { "label": "Meta",          "icon": "Settings",       "color": "#94a3b8", "purpose": "Prompt management metadata" },
+    "formatting":  { "label": "Formatting",    "icon": "Paintbrush",     "color": "#a78bfa", "purpose": "Visual formatting directives" }
+  },
+
+  "recommended_tag_order": [
+    "1. Identity (role, persona, system, audience, domain, perspective)",
+    "2. Objective (task, goal, sub_tasks, success_criteria, scope, priority, instructions)",
+    "3. Knowledge (context, examples, reference, memory, knowledge_base, definitions, assumptions)",
+    "4. Data (input, schema, variables, code_spec)",
+    "5. Instruction (constraints, steps, non_do_conditions, negative_examples, recency_bias)",
+    "6. Cognition (reasoning, chain_of_thought, tree_of_thought, planning, reflection, verification, self_critique, metacognition, thinking)",
+    "7. Agentic (tools, tool_selection, action, observation, scratchpad, delegation, state)",
+    "8. Output (output, format, style, final_output, response_length, citations, language, reading_level)",
+    "9. Control (stop_condition, hitl_conditions, fallback, retry, conditional, loop, error_handling, handoff)",
+    "10. Safety (guardrails, validation, content_policy, pii_handling, injection_defense, ethical_guidelines, compliance)",
+    "11. Evaluation (evaluation, test_cases, rubric, metrics)",
+    "12. Meta (version, metadata, model_config, token_budget)"
+  ],
+
+  "tags": [
+    {
+      "name": "role",
+      "category": "identity",
+      "description": "Define the AI persona, expertise, and behavioral identity",
+      "snippet": "You are an expert...",
+      "detail": {
+        "justification": "Setting a role is the single most impactful prompt engineering technique. It primes the model's knowledge distribution and response patterns toward the specified expertise.",
+        "useCases": ["Customer support chatbots", "Code review assistants", "Medical triage advisors", "Legal document analysts"],
+        "recommendations": ["Be specific: 'senior React developer with 10 years experience' > 'developer'", "Include behavioral traits: 'methodical, detail-oriented'", "Combine with <domain> for maximum precision"],
+        "limitations": ["Role-playing can reduce the model's willingness to say 'I don't know'", "Very niche roles may trigger hallucinated expertise", "Does not override safety training"]
+      }
+    },
+    {
+      "name": "persona",
+      "category": "identity",
+      "description": "Detailed character profile for the AI to adopt",
+      "snippet": "",
+      "detail": {
+        "justification": "Personas go deeper than roles — they define personality, communication style, quirks, and emotional tone, creating a consistent character across interactions.",
+        "useCases": ["Brand voice chatbots", "Educational tutors with specific teaching styles", "Creative writing collaborators", "Game NPCs"],
+        "recommendations": ["Include name, background, communication style, and values", "Define how the persona handles uncertainty or conflict", "Use with <audience> to calibrate the persona's language"],
+        "limitations": ["Complex personas increase token usage", "May conflict with safety guidelines if persona is edgy", "Hard to maintain consistency over very long conversations"]
+      }
+    },
+    {
+      "name": "system",
+      "category": "identity",
+      "description": "System-level instructions (for chat API format)",
+      "snippet": "",
+      "detail": {
+        "justification": "Maps directly to the 'system' message role in chat APIs (OpenAI, Anthropic, Google). System messages receive elevated instruction priority in most models.",
+        "useCases": ["API-integrated applications", "Chat completion endpoints", "Multi-turn assistants"],
+        "recommendations": ["Place your most critical instructions here", "Keep focused — system message bloat reduces effectiveness", "Use for behavioral rules that must persist across all turns"],
+        "limitations": ["Not all models treat system messages with equal priority", "Very long system messages can degrade performance", "Some models may still override system instructions with clever user prompts"]
+      }
+    },
+    {
+      "name": "audience",
+      "category": "identity",
+      "description": "Who the output is intended for (calibrates complexity and vocabulary)",
+      "snippet": "",
+      "detail": {
+        "justification": "Specifying the audience dramatically shapes vocabulary, depth, assumed knowledge, and explanation density.",
+        "useCases": ["Documentation generation for different skill levels", "Customer-facing vs. internal communications", "Educational content for specific grade levels", "Investor presentations vs. engineering specs"],
+        "recommendations": ["Be specific: 'junior frontend developer' > 'developer'", "Include knowledge assumptions: 'familiar with REST APIs but new to GraphQL'", "Combine with <reading_level> for precise calibration"],
+        "limitations": ["Model may over-simplify for non-expert audiences", "Multiple audiences in one prompt create conflict", "Cultural assumptions may not transfer globally"]
+      }
+    },
+    {
+      "name": "domain",
+      "category": "identity",
+      "description": "Specific professional/technical domain to operate within",
+      "snippet": "",
+      "detail": {
+        "justification": "Anchors terminology, conventions, standards, and best practices. A 'review' in medicine vs. software vs. law means entirely different things.",
+        "useCases": ["Medical diagnosis support", "Legal contract analysis", "Financial modeling", "DevOps pipeline configuration"],
+        "recommendations": ["Include sub-domain specifics: 'pediatric oncology' > 'medicine'", "Mention relevant standards: 'following OWASP guidelines'", "Pair with <definitions> for domain-specific terminology"],
+        "limitations": ["Very niche domains may have limited training data", "Cross-domain tasks may create terminology conflicts", "Domain expertise can increase hallucination confidence"]
+      }
+    },
+    {
+      "name": "perspective",
+      "category": "identity",
+      "description": "Viewpoint or stance to adopt (e.g., devil's advocate, red-teamer)",
+      "snippet": "",
+      "detail": {
+        "justification": "Enables multi-perspective analysis, debate-style reasoning, and adversarial thinking without changing the core role.",
+        "useCases": ["Red-teaming security prompts", "Debate preparation", "Product review from competitor POV", "Risk analysis from pessimist viewpoint"],
+        "recommendations": ["Clearly separate perspective from role", "Use for 'steel-man the opposition' patterns", "Combine with <debate> for structured argumentation"],
+        "limitations": ["Model may struggle to maintain perspective over long outputs", "Extreme perspectives may trigger safety filters", "Can confuse the model if combined with a contradictory role"]
+      }
+    },
+    {
+      "name": "task",
+      "category": "objective",
+      "description": "Main task or objective for the AI to accomplish",
+      "snippet": "Your task is to...",
+      "detail": {
+        "justification": "The task is the central instruction. Without a clear task, models produce unfocused responses. It is the single most important section after role.",
+        "useCases": ["Every prompt needs a task", "Data analysis requests", "Code generation", "Content creation", "Decision making"],
+        "recommendations": ["Start with an action verb: 'Analyze', 'Generate', 'Evaluate'", "Be specific about deliverables", "If complex, break into <sub_tasks>"],
+        "limitations": ["Overly complex single tasks reduce quality", "Ambiguous tasks lead to hallucination", "Multiple tasks in one tag can cause the model to skip some"]
+      }
+    },
+    {
+      "name": "goal",
+      "category": "objective",
+      "description": "High-level desired outcome or success state",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinguishes 'what success looks like' from 'what to do'. Critical in agentic systems where the AI must plan its own tasks to reach a goal.",
+        "useCases": ["Autonomous agents", "Project planning", "Strategy formulation", "Open-ended research tasks"],
+        "recommendations": ["State the end-state, not the process", "Make it measurable when possible", "Use with <success_criteria> for verification"],
+        "limitations": ["Very abstract goals may lead to unexpected interpretations", "Model may take shortcuts to reach the goal", "Conflicts with task if both are too specific"]
+      }
+    },
+    {
+      "name": "sub_tasks",
+      "category": "objective",
+      "description": "Decomposed smaller tasks that collectively achieve the main task",
+      "snippet": "1. \n2. \n3. ",
+      "detail": {
+        "justification": "Task decomposition is core to Tree-of-Thought and agent frameworks. Breaking complex work into steps dramatically improves quality.",
+        "useCases": ["Multi-step analysis", "Complex code generation", "Research workflows", "Multi-agent task assignment"],
+        "recommendations": ["Order by dependency", "Each sub-task should be independently verifiable", "Include expected output for each sub-task"],
+        "limitations": ["Too many sub-tasks can overwhelm context", "Model may not follow strict ordering", "Dependencies between sub-tasks need explicit marking"]
+      }
+    },
+    {
+      "name": "success_criteria",
+      "category": "objective",
+      "description": "Measurable conditions that define when the task is complete",
+      "snippet": "",
+      "detail": {
+        "justification": "Provides a binary pass/fail checklist distinct from quality evaluation. Used in agent loops to know when to stop iterating.",
+        "useCases": ["Agent termination conditions", "Acceptance testing", "Quality gates", "Automated evaluation"],
+        "recommendations": ["Make criteria objectively verifiable", "Separate must-have from nice-to-have", "Include both positive criteria and failure conditions"],
+        "limitations": ["Overly strict criteria may prevent creative solutions", "Model may game criteria at expense of actual quality", "Hard to define for subjective tasks"]
+      }
+    },
+    {
+      "name": "scope",
+      "category": "objective",
+      "description": "Explicit boundaries of what is in-scope and out-of-scope",
+      "snippet": "In scope: \nOut of scope: ",
+      "detail": {
+        "justification": "Reduces hallucination and scope creep. Anthropic specifically recommends defining scope to prevent models from over-helping.",
+        "useCases": ["Focused analysis tasks", "Code review boundaries", "Documentation scope", "Consultation boundaries"],
+        "recommendations": ["Explicitly list what is OUT of scope", "Include what to do when a question falls outside scope", "Be specific about boundaries"],
+        "limitations": ["Model may still venture outside scope for 'helpful' additions", "Very narrow scope may feel restrictive in conversation", "Hard boundaries can miss relevant context"]
+      }
+    },
+    {
+      "name": "priority",
+      "category": "objective",
+      "description": "Ranking of importance when objectives or constraints conflict",
+      "snippet": "1. (highest) \n2. \n3. (lowest) ",
+      "detail": {
+        "justification": "Real-world prompts have competing demands. Without explicit priority ordering, the model makes implicit tradeoffs unpredictably.",
+        "useCases": ["Multi-objective optimization", "Conflicting requirements resolution", "Resource allocation", "Risk assessment"],
+        "recommendations": ["Number priorities explicitly", "Explain what to sacrifice when conflicts arise", "Include a tiebreaker rule"],
+        "limitations": ["Too many priority levels become meaningless", "Model may not perfectly follow priority order", "Priorities may need to be context-dependent"]
+      }
+    },
+    {
+      "name": "instructions",
+      "category": "objective",
+      "description": "Detailed directive prose describing what to do",
+      "snippet": "",
+      "detail": {
+        "justification": "Free-form detailed instructions complement the structured task. Allows nuance and edge-case handling that structured tags cannot capture.",
+        "useCases": ["Complex workflows", "Nuanced behavioral guidance", "Process documentation", "Edge case handling"],
+        "recommendations": ["Use for details that don't fit structured tags", "Number instructions for clarity", "Keep focused on 'how' rather than 'what' (use <task> for 'what')"],
+        "limitations": ["Long instruction blocks reduce compliance", "Instructions buried in prose may be missed", "Can conflict with structured tags if not aligned"]
+      }
+    },
+    {
+      "name": "constraints",
+      "category": "instruction",
+      "description": "Limitations, boundaries and rules the AI must follow",
+      "snippet": "",
+      "detail": {
+        "justification": "Hard rules that prevent unwanted behavior. More enforceable than soft guidance because they create clear violation criteria.",
+        "useCases": ["API response formatting", "Content moderation", "Output length limits", "Terminology restrictions"],
+        "recommendations": ["State as clear 'DO NOT' rules", "Limit to 5-7 constraints for best compliance", "Prioritize the most critical constraints first"],
+        "limitations": ["Too many constraints reduce creative quality", "Negative constraints are less effective than positive guidance", "Model may violate constraints under complex reasoning"]
+      }
+    },
+    {
+      "name": "steps",
+      "category": "instruction",
+      "description": "Ordered sequence of steps to follow",
+      "snippet": "1. \n2. \n3. ",
+      "detail": {
+        "justification": "Procedural instructions with explicit ordering. Different from <planning> (which asks the model to generate its own steps).",
+        "useCases": ["Recipes and procedures", "Diagnostic workflows", "Data processing pipelines", "Tutorial creation"],
+        "recommendations": ["Number each step", "Include expected output per step", "Mark which steps are conditional"],
+        "limitations": ["Model may skip or reorder steps", "Very long step lists reduce compliance", "Rigid steps prevent the model from finding better approaches"]
+      }
+    },
+    {
+      "name": "non_do_conditions",
+      "category": "instruction",
+      "description": "Actions and behaviors explicitly prohibited",
+      "snippet": "",
+      "detail": {
+        "justification": "Explicit prohibition list. Research shows that negative constraints complement positive instructions for complete behavioral specification.",
+        "useCases": ["Safety-critical applications", "Brand voice protection", "Data handling restrictions", "Output format restrictions"],
+        "recommendations": ["Keep list focused on high-risk behaviors", "Explain why each prohibition exists", "Pair with positive alternative: 'Don't X, instead do Y'"],
+        "limitations": ["Long prohibition lists can cause the model to fixate on prohibited topics", "'Don't think about elephants' effect", "Negative framing is less effective than positive instructions"]
+      }
+    },
+    {
+      "name": "negative_examples",
+      "category": "instruction",
+      "description": "Examples of BAD outputs to avoid, with explanation of why",
+      "snippet": "Bad: \nWhy: ",
+      "detail": {
+        "justification": "Showing what NOT to produce is often more effective than only showing good examples. Helps define boundaries of acceptable output.",
+        "useCases": ["Style guide enforcement", "Error pattern avoidance", "Quality calibration", "Common mistake prevention"],
+        "recommendations": ["Always explain WHY each example is bad", "Pair with positive examples for contrast", "Focus on common failure modes"],
+        "limitations": ["Too many negative examples can bias the model toward caution", "Model may partially reproduce negative patterns", "Less effective without corresponding positive examples"]
+      }
+    },
+    {
+      "name": "simplification",
+      "category": "instruction",
+      "description": "Rules for simplifying jargon, acronyms, and complex concepts",
+      "snippet": "",
+      "detail": {
+        "justification": "Accessibility essential. Defines HOW to make content accessible, complementing <reading_level> which sets the target.",
+        "useCases": ["Technical documentation for non-experts", "Patient-facing medical info", "Legal plain language", "Internationalization"],
+        "recommendations": ["Specify which terms need explanation", "Define acceptable simplification depth", "Include examples of before/after simplification"],
+        "limitations": ["Over-simplification can lose critical nuance", "Domain experts may find simplified content patronizing", "Some concepts cannot be simplified without distortion"]
+      }
+    },
+    {
+      "name": "recency_bias",
+      "category": "instruction",
+      "description": "How to weight recent vs. historical information in responses",
+      "snippet": "",
+      "detail": {
+        "justification": "Critical for time-sensitive domains. Without explicit guidance, models default to training data distribution which may not reflect current reality.",
+        "useCases": ["News analysis", "Market research", "Technology recommendations", "Medical guidelines (which evolve)"],
+        "recommendations": ["Specify time window: 'prioritize information from last 6 months'", "Define what 'recent' means in context", "Pair with <temporal_context> for current date awareness"],
+        "limitations": ["Model cannot access real-time information without RAG", "May create false confidence in 'recent' training data", "Historical context is sometimes more valuable"]
+      }
+    },
+    {
+      "name": "reasoning",
+      "category": "cognition",
+      "description": "Guide the AI chain of thought and reasoning process",
+      "snippet": "",
+      "detail": {
+        "justification": "Explicit reasoning instructions improve accuracy on complex tasks by 20-40% across benchmarks. The foundation of structured thinking in prompts.",
+        "useCases": ["Math problems", "Logical deduction", "Code debugging", "Strategic planning", "Decision making"],
+        "recommendations": ["Specify reasoning approach: deductive, inductive, abductive", "Ask for intermediate conclusions", "Use 'Think step by step' as minimum baseline"],
+        "limitations": ["Increases output length and latency", "May produce verbose justifications for simple tasks", "Can lead to confabulated reasoning chains"]
+      }
+    },
+    {
+      "name": "chain_of_thought",
+      "category": "cognition",
+      "description": "Explicit chain-of-thought reasoning block",
+      "snippet": "",
+      "detail": {
+        "justification": "Wei et al. (2022) showed CoT dramatically improves accuracy on math, logic, and multi-step reasoning.",
+        "useCases": ["Math word problems", "Multi-step logic", "Causal analysis", "Complex classification"],
+        "recommendations": ["Use 'Let's think step by step'", "For few-shot, show reasoning in examples", "Combine with <verification> for self-checking"],
+        "limitations": ["Increases token usage", "Linear reasoning can miss non-obvious paths", "May confabulate plausible but wrong chains"]
+      }
+    },
+    {
+      "name": "tree_of_thought",
+      "category": "cognition",
+      "description": "Explore multiple reasoning branches, evaluate each, select best",
+      "snippet": "Branch 1: \nBranch 2: \nBest: ",
+      "detail": {
+        "justification": "Yao et al. (2023) showed ToT dramatically outperforms linear CoT on tasks requiring search and planning.",
+        "useCases": ["Puzzle solving", "Strategic planning", "Architecture design", "Creative problem solving"],
+        "recommendations": ["Specify number of branches to explore", "Define evaluation criteria for branch selection", "Set depth limit to control cost"],
+        "limitations": ["Very expensive in tokens", "Not needed for simple tasks", "Model may not genuinely explore diverse branches"]
+      }
+    },
+    {
+      "name": "self_consistency",
+      "category": "cognition",
+      "description": "Generate multiple independent reasoning paths, select most frequent answer",
+      "snippet": "",
+      "detail": {
+        "justification": "Wang et al. (2022) demonstrated significant accuracy gains through majority voting across reasoning paths.",
+        "useCases": ["High-stakes decisions", "Ambiguous classification", "Mathematical proofs", "Medical diagnosis"],
+        "recommendations": ["Specify number of paths (3-5 is typical)", "Define voting/selection mechanism", "Use for high-stakes decisions where accuracy > speed"],
+        "limitations": ["Multiplies token cost by N", "Only works when ground truth exists", "Paths may not be truly independent"]
+      }
+    },
+    {
+      "name": "planning",
+      "category": "cognition",
+      "description": "Create a plan before executing, including ordering and dependencies",
+      "snippet": "",
+      "detail": {
+        "justification": "Core to ReAct, Plan-and-Solve, and every major agent framework. Model-generated plans often outperform human-authored steps.",
+        "useCases": ["Autonomous agents", "Complex project breakdown", "Research methodology", "Multi-step data analysis"],
+        "recommendations": ["Ask model to plan BEFORE executing", "Request dependency identification", "Include revision step after planning"],
+        "limitations": ["Plans may be overly ambitious", "Model may not follow its own plan", "Dynamic situations may invalidate the plan"]
+      }
+    },
+    {
+      "name": "decomposition",
+      "category": "cognition",
+      "description": "Break complex problem into simpler sub-problems before solving",
+      "snippet": "",
+      "detail": {
+        "justification": "Least-to-Most prompting (Zhou et al., 2022) and Decomposed Prompting show that solving sub-problems sequentially beats monolithic approaches.",
+        "useCases": ["Complex analysis", "Multi-domain problems", "Large code refactoring", "Research synthesis"],
+        "recommendations": ["Explicitly ask to identify sub-problems first", "Solve simplest sub-problems first", "Verify sub-solutions compose correctly"],
+        "limitations": ["Over-decomposition wastes tokens", "Some problems are not decomposable", "Dependencies between sub-problems may be missed"]
+      }
+    },
+    {
+      "name": "reflection",
+      "category": "cognition",
+      "description": "Self-evaluation and quality check of final output",
+      "snippet": "",
+      "detail": {
+        "justification": "Post-generation review catches errors that inline reasoning misses. Fundamental to the Reflexion pattern.",
+        "useCases": ["Code review", "Essay editing", "Fact-checking", "Quality assurance"],
+        "recommendations": ["Place at end of prompt", "Specify what to check: accuracy, completeness, tone", "Allow revision based on reflection"],
+        "limitations": ["Adds latency", "Model may rationalize errors instead of catching them", "Self-review is biased toward own output"]
+      }
+    },
+    {
+      "name": "verification",
+      "category": "cognition",
+      "description": "Verify/double-check intermediate results before proceeding",
+      "snippet": "",
+      "detail": {
+        "justification": "Inline verification catches errors mid-reasoning, unlike reflection which checks after completion. Critical for math and code.",
+        "useCases": ["Mathematical calculations", "Data transformation pipelines", "Multi-step code generation", "Logical proofs"],
+        "recommendations": ["Verify after each major step", "Specify verification method: recalculate, test, cross-reference", "Define what to do when verification fails"],
+        "limitations": ["Significantly increases output length", "May slow down simple tasks", "Verification itself can contain errors"]
+      }
+    },
+    {
+      "name": "self_critique",
+      "category": "cognition",
+      "description": "Identify weaknesses and errors in own output, then revise",
+      "snippet": "",
+      "detail": {
+        "justification": "Madaan et al. (2023) Self-Refine and Shinn et al. (2023) Reflexion show that iterative self-critique dramatically improves quality.",
+        "useCases": ["Essay writing", "Code improvement", "Proposal drafting", "Design iteration"],
+        "recommendations": ["Specify critique axes: correctness, clarity, completeness", "Require concrete fixes, not just observations", "Limit critique rounds (2-3 max)"],
+        "limitations": ["Can loop indefinitely if no stopping condition", "Model may make trivial changes to satisfy critique requirement", "Increases cost per response"]
+      }
+    },
+    {
+      "name": "analogical_reasoning",
+      "category": "cognition",
+      "description": "Reason by analogy — find similar known problem and map solution",
+      "snippet": "",
+      "detail": {
+        "justification": "Yasunaga et al. (2023) showed analogical prompting is effective for novel problems where few-shot examples don't exist.",
+        "useCases": ["Novel problem solving", "Cross-domain knowledge transfer", "Teaching complex concepts", "Innovation and ideation"],
+        "recommendations": ["Ask to identify the closest known analogy", "Map the analogy explicitly before applying", "Validate where the analogy breaks down"],
+        "limitations": ["Analogies can be misleading", "Model may force inappropriate analogies", "Works poorly for truly unprecedented problems"]
+      }
+    },
+    {
+      "name": "metacognition",
+      "category": "cognition",
+      "description": "Assess own confidence, knowledge boundaries, and uncertainty",
+      "snippet": "",
+      "detail": {
+        "justification": "Critical for reducing hallucination. Asking models to express uncertainty correlates with better-calibrated responses.",
+        "useCases": ["Medical advice (must-know uncertainty)", "Financial predictions", "Research with limited evidence", "Any high-stakes decision"],
+        "recommendations": ["Ask 'How confident are you?' explicitly", "Request uncertainty ranges, not point estimates", "Define what to do when confidence is low"],
+        "limitations": ["Models are often poorly calibrated", "May express false modesty or false confidence", "Uncertainty estimation is not reliable for all domains"]
+      }
+    },
+    {
+      "name": "thinking",
+      "category": "cognition",
+      "description": "Extended thinking / scratchpad reasoning block (Claude, OpenAI reasoning tokens)",
+      "snippet": "",
+      "detail": {
+        "justification": "All frontier models (Claude 4.x, GPT-5) now have dedicated extended thinking modes. This tag marks content for that internal reasoning space.",
+        "useCases": ["Complex mathematical proofs", "Multi-step code architecture", "Strategic planning", "Deep analysis tasks"],
+        "recommendations": ["Use for problems requiring 1000+ tokens of reasoning", "Don't constrain the thinking format", "The thinking block should be internal, not user-facing"],
+        "limitations": ["Dramatically increases token usage and cost", "Thinking content is not always visible to user", "Not all models support extended thinking"]
+      }
+    },
+    {
+      "name": "debate",
+      "category": "cognition",
+      "description": "Model argues multiple sides of a question before concluding",
+      "snippet": "",
+      "detail": {
+        "justification": "Multi-perspective analysis produces more balanced, thorough conclusions than single-perspective reasoning.",
+        "useCases": ["Policy analysis", "Risk assessment", "Ethical dilemmas", "Product decision making"],
+        "recommendations": ["Specify number of positions to argue", "Require steel-manning each position", "End with synthesis, not just picking a winner"],
+        "limitations": ["Very token-expensive", "Model may not genuinely explore opposing views", "Can produce wishy-washy conclusions"]
+      }
+    },
+    {
+      "name": "simulation",
+      "category": "cognition",
+      "description": "Model simulates an environment, user, or scenario to stress-test response",
+      "snippet": "",
+      "detail": {
+        "justification": "Self-play pattern where the model role-plays multiple actors to find weaknesses in its own approach.",
+        "useCases": ["Chatbot testing", "Security red-teaming", "UX scenario testing", "Adversarial robustness"],
+        "recommendations": ["Define the simulation parameters clearly", "Specify what to observe during simulation", "Limit simulation rounds"],
+        "limitations": ["Very expensive", "Model may not genuinely challenge itself", "Simulation may not reflect real-world diversity"]
+      }
+    },
+    {
+      "name": "critique_protocol",
+      "category": "cognition",
+      "description": "Defines the protocol for self-critique: rounds, axes, and standards",
+      "snippet": "Rounds: 2\nAxes: correctness, clarity\nStandard: ",
+      "detail": {
+        "justification": "Goes beyond self_critique (which is a mode) — this defines the specific protocol, number of rounds, and criteria.",
+        "useCases": ["Iterative content refinement", "Code review cycles", "Academic paper revision", "Design critique sessions"],
+        "recommendations": ["Limit to 2-3 rounds to control cost", "Define concrete axes (accuracy, style, completeness)", "Include a 'done' condition"],
+        "limitations": ["Diminishing returns after 2-3 rounds", "Protocol overhead may exceed the value for simple tasks"]
+      }
+    },
+    {
+      "name": "context",
+      "category": "knowledge",
+      "description": "Background information and relevant context",
+      "snippet": "",
+      "detail": {
+        "justification": "Context grounds the model in the specific situation, reducing hallucination and improving relevance.",
+        "useCases": ["Every complex prompt benefits from context", "Situation-specific advice", "Domain-specific analysis", "Personalized responses"],
+        "recommendations": ["Include only relevant context", "Separate static context from dynamic input", "Mark which context is most important"],
+        "limitations": ["Long context dilutes attention", "Irrelevant context can mislead", "Context window limits apply"]
+      }
+    },
+    {
+      "name": "examples",
+      "category": "knowledge",
+      "description": "Few-shot examples to guide the AI response pattern",
+      "snippet": "<example>\nInput: \nOutput: \n</example>",
+      "detail": {
+        "justification": "Few-shot prompting remains one of the most effective techniques, showing 10-50% improvement on formatting and style tasks.",
+        "useCases": ["Output format enforcement", "Style matching", "Classification tasks", "Translation patterns"],
+        "recommendations": ["3-5 examples is the sweet spot", "Include edge cases in examples", "Ensure examples are diverse and representative"],
+        "limitations": ["Token-expensive", "Poor examples teach bad patterns", "Model may overfit to example patterns"]
+      }
+    },
+    {
+      "name": "reference",
+      "category": "knowledge",
+      "description": "Reference material, documentation, or sources",
+      "snippet": "",
+      "detail": {
+        "justification": "Supplementary material that may inform the response. Less authoritative than knowledge_base but provides useful context.",
+        "useCases": ["API documentation", "Research papers", "Code samples", "Style guides"],
+        "recommendations": ["Label each reference clearly", "Indicate reliability level", "Specify how to cite references in output"],
+        "limitations": ["Long references consume context window", "Model may cherry-pick references", "Outdated references can mislead"]
+      }
+    },
+    {
+      "name": "memory",
+      "category": "knowledge",
+      "description": "Information persisted from prior interactions or agent loops",
+      "snippet": "",
+      "detail": {
+        "justification": "Core to agentic AI (MemGPT, LangChain memory). Distinct from context (static) — memory implies accumulated/retrieved state.",
+        "useCases": ["Multi-session assistants", "Agent working memory", "User preference accumulation", "Project state tracking"],
+        "recommendations": ["Clearly mark what is remembered vs. inferred", "Include timestamps on memories", "Prune stale memories"],
+        "limitations": ["Memory may be inaccurate", "Unbounded memory growth", "Privacy concerns with persistent memory"]
+      }
+    },
+    {
+      "name": "retrieval",
+      "category": "knowledge",
+      "description": "Dynamically retrieved documents/chunks from RAG pipeline",
+      "snippet": "",
+      "detail": {
+        "justification": "RAG is the dominant production pattern. Clearly delineating retrieved content lets the model weigh it differently and cite properly.",
+        "useCases": ["Knowledge base Q&A", "Document search", "Semantic search results", "Database query results"],
+        "recommendations": ["Include relevance scores if available", "Mark chunk boundaries", "Specify how to handle contradictions between chunks"],
+        "limitations": ["Retrieved content may be irrelevant", "Chunk boundaries may split context", "Model may hallucinate beyond retrieved content"]
+      }
+    },
+    {
+      "name": "knowledge_base",
+      "category": "knowledge",
+      "description": "Curated authoritative body of knowledge (ground truth)",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from reference (supplementary) and retrieval (dynamic). This is THE canonical source the model should treat as absolute truth.",
+        "useCases": ["Company policy Q&A", "Medical guidelines", "Legal regulations", "Product specifications"],
+        "recommendations": ["Mark as authoritative explicitly", "Override model training data when conflicting", "Keep current and version-controlled"],
+        "limitations": ["Large knowledge bases may not fit in context", "Model may still override with training knowledge", "Needs regular updates"]
+      }
+    },
+    {
+      "name": "history",
+      "category": "knowledge",
+      "description": "Prior conversation turns, interaction logs, or event sequences",
+      "snippet": "",
+      "detail": {
+        "justification": "Multi-turn conversation management. Different from memory (synthesized) — history is raw prior turns.",
+        "useCases": ["Chat continuations", "Audit trails", "Debugging conversation flows", "Context carryover"],
+        "recommendations": ["Include only relevant history", "Summarize old history to save tokens", "Mark speaker for each turn"],
+        "limitations": ["Long histories consume context", "Distant history has less influence", "May contain contradictions over time"]
+      }
+    },
+    {
+      "name": "definitions",
+      "category": "knowledge",
+      "description": "Glossary of key terms, acronyms, domain-specific vocabulary",
+      "snippet": "",
+      "detail": {
+        "justification": "Eliminates ambiguity in domain-specific tasks. 'Resolution' in law vs. display vs. conflict means different things.",
+        "useCases": ["Legal documents", "Medical prompts", "Technical specifications", "Multi-lingual contexts"],
+        "recommendations": ["Define only terms that differ from common usage", "Include usage examples", "Keep alphabetized for reference"],
+        "limitations": ["Long glossaries waste tokens", "May conflict with model's training definitions", "Definitions may not cover all edge cases"]
+      }
+    },
+    {
+      "name": "assumptions",
+      "category": "knowledge",
+      "description": "Explicit assumptions to hold true, even against general knowledge",
+      "snippet": "",
+      "detail": {
+        "justification": "Production prompts operate under business-specific assumptions. Making these explicit prevents the model from questioning or overriding them.",
+        "useCases": ["Business logic", "Hypothetical scenarios", "Testing assumptions", "Simplified models"],
+        "recommendations": ["State each assumption clearly", "Mark which are negotiable vs. firm", "Include what to do if an assumption is violated"],
+        "limitations": ["Too many assumptions create an unrealistic context", "Model may still apply general knowledge", "Untested assumptions may mask errors"]
+      }
+    },
+    {
+      "name": "grounding",
+      "category": "knowledge",
+      "description": "Sources the model must ground its responses in (factual fidelity obligation)",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from context — grounding implies a factual fidelity OBLIGATION. The model must not go beyond these sources.",
+        "useCases": ["RAG applications", "Fact-based Q&A", "Verified information only", "Legal/medical accuracy"],
+        "recommendations": ["Mark as 'only use these sources'", "Specify what to say when sources don't cover the question", "Include citation requirements"],
+        "limitations": ["May be too restrictive for creative tasks", "Model may still hallucinate within source boundaries", "Source quality determines output quality"]
+      }
+    },
+    {
+      "name": "temporal_context",
+      "category": "knowledge",
+      "description": "Current date/time, time ranges, and time-sensitive facts",
+      "snippet": "",
+      "detail": {
+        "justification": "Models have training cutoffs. Explicitly marking temporal context prevents stale responses and enables time-aware reasoning.",
+        "useCases": ["News analysis", "Scheduling", "Deadline-aware planning", "Market analysis"],
+        "recommendations": ["Always include current date", "Mark time-sensitive facts with dates", "Specify what 'recent' means"],
+        "limitations": ["Does not give model real-time access", "Temporal awareness is limited to provided info", "Time zones can cause confusion"]
+      }
+    },
+    {
+      "name": "input",
+      "category": "data",
+      "description": "User input or data to process",
+      "snippet": "",
+      "detail": {
+        "justification": "Clearly delineates user-provided data from instructions. Essential for preventing prompt injection by separating data from code.",
+        "useCases": ["User queries", "Documents to analyze", "Data to transform", "Text to summarize"],
+        "recommendations": ["Always wrap user input in tags", "Treat as untrusted data", "Specify expected format"],
+        "limitations": ["Large inputs consume context", "Malicious input can still influence behavior", "Format mismatches cause errors"]
+      }
+    },
+    {
+      "name": "schema",
+      "category": "data",
+      "description": "Data schema or structure definition",
+      "snippet": "",
+      "detail": {
+        "justification": "Defines the structure of input or output data, enabling validation and consistent formatting.",
+        "useCases": ["JSON output enforcement", "Database schema reference", "API contract definition", "Type definitions"],
+        "recommendations": ["Use JSON Schema or TypeScript-style notation", "Include required vs. optional fields", "Add field descriptions"],
+        "limitations": ["Complex schemas are hard to enforce", "Model may deviate from schema", "Nested schemas increase complexity"]
+      }
+    },
+    {
+      "name": "variables",
+      "category": "data",
+      "description": "Named placeholders/template variables (e.g., {{user_name}})",
+      "snippet": "{{variable_name}}",
+      "detail": {
+        "justification": "Every prompt template system uses variables. First-class variable support enables template management, validation, and reuse.",
+        "useCases": ["Prompt templates", "Mail merge prompts", "Personalized responses", "Dynamic content insertion"],
+        "recommendations": ["Use {{double_braces}} convention", "Document each variable's type and purpose", "Provide default values"],
+        "limitations": ["Unresolved variables cause confusion", "Too many variables make prompts hard to read", "Variable injection can be a security risk"]
+      }
+    },
+    {
+      "name": "multi_modal_input",
+      "category": "data",
+      "description": "Non-text inputs (images, audio, files) with processing instructions",
+      "snippet": "",
+      "detail": {
+        "justification": "GPT-4V, Claude 3+, Gemini all support multi-modal input. The prompt must clearly delineate and instruct on non-text inputs.",
+        "useCases": ["Image analysis", "Document OCR", "Chart interpretation", "Audio transcription"],
+        "recommendations": ["Describe what to look for in the media", "Specify output format for visual analysis", "Handle cases where media is unclear"],
+        "limitations": ["Multi-modal capabilities vary by model", "Large media increases latency", "OCR accuracy is imperfect"]
+      }
+    },
+    {
+      "name": "structured_input",
+      "category": "data",
+      "description": "Input in structured format (CSV, JSON, table) with parsing rules",
+      "snippet": "",
+      "detail": {
+        "justification": "Structured inputs need explicit handling instructions — column meanings, null handling, data types.",
+        "useCases": ["Data analysis", "CSV processing", "JSON transformation", "Spreadsheet interpretation"],
+        "recommendations": ["Define column/field meanings", "Specify how to handle nulls/missing values", "Include data type expectations"],
+        "limitations": ["Large structured data may not fit in context", "Complex nested structures are hard to process", "Format inconsistencies cause errors"]
+      }
+    },
+    {
+      "name": "user_preferences",
+      "category": "data",
+      "description": "User-specific settings and preferences that influence output",
+      "snippet": "",
+      "detail": {
+        "justification": "Personalization layer for production assistants. Distinct from input (the query) and context (the situation).",
+        "useCases": ["Personalized recommendations", "Accessibility preferences", "Communication style preferences", "Default settings"],
+        "recommendations": ["Structure as key-value pairs", "Mark which preferences are overridable", "Include preference categories"],
+        "limitations": ["Too many preferences create conflicts", "Preferences may contradict task requirements", "Privacy implications of stored preferences"]
+      }
+    },
+    {
+      "name": "code_spec",
+      "category": "data",
+      "description": "Programming language, framework, version, and coding conventions",
+      "snippet": "Language: \nFramework: \nVersion: \nStyle: ",
+      "detail": {
+        "justification": "Code generation is the #1 LLM use case. Schema is too generic — code needs language, framework version, linting rules, and conventions.",
+        "useCases": ["Code generation", "Code review", "Migration scripts", "Test generation"],
+        "recommendations": ["Specify exact versions: 'React 18.2, TypeScript 5.3'", "Include style guide reference", "Mention testing framework"],
+        "limitations": ["Very specific versions may have limited training data", "Conventions may conflict across teams", "Model may not know latest API changes"]
+      }
+    },
+    {
+      "name": "translation_config",
+      "category": "data",
+      "description": "Source/target language, formality level, domain terminology for translation",
+      "snippet": "From: \nTo: \nFormality: \nDomain: ",
+      "detail": {
+        "justification": "Translation is high-volume with specific parameters that don't fit existing tags.",
+        "useCases": ["Document translation", "UI localization", "Legal translation", "Marketing copy adaptation"],
+        "recommendations": ["Specify formality level", "Include domain glossary", "Define handling of untranslatable terms"],
+        "limitations": ["Model translation quality varies by language pair", "Cultural nuance is hard to specify", "Technical terms may not have direct translations"]
+      }
+    },
+    {
+      "name": "data_spec",
+      "category": "data",
+      "description": "Data types, ranges, distributions, and statistical assumptions",
+      "snippet": "",
+      "detail": {
+        "justification": "Data analysis prompts need to express data characteristics distinctly from schema (which is structural).",
+        "useCases": ["Statistical analysis", "Data cleaning", "Anomaly detection", "Feature engineering"],
+        "recommendations": ["Include value ranges and distributions", "Mark known data quality issues", "Specify statistical assumptions"],
+        "limitations": ["Model cannot verify data spec accuracy", "Complex distributions are hard to describe", "Specs may not match actual data"]
+      }
+    },
+    {
+      "name": "tools",
+      "category": "agentic",
+      "description": "Available tools/functions the model can invoke, with signatures",
+      "snippet": "Tool: \nDescription: \nParameters: ",
+      "detail": {
+        "justification": "THE defining section of agentic AI. OpenAI function calling, Anthropic tool use, and all agent frameworks require explicit tool definitions.",
+        "useCases": ["AI agents", "Function calling", "API orchestration", "Workflow automation"],
+        "recommendations": ["Include complete parameter specs", "Add usage examples", "Define error return formats"],
+        "limitations": ["Too many tools reduce selection accuracy", "Complex tool signatures are hard to follow", "Tool hallucination is common"]
+      }
+    },
+    {
+      "name": "tool_selection",
+      "category": "agentic",
+      "description": "Guidance on when and how to choose between available tools",
+      "snippet": "",
+      "detail": {
+        "justification": "Without selection heuristics, models misuse tools or use them unnecessarily.",
+        "useCases": ["Multi-tool agents", "Search vs. calculate decisions", "API routing", "Escalation logic"],
+        "recommendations": ["Provide decision tree or rules", "Include 'when NOT to use a tool'", "Define fallback for no matching tool"],
+        "limitations": ["Rules may not cover all cases", "Model may still misselect tools", "Complex routing logic is hard to specify"]
+      }
+    },
+    {
+      "name": "tool_output",
+      "category": "agentic",
+      "description": "Result returned from a tool invocation for next reasoning step",
+      "snippet": "",
+      "detail": {
+        "justification": "Core to the ReAct loop (Thought → Action → Observation). The model needs structured tool results to continue reasoning.",
+        "useCases": ["Agent reasoning loops", "API response handling", "Search result processing", "Calculation results"],
+        "recommendations": ["Include tool name and parameters used", "Format consistently", "Mark errors distinctly from results"],
+        "limitations": ["Large tool outputs consume context", "Model may misinterpret tool results", "Multiple tool outputs can be confusing"]
+      }
+    },
+    {
+      "name": "action",
+      "category": "agentic",
+      "description": "Specific action to take (call tool, write code, API request)",
+      "snippet": "",
+      "detail": {
+        "justification": "ReAct pattern separates Thought from Action. Structured action blocks enable reliable tool calling and logging.",
+        "useCases": ["Agent action execution", "Workflow step execution", "API call specification", "File operations"],
+        "recommendations": ["Use consistent action format", "Include all required parameters", "Define what happens on action failure"],
+        "limitations": ["Action format must match tool API exactly", "Sequential actions can't be parallelized", "Error handling in actions is complex"]
+      }
+    },
+    {
+      "name": "observation",
+      "category": "agentic",
+      "description": "Results from executed actions to incorporate into next step",
+      "snippet": "",
+      "detail": {
+        "justification": "Completes the ReAct loop. Observations can come from environment, not just tools.",
+        "useCases": ["Agent reasoning cycles", "Environment feedback", "Error message handling", "State change detection"],
+        "recommendations": ["Distinguish observations from instructions", "Include timestamps", "Mark unexpected observations"],
+        "limitations": ["Observations may be noisy", "Model may fixate on irrelevant observations", "Long observation histories consume context"]
+      }
+    },
+    {
+      "name": "scratchpad",
+      "category": "agentic",
+      "description": "Working-memory area for intermediate notes, partial results, state",
+      "snippet": "",
+      "detail": {
+        "justification": "Agent frameworks need explicit working memory for state across reasoning steps.",
+        "useCases": ["Multi-step computations", "Research note-taking", "Draft accumulation", "Progress tracking"],
+        "recommendations": ["Keep scratchpad structured", "Periodically summarize and clean", "Separate from final output"],
+        "limitations": ["Unbounded growth", "Model may not use it consistently", "Takes context space from other sections"]
+      }
+    },
+    {
+      "name": "delegation",
+      "category": "agentic",
+      "description": "When and how to delegate sub-tasks to other agents or models",
+      "snippet": "",
+      "detail": {
+        "justification": "Multi-agent systems (CrewAI, AutoGen) require delegation protocols defining hand-off conditions and result integration.",
+        "useCases": ["Multi-agent systems", "Specialist routing", "Parallel task execution", "Hierarchical agent teams"],
+        "recommendations": ["Define which agents are available", "Specify what info to pass", "Define how to integrate results"],
+        "limitations": ["Delegation overhead may exceed benefit", "Agents may not share context", "Error propagation across agents"]
+      }
+    },
+    {
+      "name": "state",
+      "category": "agentic",
+      "description": "Current state of the agent, environment, or workflow",
+      "snippet": "",
+      "detail": {
+        "justification": "Stateful agent loops need explicit state tracking. LATS and Voyager both maintain explicit state sections.",
+        "useCases": ["Game playing agents", "Workflow engines", "Environment-aware agents", "Progress tracking"],
+        "recommendations": ["Use structured key-value format", "Include state version/timestamp", "Define state transition rules"],
+        "limitations": ["State may grow unbounded", "State synchronization across agents is hard", "Model may not update state correctly"]
+      }
+    },
+    {
+      "name": "speaker",
+      "category": "agentic",
+      "description": "Identifies which agent/role is speaking in multi-agent prompt",
+      "snippet": "",
+      "detail": {
+        "justification": "Essential for multi-agent orchestration. Without speaker tags, conversation attribution is ambiguous.",
+        "useCases": ["Multi-agent debates", "Panel simulations", "Interview simulations", "Role-play scenarios"],
+        "recommendations": ["Use consistent naming", "Include speaker role/expertise", "Mark moderator vs. participants"],
+        "limitations": ["Many speakers increase confusion", "Model may blend speaker voices", "Context overhead per speaker"]
+      }
+    },
+    {
+      "name": "turn",
+      "category": "agentic",
+      "description": "Marks a single conversational turn with speaker and sequence",
+      "snippet": "",
+      "detail": {
+        "justification": "Turn management is fundamental in multi-agent and few-shot conversation prompts.",
+        "useCases": ["Conversation examples", "Multi-agent sequencing", "Dialogue training data", "Turn-based workflows"],
+        "recommendations": ["Number turns sequentially", "Include speaker and timestamp", "Mark turn boundaries clearly"],
+        "limitations": ["Many turns consume context", "Turn format must be consistent", "Overlapping turns are hard to represent"]
+      }
+    },
+    {
+      "name": "conversation",
+      "category": "agentic",
+      "description": "Wraps a multi-turn dialogue block used as context or example",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from history (factual recall) — this is a structured dialogue container for examples or context.",
+        "useCases": ["Few-shot dialogue examples", "Conversation templates", "Training data format", "Scenario demonstrations"],
+        "recommendations": ["Include all speakers", "Mark conversation purpose", "Keep conversations concise but representative"],
+        "limitations": ["Long conversations waste tokens", "Model may continue the conversation instead of following instructions", "Format must match expected API format"]
+      }
+    },
+    {
+      "name": "routing",
+      "category": "agentic",
+      "description": "Rules for which agent or sub-prompt should handle a given input class",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from handoff (reactive transfer) — routing is proactive classification and dispatch logic.",
+        "useCases": ["Customer support triage", "Query classification", "Skill-based routing", "Load balancing"],
+        "recommendations": ["Define categories and their handlers", "Include a catch-all/default route", "Specify what info to pass to each route"],
+        "limitations": ["Misclassification causes wrong routing", "Many routes increase complexity", "Edge cases fall through categories"]
+      }
+    },
+    {
+      "name": "output",
+      "category": "output",
+      "description": "Expected output format specification",
+      "snippet": "",
+      "detail": {
+        "justification": "Specifying output format is one of the highest-impact prompt techniques.",
+        "useCases": ["API responses", "Report generation", "Data extraction", "Content creation"],
+        "recommendations": ["Show an example of ideal output", "Specify structure, not just content", "Define handling for empty/error cases"],
+        "limitations": ["Complex output specs may be partially followed", "Model may add unwanted explanations", "Nested structures are harder to enforce"]
+      }
+    },
+    {
+      "name": "format",
+      "category": "output",
+      "description": "Structured output template (JSON, XML, Markdown, etc.)",
+      "snippet": "",
+      "detail": {
+        "justification": "When you need machine-parseable output, format is critical.",
+        "useCases": ["API integrations", "Data pipelines", "Structured reports", "Config file generation"],
+        "recommendations": ["Provide exact template with placeholders", "Use JSON Schema for machine-parseable specs", "Test with edge cases"],
+        "limitations": ["Complex formats may be malformed", "Model may mix format with natural language", "Strict formats limit natural expression"]
+      }
+    },
+    {
+      "name": "style",
+      "category": "output",
+      "description": "Writing style, tone, and voice directives",
+      "snippet": "",
+      "detail": {
+        "justification": "Controls HOW the content is written — distinct from WHAT (task) and FORMAT (structure).",
+        "useCases": ["Brand voice", "Academic writing", "Casual blog posts", "Technical documentation"],
+        "recommendations": ["Provide style examples", "Specify tone: formal, casual, humorous", "Include vocabulary preferences"],
+        "limitations": ["Style is subjective and hard to specify precisely", "May conflict with format requirements", "Consistency over long outputs is hard"]
+      }
+    },
+    {
+      "name": "final_output",
+      "category": "output",
+      "description": "Final deliverable format and requirements",
+      "snippet": "",
+      "detail": {
+        "justification": "Separates the final deliverable from intermediate work. Critical when using reasoning tags.",
+        "useCases": ["After chain-of-thought reasoning", "Agent final reports", "Cleaned-up versions of drafts", "Executive summaries"],
+        "recommendations": ["Clearly mark what is the 'answer'", "Specify if reasoning should be hidden or shown", "Define minimum quality bar"],
+        "limitations": ["Model may include unwanted preamble", "Final output may not fully incorporate reasoning", "Format may differ from intermediate work"]
+      }
+    },
+    {
+      "name": "output_mapping",
+      "category": "output",
+      "description": "Explicit mapping from input conditions to expected output values",
+      "snippet": "If X → then Y",
+      "detail": {
+        "justification": "For classification, routing, and transformation tasks. Makes the input→output relationship explicit and testable.",
+        "useCases": ["Intent classification", "Sentiment mapping", "Category assignment", "Decision tables"],
+        "recommendations": ["Cover all expected input categories", "Include an 'other/unknown' mapping", "Keep mappings mutually exclusive"],
+        "limitations": ["Combinatorial explosion for complex mappings", "Edge cases between categories", "Model may not follow mappings strictly"]
+      }
+    },
+    {
+      "name": "response_length",
+      "category": "output",
+      "description": "Explicit length constraints (word count, paragraphs, token budget)",
+      "snippet": "",
+      "detail": {
+        "justification": "One of the most common prompt parameters. Without length guidance, models default to verbose responses.",
+        "useCases": ["Tweet generation", "Executive summaries", "Chat responses", "API response optimization"],
+        "recommendations": ["Use specific numbers: '50-100 words'", "Specify what to cut if over length", "Different lengths for different sections"],
+        "limitations": ["Models are bad at counting words exactly", "Very short limits may sacrifice quality", "Hard to enforce token-level precision"]
+      }
+    },
+    {
+      "name": "citations",
+      "category": "output",
+      "description": "How to cite sources, attribute claims, and link to references",
+      "snippet": "",
+      "detail": {
+        "justification": "Essential for RAG systems and research tasks where output must be verifiable.",
+        "useCases": ["Research reports", "RAG applications", "Academic writing", "Fact-checked content"],
+        "recommendations": ["Specify citation format (APA, inline, footnote)", "Define what requires citation", "Include 'no source found' handling"],
+        "limitations": ["Model may fabricate citations", "Citation format compliance varies", "Source numbers may not match"]
+      }
+    },
+    {
+      "name": "confidence",
+      "category": "output",
+      "description": "Express confidence levels or uncertainty alongside answers",
+      "snippet": "",
+      "detail": {
+        "justification": "Critical for decision-support systems.",
+        "useCases": ["Medical diagnosis", "Financial predictions", "Risk assessment", "Automated triage"],
+        "recommendations": ["Specify scale (1-5, percentage, high/medium/low)", "Define what low confidence triggers", "Calibrate with examples"],
+        "limitations": ["Model confidence is poorly calibrated", "May express false certainty", "Confidence format may not be consistent"]
+      }
+    },
+    {
+      "name": "explanation",
+      "category": "output",
+      "description": "User-facing explanation of reasoning or decision",
+      "snippet": "",
+      "detail": {
+        "justification": "Different from reasoning (internal process) — explanation is a USER-FACING output section.",
+        "useCases": ["Credit decision explanations", "Medical recommendation rationale", "Teaching", "Compliance documentation"],
+        "recommendations": ["Tailor to audience comprehension level", "Include key factors that drove the decision", "Use concrete examples"],
+        "limitations": ["Explanations may be post-hoc rationalizations", "Simplification may distort actual reasoning", "Model may explain what it did, not why"]
+      }
+    },
+    {
+      "name": "artifact",
+      "category": "output",
+      "description": "Self-contained reusable output artifact (code file, document, diagram)",
+      "snippet": "",
+      "detail": {
+        "justification": "Claude Artifacts pattern is now industry-standard. Separates deliverables from conversational response.",
+        "useCases": ["Code file generation", "Document creation", "Diagram specifications", "Configuration files"],
+        "recommendations": ["Mark artifact type and format", "Include artifact name/title", "Specify if artifact is complete or partial"],
+        "limitations": ["Large artifacts consume output tokens", "Model may mix artifact with conversation", "Versioning artifacts across turns is complex"]
+      }
+    },
+    {
+      "name": "multimodal_output",
+      "category": "output",
+      "description": "Non-text output modalities (image gen params, audio, structured visual)",
+      "snippet": "",
+      "detail": {
+        "justification": "Multi-modal output is standard in GPT-5 and Gemini 2.",
+        "useCases": ["Image generation prompts", "Chart/graph specifications", "Audio generation", "Presentation slides"],
+        "recommendations": ["Specify modality precisely", "Include dimensions, style, format", "Define fallback if modality unavailable"],
+        "limitations": ["Not all models support all modalities", "Quality varies by modality", "Complex visual specs are hard to express in text"]
+      }
+    },
+    {
+      "name": "language",
+      "category": "output",
+      "description": "Target natural language and locale for the response",
+      "snippet": "",
+      "detail": {
+        "justification": "Specifying output language prevents mixed-language responses and ensures correct locale formatting.",
+        "useCases": ["Multilingual applications", "Localized content", "Translation workflows", "International documentation"],
+        "recommendations": ["Use ISO locale codes: 'es-MX', 'en-GB'", "Specify handling of untranslatable terms", "Define number/date format by locale"],
+        "limitations": ["Quality varies by language", "Rare languages have less training data", "Cultural nuance is hard to specify"]
+      }
+    },
+    {
+      "name": "reading_level",
+      "category": "output",
+      "description": "Target reading comprehension level (grade 5, professional, ELI5)",
+      "snippet": "",
+      "detail": {
+        "justification": "Accessibility essential. 'Explain like I'm 5' is one of the most common prompt patterns.",
+        "useCases": ["Patient-facing medical info", "Children's educational content", "Plain language government docs", "Technical vs. executive summaries"],
+        "recommendations": ["Use specific grade levels or named levels", "Define which terms need explanation", "Combine with <simplification> for how-to rules"],
+        "limitations": ["Model may over-simplify or under-simplify", "Reading level detection is approximate", "Domain-specific terms are hard to simplify without losing meaning"]
+      }
+    },
+    {
+      "name": "creative_direction",
+      "category": "output",
+      "description": "Genre, narrative voice, literary devices for creative writing tasks",
+      "snippet": "",
+      "detail": {
+        "justification": "Style is too generic for creative writing — genre, POV, pacing, tension, and literary device guidance are specific needs.",
+        "useCases": ["Fiction writing", "Screenwriting", "Poetry", "Marketing copy"],
+        "recommendations": ["Specify genre and sub-genre", "Define POV (first, third, omniscient)", "Include pacing and mood guidance"],
+        "limitations": ["Creative quality is subjective", "Model may default to generic styles", "Literary devices may be applied awkwardly"]
+      }
+    },
+    {
+      "name": "stop_condition",
+      "category": "control",
+      "description": "Conditions under which the AI should stop or conclude",
+      "snippet": "",
+      "detail": {
+        "justification": "Without explicit stop conditions, agents can loop indefinitely and models can produce unnecessarily long output.",
+        "useCases": ["Agent termination", "Iterative refinement limits", "Response length control", "Budget constraints"],
+        "recommendations": ["Define clear, measurable conditions", "Include maximum iteration counts", "Specify what to output when stopping"],
+        "limitations": ["Model may not reliably detect stop conditions", "Early stopping may miss important content", "Multiple conditions need priority ordering"]
+      }
+    },
+    {
+      "name": "hitl_conditions",
+      "category": "control",
+      "description": "Human-in-the-loop checkpoints and approval gates",
+      "snippet": "",
+      "detail": {
+        "justification": "Safety-critical applications require human approval at key decision points.",
+        "useCases": ["Financial transactions", "Medical decisions", "Content publication", "Irreversible actions"],
+        "recommendations": ["Define escalation thresholds clearly", "Specify what info to present to the human", "Include timeout handling"],
+        "limitations": ["Adds latency", "Humans may rubber-stamp approvals", "Escalation overload if too many checkpoints"]
+      }
+    },
+    {
+      "name": "fallback",
+      "category": "control",
+      "description": "Fallback behavior when primary approach fails",
+      "snippet": "",
+      "detail": {
+        "justification": "Graceful degradation is essential for production systems.",
+        "useCases": ["Tool failure recovery", "API timeout handling", "Missing data fallbacks", "Confidence-based escalation"],
+        "recommendations": ["Define fallback for each failure mode", "Include escalation path", "Log failures for debugging"],
+        "limitations": ["Fallback quality is lower than primary", "Multiple fallback levels increase complexity", "Model may jump to fallback prematurely"]
+      }
+    },
+    {
+      "name": "retry",
+      "category": "control",
+      "description": "Retry logic and conditions for reattempting",
+      "snippet": "",
+      "detail": {
+        "justification": "Transient failures should be retried before falling back. Defines retry strategy.",
+        "useCases": ["API call retries", "Format correction retries", "Validation failure recovery", "Tool error recovery"],
+        "recommendations": ["Set max retry count (2-3)", "Add backoff strategy", "Change approach on retry, don't just repeat"],
+        "limitations": ["Retries consume extra tokens/time", "Same approach may fail repeatedly", "May mask underlying issues"]
+      }
+    },
+    {
+      "name": "conditional",
+      "category": "control",
+      "description": "If/then/else logic for different input conditions",
+      "snippet": "If: \nThen: \nElse: ",
+      "detail": {
+        "justification": "Real-world prompts are rarely one-path. Routing, triage, and adaptive responses all require conditional logic.",
+        "useCases": ["Input-dependent behavior", "Feature toggling", "Skill-based routing", "Adaptive responses"],
+        "recommendations": ["Cover all expected cases", "Include a default/else clause", "Keep conditions mutually exclusive"],
+        "limitations": ["Complex conditionals reduce compliance", "Model may not evaluate conditions correctly", "Nested conditionals are fragile"]
+      }
+    },
+    {
+      "name": "loop",
+      "category": "control",
+      "description": "Iterate — repeat a process until a condition is met",
+      "snippet": "",
+      "detail": {
+        "justification": "Iterative refinement is core to Self-Refine, Reflexion, and agent loops.",
+        "useCases": ["Iterative improvement", "Search until found", "Data collection loops", "Progressive refinement"],
+        "recommendations": ["Always set a maximum iteration count", "Define clear exit condition", "Show progress per iteration"],
+        "limitations": ["Can be very expensive", "May not converge", "Model may produce minimal changes per iteration"]
+      }
+    },
+    {
+      "name": "branching",
+      "category": "control",
+      "description": "Decision points where model takes different paths based on analysis",
+      "snippet": "",
+      "detail": {
+        "justification": "Unlike conditional (author-defined), branching asks the model to identify its own decision points dynamically.",
+        "useCases": ["Exploratory analysis", "Dynamic problem solving", "Adaptive workflows", "Decision trees"],
+        "recommendations": ["Define criteria for branch selection", "Limit branch depth", "Require justification for branch choice"],
+        "limitations": ["Model may always choose the same branch", "Too many branches explode token cost", "Hard to debug branching decisions"]
+      }
+    },
+    {
+      "name": "error_handling",
+      "category": "control",
+      "description": "What to do when unexpected errors or edge cases occur",
+      "snippet": "",
+      "detail": {
+        "justification": "Broader than fallback and retry. Covers the full error taxonomy for robust prompts.",
+        "useCases": ["Production robustness", "Edge case handling", "Graceful degradation", "User-friendly errors"],
+        "recommendations": ["Categorize error types", "Define response for each category", "Include logging/reporting instructions"],
+        "limitations": ["Can't anticipate all errors", "Error handling adds complexity", "Model may not recognize error conditions"]
+      }
+    },
+    {
+      "name": "handoff",
+      "category": "control",
+      "description": "Conditions for transferring control to another system/agent/human",
+      "snippet": "",
+      "detail": {
+        "justification": "Broader than HITL — handoffs can go to other AI agents, APIs, or queuing systems.",
+        "useCases": ["Customer support escalation", "Multi-agent pipelines", "System integration points", "Expertise routing"],
+        "recommendations": ["Define transfer conditions clearly", "Specify what context to pass along", "Include acknowledgment protocol"],
+        "limitations": ["Context loss during handoff", "Target system availability uncertainty", "No guarantee target will handle correctly"]
+      }
+    },
+    {
+      "name": "orchestration",
+      "category": "control",
+      "description": "Coordinate multiple prompt calls or agent steps in a pipeline",
+      "snippet": "",
+      "detail": {
+        "justification": "Prompt chaining, sequential/parallel execution. Defines how multiple AI calls work together.",
+        "useCases": ["Multi-step pipelines", "Map-reduce patterns", "Sequential analysis", "Parallel processing"],
+        "recommendations": ["Define execution order", "Specify data flow between steps", "Include error propagation rules"],
+        "limitations": ["Complex orchestration is fragile", "State management across calls is hard", "Latency compounds across steps"]
+      }
+    },
+    {
+      "name": "timeout",
+      "category": "control",
+      "description": "Time or resource budget constraints for task completion",
+      "snippet": "",
+      "detail": {
+        "justification": "Production agent systems need hard limits to prevent infinite loops and runaway costs.",
+        "useCases": ["Cost control", "SLA enforcement", "Resource budgeting", "Deadline-aware processing"],
+        "recommendations": ["Set both time and token limits", "Define what to return on timeout", "Include graceful degradation"],
+        "limitations": ["Model cannot track real time", "Token counting is approximate", "Timeout may cut off critical work"]
+      }
+    },
+    {
+      "name": "feature_flag",
+      "category": "control",
+      "description": "Conditionally enable/disable prompt sections based on named flags",
+      "snippet": "",
+      "detail": {
+        "justification": "Production prompts need feature toggles without maintaining separate copies.",
+        "useCases": ["Gradual feature rollout", "A/B testing", "User-tier-based features", "Debug mode toggles"],
+        "recommendations": ["Name flags clearly", "Define default state", "Document flag dependencies"],
+        "limitations": ["Too many flags create combinatorial complexity", "Model may not respect flag states", "Flag management overhead"]
+      }
+    },
+    {
+      "name": "guardrails",
+      "category": "safety",
+      "description": "Safety boundaries and content restrictions",
+      "snippet": "",
+      "detail": {
+        "justification": "The first line of defense against harmful outputs. Every production prompt should include guardrails.",
+        "useCases": ["All production deployments", "User-facing applications", "Content generation", "Autonomous agents"],
+        "recommendations": ["Be specific about boundaries", "Include both what to block and what to allow", "Test with adversarial inputs"],
+        "limitations": ["Can be circumvented with clever prompting", "Too strict = unusable", "May conflict with task requirements"]
+      }
+    },
+    {
+      "name": "validation",
+      "category": "safety",
+      "description": "Input/output validation rules",
+      "snippet": "",
+      "detail": {
+        "justification": "Validates that inputs meet expectations and outputs conform to specs.",
+        "useCases": ["API input validation", "Output format verification", "Data integrity checks", "Business rule validation"],
+        "recommendations": ["Define validation rules precisely", "Specify what to do when validation fails", "Include both type and value validation"],
+        "limitations": ["Model validation is not reliable for critical systems", "Complex validation logic may be inconsistent", "Cannot replace programmatic validation"]
+      }
+    },
+    {
+      "name": "content_policy",
+      "category": "safety",
+      "description": "Specific content rules — allowed/forbidden topics, sensitivity levels",
+      "snippet": "",
+      "detail": {
+        "justification": "More specific than guardrails. Production systems need granular content policies by topic.",
+        "useCases": ["Children's content", "Medical information", "Financial advice boundaries", "Brand-safe content"],
+        "recommendations": ["Categorize topics with allow/warn/block levels", "Include age-appropriateness rules", "Define handling of borderline content"],
+        "limitations": ["Content classification is imperfect", "Cultural sensitivity varies", "Overly strict policies reduce usefulness"]
+      }
+    },
+    {
+      "name": "pii_handling",
+      "category": "safety",
+      "description": "Rules for handling personal data — redaction, masking, retention",
+      "snippet": "",
+      "detail": {
+        "justification": "GDPR, HIPAA, CCPA compliance. Every production AI system processing user data needs explicit PII instructions.",
+        "useCases": ["Healthcare applications", "Financial services", "Customer data processing", "Log analysis"],
+        "recommendations": ["List specific PII types to handle", "Define redaction format", "Specify what to do with detected PII"],
+        "limitations": ["PII detection is imperfect", "Context may be lost with redaction", "Model may still memorize PII from training"]
+      }
+    },
+    {
+      "name": "injection_defense",
+      "category": "safety",
+      "description": "Detect and resist prompt injection and jailbreak attempts",
+      "snippet": "",
+      "detail": {
+        "justification": "Critical security concern. Structured defenses are essential.",
+        "useCases": ["Public-facing chatbots", "API endpoints", "User-content processing", "Multi-tenant systems"],
+        "recommendations": ["Clearly separate instructions from user data", "Define instruction hierarchy", "Include known attack pattern handling"],
+        "limitations": ["No perfect defense exists", "Overly strict defenses block legitimate use", "New attack vectors emerge constantly"]
+      }
+    },
+    {
+      "name": "ethical_guidelines",
+      "category": "safety",
+      "description": "Ethical principles — fairness, bias avoidance, harm prevention",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from guardrails (hard rules) and content_policy (content). Ethics handles nuanced judgment calls.",
+        "useCases": ["AI-assisted decision making", "Content moderation", "Recommendation systems", "Hiring/evaluation tools"],
+        "recommendations": ["State principles explicitly", "Include how to handle ethical dilemmas", "Define escalation for unclear cases"],
+        "limitations": ["Ethics are culturally dependent", "Model may apply principles inconsistently", "Conflicts between principles are common"]
+      }
+    },
+    {
+      "name": "compliance",
+      "category": "safety",
+      "description": "Regulatory and legal requirements (GDPR, HIPAA, disclaimers)",
+      "snippet": "",
+      "detail": {
+        "justification": "Healthcare, finance, legal, and government applications have strict compliance requirements.",
+        "useCases": ["Medical AI systems", "Financial advisory tools", "Legal document processing", "Government services"],
+        "recommendations": ["Reference specific regulations", "Include required disclaimers", "Define audit trail requirements"],
+        "limitations": ["Model cannot guarantee legal compliance", "Regulations change frequently", "Cross-jurisdictional conflicts"]
+      }
+    },
+    {
+      "name": "constitution",
+      "category": "safety",
+      "description": "Set of principles the model must self-check against before responding",
+      "snippet": "",
+      "detail": {
+        "justification": "Core to Constitutional AI (Anthropic). The model evaluates its own response against these principles before outputting.",
+        "useCases": ["Alignment-critical applications", "Autonomous agents", "Self-moderating systems", "Value-aligned AI"],
+        "recommendations": ["List principles in priority order", "Include examples of principle violations", "Define revision protocol on violation"],
+        "limitations": ["Model may rationalize violations", "Too many principles reduce focus", "Self-checking adds latency"]
+      }
+    },
+    {
+      "name": "alignment_rules",
+      "category": "safety",
+      "description": "Hard behavioral boundaries that override all other instructions",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from guardrails (filters) — these are affirmative behavioral commitments that take absolute priority.",
+        "useCases": ["Autonomous agents", "Unattended deployments", "Safety-critical systems", "High-trust applications"],
+        "recommendations": ["Keep list short and absolute", "Test each rule with adversarial scenarios", "These should NEVER be overridable"],
+        "limitations": ["Too many absolute rules create deadlocks", "Rules may conflict with each other", "Model compliance is not guaranteed"]
+      }
+    },
+    {
+      "name": "capability_boundary",
+      "category": "safety",
+      "description": "Explicitly states what the model can and cannot do in this configuration",
+      "snippet": "",
+      "detail": {
+        "justification": "Frontier models hallucinate capabilities. Explicit boundaries reduce this.",
+        "useCases": ["User-facing assistants", "Tool-equipped agents", "Domain-specific deployments", "Capability documentation"],
+        "recommendations": ["List capabilities explicitly", "State what is NOT possible", "Include 'I don't know' triggers"],
+        "limitations": ["Model may still claim absent capabilities", "Boundaries may be too restrictive", "User may not understand limitations"]
+      }
+    },
+    {
+      "name": "red_team",
+      "category": "safety",
+      "description": "Adversarial test cases the prompt must resist",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from injection_defense (mechanism) — these are specific attack scenarios to handle correctly.",
+        "useCases": ["Security testing", "Prompt robustness evaluation", "Compliance testing", "Pre-deployment validation"],
+        "recommendations": ["Include diverse attack types", "Define expected response for each", "Update regularly with new patterns"],
+        "limitations": ["Cannot cover all attack vectors", "Showing attacks may teach circumvention", "Test cases may not reflect real attacks"]
+      }
+    },
+    {
+      "name": "evaluation",
+      "category": "evaluation",
+      "description": "Criteria for evaluating response quality",
+      "snippet": "",
+      "detail": {
+        "justification": "Self-evaluation criteria improve output quality by giving the model explicit quality targets.",
+        "useCases": ["LLM-as-judge", "Quality assurance", "Auto-grading", "Content review"],
+        "recommendations": ["Define specific, measurable criteria", "Include weight/importance per criterion", "Provide examples of each quality level"],
+        "limitations": ["Self-evaluation is biased", "Complex criteria reduce focus", "Model may game evaluation criteria"]
+      }
+    },
+    {
+      "name": "test_cases",
+      "category": "evaluation",
+      "description": "Input/expected-output pairs to verify prompt correctness",
+      "snippet": "Input: \nExpected: ",
+      "detail": {
+        "justification": "Prompt testing/regression. Formalizes test cases as part of the prompt definition.",
+        "useCases": ["Prompt regression testing", "Few-shot verification", "Edge case coverage", "Automated evaluation"],
+        "recommendations": ["Include happy path and edge cases", "Define acceptance criteria", "Keep test cases diverse"],
+        "limitations": ["Limited by context space", "Expected outputs may be too rigid", "Model may overfit to test cases"]
+      }
+    },
+    {
+      "name": "rubric",
+      "category": "evaluation",
+      "description": "Detailed scoring criteria with levels (1-5 scale)",
+      "snippet": "1 - Poor: \n3 - Good: \n5 - Excellent: ",
+      "detail": {
+        "justification": "Structured scoring instrument for LLM-as-judge patterns.",
+        "useCases": ["Content grading", "Code review scoring", "Response quality assessment", "Comparison evaluation"],
+        "recommendations": ["Define each level with examples", "Keep scales consistent", "Include clear boundary between levels"],
+        "limitations": ["Subjective criteria are hard to level", "Inter-rater reliability is low", "Model may default to middle scores"]
+      }
+    },
+    {
+      "name": "baseline",
+      "category": "evaluation",
+      "description": "Reference output or performance level to compare against",
+      "snippet": "",
+      "detail": {
+        "justification": "Without baselines, quality assessment is subjective. Enables A/B testing and regression detection.",
+        "useCases": ["A/B testing", "Regression detection", "Performance benchmarking", "Quality comparison"],
+        "recommendations": ["Include the actual baseline output", "Define what 'better' means", "Use multiple baselines for different aspects"],
+        "limitations": ["Baselines may be outdated", "Comparison criteria may be biased", "Model may just copy the baseline"]
+      }
+    },
+    {
+      "name": "metrics",
+      "category": "evaluation",
+      "description": "Quantitative measures to compute (accuracy, F1, latency, cost)",
+      "snippet": "",
+      "detail": {
+        "justification": "Production prompt monitoring requires explicit metric definitions.",
+        "useCases": ["Production monitoring", "A/B test evaluation", "Performance tracking", "Cost optimization"],
+        "recommendations": ["Define metric formulas precisely", "Include acceptable ranges", "Specify measurement frequency"],
+        "limitations": ["Model cannot compute metrics at runtime", "Metrics may not capture quality fully", "Metric gaming is possible"]
+      }
+    },
+    {
+      "name": "reward_signal",
+      "category": "evaluation",
+      "description": "What 'good' looks like for RLHF-style steering within the prompt",
+      "snippet": "",
+      "detail": {
+        "justification": "RLHF-informed prompting lets you express preference signals inline for better alignment.",
+        "useCases": ["Fine-tuning data creation", "Preference modeling", "Quality signal definition", "Behavioral steering"],
+        "recommendations": ["Define reward dimensions explicitly", "Include positive and negative signals", "Weight dimensions by importance"],
+        "limitations": ["Model cannot actually optimize for reward", "Reward hacking is possible", "Simplistic rewards miss nuance"]
+      }
+    },
+    {
+      "name": "test_strategy",
+      "category": "evaluation",
+      "description": "How generated code/output should be tested (unit, integration, property-based)",
+      "snippet": "",
+      "detail": {
+        "justification": "Goes beyond test_cases (instances) — this is the testing APPROACH.",
+        "useCases": ["Code generation with tests", "QA automation", "Validation pipeline design", "Test suite planning"],
+        "recommendations": ["Specify test types: unit, integration, e2e", "Define coverage targets", "Include testing tools/frameworks"],
+        "limitations": ["Model may not know specific test frameworks", "Generated tests may not be meaningful", "Coverage metrics can be misleading"]
+      }
+    },
+    {
+      "name": "adversarial_examples",
+      "category": "evaluation",
+      "description": "Tricky or edge-case inputs designed to break the prompt",
+      "snippet": "",
+      "detail": {
+        "justification": "Distinct from negative_examples (wrong outputs) — these are adversarial INPUTS that test robustness.",
+        "useCases": ["Prompt robustness testing", "Edge case documentation", "Security evaluation", "Stress testing"],
+        "recommendations": ["Include diverse attack vectors", "Define expected behavior for each", "Regularly update with new patterns"],
+        "limitations": ["Cannot cover all adversarial inputs", "Model may learn to recognize specific patterns", "Real adversaries are more creative than examples"]
+      }
+    },
+    {
+      "name": "version",
+      "category": "meta",
+      "description": "Prompt version identifier for tracking iterations and rollback",
+      "snippet": "v1.0",
+      "detail": {
+        "justification": "Version control for prompts is a best practice.",
+        "useCases": ["Production prompt management", "A/B testing", "Regression tracking", "Compliance auditing"],
+        "recommendations": ["Use semantic versioning", "Log changes per version", "Tag versions with deployment dates"],
+        "limitations": ["Manual versioning is error-prone", "Version alone doesn't capture what changed", "Needs discipline to maintain"]
+      }
+    },
+    {
+      "name": "metadata",
+      "category": "meta",
+      "description": "Non-functional info — author, date, model target, description",
+      "snippet": "Author: \nDate: \nModel: ",
+      "detail": {
+        "justification": "Prompt management at scale requires metadata for search, filtering, governance, and accountability.",
+        "useCases": ["Prompt library management", "Governance and compliance", "Team collaboration", "Search and discovery"],
+        "recommendations": ["Include author, date, target model", "Add tags for searchability", "Include prompt purpose summary"],
+        "limitations": ["Metadata adds token overhead", "May become outdated", "Not used by the model itself"]
+      }
+    },
+    {
+      "name": "dependencies",
+      "category": "meta",
+      "description": "Other prompts, tools, data sources this prompt depends on",
+      "snippet": "",
+      "detail": {
+        "justification": "Prompt chains and agent systems have dependency graphs.",
+        "useCases": ["Prompt chain documentation", "Deployment validation", "Impact analysis", "Dependency upgrades"],
+        "recommendations": ["List each dependency with version", "Mark optional vs. required", "Include health check endpoints"],
+        "limitations": ["Dependencies may change without notification", "Complex dependency graphs are hard to manage", "Circular dependencies are possible"]
+      }
+    },
+    {
+      "name": "model_config",
+      "category": "meta",
+      "description": "Recommended model parameters — temperature, top_p, max_tokens, seed",
+      "snippet": "temperature: 0.7\nmax_tokens: 4096",
+      "detail": {
+        "justification": "Prompt behavior is highly sensitive to model parameters. Coupling config ensures reproducibility.",
+        "useCases": ["Reproducible experiments", "Production deployment configs", "A/B test parameters", "Quality calibration"],
+        "recommendations": ["Include temperature, top_p, max_tokens as minimum", "Add model name and version", "Document why each parameter was chosen"],
+        "limitations": ["Parameters may not be supported by all models", "Optimal parameters change with model updates", "May conflict with API-level settings"]
+      }
+    },
+    {
+      "name": "abbreviations",
+      "category": "meta",
+      "description": "Shorthand notations used in the prompt to reduce token count",
+      "snippet": "",
+      "detail": {
+        "justification": "Token-budget-conscious prompt engineering requires documented compression for readability.",
+        "useCases": ["Long prompts optimization", "Standardized abbreviations", "Internal notation systems", "Token cost reduction"],
+        "recommendations": ["Define each abbreviation clearly", "Use consistently throughout", "Place early in prompt for maximum benefit"],
+        "limitations": ["Model may not follow abbreviation rules", "Obscure abbreviations reduce readability", "Savings may be minimal"]
+      }
+    },
+    {
+      "name": "token_budget",
+      "category": "meta",
+      "description": "Max token allocation for input, reasoning, and output sections",
+      "snippet": "",
+      "detail": {
+        "justification": "Critical for production cost control.",
+        "useCases": ["Cost optimization", "Response time control", "Context window management", "Budget allocation"],
+        "recommendations": ["Allocate budget per section", "Include buffer for unexpected needs", "Monitor actual vs. budgeted usage"],
+        "limitations": ["Model cannot count tokens accurately", "Strict budgets may cut off important content", "Budget allocation is an approximation"]
+      }
+    },
+    {
+      "name": "cache_hint",
+      "category": "meta",
+      "description": "Marks sections as stable for prompt caching (e.g., Anthropic prompt caching)",
+      "snippet": "",
+      "detail": {
+        "justification": "Anthropic prompt caching is keyed on prefix stability. Marking stable sections enables 90% cost reduction.",
+        "useCases": ["High-volume API calls", "Cost optimization", "Latency reduction", "Stable instruction caching"],
+        "recommendations": ["Place stable content at prompt start", "Mark dynamic sections separately", "Monitor cache hit rates"],
+        "limitations": ["Only works with supporting APIs", "Dynamic content breaks cache", "Cache may be stale"]
+      }
+    },
+    {
+      "name": "variant",
+      "category": "meta",
+      "description": "Marks a prompt variant for A/B testing with variant ID",
+      "snippet": "",
+      "detail": {
+        "justification": "A/B testing is table-stakes for production prompt management.",
+        "useCases": ["A/B testing", "Gradual rollout", "Multivariate testing", "Performance comparison"],
+        "recommendations": ["Use unique variant IDs", "Document hypothesis per variant", "Track metrics per variant"],
+        "limitations": ["Needs external infrastructure to route", "Model doesn't know it's being tested", "Sample size requirements"]
+      }
+    },
+    {
+      "name": "experiment",
+      "category": "meta",
+      "description": "Wraps an entire experimental prompt configuration with hypothesis",
+      "snippet": "",
+      "detail": {
+        "justification": "Container for experimental prompt configs.",
+        "useCases": ["Prompt optimization experiments", "Research", "Performance benchmarking", "Feature validation"],
+        "recommendations": ["State clear hypothesis", "Define success metrics", "Include rollback criteria"],
+        "limitations": ["Experiments add complexity", "Need statistical rigor", "Model doesn't participate in experiment design"]
+      }
+    },
+    {
+      "name": "rollback_ref",
+      "category": "meta",
+      "description": "References a known-good previous prompt version to revert to",
+      "snippet": "",
+      "detail": {
+        "justification": "Version tracks current; rollback_ref tracks the safety net.",
+        "useCases": ["Production incident recovery", "Failed experiment revert", "Quality regression handling", "Compliance-mandated rollback"],
+        "recommendations": ["Always have a rollback_ref in production", "Test rollback process regularly", "Include rollback trigger conditions"],
+        "limitations": ["Rollback may lose improvements", "Previous version may have its own issues", "State changes between versions may break compatibility"]
+      }
+    },
+    {
+      "name": "expiry",
+      "category": "meta",
+      "description": "When this prompt or its data should be considered stale",
+      "snippet": "",
+      "detail": {
+        "justification": "Prompts with time-sensitive instructions need explicit expiry to prevent stale behavior.",
+        "useCases": ["Seasonal content", "Event-specific prompts", "Time-limited campaigns", "Regulatory updates"],
+        "recommendations": ["Use absolute dates, not relative", "Define what happens after expiry", "Include renewal/review process"],
+        "limitations": ["Expiry enforcement needs external system", "Model cannot check current date", "Grace periods are hard to manage"]
+      }
+    }
+  ],
+
+  "saved_prompts": [
+    {
+      "id": "default",
+      "name": "caller_frontend",
+      "description": "Prompt para auditoría y testing de frontend de un software de llamadas para gestión de reservas en restaurantes",
+      "tags_used": ["role", "context", "task", "reasoning", "stop_condition", "non_do_conditions", "hitl_conditions", "final_output"],
+      "createdAt": "2025-12-18T12:59:55.844Z",
+      "updatedAt": "2025-12-19T09:36:20.897Z"
+    },
+    {
+      "id": "prompt-1774031694322",
+      "name": "Mejora autoproyecto",
+      "description": "Sistema de IA biomimético para trayectoria profesional, plan de acción y schedule — crecimiento profesional como freelancer de IA",
+      "tags_used": ["role", "audience", "domain", "perspective", "task", "sub_tasks", "goal", "success_criteria", "scope", "priority", "constraints", "non_do_conditions", "recency_bias", "thinking", "reasoning", "tree_of_thought", "self_critique", "metacognition", "simulation", "context", "reference", "input", "stop_condition", "hitl_conditions"],
+      "createdAt": "2025-12-18T13:54:54.322Z",
+      "updatedAt": "2025-12-19T09:37:12.152Z"
+    },
+    {
+      "id": "prompt-1774031816913",
+      "name": "extraction_proyect",
+      "description": "Extracción de datos clave de proyectos a formato markdown estructurado — análisis estratégico, técnico, económico y legal completo",
+      "tags_used": ["role", "domain", "task", "goal", "steps"],
+      "createdAt": "2025-12-18T13:56:56.913Z",
+      "updatedAt": "2025-12-19T09:36:18.897Z"
+    }
+  ],
+
+  "prompt_template": {
+    "description": "Template for generating new prompts compatible with Prompt Editor Pro",
+    "json_format": {
+      "version": 1,
+      "exportDate": "ISO_8601_DATE",
+      "prompts": [
+        {
+          "id": "prompt-UNIX_TIMESTAMP_MS",
+          "name": "prompt_name",
+          "content": "Prompt content with <tag>...</tag> XML structure",
+          "createdAt": "UNIX_TIMESTAMP_MS",
+          "updatedAt": "UNIX_TIMESTAMP_MS"
+        }
+      ]
+    },
+    "save_path": "C:\\Users\\Diego\\Desktop\\AGENC_IA\\Prompt_editor\\Prompts\\"
+  }
+}

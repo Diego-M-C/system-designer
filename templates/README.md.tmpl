@@ -1,0 +1,81 @@
+# {{system_name}}
+
+> {{intent}}
+
+**Domain:** {{domain}} · **EU AI Act risk:** {{eu_ai_act_risk}} · **Stack:** {{stack.language}} · **Generated:** {{TEMPORAL_NOW}}
+
+---
+
+## What this is
+
+{{intent_long_description}}
+
+This project is scaffolded with the **system-designer SDD methodology**: every artifact is a living document, every session ends in a HITL checkpoint, every prompt is audited via prompt-architect, and every decision carries calibrated probabilities. See `CLAUDE.md` for the orchestrator contract and `SPEC.md` for the spec.
+
+## Quickstart
+
+```bash
+# 1. Read the orchestrator contract
+cat CLAUDE.md
+
+# 2. Read the spec
+cat SPEC.md
+
+# 3. Inspect current state
+cat tracking/project.json | jq
+
+# 4. List sessions
+ls tracking/sessions/
+
+# 5. Resume the orchestrator (in any LLM with file-system access)
+#    Drop this folder into the LLM and prompt:
+#    "Continue {{system_name}} from current state."
+```
+
+## Project structure
+
+```
+{{system_name}}/
+├── CLAUDE.md                 # orchestrator contract
+├── README.md                 # you are here
+├── SPEC.md + SPEC.json       # what we build
+├── ARCHITECTURE.md           # how we build
+├── HANDOFF.md                # generator handoff (read once)
+├── tracking/                 # living: project state, sessions, KPIs, errors, decisions
+├── memory/                   # living: user prefs, project context, feedback, refs
+├── audit/                    # living: EU AI Act audit sheet (incremental), self-audits, reflections
+├── docs/                     # decisions (ADRs), architecture, reports (IMRaD/TRIPOD-AI)
+├── library_docs/             # fresh docs of every pinned library
+├── src/                      # the system
+├── tests/                    # tests + golden + adversarial
+├── tools/                    # custom scripts and prompts
+└── .claude/                  # optional convenience layer (skills, agents, settings)
+```
+
+## Reproducibility
+
+- **Repo:** {{repo_url_or_local}}
+- **Commit:** see `git rev-parse HEAD` (if `git_init=true`) or `tracking/project.json#last_commit_hash`
+- **Pinned libraries:** see `library_docs/MANIFEST.md` (versions + sources + last-fetch dates)
+- **Random seeds:** see `SPEC.json#reproducibility.seeds`
+- **How to reproduce a session:** `tracking/sessions/<id>/inputs_outputs_perf.json` contains sample I/O for every script tested
+
+## Compliance
+
+- **EU AI Act** ({{eu_ai_act_risk}}-risk): mapping in `audit/eu_ai_act_mapping.md`, audit sheet in `audit/audit_sheet.xlsx` (or CSV+MD fallback)
+- **{{additional_regulations}}**
+
+## Contributing
+
+- Read `CLAUDE.md` first (the orchestrator contract).
+- Every change starts a new session under `tracking/sessions/`.
+- Every decision goes to `docs/decisions/` as an ADR with ≥3 calibrated alternatives.
+- Every prompt change runs through prompt-architect.
+
+## License
+
+{{license}}
+
+## Acknowledgements
+
+Generated with the **system-designer** meta-skill (v{{generator_version}}) — a portable, LLM-agnostic SDD-methodology scaffolder with EU AI Act compliance baked in.

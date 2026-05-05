@@ -1,0 +1,914 @@
+{
+  "id": "10",
+  "slug": "claude-in-amazon-bedrock",
+  "title": "Claude with Amazon Bedrock",
+  "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock",
+  "category": "cloud-integration",
+  "difficulty": "intermediate-advanced",
+  "domain": "Cloud Integration",
+  "tags": [
+    "aws",
+    "bedrock",
+    "api",
+    "rag",
+    "tool-use",
+    "agents",
+    "mcp"
+  ],
+  "stats": {
+    "total_lessons": 83,
+    "sections": 11,
+    "jw_transcripts": 73,
+    "youtube_transcripts": 0,
+    "modular_text_lessons": 0,
+    "quiz_assessments": 0,
+    "jw_chars": 444608,
+    "youtube_chars": 0,
+    "modular_chars": 0,
+    "total_content_chars": 444608
+  },
+  "sections": [
+    {
+      "title": "Course introduction",
+      "lesson_count": 2
+    },
+    {
+      "title": "Working with the API",
+      "lesson_count": 12
+    },
+    {
+      "title": "Prompt evaluations",
+      "lesson_count": 8
+    },
+    {
+      "title": "Prompt engineering",
+      "lesson_count": 7
+    },
+    {
+      "title": "Tool use",
+      "lesson_count": 13
+    },
+    {
+      "title": "Retrieval Augmented Generation",
+      "lesson_count": 10
+    },
+    {
+      "title": "Features of Claude",
+      "lesson_count": 8
+    },
+    {
+      "title": "Model Context Protocol",
+      "lesson_count": 12
+    },
+    {
+      "title": "Agents",
+      "lesson_count": 9
+    },
+    {
+      "title": "Final assessment",
+      "lesson_count": 1
+    },
+    {
+      "title": "Wrap up",
+      "lesson_count": 1
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Course introduction",
+      "title": "Introduction to the course",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/241929",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Course introduction",
+      "title": "Overview of Claude Models",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/303332",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Working with the API",
+      "title": "Accessing the API",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276716",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Working with the API",
+      "title": "Making a request",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276719",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Working with the API",
+      "title": "Multi-Turn conversations",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276722",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Working with the API",
+      "title": "Chat bot exercise",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276725",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Working with the API",
+      "title": "System prompts",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276726",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Working with the API",
+      "title": "System prompt exercise",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276717",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Working with the API",
+      "title": "Temperature",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276720",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Working with the API",
+      "title": "Streaming",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276721",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Working with the API",
+      "title": "Controlling model output",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276723",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Working with the API",
+      "title": "Structured data",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276724",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Working with the API",
+      "title": "Structured data exercise",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276718",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 14,
+      "section": "Working with the API",
+      "title": "Quiz on working with the API",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289293",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 15,
+      "section": "Prompt evaluations",
+      "title": "Prompt evaluation",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276731",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 16,
+      "section": "Prompt evaluations",
+      "title": "A typical eval workflow",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276732",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 17,
+      "section": "Prompt evaluations",
+      "title": "Generating test datasets",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276733",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 18,
+      "section": "Prompt evaluations",
+      "title": "Running the eval",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276736",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 19,
+      "section": "Prompt evaluations",
+      "title": "Model based grading",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276738",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 20,
+      "section": "Prompt evaluations",
+      "title": "Code based grading",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276735",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 21,
+      "section": "Prompt evaluations",
+      "title": "Exercise on prompt evals",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276734",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 22,
+      "section": "Prompt evaluations",
+      "title": "Quiz on prompt evaluations",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289297",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 23,
+      "section": "Prompt engineering",
+      "title": "Prompt engineering",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276749",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 24,
+      "section": "Prompt engineering",
+      "title": "Being clear and direct",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276743",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 25,
+      "section": "Prompt engineering",
+      "title": "Being specific",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276745",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 26,
+      "section": "Prompt engineering",
+      "title": "Structure with XML tags",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276744",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 27,
+      "section": "Prompt engineering",
+      "title": "Providing examples",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276747",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 28,
+      "section": "Prompt engineering",
+      "title": "Exercise on prompting",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276746",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 29,
+      "section": "Prompt engineering",
+      "title": "Quiz on prompt engineering",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289298",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 30,
+      "section": "Tool use",
+      "title": "Introducing tool use",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276756",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 31,
+      "section": "Tool use",
+      "title": "Tool functions",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276757",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 32,
+      "section": "Tool use",
+      "title": "JSON Schema for tools",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276758",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 33,
+      "section": "Tool use",
+      "title": "Handling tool use responses",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276764",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 34,
+      "section": "Tool use",
+      "title": "Running tool functions",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276762",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 35,
+      "section": "Tool use",
+      "title": "Sending tool results",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276760",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 36,
+      "section": "Tool use",
+      "title": "Multi-Turn conversations with tools",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276759",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 37,
+      "section": "Tool use",
+      "title": "Adding multiple tools",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276761",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 38,
+      "section": "Tool use",
+      "title": "Batch tool use",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276766",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 39,
+      "section": "Tool use",
+      "title": "Structured data with tools",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276765",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 40,
+      "section": "Tool use",
+      "title": "Flexible tool extraction",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276763",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 41,
+      "section": "Tool use",
+      "title": "The text editor tool",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276767",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 42,
+      "section": "Tool use",
+      "title": "Quiz on tool use",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289296",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 43,
+      "section": "Retrieval Augmented Generation",
+      "title": "Introducing Retrieval Augmented Generation",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276780",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 44,
+      "section": "Retrieval Augmented Generation",
+      "title": "Text chunking strategies",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276782",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 45,
+      "section": "Retrieval Augmented Generation",
+      "title": "Text embeddings",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276777",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 46,
+      "section": "Retrieval Augmented Generation",
+      "title": "The full RAG flow",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276774",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 47,
+      "section": "Retrieval Augmented Generation",
+      "title": "Implementing the RAG flow",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276781",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 48,
+      "section": "Retrieval Augmented Generation",
+      "title": "BM25 lexical search",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276776",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 49,
+      "section": "Retrieval Augmented Generation",
+      "title": "A multi-search RAG pipeline",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276779",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 50,
+      "section": "Retrieval Augmented Generation",
+      "title": "Reranking results",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276775",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 51,
+      "section": "Retrieval Augmented Generation",
+      "title": "Contextual retrieval",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276778",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 52,
+      "section": "Retrieval Augmented Generation",
+      "title": "Quiz on Retrieval Augmented Generation",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289295",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 53,
+      "section": "Features of Claude",
+      "title": "Extended thinking",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276788",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 54,
+      "section": "Features of Claude",
+      "title": "Image support",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276789",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 55,
+      "section": "Features of Claude",
+      "title": "PDF support",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/308839",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 56,
+      "section": "Features of Claude",
+      "title": "Citations",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/308840",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 57,
+      "section": "Features of Claude",
+      "title": "Prompt caching",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276786",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 58,
+      "section": "Features of Claude",
+      "title": "Rules of prompt caching",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276785",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 59,
+      "section": "Features of Claude",
+      "title": "Prompt caching in action",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276787",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 60,
+      "section": "Features of Claude",
+      "title": "Quiz on features of Claude",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289300",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 61,
+      "section": "Model Context Protocol",
+      "title": "Introducing MCP",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276798",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 62,
+      "section": "Model Context Protocol",
+      "title": "MCP clients",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276793",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 63,
+      "section": "Model Context Protocol",
+      "title": "Project setup",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276792",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 64,
+      "section": "Model Context Protocol",
+      "title": "Defining tools with MCP",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276800",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 65,
+      "section": "Model Context Protocol",
+      "title": "The server inspector",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276796",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 66,
+      "section": "Model Context Protocol",
+      "title": "Implementing a client",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276802",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 67,
+      "section": "Model Context Protocol",
+      "title": "Defining resources",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276799",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 68,
+      "section": "Model Context Protocol",
+      "title": "Accessing resources",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276797",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 69,
+      "section": "Model Context Protocol",
+      "title": "Defining prompts",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276801",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 70,
+      "section": "Model Context Protocol",
+      "title": "Prompts in the client",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276795",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 71,
+      "section": "Model Context Protocol",
+      "title": "MCP review",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276794",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 72,
+      "section": "Model Context Protocol",
+      "title": "Quiz on Model Context Protocol",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/289299",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 73,
+      "section": "Agents",
+      "title": "Agents overview",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276804",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 74,
+      "section": "Agents",
+      "title": "Claude Code setup",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276809",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 75,
+      "section": "Agents",
+      "title": "Claude Code in action",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276811",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 76,
+      "section": "Agents",
+      "title": "Enhancements with MCP servers",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276806",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 77,
+      "section": "Agents",
+      "title": "Parallelizing Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276810",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 78,
+      "section": "Agents",
+      "title": "Automated debugging",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276812",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 79,
+      "section": "Agents",
+      "title": "Computer Use",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276807",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 80,
+      "section": "Agents",
+      "title": "How Computer Use works",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276805",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 81,
+      "section": "Agents",
+      "title": "Qualities of agents",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276808",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 82,
+      "section": "Final assessment",
+      "title": "Final assessment quiz",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/290881",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 83,
+      "section": "Wrap up",
+      "title": "Course wrap up",
+      "url": "https://anthropic.skilljar.com/claude-in-amazon-bedrock/276827",
+      "has_jw_transcript": true,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:33:38.557Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 0,
+    "quiz_extractions_added": 0
+  }
+}

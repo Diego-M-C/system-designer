@@ -1,0 +1,27 @@
+{
+  "course_num": 16,
+  "slug": "ai-capabilities-and-limitations",
+  "title": "AI Capabilities and Limitations",
+  "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+  "subtitle": "An introductory course about how AI works",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:08:30Z",
+  "source_url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 13, "hours_of_video": 0.25, "quizzes": 1, "certificate": true},
+  "sections": [
+    {"section_num": 1, "name": "Getting started", "lessonCount": "3 lessons", "description": "The word 'AI' covers a lot of ground. This section narrows it to the kind of system you'll actually be working with — large language models — and explains how two training stages, pretraining and fine-tuning, turn a raw text predictor into the helpful assistant you interact with. Along the way you'll meet the four-property framework that organizes the rest of the course."},
+    {"section_num": 2, "name": "Next Token Prediction", "lessonCount": "2 lessons", "description": "Every answer an AI gives is built one token at a time, by predicting what should come next. This section shows what that means in practice: why the model is excellent at well-worn paths like summarizing or reformatting, why it can produce things that sound true but aren't, and how to recognize when a task is pushing into territory where prediction alone isn't enough."},
+    {"section_num": 3, "name": "Knowledge", "lessonCount": "2 lessons", "description": "A model knows what was in its training data — frequently, recently, and consistently. This section unpacks what that implies: it's strong on mainstream topics and popular languages, weaker on anything rare, recent, niche, or contested. You'll practice judging where a question sits on that spectrum, so you know when to trust the answer and when to bring your own sources."},
+    {"section_num": 4, "name": "Working Memory", "lessonCount": "2 lessons", "description": "The context window is the model's working memory: everything it can pay attention to right now, and nothing else. This section covers what fits, what quietly falls off the edge, why attention isn't uniform across a long document, and why a fresh session doesn't remember the last one. You'll learn to size up a task against the window before you start, instead of discovering the limit mid-conversation."},
+    {"section_num": 5, "name": "Steerability", "lessonCount": "2 lessons", "description": "Your instructions are how you steer — but not all instructions land equally. Short, concrete, verifiable asks ('respond as a table', 'under 100 words') work reliably; long reasoning chains, abstract requests, and demands for native precision are where steering starts to slip. This section helps you tell the difference and rewrite a wobbly instruction into one the model can actually follow."},
+    {"section_num": 6, "name": "Putting it all together and next steps", "lessonCount": "2 lessons", "description": "Real tasks rarely test one property at a time. A long contract review strains working memory while reaching past the model's knowledge; a vague creative brief tests steerability right where next-token prediction wants to fill in something plausible. This section shows you how the four properties collide, and gives you a diagnostic for any unexpected output: name which property is in play, place the task on its spectrum, and apply a targeted fix instead of just trying again."}
+  ],
+  "total_sections": 6,
+  "individual_lessons_requires_login": true,
+  "key_framework": {
+    "name": "Four-property framework for LLMs",
+    "properties": ["Next Token Prediction", "Knowledge", "Working Memory", "Steerability"]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "errors_catalog",
+  "system_name": "{{system_name}}",
+  "generated_at": "{{TEMPORAL_NOW}}",
+  "last_updated_at": "{{TEMPORAL_NOW}}",
+  "preloaded_count": 30,
+  "auto_extending": true,
+  "source_reference": "../../references/ai_error_catalog.md (generator-side master)",
+
+  "entries": [
+    {"id": "AIE-001", "pattern_name": "cite-not-found", "severity": "error", "category": "hallucination", "description": "Agent cites a paper / URL / doc / function that does not exist.", "prevention": "Every cited URL/paper/function verifiable; HIGH confidence requires citation; downgrade if unsure.", "auto_detection": "LLM verification re-prompt", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-002", "pattern_name": "hallucinated-function", "severity": "critical", "category": "hallucination", "description": "Calls a method / function that does not exist in the imported library version.", "prevention": "Read fetched docs in library_docs/<lib>/<version>/ before non-trivial library use.", "auto_detection": "Static analysis cross-check vs library_docs/<lib>/<version>/api_index.json", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-003", "pattern_name": "phantom-import", "severity": "error", "category": "hallucination", "description": "Imports a module/package that does not exist or is not in dependencies.", "prevention": "Verify module path in fetched docs before import.", "auto_detection": "Import-resolver pre-test step; regex check vs pyproject.toml / package.json", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-004", "pattern_name": "wrong-version-api", "severity": "error", "category": "hallucination", "description": "Uses API surface from old/new version incompatible with the pinned version.", "prevention": "Version pinned in library_docs/MANIFEST.md; agent reads version-specific docs.", "auto_detection": "Linter rule per pinned major version", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-005", "pattern_name": "stale-knowledge-cutoff", "severity": "warn", "category": "hallucination", "description": "Uses pre-cutoff knowledge for post-cutoff topic without verification.", "prevention": "Inject <temporal_context>; trigger live doc fetch on 'current'/'latest' references.", "auto_detection": "Heuristic for 'current'/'latest'/'recent' without temporal_context anchor", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+
+    {"id": "AIE-006", "pattern_name": "race-condition-async", "severity": "critical", "category": "concurrency", "description": "Concurrent async ops without proper lock/sync.", "prevention": "Explicit ownership rule per shared resource; documented in ARCHITECTURE.md.", "auto_detection": "LLM review enumerating shared mutable state and locks", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-007", "pattern_name": "awaiting-non-awaitable", "severity": "error", "category": "concurrency", "description": "await on a sync function.", "prevention": "Type-checker (mypy / pyright).", "auto_detection": "Static type analysis", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+
+    {"id": "AIE-008", "pattern_name": "env-vars-hardcoded", "severity": "critical", "category": "security", "description": "Secrets / API keys hardcoded in source.", "prevention": "All secrets via env vars + .env.example (no values); .env in .gitignore.", "auto_detection": "Regex (?i)(api[_-]?key|token|secret|password)\\s*=\\s*[\"'][a-zA-Z0-9_-]{20,}[\"']", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-009", "pattern_name": "secrets-in-logs", "severity": "critical", "category": "security", "description": "Sensitive values emitted to logs.", "prevention": "Structured logger with redaction filter; deny-list of header names.", "auto_detection": "Static analysis on logger.* calls", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-010", "pattern_name": "prompt-injection-vulnerable", "severity": "critical", "category": "security", "description": "User input concatenated into prompt without isolation.", "prevention": "Wrap user input in <input> after instructions; never f-string into instructions.", "auto_detection": "Regex f-string with user_(input|message|query|prompt) outside isolation tags", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-011", "pattern_name": "pii-leakage-to-llm", "severity": "critical", "category": "security", "description": "PII sent to external LLM API without redaction (EU AI Act Art. 10).", "prevention": "PII detector pre-LLM call; DPA in place; data minimisation.", "auto_detection": "PII regex on outbound payloads (names, IDs, emails, NHS numbers)", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+
+    {"id": "AIE-012", "pattern_name": "off-by-one-pagination", "severity": "error", "category": "logic", "description": "Wrong index/limit math in pagination.", "prevention": "Unit test edge cases (page=0, page=last, partial page).", "auto_detection": "Test coverage on pagination boundaries", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-013", "pattern_name": "untested-default", "severity": "warn", "category": "logic", "description": "Default value never exercised in any test.", "prevention": "Parametrised tests forcing default + non-default paths.", "auto_detection": "Branch coverage <100% on default-arg branches", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-014", "pattern_name": "silent-exception-swallow", "severity": "error", "category": "logic", "description": "try/except: pass with no logging.", "prevention": "Every except block logger.exception or re-raise.", "auto_detection": "AST scan: except followed by only pass/empty", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-015", "pattern_name": "mutable-default-arg", "severity": "error", "category": "logic", "description": "Python def f(x=[]) — default reused across calls.", "prevention": "Linter rule B006 (flake8-bugbear).", "auto_detection": "Linter", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-016", "pattern_name": "n-plus-1-query", "severity": "error", "category": "logic", "description": "DB query inside a loop instead of bulk.", "prevention": "Use IN(...)/JOIN/eager-load.", "auto_detection": "ORM-specific lint advisor", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-017", "pattern_name": "timezone-naive-datetime", "severity": "error", "category": "logic", "description": "datetime.now() without timezone.", "prevention": "datetime.now(tz=UTC); lint forbids bare now().", "auto_detection": "AST scan datetime.now() without tz=", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-018", "pattern_name": "string-format-injection", "severity": "critical", "category": "security", "description": "f-string/%/.format() with user data into SQL/HTML/shell.", "prevention": "Parametrised queries / templating with auto-escape / shlex.quote.", "auto_detection": "AST scan: string interpolation feeding execute/render/system", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+
+    {"id": "AIE-019", "pattern_name": "missing-rate-limit", "severity": "error", "category": "reliability", "description": "External API called without backoff/rate limit.", "prevention": "Decorator with token-bucket; tenacity retries with exponential backoff.", "auto_detection": "Review of all requests/httpx/openai/anthropic calls", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-020", "pattern_name": "tokenizer-mismatch", "severity": "warn", "category": "reliability", "description": "Counts characters instead of tokens for budget.", "prevention": "Model-specific tokenizer + budget check.", "auto_detection": "Regex len(prompt) near a budget literal", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-021", "pattern_name": "non-deterministic-test", "severity": "error", "category": "reliability", "description": "Test relies on random/clock/order.", "prevention": "Seed fixtures, freeze clock (freezegun), sort before comparison.", "auto_detection": "Repeat-test runner (5x, flag dissents)", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-022", "pattern_name": "dead-code-residue", "severity": "warn", "category": "reliability", "description": "Old branches/functions left after refactor.", "prevention": "Unused-symbol linter (vulture); CI fails on dead code.", "auto_detection": "Static analysis", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-023", "pattern_name": "circular-import", "severity": "error", "category": "reliability", "description": "Module A imports B, B imports A.", "prevention": "Layer architecture; local imports for true cycles.", "auto_detection": "pylint / import-linter", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-024", "pattern_name": "schema-drift-undocumented", "severity": "error", "category": "reliability", "description": "DB schema changed without migration record.", "prevention": "Every schema change via migration tool; pre-deploy migration check in CI.", "auto_detection": "Diff db.metadata vs latest migration", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+
+    {"id": "AIE-025", "pattern_name": "uncalibrated-claim", "severity": "error", "category": "prompt_engineering", "description": "Output asserts without confidence (no %, no range, no uncertainty band) — P2 violation.", "prevention": "calibrated_probabilities.md §1 forbidden tokens + required formats.", "auto_detection": "Regex (best|always|never|guaranteed|certain|definitely|impossible) + missing-% scan", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-026", "pattern_name": "input-as-instructions", "severity": "critical", "category": "prompt_engineering", "description": "LLM treats <input> content as commands rather than data — injection vector.", "prevention": "Wrap user input in <input> AFTER instructions (defensive recency); explicit data-only rule in <injection_defense>.", "auto_detection": "Adversarial test cases in templates/test_cases/adversarial.json", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-027", "pattern_name": "thinking-mode-double-billed", "severity": "warn", "category": "prompt_engineering", "description": "<thinking> XML tag + extended-thinking API both enabled.", "prevention": "prompt-architect rubric item thinking_exclusivity (Workflow §4 audit).", "auto_detection": "Rubric scan in audit/self_audit.md", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-028", "pattern_name": "complex-without-floor", "severity": "error", "category": "prompt_engineering", "description": "Complex-tier prompt missing one of the 13 mandatory-floor tags.", "prevention": "prompt-architect rubric item mandatory_floor mandatory for Complex.", "auto_detection": "AST scan of emitted prompt vs floor list", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-029", "pattern_name": "invented-tag", "severity": "error", "category": "prompt_engineering", "description": "Prompt uses an XML tag not in prompt_architect/prompt_editor_skill.json.", "prevention": "prompt-architect rubric item tags_exist.", "auto_detection": "Intersect emitted tags vs taxonomy", "preloaded": true, "occurrences": 0, "first_seen_session": null},
+    {"id": "AIE-030", "pattern_name": "temporal-context-hardcoded", "severity": "warn", "category": "prompt_engineering", "description": "Date hardcoded in template rather than {{TEMPORAL_NOW}} placeholder.", "prevention": "Template render replaces {{TEMPORAL_NOW}} from now(); lint forbids ISO date literals in templates/", "auto_detection": "Regex \\b\\d{4}-\\d{2}-\\d{2}\\b in templates/", "preloaded": true, "occurrences": 0, "first_seen_session": null}
+  ],
+
+  "auto_extension_protocol": {
+    "trigger": "session catches an error pattern not matching any existing AIE-NNN entry",
+    "step_1_draft": "session error-handler emits draft entry to tracking/sessions/<id>/errors.jsonl",
+    "step_2_classify": "at session checkpoint, agent classifies severity + writes draft ErrorCatalogEntry",
+    "step_3_append": "agent appends to tracking/errors_catalog.json#entries with preloaded=false + first_seen_session=<id>",
+    "step_4_confirm": "user confirms at Gate #2; on approval, persists",
+    "step_5_inherit": "next session reads the augmented catalog automatically"
+  },
+
+  "categories": [
+    {"name": "hallucination", "ids_range": "AIE-001..005"},
+    {"name": "concurrency", "ids_range": "AIE-006..007"},
+    {"name": "security", "ids_range": "AIE-008..011, AIE-018"},
+    {"name": "logic", "ids_range": "AIE-012..017"},
+    {"name": "reliability", "ids_range": "AIE-019..024"},
+    {"name": "prompt_engineering", "ids_range": "AIE-025..030"}
+  ]
+}

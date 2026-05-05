@@ -1,0 +1,230 @@
+{
+  "claude-code-101": [
+    {
+      "url": "https://anthropic.skilljar.com/claude-code-101/469788",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 217,
+      "ytIds": [
+        "youtube.com/embed/fl1DSmwQKKY"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/fl1DSmwQKKY"
+      ],
+      "contentSnippet": "\n            \n                    <p><iframe title=\"YouTube video player\" src=\"https://www.youtube.com/embed/fl1DSmwQKKY\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>\n            \n        "
+    },
+    {
+      "url": "https://anthropic.skilljar.com/claude-code-101/469789",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 217,
+      "ytIds": [
+        "youtube.com/embed/6bs5b4FltCU"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/6bs5b4FltCU"
+      ],
+      "contentSnippet": "\n            \n                    <p><iframe title=\"YouTube video player\" src=\"https://www.youtube.com/embed/6bs5b4FltCU\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>\n            \n        "
+    }
+  ],
+  "claude-101": [
+    {
+      "url": "https://anthropic.skilljar.com/claude-101/383389",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 7909,
+      "ytIds": [
+        "youtube.com/embed/VHsp6Hp7Stw"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/VHsp6Hp7Stw"
+      ],
+      "contentSnippet": "\n            \n                    <p><strong>Estimated time:</strong> 15 minutes</p>\n<h3>Learning objectives</h3>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li>Explain what Claude is and the principles that guide its design</li>\n<li>Describe Claude's core capabilities and how it differs from a simple chatbot</li>\n<li>Identify the different ways to access Claude (web, desktop, and mobile)</li>\n</ul>\n<hr>\n<h3>What is Claude?</h3>\n<p><em>(10 minutes)</em></p>\n<p><strong>Turning Claud"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/claude-101/383390",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 8582,
+      "ytIds": [
+        "youtube.com/embed/0vZ_UVLhSQQ"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/0vZ_UVLhSQQ"
+      ],
+      "contentSnippet": "\n            \n                    <p><strong>Estimated time:</strong> 20 minutes</p>\n<h3>Learning objectives</h3>\n<p>By the end of this lesson, you will be able to:</p>\n<ul>\n<li>Start a new conversation with Claude and navigate the interface</li>\n<li>Write effective prompts using clear, specific language</li>\n<li>Upload files and images to provide Claude with additional context</li>\n<li>Use follow-up messages to iterate and refine Claude's responses</li>\n</ul>\n<hr>\n<h3>Video: Getting started wit"
+    }
+  ],
+  "introduction-to-claude-cowork": [
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444164",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 7354,
+      "ytIds": [
+        "youtube.com/embed/UAmKyyZ-b9E"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/UAmKyyZ-b9E"
+      ],
+      "contentSnippet": "\n            \n                    <style>\n/* Slide figure — visual overview separation from prose */\nfigure.slide {\n  background: #f7f6f1;\n  padding: 20px;\n  border-radius: 10px;\n  margin: 24px 0;\n}\nfigure.slide figcaption {\n  font-size: 11px;\n  color: #9c9a92;\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  font-weight: 500;\n  margin-bottom: 10px;\n}\nfigure.slide img {\n  max-width: 100%;\n  height: auto;\n  display: block;\n  border-radius: 6px;\n  box-shadow: 0 2px 12px rgba(0,0,0,0.08);\n "
+    },
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-claude-cowork/444165",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 5657,
+      "ytIds": [],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [],
+      "contentSnippet": "\n            \n                    <style>\n/* Slide figure — visual overview separation from prose */\nfigure.slide {\n  background: #f7f6f1;\n  padding: 20px;\n  border-radius: 10px;\n  margin: 24px 0;\n}\nfigure.slide figcaption {\n  font-size: 11px;\n  color: #9c9a92;\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  font-weight: 500;\n  margin-bottom: 10px;\n}\nfigure.slide img {\n  max-width: 100%;\n  height: auto;\n  display: block;\n  border-radius: 6px;\n  box-shadow: 0 2px 12px rgba(0,0,0,0.08);\n "
+    }
+  ],
+  "introduction-to-agent-skills": [
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434525",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 6906,
+      "ytIds": [
+        "youtube.com/embed/bjdBVZa66oU"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/bjdBVZa66oU"
+      ],
+      "contentSnippet": "\n            \n                    <p><strong>What you'll learn</strong></p>\n<p><em>Estimated time: 15 minutes</em></p>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li><em>Define what Claude Code skills are and how they work</em></li>\n<li><em>Explain where skills live (personal vs. project directories)</em></li>\n<li><em>Distinguish between skills, CLAUDE.md, and slash commands</em></li>\n<li><em>Identify scenarios where skills are the right customization tool</em></li>\n</ul>\n<h2>What "
+    },
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-agent-skills/434527",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 7124,
+      "ytIds": [
+        "youtube.com/embed/Wx6_vjFFyHM"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/Wx6_vjFFyHM"
+      ],
+      "contentSnippet": "\n            \n                    <p><strong>What you'll learn</strong></p>\n<p><em>Estimated time: 20 minutes</em></p>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li><em>Create a skill from scratch with proper frontmatter structure</em></li>\n<li><em>Test and verify that a skill loads correctly in Claude Code</em></li>\n<li><em>Explain how Claude Code matches incoming requests to available skills</em></li>\n<li><em>Describe the skill priority hierarchy (Enterprise, Personal, Project, "
+    }
+  ],
+  "introduction-to-subagents": [
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents/450698",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 3619,
+      "ytIds": [
+        "youtube.com/embed/jKErNxuxPXg"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/jKErNxuxPXg"
+      ],
+      "contentSnippet": "\n            \n                    <p><iframe style=\"width: 100%; aspect-ratio: 16/9;\" src=\"https://www.youtube.com/embed/jKErNxuxPXg\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>\n<article>\n<p>Subagents are specialized assistants that Claude Code can delegate tasks to. Think of them as focused helpers: each one runs in its own conversation context window, does its work, and returns a summary to the main thread. The intermediate steps -- all the file reads, searches, and tool calls -- stay iso"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/introduction-to-subagents/450699",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 6491,
+      "ytIds": [
+        "youtube.com/embed/arD6qEWa2Xc"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/arD6qEWa2Xc"
+      ],
+      "contentSnippet": "\n            \n                    <iframe style=\"width: 100%; aspect-ratio: 16/9;\" src=\"https://www.youtube.com/embed/arD6qEWa2Xc\" frameborder=\"0\" allowfullscreen=\"\"></iframe>\n<article>\n<p>Claude Code comes with built-in subagents, but you can also create your own. Custom subagents specialize in specific tasks -- like reviewing code, writing tests, or checking documentation. They are defined as markdown files with YAML frontmatter that tell Claude when to use the subagent and how the subagent sh"
+    }
+  ],
+  "ai-fluency-framework-foundations": [
+    {
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291863",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 5164,
+      "ytIds": [
+        "youtube.com/embed/JpGtOfSgR-c"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/JpGtOfSgR-c?si=A4TNmOg0e6cVFQtM"
+      ],
+      "contentSnippet": "\n            \n                    <p><em>Estimated time for this module: 10-15 minutes</em></p>\n<p>By the end of this lesson, you will be able to:</p>\n<ul>\n<li>Understand the purpose and structure of the course</li>\n<li>Recognize the importance of AI Fluency in today's world</li>\n<li>Identify key components of your learning journey ahead</li>\n<li>Set clear expectations for what you'll gain from this course</li>\n</ul>\n<h2 id=\"video-introduction-to-ai-fluency\" class=\"Body_reading-column__t7kGM dis"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-fluency-framework-foundations/291870",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 2096,
+      "ytIds": [
+        "youtube.com/embed/4szRHy_CT7s"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/4szRHy_CT7s?si=uPBP3EzbdQ0QetFi"
+      ],
+      "contentSnippet": "\n            \n                    <h2 id=\"what-youll-learn\" class=\"Body_reading-column__t7kGM display-sans-m post-heading\"><span style=\"font-size: 17pt;\">What you&rsquo;ll learn</span></h2>\n<p>By the end of this lesson, you'll be able to:</p>\n<ul>\n<li>Understand what AI Fluency means and why it matters in today's rapidly evolving technological landscape</li>\n<li>Recognize three emerging ways we collaborate with AI: Automation, Augmentation, and Agency</li>\n</ul>\n<h2>Why do we need AI Fluency?</h"
+    }
+  ],
+  "ai-capabilities-and-limitations": [
+    {
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456128",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 7900,
+      "ytIds": [],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [],
+      "contentSnippet": "\n            \n                    <p><strong>What you'll learn</strong></p>\n<p><em>Estimated time: 15 minutes</em></p>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li>Understand what this course covers and how it's structured</li>\n<li>Explain why this material is durable even as models and products keep changing</li>\n<li>See how the Capabilities &amp; Limitations framework and the 4D Framework work together</li>\n</ul>\n<h2>A mental model of the machine</h2>\n<style>\n.crm *{box-sizing:"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/ai-capabilities-and-limitations/456427",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 10865,
+      "ytIds": [],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [],
+      "contentSnippet": "\n            \n                    <p><strong>What you'll learn</strong></p>\n<p><em>Estimated time: 20 minutes</em></p>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li>Distinguish generative AI from the classification and prediction AI you already encounter daily</li>\n<li>Understand that generative AI's properties exist on a continuum from capability to limitation</li>\n<li>Preview the four core properties you'll explore in depth: Next Token Prediction, knowledge, working memory, and "
+    }
+  ],
+  "teaching-ai-fluency": [
+    {
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327277",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 9884,
+      "ytIds": [
+        "youtube.com/embed/tbNz5IaoNl8"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/tbNz5IaoNl8?si=A-SMgMoCzleV-Diu"
+      ],
+      "contentSnippet": "\n            \n                    <h2 id=\"what-youll-learn\" class=\"Body_reading-column__t7kGM display-sans-m post-heading\"><span style=\"font-size: 17pt;\">What you'll learn</span></h2>\n<p><em>Estimated time: 60 minutes</em></p>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li style=\"font-weight: 400;\" aria-level=\"1\"><span style=\"font-weight: 400;\">Select and adapt teaching approaches for teaching the AI Fluency Framework to your students</span></li>\n<li style=\"font-weight: 400;\" aria-"
+    },
+    {
+      "url": "https://anthropic.skilljar.com/teaching-ai-fluency/327278",
+      "classes": "lesson-modular lesson-complete focus-link-v2 display-block-v2",
+      "contentLen": 7562,
+      "ytIds": [
+        "youtube.com/embed/Z6UB6BEXJTs"
+      ],
+      "vimeoIds": [],
+      "wistiaIds": [],
+      "iframes": [
+        "https://www.youtube.com/embed/Z6UB6BEXJTs?si=0R4uiDPFrHr29gq5"
+      ],
+      "contentSnippet": "\n            \n                    <h2 id=\"what-youll-learn\" class=\"Body_reading-column__t7kGM display-sans-m post-heading\"><span style=\"font-size: 17pt;\">What you'll learn</span></h2>\n<p><em>Estimated time: 40 minutes</em></p>\n<p>By the end of this lesson you'll be able to:</p>\n<ul>\n<li style=\"font-weight: 400;\" aria-level=\"1\"><span style=\"font-weight: 400;\">Help students leverage the Delegation-Diligence loop for responsible design and decision making</span></li>\n</ul>\n<h2>The Delegation-Dilige"
+    }
+  ]
+}

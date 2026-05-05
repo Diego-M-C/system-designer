@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "scope": "{{scope}}",
+  "scope_id": "{{scope_id}}",
+  "captured_at": "{{TEMPORAL_NOW}}",
+
+  "duration_estimated_min": {"min": {{duration_min}}, "max": {{duration_max}}, "confidence_pct": {{duration_confidence}}},
+  "duration_actual_min": null,
+
+  "errors_count": 0,
+  "errors_by_severity": {
+    "info": 0,
+    "warn": 0,
+    "error": 0,
+    "critical": 0
+  },
+
+  "hitl_decisions_count": 0,
+  "hitl_decisions_log": [],
+
+  "tests_created_count": 0,
+  "coverage_added_pct": null,
+  "files_modified_count": 0,
+
+  "tokens_consumed_estimate": {"min": null, "max": null, "confidence_pct": 80},
+
+  "rollbacks_count": 0,
+
+  "tech_debt_added": {
+    "tag": null,
+    "estimate_0_10": null,
+    "items": []
+  },
+
+  "eu_ai_act_audit_score_pct": null,
+
+  "agent_self_confidence_pct": {
+    "mean": null,
+    "min": null,
+    "max": null,
+    "samples_n": 0
+  },
+
+  "calibration_violations_count": 0,
+  "portability_violations_count": 0,
+
+  "scripts_with_io_perf_test": [],
+
+  "notes": "All numeric values use ranges or %; absolute values forbidden by P2."
+}

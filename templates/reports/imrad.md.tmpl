@@ -1,0 +1,199 @@
+# {{system_name}} — IMRaD Report
+
+> Publication-grade scientific report. Universal fallback standard (used when domain doesn't trigger TRIPOD-AI / CONSORT-AI / STARD-AI / SPIRIT-AI).
+>
+> **Cadence:** cumulative section appended each session checkpoint; mid-project draft refreshed at each milestone; final publication-ready at decommission.
+
+---
+
+## Title page
+
+- **Title:** {{report_title}}
+- **Authors:** {{authors_with_affiliations}}
+  - AI collaborator: LLM `{{model_orchestrator}}` (declared explicitly)
+- **Date (ISO):** {{TEMPORAL_NOW}}
+- **Version:** {{report_version}}
+- **Repository / DOI:** {{repo_or_doi}}
+
+## Abstract (≤300 words)
+
+**Background.** {{abstract_background}}
+
+**Objective.** {{abstract_objective}}
+
+**Methods.** {{abstract_methods}}
+
+**Results.** {{abstract_results}}
+
+**Conclusion.** {{abstract_conclusion}}
+
+*All numerics in this abstract carry a CI or range (P2).*
+
+## 1 · Introduction
+
+### 1.1 · Background
+
+{{introduction_background}}
+
+### 1.2 · Gap addressed
+
+{{gap_addressed}}
+
+### 1.3 · Objectives (numbered)
+
+{{objectives_numbered}}
+
+### 1.4 · Hypotheses (with prior probability if applicable)
+
+{{hypotheses}}
+
+## 2 · Methods
+
+### 2.1 · Study design / system architecture
+
+{{study_design}} — full architecture in `ARCHITECTURE.md`.
+
+### 2.2 · Data sources (EU AI Act Art. 10 traceability)
+
+{{data_sources}}
+
+### 2.3 · Pre-processing
+
+{{preprocessing}}
+
+### 2.4 · Modelling / decision logic
+
+{{modelling}}
+
+### 2.5 · Evaluation protocol
+
+- Metrics: {{metrics}}
+- Baselines: {{baselines}}
+- Statistical tests: {{statistical_tests}}
+- Sample size justification: {{sample_size_justification}}
+
+### 2.6 · HITL integration points
+
+{{hitl_integration}}
+
+### 2.7 · Compute / environment
+
+- Models: {{models_used}}
+- Library versions: see `library_docs/MANIFEST.md` (frozen at commit `{{commit_hash}}`)
+- Compute: {{compute_spec}}
+- Wall-clock: {{wall_clock}}
+
+### 2.8 · Reproducibility statement
+
+- **Source code:** {{repo_url_or_local}} @ commit `{{commit_hash}}`
+- **Data:** {{data_doi_or_url_or_dpa_ref}}
+- **Environment:** see `library_docs/MANIFEST.md`
+- **Random seeds:** {{seeds}}
+- **Configs:** see `SPEC.json#configs`
+- **How to reproduce:** see `README.md#quickstart`
+
+### 2.9 · Ethics / data governance / consent
+
+{{ethics_section}}
+
+## 3 · Results
+
+### 3.1 · Descriptive statistics
+
+{{descriptive_stats_with_CIs}}
+
+### 3.2 · Primary outcomes
+
+{{primary_outcomes_with_effect_size_and_CI}}
+
+### 3.3 · Secondary outcomes
+
+{{secondary_outcomes}}
+
+### 3.4 · Sensitivity / ablation analyses
+
+{{sensitivity_ablation}}
+
+### 3.5 · Errors caught (link to `tracking/errors_catalog.json`)
+
+{{errors_summary_for_paper}}
+
+### 3.6 · Calibration plots (model confidence vs observed)
+
+{{calibration_plots}}
+
+### 3.7 · Audit results summary (link to `audit/audit_sheet.xlsx` snapshot)
+
+{{audit_summary_snapshot}}
+
+### 3.8 · Figures + tables
+
+{{figures_and_tables}}
+
+## 4 · Discussion
+
+### 4.1 · Principal findings
+
+{{principal_findings}}
+
+### 4.2 · Comparison to prior work
+
+{{prior_work_comparison}}
+
+### 4.3 · Strengths
+
+{{strengths}}
+
+### 4.4 · Limitations (≥3, each with severity + mitigation)
+
+{{limitations_at_least_3}}
+
+### 4.5 · Generalisability
+
+{{generalisability_with_caveats}}
+
+### 4.6 · Decision-quality reflection
+
+- HITL gates total: {{hitl_total}}
+- User-override rate (user picked non-recommended option): {{override_rate_pct}}%
+- Confidence calibration of orchestrator (post-hoc): {{calibration_post_hoc}}
+
+## 5 · Conclusions
+
+{{conclusions_calibrated}}
+
+## Recommendations for deployer
+
+{{deployer_recommendations}}
+
+## Future work (≤5 bullets)
+
+{{future_work}}
+
+## References
+
+{{references_verified_no_aie001}}
+
+## Supplementary materials
+
+- Full audit sheet PDF: `audit/audit_sheet.pdf` (export of `.xlsx`)
+- Decisions log: `tracking/decisions.md`
+- Errors catalog: `tracking/errors_catalog.json`
+- Sessions log (summary): from `tracking/sessions/*`
+- Self-audit reports: `audit/self_audit*.md`
+
+## Acknowledgements
+
+{{acknowledgements}}
+
+## Funding
+
+{{funding}}
+
+## Conflicts of interest
+
+{{coi}}
+
+---
+
+*Quality gate before publication: calibration scan ✓, citation verification ✓, IMRaD-compliance ✓, EU AI Act audit consistency ✓, reproducibility ✓, HITL final review ✓ (signed by {{signoff_human}} at {{signoff_date}}).*

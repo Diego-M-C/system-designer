@@ -1,0 +1,21 @@
+{
+  "course_num": 13,
+  "slug": "ai-fluency-for-nonprofits",
+  "title": "AI Fluency for Nonprofits",
+  "url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+  "subtitle": "This course empowers nonprofit professionals to develop AI fluency in order to increase organizational impact and efficiency while staying true to their mission and values.",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:06:00Z",
+  "source_url": "https://anthropic.skilljar.com/ai-fluency-for-nonprofits",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 9, "hours_of_video": 0.9, "quizzes": 1, "certificate": true},
+  "sections": [
+    {"section_num": 1, "name": "Introduction", "lessonCount": "2 lessons", "description": "Define AI Fluency and learn the four interconnected competencies—Delegation, Description, Discernment, and Diligence—that form the foundation of this course."},
+    {"section_num": 2, "name": "Description-Discernment", "lessonCount": "2 lessons", "description": "Practice crafting context-rich prompts and critically evaluating AI outputs through research and writing examples."},
+    {"section_num": 3, "name": "Delegation-Diligence", "lessonCount": "2 lessons", "description": "Make thoughtful decisions about what tasks to delegate to AI while taking responsibility for high-stakes considerations like data privacy and analytical accuracy."},
+    {"section_num": 4, "name": "Putting it all together", "lessonCount": "3 lessons", "description": "Apply all four dimensions of the 4D Framework to automate workflows and integrate AI thoughtfully into your organization."}
+  ],
+  "total_sections": 4,
+  "individual_lessons_requires_login": true
+}

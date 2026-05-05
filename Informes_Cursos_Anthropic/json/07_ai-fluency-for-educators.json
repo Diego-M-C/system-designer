@@ -1,0 +1,98 @@
+{
+  "id": "07",
+  "slug": "ai-fluency-for-educators",
+  "title": "AI Fluency for educators",
+  "url": "https://anthropic.skilljar.com/ai-fluency-for-educators",
+  "category": "fluency-framework",
+  "difficulty": "beginner-intermediate",
+  "domain": "AI Fluency",
+  "tags": [
+    "education",
+    "4d-framework",
+    "teaching"
+  ],
+  "stats": {
+    "total_lessons": 5,
+    "sections": 3,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 4,
+    "modular_text_lessons": 5,
+    "quiz_assessments": 0,
+    "jw_chars": 0,
+    "youtube_chars": 31284,
+    "modular_chars": 18950,
+    "total_content_chars": 50234
+  },
+  "sections": [
+    {
+      "title": "Introduction and AI Fluency Framework",
+      "lesson_count": 2
+    },
+    {
+      "title": "AI Fluency applications for educators",
+      "lesson_count": 2
+    },
+    {
+      "title": "Conclusion & certificate",
+      "lesson_count": 1
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "Introduction and AI Fluency Framework",
+      "title": "Introduction to AI Fluency for Educators",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-educators/326777",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "Introduction and AI Fluency Framework",
+      "title": "AI Fluency Framework review",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-educators/326779",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "AI Fluency applications for educators",
+      "title": "Applying AI Fluency to course design and learning outcomes",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-educators/326781",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "AI Fluency applications for educators",
+      "title": "Applying AI Fluency to learning materials and assignments",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-educators/326782",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": true,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Conclusion & certificate",
+      "title": "Certificate of completion",
+      "url": "https://anthropic.skilljar.com/ai-fluency-for-educators/326786",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": true,
+      "has_quiz": false
+    }
+  ],
+  "extracted_at": "2026-04-11T11:26:56.221Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 4,
+    "quiz_extractions_added": 0
+  }
+}

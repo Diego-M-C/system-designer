@@ -1,0 +1,26 @@
+{
+  "course_num": 15,
+  "slug": "introduction-to-subagents",
+  "title": "Introduction to Subagents",
+  "url": "https://anthropic.skilljar.com/introduction-to-subagents",
+  "description": "Learn how to use and create sub-agents in Claude Code to manage context, delegate tasks, and build specialized workflows that keep your main conversation clean and focused.",
+  "template": "sj",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:08:00Z",
+  "source_url": "https://anthropic.skilljar.com/introduction-to-subagents",
+  "auth_required_for_lessons": true,
+  "chapters": [
+    {
+      "chapter_num": 1,
+      "chapter": "(Overview)",
+      "lessons": [
+        {"num": 1, "title": "What are subagents?", "type": "text"},
+        {"num": 2, "title": "Creating a subagent", "type": "text"},
+        {"num": 3, "title": "Designing effective subagents", "type": "text"},
+        {"num": 4, "title": "Using subagents effectively", "type": "text"}
+      ]
+    }
+  ],
+  "total_chapters": 1,
+  "total_lessons": 4
+}

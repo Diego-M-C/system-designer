@@ -1,0 +1,42 @@
+MIT License
+
+Copyright (c) 2026 AGENC_IA / Sistem_designer / Diego M.C.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Note on third-party material bundled with this repository:
+
+- `EU_AI_Act_guides/OJ_L_202401689_EN_TXT.pdf` and other regulatory PDFs are
+  reproductions of EU official publications (Regulation 2024/1689). EU
+  legislative texts are publicly available; the PDFs retain their original
+  distribution terms (see https://eur-lex.europa.eu/).
+- `Checklists y ejemplos/*.xlsx` and `Ejemplo de hoja de AUDITORIA_HUMANA.xlsx`
+  are derived from AESIA implementation guidance and are included as reference
+  material; consult the original sources for authoritative content.
+- `Informes_Cursos_Anthropic/` material derives from publicly distributed
+  Anthropic course material; refer to Anthropic's documentation for the
+  authoritative source.
+- `prompt_architect/` is a co-located dependency skill; treat it as read-only
+  inside this repository. Upstream lives under its own version line.
+
+This MIT license applies to the original generator code, prompts, references,
+templates, wizard, dashboard, tests, and documentation authored within this
+repository.

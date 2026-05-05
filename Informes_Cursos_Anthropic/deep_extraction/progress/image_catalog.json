@@ -1,0 +1,490 @@
+{
+  "audit_version": "3.0",
+  "generated_at": "2026-04-10",
+  "total_images": 69,
+  "images": [
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568560%2FpictoInference.1774568559957.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 2,
+      "lesson_title": "What We Mean by AI"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568560%2FpictoGlobe.1774568560630.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 2,
+      "lesson_title": "What We Mean by AI"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568561%2FpictoChip.1774568561218.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 2,
+      "lesson_title": "What We Mean by AI"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568561%2FpictoKnobs.1774568561703.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 2,
+      "lesson_title": "What We Mean by AI"
+    },
+    {
+      "url": "pictoInference",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 4,
+      "lesson_title": "Next Token Prediction"
+    },
+    {
+      "url": "ed975e22-1033-4415-b205-6194868cd5a8",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 4,
+      "lesson_title": "Next Token Prediction"
+    },
+    {
+      "url": "pictoInference",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 6,
+      "lesson_title": "Knowledge"
+    },
+    {
+      "url": "ed975e22-1033-4415-b205-6194868cd5a8",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 6,
+      "lesson_title": "Knowledge"
+    },
+    {
+      "url": "pictoInference",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 8,
+      "lesson_title": "Working Memory"
+    },
+    {
+      "url": "ed975e22-1033-4415-b205-6194868cd5a8",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 8,
+      "lesson_title": "Working Memory"
+    },
+    {
+      "url": "pictoInference",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 10,
+      "lesson_title": "Steerability"
+    },
+    {
+      "url": "ed975e22-1033-4415-b205-6194868cd5a8",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 10,
+      "lesson_title": "Steerability"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568560%2FpictoInference.1774568559957.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 12,
+      "lesson_title": "When Properties Collide"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568560%2FpictoGlobe.1774568560630.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 12,
+      "lesson_title": "When Properties Collide"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568561%2FpictoChip.1774568561218.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 12,
+      "lesson_title": "When Properties Collide"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568561%2FpictoKnobs.1774568561703.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 12,
+      "lesson_title": "When Properties Collide"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568560%2FpictoInference.1774568559957.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 13,
+      "lesson_title": "Next Steps"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568560%2FpictoGlobe.1774568560630.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 13,
+      "lesson_title": "Next Steps"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568561%2FpictoChip.1774568561218.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 13,
+      "lesson_title": "Next Steps"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6rh0oaxpxl8bv3641a1ejj76o%2Fpublic%2F1774568561%2FpictoKnobs.1774568561703.png",
+      "alt": "",
+      "course": "ai-capabilities-and-limitations",
+      "lesson_index": 13,
+      "lesson_title": "Next Steps"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/69a8c30634a6c3e545269791_69a8a456caa28723041a6eea_699e1b746d83c9fb55a56d31_698be3352261cf694fdae308_698bdd295c5f5d680c01e63c_Screenshot%25252525202026-02-09%2525252520at%25252525204.38.22%25252525E2%2525252580%25252525AFPM.png",
+      "alt": "__wf_reserved_inherit",
+      "course": "claude-101",
+      "lesson_index": 4,
+      "lesson_title": "Claude desktop app: Chat, Cowork, Code"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/69a8c30634a6c3e54526979c_69a8a456caa28723041a6ee7_699e2c4828218e71872531df_699e289b7bffb76b5ebedc79_Screenshot%252525202026-02-24%25252520at%252525202.39.06%252525E2%25252580%252525AFPM.png",
+      "alt": "__wf_reserved_inherit",
+      "course": "claude-101",
+      "lesson_index": 4,
+      "lesson_title": "Claude desktop app: Chat, Cowork, Code"
+    },
+    {
+      "url": "https://cdn.prod.website-files.com/68a44d4040f98a4adf2207b6/69a8c30634a6c3e545269794_69a8a455caa28723041a6ee1_699e1b736d83c9fb55a56d2a_698be3342261cf694fdae301_698bdd78a6031117e6bb41d6_Screenshot%25252525202026-02-09%2525252520at%252525252012.52.07%25252525E2%2525252580%25252525AFPM.png",
+      "alt": "__wf_reserved_inherit",
+      "course": "claude-101",
+      "lesson_index": 4,
+      "lesson_title": "Claude desktop app: Chat, Cowork, Code"
+    },
+    {
+      "url": "https://downloads.intercomcdn.com/i/o/lupk8zyo/1789944703/e9af099affd9b52e18cf9decd373/8ecc03cc-e50b-43b0-8694-c500638cb781?expires=1765910700&amp;signature=09ecdf26fa5bf37cc61b9b9d921a5dc240d882f68a5cb008c2b306d67be06f3f&amp;req=dScvH8B6mYZfWvMW1HO4zYwjyHsgM4gXNv1GpC923dkWEbTC23XmsD7tF%2FZ%2B%0AoqVGyu8SDXplXHIQX7g%3D%0A",
+      "alt": "",
+      "course": "claude-101",
+      "lesson_index": 7,
+      "lesson_title": "Working with skills"
+    },
+    {
+      "url": "https://downloads.intercomcdn.com/i/o/lupk8zyo/1789944703/e9af099affd9b52e18cf9decd373/8ecc03cc-e50b-43b0-8694-c500638cb781?expires=1765910700&signature=09ecdf26fa5bf37cc61b9b9d921a5dc240d882f68a5cb008c2b306d67be06f3f&req=dScvH8B6mYZfWvMW1HO4zYwjyHsgM4gXNv1GpC923dkWEbTC23XmsD7tF%2FZ%2B%0AoqVGyu8SDXplXHIQX7g%3D%0A",
+      "alt": "",
+      "course": "claude-101",
+      "lesson_index": 7,
+      "lesson_title": "Working with skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1752683124%2FScreenshot+2025-07-16+at+10.25.07%E2%80%AFAM.1752683124012.png",
+      "alt": "",
+      "course": "claude-code-in-action",
+      "lesson_index": 16,
+      "lesson_title": "Gotchas around hooks"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1751930983%2F1.1751930983608.png",
+      "alt": "",
+      "course": "claude-with-google-vertex",
+      "lesson_index": 4,
+      "lesson_title": "Vertex AI Setup"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1751931014%2F2.1751931013945.png",
+      "alt": "",
+      "course": "claude-with-google-vertex",
+      "lesson_index": 4,
+      "lesson_title": "Vertex AI Setup"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1751931033%2F3.1751931033360.png",
+      "alt": "",
+      "course": "claude-with-google-vertex",
+      "lesson_index": 4,
+      "lesson_title": "Vertex AI Setup"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1749846091%2FScreenshot+2025-06-13+at+2.20.45%E2%80%AFPM.1749846091092.png",
+      "alt": "",
+      "course": "claude-with-the-anthropic-api",
+      "lesson_index": 4,
+      "lesson_title": "Getting an API key"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1749846107%2FScreenshot+2025-06-13+at+2.21.16%E2%80%AFPM.1749846106943.png",
+      "alt": "",
+      "course": "claude-with-the-anthropic-api",
+      "lesson_index": 4,
+      "lesson_title": "Getting an API key"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1749846149%2FScreenshot+2025-06-13+at+2.22.10%E2%80%AFPM.1749846149203.png",
+      "alt": "",
+      "course": "claude-with-the-anthropic-api",
+      "lesson_index": 4,
+      "lesson_title": "Getting an API key"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1749846167%2FScreenshot+2025-06-13+at+2.22.14%E2%80%AFPM.1749846166954.png",
+      "alt": "",
+      "course": "claude-with-the-anthropic-api",
+      "lesson_index": 4,
+      "lesson_title": "Getting an API key"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527257%2FSkills1_05.1771527257795.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 1,
+      "lesson_title": "What are skills?"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527259%2FSkills1_17.1771527259668.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 1,
+      "lesson_title": "What are skills?"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527260%2FSkills2_04.1771527260186.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 2,
+      "lesson_title": "Creating your first skill"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527260%2FSkills2_05.1771527260555.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 2,
+      "lesson_title": "Creating your first skill"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527261%2FSkills2_17.1771527261842.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 2,
+      "lesson_title": "Creating your first skill"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527264%2FSkills3_17.1771527264166.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 3,
+      "lesson_title": "Configuration and multi-file skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527265%2FSkills3_13.1771527265100.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 3,
+      "lesson_title": "Configuration and multi-file skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527266%2FSkills4_06.1771527266559.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 4,
+      "lesson_title": "Skills vs. other Claude Code features"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527270%2FSkills5_07.1771527270067.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 5,
+      "lesson_title": "Sharing skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527270%2FSkills5_08.1771527270381.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 5,
+      "lesson_title": "Sharing skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527270%2FSkills5_13.1771527270779.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 5,
+      "lesson_title": "Sharing skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2Fa46l9irobhg0f5webscixp0bs%2Fpublic%2F1771527274%2FSkills6_12.1771527274623.png",
+      "alt": "",
+      "course": "introduction-to-agent-skills",
+      "lesson_index": 6,
+      "lesson_title": "Troubleshooting skills"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281046%2Fslide-02-what-is-cowork.1773281046198.png",
+      "alt": "What is Cowork: Plan, Execute, Connect",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 1,
+      "lesson_title": "What is Cowork?"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773939331%2Fslide-03-capabilities.1773939330948.png",
+      "alt": "Cowork capabilities: six core capability tiles",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 1,
+      "lesson_title": "What is Cowork?"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281047%2Fslide-04-requirements.1773281047684.png",
+      "alt": "Cowork requirements: Desktop app, paid subscription, internet, keep app open",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281048%2Fslide-05-accessing-cowork.1773281048236.png",
+      "alt": "Accessing Cowork: Open Desktop, switch to Cowork, describe your task",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 2,
+      "lesson_title": "Getting set up"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281048%2Fslide-06-your-first-task.1773281048833.png",
+      "alt": "Your first task: the four-step loop",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 3,
+      "lesson_title": "The task loop"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281049%2Fslide-07-under-the-hood.1773281049301.png",
+      "alt": "Under the hood: how Cowork runs your tasks",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 3,
+      "lesson_title": "The task loop"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281049%2Fslide-08-during-a-task.1773281049667.png",
+      "alt": "During a task: what to expect",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 3,
+      "lesson_title": "The task loop"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1774046473%2Fslide-09-projects.1774046473208.png",
+      "alt": "Projects: context that carries across sessions",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 4,
+      "lesson_title": "Giving Cowork context"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773939289%2Fslide-10-plugins.1773939289619.png",
+      "alt": "Plugins: turn Cowork into a specialist for your role",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1774046474%2Fslide-11-installing-plugins.1774046473979.png",
+      "alt": "Installing plugins: browse, install, customize",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 5,
+      "lesson_title": "Plugins: Cowork as a specialist"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773940406%2Fslide-12-scheduled-tasks.1773940405986.png",
+      "alt": "Scheduled tasks: how they work and what they need",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 6,
+      "lesson_title": "Scheduled tasks"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773313486%2Fslide-13-file-document-tasks.1773313486756.png",
+      "alt": "File and document use cases: starting prompts",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 7,
+      "lesson_title": "File & document tasks"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281053%2Fslide-14-research-analysis.1773281053348.png",
+      "alt": "Research and analysis use cases",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 8,
+      "lesson_title": "Research & analysis at scale"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281054%2Fslide-16-permissions-safety.1773281054304.png",
+      "alt": "Permissions and safety: the boundaries Cowork works within",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 9,
+      "lesson_title": "Permissions, usage, & choosing your model"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281054%2Fslide-17-usage-limits-tips.1773281054721.png",
+      "alt": "Usage limits: making the most of your allocation",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 9,
+      "lesson_title": "Permissions, usage, & choosing your model"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281055%2Fslide-18-troubleshooting.1773281055077.png",
+      "alt": "Troubleshooting: common questions",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F6oz04skclb1pbkcboeiosbn5o%2Fpublic%2F1773281055%2Fslide-19-now-its-your-turn.1773281055567.png",
+      "alt": "Now it's your turn: install a plugin, run a real task",
+      "course": "introduction-to-claude-cowork",
+      "lesson_index": 10,
+      "lesson_title": "Troubleshooting & next steps"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773974844%2Fsubagentsvideo2version3_04.1773974843174.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 2,
+      "lesson_title": "Creating a subagent"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773974881%2Fsubagentsvideo2version3_06.1773974881320.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 2,
+      "lesson_title": "Creating a subagent"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773974921%2Fsubagentsvideo2version3_07.1773974921584.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 2,
+      "lesson_title": "Creating a subagent"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773974991%2Fsubagentsvideo2version3_14.1773974991791.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 2,
+      "lesson_title": "Creating a subagent"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773975083%2Fvid3redone-v2_02.1773975083694.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 3,
+      "lesson_title": "Designing effective subagents"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773975124%2Fvid3redone-v2_03.1773975124367.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 3,
+      "lesson_title": "Designing effective subagents"
+    },
+    {
+      "url": "https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773975160%2Fvid3redone-v2_11.1773975160096.png",
+      "alt": "",
+      "course": "introduction-to-subagents",
+      "lesson_index": 3,
+      "lesson_title": "Designing effective subagents"
+    }
+  ]
+}

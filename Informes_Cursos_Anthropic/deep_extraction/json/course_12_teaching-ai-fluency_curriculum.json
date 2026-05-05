@@ -1,0 +1,20 @@
+{
+  "course_num": 12,
+  "slug": "teaching-ai-fluency",
+  "title": "Teaching AI Fluency",
+  "url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+  "subtitle": "This course empowers academic faculty, instructional designers, and others to teach and assess AI Fluency in instructor-led settings.",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:05:30Z",
+  "source_url": "https://anthropic.skilljar.com/teaching-ai-fluency",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 7, "hours_of_video": 0.6, "quizzes": 1, "certificate": true},
+  "sections": [
+    {"section_num": 1, "name": "Teaching approaches", "lessonCount": "3 lessons", "description": "Scaffolding student AI Fluency through the 4D Framework."},
+    {"section_num": 2, "name": "Assessment & Assignment", "lessonCount": "2 lessons", "description": "Designing assessments and assignments that develop and measure student AI Fluency alongside disciplinary expertise."},
+    {"section_num": 3, "name": "AI's impact and your discipline", "lessonCount": "2 lessons", "description": "Building institutional capacity for responsible and meaningful AI integration in pedagogy, assessment, and curricula across disciplines."}
+  ],
+  "total_sections": 3,
+  "individual_lessons_requires_login": true
+}

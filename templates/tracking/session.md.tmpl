@@ -1,0 +1,70 @@
+# Session {{session_id}} — {{deliverable}}
+
+> Human-readable narrative of session `{{session_id}}`. Mirror of `session.json`. Auto-updated on every action.
+
+**Started:** {{started_at}}
+**Status:** {{status}}
+**Objective:** {{objective}}
+
+---
+
+## Plan (PLAN phase)
+
+{{plan_narrative}}
+
+## Execution log (EXECUTE phase)
+
+{{execution_log_narrative}}
+
+## Tests created (TEST phase)
+
+{{tests_narrative}}
+
+## Documentation updated (DOCUMENT phase)
+
+- `tracking/decisions.md` — {{decisions_added}} entry/entries added
+- `docs/architecture/` — {{architecture_changes}}
+- `docs/reports/cumulative.md` — section appended for this session
+
+## Audit rows appended (AUDIT_ROW_APPEND phase)
+
+{{audit_rows_summary}}
+
+## Checkpoint (CHECKPOINT_HITL phase)
+
+{{checkpoint_summary}}
+
+## KPIs at close
+
+- Duration estimated: {{duration_estimated_min}} (range)
+- Duration actual: {{duration_actual_min}} min
+- Errors caught: {{errors_count}} (breakdown: {{errors_by_severity}})
+- HITL decisions: {{hitl_decisions_count}}
+- Tests created: {{tests_created_count}}
+- Coverage added: {{coverage_added_pct}}%
+- Files modified: {{files_modified_count}}
+- Tokens consumed estimate: {{tokens_consumed_estimate}}
+- Rollbacks: {{rollbacks_count}}
+- Tech debt added: {{tech_debt_added_summary}}
+- EU AI Act audit score: {{eu_ai_act_audit_score_pct}}%
+- Agent self-confidence (mean): ≈{{agent_self_confidence_pct}}%
+- Calibration violations: {{calibration_violations_count}}
+- Portability violations: {{portability_violations_count}}
+
+## Reflections (≤200 words)
+
+{{reflections_narrative}}
+
+## Lessons learned (added to errors_catalog?)
+
+{{lessons_learned_narrative}}
+
+## Pointers
+
+- Session JSON: [`session.json`](session.json)
+- Errors log: [`errors.jsonl`](errors.jsonl)
+- Observations log: [`observations.jsonl`](observations.jsonl)
+- Scratch: [`scratch.md`](scratch.md)
+- Phase log: [`phase.log`](phase.log)
+- Checkpoint decision: [`checkpoint_decision.md`](checkpoint_decision.md)
+- I/O perf: [`inputs_outputs_perf.json`](inputs_outputs_perf.json)

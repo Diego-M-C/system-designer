@@ -1,0 +1,186 @@
+{
+  "id": "17",
+  "slug": "claude-code-101",
+  "title": "Claude Code 101",
+  "url": "https://anthropic.skilljar.com/claude-code-101",
+  "category": "developer-tools",
+  "difficulty": "beginner-intermediate",
+  "domain": "Developer Tools",
+  "tags": [
+    "claude-code",
+    "agentic-loop",
+    "explore-plan-code-commit"
+  ],
+  "stats": {
+    "total_lessons": 13,
+    "sections": 5,
+    "jw_transcripts": 0,
+    "youtube_transcripts": 10,
+    "modular_text_lessons": 0,
+    "quiz_assessments": 1,
+    "jw_chars": 0,
+    "youtube_chars": 26483,
+    "modular_chars": 0,
+    "total_content_chars": 26483
+  },
+  "sections": [
+    {
+      "title": "What is Claude Code?",
+      "lesson_count": 2
+    },
+    {
+      "title": "Your first prompt",
+      "lesson_count": 2
+    },
+    {
+      "title": "Daily workflows",
+      "lesson_count": 3
+    },
+    {
+      "title": "Customizing Claude Code",
+      "lesson_count": 5
+    },
+    {
+      "title": "Quiz",
+      "lesson_count": 1
+    }
+  ],
+  "lessons_index": [
+    {
+      "index": 1,
+      "section": "What is Claude Code?",
+      "title": "What is Claude Code?",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469788",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 2,
+      "section": "What is Claude Code?",
+      "title": "How Claude Code works",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469789",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 3,
+      "section": "Your first prompt",
+      "title": "Installing Claude Code",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469790",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 4,
+      "section": "Your first prompt",
+      "title": "Your first prompt",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469791",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 5,
+      "section": "Daily workflows",
+      "title": "The explore → plan → code → commit workflow",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469792",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 6,
+      "section": "Daily workflows",
+      "title": "Context management",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469793",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 7,
+      "section": "Daily workflows",
+      "title": "Code review",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469794",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 8,
+      "section": "Customizing Claude Code",
+      "title": "The CLAUDE.md file",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469795",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 9,
+      "section": "Customizing Claude Code",
+      "title": "Subagents",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469796",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 10,
+      "section": "Customizing Claude Code",
+      "title": "Skills",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469848",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 11,
+      "section": "Customizing Claude Code",
+      "title": "MCP",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469797",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 12,
+      "section": "Customizing Claude Code",
+      "title": "Hooks",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469798",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": true,
+      "has_modular_text": false,
+      "has_quiz": false
+    },
+    {
+      "index": 13,
+      "section": "Quiz",
+      "title": "Course quiz",
+      "url": "https://anthropic.skilljar.com/claude-code-101/469849",
+      "has_jw_transcript": false,
+      "has_youtube_transcript": false,
+      "has_modular_text": false,
+      "has_quiz": true
+    }
+  ],
+  "extracted_at": "2026-04-11T11:22:32.743Z",
+  "version": "v3",
+  "v3_updates": {
+    "youtube_transcripts_added": 10,
+    "quiz_extractions_added": 1
+  }
+}

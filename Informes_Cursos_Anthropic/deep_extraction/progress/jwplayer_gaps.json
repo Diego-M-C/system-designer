@@ -1,0 +1,23 @@
+[
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 33,
+    "title": "Handling tool use responses",
+    "media_id": "SmAEl9b8",
+    "duration": 705
+  },
+  {
+    "course": "claude-in-amazon-bedrock",
+    "lesson_idx": 43,
+    "title": "Introducing Retrieval Augmented Generation",
+    "media_id": "h63mMcLg",
+    "duration": 351
+  },
+  {
+    "course": "claude-with-google-vertex",
+    "lesson_idx": 30,
+    "title": "Exercise on prompting",
+    "media_id": "hlYSjyD6",
+    "duration": 322
+  }
+]

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "session_id": "0001_bootstrap",
+  "captured_at": "{{TEMPORAL_NOW}}",
+  "scope": "scaffolding (generator phase 10 self_audit)",
+
+  "coverage": {
+    "mandatory_artifacts_emitted": {{coverage_emitted}},
+    "mandatory_artifacts_required": {{coverage_required}},
+    "coverage_pct": {{coverage_pct}},
+    "target_pct": 100,
+    "verdict": "{{coverage_verdict}}"
+  },
+
+  "prompt_architect_audit": {
+    "prompts_audited": {{prompts_audited_count}},
+    "first_pass_pass_count": {{first_pass_pass_count}},
+    "first_pass_pass_rate_pct": {{first_pass_rate_pct}},
+    "target_pct": 85,
+    "iterations_total": {{iterations_total}},
+    "escalations_to_user": {{escalations_count}},
+    "verdict": "{{rubric_verdict}}"
+  },
+
+  "calibration": {
+    "violations_count": {{calibration_violations_count}},
+    "target_max": 0,
+    "intentional_violations_documented": {{calibration_intentional_count}},
+    "verdict": "{{calibration_verdict}}"
+  },
+
+  "portability": {
+    "score_0_100": {{portability_score}},
+    "target_min": 95,
+    "claude_code_specific_deps_in_runtime": {{cc_specific_deps_runtime}},
+    "platform_only_apis_in_runtime": {{platform_only_apis_runtime}},
+    "fallbacks_invoked_count": {{fallbacks_invoked_count}},
+    "verdict": "{{portability_verdict}}"
+  },
+
+  "eu_ai_act_mapping": {
+    "risk_class": "{{eu_ai_act_risk}}",
+    "rows_emitted": {{ai_act_rows_emitted}},
+    "rows_required": {{ai_act_rows_required}},
+    "completeness_pct": {{ai_act_completeness_pct}},
+    "target_pct": {{ai_act_target_pct}},
+    "verdict": "{{ai_act_verdict}}"
+  },
+
+  "performance": {
+    "time_to_handoff_minutes": {{time_to_handoff_min}},
+    "tokens_consumed_estimate": {"min": {{tokens_min}}, "max": {{tokens_max}}, "confidence_pct": 80},
+    "phases_completed": {{phases_completed}},
+    "phases_skipped": {{phases_skipped}}
+  },
+
+  "errors": {
+    "total_caught": {{errors_total}},
+    "by_severity": {"info": {{err_info}}, "warn": {{err_warn}}, "error": {{err_error}}, "critical": {{err_critical}}},
+    "added_to_catalog_this_session": {{errors_added_to_catalog}},
+    "auto_extension_active": true
+  },
+
+  "hitl_gates": {
+    "gate_1_user_response": "{{gate_1_response}}",
+    "gate_1_response_at": "{{gate_1_response_at}}",
+    "gate_1_user_alternative": "{{gate_1_alt}}",
+    "gate_2_user_response": "{{gate_2_response}}",
+    "gate_2_response_at": "{{gate_2_response_at}}",
+    "gate_2_user_changes_requested": "{{gate_2_changes}}"
+  },
+
+  "aggregate_verdict": "{{aggregate_verdict}}",
+
+  "recommendations_for_v_next": {{recommendations_json_array}}
+}

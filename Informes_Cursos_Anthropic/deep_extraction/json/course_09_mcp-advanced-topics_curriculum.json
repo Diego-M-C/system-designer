@@ -1,0 +1,35 @@
+{
+  "course_num": 9,
+  "slug": "model-context-protocol-advanced-topics",
+  "title": "Model Context Protocol: Advanced Topics",
+  "url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+  "subtitle": "Deep dive into MCP's advanced features including sampling, notifications, and transport implementations",
+  "template": "clp",
+  "extraction_method": "dom_text",
+  "extraction_timestamp": "2026-04-10T14:03:00Z",
+  "source_url": "https://anthropic.skilljar.com/model-context-protocol-advanced-topics",
+  "auth_required_for_lessons": true,
+  "stats": {"lectures": 15, "hours_of_video": 1.1, "quizzes": 2, "certificate": true},
+  "about": "This course covers the technical implementation of MCP servers and clients, from basic message passing to production deployment strategies. You'll learn how MCP enables language models like Claude to interact with external tools and data sources through standardized protocols, transports, and message formats.",
+  "learning_objectives": [
+    "Implement MCP servers with tool functions, logging, and progress notifications",
+    "Handle bidirectional communication between MCP clients and servers",
+    "Configure file system access using the roots permission model",
+    "Work with both stdio and HTTP transports for local and remote deployments",
+    "Implement sampling callbacks to enable server-initiated LLM requests",
+    "Debug message flows using JSON-RPC message types",
+    "Deploy scalable MCP servers using stateless HTTP configurations",
+    "Troubleshoot common issues when transitioning from development to production"
+  ],
+  "prerequisites": [
+    "Basic understanding of MCP servers and clients",
+    "Familiarity with async programming patterns"
+  ],
+  "audience": "Engineers building production MCP servers who need to understand the protocol's advanced capabilities",
+  "sections": [
+    {"section_num": 1, "name": "Core MCP features", "lessonCount": "8 lessons", "description": "Learn the advanced features that make MCP servers more powerful. Covers sampling to offload AI costs to clients, implementing progress notifications for better UX, and using roots to safely handle file access."},
+    {"section_num": 2, "name": "Transports and communication", "lessonCount": "7 lessons", "description": "Understand how MCP messages flow between clients and servers. Explores the JSON message protocol, STDIO transport for local development, and the complexities of StreamableHTTP including when to sacrifice features for scalability."}
+  ],
+  "total_sections": 2,
+  "individual_lessons_requires_login": true
+}
