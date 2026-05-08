@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-defaults",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "Sensible defaults for interview questions when the user types 'default' or 'skip'. Used by 01_interview_agent.md. Defaults reflect calibrated recommendations for a generic high-stakes SDD project; the interview agent surfaces them with fit % and asks for confirmation.",
 
   "eu_ai_act_risk": {

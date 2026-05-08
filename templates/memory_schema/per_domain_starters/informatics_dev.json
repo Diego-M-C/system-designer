@@ -8,7 +8,12 @@
     {
       "name": "test_outcomes",
       "format": "jsonl",
+      "format_alternatives": [
+        { "format": "sqlite", "fit_pct": 80, "rationale": "FTS5 enables cross-session error_message dedupe and indexed test_id queries; recommend upgrading once volume passes ~5k entries" },
+        { "format": "parquet","fit_pct": 25, "rationale": "columnar archive for very large test suites; loses interactive query — only worthwhile in CI-archive scenarios" }
+      ],
       "path": "memory/test_outcomes.jsonl",
+      "tier_b_fallback": "not applicable (jsonl is Tier-A)",
       "trigger": "every test execution",
       "append_only": true,
       "fields": [

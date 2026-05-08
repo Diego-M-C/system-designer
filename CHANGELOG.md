@@ -2,6 +2,51 @@
 
 All notable changes to `system-designer`. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] — 2026-05-08
+
+### Changed
+
+- **Memory format taxonomy expanded from 3 to 8.** The architect now picks the **best memory format per module** based on workload signals (volume × query pattern × relationship density × audit-rule needs). The 8 formats are:
+
+  | format | tier | typical workload |
+  |---|---|---|
+  | `structured_md`  | A | narrative-plus-fields, git-diffable, ≤500 entries |
+  | `csv`            | A | tabular, spreadsheet-friendly, ≤10k rows |
+  | `json`           | A | small index-style; rewrite-each-update; ≤1k entries |
+  | `jsonl`          | A | append-only event log; >1k entries |
+  | `sqlite`         | A | indexed queries · FTS5 similarity · transactions · joins |
+  | `parquet`        | B | columnar analytics · large datasets (>100k rows) |
+  | `vector_db`      | B | semantic similarity search over embeddings |
+  | `graph_db`       | B | high relationship-density · multi-hop traversal |
+
+- `prompts/15_memory_schema_architect.md` — added `<selection_criteria>` block with calibrated workload→format rules; HITL surfaces format + 2 alternatives per module with fit% (per Anthropic alternative-presentation pattern).
+- `references/memory_schema_protocol.md` — replaced "3 choices" with "8 choices · always pick the best per module"; added per-format portability tier (A/B); soft deps and fallback chains; format-selection matrix; audit-rule × format compatibility matrix; explicit anti-patterns refused at HITL.
+- Per-domain starters upgraded with `format_alternatives[]`:
+  - `legal/precedent_chains` — `jsonl` → **`graph_db`** (multi-hop traversal canonical case; sqlite recursive-CTE fallback for ≤2-hop).
+  - `fintech/transaction_pattern_audits` — `jsonl` → **`sqlite`** (FTS5 enables `pattern_signature` recurrence search).
+  - `healthcare_clinical/patient_cohort_signatures` — `jsonl` → **`sqlite`** (joins with `model_calibration_per_subgroup`).
+  - `informatics_dev/test_outcomes` — keeps `jsonl` (already optimal); adds `sqlite` (fit 80%) and `parquet` (fit 25%) as alternatives.
+  - `research/experiment_runs` — keeps `jsonl`; adds `parquet` (fit 75%) and `sqlite` (fit 60%) as alternatives.
+- `system_generator.json` — added soft deps `parquet_writer`, `vector_db_capability`, `graph_db_capability`, each with documented Tier-B fallback to a Tier-A format.
+- `tests/run_all.sh` — added T21 (8 formats catalogued in protocol) and T22 (`<selection_criteria>` block declared in prompt 15). Suite at 18 PASS / 0 FAIL.
+- `SKILL.md` — version bumped to 0.3.1; format-taxonomy expansion documented.
+- `wizard/{interview_questions,defaults}.json` — version bumped to 0.3.1.
+
+### Why this matters
+
+A blanket-format choice fails real workloads silently:
+
+- Without FTS5, `pattern_signature` recurrence in fintech becomes O(N) regex.
+- Without graph traversal, legal precedent chains become string lookups.
+- Without columnar analytics, large research hyperparameter sweeps require full-file rewrites.
+
+The 8-format catalogue + the calibrated selection matrix + the HITL alternatives surface make the right choice the default — and document the trade-off when a Tier-B format is unavailable.
+
+### Backward compatibility
+
+- Existing v0.3.0 manifests still parse; `format_alternatives[]` is optional in the schema (architect surfaces them at HITL but persists only the chosen format).
+- All Tier-B formats have documented fallback to a Tier-A format, so no project becomes unrunnable when a soft dep is absent.
+
 ## [0.3.0] — 2026-05-08
 
 ### Added
@@ -133,6 +178,7 @@ All notable changes to `system-designer`. Format: [Keep a Changelog](https://kee
 - Static HTML dashboard for the generator's own state.
 - Repo README, LICENSE (MIT), CHANGELOG.
 
+[0.3.1]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.1
 [0.3.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.0
 [0.2.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.2.0
 [0.1.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.1.0

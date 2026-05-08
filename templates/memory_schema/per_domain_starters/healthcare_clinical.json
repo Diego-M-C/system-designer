@@ -7,8 +7,13 @@
   "modules": [
     {
       "name": "patient_cohort_signatures",
-      "format": "jsonl",
-      "path": "memory/patient_cohort_signatures.jsonl",
+      "format": "sqlite",
+      "format_alternatives": [
+        { "format": "jsonl",   "fit_pct": 50, "rationale": "append-only; loses joins with model_calibration_per_subgroup and trial_arm_assignments" },
+        { "format": "parquet", "fit_pct": 35, "rationale": "columnar analytics for very large cohort archives; loses interactive joins" }
+      ],
+      "path": "memory/patient_cohort_signatures.db",
+      "tier_b_fallback": "not applicable (sqlite is Tier-A)",
       "trigger": "every cohort sampling or stratification operation",
       "append_only": true,
       "fields": [

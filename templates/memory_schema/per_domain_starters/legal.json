@@ -57,26 +57,32 @@
     },
     {
       "name": "precedent_chains",
-      "format": "jsonl",
-      "path": "memory/precedent_chains.jsonl",
+      "format": "graph_db",
+      "format_alternatives": [
+        { "format": "sqlite",  "fit_pct": 70, "rationale": "recursive CTE handles ≤2-hop traversal cleanly; no extra deps" },
+        { "format": "jsonl",   "fit_pct": 35, "rationale": "adjacency-list with source_id/target_id/edge_type; multi-hop becomes O(N) per query" }
+      ],
+      "path": "memory/precedent_chains/",
+      "tier_b_fallback": "jsonl adjacency-list at memory/precedent_chains.jsonl with explicit source_id/target_id/edge_type/confidence_pct",
       "trigger": "every advisory recommendation derived from precedent",
       "append_only": true,
       "fields": [
-        { "name": "advisory_id",   "type": "string",         "flag": "mandatory","rationale": "FK to artifact",        "confidence_pct": 92 },
-        { "name": "precedents",    "type": "array<string>",  "flag": "mandatory","rationale": "ordered chain",          "confidence_pct": 92 },
+        { "name": "node_id",       "type": "string",         "flag": "mandatory","rationale": "graph node id (advisory or precedent)", "confidence_pct": 92 },
+        { "name": "node_type",     "type": "enum {advisory,precedent}","flag":"mandatory","rationale": "typed graph",                  "confidence_pct": 95 },
+        { "name": "edges_to",      "type": "array<{target_id, edge_type, weight, confidence_pct}>","flag": "mandatory","rationale": "outgoing edges with calibrated confidence per edge","confidence_pct": 88 },
         { "name": "reasoning",     "type": "string",         "flag": "mandatory","rationale": "≤500 chars",            "confidence_pct": 88 },
-        { "name": "confidence_pct","type": "int 0-100",      "flag": "mandatory","rationale": "P2",                     "confidence_pct": 92 },
         { "name": "session_id",    "type": "string",         "flag": "mandatory","rationale": "lineage",                "confidence_pct": 95 },
         { "name": "ts",            "type": "ISO8601",        "flag": "mandatory","rationale": "ordering",               "confidence_pct": 95 }
       ],
       "audit": {
-        "completeness_rule": "every entry has precedents.length>=1 AND reasoning AND confidence_pct",
+        "completeness_rule": "every node has edges_to.length>=1 (advisory) OR is reachable from ≥1 advisory (precedent); every edge has confidence_pct",
         "missing_threshold_pct": 5,
-        "particular_audit": "advisory artifacts cite ≥1 precedent",
-        "global_audit": "low-confidence chains (<50%) surface for human review"
+        "particular_audit": "advisory artifacts traverse to ≥1 precedent within 3 hops",
+        "global_audit": "low-confidence edges (<50%) surface for human review; orphan precedents (in-degree 0) flagged after 3 sessions",
+        "requires_format_capability": "multi-hop traversal (graph_db native; sqlite via recursive CTE; jsonl as last-resort adjacency-list with O(N) traversal cost)"
       },
       "added_by": "starter",
-      "confidence_pct": 82
+      "confidence_pct": 85
     },
     {
       "name": "jurisdiction_mapping",

@@ -158,15 +158,102 @@ The user's example "test nº 1 prueba 1 éxito? si no error X sugerencia de solu
 - `recommended` — should be present; absence is a warning, not blocker.
 - `optional` — nice-to-have; absence is silent.
 
-**Format options:**
-- `json`    — single JSON object file (use for small index-style modules; rewrite each update).
-- `jsonl`   — append-only JSON-lines (use for high-volume event-style modules; one event per line).
-- `structured_md` — Markdown with frontmatter + table sections (use for human-readable narrative-plus-fields modules; render via `templates/memory/structured_module.md.tmpl`).
+**Format options (8 choices) with portability tier and primary fallback:**
 
-**Audit completeness rule grammar:** human-readable English describing the invariant; the meta-validator's `memory_completeness_auditor` parses pragmatically (regex + LLM check).
+| format | tier | when to choose | soft deps | fallback when dep absent |
+|---|---|---|---|---|
+| `structured_md`  | A | narrative-plus-fields, git-diffable, ≤500 entries | none | — |
+| `csv`            | A | tabular, spreadsheet-friendly, ≤10k flat rows | none | — |
+| `json`           | A | small index-style; rewrite-each-update; ≤1k entries | none | — |
+| `jsonl`          | A | append-only event log; >1k entries; flat schema | none | — |
+| `sqlite`         | A | indexed queries · FTS5 similarity · transactions · joins · multi-table | `sqlite3` (Python stdlib + universal CLI) | — (always available) |
+| `parquet`        | B | columnar analytics · large datasets (>100k rows) · batch reads | `pyarrow` or `fastparquet` | `jsonl` + monthly summary `csv` |
+| `vector_db`      | B | semantic similarity search over embeddings · RAG-style memory | `sqlite-vss` ext OR `faiss-cpu` sidecar | `jsonl` + offline embeddings sidecar; document degradation |
+| `graph_db`       | B | high relationship-density · multi-hop traversal (e.g., precedent chains, dependency graphs) | `kuzu` OR `networkx` (pickled adjacency) | `jsonl` adjacency-list with explicit `source_id`/`target_id`/`edge_type` fields |
+
+**The architect's job is to pick the best format per module.** A blanket "everything is jsonl" is a red flag; so is "everything is sqlite". The selection rules in `<selection_criteria>` are deterministic-first, calibrated-second.
+
+**Format selection matrix (workload signals → recommended format):**
+
+```
+expected_volume_lifetime  query_pattern         relationship_density   recommended_format    alt_1                  alt_2
+< 100                     index lookup          flat                   json                  structured_md (≤500)   csv
+≤ 500                     human review          flat                   structured_md         json                   csv
+> 1k append-only          scan + filter         flat                   jsonl                 sqlite (if joins)      csv
+> 1k                      indexed + similarity  flat or relational     sqlite (FTS5)         jsonl + offline FTS    parquet (analytics)
+> 100k                    columnar / OLAP       flat                   parquet               jsonl + summary csv    sqlite
+any                       semantic similarity   flat                   vector_db             sqlite + offline emb   jsonl + emb sidecar
+any                       multi-hop traversal   high                   graph_db              sqlite (recursive CTE) jsonl adjacency-list
+any                       narrative+fields      flat                   structured_md         sqlite + md sidecar    csv
+```
+
+The architect proposes the **recommended** format and surfaces the two alternatives with calibrated fit% at HITL. The user can override with rationale logged in `negotiation_session_<id>.md`.
+
+**Why we may go above json/jsonl/md:** structured queries, similarity search, joins, graph traversal, and columnar analytics are real workloads. Forcing them into flat-file formats produces silent failure (no FTS5 → recurrence detection mis-fires; no graph traversal → precedent chains become string lookups). The protocol picks the right tool per module.
+
+**Audit-rule compatibility per format (which audit rules each format supports natively vs. via fallback):**
+
+```
+audit rule                              json  jsonl  csv   md    sqlite  parquet  vector_db  graph_db
+field-level mandatory check              ✓     ✓     ✓     ✓     ✓       ✓        ✓          ✓
+counting / threshold (missing %)         ~     ✓     ✓     ~     ✓       ✓        ✓          ✓
+similarity / dedupe (FTS5-style)         ✗     ✗     ✗     ✗     ✓       ✗        ✓          ✗
+multi-table join                         ✗     ✗     ✗     ✗     ✓       ~        ✗          ~
+graph traversal (multi-hop)              ✗     ✗     ✗     ✗     ~ CTE   ✗        ✗          ✓
+columnar analytics (large)               ✗     ~     ~     ✗     ✓       ✓        ✗          ✗
+
+✓ = native     ~ = via fallback / workaround     ✗ = not supported (re-pick format)
+```
+
+If an audit rule cannot run natively in the proposed format, the architect must (a) propose a different format, (b) document the fallback degradation in the manifest, or (c) ask the user to relax the rule. Silently mismatched rules are a P3 violation.
+
+**Audit completeness rule grammar:** human-readable English describing the invariant; the meta-validator's `memory_completeness_auditor` parses pragmatically (regex + LLM check), then dispatches to the format-appropriate audit primitive (regex / SQL / vector-search / graph-traversal).
 
 **Missing-threshold rule:** `missing_threshold_pct` is the maximum allowed share of entries that violate `completeness_rule` before a BLOCKER fires. Default: 5%. High-risk domains: 1%.
 </knowledge_base>
+
+<selection_criteria>
+Per-module format selection algorithm (deterministic first, calibrated second, user-overridable always):
+
+```
+input: module_purpose, expected_volume, query_patterns, relationship_density, audit_rules
+
+# Step 1 — deterministic constraints
+if audit_rule needs FTS5 similarity / dedupe                 → format = sqlite        (or vector_db if semantic)
+elif audit_rule needs multi-hop graph traversal              → format = graph_db      (or sqlite recursive CTE if 2-hop max)
+elif audit_rule needs columnar analytics over >100k rows     → format = parquet
+elif audit_rule needs joins across ≥2 modules                → format = sqlite
+
+# Step 2 — volume + query pattern (when no hard constraint)
+elif expected_volume < 100 AND query=index_lookup            → format = json
+elif expected_volume ≤ 500 AND human_review_primary          → format = structured_md
+elif expected_volume > 1000 AND append_only AND flat         → format = jsonl
+elif need_spreadsheet_export                                  → format = csv
+
+# Step 3 — relationship-density override
+elif relationship_density = high                             → format = graph_db (alt: sqlite)
+
+# Step 4 — semantic-similarity override
+elif query_pattern includes embedding_search                  → format = vector_db
+
+# Step 5 — fallback
+else                                                          → format = jsonl  (safest event log)
+
+# Step 6 — calibrate alternatives
+emit recommended + 2 alternatives with fit% (per Anthropic alternative-presentation)
+emit fallback chain when format ∈ Tier B
+emit format_alternatives[] in the per-module schema for manifest
+```
+
+Every module in the agreed manifest carries `format` (chosen) and `format_alternatives[]` (≤2 with fit% each, recommended_at_negotiation_time). Future re-negotiation may swap to an alternative if workload signals shift.
+
+**Anti-patterns the architect refuses:**
+- `vector_db` for <100 entries (overkill; stays as alternative for documentation).
+- `graph_db` when relationship_density is flat (use `sqlite` or `jsonl`).
+- `parquet` for human-review-primary modules (write-back friction kills git-diff visibility).
+- `json` (single-object) for >1k entries (rewrite cost dominates; flag at HITL).
+- All 6 starter modules picking the same format (red flag — surfaces in reflection).
+</selection_criteria>
 
 <temporal_context>
 `{{TEMPORAL_NOW}}` injected at composition time and into every persisted artifact's metadata (negotiated_at, manifest_renegotiated_at).
@@ -360,12 +447,14 @@ Two streams:
 Domain: <domain>  ·  EU AI Act risk: <risk>  ·  Stack: <stack>
 Starter chosen: <starter_id>  (agent confidence ≈<X>%)
 
-Proposed modules (<n>):
+Proposed modules (<n>) — each with **best-fit format** + 2 calibrated alternatives:
 
-| # | name                       | format       | trigger                        | mandatory fields | conf% |
-| - | -------------------------- | ------------ | ------------------------------ | ---------------- | ----- |
-| 1 | <module>                   | <json|jsonl> | <trigger>                      | <count>          | <X>   |
-| ...                                                                                                       |
+| # | name                  | format        | alt_1 (fit%)        | alt_2 (fit%)        | trigger        | mandatory fields | conf% |
+| - | --------------------- | ------------- | ------------------- | ------------------- | -------------- | ---------------- | ----- |
+| 1 | <module>              | <8-format>    | <alt> (≈X%)         | <alt> (≈Y%)         | <trigger>      | <count>          | <Z>   |
+| ...                                                                                                                                                |
+
+Format choices use the calibrated selection matrix in <selection_criteria>; rationale per choice surfaces on demand.
 
 Why these modules: <≤80 words>
 Why this is enough — and not too much: <≤80 words>
@@ -577,6 +666,7 @@ prompt_architect_version_required: ≥0.1.0
 - composed_via: prompt-architect
 - changelog:
   - "0.3.0 — initial Phase 4.5 memory-schema architect with 6 per-domain starters + HITL negotiation"
+  - "0.3.1 — expanded format taxonomy from 3 to 8 (md/csv/json/jsonl/sqlite/parquet/vector_db/graph_db); added <selection_criteria> calibrated rules; HITL surfaces format + 2 alternatives per module; audit-rule × format compatibility matrix added"
 </metadata>
 
 <dependencies>

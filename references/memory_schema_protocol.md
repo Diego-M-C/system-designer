@@ -38,13 +38,63 @@ The authoritative contract is `memory_schema/manifest.json`. A regenerated mirro
 | `recommended` | should be present; absence is a WARNING (not blocker) |
 | `optional` | nice-to-have; absence is silent |
 
-### Format options (3 choices)
+### Format options (8 choices · "always pick the best per module")
 
-| format | when to choose |
-|---|---|
-| `json` | small index-style modules (rewrite each update); examples: latest_milestones, current_open_questions |
-| `jsonl` | high-volume event-style modules (append-only, one event per line); examples: test_outcomes, decision_logs, adverse_events |
-| `structured_md` | narrative-plus-fields modules with frontmatter and table sections; examples: refactor_history, hypothesis_log |
+The architect ALWAYS proposes the format that best fits the module's workload — no blanket choice. Forcing every module into the same format produces silent failure: similarity search without FTS5; precedent traversal without graph; analytics without columnar.
+
+| format | tier | when to choose | soft deps | fallback when dep absent |
+|---|---|---|---|---|
+| `structured_md`  | A | narrative-plus-fields, git-diffable, ≤500 entries; e.g., `refactor_history`, `hypothesis_log` | none | — |
+| `csv`            | A | tabular, spreadsheet-friendly export, ≤10k flat rows | none | — |
+| `json`           | A | small index-style; rewrite-each-update; ≤1k entries; e.g., `milestone_checkpoints` | none | — |
+| `jsonl`          | A | append-only event log; >1k entries; flat schema; e.g., `test_outcomes`, `decision_logs`, `adverse_events` | none | — |
+| `sqlite`         | A | indexed queries · FTS5 similarity · transactions · joins · multi-table; e.g., `transaction_pattern_audits`, `precedent_chains` (≤2-hop) | `sqlite3` (Python stdlib + universal CLI) | — (always available) |
+| `parquet`        | B | columnar analytics · large datasets (>100k rows) · batch reads; e.g., per-feature drift archives, longitudinal calibration metrics | `pyarrow` or `fastparquet` | `jsonl` + monthly summary `csv` |
+| `vector_db`      | B | semantic similarity search over embeddings · RAG-style memory; e.g., document-similarity dedupe across sessions | `sqlite-vss` ext OR `faiss-cpu` sidecar | `jsonl` + offline embeddings sidecar (degradation documented) |
+| `graph_db`       | B | high relationship-density · multi-hop traversal; e.g., legal `precedent_chains` (>2-hop), supply-chain dependency graphs | `kuzu` OR `networkx` (pickled adjacency) | `jsonl` adjacency-list with explicit `source_id`/`target_id`/`edge_type` fields |
+
+**Tier semantics:**
+- **Tier A** — runs in any LLM with file-system access; `sqlite` qualifies because the Python stdlib + the `sqlite3` CLI are present on every major OS (already used by `feedback_learning/corrections.db`).
+- **Tier B** — recommended for the workload, but the runtime may not have the dep. The architect MUST declare the fallback in `manifest.json#modules[].fallback`. The fallback is then audited as a degraded mode.
+
+### Format selection matrix (workload signals → recommended format)
+
+```
+expected_volume_lifetime   query_pattern           relationship_density   recommended       alt_1                  alt_2
+< 100                      index lookup            flat                   json              structured_md (≤500)   csv
+≤ 500                      human review            flat                   structured_md     json                   csv
+> 1k append-only           scan + filter           flat                   jsonl             sqlite (joins)         csv
+> 1k                       indexed + similarity    flat or relational     sqlite (FTS5)     jsonl + offline FTS    parquet (analytics)
+> 100k                     columnar / OLAP         flat                   parquet           jsonl + summary csv    sqlite
+any                        semantic similarity     flat                   vector_db         sqlite + offline emb   jsonl + emb sidecar
+any                        multi-hop traversal     high                   graph_db          sqlite (recursive CTE) jsonl adjacency
+any                        narrative+fields        flat                   structured_md     sqlite + md sidecar    csv
+```
+
+### Audit-rule compatibility per format
+
+```
+audit rule                              json  jsonl  csv   md    sqlite  parquet  vector_db  graph_db
+field-level mandatory check              ✓     ✓     ✓     ✓     ✓       ✓        ✓          ✓
+counting / threshold (missing %)         ~     ✓     ✓     ~     ✓       ✓        ✓          ✓
+similarity / dedupe (FTS5-style)         ✗     ✗     ✗     ✗     ✓       ✗        ✓          ✗
+multi-table join                         ✗     ✗     ✗     ✗     ✓       ~        ✗          ~
+graph traversal (multi-hop)              ✗     ✗     ✗     ✗     ~ CTE   ✗        ✗          ✓
+columnar analytics (large)               ✗     ~     ~     ✗     ✓       ✓        ✗          ✗
+
+✓ = native     ~ = via fallback / workaround     ✗ = not supported (re-pick format)
+```
+
+If an audit rule cannot run natively in the proposed format, the architect must (a) propose a different format, (b) document the fallback degradation in the manifest, or (c) ask the user to relax the rule.
+
+### Anti-patterns refused at HITL
+
+- `vector_db` for <100 entries (overkill).
+- `graph_db` when relationships are flat.
+- `parquet` for human-review-primary modules (kills git-diff visibility).
+- `json` (single-object) for >1k entries (rewrite cost dominates).
+- Six starter modules all picking the same format (red flag — flagged in reflection).
+- Module's audit_rule needs FTS5 and format=`jsonl` without an offline FTS sidecar declared.
 
 ### Trigger grammar
 
@@ -178,4 +228,5 @@ Adding a new starter, changing a default threshold, or altering the field-flag s
 
 ## Changelog
 
+- `0.3.1` — format taxonomy expanded from 3 to 8 (md / csv / json / jsonl / sqlite / parquet / vector_db / graph_db); per-format portability tier + soft deps + fallback chain; format-selection matrix (workload → recommended + 2 alternatives); audit-rule × format compatibility matrix; anti-patterns explicitly refused.
 - `0.3.0` — initial protocol (6 per-domain starters; 4 field flags; 3 format options; two-tier audit; HITL negotiation pattern).

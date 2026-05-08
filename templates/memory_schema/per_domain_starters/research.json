@@ -32,7 +32,12 @@
     {
       "name": "experiment_runs",
       "format": "jsonl",
+      "format_alternatives": [
+        { "format": "parquet", "fit_pct": 75, "rationale": "columnar analytics over hyperparameter sweeps with >100k runs; recommend once you cross that threshold" },
+        { "format": "sqlite",  "fit_pct": 60, "rationale": "FK joins with hypothesis_log + dataset_versioning; FTS5 over results_summary; recommend if cross-module queries dominate" }
+      ],
       "path": "memory/experiment_runs.jsonl",
+      "tier_b_fallback": "not applicable (jsonl is Tier-A)",
       "trigger": "every experiment run",
       "append_only": true,
       "fields": [

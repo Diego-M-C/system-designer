@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-interview",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "Interview script run by 01_interview_agent.md against the user. Produces a SystemSpec (system_generator.json#/definitions/SystemSpec). Conducted in Spanish prose; identifiers / enum values in English (D-13C bilingual rule).",
   "rendering_rules": {
     "one_question_at_a_time": true,

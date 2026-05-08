@@ -210,6 +210,29 @@ else
   nope "memory_completeness_auditor not declared mandatory in $ada_path"
 fi
 
+# T21 · 8 formats catalogued in memory_schema_protocol.md
+hdr "T21 · 8 memory formats catalogued in protocol reference"
+ref="references/memory_schema_protocol.md"
+formats_found=0
+for fmt in 'structured_md' 'csv' '`json`' '`jsonl`' '`sqlite`' '`parquet`' '`vector_db`' '`graph_db`'; do
+  if grep -qF "$fmt" "$ref" 2>/dev/null; then
+    formats_found=$((formats_found+1))
+  fi
+done
+if [ "$formats_found" -eq 8 ]; then
+  ok "all 8 formats catalogued in protocol"
+else
+  nope "expected 8 format mentions in protocol; found $formats_found"
+fi
+
+# T22 · selection_criteria block declared in prompt 15
+hdr "T22 · prompt 15 declares <selection_criteria> block"
+if grep -qE '<selection_criteria>' prompts/15_memory_schema_architect.md; then
+  ok "<selection_criteria> tag present in prompt 15"
+else
+  nope "<selection_criteria> tag missing in prompt 15"
+fi
+
 # T20 · per-domain JSON starters parse cleanly
 hdr "T20 · per-domain memory-schema starters parse as valid JSON"
 parse_fail=()

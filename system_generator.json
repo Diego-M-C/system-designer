@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "schema_version": 3,
   "release_date": "2026-05-08",
   "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, on-demand orchestration, calibrated context curation (v0.2.0), structural-consistency validation (v0.2.0), lifelong feedback learning (v0.2.0), fixed-5-axis improvement audit (v0.2.0), per-task / per-session adaptive audit meta-validator (v0.2.0), and (v0.3.0) per-project memory-schema negotiation with mandatory memory_completeness_auditor. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
@@ -141,8 +141,26 @@
       },
       "sqlite_fts5": {
         "since": "0.2.0",
-        "purpose": "Phase 13.5 corrections.db FTS5 similarity search",
-        "fallback": "regex search across corrections.md mirror"
+        "purpose": "Phase 13.5 corrections.db FTS5 similarity search; phase 4.5 sqlite-format memory modules",
+        "fallback": "regex search across MD mirror"
+      },
+      "parquet_writer": {
+        "since": "0.3.1",
+        "purpose": "Memory modules of format=parquet (columnar analytics; phase 4.5 selection)",
+        "deps_alt": ["pyarrow", "fastparquet"],
+        "fallback": "jsonl + monthly summary csv (declared in module manifest)"
+      },
+      "vector_db_capability": {
+        "since": "0.3.1",
+        "purpose": "Memory modules of format=vector_db (semantic similarity search)",
+        "deps_alt": ["sqlite-vss extension", "faiss-cpu sidecar"],
+        "fallback": "jsonl + offline embeddings sidecar (degradation declared in module manifest)"
+      },
+      "graph_db_capability": {
+        "since": "0.3.1",
+        "purpose": "Memory modules of format=graph_db (high relationship-density · multi-hop traversal)",
+        "deps_alt": ["kuzu", "networkx (pickled adjacency)"],
+        "fallback": "jsonl adjacency-list with explicit source_id/target_id/edge_type fields; sqlite recursive-CTE for ≤2-hop"
       }
     },
     "reference": {
