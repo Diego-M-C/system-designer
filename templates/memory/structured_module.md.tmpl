@@ -1,0 +1,33 @@
+---
+module_name: {{MODULE_NAME}}
+schema_ref: memory_schema/modules/{{MODULE_NAME}}.json
+format: structured_md
+initialised_at: {{TEMPORAL_NOW}}
+initialised_session: {{SESSION_ID}}
+append_only: true
+---
+
+# {{MODULE_NAME}}
+
+> Structured-Markdown memory module. **Schema authoritative source:** `memory_schema/modules/{{MODULE_NAME}}.json`. Append entries below as they happen, respecting the schema. The mandatory `memory_completeness_auditor` persona inside `prompts/14_adaptive_audit_meta.md` audits this file on every task and every session.
+
+## Schema reminder
+
+Trigger: `{{TRIGGER}}`
+Mandatory fields: `{{MANDATORY_FIELDS_LIST}}`
+Audit threshold (missing): `{{MISSING_THRESHOLD_PCT}}%`
+
+## Entries
+
+<!-- Append one section per entry below. Each section starts with `### <entry_id> · <ts>`. Example layout:
+
+### entry_2025_001 · 2025-XX-XXTHH:MM:SSZ
+
+| field | value |
+|---|---|
+| <field_name> | <value> |
+| ... | ... |
+
+[free-form narrative paragraph if useful]
+
+-->

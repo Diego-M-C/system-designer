@@ -1,0 +1,158 @@
+{
+  "starter_id": "informatics_dev",
+  "schema_version": 1,
+  "generator_version": "0.3.0",
+  "domain": "informatics_dev",
+  "description": "Starter for software-development / informatics projects. Anchored on the canonical example: every test #N attempt #N status; if not pass, error_code + suggested_solution + confidence%.",
+  "modules": [
+    {
+      "name": "test_outcomes",
+      "format": "jsonl",
+      "path": "memory/test_outcomes.jsonl",
+      "trigger": "every test execution",
+      "append_only": true,
+      "fields": [
+        { "name": "test_id",                     "type": "string",        "flag": "mandatory",                          "rationale": "stable identifier across sessions",                                       "confidence_pct": 92 },
+        { "name": "test_number",                 "type": "int",           "flag": "mandatory",                          "rationale": "deterministic ordering",                                                  "confidence_pct": 90 },
+        { "name": "attempt_number",              "type": "int",           "flag": "mandatory",                          "rationale": "tracks retry / flakiness pattern",                                        "confidence_pct": 90 },
+        { "name": "status",                      "type": "enum {pass,fail,skipped,error}", "flag": "mandatory",         "rationale": "the answer to 'éxito?'",                                                  "confidence_pct": 95 },
+        { "name": "error_code",                  "type": "string|null",   "flag": "mandatory_if_status!=pass",         "rationale": "structured handle for recurrence search",                                  "confidence_pct": 88 },
+        { "name": "error_message",               "type": "string|null",   "flag": "mandatory_if_status!=pass",         "rationale": "human-readable",                                                          "confidence_pct": 88 },
+        { "name": "suggested_solution",          "type": "string|null",   "flag": "mandatory_if_status!=pass",         "rationale": "actionable fix proposal",                                                  "confidence_pct": 85 },
+        { "name": "suggested_solution_conf_pct", "type": "int 0-100",     "flag": "mandatory_if_suggested_solution",   "rationale": "P2 calibration",                                                          "confidence_pct": 92 },
+        { "name": "related_correction_id",       "type": "int|null",      "flag": "recommended",                       "rationale": "FK into feedback_learning/corrections.db",                                "confidence_pct": 75 },
+        { "name": "duration_ms",                 "type": "int",           "flag": "recommended",                       "rationale": "perf trend; flakiness signal",                                            "confidence_pct": 78 },
+        { "name": "session_id",                  "type": "string",        "flag": "mandatory",                          "rationale": "lineage",                                                                 "confidence_pct": 95 },
+        { "name": "ts",                          "type": "ISO8601",       "flag": "mandatory",                          "rationale": "ordering + temporal context",                                            "confidence_pct": 95 },
+        { "name": "agent_confidence_pct",        "type": "int 0-100",     "flag": "mandatory",                          "rationale": "P2",                                                                       "confidence_pct": 92 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry with status != pass must have error_code AND error_message AND suggested_solution AND suggested_solution_conf_pct",
+        "missing_threshold_pct": 5,
+        "particular_audit": "every test execution emits exactly one entry; absence is a finding (compare expected count against test runner output)",
+        "global_audit": "monthly: detect entries where related_correction_id is null but error_message matches a corrections.db FTS5 hit (suggest linking)"
+      },
+      "added_by": "starter",
+      "confidence_pct": 90
+    },
+    {
+      "name": "decision_logs",
+      "format": "jsonl",
+      "path": "memory/decision_logs.jsonl",
+      "trigger": "every architectural or scope decision",
+      "append_only": true,
+      "fields": [
+        { "name": "decision_id",            "type": "string",          "flag": "mandatory",   "rationale": "ADR identifier",                              "confidence_pct": 95 },
+        { "name": "title",                  "type": "string",          "flag": "mandatory",   "rationale": "short tag for search",                        "confidence_pct": 92 },
+        { "name": "rationale",              "type": "string",          "flag": "mandatory",   "rationale": "the why; the most-consulted field over time", "confidence_pct": 90 },
+        { "name": "alternatives_considered","type": "array<string>",   "flag": "mandatory",   "rationale": "enables retro decisions vs. revisit",         "confidence_pct": 88 },
+        { "name": "fit_pct_per_alternative","type": "object<string,int>","flag": "recommended","rationale": "P2 calibration carried into ADR",            "confidence_pct": 80 },
+        { "name": "decision_chosen",        "type": "string",          "flag": "mandatory",   "rationale": "what the user picked",                        "confidence_pct": 95 },
+        { "name": "confidence_pct",         "type": "int 0-100",       "flag": "mandatory",   "rationale": "agent confidence on the chosen path",         "confidence_pct": 92 },
+        { "name": "related_artifacts",      "type": "array<string>",   "flag": "recommended", "rationale": "lineage to files/commits",                    "confidence_pct": 75 },
+        { "name": "session_id",             "type": "string",          "flag": "mandatory",   "rationale": "lineage",                                     "confidence_pct": 95 },
+        { "name": "ts",                     "type": "ISO8601",         "flag": "mandatory",   "rationale": "ordering",                                    "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has rationale AND alternatives_considered (≥2) AND decision_chosen AND confidence_pct",
+        "missing_threshold_pct": 5,
+        "particular_audit": "Gate #1 / Gate #2 approvals must each emit one decision_logs entry",
+        "global_audit": "every 3 sessions: detect alternatives_considered.length == 1 (degenerate ADR — likely under-considered)"
+      },
+      "added_by": "starter",
+      "confidence_pct": 88
+    },
+    {
+      "name": "milestone_checkpoints",
+      "format": "json",
+      "path": "memory/milestone_checkpoints.json",
+      "trigger": "every checkpoint milestone (per granularity)",
+      "append_only": false,
+      "fields": [
+        { "name": "milestones", "type": "array<{id, title, status, checkpoint_session_id, completed_at, kpis}>", "flag": "mandatory", "rationale": "current state of strategic milestones", "confidence_pct": 85 }
+      ],
+      "audit": {
+        "completeness_rule": "every milestone has id AND title AND status AND (completed_at if status='done')",
+        "missing_threshold_pct": 5,
+        "particular_audit": "checkpoint events emit a status transition",
+        "global_audit": "every 5 sessions: alert if no milestone has transitioned to done"
+      },
+      "added_by": "starter",
+      "confidence_pct": 82
+    },
+    {
+      "name": "refactor_history",
+      "format": "structured_md",
+      "path": "memory/refactor_history.md",
+      "trigger": "every non-trivial refactor",
+      "append_only": true,
+      "fields": [
+        { "name": "refactor_id",       "type": "string",  "flag": "mandatory",   "rationale": "search key",                          "confidence_pct": 90 },
+        { "name": "scope_summary",     "type": "string",  "flag": "mandatory",   "rationale": "≤200 chars",                          "confidence_pct": 88 },
+        { "name": "motivation",        "type": "string",  "flag": "mandatory",   "rationale": "why refactor (debt | feature | bug)", "confidence_pct": 88 },
+        { "name": "files_touched",     "type": "array<string>", "flag": "mandatory", "rationale": "lineage",                          "confidence_pct": 85 },
+        { "name": "regressions_found", "type": "array<string>", "flag": "recommended", "rationale": "what broke / was caught",        "confidence_pct": 78 },
+        { "name": "session_id",        "type": "string",  "flag": "mandatory",   "rationale": "lineage",                             "confidence_pct": 95 },
+        { "name": "ts",                "type": "ISO8601", "flag": "mandatory",   "rationale": "ordering",                            "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every refactor entry has motivation AND files_touched.length>0",
+        "missing_threshold_pct": 10,
+        "particular_audit": "any commit affecting >5 files emits a refactor_history entry candidate (suggested, not enforced)",
+        "global_audit": "every 5 refactors: surface regression rate"
+      },
+      "added_by": "starter",
+      "confidence_pct": 80
+    },
+    {
+      "name": "performance_baselines",
+      "format": "jsonl",
+      "path": "memory/performance_baselines.jsonl",
+      "trigger": "every benchmark or perf measurement",
+      "append_only": true,
+      "fields": [
+        { "name": "metric_name",     "type": "string",   "flag": "mandatory",   "rationale": "search key",            "confidence_pct": 92 },
+        { "name": "value",           "type": "number",   "flag": "mandatory",   "rationale": "the measurement",       "confidence_pct": 95 },
+        { "name": "unit",            "type": "string",   "flag": "mandatory",   "rationale": "ms | rps | MB | ...",   "confidence_pct": 92 },
+        { "name": "stack_fingerprint","type": "string",  "flag": "recommended", "rationale": "compute env hash",     "confidence_pct": 78 },
+        { "name": "uncertainty_pct", "type": "number",   "flag": "recommended", "rationale": "P2 ±range",            "confidence_pct": 80 },
+        { "name": "session_id",      "type": "string",   "flag": "mandatory",   "rationale": "lineage",              "confidence_pct": 95 },
+        { "name": "ts",              "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",             "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has metric_name AND value AND unit",
+        "missing_threshold_pct": 5,
+        "particular_audit": "perf phases emit at least one entry per declared metric",
+        "global_audit": "regression detection: alert when value drifts >10% from rolling-mean baseline"
+      },
+      "added_by": "starter",
+      "confidence_pct": 78
+    },
+    {
+      "name": "dependency_changes",
+      "format": "jsonl",
+      "path": "memory/dependency_changes.jsonl",
+      "trigger": "every dependency version change (add | upgrade | remove)",
+      "append_only": true,
+      "fields": [
+        { "name": "library",         "type": "string",   "flag": "mandatory",   "rationale": "search key",                "confidence_pct": 95 },
+        { "name": "from_version",    "type": "string|null","flag": "mandatory_if_action!=add", "rationale": "before",     "confidence_pct": 88 },
+        { "name": "to_version",      "type": "string|null","flag": "mandatory_if_action!=remove","rationale": "after",    "confidence_pct": 88 },
+        { "name": "action",          "type": "enum {add,upgrade,remove}", "flag": "mandatory", "rationale": "lifecycle", "confidence_pct": 92 },
+        { "name": "rationale",       "type": "string",   "flag": "mandatory",   "rationale": "why now",                   "confidence_pct": 88 },
+        { "name": "breaking_changes_summary", "type": "string|null", "flag": "mandatory_if_action=upgrade", "rationale": "what to watch for", "confidence_pct": 75 },
+        { "name": "session_id",      "type": "string",   "flag": "mandatory",   "rationale": "lineage",                   "confidence_pct": 95 },
+        { "name": "ts",              "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                  "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has library AND action AND rationale; upgrades have breaking_changes_summary",
+        "missing_threshold_pct": 5,
+        "particular_audit": "every library_docs/MANIFEST.md update emits a dependency_changes entry",
+        "global_audit": "monthly: surface deps not upgraded in >freshness_threshold days"
+      },
+      "added_by": "starter",
+      "confidence_pct": 82
+    }
+  ],
+  "notes": "User's anchor example ('test nº 1 prueba 1 éxito? si no error X sugerencia de solución') is encoded directly in the test_outcomes module's mandatory_if_status!=pass conditional fields."
+}

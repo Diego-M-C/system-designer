@@ -1,0 +1,125 @@
+{
+  "starter_id": "legal",
+  "schema_version": 1,
+  "generator_version": "0.3.0",
+  "domain": "legal",
+  "description": "Starter for legal / regulatory advisory projects. Anchored on case-law lineage and regulatory communication discipline.",
+  "modules": [
+    {
+      "name": "case_law_references",
+      "format": "jsonl",
+      "path": "memory/case_law_references.jsonl",
+      "trigger": "every case cited in advice or analysis",
+      "append_only": true,
+      "fields": [
+        { "name": "citation",          "type": "string",   "flag": "mandatory",   "rationale": "canonical citation",            "confidence_pct": 95 },
+        { "name": "jurisdiction",      "type": "string",   "flag": "mandatory",   "rationale": "EU | ES | UK | ...",            "confidence_pct": 92 },
+        { "name": "ruling_date",       "type": "ISO8601",  "flag": "mandatory",   "rationale": "temporal context",              "confidence_pct": 95 },
+        { "name": "relevance_score",   "type": "int 1-5",  "flag": "mandatory",   "rationale": "self-rated relevance",          "confidence_pct": 80 },
+        { "name": "summary",           "type": "string",   "flag": "mandatory",   "rationale": "≤300 chars factual",            "confidence_pct": 88 },
+        { "name": "used_in_artifact",  "type": "string",   "flag": "mandatory",   "rationale": "FK to artifact path / matter",  "confidence_pct": 88 },
+        { "name": "session_id",        "type": "string",   "flag": "mandatory",   "rationale": "lineage",                       "confidence_pct": 95 },
+        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                      "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has citation AND jurisdiction AND relevance_score AND summary AND used_in_artifact",
+        "missing_threshold_pct": 5,
+        "particular_audit": "every advisory artifact citing a case emits a corresponding entry",
+        "global_audit": "monthly: surface citations with relevance_score>=4 not consulted in last 90 days"
+      },
+      "added_by": "starter",
+      "confidence_pct": 88
+    },
+    {
+      "name": "regulatory_correspondence",
+      "format": "structured_md",
+      "path": "memory/regulatory_correspondence.md",
+      "trigger": "every communication with regulator or counterparty",
+      "append_only": true,
+      "fields": [
+        { "name": "correspondence_id", "type": "string",   "flag": "mandatory", "rationale": "stable handle",          "confidence_pct": 92 },
+        { "name": "party",             "type": "string",   "flag": "mandatory", "rationale": "regulator | counterparty","confidence_pct": 92 },
+        { "name": "direction",         "type": "enum {sent,received}","flag":"mandatory","rationale":"audit trail",   "confidence_pct": 95 },
+        { "name": "subject",           "type": "string",   "flag": "mandatory", "rationale": "for search",             "confidence_pct": 90 },
+        { "name": "summary",           "type": "string",   "flag": "mandatory", "rationale": "≤500 chars",             "confidence_pct": 88 },
+        { "name": "linked_matter_id",  "type": "string|null","flag": "recommended","rationale": "FK to client matter", "confidence_pct": 78 },
+        { "name": "session_id",        "type": "string",   "flag": "mandatory", "rationale": "lineage",                "confidence_pct": 95 },
+        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory", "rationale": "ordering",               "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has direction AND subject AND summary",
+        "missing_threshold_pct": 1,
+        "particular_audit": "any decisions.md ADR mentioning a regulator or client emits a candidate entry",
+        "global_audit": "every 30 days: surface received items with no follow-up"
+      },
+      "added_by": "starter",
+      "confidence_pct": 88
+    },
+    {
+      "name": "precedent_chains",
+      "format": "jsonl",
+      "path": "memory/precedent_chains.jsonl",
+      "trigger": "every advisory recommendation derived from precedent",
+      "append_only": true,
+      "fields": [
+        { "name": "advisory_id",   "type": "string",         "flag": "mandatory","rationale": "FK to artifact",        "confidence_pct": 92 },
+        { "name": "precedents",    "type": "array<string>",  "flag": "mandatory","rationale": "ordered chain",          "confidence_pct": 92 },
+        { "name": "reasoning",     "type": "string",         "flag": "mandatory","rationale": "≤500 chars",            "confidence_pct": 88 },
+        { "name": "confidence_pct","type": "int 0-100",      "flag": "mandatory","rationale": "P2",                     "confidence_pct": 92 },
+        { "name": "session_id",    "type": "string",         "flag": "mandatory","rationale": "lineage",                "confidence_pct": 95 },
+        { "name": "ts",            "type": "ISO8601",        "flag": "mandatory","rationale": "ordering",               "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has precedents.length>=1 AND reasoning AND confidence_pct",
+        "missing_threshold_pct": 5,
+        "particular_audit": "advisory artifacts cite ≥1 precedent",
+        "global_audit": "low-confidence chains (<50%) surface for human review"
+      },
+      "added_by": "starter",
+      "confidence_pct": 82
+    },
+    {
+      "name": "jurisdiction_mapping",
+      "format": "json",
+      "path": "memory/jurisdiction_mapping.json",
+      "trigger": "every change in jurisdictional applicability per matter",
+      "append_only": false,
+      "fields": [
+        { "name": "matters", "type": "object<string, {applicable_jurisdictions, applicable_laws, last_reviewed_at}>", "flag": "mandatory", "rationale": "current state", "confidence_pct": 85 }
+      ],
+      "audit": {
+        "completeness_rule": "every matter has applicable_jurisdictions AND applicable_laws AND last_reviewed_at",
+        "missing_threshold_pct": 5,
+        "particular_audit": "matter onboarding emits a fresh entry",
+        "global_audit": "alert when last_reviewed_at older than 6 months"
+      },
+      "added_by": "starter",
+      "confidence_pct": 80
+    },
+    {
+      "name": "client_advisory_history",
+      "format": "jsonl",
+      "path": "memory/client_advisory_history.jsonl",
+      "trigger": "every piece of advice given (with disclaimers)",
+      "append_only": true,
+      "fields": [
+        { "name": "client_signature",  "type": "string",   "flag": "mandatory","rationale": "anonymised handle",    "confidence_pct": 92 },
+        { "name": "advice_summary",    "type": "string",   "flag": "mandatory","rationale": "≤500 chars",            "confidence_pct": 88 },
+        { "name": "disclaimers",       "type": "array<string>","flag": "mandatory","rationale": "professional duty","confidence_pct": 92 },
+        { "name": "linked_precedents", "type": "array<string>","flag": "recommended","rationale": "lineage",          "confidence_pct": 80 },
+        { "name": "confidence_pct",    "type": "int 0-100","flag": "mandatory","rationale": "P2",                    "confidence_pct": 92 },
+        { "name": "session_id",        "type": "string",   "flag": "mandatory","rationale": "lineage",                "confidence_pct": 95 },
+        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory","rationale": "ordering",               "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has advice_summary AND disclaimers.length>=1 AND confidence_pct",
+        "missing_threshold_pct": 1,
+        "particular_audit": "every client-facing artifact emits a candidate entry",
+        "global_audit": "monthly: surface low-confidence advice (<60%)"
+      },
+      "added_by": "starter",
+      "confidence_pct": 85
+    }
+  ],
+  "notes": "Disclaimers are mandatory in client_advisory_history; absence is a BLOCKER (professional-duty floor)."
+}

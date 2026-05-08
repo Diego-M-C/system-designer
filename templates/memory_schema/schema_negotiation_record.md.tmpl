@@ -1,0 +1,53 @@
+# Memory Schema Negotiation · Session `{{SESSION_ID}}`
+
+Negotiated at: `{{TEMPORAL_NOW}}` · Domain: `{{DOMAIN}}` · EU AI Act risk: `{{EU_RISK}}`
+Starter chosen: `{{STARTER_USED}}` · Agent initial confidence: `{{INITIAL_AGENT_CONFIDENCE_PCT}}%`
+
+## Initial proposal (agent)
+
+| # | module | format | trigger | mandatory_fields | conf% |
+|--:|--------|--------|---------|----------------:|------:|
+{{INITIAL_PROPOSAL_ROWS}}
+
+## User choice at HITL
+
+`{{HITL_CHOICE}}`  (one of: A=accept all, B=edit, C=add, D=skip)
+
+## Edits applied (mode B)
+
+| # | module | edit_command | before | after | rationale |
+|--:|--------|--------------|--------|-------|-----------|
+{{EDITS_APPLIED_ROWS}}
+
+## Modules added (mode C)
+
+| # | module | format | trigger | mandatory_fields | rationale |
+|--:|--------|--------|---------|----------------:|-----------|
+{{MODULES_ADDED_ROWS}}
+
+## Agent proposals the user rejected
+
+| # | proposal | rationale_for_rejection | future_re_propose? |
+|--:|----------|------------------------|--------------------|
+{{REJECTED_PROPOSALS_ROWS}}
+
+## Final manifest
+
+- Manifest path: `memory_schema/manifest.json`
+- Mirror path:   `memory_schema/manifest.md`
+- Modules count: `{{FINAL_MODULES_COUNT}}`
+- Mandatory fields total: `{{MANDATORY_FIELDS_TOTAL}}`
+- Agent confidence on final contract: `{{FINAL_AGENT_CONFIDENCE_PCT}}%`
+- Manifest sha256: `{{MANIFEST_SHA256}}`
+
+## Reflection (≤200 words)
+
+- Lowest-confidence proposal: {{LOWEST_CONFIDENCE_PROPOSAL}}
+- Possible re-negotiation triggers next session: {{RE_NEGOTIATION_TRIGGERS}}
+- Did user collapse any conditional mandate to optional? {{COLLAPSED_MANDATES_OR_NONE}}
+- Realistic missing_threshold_pct on high-volume modules? {{THRESHOLD_REALISM_VERDICT}}
+- Recommendation to master orchestrator: {{RECOMMENDATION}}
+
+---
+
+> The contract becomes the audit subject of the mandatory `memory_completeness_auditor` persona inside `prompts/14_adaptive_audit_meta.md` on every task and every session.

@@ -1,0 +1,29 @@
+# Memory Schema · {{SYSTEM_NAME}}
+
+> Auto-generated mirror of `memory_schema/manifest.json`. **Do not edit by hand** — regenerated from the JSON authoritative source. To change the schema, re-invoke phase 4.5 (`prompts/15_memory_schema_architect.md`) in living_update mode.
+>
+> Last regenerated: `{{TEMPORAL_NOW}}` · Domain: `{{DOMAIN}}` · Starter: `{{STARTER_USED}}` · Agent confidence on contract: `{{AGENT_CONFIDENCE_PCT}}%`
+> Modules: `{{MODULES_COUNT}}` (mandatory: `{{MANDATORY_MODULES_COUNT}}`) · Manifest sha256: `{{MANIFEST_SHA256}}`
+
+## Modules
+
+| # | name | format | trigger | mandatory_fields | audit_threshold% | conf% |
+|--:|------|--------|---------|----------------:|----------------:|------:|
+{{MODULES_TABLE_ROWS}}
+
+## Per-module detail
+
+{{MODULES_DETAIL_RENDERED}}
+
+## Audit semantics (recap)
+
+The mandatory `memory_completeness_auditor` persona inside `prompts/14_adaptive_audit_meta.md` runs on every task and every session:
+
+- **Particular audit** — for the scope at hand: did each contracted trigger produce its entry? Are mandatory fields populated (including `mandatory_if_<condition>`)?
+- **Global audit** — across all sessions: are missing-thresholds breached? Are any modules empty across N sessions?
+
+Findings flow into the BLOCKER / WARNING / WEAK paths and the QUEUE_FOR_HITL / DISSENT_HITL_NOW / DEFER paths exactly like every other adaptive-audit finding.
+
+## Baseline preserved
+
+The Anthropic 4-typed memory baseline (`memory/{user, feedback, project, reference}.md` + `memory/MEMORY.md`) is **always** preserved alongside the negotiated structured modules. The two layers complement each other.

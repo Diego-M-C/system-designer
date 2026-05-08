@@ -1,0 +1,42 @@
+# Memory Completeness Audit · {{SCOPE_KIND}} `{{SCOPE_ID}}`
+
+Generated at: `{{TEMPORAL_NOW}}` · Session: `{{SESSION_ID}}` · Auditor: `memory_completeness_auditor` (mandatory persona inside `prompts/14_adaptive_audit_meta.md`)
+
+## Contract under audit
+
+- Manifest: `memory_schema/manifest.json` (sha256 `{{MANIFEST_SHA256}}`)
+- Modules in contract: `{{MODULES_COUNT}}`
+- Baseline 4-typed memory preserved: `{{BASELINE_PRESERVED}}`
+
+## Particular-tier findings (for this scope)
+
+| finding_id | module | invariant | status | severity | confidence_pct | evidence_path:line |
+|---:|--------|-----------|--------|----------|---------------:|--------------------|
+{{PARTICULAR_FINDINGS_ROWS}}
+
+## Global-tier findings (across all sessions)
+
+| finding_id | module | invariant | violation_pct | threshold_pct | status | severity | confidence_pct |
+|---:|--------|-----------|--------------:|--------------:|--------|----------|---------------:|
+{{GLOBAL_FINDINGS_ROWS}}
+
+## Schema-evolution candidates
+
+> Improvements (not errors). Module additions or flag changes the auditor recommends; queued for phase 13.5 if accepted by consensus.
+
+| candidate_id | suggestion | rationale | weighted_mean_conf% |
+|---:|-----------|-----------|--------------------:|
+{{SCHEMA_EVOLUTION_CANDIDATES_ROWS}}
+
+## Self-KPIs
+
+- findings_total: {{FINDINGS_TOTAL}}
+- particular_findings: {{PARTICULAR_COUNT}}
+- global_findings: {{GLOBAL_COUNT}}
+- schema_evolution_candidates: {{EVOLUTION_CANDIDATES_COUNT}}
+- mean_confidence_pct: {{MEAN_CONFIDENCE_PCT}}
+- evidence_citation_rate_pct: {{EVIDENCE_CITATION_RATE_PCT}}
+
+## Recommendation to consolidator
+
+{{RECOMMENDATION_TO_CONSOLIDATOR}}

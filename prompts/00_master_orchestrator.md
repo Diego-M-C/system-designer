@@ -3,7 +3,7 @@
 > **Tier:** Complex (SDD) · target ~46 tags · actual 46
 > **Composed via:** prompt-architect (self-applied, principle G9=A)
 > **Audit status:** see `audit/self_audit.md` after runtime
-> **Version:** 0.2.0 · 2026-05-08 (extends 13-phase orchestration to 17 phases via 1.5 / 11.5 / 13.5 / 13.7 + cross-phase adaptive audit meta)
+> **Version:** 0.3.0 · 2026-05-08 (extends 13-phase orchestration to **18 phases** via 1.5 / **4.5** / 11.5 / 13.5 / 13.7 + cross-phase adaptive audit meta with mandatory `memory_completeness_auditor`)
 
 ---
 
@@ -57,7 +57,8 @@ Generate a complete child AI-system from a user's intent by:
 2. interview — execute `wizard/interview_questions.json`; default via `wizard/defaults.json` on skips.
 3. planning_brief — emit calibrated plan to `<target_path>/audit/planning_brief_session_0.md`.
 4. GATE_1 — present plan via `<final_output>`; block.
-5. scaffold — render every mandatory artifact from `templates/` to `<target_path>/`.
+4.5. memory_schema_setup *(v0.3.0)* — invoke `prompts/15_memory_schema_architect.md`; pick per-domain starter (informatics_dev / healthcare_clinical / fintech / legal / public_sector / research) or compose hybrid for `domain=other`; HITL negotiate (accept all / edit / add / skip); persist `<target_path>/memory_schema/manifest.json` + per-module schemas + Markdown mirror + negotiation record. The contract becomes the audit subject of the mandatory `memory_completeness_auditor` persona inside `prompts/14_adaptive_audit_meta.md`.
+5. scaffold — render every mandatory artifact from `templates/` to `<target_path>/` (now also renders structured-memory module files per the negotiated schema from phase 4.5).
 6. compose_prompts — for each child prompt, delegate to prompt-architect (see `<delegation>`).
 7. fetch_library_docs — download every library declared in `SystemSpec.stack.libraries` into `<target_path>/library_docs/<lib>/<version>/`. Distinct from phase 1.5: this phase owns *library* docs only.
 8. seed_tracking — initialise `tracking/`, `memory/`, `errors_catalog.json` (≥30 AIE), `feedback_learning/corrections.db` (apply `templates/feedback_learning/corrections_schema.sql.tmpl`).
@@ -424,7 +425,7 @@ Capability-missing fallbacks (P1 hard requirement):
 
 <orchestration>
 Phase order is strict (no skipping, no reordering):
-`read_context → context_setup → interview → planning_brief → GATE_1 → scaffold → compose_prompts → fetch_library_docs → seed_tracking → emit_audit_sheet → self_audit → reflection → structural_consistency → GATE_2 → handoff → feedback_session → improvement_audit (conditional) → STOP`
+`read_context → context_setup → interview → planning_brief → GATE_1 → memory_schema_setup → scaffold → compose_prompts → fetch_library_docs → seed_tracking → emit_audit_sheet → self_audit → reflection → structural_consistency → GATE_2 → handoff → feedback_session → improvement_audit (conditional) → STOP`
 
 After every task and every session inside any phase that emits artifacts, also invoke `prompts/14_adaptive_audit_meta.md` (cross-phase). Adaptive audit is mandatory; deviation requires logged rationale (P3 does NOT apply).
 
@@ -594,6 +595,8 @@ Hard dependencies (mandatory at runtime):
 - *(v0.2.0)* `../prompts/12_improvement_jury.md`
 - *(v0.2.0)* `../prompts/13_context_curator.md`
 - *(v0.2.0)* `../prompts/14_adaptive_audit_meta.md`
+- *(v0.3.0)* `../prompts/15_memory_schema_architect.md`
+- *(v0.3.0)* `../references/memory_schema_protocol.md`
 
 Soft dependencies (used if available, fallbacks otherwise):
 - Context7 MCP server

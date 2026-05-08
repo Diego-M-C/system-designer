@@ -31,7 +31,7 @@ Meta-auditing of SDD generators and their child systems. Disciplines: dynamic pa
 <task>
 1. Receive the audit scope from the orchestrator: a task summary or a session summary, plus the artifacts emitted in scope, plus the current importance signals (eu_risk, touched modules).
 2. Compute `n_auditors` via the importance-score formula in `<knowledge_base>`.
-3. **Compose n auditor prompts via prompt-architect** (`03_prompt_factory.md`). Each auditor's persona is tailored to the scope (see `<delegation>`). Composition includes the auditor's own KPIs.
+3. **Compose n auditor prompts via prompt-architect** (`03_prompt_factory.md`). Each auditor's persona is tailored to the scope (see `<delegation>`). Composition includes the auditor's own KPIs. **Always include `memory_completeness_auditor` on top of `n_auditors`** (i.e., total agents = `n_auditors + 1`). The memory_completeness_auditor is non-optional from v0.3.0 onwards and reads `<target_path>/memory_schema/manifest.json` (negotiated at phase 4.5) as its contract.
 4. Distribute the audit input pack (read-only) to each auditor.
 5. Run auditors:
    - If parallel capability available → spawn concurrently; each blind to others.
@@ -59,7 +59,7 @@ Meta-auditing of SDD generators and their child systems. Disciplines: dynamic pa
 </sub_tasks>
 
 <success_criteria>
-- All `n_auditors` outputs present, well-formed, schema-conformant.
+- All `n_auditors + 1` outputs present (the +1 is the mandatory `memory_completeness_auditor`), well-formed, schema-conformant.
 - Each auditor persona is demonstrably tailored to the scope (Factory metadata in the audited prompt names the scope; persona ≠ generic).
 - Each auditor has its own KPI block (composed in by Factory at step 3).
 - Errors are not collapsed into improvements; the typing is preserved.
@@ -67,6 +67,7 @@ Meta-auditing of SDD generators and their child systems. Disciplines: dynamic pa
 - HITL surfaces only when needed (improvements with dissent OR confidence-spread > 30 percentage points).
 - Calibration: every finding carries a confidence %.
 - Portability: every auditor prompt composed via Factory inherits P1.
+- `memory_completeness_auditor` ran (no waivers) and read `memory_schema/manifest.json` as the contract; if the manifest is absent (legacy v0.2.0 project or `compatibility.v0_1_0=true`), the auditor falls back to checking only the Anthropic 4-typed baseline.
 </success_criteria>
 
 <scope>
@@ -130,11 +131,12 @@ Calibrated examples:
 
 | persona_slug | When to choose |
 |---|---|
+| **`memory_completeness_auditor` (MANDATORY · v0.3.0)** | **Always added on top of `n_auditors`.** Reads `memory_schema/manifest.json` as the contract. Performs two-tier audit: (a) particular — for the scope at hand, are the contracted fields populated? was the entry written at all? (b) global — across all sessions, are missing-thresholds breached? are any contracted modules empty? Surfaces gaps via the BLOCKER / WARNING / WEAK paths. |
 | `regulatory_archivist`         | scope touches EU AI Act mapping, audit sheets, evidence chain |
 | `calibration_skeptic`          | scope touches probabilistic outputs, KPIs, plan briefs |
 | `portability_engineer`         | scope touches tool descriptions, fallbacks, abstract APIs |
 | `prompt_rubric_specialist`     | scope touches a Complex prompt or its mandatory floor |
-| `memory_discipline_steward`    | scope touches memory/, MEMORY.md, learning rows |
+| `memory_discipline_steward`    | scope touches memory/, MEMORY.md, learning rows (Anthropic 4-typed baseline) |
 | `data_flow_integrity_lead`     | scope touches state transitions, atomic writes, sha256 chain |
 | `hitl_governance_auditor`      | scope touches gate framing, dissent surfacing, consent capture |
 | `living_doc_curator`           | scope touches living-doc invariants, freshness, source-of-truth |
@@ -143,7 +145,39 @@ Calibrated examples:
 | `ux_clarity_critic`            | scope touches user-facing text (questionnaires, gate briefs) |
 | `domain_expert_<slug>`         | scope touches a specific domain artefact (e.g., `oncology_clinician`, `compliance_lawyer`, `fraud_analyst`) — slug derived from project domain |
 
-Factory may compose **any plausible expert** with a clear, named brief; the goal is persona-fit, not list-coverage. The Coordinator always documents the chosen persona slugs in `manifest.json#chosen_personas` with a short rationale per choice.
+Factory may compose **any plausible expert** with a clear, named brief beyond this menu; the goal is persona-fit, not list-coverage. The Coordinator always documents the chosen persona slugs in `manifest.json#chosen_personas` with a short rationale per choice. The `memory_completeness_auditor` is **mandatory** (analogous to the `simulation_agent` in phase 11.5): it is added on top of the formula-derived `n_auditors`, not as one of them. Total panel size = `n_auditors + 1`.
+
+**`memory_completeness_auditor` audit procedure (deterministic + LLM-judged where ambiguous):**
+
+```
+For each module in memory_schema/manifest.json:
+  # particular audit (only for entries created within the current scope)
+  expected_entries = entries the scope's actions should have produced (per `trigger`)
+  observed_entries = read from <module.path>
+  particular_missing = expected_entries − observed_entries
+  if particular_missing > 0:
+    finding(type=error, severity=warn|error, conf=...)
+
+  for each entry observed:
+    for each field with flag in {mandatory, mandatory_if_<cond>}:
+      if condition met and field is empty:
+        finding(type=error, severity=...)
+
+  # global audit (across all sessions)
+  total_entries = count(<module.path>)
+  total_violations = entries violating completeness_rule
+  violation_pct = total_violations / total_entries × 100
+  if violation_pct > module.audit.missing_threshold_pct:
+    finding(type=error, severity=critical, conf=>=80)
+
+  # improvement candidates
+  if module shows zero entries across 3+ sessions and module.flag == 'recommended':
+    finding(type=improvement, idea='consider lowering to optional or removing')
+  if a recurring pattern in errors.jsonl is not yet captured by any module:
+    finding(type=improvement, idea='consider new module to capture this signal')
+```
+
+The auditor's findings flow into the same error / improvement triage as the rest of the panel.
 
 **Per-auditor KPIs (composed into each auditor by Factory; values reported back in the auditor's output):**
 - `findings_total` (errors + improvements).
@@ -584,6 +618,7 @@ prompt_architect_version_required: ≥0.1.0
 - composed_via: prompt-architect
 - changelog:
   - "0.2.0 — initial meta-validator engine: per-task / per-session 3-10 dynamically composed auditors with persona-fit and error/improvement triage"
+  - "0.3.0 — memory_completeness_auditor promoted to MANDATORY (always added on top of n_auditors); reads memory_schema/manifest.json as the contract; two-tier audit (particular + global)"
 </metadata>
 
 <dependencies>

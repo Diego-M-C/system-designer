@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer",
-  "version": "0.2.0",
-  "schema_version": 2,
+  "version": "0.3.0",
+  "schema_version": 3,
   "release_date": "2026-05-08",
-  "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, on-demand orchestration, and (v0.2.0) calibrated context curation, structural-consistency validation, lifelong feedback learning, fixed-5-axis improvement audit, and per-task / per-session adaptive audit meta-validator. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
+  "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, on-demand orchestration, calibrated context curation (v0.2.0), structural-consistency validation (v0.2.0), lifelong feedback learning (v0.2.0), fixed-5-axis improvement audit (v0.2.0), per-task / per-session adaptive audit meta-validator (v0.2.0), and (v0.3.0) per-project memory-schema negotiation with mandatory memory_completeness_auditor. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
 
   "principles": [
     {
@@ -74,7 +74,8 @@
           "data_flow_invariants.md",
           "feedback_taxonomy.md",
           "jury_consensus_protocol.md",
-          "context_confidence_protocol.md"
+          "context_confidence_protocol.md",
+          "memory_schema_protocol.md"
         ]
       },
       "v02_prompts": {
@@ -86,6 +87,25 @@
           "12_improvement_jury.md",
           "13_context_curator.md",
           "14_adaptive_audit_meta.md"
+        ]
+      },
+      "v03_prompts": {
+        "path": "./prompts/",
+        "required_since": "0.3.0",
+        "files": [
+          "15_memory_schema_architect.md"
+        ]
+      },
+      "v03_memory_schema_starters": {
+        "path": "./templates/memory_schema/per_domain_starters/",
+        "required_since": "0.3.0",
+        "files": [
+          "informatics_dev.json",
+          "healthcare_clinical.json",
+          "fintech.json",
+          "legal.json",
+          "public_sector.json",
+          "research.json"
         ]
       },
       "templates": {
@@ -152,7 +172,8 @@
     {"id": 2, "name": "interview", "blocking": false, "outputs": ["tracking/project.json#interview_answers"], "interruptible": true, "resumable": true},
     {"id": 3, "name": "planning_brief", "blocking": false, "outputs": ["audit/planning_brief_session_0.md", "audit/planning_brief_session_0.json"]},
     {"id": 4, "name": "GATE_1", "blocking": true, "type": "hitl_gate", "input_required": "user_approval"},
-    {"id": 5, "name": "scaffold", "blocking": false, "outputs": ["target_path/<all mandatory artifacts>"]},
+    {"id": 4.5, "name": "memory_schema_setup", "since": "0.3.0", "blocking": true, "type": "hitl_gate", "owner_prompt": "prompts/15_memory_schema_architect.md", "outputs": ["target_path/memory_schema/manifest.json", "target_path/memory_schema/manifest.md", "target_path/memory_schema/modules/", "target_path/memory_schema/negotiation_session_*.md"], "skip_if": "SystemSpec.compatibility.v0_1_0 == true OR SystemSpec.memory_schema.negotiation_enabled == false"},
+    {"id": 5, "name": "scaffold", "blocking": false, "outputs": ["target_path/<all mandatory artifacts>", "target_path/memory/<structured_module>.{jsonl|md}  per memory_schema/manifest.json"]},
     {"id": 6, "name": "compose_prompts", "blocking": false, "outputs": ["target_path/<all child prompts>", "audit/self_audit.md#per_prompt_rubric"]},
     {"id": 7, "name": "fetch_library_docs", "blocking": false, "outputs": ["target_path/library_docs/<lib>/<version>/"]},
     {"id": 8, "name": "seed_tracking", "blocking": false, "outputs": ["target_path/tracking/", "target_path/memory/", "target_path/tracking/errors_catalog.json", "target_path/feedback_learning/corrections.db"]},
@@ -171,10 +192,12 @@
     {
       "id": "adaptive_audit_meta",
       "since": "0.2.0",
+      "updated_in": "0.3.0",
       "owner_prompt": "prompts/14_adaptive_audit_meta.md",
       "fires_on": ["task_end", "session_end"],
       "applies_to": ["generator", "child_inherited"],
       "computes": "n_auditors in [3, 10] from importance score",
+      "mandatory_persona_added_on_top": "memory_completeness_auditor (since 0.3.0; reads memory_schema/manifest.json as audit contract)",
       "outputs": ["target_path/adaptive_audit/<scope_kind>_<scope_id>_session_<sid>/{manifest.json, auditor_*.md, consensus.md}"],
       "skip_if": "SystemSpec.compatibility.v0_1_0 == true"
     }
@@ -257,7 +280,12 @@
       {"path": "feedback_learning/corrections.db", "template": "templates/feedback_learning/corrections_schema.sql.tmpl", "since": "0.2.0", "kind": "sqlite", "living": true},
       {"path": "feedback_learning/corrections.md", "template": "templates/feedback_learning/corrections.md.tmpl", "since": "0.2.0", "regenerated_from": "feedback_learning/corrections.db"},
       {"path": "feedback_learning/classifications.json", "template": "templates/feedback_learning/classifications.json.tmpl", "since": "0.2.0"},
-      {"path": "feedback_learning/pending_review.md", "template": "templates/feedback_learning/pending_review.md.tmpl", "since": "0.2.0", "regenerated_from": "feedback_learning/corrections.db"}
+      {"path": "feedback_learning/pending_review.md", "template": "templates/feedback_learning/pending_review.md.tmpl", "since": "0.2.0", "regenerated_from": "feedback_learning/corrections.db"},
+
+      {"path": "memory_schema/manifest.json", "template": "templates/memory_schema/manifest.json.tmpl", "since": "0.3.0", "living": true, "negotiated_at_phase": "4.5"},
+      {"path": "memory_schema/manifest.md", "template": "templates/memory_schema/manifest.md.tmpl", "since": "0.3.0", "regenerated_from": "memory_schema/manifest.json"},
+      {"path": "memory_schema/modules/", "kind": "directory_with_per_module_jsons", "since": "0.3.0", "purpose": "one <module_name>.json per negotiated module"},
+      {"path": "memory_schema/negotiation_session_<id>.md", "template": "templates/memory_schema/schema_negotiation_record.md.tmpl", "since": "0.3.0", "purpose": "HITL audit trail of phase 4.5 negotiation"}
     ],
     "on_demand": [
       {"id": "child_orchestrator", "trigger": "interview.on_demand.orchestrator == true", "outputs": ["CLAUDE.md (autonomous orchestrator content)", ".claude/settings.json"]},

@@ -2,6 +2,63 @@
 
 All notable changes to `system-designer`. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] — 2026-05-08
+
+### Added
+
+#### New phase
+
+- **Phase 4.5 · memory_schema_setup** — `prompts/15_memory_schema_architect.md`. Negotiates with the human **what exactly the memory of THIS project must store** — per module, per format (JSON / JSONL / structured Markdown), per trigger, with calibrated audit completeness rules. Six per-domain starters preloaded under `templates/memory_schema/per_domain_starters/`: `informatics_dev` (anchored on the user's `test_outcomes` example with `mandatory_if_status!=pass` for `error_code` / `error_message` / `suggested_solution` / `suggested_solution_conf_pct`), `healthcare_clinical` (with `non_removable_for_high_risk` mandatory `adverse_events`), `fintech`, `legal`, `public_sector`, `research`. Inserted between `GATE_1` (phase 4) and `scaffold` (phase 5) so the schema is in place before any memory file is rendered. Inherited by child for living re-negotiation at session boundaries.
+
+#### Updated cross-phase hook
+
+- **`memory_completeness_auditor` promoted to MANDATORY** in `prompts/14_adaptive_audit_meta.md` (analogous to `simulation_agent` in phase 11.5). Always added on top of `n_auditors`, never as one of them. Reads `memory_schema/manifest.json` as its audit contract and runs a **two-tier check**:
+  - **Particular** — for the scope at hand: did each contracted trigger produce its entry? Are mandatory fields populated (including `mandatory_if_<condition>`)?
+  - **Global** — across all sessions: are `missing_threshold_pct` breached? Are any modules empty across N sessions?
+  - Findings flow into the existing BLOCKER / WARNING / WEAK + QUEUE_FOR_HITL / DISSENT_HITL_NOW / DEFER paths.
+
+#### Templates (7 new)
+
+- `templates/memory_schema/{manifest.json, manifest.md, module_schema.json, missing_audit.md, schema_negotiation_record.md}.tmpl`
+- `templates/memory_schema/per_domain_starters/{informatics_dev, healthcare_clinical, fintech, legal, public_sector, research}.json`
+- `templates/memory/{structured_module.jsonl, structured_module.md}.tmpl`
+
+#### Reference
+
+- `references/memory_schema_protocol.md` — authoritative protocol: schema format, field flags (4 levels), format options (3), trigger grammar, audit rules (two-tier), per-domain starters, hybrid composition for `domain=other`, calibration anchors, schema evolution, lifecycle.
+
+#### Wizard
+
+- Q37 `memory_schema_negotiation_enabled` (default `true`); when `false`, phase 4.5 is skipped and the mandatory `memory_completeness_auditor` falls back to checking only the Anthropic 4-typed baseline.
+- Defaults extended for `memory_schema.negotiation_enabled`.
+
+#### Tests (4 new; suite at 16 PASS / 0 FAIL)
+
+- T17 prompt 15 exists
+- T18 reference + 6 per-domain starters exist
+- T19 `memory_completeness_auditor` declared MANDATORY in adaptive prompt
+- T20 per-domain JSON starters parse cleanly (Python `json.load`)
+
+### Changed
+
+- `SKILL.md` — bumped to 0.3.0; orchestration now mentions 18 phases; cross-phase note updated for the mandatory persona.
+- `system_generator.json` — version 0.3.0 / schema_version 3; new phase 4.5 entry; new mandatory dependency on prompt 15 + reference + 6 starters; new mandatory artifacts under `memory_schema/`.
+- `prompts/00_master_orchestrator.md` — `<sub_tasks>`, `<orchestration>`, `<dependencies>` extended for phase 4.5.
+- `prompts/14_adaptive_audit_meta.md` — `<task>` / `<knowledge_base>` / `<success_criteria>` / `<metadata>` updated to declare `memory_completeness_auditor` mandatory and document the two-tier audit procedure.
+- `wizard/{interview_questions,defaults}.json` — version bumped to 0.3.0; Q37 added; memory_schema defaults added.
+- `README.md` — bumped to 0.3.0; "What's new in v0.3.0" section added; phases badge raised to 18.
+
+### Backward compatibility
+
+- `SystemSpec.compatibility.v0_1_0 = true` (wizard Q36) — skips phases 1.5 / 11.5 / 13.5 / 13.7 / 4.5 and the cross-phase hook.
+- `SystemSpec.memory_schema.negotiation_enabled = false` (wizard Q37) — skips just phase 4.5; the mandatory `memory_completeness_auditor` then audits only the Anthropic 4-typed baseline.
+
+### Known limitations
+
+- Hybrid-starter composition for `domain=other` requires user choice between two existing starters; pure-from-scratch composition is supported via the add-module dialogue but takes longer.
+- The two-tier audit's "particular" tier requires a clear mapping from scope artifacts to expected memory entries; ambiguous triggers may produce false negatives. The protocol grammar is intentionally simple to reduce parser drift.
+- High-risk domain modules (e.g., `adverse_events` in healthcare) are flagged `non_removable_for_high_risk`; users may still override at HITL with rationale logged to `decisions.md`. The flag is a UX safeguard, not a regulatory hard-block.
+
 ## [0.2.0] — 2026-05-08
 
 ### Added
@@ -76,5 +133,6 @@ All notable changes to `system-designer`. Format: [Keep a Changelog](https://kee
 - Static HTML dashboard for the generator's own state.
 - Repo README, LICENSE (MIT), CHANGELOG.
 
+[0.3.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.0
 [0.2.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.2.0
 [0.1.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.1.0

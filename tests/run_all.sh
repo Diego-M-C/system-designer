@@ -174,6 +174,57 @@ else
   nope "n_auditors range not clearly documented in $ada_path"
 fi
 
+# T17 · v0.3.0 prompt 15 exists
+hdr "T17 · v0.3.0 prompt 15_memory_schema_architect.md exists"
+if [ -f "prompts/15_memory_schema_architect.md" ]; then
+  ok "prompts/15_memory_schema_architect.md present"
+else
+  nope "prompts/15_memory_schema_architect.md missing"
+fi
+
+# T18 · v0.3.0 reference + 6 per-domain starters exist
+hdr "T18 · v0.3.0 reference + 6 per-domain memory-schema starters exist"
+ref_path="references/memory_schema_protocol.md"
+missing_starters=()
+for f in informatics_dev healthcare_clinical fintech legal public_sector research; do
+  if [ ! -f "templates/memory_schema/per_domain_starters/${f}.json" ]; then
+    missing_starters+=("templates/memory_schema/per_domain_starters/${f}.json")
+  fi
+done
+if [ -f "$ref_path" ] && [ ${#missing_starters[@]} -eq 0 ]; then
+  ok "memory_schema_protocol.md + 6 per-domain starters present"
+else
+  if [ ! -f "$ref_path" ]; then nope "missing $ref_path"; fi
+  if [ ${#missing_starters[@]} -gt 0 ]; then
+    nope "missing per-domain starters:"
+    printf '  %s\n' "${missing_starters[@]}"
+  fi
+fi
+
+# T19 · memory_completeness_auditor mandatory in adaptive_audit_meta
+hdr "T19 · memory_completeness_auditor declared MANDATORY in prompt 14"
+ada_path="prompts/14_adaptive_audit_meta.md"
+if grep -qE 'memory_completeness_auditor.*MANDATORY|MANDATORY.*memory_completeness_auditor|memory_completeness_auditor[^a-z_].*non-?optional|always include.*memory_completeness_auditor|on top of .*n_auditors.*memory_completeness_auditor|memory_completeness_auditor.*on top of' "$ada_path"; then
+  ok "memory_completeness_auditor mandatory mention found"
+else
+  nope "memory_completeness_auditor not declared mandatory in $ada_path"
+fi
+
+# T20 · per-domain JSON starters parse cleanly
+hdr "T20 · per-domain memory-schema starters parse as valid JSON"
+parse_fail=()
+for f in templates/memory_schema/per_domain_starters/*.json; do
+  if ! python3 -c "import json,sys; json.load(open('$f'))" 2>/dev/null; then
+    parse_fail+=("$f")
+  fi
+done
+if [ ${#parse_fail[@]} -eq 0 ]; then
+  ok "all 6 starters parse as valid JSON"
+else
+  nope "starters with JSON parse errors:"
+  printf '  %s\n' "${parse_fail[@]}"
+fi
+
 # T16 · v0.2.0 templates exist
 hdr "T16 · v0.2.0 templates exist"
 missing_tmpl=()

@@ -20,7 +20,8 @@
 | 11 | [`11_feedback_learning_loop.md`](11_feedback_learning_loop.md) *(v0.2.0)* | Complex | ~42 | Phase 13.5 — feedback DB + classify + learn-Y/N/SKIP HITL + threshold trigger |
 | 12 | [`12_improvement_jury.md`](12_improvement_jury.md) *(v0.2.0)* | Complex | ~38 | Phase 13.7 — fixed 5 specialist auditors + mandatory HITL gate |
 | 13 | [`13_context_curator.md`](13_context_curator.md) *(v0.2.0)* | Complex | ~40 | Phase 1.5 — calibrated source corpus + living updates per session |
-| 14 | [`14_adaptive_audit_meta.md`](14_adaptive_audit_meta.md) *(v0.2.0)* | Complex | ~44 | Cross-phase — per-task / per-session 3-10 dynamically composed auditors |
+| 14 | [`14_adaptive_audit_meta.md`](14_adaptive_audit_meta.md) *(v0.2.0; v0.3.0 mandatory memory_completeness_auditor)* | Complex | ~44 | Cross-phase — 3-10 dynamic auditors + mandatory memory_completeness_auditor |
+| 15 | [`15_memory_schema_architect.md`](15_memory_schema_architect.md) *(v0.3.0)* | Complex | ~42 | Phase 4.5 — per-project memory contract negotiation (6 per-domain starters) |
 
 ## Reading order
 
@@ -30,7 +31,7 @@ If you're debugging a specific phase: jump to the matching script doc.
 
 If you're extending the generator: read `00_master_orchestrator.md#extension-points` and the script doc closest to your change.
 
-## Doc structure (consistent across all 15 scripts)
+## Doc structure (consistent across all 16 scripts)
 
 Each doc has these sections:
 

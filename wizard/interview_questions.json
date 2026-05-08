@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-interview",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "purpose": "Interview script run by 01_interview_agent.md against the user. Produces a SystemSpec (system_generator.json#/definitions/SystemSpec). Conducted in Spanish prose; identifiers / enum values in English (D-13C bilingual rule).",
   "rendering_rules": {
     "one_question_at_a_time": true,
@@ -445,6 +445,16 @@
       "required": false,
       "default_ref": "compatibility.v0_1_0",
       "writes_to": "compatibility.v0_1_0"
+    },
+    {
+      "id": "Q37_memory_schema_negotiation_enabled",
+      "phase": "v0_2_0_extensions",
+      "since": "0.3.0",
+      "prompt": "Activar fase 4.5 (memory_schema_setup) — negociación HITL del contrato de memoria por proyecto. Recomendado: la memoria es la base; un contrato calibrado reduce huecos silenciosos y ruido. Off → solo memoria 4-tipada Anthropic baseline; el memory_completeness_auditor solo audita ese baseline.",
+      "type": "boolean",
+      "required": true,
+      "default_ref": "memory_schema.negotiation_enabled",
+      "writes_to": "memory_schema.negotiation_enabled"
     }
   ],
   "post_interview_actions": [

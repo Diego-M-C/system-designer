@@ -39,14 +39,15 @@ This is **not** a single system. This is a **generator of systems** — same bac
 
 ## High-level workflow
 
-The skill executes the **master orchestrator** at `prompts/00_master_orchestrator.md`. The orchestrator runs the following 17 phases (full spec in `system_generator.json#/phases`):
+The skill executes the **master orchestrator** at `prompts/00_master_orchestrator.md`. The orchestrator runs the following 18 phases (full spec in `system_generator.json#/phases`):
 
 1. **read_context** — load prompt-architect, EU AI Act checklists, audit example, references, templates, wizard.
 1.5. **context_setup** *(v0.2.0)* — run `prompts/13_context_curator.md`. Ask the user for project context; fetch implementation guides, legislation (if applicable), non-library docs, curated internet sources via `mcp.playwright` (recommended) or `fetch()` fallback; each source carries a calibrated confidence% under `references/context_confidence_protocol.md`. Library docs are explicitly out of scope here (phase 7). The child inherits this curator and re-runs it at every session boundary.
 2. **interview** — run `wizard/interview_questions.json` against the user; default via `wizard/defaults.json` for skipped questions.
 3. **planning_brief** — emit calibrated plan with ≥3 alternatives at every strategic fork.
 4. **GATE 1 (HITL)** — present plan; block until user approves.
-5. **scaffold** — emit the child-system tree in `<target_path>` (default `<cwd>/<system_name>/`).
+4.5. **memory_schema_setup** *(v0.3.0)* — run `prompts/15_memory_schema_architect.md`. Pick per-domain starter (informatics_dev / healthcare_clinical / fintech / legal / public_sector / research) or compose hybrid; HITL negotiate (accept all / edit / add / skip); persist `<target_path>/memory_schema/manifest.json` + per-module schemas + Markdown mirror + negotiation record. The contract becomes the audit subject of the **mandatory** `memory_completeness_auditor` persona inside `prompts/14_adaptive_audit_meta.md`.
+5. **scaffold** — emit the child-system tree in `<target_path>` (default `<cwd>/<system_name>/`); now also renders structured-memory module files per the negotiated schema from phase 4.5.
 6. **compose_prompts** — invoke prompt-architect on every child prompt (Simple/Medium/Complex per role); audit each.
 7. **fetch_library_docs** — download fresh docs of every chosen library into `<target_path>/library_docs/` (Context7 first, fallback direct fetch). Distinct from phase 1.5: this owns *library* documentation only.
 8. **seed_tracking** — initialise `tracking/`, `memory/`, `errors_catalog.json` (≥30 pre-loaded common AI errors), `decisions.md`.
@@ -60,9 +61,11 @@ The skill executes the **master orchestrator** at `prompts/00_master_orchestrato
 13.7. **improvement_audit** *(v0.2.0)* — run `prompts/12_improvement_jury.md`. 5 specialist auditors (`regression`, `calibration`, `portability`, `eu_ai_act_drift`, `memory_integrity`) audit the proposal with `references/jury_consensus_protocol.md`; mandatory HITL gate at end; no source change merges without explicit human approval.
 14. **STOP** — handoff complete; child orchestrator (`<target_path>/CLAUDE.md`) takes over.
 
-### Cross-phase: adaptive audit meta *(v0.2.0)*
+### Cross-phase: adaptive audit meta *(v0.2.0; updated v0.3.0)*
 
 `prompts/14_adaptive_audit_meta.md` is invoked **at the end of every task and at every session end** in BOTH the generator (per-phase) and the inherited child. It computes `n_auditors ∈ [3,10]` from an importance score, freshly composes each auditor via prompt-architect with a persona tailored to the scope, runs them in parallel, separates errors (blockers) from improvements (queued for phase 13.5), and surfaces HITL only when needed. Prompt 12 is its fixed-5-axis special case.
+
+**v0.3.0 update:** the panel always includes a **mandatory** `memory_completeness_auditor` on top of `n_auditors` (analogous to the simulation_agent in phase 11.5). It reads `memory_schema/manifest.json` (negotiated at phase 4.5) as its audit contract and runs a two-tier check: **particular** (for the scope at hand, are the contracted fields populated? was the entry written at all?) and **global** (across all sessions, are missing-thresholds breached? are any modules empty?).
 
 ## Artifacts (full map in `system_generator.json#/artifacts`)
 
@@ -80,6 +83,8 @@ The skill executes the **master orchestrator** at `prompts/00_master_orchestrato
 - *(v0.2.0)* `feedback_learning/{corrections.db, corrections.md, classifications.json, pending_review.md}` — phase 13.5 store
 - *(v0.2.0)* `improvement_audit/{auditor_*.md, consensus_report.md}` *(when phase 13.7 fires)*
 - *(v0.2.0)* `adaptive_audit/<scope_kind>_<scope_id>_session_<sid>/{manifest.json, auditor_*.md, consensus.md}` *(per-task / per-session)*
+- *(v0.3.0)* `memory_schema/{manifest.json, manifest.md, modules/, negotiation_session_*.md}` — per-project memory contract (phase 4.5)
+- *(v0.3.0)* `memory/<structured_module>.{jsonl|md}` *(one file per negotiated module; emitted at scaffold per the schema)*
 
 ### On-demand (only if interview confirms need)
 - `CLAUDE.md`-orquestador (only if child needs autonomous orchestration)
@@ -138,7 +143,8 @@ No installation, no MCP setup, no platform-specific config required. See `refere
 | `prompts/11_feedback_learning_loop.md` *(v0.2.0)* | Phase 13.5 — feedback DB + classify + learn-Y/N/SKIP HITL |
 | `prompts/12_improvement_jury.md` *(v0.2.0)* | Phase 13.7 — fixed 5 specialist auditors + mandatory HITL |
 | `prompts/13_context_curator.md` *(v0.2.0)* | Phase 1.5 — calibrated source corpus + living updates |
-| `prompts/14_adaptive_audit_meta.md` *(v0.2.0)* | Per-task / per-session 3-10 dynamic auditors with persona-fit |
+| `prompts/14_adaptive_audit_meta.md` *(v0.2.0; v0.3.0 mandatory memory_completeness_auditor)* | Per-task / per-session 3-10 dynamic auditors with persona-fit + mandatory memory auditor |
+| `prompts/15_memory_schema_architect.md` *(v0.3.0)* | Phase 4.5 — per-project memory contract negotiator (6 per-domain starters) |
 | `references/calibrated_probabilities.md` | P2 implementation rules |
 | `references/portable_invocation.md` | P1 pattern across LLMs |
 | `references/ai_error_catalog.md` | ≥30 pre-loaded errors |
@@ -148,11 +154,13 @@ No installation, no MCP setup, no platform-specific config required. See `refere
 | `references/feedback_taxonomy.md` *(v0.2.0)* | Severity × category × recurrence taxonomy |
 | `references/jury_consensus_protocol.md` *(v0.2.0)* | Shared consensus rules for prompts 12 + 14 |
 | `references/context_confidence_protocol.md` *(v0.2.0)* | Source confidence taxonomy for phase 1.5 |
+| `references/memory_schema_protocol.md` *(v0.3.0)* | Per-project memory contract format + audit semantics + 6 per-domain starters |
 | `templates/` | Molds for every artifact emitted (incl. `data_flow_validation/`, `feedback_learning/`, `improvement_audit/`, `adaptive_audit/`, `context/` in v0.2.0) |
 | `wizard/interview_questions.json` | Interview script |
 | `wizard/defaults.json` | Sensible defaults for skipped answers |
 
 ## Version
 
-`0.2.0` · 2026-05-08 · adds 5 new prompts (10-14), 4 new references, 5 new template trees, extended 13-phase orchestration to 17 phases (1.5, 11.5, 13.5, 13.7), per-task / per-session adaptive audit meta-validator. Backward-compatible with `0.1.0` projects via `SystemSpec.compatibility.v0_1_0` flag (skips new phases).
+`0.3.0` · 2026-05-08 · adds `prompts/15_memory_schema_architect.md` (Phase 4.5: per-project memory contract negotiation with 6 per-domain starters); promotes `memory_completeness_auditor` to **mandatory** persona inside `prompts/14_adaptive_audit_meta.md` (always added on top of n_auditors); adds `references/memory_schema_protocol.md`; extends 17-phase orchestration to **18 phases**. Backward-compatible: `SystemSpec.compatibility.v0_1_0=true` skips all v0.2.0+v0.3.0 additions; `SystemSpec.memory_schema.negotiation_enabled=false` skips just phase 4.5 (the auditor falls back to checking only the Anthropic 4-typed baseline).
+`0.2.0` · 2026-05-08 · adds 5 new prompts (10-14), 4 new references, 5 new template trees, extended 13-phase orchestration to 17 phases (1.5, 11.5, 13.5, 13.7), per-task / per-session adaptive audit meta-validator.
 `0.1.0` · 2026-04-29 · core (SKILL.md + master orchestrator + system_generator.json + prompts 00-09 + references + templates + wizard).

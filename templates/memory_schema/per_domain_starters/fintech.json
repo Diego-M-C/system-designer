@@ -1,0 +1,127 @@
+{
+  "starter_id": "fintech",
+  "schema_version": 1,
+  "generator_version": "0.3.0",
+  "domain": "fintech",
+  "description": "Starter for fintech / banking / insurance projects. Anchored in DORA + MiCA + PSD3 + ISO 42001.",
+  "modules": [
+    {
+      "name": "transaction_pattern_audits",
+      "format": "jsonl",
+      "path": "memory/transaction_pattern_audits.jsonl",
+      "trigger": "every audited transaction or pattern decision",
+      "append_only": true,
+      "fields": [
+        { "name": "audit_id",            "type": "string",   "flag": "mandatory",   "rationale": "stable handle",                              "confidence_pct": 95 },
+        { "name": "pattern_signature",   "type": "string",   "flag": "mandatory",   "rationale": "anonymised pattern fingerprint",             "confidence_pct": 92 },
+        { "name": "decision",            "type": "enum {allow,review,block,manual_escalation}","flag":"mandatory","rationale":"action taken", "confidence_pct": 92 },
+        { "name": "rationale",           "type": "string",   "flag": "mandatory",   "rationale": "≤300 chars factual",                         "confidence_pct": 88 },
+        { "name": "model_confidence_pct","type": "int 0-100","flag": "mandatory",   "rationale": "P2",                                          "confidence_pct": 92 },
+        { "name": "human_override",      "type": "boolean",  "flag": "mandatory",   "rationale": "HITL audit trail",                            "confidence_pct": 92 },
+        { "name": "session_id",          "type": "string",   "flag": "mandatory",   "rationale": "lineage",                                     "confidence_pct": 95 },
+        { "name": "ts",                  "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                                    "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has decision AND rationale AND model_confidence_pct AND human_override",
+        "missing_threshold_pct": 1,
+        "particular_audit": "every block / manual_escalation has human_override=true OR a decisions.md ADR within 24h",
+        "global_audit": "monthly: alert if model_confidence_pct distribution drifts (calibration loss)"
+      },
+      "added_by": "starter",
+      "confidence_pct": 88
+    },
+    {
+      "name": "regulatory_changes_tracked",
+      "format": "jsonl",
+      "path": "memory/regulatory_changes_tracked.jsonl",
+      "trigger": "every regulatory update detected affecting the system",
+      "append_only": true,
+      "fields": [
+        { "name": "regulation",        "type": "string",  "flag": "mandatory",   "rationale": "DORA | MiCA | PSD3 | ...",     "confidence_pct": 95 },
+        { "name": "article_or_section","type": "string",  "flag": "mandatory",   "rationale": "concrete locator",            "confidence_pct": 92 },
+        { "name": "change_summary",    "type": "string",  "flag": "mandatory",   "rationale": "≤300 chars",                  "confidence_pct": 88 },
+        { "name": "impact_score",      "type": "int 1-5", "flag": "mandatory",   "rationale": "self-rated impact",           "confidence_pct": 85 },
+        { "name": "action_required",   "type": "string|null","flag": "mandatory_if_impact_score>=3","rationale":"plan",       "confidence_pct": 80 },
+        { "name": "deadline",          "type": "ISO8601|null","flag": "mandatory_if_action_required","rationale":"compliance","confidence_pct": 85 },
+        { "name": "session_id",        "type": "string",  "flag": "mandatory",   "rationale": "lineage",                     "confidence_pct": 95 },
+        { "name": "ts",                "type": "ISO8601", "flag": "mandatory",   "rationale": "ordering",                    "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has regulation AND article_or_section AND change_summary AND impact_score",
+        "missing_threshold_pct": 5,
+        "particular_audit": "every Gate #2 reflection includes a regulatory_changes_tracked check",
+        "global_audit": "every 30 days: surface entries with action_required AND no related decision_logs entry"
+      },
+      "added_by": "starter",
+      "confidence_pct": 85
+    },
+    {
+      "name": "model_drift_alerts",
+      "format": "jsonl",
+      "path": "memory/model_drift_alerts.jsonl",
+      "trigger": "every drift evaluation cycle",
+      "append_only": true,
+      "fields": [
+        { "name": "feature",      "type": "string",   "flag": "mandatory",   "rationale": "feature name",       "confidence_pct": 95 },
+        { "name": "drift_metric", "type": "string",   "flag": "mandatory",   "rationale": "psi | ks | wd",      "confidence_pct": 92 },
+        { "name": "value",        "type": "number",   "flag": "mandatory",   "rationale": "the measurement",    "confidence_pct": 95 },
+        { "name": "threshold",    "type": "number",   "flag": "mandatory",   "rationale": "alert threshold",    "confidence_pct": 92 },
+        { "name": "alert_fired",  "type": "boolean",  "flag": "mandatory",   "rationale": "value > threshold",  "confidence_pct": 95 },
+        { "name": "session_id",   "type": "string",   "flag": "mandatory",   "rationale": "lineage",            "confidence_pct": 95 },
+        { "name": "ts",           "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",           "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has feature AND drift_metric AND value AND threshold AND alert_fired",
+        "missing_threshold_pct": 5,
+        "particular_audit": "every drift cycle emits ≥1 entry per monitored feature",
+        "global_audit": "monthly: alert_fired=true entries linked to a corrections.db row (category=tooling or memory)"
+      },
+      "added_by": "starter",
+      "confidence_pct": 80
+    },
+    {
+      "name": "fraud_taxonomy_evolution",
+      "format": "structured_md",
+      "path": "memory/fraud_taxonomy_evolution.md",
+      "trigger": "every change in fraud taxonomy (add | remove | rename pattern class)",
+      "append_only": true,
+      "fields": [
+        { "name": "change_id",      "type": "string", "flag": "mandatory",   "rationale": "stable handle",  "confidence_pct": 92 },
+        { "name": "change_type",    "type": "enum {add,remove,rename,merge,split}","flag":"mandatory","rationale":"action","confidence_pct":95 },
+        { "name": "pattern_class",  "type": "string", "flag": "mandatory",   "rationale": "the class name", "confidence_pct": 92 },
+        { "name": "before",         "type": "string|null", "flag": "mandatory_if_change_type!=add","rationale": "context", "confidence_pct": 88 },
+        { "name": "after",          "type": "string|null", "flag": "mandatory_if_change_type!=remove","rationale": "context","confidence_pct": 88 },
+        { "name": "rationale",      "type": "string", "flag": "mandatory",   "rationale": "why",             "confidence_pct": 88 },
+        { "name": "session_id",     "type": "string", "flag": "mandatory",   "rationale": "lineage",        "confidence_pct": 95 },
+        { "name": "ts",             "type": "ISO8601","flag": "mandatory",   "rationale": "ordering",       "confidence_pct": 95 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has change_type AND pattern_class AND rationale",
+        "missing_threshold_pct": 5,
+        "particular_audit": "any commit affecting fraud-classifier code emits a candidate entry",
+        "global_audit": "every taxonomy change ≥1 model_drift_alerts entry within 30 days"
+      },
+      "added_by": "starter",
+      "confidence_pct": 78
+    },
+    {
+      "name": "counterparty_risk_revisions",
+      "format": "json",
+      "path": "memory/counterparty_risk_revisions.json",
+      "trigger": "every counterparty risk-rating revision",
+      "append_only": false,
+      "fields": [
+        { "name": "counterparties", "type": "object<string, {current_rating, last_revision_at, last_revision_reason}>", "flag": "mandatory", "rationale": "current risk state per counterparty", "confidence_pct": 85 }
+      ],
+      "audit": {
+        "completeness_rule": "every entry has current_rating AND last_revision_at AND last_revision_reason",
+        "missing_threshold_pct": 5,
+        "particular_audit": "every risk-revision event updates the entry atomically",
+        "global_audit": "alert when last_revision_at older than 12 months"
+      },
+      "added_by": "starter",
+      "confidence_pct": 78
+    }
+  ],
+  "notes": "DORA + MiCA + PSD3 alignment surfaced as recommended audits in regulatory_changes_tracked. ISO 42001 quality-management evidence covered jointly across modules."
+}

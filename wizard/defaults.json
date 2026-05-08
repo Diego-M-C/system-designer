@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-defaults",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "purpose": "Sensible defaults for interview questions when the user types 'default' or 'skip'. Used by 01_interview_agent.md. Defaults reflect calibrated recommendations for a generic high-stakes SDD project; the interview agent surfaces them with fit % and asks for confirmation.",
 
   "eu_ai_act_risk": {
@@ -201,6 +201,15 @@
       "rationale": "Default OFF (v0.2.0 fully enabled). Set to true only to skip phases 1.5 / 11.5 / 13.5 / 13.7 / adaptive_audit_meta for legacy compatibility.",
       "confidence_pct": 90,
       "since": "0.2.0"
+    }
+  },
+
+  "memory_schema": {
+    "negotiation_enabled": {
+      "value": true,
+      "rationale": "Phase 4.5 default ON. Memory is the foundation; a per-project contract reduces silent gaps AND noise pollution. The mandatory memory_completeness_auditor reads the contract on every task and every session. Off → audits only the Anthropic 4-typed baseline.",
+      "confidence_pct": 85,
+      "since": "0.3.0"
     }
   }
 }

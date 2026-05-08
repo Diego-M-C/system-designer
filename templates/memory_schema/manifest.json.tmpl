@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.3.0",
+  "domain": "{{DOMAIN}}",
+  "starter_used": "{{STARTER_USED}}",
+  "negotiated_at": "{{TEMPORAL_NOW}}",
+  "negotiated_session_id": "{{SESSION_ID}}",
+  "agent_confidence_pct": {{AGENT_CONFIDENCE_PCT}},
+  "modules": [
+    {{MODULES_JSON_ARRAY}}
+  ],
+  "baseline_anthropic_memory_preserved": true,
+  "evolution_log": [
+    {{EVOLUTION_LOG_ENTRIES_OR_EMPTY}}
+  ],
+  "manifest_sha256": "{{MANIFEST_SHA256}}",
+  "notes": "Authoritative contract. The memory_completeness_auditor (mandatory persona inside prompts/14_adaptive_audit_meta.md) reads this file as its audit baseline on every task and every session."
+}
