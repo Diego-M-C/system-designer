@@ -152,7 +152,7 @@ Factory may compose **any plausible expert** with a clear, named brief beyond th
 ```
 For each module in memory_schema/manifest.json:
   # particular audit (only for entries created within the current scope)
-  expected_entries = entries the scope's actions should have produced (per `trigger`)
+  expected_entries = derive from `trigger` and the scope's signal sources (see grounding rules below)
   observed_entries = read from <module.path>
   particular_missing = expected_entries − observed_entries
   if particular_missing > 0:
@@ -165,10 +165,17 @@ For each module in memory_schema/manifest.json:
 
   # global audit (across all sessions)
   total_entries = count(<module.path>)
-  total_violations = entries violating completeness_rule
-  violation_pct = total_violations / total_entries × 100
-  if violation_pct > module.audit.missing_threshold_pct:
-    finding(type=error, severity=critical, conf=>=80)
+  if total_entries == 0:
+    # divide-by-zero edge (v0.4.0 explicit handling)
+    if module.flag in {mandatory, recommended}:
+      finding(type=error, severity=warn, conf=>=80,
+              note='module empty across project lifetime; either no triggers fired yet OR module is misconfigured')
+    # do NOT compute violation_pct (undefined); skip global rule
+  else:
+    total_violations = entries violating completeness_rule
+    violation_pct = total_violations / total_entries × 100
+    if violation_pct > module.audit.missing_threshold_pct:
+      finding(type=error, severity=critical, conf=>=80)
 
   # improvement candidates
   if module shows zero entries across 3+ sessions and module.flag == 'recommended':
@@ -176,6 +183,37 @@ For each module in memory_schema/manifest.json:
   if a recurring pattern in errors.jsonl is not yet captured by any module:
     finding(type=improvement, idea='consider new module to capture this signal')
 ```
+
+**Particular-tier `expected_entries` grounding (worked example · v0.4.0):**
+
+Each `trigger` (English string) maps to a concrete signal source the auditor consults to derive `expected_entries`. Examples:
+
+| trigger phrase                         | signal source                                                  | expected_entries derivation                             |
+|---|---|---|
+| `every test execution`                 | `tracking/sessions/<id>/phase.log` rows whose phase contains `test_*` OR a CI artifact (`junit.xml` / `coverage.xml` / `pytest.log` if available) | count of distinct test_id × attempt_number tuples |
+| `every architectural / scope decision` | `tracking/sessions/<id>/checkpoint_decision.md` ADR rows + Gate #1 / Gate #2 approvals in `checkpoints/gate_*.md`                                | count of ADR rows authored this session              |
+| `every Gate #2 reflection`             | `audit/reflection_session_<id>.md` existence                                                                                                       | exactly 1 if file exists; 0 otherwise               |
+| `every cohort sampling`                | `tracking/sessions/<id>/observations.jsonl` entries with `artifact ~= cohort_*`                                                                    | count of matching observations                       |
+| `every audited transaction or pattern decision` | runtime audit-log surface (project-specific; declared in `decisions.md`)                                                                  | count from that surface                              |
+| `every compliance check with outcome`  | `audit/audits/status_log.jsonl` rows for this session                                                                                              | count of status-transition rows                      |
+
+When a trigger phrase has no documented signal source, the auditor records an `improvement` finding (`category=tooling`, `idea='ground trigger <X> in a concrete signal source'`) and falls back to `expected_entries=0` (which means the particular-tier check passes vacuously — the global tier still runs).
+
+**Concrete example — informatics_dev / test_outcomes module on a session that ran 12 tests:**
+
+```
+scope_kind = "session"
+trigger    = "every test execution"
+signal     = pytest.log       (parsed: 12 entries, distinct (test_id, attempt))
+expected_entries = 12
+observed_entries = read memory/test_outcomes.jsonl, filter by session_id → 11
+particular_missing = 1
+→ finding(type=error, severity=warn, conf=85,
+          path:line='memory/test_outcomes.jsonl:tail',
+          comments='1 test execution did not emit a memory entry; check trigger wiring')
+```
+
+The particular-tier output is actionable because it points to a concrete signal source AND a concrete delta count.
 
 The auditor's findings flow into the same error / improvement triage as the rest of the panel.
 

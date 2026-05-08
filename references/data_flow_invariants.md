@@ -58,6 +58,7 @@ The simulation agent runs the 5 scenarios in `prompts/10_data_flow_validator.md#
 | `INV-LIF-001` | No `*.tmp` files committed under `<target_path>/`. | 95 |
 | `INV-LIF-002` | sha256 chain in `artifacts_emitted[]` is internally consistent (no recomputed hash mismatches). | 80 |
 | `INV-LIF-003` | Atomic-write pattern observable: every write in `observations.jsonl` references both a `tmp_path` and a `final_path`. | 70 |
+| `INV-LIF-004` *(v0.4.0)* | **Tamper-evident sha256 chain** (`prior_hash` field): every entry N (N≥2) in `tracking/sessions/<id>/observations.jsonl` carries `prior_hash = sha256(entry[N-1])`; every ADR row in `tracking/decisions.md` carries `prior_hash = sha256(prior ADR row's serialized form)`. Entry 1 of a fresh session uses the literal string `"genesis"`. The chain enables tamper-evident audit trails (Art. 12 evidence chain). T23 in `tests/run_all.sh` validates a synthetic chain. | 90 |
 
 ### calibration_consistency_auditor
 

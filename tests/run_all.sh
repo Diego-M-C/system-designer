@@ -319,6 +319,65 @@ else
   fi
 fi
 
+# T23 · sha256 hash-chain (prior_hash) — synthetic chain integrity test (J-010 · v0.4.0)
+hdr "T23 · sha256 hash-chain integrity (prior_hash) on a synthetic observations.jsonl"
+if command -v python3 >/dev/null 2>&1; then
+  chain_check=$(python3 <<'PY' 2>/dev/null
+import hashlib, json, tempfile, os, sys
+
+def h(s): return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+# Build a 5-entry synthetic chain
+entries = []
+prior = "genesis"
+for i in range(1, 6):
+    e = {
+        "n": i,
+        "artifact": f"<path-{i}>",
+        "sha256": h(f"payload-{i}"),
+        "prior_hash": prior,
+    }
+    line = json.dumps(e, sort_keys=True)
+    entries.append(line)
+    prior = h(line)
+
+# Verify chain
+def verify(lines):
+    p = "genesis"
+    for ln in lines:
+        e = json.loads(ln)
+        if e["prior_hash"] != p:
+            return False, f"break at n={e['n']}: expected prior_hash={p[:12]}…, got {e['prior_hash'][:12]}…"
+        p = h(ln)
+    return True, "OK"
+
+ok_clean, msg_clean = verify(entries)
+if not ok_clean:
+    print(f"FAIL: clean chain rejected: {msg_clean}")
+    sys.exit(0)
+
+# Tamper test: edit entry 3 in place, verify chain breaks
+tampered = list(entries)
+e3 = json.loads(tampered[2])
+e3["artifact"] = "<TAMPERED>"
+tampered[2] = json.dumps(e3, sort_keys=True)
+ok_tamper, msg_tamper = verify(tampered)
+if ok_tamper:
+    print("FAIL: tampered chain accepted (chain is not tamper-evident)")
+    sys.exit(0)
+
+print(f"OK: 5-entry chain verifies cleanly + tamper at n=3 detected ({msg_tamper})")
+PY
+  )
+  if echo "$chain_check" | head -1 | grep -q '^OK:'; then
+    ok "$(echo "$chain_check" | head -1 | sed 's/^OK: //')"
+  else
+    nope "$chain_check"
+  fi
+else
+  echo "  WARN · python3 unavailable; skipping T23"
+fi
+
 # T20 · per-domain JSON starters parse cleanly
 hdr "T20 · per-domain memory-schema starters parse as valid JSON"
 parse_fail=()

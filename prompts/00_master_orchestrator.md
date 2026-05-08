@@ -159,6 +159,7 @@ The interview produces a `SystemSpec` JSON object conforming to `system_generato
 - `domain` (enum: healthcare | fintech | legal | public_sector | research | other)
 - `eu_ai_act_risk` (enum: high | limited | minimal — default: high)
 - `role` *(v0.3.2)* (enum: provider | deployer | provider_and_deployer | distributor | importer — default: provider_and_deployer; affects which audit rows are instantiated per Article in `prompts/06_eu_ai_act_mapper.md`)
+- `hitl_mode` *(v0.4.0)* (enum: in_the_loop | on_the_loop | over_the_loop | mixed — default: in_the_loop; per AESIA Guide 6 §4.2.5: `in_the_loop` = human approves every individual decision; `on_the_loop` = human supervises a stream and intervenes by exception; `over_the_loop` = human reviews aggregate metrics periodically; `mixed` = different modes per task class. Surfaces an audit-row under Art. 14 with the chosen mode + rationale.)
 - `stack` (object: language, frameworks[], libraries[])
 - `granularity` (default: "hybrid_B_D")
 - `auditors_count` (default: 3, range 3–10)
@@ -275,12 +276,13 @@ After each action, capture:
 OBSERVATION:
   artifact: <path>
   bytes_written: <n>
-  sha256: <hash>
+  sha256: <hash of this entry's artifact bytes>
+  prior_hash: <sha256 of the previous entry's serialized JSONL line; "genesis" for entry 1>
   audit_hook: <pass | fail | skipped — reason>
   next_phase: <phase id>
   duration_ms: <n>
 ```
-Append as JSONL to `tracking/sessions/0001_bootstrap/observations.jsonl`.
+Append as JSONL to `tracking/sessions/0001_bootstrap/observations.jsonl`. The `prior_hash` field (since v0.4.0) builds a tamper-evident chain: any in-place edit of a prior entry breaks the chain at the next read. See `../references/data_flow_invariants.md#INV-LIF-004`. Same chain discipline applies to `tracking/decisions.md` ADR rows.
 </observation>
 
 <scratchpad>
@@ -294,7 +296,7 @@ NEVER expose scratch content to `<final_output>`. Scratch is internal.
 
 <state>
 Project-level state in `tracking/project.json` (machine) + `tracking/project.md` (human mirror). Update on every action. Schema in `templates/tracking/project.json.tmpl`. Crash-safe: write atomically (write to `*.tmp`, rename — single fs.write→rename pair). State includes:
-- `current_phase`, `current_session_id`, `gate_status` (pre_gate_1 | post_gate_1 | pre_gate_2 | post_gate_2 | done | aborted)
+- `current_phase`, `current_session_id`, `gate_status` *(generic v0.4.0 shape)* — object keyed by `gate_id`: `{ "gate_1": <pending|approved|rejected>, "gate_4_5": <…>, "gate_2": <…>, "gate_13_5_per_correction": <count_pending|none>, "gate_13_7": <…> }`. Legacy v0.1.0 enum (`pre_gate_1 | post_gate_1 | pre_gate_2 | post_gate_2 | done | aborted`) still accepted for backward-compat reads when `compatibility.v0_1_0=true`.
 - `interview_answers` (partial OK)
 - `artifacts_emitted[]` with path + sha256
 - `audit_results[]`

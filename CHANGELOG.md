@@ -2,6 +2,38 @@
 
 All notable changes to `system-designer`. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] — 2026-05-09 · P2 batch from external-audit jury
+
+Ships the 8 P2 items consolidated by the v0.3.1 external-audit consensus jury, including the resolution of disagreement D1.
+
+### Added
+
+- **J-010 · sha256 hash-chain (`prior_hash`).** Every entry N≥2 in `tracking/sessions/<id>/observations.jsonl` now carries `prior_hash = sha256(entry[N-1])`; entry 1 uses literal `"genesis"`. Same discipline applies to `tracking/decisions.md` ADR rows. The chain is **tamper-evident**: any in-place edit of a prior entry breaks the chain on next read. New invariant `INV-LIF-004` documented in `references/data_flow_invariants.md`. New deterministic test **T23** in `tests/run_all.sh` builds a synthetic 5-entry chain, verifies it parses cleanly, then injects a tamper at entry 3 and verifies the chain breaks. Resolves the panel's only preserved disagreement D1 (Art. 12 audit-trail integrity nuance between Auditors 1 and 2).
+- **J-012 · special-category-data wizard question.** New Q04c `compliance.special_category_data` (boolean, default false). When true, the mapping algorithm at `references/eu_ai_act_mapping.md#4` step 9 auto-emits GDPR Art. 9 audit rows (≥6: lawful basis, derogation, DPIA reference, data-minimisation, retention, access controls) AND Annex III(1) biometric rows (≥4: real-time-vs-post categorisation, prohibited-use guardrails, accuracy-by-demographic, FRIA).
+- **J-013 · `SystemSpec.hitl_mode` enum.** New schema field (`in_the_loop | on_the_loop | over_the_loop | mixed`, default `in_the_loop`) per AESIA Guide 6 §4.2.5. Wizard Q04e added under `compliance` phase, gated by `Q04_eu_ai_act_risk in {high, limited}`. Surfaces an audit-row under Art. 14 with the chosen mode + rationale.
+- **J-019 · baseline-memory FS-existence check.** Prompt 15 `<verification>` block now runs `fs.read` on `memory/{user,project,feedback,reference}.md` plus `memory/MEMORY.md` and BLOCKs if any are missing in `living_update` mode. In `bootstrap` mode the pending state is logged as expected (scaffold emits them at phase 5).
+
+### Changed
+
+- **J-011 · Art.72 min_rows 6 → 10.** Updated `references/eu_ai_act_mapping.md` row 12 + total computation (4 sub-systems × ≥2 rows: data collection, analysis, corrective action, regulator communication per AESIA Guide 13). Total high-risk minimum rows 112 → 116.
+- **J-014 · `gate_status` shape modernised.** Master orchestrator's `<state>` block: legacy enum (`pre_gate_1 | post_gate_1 | …`) replaced by per-gate object (`{ "gate_1": <pending|approved|rejected>, "gate_4_5": …, "gate_2": …, "gate_13_5_per_correction": …, "gate_13_7": … }`). Backward-compat reads of the legacy enum are preserved when `compatibility.v0_1_0=true`. `system_generator.json#hitl_gates` registry now enumerates all 5 gates (1, 4.5, 2, 13.5, 13.7) with `since` + `format_template` per gate.
+- **J-015 · `public_sector/compliance_audit_trail` format.** jsonl → **sqlite** (FTS5 over `evidence_path` + indexed query on `outcome=fail` for the 30-day surfacing rule). `format_alternatives[]` lists jsonl (50% fit) and parquet (30% fit).
+- **J-017 · particular-tier `expected_entries` grounding.** Prompt 14 `memory_completeness_auditor` block: added a `trigger phrase → signal source` mapping table (6 examples) plus a worked end-to-end example for `informatics_dev/test_outcomes` showing `expected=12 / observed=11 → finding(missing=1)`. Added explicit divide-by-zero handling: when `total_entries == 0` the auditor records an `info|warn` finding (per module flag) and skips `violation_pct` rather than computing an undefined ratio.
+
+### Test suite
+
+20 PASS / 0 FAIL (T23 sha256-chain test added).
+
+### Backward compatibility
+
+- All v0.3.2 manifests parse unchanged. Q04c default `false` and `hitl_mode` default `in_the_loop` preserve prior behaviour.
+- `gate_status` reads accept both shapes during the v0.4.x window; v1.0.0 keeps the per-gate object only.
+- `prior_hash` is opt-in at the runtime level — child orchestrators that haven't been regenerated continue to write entries without `prior_hash`; the auditor reports a P2 warn when it detects mixed modes.
+
+### Deferred to v1.0.0
+
+J-020 (adversarial-robustness rows + Art.9(2) iterative-review-cadence + MiCA cross-walk) · J-021 (housekeeping deps + cache_hint scoping + wizard placeholder marking).
+
 ## [0.3.2] — 2026-05-09 · external-audit response
 
 ### Context
@@ -222,6 +254,7 @@ The 8-format catalogue + the calibrated selection matrix + the HITL alternatives
 - Static HTML dashboard for the generator's own state.
 - Repo README, LICENSE (MIT), CHANGELOG.
 
+[0.4.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.4.0
 [0.3.2]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.2
 [0.3.1]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.1
 [0.3.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.0

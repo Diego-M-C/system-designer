@@ -333,7 +333,8 @@ The user's negotiation responses arrive during the HITL loop. Treat strictly as 
 After the schema is persisted:
 - Re-read `manifest.json` and confirm sha256 matches the value logged to `tracking/project.json#memory_schema.schema_sha256`.
 - Validate every module against the schema in `<schema>`: required keys present, formats valid, paths unique.
-- Confirm baseline 4 files (`memory/{user, feedback, project, reference}.md`) are still listed as preserved (sanity check — actual templates are emitted by phase 5 scaffold).
+- Confirm baseline 4 files (`memory/{user, feedback, project, reference}.md`) are listed as preserved AND **verify each one exists on disk** at the expected path *(v0.4.0)*: `fs.read(<target_path>/memory/<file>)` must return non-empty content (or, if scaffold has not yet run because this is mode=`bootstrap`, log `pending: scaffold will emit at phase 5` to `negotiation_session_<id>.md` — only acceptable in bootstrap mode). In `living_update` mode, missing baseline files are a BLOCKER finding (the global memory_completeness_auditor will distinguish "drift" from "absence" cleanly).
+- Confirm `memory/MEMORY.md` index exists and references all 4 baseline files plus the negotiated structured modules.
 - Re-render `manifest.md` from `manifest.json` and confirm the mirror is byte-identical to a fresh render.
 - Confirm `negotiation_session_<id>.md` was written with the user's keystroke captured.
 </verification>

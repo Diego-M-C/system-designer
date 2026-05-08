@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-interview",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "purpose": "Interview script run by 01_interview_agent.md against the user. Produces a SystemSpec (system_generator.json#/definitions/SystemSpec). Conducted in Spanish prose; identifiers / enum values in English (D-13C bilingual rule).",
   "rendering_rules": {
     "one_question_at_a_time": true,
@@ -123,6 +123,16 @@
       "writes_to": "risk_downgrade_rationale"
     },
     {
+      "id": "Q04c_special_category_data",
+      "phase": "compliance",
+      "since": "0.4.0",
+      "prompt": "¿El sistema procesa datos de categoría especial (GDPR Art. 9): salud, biometría, origen étnico, orientación sexual, opinión política, afiliación sindical, religión, ideología)? Si sí, se auto-instancian filas de auditoría adicionales bajo Art. 9 GDPR + Annex III(1) biométrica del EU AI Act.",
+      "type": "boolean",
+      "required": true,
+      "default_ref": "compliance.special_category_data",
+      "writes_to": "compliance.special_category_data"
+    },
+    {
       "id": "Q04d_role",
       "phase": "compliance",
       "since": "0.3.2",
@@ -137,6 +147,22 @@
       ],
       "default_ref": "role",
       "writes_to": "role"
+    },
+    {
+      "id": "Q04e_hitl_mode",
+      "phase": "compliance",
+      "since": "0.4.0",
+      "depends_on": {"Q04_eu_ai_act_risk": ["high", "limited"]},
+      "prompt": "Modo HITL (Art. 14 EU AI Act · AESIA Guide 6 §4.2.5). Define cómo el humano interactúa con el sistema en operación.",
+      "type": "single_or_default",
+      "options": [
+        {"value": "in_the_loop",   "label": "in_the_loop · humano aprueba cada decisión individual (mayor coste, máximo control)",                              "fit_pct_default": 35},
+        {"value": "on_the_loop",   "label": "on_the_loop · humano supervisa un stream e interviene por excepción (default razonable)",                          "fit_pct_default": 35},
+        {"value": "over_the_loop", "label": "over_the_loop · humano revisa métricas agregadas periódicamente (mínimo coste, mayor latencia de detección)",     "fit_pct_default": 15},
+        {"value": "mixed",         "label": "mixed · diferentes modos por clase de tarea (declarar mapping en decisions.md)",                                  "fit_pct_default": 15}
+      ],
+      "default_ref": "hitl_mode",
+      "writes_to": "hitl_mode"
     },
     {
       "id": "Q05_stack_language",

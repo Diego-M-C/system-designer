@@ -148,8 +148,13 @@
     },
     {
       "name": "compliance_audit_trail",
-      "format": "jsonl",
-      "path": "memory/compliance_audit_trail.jsonl",
+      "format": "sqlite",
+      "format_alternatives": [
+        { "format": "jsonl",   "fit_pct": 50, "rationale": "append-only event log; loses FTS5 over evidence_path + indexed query 'failures without remediation in last 30 days'" },
+        { "format": "parquet", "fit_pct": 30, "rationale": "columnar archive for very large compliance histories; loses interactive query" }
+      ],
+      "path": "memory/compliance_audit_trail.db",
+      "tier_b_fallback": "not applicable (sqlite is Tier-A)",
       "trigger": "every compliance check with outcome",
       "append_only": true,
       "fields": [

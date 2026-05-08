@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer",
-  "version": "0.3.2",
-  "schema_version": 3,
+  "version": "0.4.0",
+  "schema_version": 4,
   "release_date": "2026-05-09",
   "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, on-demand orchestration, calibrated context curation (v0.2.0), structural-consistency validation (v0.2.0), lifelong feedback learning (v0.2.0), fixed-5-axis improvement audit (v0.2.0), per-task / per-session adaptive audit meta-validator (v0.2.0), and (v0.3.0) per-project memory-schema negotiation with mandatory memory_completeness_auditor. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
 
@@ -234,12 +234,40 @@
       "user_responses": ["letter_choice", "alternative_freeform", "STOP"]
     },
     {
+      "id": 4.5,
+      "since": "0.3.0",
+      "phase_after": "memory_schema_setup",
+      "blocking": true,
+      "purpose": "Approve / edit / add / skip the per-project memory contract before scaffold renders memory module files",
+      "format_template": "templates/memory_schema/schema_negotiation_record.md.tmpl",
+      "user_responses": ["A_accept_all", "B_edit_module", "C_add_module", "D_skip", "STOP"]
+    },
+    {
       "id": 2,
       "phase_after": "reflection",
       "blocking": true,
       "purpose": "Approve generated tree + reflection before handoff",
       "format_template": "templates/hitl_gate.md.tmpl",
       "user_responses": ["APPROVE", "request_changes_freeform", "STOP"]
+    },
+    {
+      "id": 13.5,
+      "since": "0.2.0",
+      "phase_after": "feedback_session_per_correction",
+      "blocking": true,
+      "blocking_scope": "per_correction",
+      "purpose": "Per-correction learn-Y/N/SKIP. Never defaulted; always an explicit human keystroke",
+      "format_template": "templates/feedback_learning/per_correction_hitl.md.tmpl",
+      "user_responses": ["Y_learn", "N_record_only", "SKIP_defer"]
+    },
+    {
+      "id": 13.7,
+      "since": "0.2.0",
+      "phase_after": "improvement_audit_consensus",
+      "blocking": true,
+      "purpose": "Approve / subset / reject / send-back the v0.3.7 improvement-jury batch decision",
+      "format_template": "templates/improvement_audit/post_consensus_hitl.md.tmpl",
+      "user_responses": ["A_approve_all", "B_approve_subset", "C_reject_batch", "D_send_back"]
     }
   ],
 

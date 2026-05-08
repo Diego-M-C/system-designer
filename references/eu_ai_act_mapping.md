@@ -73,10 +73,10 @@ Each row in `<target_path>/audit/audit_sheet.xlsx` conforms to `system_generator
 | Art. 15 — robustness | 6 | rows from `Solidez_Checklist.xlsx` | ML lead |
 | Art. 15 — cybersecurity | 8 | rows from `Ciberseguridad_Checklist.xlsx` | security lead |
 | Art. 17 — quality management | 10 | rows from `Gestión de Calidad_Checklist.xlsx` | QMS lead |
-| Art. 72 — post-market monitoring | 6 | rows from `Vigilancia Poscomercializacion_Checklist.xlsx` | SRE / product |
+| Art. 72 — post-market monitoring | 10 | rows from `Vigilancia Poscomercializacion_Checklist.xlsx` (4 sub-systems × ≥2 rows each per AESIA Guide 13: data collection, analysis, corrective action, regulator communication) | SRE / product |
 | Art. 73 — incident management | 6 | rows from `Gestión de incidentes_Checklist.xlsx` | incident commander |
 
-**Total minimum rows (high-risk):** ~112 (Art. 9: 12+6 example + Art. 10: 14 + Art. 11: 18 + Art. 12: 8 + Art. 13: 6 + Art. 50: 4 + Art. 14: 8 + Art. 15: 6+6+8 + Art. 17: 10 + Art. 72: 6 + Art. 73: 6). The audit sheet starts with these and grows incrementally as sessions add domain-specific evidence.
+**Total minimum rows (high-risk):** ~116 (Art. 9: 12+6 example + Art. 10: 14 + Art. 11: 18 + Art. 12: 8 + Art. 13: 6 + Art. 50: 4 + Art. 14: 8 + Art. 15: 6+6+8 + Art. 17: 10 + Art. 72: 10 + Art. 73: 6). The audit sheet starts with these and grows incrementally as sessions add domain-specific evidence.
 
 **Limited-risk minimum rows (Art. 50 obligatory):** Art. 50 (4 rows · transparency to affected persons) + Art. 14 (8 rows · human oversight when applicable) + voluntary Art. 4 literacy row.
 
@@ -101,6 +101,7 @@ Each row in `<target_path>/audit/audit_sheet.xlsx` conforms to `system_generator
    c. Append rows to audit_sheet.xlsx (or CSV+MD fallback).
 7. Compute mapping_completeness_pct = (rows_emitted / rows_required_for_role) * 100.
 8. If completeness < 95% on high-risk: escalate at Gate #2.
+9. *(v0.4.0)* If `SystemSpec.compliance.special_category_data == true` (wizard Q04c): auto-emit additional audit rows for GDPR Art. 9 (≥6 rows: lawful basis, explicit consent or substantial-public-interest derogation, DPIA reference, data-minimisation evidence, retention period, access controls) AND Annex III(1) biometric rows (≥4 rows: real-time vs post-remote categorisation if applicable, prohibited-use guardrails, accuracy-by-demographic-stratum metrics, fundamental-rights-impact assessment). These rows attach to areas `data_governance` (Art. 10) + `human_oversight` (Art. 14) in the audit sheet.
 ```
 
 ---
