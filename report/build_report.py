@@ -1,7 +1,9 @@
 """
 Build the system-designer professional report (.docx).
-Cover page · TOC · 10 sections (v0.2.0) · embedded figures · publication-grade typography.
-v0.2.0 update: adds §6 v0.2.0 Extensions with 5 subsections + 4 new figures.
+Cover page · TOC · 10 sections (v0.3.1) · embedded figures · publication-grade typography.
+v0.2.0: §6 v0.2.0 Extensions with 5 subsections + 4 new figures.
+v0.3.1: extends §6 to 'Extensions (v0.2.0 · v0.3.x)' adding §6.6 Phase 4.5
+        Memory Schema Negotiator + §6.7 8-Format Memory Taxonomy + 3 new figures.
 """
 import os
 from docx import Document
@@ -210,7 +212,7 @@ r1 = p.add_run("\nSYSTEM-DESIGNER\n")
 r1.font.size = Pt(40); r1.bold = True; r1.font.color.rgb = WHITE
 r2 = p.add_run("\nA Portable, LLM-Agnostic\nMeta-Generator for\nEU AI Act-Compliant\nSDD Projects\n\n")
 r2.font.size = Pt(18); r2.italic = True; r2.font.color.rgb = RGBColor(0xea, 0xf2, 0xf8)
-r3 = p.add_run("Technical Report  ·  v0.2.0\n")
+r3 = p.add_run("Technical Report  ·  v0.3.1\n")
 r3.font.size = Pt(13); r3.font.color.rgb = RGBColor(0xc9, 0xa2, 0x27)
 add_borders(cell, top=False, left=False, right=False, color="c9a227", sz="24")
 
@@ -223,7 +225,7 @@ ctx_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 ctx_p.paragraph_format.space_after = Pt(8)
 r = ctx_p.add_run("Comprehensive technical documentation of the system-designer meta-skill:\n")
 r.font.size = Pt(11); r.italic = True; r.font.color.rgb = SLATE
-r2 = ctx_p.add_run("architecture · 17-phase orchestration (v0.2.0) · modules · context curation · feedback learning · adaptive audit · audit & compliance · calibration · HITL governance")
+r2 = ctx_p.add_run("architecture · 18-phase orchestration (v0.3.x) · per-project memory contract · 8-format memory taxonomy · two-tier completeness audit · adaptive audit · feedback learning · calibration · HITL governance")
 r2.font.size = Pt(10); r2.italic = True; r2.font.color.rgb = GREY
 
 # Spacer
@@ -269,8 +271,8 @@ def label_cell(cell, label, val, label_color="0a6e7a"):
     r2 = p.add_run(val)
     r2.font.size = Pt(10); r2.font.color.rgb = NAVY
 
-label_cell(fc1, "DATE", "May 2026  (v0.2.0 update)")
-label_cell(fc2, "VERSION", "0.2.0")
+label_cell(fc1, "DATE", "May 2026  (v0.3.1 update)")
+label_cell(fc2, "VERSION", "0.3.1")
 label_cell(fc3, "REPOSITORY", "github.com/Diego-M-C/system-designer")
 label_cell(fc4, "LICENSE", "MIT")
 
@@ -288,7 +290,7 @@ toc_items = [
     ("3.  Objectives",                                                  "5"),
     ("4.  System Methodology",                                          "6"),
     ("       4.1  Five Core Principles (P1–P5)",                        ""),
-    ("       4.2  The 17-Phase Orchestration  (v0.2.0)",                ""),
+    ("       4.2  The 18-Phase Orchestration  (v0.3.x)",                ""),
     ("       4.3  Two Inviolable HITL Gates",                           ""),
     ("       4.4  Spec-Driven Development Discipline",                  ""),
     ("5.  Results — System Modules",                                   "10"),
@@ -302,19 +304,21 @@ toc_items = [
     ("       5.8  Library-Doc Fetcher",                                 ""),
     ("       5.9  Living Documentation",                                ""),
     ("       5.10 Reporting Layer",                                     ""),
-    ("6.  v0.2.0 Extensions",                                          "22"),
+    ("6.  Extensions  (v0.2.0 · v0.3.x)",                              "22"),
     ("       6.1  Phase 1.5 · Context Curator",                         ""),
     ("       6.2  Phase 11.5 · Data Flow Validator + Simulation Agent", ""),
     ("       6.3  Phase 13.5 · Feedback Learning Loop",                 ""),
     ("       6.4  Phase 13.7 · Improvement Jury (5 specialist axes)",   ""),
     ("       6.5  Cross-phase · Adaptive Audit Meta-Validator",         ""),
-    ("7.  Conclusions",                                                "32"),
-    ("8.  Strengths and Limitations",                                  "33"),
+    ("       6.6  Phase 4.5 · Memory Schema Negotiator  (v0.3.0)",      ""),
+    ("       6.7  8-Format Memory Taxonomy + Selection  (v0.3.1)",      ""),
+    ("7.  Conclusions",                                                "36"),
+    ("8.  Strengths and Limitations",                                  "37"),
     ("       8.1  Strengths",                                           ""),
     ("       8.2  Limitations",                                         ""),
     ("       8.3  Need for Domain-Specific Review and Validation",     ""),
-    ("9.  Final Conclusion",                                           "36"),
-    ("10. References",                                                 "37"),
+    ("9.  Final Conclusion",                                           "40"),
+    ("10. References",                                                 "41"),
 ]
 for txt, page in toc_items:
     p = doc.add_paragraph()
@@ -420,6 +424,19 @@ bullet(" v0.2.0 introduces a calibrated source corpus before the interview (phas
        "structural-consistency check with simulation agent (phase 11.5), and a SQLite + Markdown "
        "feedback-learning loop with per-correction HITL Y/N before any system improvement merges.",
        bold_lead="v0.2.0 additions · ")
+bullet(" v0.3.0 inserts a per-project memory-schema negotiation phase (4.5, between Gate #1 and "
+       "scaffold) — six per-domain starters (informatics_dev, healthcare_clinical, fintech, "
+       "legal, public_sector, research) with calibrated mandatory / mandatory_if_<cond> / "
+       "recommended / optional field flags. The mandatory memory_completeness_auditor inside "
+       "the adaptive panel runs a two-tier audit on every task and every session: particular "
+       "(for the scope at hand) and global (across all sessions).",
+       bold_lead="v0.3.0 additions · ")
+bullet(" v0.3.1 expands the memory format taxonomy from 3 to 8 (structured_md, csv, json, jsonl, "
+       "sqlite, parquet, vector_db, graph_db) with per-format portability tier and Tier-A "
+       "fallback chain. The architect ALWAYS picks the best format per module (volume × query "
+       "pattern × relationship density × audit-rule needs) and surfaces 2 calibrated alternatives "
+       "with fit% at HITL.",
+       bold_lead="v0.3.1 additions · ")
 
 body(
     "The deliverable for any invocation is a complete child-system tree with: child orchestrator "
@@ -529,18 +546,21 @@ t = table_basic(
 
 body("")
 
-heading("4.2  The 17-Phase Orchestration  (v0.2.0)", level=2)
+heading("4.2  The 18-Phase Orchestration  (v0.3.x)", level=2)
 
 body(
-    "The master orchestrator at prompts/00_master_orchestrator.md owns a 17-phase finite "
-    "state machine in v0.2.0 (extended from the original 13-phase v0.1.0 architecture). "
+    "The master orchestrator at prompts/00_master_orchestrator.md owns an 18-phase finite "
+    "state machine in v0.3.x (extended from the original 13-phase v0.1.0 architecture). "
     "Phases are idempotent by construction (re-running a phase overwrites its output "
     "deterministically). Every phase writes to tracking/project.json#current_phase before "
-    "returning, making the orchestrator resumable. Four new phases (1.5 / 11.5 / 13.5 / 13.7) "
-    "are inserted at fixed points, plus a cross-phase adaptive_audit_meta hook that fires "
-    "at the end of every task and every session. The original 13 phases are preserved verbatim; "
-    "section §6 covers the additions in detail. Backward compatibility is available via "
-    "SystemSpec.compatibility.v0_1_0=true (legacy 13-phase mode)."
+    "returning, making the orchestrator resumable. Five new phases — 1.5 (context_setup), "
+    "4.5 (memory_schema_setup, added in v0.3.0), 11.5 (structural_consistency), 13.5 "
+    "(feedback_session), and 13.7 (improvement_audit) — are inserted at fixed points, plus "
+    "a cross-phase adaptive_audit_meta hook that fires at the end of every task and every "
+    "session and which (since v0.3.0) always includes a mandatory memory_completeness_auditor. "
+    "The original 13 phases are preserved verbatim; section §6 covers the additions in detail. "
+    "Backward compatibility is available via SystemSpec.compatibility.v0_1_0=true (legacy "
+    "13-phase mode); SystemSpec.memory_schema.negotiation_enabled=false skips just phase 4.5."
 )
 
 figure(f"{FIG}/02_phases.png",
@@ -552,7 +572,8 @@ figure(f"{FIG}/11_v02_phase_map.png",
        "Figure 11 · v0.2.0 17-phase orchestration. Four new phases (gold ring): 1.5 context_setup, "
        "11.5 structural_consistency, 13.5 feedback_session, 13.7 improvement_audit. The bottom "
        "band represents the cross-phase adaptive_audit_meta hook that fires at the end of every "
-       "task and every session.")
+       "task and every session. v0.3.0 adds a fifth new phase, 4.5 memory_schema_setup, between "
+       "Gate #1 and scaffold (covered in §6.6 with Figure 15).")
 
 heading("4.3  Two Inviolable HITL Gates", level=2)
 
@@ -853,9 +874,9 @@ body(
 page_break()
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 6 — v0.2.0 EXTENSIONS  (NEW)
+# SECTION 6 — EXTENSIONS  (v0.2.0 · v0.3.x)
 # ════════════════════════════════════════════════════════════════════════
-heading("6. v0.2.0 Extensions", level=1)
+heading("6. Extensions  (v0.2.0 · v0.3.x)", level=1)
 
 body(
     "Version 0.2.0 inserts four new phases at fixed points in the 13-phase base architecture "
@@ -864,8 +885,16 @@ body(
     "a calibrated, project-specific knowledge corpus before the interview phase; (b) the lack of "
     "a structural-consistency check between scaffolding and Gate #2; and (c) the absence of a "
     "lifelong-learning loop that captures human feedback after handoff and audits any system "
-    "improvement before merge. All five extensions inherit the five core principles (P1–P5) and "
-    "compose every emitted prompt via prompt-architect."
+    "improvement before merge."
+)
+
+body(
+    "Version 0.3.0 then identifies a deeper gap: memory itself was generic (the four-typed "
+    "Anthropic baseline only) and not contracted per project. Sub-section §6.6 covers the "
+    "phase 4.5 memory-schema negotiator that fixes this; §6.7 covers the v0.3.1 expansion "
+    "of the format taxonomy that makes the contract truly fit-for-purpose. All extensions "
+    "inherit the five core principles (P1–P5) and compose every emitted prompt via "
+    "prompt-architect."
 )
 
 callout(
@@ -1115,6 +1144,125 @@ body(
     "AI architectures'. The intent is that audit depth, audit composition, and audit discipline "
     "all become first-class outputs of the system rather than fixed conventions baked at "
     "design time."
+)
+
+# ─── 6.6 Phase 4.5 · Memory Schema Negotiator (v0.3.0) ─────────────────
+heading("6.6  Phase 4.5 · Memory Schema Negotiator  (v0.3.0)", level=2)
+
+body(
+    "Inserted between Gate #1 (phase 4) and scaffold (phase 5). Negotiates with the human what "
+    "exactly the memory of THIS project must store — per module, per format, per trigger, with "
+    "calibrated audit completeness rules. Memory is the foundation: an over-broad schema "
+    "produces noise; an under-broad schema produces silent failure. This phase makes the "
+    "trade-off explicit and human-owned."
+)
+
+figure(f"{FIG}/15_v03_phase45.png",
+       "Figure 15 · Phase 4.5 memory schema negotiation. The architect reads the post-Gate-#1 "
+       "SPEC.json, picks a per-domain starter from the 6-starter library (informatics_dev, "
+       "healthcare_clinical, fintech, legal, public_sector, research), augments with "
+       "project-specific signals, and surfaces a HITL block ([A] accept all / [B] edit module / "
+       "[C] add module / [D] skip). Outputs are persisted to memory_schema/ with atomic "
+       "manifest.json + regenerable manifest.md mirror + per-module schema files + a HITL "
+       "negotiation record. The Anthropic four-typed baseline is always preserved alongside "
+       "the negotiated structured modules.")
+
+body(
+    "The contract is encoded with a four-level field-flag taxonomy that captures conditional "
+    "mandates explicitly. The user's anchor example for software-development projects — "
+    "\"every test #N attempt #N status; if not pass, error_code + suggested_solution + "
+    "confidence%\" — maps directly into the informatics_dev starter's test_outcomes module:"
+)
+
+t = table_basic(
+    headers=["field", "flag", "rationale"],
+    rows=[
+        ["test_number, attempt_number, status",   "mandatory",                      "always present (test_id, ordering, success?)"],
+        ["error_code, error_message",             "mandatory_if_status!=pass",      "structured handle + human-readable, only when there's a failure"],
+        ["suggested_solution",                    "mandatory_if_status!=pass",      "actionable fix proposal"],
+        ["suggested_solution_conf_pct",           "mandatory_if_suggested_solution","P2 calibration on the proposal"],
+        ["related_correction_id",                 "recommended",                    "FK into feedback_learning/corrections.db when known"],
+        ["session_id, ts, agent_confidence_pct",  "mandatory",                      "lineage + temporal context + P2"],
+    ],
+    widths=[2.2, 1.7, 3.5],
+)
+
+body("")
+
+body(
+    "The mandatory memory_completeness_auditor persona inside prompts/14_adaptive_audit_meta.md "
+    "(promoted from optional in v0.2.0 to mandatory in v0.3.0, analogous to the simulation_agent "
+    "in phase 11.5) reads this contract on every task and every session and runs a two-tier audit:"
+)
+
+figure(f"{FIG}/17_v03_two_tier_audit.png",
+       "Figure 16 · Two-tier memory completeness audit. The mandatory auditor reads "
+       "memory_schema/manifest.json as its contract and runs both tiers on every adaptive_audit "
+       "invocation. Particular tier (left): for the scope at hand, did each contracted trigger "
+       "produce its entry? Are mandatory fields populated? Global tier (right): across all "
+       "sessions, are the missing-thresholds breached? Are any modules empty across N sessions? "
+       "Both tiers feed the existing finding-triage paths (BLOCKER / WARNING / WEAK + "
+       "QUEUE_FOR_HITL / DISSENT_HITL_NOW / DEFER).")
+
+body(
+    "Threshold defaults are calibrated: 5% missing-rate triggers a BLOCKER on the global tier "
+    "for medium-stakes modules; 1% for high-risk regulated modules (e.g., adverse_events in "
+    "healthcare). High-risk regulated modules carry a non_removable_for_high_risk flag in the "
+    "starter; attempts to remove them at HITL surface a regulatory warning logged to "
+    "decisions.md (overridable, but visibly so)."
+)
+
+# ─── 6.7 8-Format Memory Taxonomy (v0.3.1) ─────────────────────────────
+heading("6.7  8-Format Memory Taxonomy + Selection  (v0.3.1)", level=2)
+
+body(
+    "Version 0.3.1 expands the format taxonomy from three options (json / jsonl / structured_md) "
+    "to eight, organised in two portability tiers. The architect ALWAYS picks the best format "
+    "per module — a blanket choice across all modules is a silent-failure mode the protocol "
+    "explicitly refuses."
+)
+
+figure(f"{FIG}/16_v03_format_taxonomy.png",
+       "Figure 17 · 8-format memory taxonomy with portability tiers and selection rules. "
+       "Tier A (top row, no soft deps): structured_md, csv, json, jsonl, sqlite. Tier B "
+       "(middle row, soft deps with documented Tier-A fallback): parquet (columnar analytics), "
+       "vector_db (semantic similarity), graph_db (multi-hop traversal). Bottom band: the "
+       "calibrated selection rules — deterministic first (audit-rule needs FTS5 → sqlite; "
+       "multi-hop traversal → graph_db; etc.) and calibrated second (volume + query pattern "
+       "thresholds). Each module surfaces the chosen format + 2 alternatives with fit% at HITL.")
+
+body(
+    "Selection rules are deterministic-first, calibrated-second. The architect refuses anti-"
+    "patterns at HITL (vector_db for fewer than 100 entries, graph_db on flat data, parquet "
+    "for human-review-primary modules, json single-object for more than 1k entries, all six "
+    "starter modules picking the same format). The audit-rule × format compatibility matrix "
+    "in references/memory_schema_protocol.md prevents another silent-failure mode: an audit "
+    "rule that needs FTS5 similarity dedupe cannot run natively on jsonl, so the architect "
+    "must either upgrade the format to sqlite or declare an offline FTS sidecar fallback."
+)
+
+body(
+    "Examples calibrated against the v0.3.1 starter upgrades: legal/precedent_chains moved "
+    "from jsonl to graph_db (multi-hop precedent traversal is the canonical case); "
+    "fintech/transaction_pattern_audits moved to sqlite (FTS5 over pattern_signature enables "
+    "cross-session dedupe); healthcare/patient_cohort_signatures moved to sqlite (joins with "
+    "model_calibration_per_subgroup and trial_arm_assignments). The user's anchor example "
+    "(informatics_dev/test_outcomes) keeps jsonl as its primary choice because append-only "
+    "high-volume flat-schema event logging is exactly what jsonl is best at, but the manifest "
+    "now carries sqlite (fit 80%) and parquet (fit 25%) as documented alternatives for future "
+    "re-negotiation when volume passes ~5k entries."
+)
+
+callout(
+    "Why the taxonomy expansion matters · A single format cannot serve every workload. Without "
+    "FTS5 (sqlite), pattern-similarity dedupe becomes O(N) regex on jsonl. Without graph "
+    "traversal, legal precedent chains become string lookups. Without columnar analytics, "
+    "large research hyperparameter sweeps require full-file rewrites. The 8-format taxonomy "
+    "plus the calibrated selection matrix plus the HITL-surfaced alternatives make the right "
+    "choice the default, and document the trade-off when a Tier-B format is unavailable. Every "
+    "Tier-B format carries a documented fallback to a Tier-A format, so no project becomes "
+    "unrunnable when a soft dep is absent.",
+    color=GOLD, bg_hex="fff7d6",
 )
 
 page_break()

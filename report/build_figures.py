@@ -978,6 +978,271 @@ def fig_v02_improvement_jury():
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# FIG 15 — Phase 4.5 memory schema negotiation (v0.3.0)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v03_phase45():
+    fig, ax = plt.subplots(figsize=(12, 7.5))
+    ax.set_xlim(0, 12); ax.set_ylim(0, 10)
+    ax.axis("off")
+
+    ax.text(6, 9.4, "Phase 4.5  ·  memory_schema_setup  (v0.3.0)",
+            ha="center", fontsize=14, fontweight="bold", color=NAVY)
+    ax.text(6, 9.0, "negotiate per-project memory contract  ·  HITL on every change  ·  inherited by child for living re-negotiation",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Inputs box
+    inputs = FancyBboxPatch((0.4, 6.5), 3.2, 2.2,
+                            boxstyle="round,pad=0.05,rounding_size=0.15",
+                            linewidth=1.5, edgecolor=NAVY, facecolor=LIGHT)
+    ax.add_patch(inputs)
+    ax.text(2.0, 8.30, "INPUTS", ha="center", fontsize=10, fontweight="bold", color=NAVY)
+    ax.text(2.0, 7.85, "SPEC.json (post-Gate#1)\ndomain · eu_risk · stack\ngranularity · regulations",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(2.0, 7.05, "→ pick per-domain starter",
+            ha="center", fontsize=8, color=NAVY, style="italic")
+
+    # 6 starters strip
+    starters = [
+        ("informatics_dev",     "test_outcomes\ndecision_logs",         0.4),
+        ("healthcare_clinical", "patient_cohort\nadverse_events",       2.40),
+        ("fintech",             "transactions\nregulatory",             4.40),
+        ("legal",               "case_law\nprecedent_chains",           6.40),
+        ("public_sector",       "policy_changes\nfeedback",             8.40),
+        ("research",            "hypothesis\nexperiment_runs",          10.40),
+    ]
+    for (slug, mods, x) in starters:
+        b = FancyBboxPatch((x, 4.5), 1.45, 1.5,
+                           boxstyle="round,pad=0.04,rounding_size=0.12",
+                           linewidth=1.1, edgecolor=TEAL, facecolor="#d6eaef")
+        ax.add_patch(b)
+        ax.text(x + 0.725, 5.65, slug.replace("_", "\n"),
+                ha="center", fontsize=8, fontweight="bold", color=NAVY)
+        ax.text(x + 0.725, 4.80, mods,
+                ha="center", fontsize=6.5, color=SLATE, style="italic")
+
+    ax.text(6, 4.20, "starters preloaded (6) · architect augments per project signals · domain=other → hybrid composition",
+            ha="center", fontsize=8.5, color=NAVY, style="italic")
+
+    # arrow inputs → starters
+    ax.annotate("", xy=(6, 6.0), xytext=(2.0, 6.4),
+                arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666",
+                                connectionstyle="arc3,rad=-0.1"))
+
+    # Negotiation box (right)
+    neg = FancyBboxPatch((4.0, 6.5), 5.0, 2.2,
+                         boxstyle="round,pad=0.05,rounding_size=0.15",
+                         linewidth=2.0, edgecolor=RED, facecolor="#fdebe9")
+    ax.add_patch(neg)
+    ax.text(6.5, 8.30, "HITL · negotiation",
+            ha="center", fontsize=11, fontweight="bold", color=RED)
+    ax.text(6.5, 7.75, "[A] accept all   ·   [B] edit module   ·   [C] add module   ·   [D] skip",
+            ha="center", fontsize=9, color=SLATE)
+    ax.text(6.5, 7.10, "every keystroke logged in negotiation_session_<id>.md\nbaseline 4-typed Anthropic memory always preserved",
+            ha="center", fontsize=8, color=SLATE, style="italic")
+
+    # Output box (bottom)
+    out = FancyBboxPatch((1.0, 1.7), 10.0, 2.0,
+                         boxstyle="round,pad=0.05,rounding_size=0.15",
+                         linewidth=1.5, edgecolor=GREEN, facecolor="#e7f4ec")
+    ax.add_patch(out)
+    ax.text(6, 3.30, "OUTPUTS  (memory_schema/)", ha="center",
+            fontsize=11, fontweight="bold", color=GREEN)
+    ax.text(6, 2.85, "manifest.json (authoritative · sha256-tracked)\n"
+                     "manifest.md (regenerable mirror · git-diffable)\n"
+                     "modules/<name>.json (one per agreed module · field flags + audit rules)\n"
+                     "negotiation_session_<id>.md (HITL audit trail · architect's reflection)",
+            ha="center", fontsize=8.5, color=SLATE)
+
+    ax.annotate("", xy=(6, 3.7), xytext=(6, 4.5),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color=NAVY))
+
+    # Footer note
+    ax.text(6, 0.65, "the contract becomes the audit subject of the MANDATORY memory_completeness_auditor inside prompts/14_adaptive_audit_meta.md",
+            ha="center", fontsize=9, color=NAVY, style="italic")
+    ax.text(6, 0.30, "child orchestrator inherits the architect; re-negotiation possible at every session boundary (living_update mode)",
+            ha="center", fontsize=8, color=SLATE, style="italic")
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/15_v03_phase45.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 16 — 8-format memory taxonomy + selection logic (v0.3.1)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v03_format_taxonomy():
+    fig, ax = plt.subplots(figsize=(13, 8))
+    ax.set_xlim(0, 13); ax.set_ylim(0, 10)
+    ax.axis("off")
+
+    ax.text(6.5, 9.45, "v0.3.1  ·  8-format memory taxonomy  ·  always pick the best per module",
+            ha="center", fontsize=14, fontweight="bold", color=NAVY)
+    ax.text(6.5, 9.05, "the architect proposes the recommended format + 2 calibrated alternatives at HITL  ·  no blanket choice",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Tier A row (5 formats)
+    tier_a = [
+        ("structured_md",  "narrative + fields\ngit-diffable\n≤500 entries",          0.4,  TEAL),
+        ("csv",            "tabular\nspreadsheet-friendly\n≤10k rows",                 2.85, TEAL),
+        ("json",           "index-style\nrewrite-each-update\n≤1k entries",            5.30, TEAL),
+        ("jsonl",          "append-only event log\n>1k entries\nflat schema",          7.75, TEAL),
+        ("sqlite",         "FTS5 similarity · joins\ntransactions\nstdlib + CLI",     10.20, NAVY),
+    ]
+    ax.text(0.4, 7.85, "Tier A  ·  no soft deps",
+            fontsize=10, fontweight="bold", color=NAVY)
+    for (lbl, sub, x, color) in tier_a:
+        b = FancyBboxPatch((x, 6.0), 2.30, 1.6,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.4, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        ax.text(x + 1.15, 7.20, lbl, ha="center", color="white",
+                fontsize=10, fontweight="bold")
+        ax.text(x + 1.15, 6.40, sub, ha="center", color="white",
+                fontsize=7, style="italic")
+
+    # Tier B row (3 formats)
+    tier_b = [
+        ("parquet",     "columnar analytics\n>100k rows · OLAP\npyarrow / fastparquet",  2.0,  GOLD),
+        ("vector_db",   "semantic similarity\nembeddings · RAG\nsqlite-vss / faiss",     5.5,  GOLD),
+        ("graph_db",    "high relationship density\nmulti-hop traversal\nkuzu / networkx", 9.0, GOLD),
+    ]
+    ax.text(0.4, 4.95, "Tier B  ·  soft deps with documented Tier-A fallback",
+            fontsize=10, fontweight="bold", color=NAVY)
+    for (lbl, sub, x, color) in tier_b:
+        b = FancyBboxPatch((x, 3.1), 2.6, 1.6,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.6, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        ax.text(x + 1.3, 4.30, lbl, ha="center", color=DARK,
+                fontsize=10, fontweight="bold")
+        ax.text(x + 1.3, 3.50, sub, ha="center", color=DARK,
+                fontsize=7.5, style="italic")
+
+    # Selection arrows (illustrative)
+    sel_box = FancyBboxPatch((0.4, 0.6), 12.2, 1.8,
+                             boxstyle="round,pad=0.05,rounding_size=0.15",
+                             linewidth=1.5, edgecolor=NAVY, facecolor=LIGHT)
+    ax.add_patch(sel_box)
+    ax.text(6.5, 2.05, "SELECTION  (deterministic first, calibrated second)",
+            ha="center", fontsize=10, fontweight="bold", color=NAVY)
+    ax.text(6.5, 1.65,
+            "audit needs FTS5 similarity → sqlite (or vector_db if semantic)   ·   multi-hop traversal → graph_db (sqlite recursive CTE if ≤2-hop)",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(6.5, 1.35,
+            ">100k columnar OLAP → parquet   ·   joins ≥2 modules → sqlite   ·   <100 + index lookup → json   ·   ≤500 + human review → structured_md",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(6.5, 1.00,
+            ">1k append-only flat → jsonl   ·   semantic similarity → vector_db   ·   else → jsonl (safest event log)",
+            ha="center", fontsize=8, color=SLATE)
+
+    # Anti-patterns note
+    ax.text(6.5, 8.55,
+            "anti-patterns refused: vector_db <100 entries · graph_db on flat data · parquet for human-review modules · json single-object >1k entries · all 6 starters same format",
+            ha="center", fontsize=8, color=RED, style="italic")
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/16_v03_format_taxonomy.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 17 — Two-tier memory completeness audit (v0.3.0)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v03_two_tier_audit():
+    fig, ax = plt.subplots(figsize=(12, 7))
+    ax.set_xlim(0, 12); ax.set_ylim(0, 9)
+    ax.axis("off")
+
+    ax.text(6, 8.5, "memory_completeness_auditor  ·  MANDATORY persona inside adaptive_audit_meta",
+            ha="center", fontsize=13, fontweight="bold", color=NAVY)
+    ax.text(6, 8.1, "added on top of n_auditors (analogous to simulation_agent in phase 11.5)  ·  reads memory_schema/manifest.json as audit contract",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Contract box (top center)
+    contract = FancyBboxPatch((4.0, 6.0), 4.0, 1.5,
+                              boxstyle="round,pad=0.05,rounding_size=0.15",
+                              linewidth=1.5, edgecolor=NAVY, facecolor=NAVY)
+    ax.add_patch(contract)
+    ax.text(6, 7.10, "memory_schema/manifest.json", ha="center",
+            color="white", fontsize=10, fontweight="bold")
+    ax.text(6, 6.65, "the contract  ·  what THIS project must remember\nnegotiated at phase 4.5",
+            ha="center", color="white", fontsize=8, style="italic")
+
+    # Particular tier (left)
+    p = FancyBboxPatch((0.4, 2.5), 5.2, 3.0,
+                       boxstyle="round,pad=0.05,rounding_size=0.15",
+                       linewidth=1.8, edgecolor=TEAL, facecolor="#d6eaef")
+    ax.add_patch(p)
+    ax.text(3.0, 5.10, "PARTICULAR audit", ha="center",
+            fontsize=11, fontweight="bold", color=TEAL)
+    ax.text(3.0, 4.65, "for THIS scope (one task / one session)",
+            ha="center", fontsize=8.5, color=SLATE, style="italic")
+    ax.text(3.0, 4.20, "• every contracted trigger produced its entry?",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(3.0, 3.85, "• mandatory fields populated (incl. mandatory_if_<cond>)?",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(3.0, 3.50, "• each entry validates against module schema?",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(3.0, 3.00, "example finding:",
+            ha="center", fontsize=7.5, color=SLATE, style="italic")
+    ax.text(3.0, 2.70,
+            "Test #14 attempt 2 status=fail but suggested_solution missing → BLOCKER (conf 92%)",
+            ha="center", fontsize=7, color=RED, style="italic")
+
+    # Global tier (right)
+    g = FancyBboxPatch((6.4, 2.5), 5.2, 3.0,
+                       boxstyle="round,pad=0.05,rounding_size=0.15",
+                       linewidth=1.8, edgecolor=GOLD, facecolor="#fff7d6")
+    ax.add_patch(g)
+    ax.text(9.0, 5.10, "GLOBAL audit", ha="center",
+            fontsize=11, fontweight="bold", color=NAVY)
+    ax.text(9.0, 4.65, "across all sessions (the project's lifetime)",
+            ha="center", fontsize=8.5, color=SLATE, style="italic")
+    ax.text(9.0, 4.20, "• missing-thresholds breached on any module?",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(9.0, 3.85, "• empty modules across N sessions (drift signal)?",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(9.0, 3.50, "• schema-evolution candidates (re-negotiate)?",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(9.0, 3.00, "example finding:",
+            ha="center", fontsize=7.5, color=SLATE, style="italic")
+    ax.text(9.0, 2.70,
+            "decision_logs.violation_pct = 8% (threshold 5%) → BLOCKER (conf 88%)",
+            ha="center", fontsize=7, color=RED, style="italic")
+
+    # contract → both tiers arrows
+    ax.annotate("", xy=(3.0, 5.5), xytext=(5.0, 6.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color="#666"))
+    ax.annotate("", xy=(9.0, 5.5), xytext=(7.0, 6.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color="#666"))
+
+    # Both → triage box
+    tri = FancyBboxPatch((2.0, 0.5), 8.0, 1.5,
+                         boxstyle="round,pad=0.05,rounding_size=0.15",
+                         linewidth=1.5, edgecolor=GREEN, facecolor="#e7f4ec")
+    ax.add_patch(tri)
+    ax.text(6, 1.55, "FINDINGS TRIAGE  (same paths as the rest of the panel)",
+            ha="center", fontsize=10, fontweight="bold", color=GREEN)
+    ax.text(6, 1.10, "errors: BLOCKER (conf ≥70) · WARNING (2+ at 50-69) · WEAK\n"
+                     "improvements: QUEUE_FOR_HITL · DISSENT_HITL_NOW · DEFER",
+            ha="center", fontsize=8, color=SLATE, style="italic")
+
+    ax.annotate("", xy=(6, 2.0), xytext=(3.0, 2.5),
+                arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666",
+                                connectionstyle="arc3,rad=0.15"))
+    ax.annotate("", xy=(6, 2.0), xytext=(9.0, 2.5),
+                arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666",
+                                connectionstyle="arc3,rad=-0.15"))
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/17_v03_two_tier_audit.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Build all
 # ─────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
@@ -985,7 +1250,9 @@ if __name__ == "__main__":
              fig_hitl, fig_euaiact, fig_memory, fig_errors,
              fig_kpis, fig_auditors,
              fig_v02_phase_map, fig_v02_feedback_loop,
-             fig_v02_adaptive_meta, fig_v02_improvement_jury]
+             fig_v02_adaptive_meta, fig_v02_improvement_jury,
+             fig_v03_phase45, fig_v03_format_taxonomy,
+             fig_v03_two_tier_audit]
     for f in funcs:
         print(f"  · {f.__name__}")
         f()
