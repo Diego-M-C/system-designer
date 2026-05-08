@@ -1,7 +1,7 @@
 {
   "starter_id": "healthcare_clinical",
   "schema_version": 1,
-  "generator_version": "0.3.0",
+  "generator_version": "0.3.2",
   "domain": "healthcare_clinical",
   "description": "Starter for healthcare / clinical AI projects. Anchored in EU AI Act high-risk Annex III + MDR + GDPR Art. 9. Mandatory modules are non-removable for high-risk; downgrade requires explicit decisions.md rationale.",
   "modules": [
@@ -9,21 +9,71 @@
       "name": "patient_cohort_signatures",
       "format": "sqlite",
       "format_alternatives": [
-        { "format": "jsonl",   "fit_pct": 50, "rationale": "append-only; loses joins with model_calibration_per_subgroup and trial_arm_assignments" },
-        { "format": "parquet", "fit_pct": 35, "rationale": "columnar analytics for very large cohort archives; loses interactive joins" }
+        {
+          "format": "jsonl",
+          "fit_pct": 50,
+          "rationale": "append-only; loses joins with model_calibration_per_subgroup and trial_arm_assignments"
+        },
+        {
+          "format": "parquet",
+          "fit_pct": 35,
+          "rationale": "columnar analytics for very large cohort archives; loses interactive joins"
+        }
       ],
       "path": "memory/patient_cohort_signatures.db",
       "tier_b_fallback": "not applicable (sqlite is Tier-A)",
       "trigger": "every cohort sampling or stratification operation",
       "append_only": true,
       "fields": [
-        { "name": "cohort_id",            "type": "string",   "flag": "mandatory",   "rationale": "anonymised handle (NEVER PII)",          "confidence_pct": 95 },
-        { "name": "size",                 "type": "int",      "flag": "mandatory",   "rationale": "n",                                       "confidence_pct": 95 },
-        { "name": "stratification_keys",  "type": "array<string>","flag": "mandatory","rationale": "demographic / clinical strata used",     "confidence_pct": 92 },
-        { "name": "sampling_method",      "type": "string",   "flag": "mandatory",   "rationale": "stratified | random | inclusion criteria","confidence_pct": 90 },
-        { "name": "exclusions",           "type": "array<string>","flag": "mandatory","rationale": "documented exclusions",                  "confidence_pct": 88 },
-        { "name": "session_id",           "type": "string",   "flag": "mandatory",   "rationale": "lineage",                                 "confidence_pct": 95 },
-        { "name": "ts",                   "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                                "confidence_pct": 95 }
+        {
+          "name": "cohort_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "anonymised handle (NEVER PII)",
+          "confidence_pct": 95
+        },
+        {
+          "name": "size",
+          "type": "int",
+          "flag": "mandatory",
+          "rationale": "n",
+          "confidence_pct": 95
+        },
+        {
+          "name": "stratification_keys",
+          "type": "array<string>",
+          "flag": "mandatory",
+          "rationale": "demographic / clinical strata used",
+          "confidence_pct": 92
+        },
+        {
+          "name": "sampling_method",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stratified | random | inclusion criteria",
+          "confidence_pct": 90
+        },
+        {
+          "name": "exclusions",
+          "type": "array<string>",
+          "flag": "mandatory",
+          "rationale": "documented exclusions",
+          "confidence_pct": 88
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has cohort_id AND size AND stratification_keys AND sampling_method AND exclusions; NEVER PII",
@@ -42,14 +92,62 @@
       "trigger": "every adverse event detected, suspected, or reported",
       "append_only": true,
       "fields": [
-        { "name": "event_id",             "type": "string",   "flag": "mandatory",   "rationale": "ADR-style identifier",                      "confidence_pct": 95 },
-        { "name": "severity",             "type": "enum {mild,moderate,severe,fatal}","flag":"mandatory","rationale": "regulatory taxonomy", "confidence_pct": 95 },
-        { "name": "description",          "type": "string",   "flag": "mandatory",   "rationale": "≤500 chars factual",                       "confidence_pct": 92 },
-        { "name": "system_role_in_event", "type": "string",   "flag": "mandatory",   "rationale": "did the system contribute? unclear?",      "confidence_pct": 88 },
-        { "name": "regulatory_report_required", "type": "boolean", "flag": "mandatory","rationale": "MDR vigilance trigger",                  "confidence_pct": 92 },
-        { "name": "regulatory_report_id", "type": "string|null","flag": "mandatory_if_regulatory_report_required","rationale": "trail",        "confidence_pct": 90 },
-        { "name": "session_id",           "type": "string",   "flag": "mandatory",   "rationale": "lineage",                                  "confidence_pct": 95 },
-        { "name": "ts",                   "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                                 "confidence_pct": 95 }
+        {
+          "name": "event_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "ADR-style identifier",
+          "confidence_pct": 95
+        },
+        {
+          "name": "severity",
+          "type": "enum {mild,moderate,severe,fatal}",
+          "flag": "mandatory",
+          "rationale": "regulatory taxonomy",
+          "confidence_pct": 95
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤500 chars factual",
+          "confidence_pct": 92
+        },
+        {
+          "name": "system_role_in_event",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "did the system contribute? unclear?",
+          "confidence_pct": 88
+        },
+        {
+          "name": "regulatory_report_required",
+          "type": "boolean",
+          "flag": "mandatory",
+          "rationale": "MDR vigilance trigger",
+          "confidence_pct": 92
+        },
+        {
+          "name": "regulatory_report_id",
+          "type": "string|null",
+          "flag": "mandatory_if_regulatory_report_required",
+          "rationale": "trail",
+          "confidence_pct": 90
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has severity AND description AND system_role_in_event AND regulatory_report_required",
@@ -68,12 +166,48 @@
       "trigger": "every randomisation or arm-assignment event",
       "append_only": true,
       "fields": [
-        { "name": "subject_signature",  "type": "string",  "flag": "mandatory",   "rationale": "anonymised; never PII",     "confidence_pct": 95 },
-        { "name": "arm",                "type": "string",  "flag": "mandatory",   "rationale": "control | treatment-N",     "confidence_pct": 95 },
-        { "name": "randomisation_seed", "type": "string",  "flag": "mandatory",   "rationale": "reproducibility",           "confidence_pct": 92 },
-        { "name": "stratum",            "type": "string",  "flag": "recommended", "rationale": "stratification context",    "confidence_pct": 80 },
-        { "name": "session_id",         "type": "string",  "flag": "mandatory",   "rationale": "lineage",                   "confidence_pct": 95 },
-        { "name": "ts",                 "type": "ISO8601", "flag": "mandatory",   "rationale": "ordering",                  "confidence_pct": 95 }
+        {
+          "name": "subject_signature",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "anonymised; never PII",
+          "confidence_pct": 95
+        },
+        {
+          "name": "arm",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "control | treatment-N",
+          "confidence_pct": 95
+        },
+        {
+          "name": "randomisation_seed",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "reproducibility",
+          "confidence_pct": 92
+        },
+        {
+          "name": "stratum",
+          "type": "string",
+          "flag": "recommended",
+          "rationale": "stratification context",
+          "confidence_pct": 80
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has subject_signature AND arm AND randomisation_seed",
@@ -91,7 +225,13 @@
       "trigger": "every calibration evaluation (per release / per session as configured)",
       "append_only": false,
       "fields": [
-        { "name": "subgroups", "type": "object<string, {n, brier_score, ece, ci95}>", "flag": "mandatory", "rationale": "calibration metrics per demographic / clinical subgroup", "confidence_pct": 88 }
+        {
+          "name": "subgroups",
+          "type": "object<string, {n, brier_score, ece, ci95}>",
+          "flag": "mandatory",
+          "rationale": "calibration metrics per demographic / clinical subgroup",
+          "confidence_pct": 88
+        }
       ],
       "audit": {
         "completeness_rule": "every subgroup has n AND brier_score AND ece AND ci95",
@@ -109,14 +249,62 @@
       "trigger": "every communication with a regulator (sent or received)",
       "append_only": true,
       "fields": [
-        { "name": "correspondence_id", "type": "string",  "flag": "mandatory",   "rationale": "stable handle",            "confidence_pct": 92 },
-        { "name": "regulator",         "type": "string",  "flag": "mandatory",   "rationale": "AESIA | EMA | MHRA | ...", "confidence_pct": 92 },
-        { "name": "direction",         "type": "enum {sent,received}","flag": "mandatory","rationale": "audit trail",     "confidence_pct": 95 },
-        { "name": "subject",           "type": "string",  "flag": "mandatory",   "rationale": "for search",               "confidence_pct": 90 },
-        { "name": "summary",           "type": "string",  "flag": "mandatory",   "rationale": "≤500 chars",               "confidence_pct": 88 },
-        { "name": "linked_event_id",   "type": "string|null","flag": "recommended","rationale": "FK to adverse_events",   "confidence_pct": 75 },
-        { "name": "session_id",        "type": "string",  "flag": "mandatory",   "rationale": "lineage",                  "confidence_pct": 95 },
-        { "name": "ts",                "type": "ISO8601", "flag": "mandatory",   "rationale": "ordering",                 "confidence_pct": 95 }
+        {
+          "name": "correspondence_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "regulator",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "AESIA | EMA | MHRA | ...",
+          "confidence_pct": 92
+        },
+        {
+          "name": "direction",
+          "type": "enum {sent,received}",
+          "flag": "mandatory",
+          "rationale": "audit trail",
+          "confidence_pct": 95
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "for search",
+          "confidence_pct": 90
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤500 chars",
+          "confidence_pct": 88
+        },
+        {
+          "name": "linked_event_id",
+          "type": "string|null",
+          "flag": "recommended",
+          "rationale": "FK to adverse_events",
+          "confidence_pct": 75
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has direction AND subject AND summary",

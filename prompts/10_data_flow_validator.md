@@ -528,7 +528,7 @@ Stable prefix (cache breakpoint #1): `<role>` through `<rubric>`. Volatile suffi
 | Tier declared (Complex) + count within tolerance (40 / 30–54 = ±20%) | ✅ |
 | 12-step canonical order respected | ✅ |
 | Mandatory floor present (13 tags: `injection_defense`, `alignment_rules`, `capability_boundary`, `test_cases`, `stop_condition`, `hitl_conditions`, `tools`, `tool_selection`, `action`, `observation`, `scratchpad`, `temporal_context`, `verification`) | ✅ |
-| All tags exist in `prompt_editor_skill.json` | ✅ |
+| All tags exist in `prompt_editor_skill.json` (taxonomy v1.1.0; `<simulation_scenarios>` added 2026-05-09 in v0.3.2 to canonicalise the prior usage) | ✅ |
 | `<input>` placed AFTER instructions | ✅ |
 | XML well-formed, no duplicates | ✅ |
 | Calibration (P2): no absolute claims | ✅ |

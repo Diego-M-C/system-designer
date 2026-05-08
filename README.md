@@ -4,7 +4,7 @@
 > Drop this folder into any LLM (Claude Code, Cursor, Cline, Gemini CLI, Copilot CLI, Codex) and run.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.3.1-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.3.2-informational.svg)](CHANGELOG.md)
 [![Portable](https://img.shields.io/badge/portable-Tier_A-blue.svg)](references/portable_invocation.md)
 [![EU AI Act](https://img.shields.io/badge/EU_AI_Act-2024%2F1689-brightgreen.svg)](references/eu_ai_act_mapping.md)
 [![Calibrated](https://img.shields.io/badge/calibration-mandatory-orange.svg)](references/calibrated_probabilities.md)
@@ -122,7 +122,7 @@ Plus: 2 mandatory **HITL gates** (no auto-skip ever), 11 session KPIs, calibrati
 ```
 system-designer/
 ├── SKILL.md                          # Entry-point meta-skill
-├── system_generator.json             # Machine-readable spec (5 principles, 13 phases, schemas, KPIs)
+├── system_generator.json             # Machine-readable spec (5 principles, 18 phases, schemas, KPIs)
 ├── prompts/                          # 10 agent prompts (00_master_orchestrator → 09_three_auditors_jury)
 ├── references/                       # 6 reference docs (P2 rules, P1 contract, AI errors, EU AI Act, scientific reports)
 ├── templates/                        # ~25 *.tmpl files (renders the child tree)

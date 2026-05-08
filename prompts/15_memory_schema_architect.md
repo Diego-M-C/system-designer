@@ -152,7 +152,7 @@ Each starter is a JSON file that this prompt loads, augments with project-specif
 
 The user's example "test nº 1 prueba 1 éxito? si no error X sugerencia de solución" is the calibrated anchor for `informatics_dev`.
 
-**Field flags (3 levels):**
+**Field flags (4 levels):**
 - `mandatory` — must be present in every entry; absence is an audit blocker.
 - `mandatory_if_<condition>` — conditional mandate (e.g., `mandatory_if_status!=pass`).
 - `recommended` — should be present; absence is a warning, not blocker.
@@ -171,7 +171,7 @@ The user's example "test nº 1 prueba 1 éxito? si no error X sugerencia de solu
 | `vector_db`      | B | semantic similarity search over embeddings · RAG-style memory | `sqlite-vss` ext OR `faiss-cpu` sidecar | `jsonl` + offline embeddings sidecar; document degradation |
 | `graph_db`       | B | high relationship-density · multi-hop traversal (e.g., precedent chains, dependency graphs) | `kuzu` OR `networkx` (pickled adjacency) | `jsonl` adjacency-list with explicit `source_id`/`target_id`/`edge_type` fields |
 
-**The architect's job is to pick the best format per module.** A blanket "everything is jsonl" is a red flag; so is "everything is sqlite". The selection rules in `<selection_criteria>` are deterministic-first, calibrated-second.
+**The architect's job is to pick the fittest format per module.** A blanket "everything is jsonl" is a red flag; so is "everything is sqlite". The selection rules in `<selection_criteria>` are deterministic-first, calibrated-second.
 
 **Format selection matrix (workload signals → recommended format):**
 
@@ -699,7 +699,7 @@ Stable prefix (cache breakpoint #1): `<role>` through `<rubric>`. Volatile suffi
 | Tier declared (Complex) + count within tolerance (42 / 30–54 = ±20%) | ✅ |
 | 12-step canonical order respected | ✅ |
 | Mandatory floor present (13 tags) | ✅ |
-| All tags exist in `prompt_editor_skill.json` | ✅ |
+| All tags exist in `prompt_editor_skill.json` (taxonomy v1.1.0; `<selection_criteria>` added 2026-05-09 in v0.3.2 to canonicalise the prior usage) | ✅ |
 | `<input>` placed AFTER instructions | ✅ |
 | XML well-formed, no duplicates | ✅ |
 | Calibration (P2): every field flag and audit threshold has % | ✅ |

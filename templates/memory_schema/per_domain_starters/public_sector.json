@@ -1,7 +1,7 @@
 {
   "starter_id": "public_sector",
   "schema_version": 1,
-  "generator_version": "0.3.0",
+  "generator_version": "0.3.2",
   "domain": "public_sector",
   "description": "Starter for public-sector / e-government projects. Anchored on policy traceability and citizen-feedback discipline.",
   "modules": [
@@ -12,14 +12,62 @@
       "trigger": "every policy update detected (own or upstream)",
       "append_only": true,
       "fields": [
-        { "name": "policy_id",       "type": "string",  "flag": "mandatory",   "rationale": "stable handle",                    "confidence_pct": 95 },
-        { "name": "policy_name",     "type": "string",  "flag": "mandatory",   "rationale": "search key",                       "confidence_pct": 92 },
-        { "name": "change_type",     "type": "enum {add,amend,supersede,repeal}","flag":"mandatory","rationale":"lifecycle",   "confidence_pct": 95 },
-        { "name": "effective_date",  "type": "ISO8601", "flag": "mandatory",   "rationale": "applicability",                   "confidence_pct": 92 },
-        { "name": "summary",         "type": "string",  "flag": "mandatory",   "rationale": "≤300 chars",                       "confidence_pct": 88 },
-        { "name": "impact_score",    "type": "int 1-5", "flag": "mandatory",   "rationale": "self-rated",                        "confidence_pct": 85 },
-        { "name": "session_id",      "type": "string",  "flag": "mandatory",   "rationale": "lineage",                          "confidence_pct": 95 },
-        { "name": "ts",              "type": "ISO8601", "flag": "mandatory",   "rationale": "ordering",                         "confidence_pct": 95 }
+        {
+          "name": "policy_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 95
+        },
+        {
+          "name": "policy_name",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "search key",
+          "confidence_pct": 92
+        },
+        {
+          "name": "change_type",
+          "type": "enum {add,amend,supersede,repeal}",
+          "flag": "mandatory",
+          "rationale": "lifecycle",
+          "confidence_pct": 95
+        },
+        {
+          "name": "effective_date",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "applicability",
+          "confidence_pct": 92
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤300 chars",
+          "confidence_pct": 88
+        },
+        {
+          "name": "impact_score",
+          "type": "int 1-5",
+          "flag": "mandatory",
+          "rationale": "self-rated",
+          "confidence_pct": 85
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has policy_name AND change_type AND effective_date AND summary AND impact_score",
@@ -28,7 +76,8 @@
         "global_audit": "every 30 days: surface high-impact (>=4) changes without compliance_audit_trail follow-up"
       },
       "added_by": "starter",
-      "confidence_pct": 85
+      "confidence_pct": 85,
+      "non_removable_for_high_risk": true
     },
     {
       "name": "citizen_feedback_categories",
@@ -37,13 +86,55 @@
       "trigger": "every batch of citizen feedback processed",
       "append_only": true,
       "fields": [
-        { "name": "batch_id",         "type": "string",   "flag": "mandatory",   "rationale": "stable handle",                  "confidence_pct": 92 },
-        { "name": "category",         "type": "string",   "flag": "mandatory",   "rationale": "service line / topic",            "confidence_pct": 90 },
-        { "name": "n_items",          "type": "int",      "flag": "mandatory",   "rationale": "volume",                          "confidence_pct": 95 },
-        { "name": "sentiment_score",  "type": "number -1.0..1.0","flag": "mandatory","rationale": "calibrated polarity",         "confidence_pct": 80 },
-        { "name": "top_issues",       "type": "array<string>","flag": "mandatory","rationale": "≤5 items",                        "confidence_pct": 85 },
-        { "name": "session_id",       "type": "string",   "flag": "mandatory",   "rationale": "lineage",                         "confidence_pct": 95 },
-        { "name": "ts",               "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                        "confidence_pct": 95 }
+        {
+          "name": "batch_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "service line / topic",
+          "confidence_pct": 90
+        },
+        {
+          "name": "n_items",
+          "type": "int",
+          "flag": "mandatory",
+          "rationale": "volume",
+          "confidence_pct": 95
+        },
+        {
+          "name": "sentiment_score",
+          "type": "number -1.0..1.0",
+          "flag": "mandatory",
+          "rationale": "calibrated polarity",
+          "confidence_pct": 80
+        },
+        {
+          "name": "top_issues",
+          "type": "array<string>",
+          "flag": "mandatory",
+          "rationale": "≤5 items",
+          "confidence_pct": 85
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has category AND n_items AND sentiment_score AND top_issues",
@@ -52,7 +143,8 @@
         "global_audit": "monthly: detect categories with rising negative-sentiment trends"
       },
       "added_by": "starter",
-      "confidence_pct": 80
+      "confidence_pct": 80,
+      "non_removable_for_high_risk": true
     },
     {
       "name": "compliance_audit_trail",
@@ -61,13 +153,55 @@
       "trigger": "every compliance check with outcome",
       "append_only": true,
       "fields": [
-        { "name": "check_id",      "type": "string",   "flag": "mandatory",   "rationale": "stable handle",            "confidence_pct": 92 },
-        { "name": "check_type",    "type": "string",   "flag": "mandatory",   "rationale": "EU AI Act | GDPR | ISO 42001 | ...","confidence_pct": 92 },
-        { "name": "outcome",       "type": "enum {pass,fail,n/a,pending}","flag":"mandatory","rationale": "result", "confidence_pct": 95 },
-        { "name": "evidence_path", "type": "string|null","flag": "mandatory_if_outcome=pass","rationale": "trail",   "confidence_pct": 88 },
-        { "name": "remediation",   "type": "string|null","flag": "mandatory_if_outcome=fail","rationale": "plan",   "confidence_pct": 85 },
-        { "name": "session_id",    "type": "string",   "flag": "mandatory",   "rationale": "lineage",                  "confidence_pct": 95 },
-        { "name": "ts",            "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                 "confidence_pct": 95 }
+        {
+          "name": "check_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "check_type",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "EU AI Act | GDPR | ISO 42001 | ...",
+          "confidence_pct": 92
+        },
+        {
+          "name": "outcome",
+          "type": "enum {pass,fail,n/a,pending}",
+          "flag": "mandatory",
+          "rationale": "result",
+          "confidence_pct": 95
+        },
+        {
+          "name": "evidence_path",
+          "type": "string|null",
+          "flag": "mandatory_if_outcome=pass",
+          "rationale": "trail",
+          "confidence_pct": 88
+        },
+        {
+          "name": "remediation",
+          "type": "string|null",
+          "flag": "mandatory_if_outcome=fail",
+          "rationale": "plan",
+          "confidence_pct": 85
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has check_type AND outcome; pass has evidence_path; fail has remediation",
@@ -76,7 +210,8 @@
         "global_audit": "every 30 days: surface failures without remediation completed"
       },
       "added_by": "starter",
-      "confidence_pct": 88
+      "confidence_pct": 88,
+      "non_removable_for_high_risk": true
     },
     {
       "name": "service_uptime_incidents",
@@ -85,14 +220,62 @@
       "trigger": "every service-uptime incident",
       "append_only": true,
       "fields": [
-        { "name": "incident_id",   "type": "string",   "flag": "mandatory","rationale": "stable handle",        "confidence_pct": 95 },
-        { "name": "service",       "type": "string",   "flag": "mandatory","rationale": "which service",         "confidence_pct": 92 },
-        { "name": "started_at",    "type": "ISO8601",  "flag": "mandatory","rationale": "incident start",        "confidence_pct": 92 },
-        { "name": "resolved_at",   "type": "ISO8601|null","flag": "mandatory_if_status=resolved","rationale": "MTTR","confidence_pct": 88 },
-        { "name": "status",        "type": "enum {open,resolved,recurring}","flag": "mandatory","rationale": "lifecycle","confidence_pct": 92 },
-        { "name": "rca",           "type": "string|null","flag": "mandatory_if_status=resolved","rationale": "postmortem","confidence_pct": 85 },
-        { "name": "session_id",    "type": "string",   "flag": "mandatory","rationale": "lineage",               "confidence_pct": 95 },
-        { "name": "ts",            "type": "ISO8601",  "flag": "mandatory","rationale": "ordering",              "confidence_pct": 95 }
+        {
+          "name": "incident_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 95
+        },
+        {
+          "name": "service",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "which service",
+          "confidence_pct": 92
+        },
+        {
+          "name": "started_at",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "incident start",
+          "confidence_pct": 92
+        },
+        {
+          "name": "resolved_at",
+          "type": "ISO8601|null",
+          "flag": "mandatory_if_status=resolved",
+          "rationale": "MTTR",
+          "confidence_pct": 88
+        },
+        {
+          "name": "status",
+          "type": "enum {open,resolved,recurring}",
+          "flag": "mandatory",
+          "rationale": "lifecycle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "rca",
+          "type": "string|null",
+          "flag": "mandatory_if_status=resolved",
+          "rationale": "postmortem",
+          "confidence_pct": 85
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has service AND started_at AND status; resolved entries have resolved_at AND rca",

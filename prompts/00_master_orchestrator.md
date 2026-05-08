@@ -3,7 +3,7 @@
 > **Tier:** Complex (SDD) · target ~46 tags · actual 46
 > **Composed via:** prompt-architect (self-applied, principle G9=A)
 > **Audit status:** see `audit/self_audit.md` after runtime
-> **Version:** 0.3.0 · 2026-05-08 (extends 13-phase orchestration to **18 phases** via 1.5 / **4.5** / 11.5 / 13.5 / 13.7 + cross-phase adaptive audit meta with mandatory `memory_completeness_auditor`)
+> **Version:** 0.3.2 · 2026-05-09 (extends 13-phase orchestration to **18 phases** via 1.5 / **4.5** / 11.5 / 13.5 / 13.7 + cross-phase adaptive audit meta with mandatory `memory_completeness_auditor`; v0.3.2 adds `SystemSpec.role` enum + Art.73 deadline workflow per external-audit response)
 
 ---
 
@@ -158,6 +158,7 @@ The interview produces a `SystemSpec` JSON object conforming to `system_generato
 - `intent` (≤3 sentences, free text)
 - `domain` (enum: healthcare | fintech | legal | public_sector | research | other)
 - `eu_ai_act_risk` (enum: high | limited | minimal — default: high)
+- `role` *(v0.3.2)* (enum: provider | deployer | provider_and_deployer | distributor | importer — default: provider_and_deployer; affects which audit rows are instantiated per Article in `prompts/06_eu_ai_act_mapper.md`)
 - `stack` (object: language, frameworks[], libraries[])
 - `granularity` (default: "hybrid_B_D")
 - `auditors_count` (default: 3, range 3–10)
@@ -403,6 +404,9 @@ Pause and request human input when:
 6. **Library doc fetch fails for a critical dependency (declared `required: true` in `SystemSpec.stack.libraries`):** present manual-fetch URL + ask.
 7. **prompt-architect audit fails 3 times for the same prompt:** present failed checklist + ask user.
 8. **Calibration violation rate >5 in last 100 emitted lines:** pause and ask for review.
+9. ***(v0.3.2)*** **Art. 73 incident deadline ≥50% elapsed:** WARN — surface the open `Art73Incident` records with their `ts_deadline` and ask whether the regulatory report has been initiated.
+10. ***(v0.3.2)*** **Art. 73 incident deadline ≥80% elapsed:** URGENT — block any non-incident-related work; ask the user to log `regulatory_report_id` or escalate.
+11. ***(v0.3.2)*** **Art. 73 incident deadline 100% elapsed without `regulatory_report_id`:** BLOCKER — halt subsequent sessions until `regulatory_report_id` is logged in `decisions.md` and the `Art73Incident.status` transitions to `reported`.
 </hitl_conditions>
 
 <error_handling>
@@ -431,7 +435,7 @@ After every task and every session inside any phase that emits artifacts, also i
 
 Each phase writes a marker line to `tracking/sessions/0001_bootstrap/phase.log` (`<iso_timestamp>\t<phase_id>\t<status>\n`). Resumption after interruption: read `tracking/project.json#current_phase` and resume at next phase.
 
-Backward-compatibility: if `SystemSpec.compatibility.v0_1_0=true`, phases 1.5 / 11.5 / 13.5 / 13.7 / adaptive_audit_meta are skipped (legacy 13-phase mode). Default is `false` (v0.2.0 fully enabled).
+Backward-compatibility: if `SystemSpec.compatibility.v0_1_0=true`, phases 1.5 / 4.5 / 11.5 / 13.5 / 13.7 / adaptive_audit_meta are ALL skipped (legacy 13-phase mode). For finer control, `SystemSpec.memory_schema.negotiation_enabled=false` skips ONLY phase 4.5 (the mandatory `memory_completeness_auditor` then audits only the Anthropic 4-typed baseline). Default for both flags is `false` (v0.3.x fully enabled).
 </orchestration>
 
 <guardrails>
@@ -485,7 +489,9 @@ Defenses (apply in order):
 </capability_boundary>
 
 <compliance>
-EU AI Act (Regulation 2024/1689) + AESIA implementation guides + ISO/IEC 42001. Every Annex III applicable Article must map to ≥1 audit-checklist row in `<target_path>/audit/audit_sheet.xlsx`. Mapping declared in `<target_path>/audit/eu_ai_act_mapping.md`, generated from `../references/eu_ai_act_mapping.md`. Mapping completeness ≥95% required for `eu_ai_act_risk = high`.
+EU AI Act (Regulation 2024/1689) + AESIA implementation guides + ISO/IEC 42001. Every Annex III applicable Article must map to ≥1 audit-checklist row in `<target_path>/audit/audit_sheet.xlsx`. Mapping declared in `<target_path>/audit/eu_ai_act_mapping.md`, generated from `../references/eu_ai_act_mapping.md`. Mapping completeness ≥95% required for `eu_ai_act_risk = high`. Role-aware row sub-selection (since v0.3.2) per `SystemSpec.role` — see `../references/eu_ai_act_mapping.md#4`.
+
+**Art. 73 serious-incident-reporting workflow (since v0.3.2):** detected serious incidents (severity=critical in `feedback_learning/corrections.db` OR healthcare `adverse_events` / fintech `model_drift_alerts` / public_sector `service_uptime_incidents` flagged as serious) emit an `Art73Incident` record under `<target_path>/audit/art73/incidents.jsonl` with deadline = ts_aware + {2 | 10 | 15} days per the trigger classification. Three HITL escalations fire at 50% / 80% / 100% of deadline elapsed; the 100% escalation is a BLOCKER until `regulatory_report_id` is logged to `decisions.md`. Full schema + workflow: `../references/eu_ai_act_mapping.md#4b`.
 </compliance>
 
 <evaluation>

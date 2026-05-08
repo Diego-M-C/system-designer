@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-interview",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "purpose": "Interview script run by 01_interview_agent.md against the user. Produces a SystemSpec (system_generator.json#/definitions/SystemSpec). Conducted in Spanish prose; identifiers / enum values in English (D-13C bilingual rule).",
   "rendering_rules": {
     "one_question_at_a_time": true,
@@ -121,6 +121,22 @@
       "type": "long_text",
       "required": true,
       "writes_to": "risk_downgrade_rationale"
+    },
+    {
+      "id": "Q04d_role",
+      "phase": "compliance",
+      "since": "0.3.2",
+      "prompt": "Rol regulatorio EU AI Act (Art. 3). Por defecto: provider_and_deployer (más conservador — cubre ambos sets de obligaciones). Afecta qué filas de auditoría se instancian por Artículo en 06_eu_ai_act_mapper.md.",
+      "type": "single_or_default",
+      "options": [
+        {"value": "provider",                "label": "Provider (desarrollas y pones el sistema en mercado bajo tu marca · Art. 16)", "fit_pct_default": 30},
+        {"value": "deployer",                "label": "Deployer (usas un sistema de terceros bajo tu autoridad · Art. 26)", "fit_pct_default": 25},
+        {"value": "provider_and_deployer",   "label": "Ambos (default conservador) — recomendado salvo que tengas certeza del rol exacto", "fit_pct_default": 35},
+        {"value": "distributor",             "label": "Distributor (distribuyes sin modificar · Art. 24)", "fit_pct_default": 5},
+        {"value": "importer",                "label": "Importer (importas a la UE · Art. 23)", "fit_pct_default": 5}
+      ],
+      "default_ref": "role",
+      "writes_to": "role"
     },
     {
       "id": "Q05_stack_language",

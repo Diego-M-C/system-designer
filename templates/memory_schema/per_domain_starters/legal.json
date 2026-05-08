@@ -1,7 +1,7 @@
 {
   "starter_id": "legal",
   "schema_version": 1,
-  "generator_version": "0.3.0",
+  "generator_version": "0.3.2",
   "domain": "legal",
   "description": "Starter for legal / regulatory advisory projects. Anchored on case-law lineage and regulatory communication discipline.",
   "modules": [
@@ -12,14 +12,62 @@
       "trigger": "every case cited in advice or analysis",
       "append_only": true,
       "fields": [
-        { "name": "citation",          "type": "string",   "flag": "mandatory",   "rationale": "canonical citation",            "confidence_pct": 95 },
-        { "name": "jurisdiction",      "type": "string",   "flag": "mandatory",   "rationale": "EU | ES | UK | ...",            "confidence_pct": 92 },
-        { "name": "ruling_date",       "type": "ISO8601",  "flag": "mandatory",   "rationale": "temporal context",              "confidence_pct": 95 },
-        { "name": "relevance_score",   "type": "int 1-5",  "flag": "mandatory",   "rationale": "self-rated relevance",          "confidence_pct": 80 },
-        { "name": "summary",           "type": "string",   "flag": "mandatory",   "rationale": "≤300 chars factual",            "confidence_pct": 88 },
-        { "name": "used_in_artifact",  "type": "string",   "flag": "mandatory",   "rationale": "FK to artifact path / matter",  "confidence_pct": 88 },
-        { "name": "session_id",        "type": "string",   "flag": "mandatory",   "rationale": "lineage",                       "confidence_pct": 95 },
-        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                      "confidence_pct": 95 }
+        {
+          "name": "citation",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "canonical citation",
+          "confidence_pct": 95
+        },
+        {
+          "name": "jurisdiction",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "EU | ES | UK | ...",
+          "confidence_pct": 92
+        },
+        {
+          "name": "ruling_date",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "temporal context",
+          "confidence_pct": 95
+        },
+        {
+          "name": "relevance_score",
+          "type": "int 1-5",
+          "flag": "mandatory",
+          "rationale": "self-rated relevance",
+          "confidence_pct": 80
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤300 chars factual",
+          "confidence_pct": 88
+        },
+        {
+          "name": "used_in_artifact",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "FK to artifact path / matter",
+          "confidence_pct": 88
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has citation AND jurisdiction AND relevance_score AND summary AND used_in_artifact",
@@ -28,7 +76,8 @@
         "global_audit": "monthly: surface citations with relevance_score>=4 not consulted in last 90 days"
       },
       "added_by": "starter",
-      "confidence_pct": 88
+      "confidence_pct": 88,
+      "non_removable_for_high_risk": true
     },
     {
       "name": "regulatory_correspondence",
@@ -37,14 +86,62 @@
       "trigger": "every communication with regulator or counterparty",
       "append_only": true,
       "fields": [
-        { "name": "correspondence_id", "type": "string",   "flag": "mandatory", "rationale": "stable handle",          "confidence_pct": 92 },
-        { "name": "party",             "type": "string",   "flag": "mandatory", "rationale": "regulator | counterparty","confidence_pct": 92 },
-        { "name": "direction",         "type": "enum {sent,received}","flag":"mandatory","rationale":"audit trail",   "confidence_pct": 95 },
-        { "name": "subject",           "type": "string",   "flag": "mandatory", "rationale": "for search",             "confidence_pct": 90 },
-        { "name": "summary",           "type": "string",   "flag": "mandatory", "rationale": "≤500 chars",             "confidence_pct": 88 },
-        { "name": "linked_matter_id",  "type": "string|null","flag": "recommended","rationale": "FK to client matter", "confidence_pct": 78 },
-        { "name": "session_id",        "type": "string",   "flag": "mandatory", "rationale": "lineage",                "confidence_pct": 95 },
-        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory", "rationale": "ordering",               "confidence_pct": 95 }
+        {
+          "name": "correspondence_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "party",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "regulator | counterparty",
+          "confidence_pct": 92
+        },
+        {
+          "name": "direction",
+          "type": "enum {sent,received}",
+          "flag": "mandatory",
+          "rationale": "audit trail",
+          "confidence_pct": 95
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "for search",
+          "confidence_pct": 90
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤500 chars",
+          "confidence_pct": 88
+        },
+        {
+          "name": "linked_matter_id",
+          "type": "string|null",
+          "flag": "recommended",
+          "rationale": "FK to client matter",
+          "confidence_pct": 78
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has direction AND subject AND summary",
@@ -53,26 +150,71 @@
         "global_audit": "every 30 days: surface received items with no follow-up"
       },
       "added_by": "starter",
-      "confidence_pct": 88
+      "confidence_pct": 88,
+      "non_removable_for_high_risk": true
     },
     {
       "name": "precedent_chains",
       "format": "graph_db",
       "format_alternatives": [
-        { "format": "sqlite",  "fit_pct": 70, "rationale": "recursive CTE handles ≤2-hop traversal cleanly; no extra deps" },
-        { "format": "jsonl",   "fit_pct": 35, "rationale": "adjacency-list with source_id/target_id/edge_type; multi-hop becomes O(N) per query" }
+        {
+          "format": "sqlite",
+          "fit_pct": 70,
+          "rationale": "recursive CTE handles ≤2-hop traversal cleanly; no extra deps"
+        },
+        {
+          "format": "jsonl",
+          "fit_pct": 35,
+          "rationale": "adjacency-list with source_id/target_id/edge_type; multi-hop becomes O(N) per query"
+        }
       ],
       "path": "memory/precedent_chains/",
       "tier_b_fallback": "jsonl adjacency-list at memory/precedent_chains.jsonl with explicit source_id/target_id/edge_type/confidence_pct",
       "trigger": "every advisory recommendation derived from precedent",
       "append_only": true,
       "fields": [
-        { "name": "node_id",       "type": "string",         "flag": "mandatory","rationale": "graph node id (advisory or precedent)", "confidence_pct": 92 },
-        { "name": "node_type",     "type": "enum {advisory,precedent}","flag":"mandatory","rationale": "typed graph",                  "confidence_pct": 95 },
-        { "name": "edges_to",      "type": "array<{target_id, edge_type, weight, confidence_pct}>","flag": "mandatory","rationale": "outgoing edges with calibrated confidence per edge","confidence_pct": 88 },
-        { "name": "reasoning",     "type": "string",         "flag": "mandatory","rationale": "≤500 chars",            "confidence_pct": 88 },
-        { "name": "session_id",    "type": "string",         "flag": "mandatory","rationale": "lineage",                "confidence_pct": 95 },
-        { "name": "ts",            "type": "ISO8601",        "flag": "mandatory","rationale": "ordering",               "confidence_pct": 95 }
+        {
+          "name": "node_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "graph node id (advisory or precedent)",
+          "confidence_pct": 92
+        },
+        {
+          "name": "node_type",
+          "type": "enum {advisory,precedent}",
+          "flag": "mandatory",
+          "rationale": "typed graph",
+          "confidence_pct": 95
+        },
+        {
+          "name": "edges_to",
+          "type": "array<{target_id, edge_type, weight, confidence_pct}>",
+          "flag": "mandatory",
+          "rationale": "outgoing edges with calibrated confidence per edge",
+          "confidence_pct": 88
+        },
+        {
+          "name": "reasoning",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤500 chars",
+          "confidence_pct": 88
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every node has edges_to.length>=1 (advisory) OR is reachable from ≥1 advisory (precedent); every edge has confidence_pct",
@@ -91,7 +233,13 @@
       "trigger": "every change in jurisdictional applicability per matter",
       "append_only": false,
       "fields": [
-        { "name": "matters", "type": "object<string, {applicable_jurisdictions, applicable_laws, last_reviewed_at}>", "flag": "mandatory", "rationale": "current state", "confidence_pct": 85 }
+        {
+          "name": "matters",
+          "type": "object<string, {applicable_jurisdictions, applicable_laws, last_reviewed_at}>",
+          "flag": "mandatory",
+          "rationale": "current state",
+          "confidence_pct": 85
+        }
       ],
       "audit": {
         "completeness_rule": "every matter has applicable_jurisdictions AND applicable_laws AND last_reviewed_at",
@@ -109,13 +257,55 @@
       "trigger": "every piece of advice given (with disclaimers)",
       "append_only": true,
       "fields": [
-        { "name": "client_signature",  "type": "string",   "flag": "mandatory","rationale": "anonymised handle",    "confidence_pct": 92 },
-        { "name": "advice_summary",    "type": "string",   "flag": "mandatory","rationale": "≤500 chars",            "confidence_pct": 88 },
-        { "name": "disclaimers",       "type": "array<string>","flag": "mandatory","rationale": "professional duty","confidence_pct": 92 },
-        { "name": "linked_precedents", "type": "array<string>","flag": "recommended","rationale": "lineage",          "confidence_pct": 80 },
-        { "name": "confidence_pct",    "type": "int 0-100","flag": "mandatory","rationale": "P2",                    "confidence_pct": 92 },
-        { "name": "session_id",        "type": "string",   "flag": "mandatory","rationale": "lineage",                "confidence_pct": 95 },
-        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory","rationale": "ordering",               "confidence_pct": 95 }
+        {
+          "name": "client_signature",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "anonymised handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "advice_summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤500 chars",
+          "confidence_pct": 88
+        },
+        {
+          "name": "disclaimers",
+          "type": "array<string>",
+          "flag": "mandatory",
+          "rationale": "professional duty",
+          "confidence_pct": 92
+        },
+        {
+          "name": "linked_precedents",
+          "type": "array<string>",
+          "flag": "recommended",
+          "rationale": "lineage",
+          "confidence_pct": 80
+        },
+        {
+          "name": "confidence_pct",
+          "type": "int 0-100",
+          "flag": "mandatory",
+          "rationale": "P2",
+          "confidence_pct": 92
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has advice_summary AND disclaimers.length>=1 AND confidence_pct",
@@ -124,7 +314,8 @@
         "global_audit": "monthly: surface low-confidence advice (<60%)"
       },
       "added_by": "starter",
-      "confidence_pct": 85
+      "confidence_pct": 85,
+      "non_removable_for_high_risk": true
     }
   ],
   "notes": "Disclaimers are mandatory in client_advisory_history; absence is a BLOCKER (professional-duty floor)."

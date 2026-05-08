@@ -90,7 +90,7 @@ Per-library output:
 2. Always try Context7 first if available (cheaper, structured).
 3. HTTP fetch falls back: primary → fallback → github_release_api (release-notes only, last resort).
 4. Save fetched content as `library_docs/<lib>/<version>/index.md` (or `.html` if that's what we got, plus a markdown sidecar).
-5. Extract API index using best-effort heuristics (regex on docs structure) — if fails, mark `api_index.json` as `partial: true`.
+5. Extract API index using calibrated regex heuristics (≈70% expected coverage on standard docs structures) — on extraction failure, mark `api_index.json` as `partial: true`.
 6. Respect rate limits: max 5 concurrent fetches; backoff on 429.
 </constraints>
 

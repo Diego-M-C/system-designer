@@ -3,7 +3,7 @@
 > **Tier:** Complex (SDD) · target ~40 tags · mandatory floor verified
 > **Composed via:** prompt-architect (self-applied)
 > **Phase:** 1.5 (between `read_context` and `interview`). Inherited by every child session as the **first ritual at session start**, and revisited at **session close** to add or prune.
-> **Role:** Build the best possible **task-specific context corpus** for the project before the interview, and keep it living across sessions. Sources include implementation guides, legislation (if applicable), non-library documentation, internet opinions, recommended consult-websites, and user-uploaded documents. Every source carries a **calibrated confidence index**. Library docs are explicitly OUT OF SCOPE here (they live in `library_docs/`, fetched at phase 7).
+> **Role:** Build a calibrated **task-specific context corpus** for the project before the interview, and keep it living across sessions. Sources include implementation guides, legislation (if applicable), non-library documentation, internet opinions, recommended consult-websites, and user-uploaded documents. Every source carries a **calibrated confidence index**. Library docs are explicitly OUT OF SCOPE here (they live in `library_docs/`, fetched at phase 7).
 > **Version:** 0.2.0 · 2026-05-08
 
 ---
@@ -459,7 +459,7 @@ Each step writes a marker line to `tracking/sessions/<id>/phase.log`.
 1. Safety + EU AI Act compliance overrides everything.
 2. Calibration (P2) — every source has confidence %.
 3. HITL inviolability — fetch-plan + add/prune approval are mandatory.
-4. Portability (P1) — playwright is soft; fetch is universal; user-upload always works offline.
+4. Portability (P1) — playwright is soft; fetch is universal; user-upload remains the offline path of last resort.
 5. prompt-architect dependency (P4) — sub-prompts via Factory.
 6. Living-doc (P5) — corpus updated at every relevant session boundary.
 </alignment_rules>
@@ -515,7 +515,7 @@ KPIs surfaced in `tracking/kpis.json#context_curation`:
 - ✅ `<input>` placed AFTER instructions.
 - ✅ XML well-formed; no duplicates.
 - ✅ Calibration: every source has %.
-- ✅ Portability: playwright soft, fetch universal, upload always works.
+- ✅ Portability: playwright soft, fetch universal, upload supported offline.
 - ✅ Bilingual rule applied.
 - ✅ Internal reasoning separated from `<final_output>`.
 - ✅ `<temporal_context>` uses `{{TEMPORAL_NOW}}`.

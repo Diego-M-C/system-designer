@@ -25,7 +25,7 @@
                                   │
                                   ▼
 ┌──────────────────────────────────────────────────────────────────────┐
-│  prompts/00_master_orchestrator.md  ── the 13-phase loop             │
+│  prompts/00_master_orchestrator.md  ── the 18-phase loop (v0.3.x)    │
 │                                                                       │
 │   read_context → interview → planning_brief → ▼ GATE 1 (HITL) ▼      │
 │   scaffold → compose_prompts → fetch_library_docs → seed_tracking →  │
@@ -67,7 +67,7 @@ The generator emits a child system, then **stops**. That last sentence is load-b
 |---|---|---|
 | **Entry** | Detect invocation, route to orchestrator | `SKILL.md`, `.claude/commands/system-designer.md` |
 | **Spec** | Machine-readable contract: phases, schemas, KPIs, principles | `system_generator.json` |
-| **Orchestration** | 13-phase state machine + HITL gating + agent dispatch | `prompts/00_master_orchestrator.md` |
+| **Orchestration** | 18-phase state machine + HITL gating + agent dispatch (v0.3.x) | `prompts/00_master_orchestrator.md` |
 | **Specialist agents** | Each phase has 1–2 specialist prompts | `prompts/01..09_*.md` |
 | **Prompt composition** | Every prompt composed through `prompt_architect` | `prompts/03_prompt_factory.md` + `prompt_architect/` |
 | **Reference rules** | Calibration, portability, error catalog, EU AI Act, report formats | `references/*.md` |
@@ -92,7 +92,11 @@ These layers are intentionally thin. The architecture's goal is **composability 
 
 ---
 
-## 4. The 13-phase orchestration
+## 4. The 18-phase orchestration  (v0.3.x)
+
+> Sections 4.x below describe the original 13-phase loop verbatim — preserved as the foundation. The 5 inserted phases (1.5 / 4.5 / 11.5 / 13.5 / 13.7) and the cross-phase adaptive_audit_meta hook are described in §20 (v0.2.0 / v0.3.x supplement) which extends the base. For the integrated 18-phase view, read §4.x then §20 in sequence.
+
+### 4.1 The 13-phase base loop
 
 The master orchestrator at `prompts/00_master_orchestrator.md` is the only stateful component. Every other prompt is a single-shot specialist.
 
@@ -604,7 +608,7 @@ For references and templates:
 
 Where the new phases sit, why each one was added, what they own, and the cross-phase hook.
 
-### 20.1 Insertion points (relative to the 13-phase base)
+### 20.1 Insertion points (relative to the 13-phase base · the integrated 18-phase machine)
 
 ```
 1   read_context

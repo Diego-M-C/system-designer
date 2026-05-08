@@ -1,7 +1,7 @@
 {
   "starter_id": "research",
   "schema_version": 1,
-  "generator_version": "0.3.0",
+  "generator_version": "0.3.2",
   "domain": "research",
   "description": "Starter for research / academia projects. Anchored on hypothesis tracking and reproducibility discipline.",
   "modules": [
@@ -12,13 +12,55 @@
       "trigger": "every hypothesis stated, refined, or refuted",
       "append_only": true,
       "fields": [
-        { "name": "hypothesis_id",   "type": "string",  "flag": "mandatory","rationale": "stable handle",                      "confidence_pct": 92 },
-        { "name": "statement",       "type": "string",  "flag": "mandatory","rationale": "the hypothesis itself",              "confidence_pct": 92 },
-        { "name": "version",         "type": "int",     "flag": "mandatory","rationale": "revision counter",                    "confidence_pct": 95 },
-        { "name": "supporting_evidence","type": "array<string>","flag": "recommended","rationale": "lineage to runs / data",   "confidence_pct": 80 },
-        { "name": "status",          "type": "enum {open,supported,refuted,paused}","flag": "mandatory","rationale": "lifecycle","confidence_pct": 95 },
-        { "name": "session_id",      "type": "string",  "flag": "mandatory","rationale": "lineage",                            "confidence_pct": 95 },
-        { "name": "ts",              "type": "ISO8601", "flag": "mandatory","rationale": "ordering",                           "confidence_pct": 95 }
+        {
+          "name": "hypothesis_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "statement",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "the hypothesis itself",
+          "confidence_pct": 92
+        },
+        {
+          "name": "version",
+          "type": "int",
+          "flag": "mandatory",
+          "rationale": "revision counter",
+          "confidence_pct": 95
+        },
+        {
+          "name": "supporting_evidence",
+          "type": "array<string>",
+          "flag": "recommended",
+          "rationale": "lineage to runs / data",
+          "confidence_pct": 80
+        },
+        {
+          "name": "status",
+          "type": "enum {open,supported,refuted,paused}",
+          "flag": "mandatory",
+          "rationale": "lifecycle",
+          "confidence_pct": 95
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has statement AND version AND status",
@@ -33,25 +75,99 @@
       "name": "experiment_runs",
       "format": "jsonl",
       "format_alternatives": [
-        { "format": "parquet", "fit_pct": 75, "rationale": "columnar analytics over hyperparameter sweeps with >100k runs; recommend once you cross that threshold" },
-        { "format": "sqlite",  "fit_pct": 60, "rationale": "FK joins with hypothesis_log + dataset_versioning; FTS5 over results_summary; recommend if cross-module queries dominate" }
+        {
+          "format": "parquet",
+          "fit_pct": 75,
+          "rationale": "columnar analytics over hyperparameter sweeps with >100k runs; recommend once you cross that threshold"
+        },
+        {
+          "format": "sqlite",
+          "fit_pct": 60,
+          "rationale": "FK joins with hypothesis_log + dataset_versioning; FTS5 over results_summary; recommend if cross-module queries dominate"
+        }
       ],
       "path": "memory/experiment_runs.jsonl",
       "tier_b_fallback": "not applicable (jsonl is Tier-A)",
       "trigger": "every experiment run",
       "append_only": true,
       "fields": [
-        { "name": "run_id",            "type": "string",   "flag": "mandatory","rationale": "stable handle",        "confidence_pct": 95 },
-        { "name": "hypothesis_id",     "type": "string",   "flag": "mandatory","rationale": "FK to hypothesis_log", "confidence_pct": 92 },
-        { "name": "seed",              "type": "int",      "flag": "mandatory","rationale": "reproducibility",      "confidence_pct": 95 },
-        { "name": "dataset_version",   "type": "string",   "flag": "mandatory","rationale": "FK to dataset_versioning","confidence_pct": 92 },
-        { "name": "config_hash",       "type": "string",   "flag": "mandatory","rationale": "exact config",         "confidence_pct": 92 },
-        { "name": "results_summary",   "type": "string",   "flag": "mandatory","rationale": "≤300 chars factual",   "confidence_pct": 88 },
-        { "name": "primary_metric",    "type": "string",   "flag": "mandatory","rationale": "what we measured",     "confidence_pct": 90 },
-        { "name": "primary_metric_value","type": "number", "flag": "mandatory","rationale": "the value",            "confidence_pct": 95 },
-        { "name": "uncertainty_pct",   "type": "number",   "flag": "mandatory","rationale": "P2 ±range",            "confidence_pct": 88 },
-        { "name": "session_id",        "type": "string",   "flag": "mandatory","rationale": "lineage",              "confidence_pct": 95 },
-        { "name": "ts",                "type": "ISO8601",  "flag": "mandatory","rationale": "ordering",             "confidence_pct": 95 }
+        {
+          "name": "run_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 95
+        },
+        {
+          "name": "hypothesis_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "FK to hypothesis_log",
+          "confidence_pct": 92
+        },
+        {
+          "name": "seed",
+          "type": "int",
+          "flag": "mandatory",
+          "rationale": "reproducibility",
+          "confidence_pct": 95
+        },
+        {
+          "name": "dataset_version",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "FK to dataset_versioning",
+          "confidence_pct": 92
+        },
+        {
+          "name": "config_hash",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "exact config",
+          "confidence_pct": 92
+        },
+        {
+          "name": "results_summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤300 chars factual",
+          "confidence_pct": 88
+        },
+        {
+          "name": "primary_metric",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "what we measured",
+          "confidence_pct": 90
+        },
+        {
+          "name": "primary_metric_value",
+          "type": "number",
+          "flag": "mandatory",
+          "rationale": "the value",
+          "confidence_pct": 95
+        },
+        {
+          "name": "uncertainty_pct",
+          "type": "number",
+          "flag": "mandatory",
+          "rationale": "P2 ±range",
+          "confidence_pct": 88
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has hypothesis_id AND seed AND dataset_version AND config_hash AND primary_metric AND primary_metric_value AND uncertainty_pct",
@@ -69,13 +185,55 @@
       "trigger": "every internal or external replication",
       "append_only": true,
       "fields": [
-        { "name": "replication_id", "type": "string",  "flag": "mandatory","rationale": "stable handle",                  "confidence_pct": 92 },
-        { "name": "original_run_id","type": "string",  "flag": "mandatory","rationale": "FK to experiment_runs",          "confidence_pct": 95 },
-        { "name": "by",             "type": "enum {internal,external}","flag":"mandatory","rationale": "trust signal",  "confidence_pct": 95 },
-        { "name": "outcome",        "type": "enum {match,partial,fail}","flag":"mandatory","rationale": "verdict",       "confidence_pct": 92 },
-        { "name": "delta_pct",      "type": "number|null","flag": "mandatory_if_outcome!=match","rationale": "magnitude","confidence_pct": 88 },
-        { "name": "session_id",     "type": "string",  "flag": "mandatory","rationale": "lineage",                       "confidence_pct": 95 },
-        { "name": "ts",             "type": "ISO8601", "flag": "mandatory","rationale": "ordering",                      "confidence_pct": 95 }
+        {
+          "name": "replication_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "original_run_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "FK to experiment_runs",
+          "confidence_pct": 95
+        },
+        {
+          "name": "by",
+          "type": "enum {internal,external}",
+          "flag": "mandatory",
+          "rationale": "trust signal",
+          "confidence_pct": 95
+        },
+        {
+          "name": "outcome",
+          "type": "enum {match,partial,fail}",
+          "flag": "mandatory",
+          "rationale": "verdict",
+          "confidence_pct": 92
+        },
+        {
+          "name": "delta_pct",
+          "type": "number|null",
+          "flag": "mandatory_if_outcome!=match",
+          "rationale": "magnitude",
+          "confidence_pct": 88
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has original_run_id AND by AND outcome",
@@ -93,13 +251,55 @@
       "trigger": "every peer-review round",
       "append_only": true,
       "fields": [
-        { "name": "review_id",       "type": "string", "flag": "mandatory","rationale": "stable handle",     "confidence_pct": 92 },
-        { "name": "reviewer_handle", "type": "string", "flag": "mandatory","rationale": "anonymised",        "confidence_pct": 88 },
-        { "name": "venue",           "type": "string", "flag": "mandatory","rationale": "where",              "confidence_pct": 90 },
-        { "name": "comments_summary","type": "string", "flag": "mandatory","rationale": "≤500 chars",         "confidence_pct": 85 },
-        { "name": "response_summary","type": "string", "flag": "mandatory","rationale": "what we changed",    "confidence_pct": 85 },
-        { "name": "session_id",      "type": "string", "flag": "mandatory","rationale": "lineage",            "confidence_pct": 95 },
-        { "name": "ts",              "type": "ISO8601","flag": "mandatory","rationale": "ordering",           "confidence_pct": 95 }
+        {
+          "name": "review_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable handle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "reviewer_handle",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "anonymised",
+          "confidence_pct": 88
+        },
+        {
+          "name": "venue",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "where",
+          "confidence_pct": 90
+        },
+        {
+          "name": "comments_summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤500 chars",
+          "confidence_pct": 85
+        },
+        {
+          "name": "response_summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "what we changed",
+          "confidence_pct": 85
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has venue AND comments_summary AND response_summary",
@@ -117,13 +317,55 @@
       "trigger": "every dataset addition or version bump",
       "append_only": true,
       "fields": [
-        { "name": "dataset_name", "type": "string",   "flag": "mandatory","rationale": "search key",            "confidence_pct": 95 },
-        { "name": "version",      "type": "string",   "flag": "mandatory","rationale": "semver or hash",        "confidence_pct": 92 },
-        { "name": "sha256",       "type": "string",   "flag": "mandatory","rationale": "integrity",             "confidence_pct": 95 },
-        { "name": "provenance",   "type": "string",   "flag": "mandatory","rationale": "source",                 "confidence_pct": 90 },
-        { "name": "license",      "type": "string",   "flag": "mandatory","rationale": "redistribution rights",  "confidence_pct": 92 },
-        { "name": "session_id",   "type": "string",   "flag": "mandatory","rationale": "lineage",                "confidence_pct": 95 },
-        { "name": "ts",           "type": "ISO8601",  "flag": "mandatory","rationale": "ordering",               "confidence_pct": 95 }
+        {
+          "name": "dataset_name",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "search key",
+          "confidence_pct": 95
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "semver or hash",
+          "confidence_pct": 92
+        },
+        {
+          "name": "sha256",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "integrity",
+          "confidence_pct": 95
+        },
+        {
+          "name": "provenance",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "source",
+          "confidence_pct": 90
+        },
+        {
+          "name": "license",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "redistribution rights",
+          "confidence_pct": 92
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has dataset_name AND version AND sha256 AND provenance AND license",

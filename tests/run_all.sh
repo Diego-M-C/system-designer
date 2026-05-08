@@ -29,22 +29,61 @@ else
   echo "$violations" | head -10
 fi
 
-# T2 · Calibration scan
-hdr "T2 · Calibration scan"
-violations=$(grep -rEni '\b(best|always|never|guaranteed|certain|definitely|impossible)\b' \
+# T2 · Calibration scan  (J-007 · v0.3.2 · split into T2a heuristic-warn + T2b strict-blocking)
+# Prior version unconditionally PASSed even when violations were listed — silent failure.
+# T2a: full forbidden-token sweep with negation-context exclusions; non-blocking; warns only.
+# T2b: tight strict scan over USER-FACING prose (excludes forbidden-list discussions, tag-audit
+#      tables, alignment_rules, guardrails, non_do_conditions); blocking when count > T2B_MAX.
+T2B_MAX="${T2B_MAX:-0}"
+
+hdr "T2a · Calibration scan (heuristic, non-blocking warn)"
+violations_t2a=$(grep -rEni '\b(best|always|never|guaranteed|certain|definitely|impossible)\b' \
   prompts/ templates/ wizard/ SKILL.md 2>/dev/null \
   | grep -v 'references/calibrated_probabilities' \
   | grep -v 'forbidden' \
   | grep -v 'must.not\|does.not\|do not\|never auto' \
   | grep -v 'best.practice\|best.suited\|never.skip\|never.freeze\|never.modify' \
   | grep -v 'tests/' || true)
-if [ -z "$violations" ]; then
-  ok "no forbidden P2 tokens in user-facing artifacts"
+if [ -z "$violations_t2a" ]; then
+  ok "T2a: no candidate forbidden P2 tokens (post-exclusion)"
 else
-  echo "  WARN · candidate P2 violations (review manually):"
-  echo "$violations" | head -20
-  echo "  (deterministic grep is conservative — LLM judge in tests/README.md is authoritative)"
-  PASS=$((PASS+1))
+  count_t2a=$(echo "$violations_t2a" | wc -l)
+  echo "  WARN · T2a: ${count_t2a} candidate P2 violations after exclusion filters"
+  echo "$violations_t2a" | head -15
+  echo "  (T2a is heuristic / non-blocking — review manually; LLM judge in tests/README.md is authoritative)"
+  ok "T2a: warned ${count_t2a} candidates (non-blocking)"
+fi
+
+hdr "T2b · Calibration scan (strict on user-facing prose, blocking when count > ${T2B_MAX})"
+# Strict scope: only assertion-form patterns that are inequivocally P2 violations
+# regardless of context (negation, instruction, definition, quote). These are:
+#   "the best <noun>" / "is best" / "are best" / "best possible" / "best-effort"
+#   "always works"   / "always produces" / "always succeeds"
+#   "guaranteed to"  / "guaranteed that" / "guaranteed <adj>"
+#   "definitely"
+#   "impossible to <verb>"  (without explicit negation context)
+# Forbidden-token mentions in INSTRUCTION form ("Never X", "Always Y" as imperatives) and
+# in DEFINITION/QUOTE contexts (forbidden-list discussions, the rule itself) are out of scope —
+# they pass T2a's heuristic warn but do not block.
+violations_t2b=$(grep -rEn '\b(the best [a-z]|is best\b|are best\b|best.possible|best.effort|always works\b|always produces\b|always succeeds\b|guaranteed to\b|guaranteed that\b|definitely\b|impossible to [a-z])' \
+  prompts/ SKILL.md 2>/dev/null \
+  | grep -v '^Binary file' \
+  | grep -v 'references/' \
+  | grep -v 'tests/' \
+  | grep -v 'forbidden' \
+  | grep -v 'P2 violation\|calibration_violation\|forbidden token' \
+  || true)
+if [ -z "$violations_t2b" ]; then
+  ok "T2b: no strict-scope forbidden P2 tokens"
+else
+  count_t2b=$(echo "$violations_t2b" | wc -l)
+  if [ "$count_t2b" -le "$T2B_MAX" ]; then
+    ok "T2b: ${count_t2b} strict candidates (≤ T2B_MAX=${T2B_MAX}, allowed)"
+  else
+    nope "T2b: ${count_t2b} strict P2 violations (> T2B_MAX=${T2B_MAX})"
+    echo "$violations_t2b" | head -15
+    echo "  (T2b is BLOCKING — fix the prose above, or raise T2B_MAX env if these are confirmed exemptions)"
+  fi
 fi
 
 # T6 · Error catalog count = 30
@@ -225,12 +264,59 @@ else
   nope "expected 8 format mentions in protocol; found $formats_found"
 fi
 
-# T22 · selection_criteria block declared in prompt 15
-hdr "T22 · prompt 15 declares <selection_criteria> block"
-if grep -qE '<selection_criteria>' prompts/15_memory_schema_architect.md; then
-  ok "<selection_criteria> tag present in prompt 15"
+# T22 · every top-level XML tag in prompts/*.md exists in prompt-architect taxonomy
+# (J-006 · v0.3.2 · replaces the prior literal-string check that allowed invented tags
+#  to slip past — see external_audit/auditor_1_systems_architect.md F1/F2/F3.)
+hdr "T22 · every top-level XML tag in prompts/*.md exists in prompt_editor_skill.json#tags"
+if command -v python3 >/dev/null 2>&1; then
+  taxonomy_check=$(python3 <<'PY' 2>/dev/null
+import json, re, glob, sys
+try:
+    with open('prompt_architect/prompt_editor_skill.json') as f:
+        tax = {t['name'] for t in json.load(f)['tags']}
+except Exception as e:
+    print(f"FAIL: cannot load taxonomy: {e}")
+    sys.exit(0)
+
+# Top-level tag = pattern ^<tagname> appearing at line start in the XML body of a Complex prompt.
+# We scan every prompt; report any opening tag (not closing, not nested-form) whose name is not in `tax`.
+opening_re = re.compile(r'^<([a-z_][a-z0-9_]*)>\s*$', re.MULTILINE)
+
+invented = []  # (file, line_no, tag_name)
+files_scanned = 0
+for path in sorted(glob.glob('prompts/*.md')):
+    files_scanned += 1
+    with open(path) as f:
+        for i, line in enumerate(f, 1):
+            m = re.match(r'^<([a-z_][a-z0-9_]*)>\s*$', line)
+            if m:
+                name = m.group(1)
+                if name not in tax:
+                    invented.append((path, i, name))
+
+if invented:
+    print(f"FAIL: {len(invented)} invented tag(s) found across {files_scanned} prompts:")
+    for path, ln, name in invented:
+        print(f"  {path}:{ln}  <{name}>  (not in taxonomy)")
+else:
+    print(f"OK: scanned {files_scanned} prompts; all top-level tags exist in taxonomy ({len(tax)} canonical names)")
+PY
+  )
+  if echo "$taxonomy_check" | head -1 | grep -q '^OK:'; then
+    ok "$(echo "$taxonomy_check" | head -1 | sed 's/^OK: //')"
+  else
+    nope "$taxonomy_check"
+  fi
 else
-  nope "<selection_criteria> tag missing in prompt 15"
+  # Fallback — old literal-string check, marked degraded
+  echo "  WARN · python3 unavailable; degraded-mode literal-string check"
+  if grep -qE '<selection_criteria>' prompts/15_memory_schema_architect.md \
+     && grep -qE '<simulation_scenarios>' prompts/10_data_flow_validator.md; then
+    ok "fallback: 2 known canonical tags present in prompts 10/15"
+    PASS=$((PASS+1))   # explicit because we used echo+ok already
+  else
+    nope "fallback: known canonical tags missing"
+  fi
 fi
 
 # T20 · per-domain JSON starters parse cleanly

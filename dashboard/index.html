@@ -180,7 +180,7 @@ footer {
 <body>
 
 <header>
-  <h1>system-designer · Dashboard <span class="tag">v0.1.0 · static · no-build</span></h1>
+  <h1>system-designer · Dashboard <span class="tag">v0.3.2 · static · no-build</span></h1>
   <div class="upload-zone">
     <label for="json-input">📂 Cargar tracking/project.json</label>
     <input type="file" id="json-input" accept=".json">
@@ -195,11 +195,11 @@ footer {
     <p>
       1. Genera un sistema con <code>system-designer</code> (drag-folder a tu LLM, o <code>/system-designer</code> en Claude Code).<br>
       2. Cuando empiece a producir <code>tracking/project.json</code> en el proyecto hijo, súbelo aquí (botón arriba-derecha).<br>
-      3. El dashboard renderiza fases, KPIs (11), gates HITL, errores AIE, completitud de auditoría EU AI Act y métricas de calibración.<br>
+      3. El dashboard renderiza las 18 fases (v0.3.x), 12 KPIs base, gates HITL (incl. fase 4.5 memory_schema y fase 13.7 improvement_audit), errores AIE, completitud de auditoría EU AI Act, métricas de calibración, y las superficies v0.2/v0.3 (memory_schema, adaptive_audit, feedback_learning).<br>
       4. <strong>Sin build, sin servidor, sin red:</strong> abre <code>index.html</code> en un navegador. P1 (portabilidad) por diseño.
     </p>
     <div class="warning">
-      Confianza ~85% en interpretación correcta del JSON v0.1.0. Si el schema cambia, este HTML degradará campos desconocidos sin romperse.
+      Confianza ~85% en interpretación correcta del JSON v0.3.x. Si el schema cambia, este HTML degradará campos desconocidos sin romperse.
     </div>
   </div>
 </main>
@@ -210,9 +210,10 @@ footer {
 
 <script>
 const PHASES = [
-  "read_context", "interview", "planning_brief", "GATE_1_HITL",
-  "scaffold", "compose_prompts", "fetch_library_docs", "seed_tracking",
-  "emit_audit_sheet", "self_audit", "reflection", "GATE_2_HITL", "handoff"
+  "read_context", "context_setup", "interview", "planning_brief", "GATE_1_HITL",
+  "memory_schema_setup", "scaffold", "compose_prompts", "fetch_library_docs", "seed_tracking",
+  "emit_audit_sheet", "self_audit", "reflection", "structural_consistency",
+  "GATE_2_HITL", "handoff", "feedback_session", "improvement_audit"
 ];
 
 const KPI_META = [
@@ -227,7 +228,17 @@ const KPI_META = [
   { key: "rollbacks_count", label: "Rollbacks", color: "red" },
   { key: "tech_debt_added", label: "Tech debt", color: "yellow" },
   { key: "eu_ai_act_audit_score_pct", label: "EU AI Act score%", color: "green" },
-  { key: "agent_self_confidence_pct", label: "Agent conf%", color: "purple" }
+  { key: "agent_self_confidence_pct", label: "Agent conf%", color: "purple" },
+  // v0.3.x surfaces (read from tracking/project.json#{adaptive_audit, feedback_learning, memory_schema, data_flow_validation})
+  { key: "data_flow_consistency_score_pct", label: "Data-flow consistency%", color: "green", path: "data_flow_validation.consistency_score" },
+  { key: "memory_schema_modules_count",     label: "Memory modules",         color: "purple", path: "memory_schema.modules_count" },
+  { key: "memory_schema_mean_conf_pct",     label: "Memory contract conf%",  color: "purple", path: "memory_schema.agent_confidence_pct" },
+  { key: "feedback_pending_count",          label: "Feedback pending-Y",     color: "yellow", path: "feedback_learning.pending_count" },
+  { key: "feedback_oldest_pending_days",    label: "Oldest pending (days)",  color: "yellow", path: "feedback_learning.oldest_pending_days" },
+  { key: "feedback_mean_class_conf_pct",    label: "Mean class. conf%",      color: "purple", path: "feedback_learning.mean_classification_confidence_pct" },
+  { key: "adaptive_audit_errors_blocking",  label: "Adaptive: blockers",     color: "red",    path: "adaptive_audit.errors_blocking_count" },
+  { key: "adaptive_audit_improvements",     label: "Adaptive: improvements", color: "green",  path: "adaptive_audit.improvements_queued_count" },
+  { key: "art73_open_incidents",            label: "Art.73 open incidents",  color: "red",    path: "compliance.art73_open_incidents" }
 ];
 
 function escapeHtml(s) {

@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "schema_version": 3,
-  "release_date": "2026-05-08",
+  "release_date": "2026-05-09",
   "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, on-demand orchestration, calibrated context curation (v0.2.0), structural-consistency validation (v0.2.0), lifelong feedback learning (v0.2.0), fixed-5-axis improvement audit (v0.2.0), per-task / per-session adaptive audit meta-validator (v0.2.0), and (v0.3.0) per-project memory-schema negotiation with mandatory memory_completeness_auditor. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
 
   "principles": [

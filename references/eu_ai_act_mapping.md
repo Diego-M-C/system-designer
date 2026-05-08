@@ -44,7 +44,8 @@ The 13 checklists in `Checklists y ejemplos/`:
 | 3 | `Gobernanza del dato_Checklist.xlsx` | **Art. 10** (data + data governance) | Art. 26 (deployer) | `data_governance` |
 | 4 | `Documentación tecnica_Checklist.xlsx` | **Art. 11** (technical documentation) + Annex IV | — | `technical_documentation` |
 | 5 | `Registros_Checklist.xlsx` | **Art. 12** (record-keeping / logs) | Art. 19 (registers retained) | `record_keeping` |
-| 6 | `Transparencia_Checklist.xlsx` | **Art. 13** (transparency to deployer) + **Art. 50** (transparency to user) | Art. 11 | `transparency` |
+| 6a | `Transparencia_Checklist.xlsx` (Art. 13 subset) | **Art. 13** (transparency to deployer) | Art. 11 | `transparency_deployer` |
+| 6b | `Transparencia_Checklist.xlsx` (Art. 50 subset) | **Art. 50** (transparency to affected persons) | Art. 13, Art. 4 (literacy) | `transparency_affected_persons` |
 | 7 | `Supervisión Humana_Checklist.xlsx` | **Art. 14** (human oversight) | — | `human_oversight` |
 | 8 | `Precision_Checklist.xlsx` | **Art. 15** (accuracy) | Art. 17 | `accuracy` |
 | 9 | `Solidez_Checklist.xlsx` | **Art. 15** (robustness) | — | `robustness` |
@@ -65,7 +66,8 @@ Each row in `<target_path>/audit/audit_sheet.xlsx` conforms to `system_generator
 | Art. 10 — data governance | 14 | rows from `Gobernanza del dato_Checklist.xlsx` | data steward |
 | Art. 11 — technical documentation | 18 | rows from `Documentación tecnica_Checklist.xlsx` | tech lead |
 | Art. 12 — record-keeping | 8 | rows from `Registros_Checklist.xlsx` | DevOps / SRE |
-| Art. 13/50 — transparency | 10 | rows from `Transparencia_Checklist.xlsx` | UX / product |
+| Art. 13 — transparency to deployer | 6 | rows from `Transparencia_Checklist.xlsx` (deployer-facing subset) | tech lead / product |
+| Art. 50 — transparency to affected persons | 4 | rows from `Transparencia_Checklist.xlsx` (user-facing subset) — REQUIRED also for limited-risk systems | UX / product |
 | Art. 14 — human oversight | 8 | rows from `Supervisión Humana_Checklist.xlsx` | safety lead |
 | Art. 15 — accuracy | 6 | rows from `Precision_Checklist.xlsx` | ML lead |
 | Art. 15 — robustness | 6 | rows from `Solidez_Checklist.xlsx` | ML lead |
@@ -74,24 +76,90 @@ Each row in `<target_path>/audit/audit_sheet.xlsx` conforms to `system_generator
 | Art. 72 — post-market monitoring | 6 | rows from `Vigilancia Poscomercializacion_Checklist.xlsx` | SRE / product |
 | Art. 73 — incident management | 6 | rows from `Gestión de incidentes_Checklist.xlsx` | incident commander |
 
-**Total minimum rows (high-risk):** ~112. The audit sheet starts with these and grows incrementally as sessions add domain-specific evidence.
+**Total minimum rows (high-risk):** ~112 (Art. 9: 12+6 example + Art. 10: 14 + Art. 11: 18 + Art. 12: 8 + Art. 13: 6 + Art. 50: 4 + Art. 14: 8 + Art. 15: 6+6+8 + Art. 17: 10 + Art. 72: 6 + Art. 73: 6). The audit sheet starts with these and grows incrementally as sessions add domain-specific evidence.
+
+**Limited-risk minimum rows (Art. 50 obligatory):** Art. 50 (4 rows · transparency to affected persons) + Art. 14 (8 rows · human oversight when applicable) + voluntary Art. 4 literacy row.
 
 ---
 
 ## 4 · Mapping algorithm (used by `06_eu_ai_act_mapper.md`)
 
 ```
-1. Determine eu_ai_act_risk from SystemSpec.
+1. Determine eu_ai_act_risk AND role from SystemSpec (role default: provider_and_deployer).
 2. If high-risk: include all 13 checklists, instantiate all minimum rows.
-3. If limited-risk: include {Transparencia, Supervisión Humana} + Art. 50 disclosure rows.
+3. If limited-risk: include {Transparencia (Art. 50 subset only — 4 rows minimum), Supervisión Humana} + Art. 50 disclosure rows. Art. 13 deployer-transparency rows are NOT instantiated for limited-risk; they ship only with high-risk.
 4. If minimal-risk: include only voluntary-code-of-conduct row + Art. 4 (literacy) row; log downgrade rationale.
-5. For each included checklist:
+5. APPLY role-aware row sub-selection (since v0.3.2):
+   - role = provider                → Art. 16 obligations: data governance (Art. 10), tech doc (Art. 11), record-keeping (Art. 12), QMS (Art. 17), post-market (Art. 72), incidents (Art. 73), conformity assessment, registration. Skip Art. 26 deployer-only rows.
+   - role = deployer                → Art. 26 obligations: appropriate tech/org measures, human oversight (Art. 14), monitoring, logs retention. Skip Art. 11 (tech doc is provider's), conformity assessment.
+   - role = provider_and_deployer   → union of both above (default; conservative).
+   - role = distributor             → Art. 24 lighter set: verify CE marking, retain documentation, cooperate with authorities.
+   - role = importer                → Art. 23 set: verify provider's compliance before placing on market, retain documentation.
+6. For each included checklist:
    a. Reference (do NOT copy) the Excel from ../Checklists y ejemplos/.
-   b. Generate <target_path>/audit/checklists/<area>.md with: source path, items count, mapped Article, status fields.
+   b. Generate <target_path>/audit/checklists/<area>.md with: source path, items count, mapped Article, role_applicability (which roles need this), status fields.
    c. Append rows to audit_sheet.xlsx (or CSV+MD fallback).
-6. Compute mapping_completeness_pct = (rows_emitted / rows_required) * 100.
-7. If completeness < 95% on high-risk: escalate at Gate #2.
+7. Compute mapping_completeness_pct = (rows_emitted / rows_required_for_role) * 100.
+8. If completeness < 95% on high-risk: escalate at Gate #2.
 ```
+
+---
+
+## 4b · Art. 73 serious-incident-reporting workflow *(v0.3.2)*
+
+EU AI Act **Article 73** ("Reporting of serious incidents") imposes hard deadlines for high-risk providers. The orchestrator must surface these as machine-readable `Art73Incident` records and signal the runtime tracker on every session close. Deadlines (per Art. 73(2)–(4)):
+
+| Trigger condition | Deadline (max) | Reporting target |
+|---|---|---|
+| Widespread infringement OR death of a person | **2 days** after provider becomes aware | Market surveillance authority |
+| Serious incident with serious harm | **10 days** after provider becomes aware | Market surveillance authority |
+| Other serious incidents (incl. critical-infrastructure malfunction) | **15 days** after provider becomes aware | Market surveillance authority |
+
+**Workflow (orchestrator + runtime tracker):**
+
+```
+1. Detection: any session that flags severity=critical in feedback_learning/corrections.db
+   OR any healthcare adverse_events / fintech model_drift_alerts / public_sector
+   service_uptime_incidents row classified as "serious incident" emits an
+   Art73Incident record with: ts_aware, classification (death|serious_harm|other),
+   description, system_role_in_incident, regulatory_report_required=true.
+
+2. The orchestrator's <compliance> block dispatches the runtime tracker (a sidecar
+   prompt at prompts/00_master_orchestrator.md#hitl_conditions adds an Art.73 gate)
+   that computes ts_deadline = ts_aware + (2|10|15) days.
+
+3. Three HITL escalations fire as the deadline approaches: 50% elapsed (warn),
+   80% elapsed (urgent), 100% elapsed (BLOCKER — system halts further sessions
+   until report_id is logged).
+
+4. Once submitted: the user logs regulatory_report_id (e.g., AESIA case number)
+   in decisions.md as ADR; the Art73Incident.status becomes 'reported'; the
+   tracker stops escalating.
+
+5. Audit row created automatically under Art. 73 area with evidence_link →
+   regulatory_report_id; sha256-chained per the integrity discipline.
+```
+
+**Schema for `Art73Incident`** (lives in `<target_path>/audit/art73/incidents.jsonl`, append-only):
+
+```json
+{
+  "incident_id": "string",
+  "ts_aware": "ISO8601",
+  "classification": "death | serious_harm | other",
+  "deadline_days": 2 | 10 | 15,
+  "ts_deadline": "ISO8601",
+  "description": "string (≤500 chars)",
+  "system_role_in_incident": "string",
+  "regulatory_report_required": true,
+  "regulatory_report_id": "string|null",
+  "status": "open | reported | closed",
+  "linked_session_id": "string",
+  "linked_corrections_db_id": "int|null"
+}
+```
+
+The `incident_management` checklist (#13 in §2) provides the row source for the audit sheet; the workflow above is the runtime layer that ensures deadlines are not silently breached.
 
 ---
 

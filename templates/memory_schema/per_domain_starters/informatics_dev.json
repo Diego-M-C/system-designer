@@ -1,7 +1,7 @@
 {
   "starter_id": "informatics_dev",
   "schema_version": 1,
-  "generator_version": "0.3.0",
+  "generator_version": "0.3.2",
   "domain": "informatics_dev",
   "description": "Starter for software-development / informatics projects. Anchored on the canonical example: every test #N attempt #N status; if not pass, error_code + suggested_solution + confidence%.",
   "modules": [
@@ -9,27 +9,113 @@
       "name": "test_outcomes",
       "format": "jsonl",
       "format_alternatives": [
-        { "format": "sqlite", "fit_pct": 80, "rationale": "FTS5 enables cross-session error_message dedupe and indexed test_id queries; recommend upgrading once volume passes ~5k entries" },
-        { "format": "parquet","fit_pct": 25, "rationale": "columnar archive for very large test suites; loses interactive query — only worthwhile in CI-archive scenarios" }
+        {
+          "format": "sqlite",
+          "fit_pct": 80,
+          "rationale": "FTS5 enables cross-session error_message dedupe and indexed test_id queries; recommend upgrading once volume passes ~5k entries"
+        },
+        {
+          "format": "parquet",
+          "fit_pct": 25,
+          "rationale": "columnar archive for very large test suites; loses interactive query — only worthwhile in CI-archive scenarios"
+        }
       ],
       "path": "memory/test_outcomes.jsonl",
       "tier_b_fallback": "not applicable (jsonl is Tier-A)",
       "trigger": "every test execution",
       "append_only": true,
       "fields": [
-        { "name": "test_id",                     "type": "string",        "flag": "mandatory",                          "rationale": "stable identifier across sessions",                                       "confidence_pct": 92 },
-        { "name": "test_number",                 "type": "int",           "flag": "mandatory",                          "rationale": "deterministic ordering",                                                  "confidence_pct": 90 },
-        { "name": "attempt_number",              "type": "int",           "flag": "mandatory",                          "rationale": "tracks retry / flakiness pattern",                                        "confidence_pct": 90 },
-        { "name": "status",                      "type": "enum {pass,fail,skipped,error}", "flag": "mandatory",         "rationale": "the answer to 'éxito?'",                                                  "confidence_pct": 95 },
-        { "name": "error_code",                  "type": "string|null",   "flag": "mandatory_if_status!=pass",         "rationale": "structured handle for recurrence search",                                  "confidence_pct": 88 },
-        { "name": "error_message",               "type": "string|null",   "flag": "mandatory_if_status!=pass",         "rationale": "human-readable",                                                          "confidence_pct": 88 },
-        { "name": "suggested_solution",          "type": "string|null",   "flag": "mandatory_if_status!=pass",         "rationale": "actionable fix proposal",                                                  "confidence_pct": 85 },
-        { "name": "suggested_solution_conf_pct", "type": "int 0-100",     "flag": "mandatory_if_suggested_solution",   "rationale": "P2 calibration",                                                          "confidence_pct": 92 },
-        { "name": "related_correction_id",       "type": "int|null",      "flag": "recommended",                       "rationale": "FK into feedback_learning/corrections.db",                                "confidence_pct": 75 },
-        { "name": "duration_ms",                 "type": "int",           "flag": "recommended",                       "rationale": "perf trend; flakiness signal",                                            "confidence_pct": 78 },
-        { "name": "session_id",                  "type": "string",        "flag": "mandatory",                          "rationale": "lineage",                                                                 "confidence_pct": 95 },
-        { "name": "ts",                          "type": "ISO8601",       "flag": "mandatory",                          "rationale": "ordering + temporal context",                                            "confidence_pct": 95 },
-        { "name": "agent_confidence_pct",        "type": "int 0-100",     "flag": "mandatory",                          "rationale": "P2",                                                                       "confidence_pct": 92 }
+        {
+          "name": "test_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "stable identifier across sessions",
+          "confidence_pct": 92
+        },
+        {
+          "name": "test_number",
+          "type": "int",
+          "flag": "mandatory",
+          "rationale": "deterministic ordering",
+          "confidence_pct": 90
+        },
+        {
+          "name": "attempt_number",
+          "type": "int",
+          "flag": "mandatory",
+          "rationale": "tracks retry / flakiness pattern",
+          "confidence_pct": 90
+        },
+        {
+          "name": "status",
+          "type": "enum {pass,fail,skipped,error}",
+          "flag": "mandatory",
+          "rationale": "the answer to 'éxito?'",
+          "confidence_pct": 95
+        },
+        {
+          "name": "error_code",
+          "type": "string|null",
+          "flag": "mandatory_if_status!=pass",
+          "rationale": "structured handle for recurrence search",
+          "confidence_pct": 88
+        },
+        {
+          "name": "error_message",
+          "type": "string|null",
+          "flag": "mandatory_if_status!=pass",
+          "rationale": "human-readable",
+          "confidence_pct": 88
+        },
+        {
+          "name": "suggested_solution",
+          "type": "string|null",
+          "flag": "mandatory_if_status!=pass",
+          "rationale": "actionable fix proposal",
+          "confidence_pct": 85
+        },
+        {
+          "name": "suggested_solution_conf_pct",
+          "type": "int 0-100",
+          "flag": "mandatory_if_suggested_solution",
+          "rationale": "P2 calibration",
+          "confidence_pct": 92
+        },
+        {
+          "name": "related_correction_id",
+          "type": "int|null",
+          "flag": "recommended",
+          "rationale": "FK into feedback_learning/corrections.db",
+          "confidence_pct": 75
+        },
+        {
+          "name": "duration_ms",
+          "type": "int",
+          "flag": "recommended",
+          "rationale": "perf trend; flakiness signal",
+          "confidence_pct": 78
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering + temporal context",
+          "confidence_pct": 95
+        },
+        {
+          "name": "agent_confidence_pct",
+          "type": "int 0-100",
+          "flag": "mandatory",
+          "rationale": "P2",
+          "confidence_pct": 92
+        }
       ],
       "audit": {
         "completeness_rule": "every entry with status != pass must have error_code AND error_message AND suggested_solution AND suggested_solution_conf_pct",
@@ -47,16 +133,76 @@
       "trigger": "every architectural or scope decision",
       "append_only": true,
       "fields": [
-        { "name": "decision_id",            "type": "string",          "flag": "mandatory",   "rationale": "ADR identifier",                              "confidence_pct": 95 },
-        { "name": "title",                  "type": "string",          "flag": "mandatory",   "rationale": "short tag for search",                        "confidence_pct": 92 },
-        { "name": "rationale",              "type": "string",          "flag": "mandatory",   "rationale": "the why; the most-consulted field over time", "confidence_pct": 90 },
-        { "name": "alternatives_considered","type": "array<string>",   "flag": "mandatory",   "rationale": "enables retro decisions vs. revisit",         "confidence_pct": 88 },
-        { "name": "fit_pct_per_alternative","type": "object<string,int>","flag": "recommended","rationale": "P2 calibration carried into ADR",            "confidence_pct": 80 },
-        { "name": "decision_chosen",        "type": "string",          "flag": "mandatory",   "rationale": "what the user picked",                        "confidence_pct": 95 },
-        { "name": "confidence_pct",         "type": "int 0-100",       "flag": "mandatory",   "rationale": "agent confidence on the chosen path",         "confidence_pct": 92 },
-        { "name": "related_artifacts",      "type": "array<string>",   "flag": "recommended", "rationale": "lineage to files/commits",                    "confidence_pct": 75 },
-        { "name": "session_id",             "type": "string",          "flag": "mandatory",   "rationale": "lineage",                                     "confidence_pct": 95 },
-        { "name": "ts",                     "type": "ISO8601",         "flag": "mandatory",   "rationale": "ordering",                                    "confidence_pct": 95 }
+        {
+          "name": "decision_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "ADR identifier",
+          "confidence_pct": 95
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "short tag for search",
+          "confidence_pct": 92
+        },
+        {
+          "name": "rationale",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "the why; the most-consulted field over time",
+          "confidence_pct": 90
+        },
+        {
+          "name": "alternatives_considered",
+          "type": "array<string>",
+          "flag": "mandatory",
+          "rationale": "enables retro decisions vs. revisit",
+          "confidence_pct": 88
+        },
+        {
+          "name": "fit_pct_per_alternative",
+          "type": "object<string,int>",
+          "flag": "recommended",
+          "rationale": "P2 calibration carried into ADR",
+          "confidence_pct": 80
+        },
+        {
+          "name": "decision_chosen",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "what the user picked",
+          "confidence_pct": 95
+        },
+        {
+          "name": "confidence_pct",
+          "type": "int 0-100",
+          "flag": "mandatory",
+          "rationale": "agent confidence on the chosen path",
+          "confidence_pct": 92
+        },
+        {
+          "name": "related_artifacts",
+          "type": "array<string>",
+          "flag": "recommended",
+          "rationale": "lineage to files/commits",
+          "confidence_pct": 75
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has rationale AND alternatives_considered (≥2) AND decision_chosen AND confidence_pct",
@@ -74,7 +220,13 @@
       "trigger": "every checkpoint milestone (per granularity)",
       "append_only": false,
       "fields": [
-        { "name": "milestones", "type": "array<{id, title, status, checkpoint_session_id, completed_at, kpis}>", "flag": "mandatory", "rationale": "current state of strategic milestones", "confidence_pct": 85 }
+        {
+          "name": "milestones",
+          "type": "array<{id, title, status, checkpoint_session_id, completed_at, kpis}>",
+          "flag": "mandatory",
+          "rationale": "current state of strategic milestones",
+          "confidence_pct": 85
+        }
       ],
       "audit": {
         "completeness_rule": "every milestone has id AND title AND status AND (completed_at if status='done')",
@@ -92,13 +244,55 @@
       "trigger": "every non-trivial refactor",
       "append_only": true,
       "fields": [
-        { "name": "refactor_id",       "type": "string",  "flag": "mandatory",   "rationale": "search key",                          "confidence_pct": 90 },
-        { "name": "scope_summary",     "type": "string",  "flag": "mandatory",   "rationale": "≤200 chars",                          "confidence_pct": 88 },
-        { "name": "motivation",        "type": "string",  "flag": "mandatory",   "rationale": "why refactor (debt | feature | bug)", "confidence_pct": 88 },
-        { "name": "files_touched",     "type": "array<string>", "flag": "mandatory", "rationale": "lineage",                          "confidence_pct": 85 },
-        { "name": "regressions_found", "type": "array<string>", "flag": "recommended", "rationale": "what broke / was caught",        "confidence_pct": 78 },
-        { "name": "session_id",        "type": "string",  "flag": "mandatory",   "rationale": "lineage",                             "confidence_pct": 95 },
-        { "name": "ts",                "type": "ISO8601", "flag": "mandatory",   "rationale": "ordering",                            "confidence_pct": 95 }
+        {
+          "name": "refactor_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "search key",
+          "confidence_pct": 90
+        },
+        {
+          "name": "scope_summary",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "≤200 chars",
+          "confidence_pct": 88
+        },
+        {
+          "name": "motivation",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "why refactor (debt | feature | bug)",
+          "confidence_pct": 88
+        },
+        {
+          "name": "files_touched",
+          "type": "array<string>",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 85
+        },
+        {
+          "name": "regressions_found",
+          "type": "array<string>",
+          "flag": "recommended",
+          "rationale": "what broke / was caught",
+          "confidence_pct": 78
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every refactor entry has motivation AND files_touched.length>0",
@@ -116,13 +310,55 @@
       "trigger": "every benchmark or perf measurement",
       "append_only": true,
       "fields": [
-        { "name": "metric_name",     "type": "string",   "flag": "mandatory",   "rationale": "search key",            "confidence_pct": 92 },
-        { "name": "value",           "type": "number",   "flag": "mandatory",   "rationale": "the measurement",       "confidence_pct": 95 },
-        { "name": "unit",            "type": "string",   "flag": "mandatory",   "rationale": "ms | rps | MB | ...",   "confidence_pct": 92 },
-        { "name": "stack_fingerprint","type": "string",  "flag": "recommended", "rationale": "compute env hash",     "confidence_pct": 78 },
-        { "name": "uncertainty_pct", "type": "number",   "flag": "recommended", "rationale": "P2 ±range",            "confidence_pct": 80 },
-        { "name": "session_id",      "type": "string",   "flag": "mandatory",   "rationale": "lineage",              "confidence_pct": 95 },
-        { "name": "ts",              "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",             "confidence_pct": 95 }
+        {
+          "name": "metric_name",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "search key",
+          "confidence_pct": 92
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "flag": "mandatory",
+          "rationale": "the measurement",
+          "confidence_pct": 95
+        },
+        {
+          "name": "unit",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "ms | rps | MB | ...",
+          "confidence_pct": 92
+        },
+        {
+          "name": "stack_fingerprint",
+          "type": "string",
+          "flag": "recommended",
+          "rationale": "compute env hash",
+          "confidence_pct": 78
+        },
+        {
+          "name": "uncertainty_pct",
+          "type": "number",
+          "flag": "recommended",
+          "rationale": "P2 ±range",
+          "confidence_pct": 80
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has metric_name AND value AND unit",
@@ -140,14 +376,62 @@
       "trigger": "every dependency version change (add | upgrade | remove)",
       "append_only": true,
       "fields": [
-        { "name": "library",         "type": "string",   "flag": "mandatory",   "rationale": "search key",                "confidence_pct": 95 },
-        { "name": "from_version",    "type": "string|null","flag": "mandatory_if_action!=add", "rationale": "before",     "confidence_pct": 88 },
-        { "name": "to_version",      "type": "string|null","flag": "mandatory_if_action!=remove","rationale": "after",    "confidence_pct": 88 },
-        { "name": "action",          "type": "enum {add,upgrade,remove}", "flag": "mandatory", "rationale": "lifecycle", "confidence_pct": 92 },
-        { "name": "rationale",       "type": "string",   "flag": "mandatory",   "rationale": "why now",                   "confidence_pct": 88 },
-        { "name": "breaking_changes_summary", "type": "string|null", "flag": "mandatory_if_action=upgrade", "rationale": "what to watch for", "confidence_pct": 75 },
-        { "name": "session_id",      "type": "string",   "flag": "mandatory",   "rationale": "lineage",                   "confidence_pct": 95 },
-        { "name": "ts",              "type": "ISO8601",  "flag": "mandatory",   "rationale": "ordering",                  "confidence_pct": 95 }
+        {
+          "name": "library",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "search key",
+          "confidence_pct": 95
+        },
+        {
+          "name": "from_version",
+          "type": "string|null",
+          "flag": "mandatory_if_action!=add",
+          "rationale": "before",
+          "confidence_pct": 88
+        },
+        {
+          "name": "to_version",
+          "type": "string|null",
+          "flag": "mandatory_if_action!=remove",
+          "rationale": "after",
+          "confidence_pct": 88
+        },
+        {
+          "name": "action",
+          "type": "enum {add,upgrade,remove}",
+          "flag": "mandatory",
+          "rationale": "lifecycle",
+          "confidence_pct": 92
+        },
+        {
+          "name": "rationale",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "why now",
+          "confidence_pct": 88
+        },
+        {
+          "name": "breaking_changes_summary",
+          "type": "string|null",
+          "flag": "mandatory_if_action=upgrade",
+          "rationale": "what to watch for",
+          "confidence_pct": 75
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "flag": "mandatory",
+          "rationale": "lineage",
+          "confidence_pct": 95
+        },
+        {
+          "name": "ts",
+          "type": "ISO8601",
+          "flag": "mandatory",
+          "rationale": "ordering",
+          "confidence_pct": 95
+        }
       ],
       "audit": {
         "completeness_rule": "every entry has library AND action AND rationale; upgrades have breaking_changes_summary",

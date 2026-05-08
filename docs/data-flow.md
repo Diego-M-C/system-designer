@@ -1,8 +1,8 @@
 # Data flow — end-to-end
 
-> Visualises how data moves through the **17 phases** of `system-designer` (13 base + 4 inserted at v0.2.0: 1.5, 11.5, 13.5, 13.7) plus a cross-phase adaptive audit hook. Each phase reads inputs from declared sources, emits outputs to declared targets, and signals progression through `tracking/project.json`.
+> Visualises how data moves through the **18 phases** of `system-designer` (13 base + 5 inserted at v0.2.0/v0.3.0: 1.5, 4.5, 11.5, 13.5, 13.7) plus a cross-phase adaptive audit hook. Each phase reads inputs from declared sources, emits outputs to declared targets, and signals progression through `tracking/project.json`.
 >
-> **v0.2.0 supplement.** The original 13-phase diagram below is preserved verbatim. The new phases insert at fixed points; their data flows are summarised in §11 (`v0.2.0 phases supplement`) and detailed per-script in `docs/scripts/{10,11,12,13,14}_*.md`.
+> **v0.2.0 / v0.3.x supplement.** The original 13-phase diagram below is preserved verbatim. The 5 new phases insert at fixed points; their data flows are summarised in §11 (`v0.2.0 / v0.3.x phases supplement`) and detailed per-script in `docs/scripts/{10..15}_*.md`.
 
 ## 1. High-level sequence diagram
 
@@ -320,10 +320,11 @@ The sha256 of every emitted file is logged in `tracking/project.json#artifacts_e
 
 ```
 1   read_context
-1.5 context_setup           ← NEW (prompts/13_context_curator.md)
+1.5 context_setup            ← NEW v0.2.0 (prompts/13_context_curator.md)
 2   interview
 3   planning_brief
 4   GATE_1
+4.5 memory_schema_setup      ← NEW v0.3.0 (prompts/15_memory_schema_architect.md)
 5   scaffold
 6   compose_prompts
 7   fetch_library_docs
@@ -331,15 +332,51 @@ The sha256 of every emitted file is logged in `tracking/project.json#artifacts_e
 9   emit_audit_sheet
 10  self_audit
 11  reflection
-11.5 structural_consistency  ← NEW (prompts/10_data_flow_validator.md)
+11.5 structural_consistency  ← NEW v0.2.0 (prompts/10_data_flow_validator.md)
 12  GATE_2
 13  handoff
-13.5 feedback_session        ← NEW (prompts/11_feedback_learning_loop.md)
-13.7 improvement_audit       ← NEW (prompts/12_improvement_jury.md, conditional)
+13.5 feedback_session        ← NEW v0.2.0 (prompts/11_feedback_learning_loop.md)
+13.7 improvement_audit       ← NEW v0.2.0 (prompts/12_improvement_jury.md, conditional)
 14  STOP
 
 Cross-phase (fires at every task/session end):
-    adaptive_audit_meta      ← NEW (prompts/14_adaptive_audit_meta.md)
+    adaptive_audit_meta      ← NEW v0.2.0 (prompts/14_adaptive_audit_meta.md)
+                               + memory_completeness_auditor MANDATORY since v0.3.0
+                                 (reads memory_schema/manifest.json as audit contract)
+```
+
+### 11.1b Phase 4.5 · memory_schema_setup data-flow (v0.3.0)
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant MO as Master Orch.
+    participant MA as 15_memory_schema_architect
+    participant FS as Filesystem
+    MO->>MA: dispatch (post-Gate#1, pre-scaffold)
+    MA->>FS: read SPEC.json (domain · risk · stack)
+    MA->>FS: load templates/memory_schema/per_domain_starters/<domain>.json
+    MA->>U: HITL · proposal block (modules + format + 2 alternatives + fit %)
+    alt user picks [A] accept all
+        MA->>FS: persist memory_schema/manifest.json + per-module schemas + manifest.md mirror
+    else user picks [B] edit
+        loop per edit command
+            U-->>MA: edit_field / change_format / change_threshold / done
+        end
+        MA->>FS: persist with user edits
+    else user picks [C] add module
+        loop per add
+            U-->>MA: name + purpose + format hints
+            MA->>U: proposed schema with field flags + audit rules + format + 2 alternatives
+            U-->>MA: confirm / edit
+        end
+        MA->>FS: persist with added modules
+    else user picks [D] skip
+        MA->>FS: persist manifest.json with modules:[] + skip rationale
+    end
+    MA->>FS: write negotiation_session_<id>.md (HITL audit trail + reflection)
+    MA->>FS: update tracking/project.json#memory_schema
+    MA-->>MO: signal · scaffold may proceed (will render structured-memory module files per the contract)
 ```
 
 ### 11.2 Phase 1.5 · context_setup (bootstrap mode)

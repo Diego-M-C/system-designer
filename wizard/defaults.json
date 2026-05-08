@@ -1,13 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-defaults",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "purpose": "Sensible defaults for interview questions when the user types 'default' or 'skip'. Used by 01_interview_agent.md. Defaults reflect calibrated recommendations for a generic high-stakes SDD project; the interview agent surfaces them with fit % and asks for confirmation.",
 
   "eu_ai_act_risk": {
     "value": "high",
     "rationale": "Conservative default. Most domains we target (healthcare, fintech, legal, public_sector) presume high-risk per Annex III.",
     "confidence_pct": 80
+  },
+
+  "role": {
+    "value": "provider_and_deployer",
+    "rationale": "Conservative default (since 0.3.2). Covers both Art. 16 (provider) and Art. 26 (deployer) obligations until the user confirms they hold only one role. Affects audit-row sub-selection in 06_eu_ai_act_mapper.md.",
+    "confidence_pct": 75,
+    "since": "0.3.2"
   },
 
   "stack": {
