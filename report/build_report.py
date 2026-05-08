@@ -1,9 +1,10 @@
 """
 Build the system-designer professional report (.docx).
-Cover page · TOC · 10 sections (v0.3.1) · embedded figures · publication-grade typography.
-v0.2.0: §6 v0.2.0 Extensions with 5 subsections + 4 new figures.
-v0.3.1: extends §6 to 'Extensions (v0.2.0 · v0.3.x)' adding §6.6 Phase 4.5
-        Memory Schema Negotiator + §6.7 8-Format Memory Taxonomy + 3 new figures.
+Cover page · TOC · 10 sections (v1.0.0) · embedded figures · publication-grade typography.
+v0.2.0: §6 Extensions with 5 subsections + 4 new figures.
+v0.3.1: extends §6 with §6.6 Phase 4.5 Memory Schema + §6.7 8-Format Taxonomy + 3 figures.
+v1.0.0: adds §6.8 External-Audit Closure (v0.3.2 → v0.4.0 → v1.0.0) + 2 figures (audit
+        topology + sha256 hash-chain). Cover labelled 'mature stable release'.
 """
 import os
 from docx import Document
@@ -212,7 +213,7 @@ r1 = p.add_run("\nSYSTEM-DESIGNER\n")
 r1.font.size = Pt(40); r1.bold = True; r1.font.color.rgb = WHITE
 r2 = p.add_run("\nA Portable, LLM-Agnostic\nMeta-Generator for\nEU AI Act-Compliant\nSDD Projects\n\n")
 r2.font.size = Pt(18); r2.italic = True; r2.font.color.rgb = RGBColor(0xea, 0xf2, 0xf8)
-r3 = p.add_run("Technical Report  ·  v0.3.1\n")
+r3 = p.add_run("Technical Report  ·  v1.0.0  ·  stable mature release\n")
 r3.font.size = Pt(13); r3.font.color.rgb = RGBColor(0xc9, 0xa2, 0x27)
 add_borders(cell, top=False, left=False, right=False, color="c9a227", sz="24")
 
@@ -225,7 +226,7 @@ ctx_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 ctx_p.paragraph_format.space_after = Pt(8)
 r = ctx_p.add_run("Comprehensive technical documentation of the system-designer meta-skill:\n")
 r.font.size = Pt(11); r.italic = True; r.font.color.rgb = SLATE
-r2 = ctx_p.add_run("architecture · 18-phase orchestration (v0.3.x) · per-project memory contract · 8-format memory taxonomy · two-tier completeness audit · adaptive audit · feedback learning · calibration · HITL governance")
+r2 = ctx_p.add_run("architecture · 18-phase orchestration · per-project memory contract · 8-format memory taxonomy · two-tier completeness audit · adaptive audit · feedback learning · sha256 hash-chain · external-audit closure (21/21) · calibration · HITL governance")
 r2.font.size = Pt(10); r2.italic = True; r2.font.color.rgb = GREY
 
 # Spacer
@@ -271,8 +272,8 @@ def label_cell(cell, label, val, label_color="0a6e7a"):
     r2 = p.add_run(val)
     r2.font.size = Pt(10); r2.font.color.rgb = NAVY
 
-label_cell(fc1, "DATE", "May 2026  (v0.3.1 update)")
-label_cell(fc2, "VERSION", "0.3.1")
+label_cell(fc1, "DATE", "May 2026  (v1.0.0 stable)")
+label_cell(fc2, "VERSION", "1.0.0")
 label_cell(fc3, "REPOSITORY", "github.com/Diego-M-C/system-designer")
 label_cell(fc4, "LICENSE", "MIT")
 
@@ -312,13 +313,14 @@ toc_items = [
     ("       6.5  Cross-phase · Adaptive Audit Meta-Validator",         ""),
     ("       6.6  Phase 4.5 · Memory Schema Negotiator  (v0.3.0)",      ""),
     ("       6.7  8-Format Memory Taxonomy + Selection  (v0.3.1)",      ""),
-    ("7.  Conclusions",                                                "36"),
-    ("8.  Strengths and Limitations",                                  "37"),
+    ("       6.8  External-Audit Closure  (v0.3.2 → v0.4.0 → v1.0.0)",  ""),
+    ("7.  Conclusions",                                                "40"),
+    ("8.  Strengths and Limitations",                                  "41"),
     ("       8.1  Strengths",                                           ""),
     ("       8.2  Limitations",                                         ""),
     ("       8.3  Need for Domain-Specific Review and Validation",     ""),
-    ("9.  Final Conclusion",                                           "40"),
-    ("10. References",                                                 "41"),
+    ("9.  Final Conclusion",                                           "44"),
+    ("10. References",                                                 "45"),
 ]
 for txt, page in toc_items:
     p = doc.add_paragraph()
@@ -433,10 +435,22 @@ bullet(" v0.3.0 inserts a per-project memory-schema negotiation phase (4.5, betw
        bold_lead="v0.3.0 additions · ")
 bullet(" v0.3.1 expands the memory format taxonomy from 3 to 8 (structured_md, csv, json, jsonl, "
        "sqlite, parquet, vector_db, graph_db) with per-format portability tier and Tier-A "
-       "fallback chain. The architect ALWAYS picks the best format per module (volume × query "
+       "fallback chain. The architect ALWAYS picks the fittest format per module (volume × query "
        "pattern × relationship density × audit-rule needs) and surfaces 2 calibrated alternatives "
        "with fit% at HITL.",
        bold_lead="v0.3.1 additions · ")
+bullet(" v0.3.2 / v0.4.0 / v1.0.0 close the entire 21-item consolidated checklist from a blind "
+       "external-audit panel. Three specialist auditors (systems-architect / regulatory-compliance "
+       "/ calibration-memory-feedback) ran in independent Opus context windows; a consensus jury "
+       "applied the project's own jury_consensus_protocol and reached APPROVED_WITH_MINOR at "
+       "83% confidence. The remediation roadmap shipped as P1 (v0.3.2: 9 items including 2 "
+       "invented-tag canonicalisations and a hardened test suite), P2 (v0.4.0: 8 items including "
+       "the tamper-evident sha256 hash-chain that resolves the panel's only preserved disagreement "
+       "D1, and a new SystemSpec.role enum + Art.73 deadline workflow), and P3 (v1.0.0: 2 items "
+       "adding 7 new audit rows under Art.15(4) adversarial robustness + Art.9(2) iterative "
+       "review cadence + MiCA/PSD3 cross-walks). Calibrated probability that an external re-audit "
+       "lifts the panel to APPROVED_AS_MATURE on a re-run: ≈92% (range 85–96%).",
+       bold_lead="External-audit closure (v1.0.0) · ")
 
 body(
     "The deliverable for any invocation is a complete child-system tree with: child orchestrator "
@@ -546,7 +560,7 @@ t = table_basic(
 
 body("")
 
-heading("4.2  The 18-Phase Orchestration  (v0.3.x)", level=2)
+heading("4.2  The 18-Phase Orchestration  (v0.3.x · stable in v1.0.0)", level=2)
 
 body(
     "The master orchestrator at prompts/00_master_orchestrator.md owns an 18-phase finite "
@@ -1263,6 +1277,87 @@ callout(
     "Tier-B format carries a documented fallback to a Tier-A format, so no project becomes "
     "unrunnable when a soft dep is absent.",
     color=GOLD, bg_hex="fff7d6",
+)
+
+# ─── 6.8 External-Audit Closure (v0.3.2 → v0.4.0 → v1.0.0) ─────────────
+heading("6.8  External-Audit Closure  (v0.3.2 → v0.4.0 → v1.0.0)", level=2)
+
+body(
+    "After the v0.3.1 release, the system was submitted to a blind 3-axis external-audit panel. "
+    "Three specialist auditors ran in parallel, each in an independent Opus 1M context window, "
+    "with the explicit instruction to stay in their lane and avoid cross-axis encroachment. A "
+    "consensus jury then synthesised the three reports applying the project's own jury_consensus_protocol."
+)
+
+figure(f"{FIG}/18_v10_external_audit.png",
+       "Figure 18 · External-audit topology and 21-finding closure pipeline. Top row: the three "
+       "specialist auditors (systems-architect / regulatory-compliance / calibration-memory-"
+       "feedback) ran blind in independent Opus context windows; each delivered a structured "
+       "report with calibrated findings. Middle row: the consensus jury de-duplicated 33 raw "
+       "findings into 21 consolidated items, preserving one cross-axis disagreement (D1, on "
+       "audit-trail-integrity nuance), and reached APPROVED_WITH_MINOR at 83% confidence. Bottom "
+       "row: the three release batches that shipped the full remediation roadmap. Bottom strip: "
+       "the closure status — 21/21 items closed; calibrated re-audit probability of "
+       "APPROVED_AS_MATURE ≈92% (range 85–96%).")
+
+body(
+    "The remediation roadmap shipped in three releases. Each batch was self-audited via the "
+    "system's own test suite (which the audit itself improved as part of the remediation)."
+)
+
+t = table_basic(
+    headers=["Release", "Batch", "Items closed", "Effort", "Headlines"],
+    rows=[
+        ["v0.3.2", "P1",  "9 items + 1 free typo (J-001..J-009 + J-018)",     "~9 h",   "non_removable_for_high_risk symmetry across starters · Art.50 unbundled · SystemSpec.role enum · Art.73 deadline workflow · 2 invented XML tags canonicalised · T22 hardened against taxonomy · T2 split into T2a heuristic + T2b strict-blocking · dashboard refresh to v0.3.2 · doc-drift fix"],
+        ["v0.4.0", "P2",  "8 items (J-010..J-019)",                            "~12 h",  "sha256 tamper-evident hash-chain (resolves D1) · Art.72 min_rows 6→10 · special-category-data wizard question · SystemSpec.hitl_mode enum · gate_status modernised · public_sector format diversity · particular-tier worked example · baseline-memory FS-existence check · new T23 deterministic test"],
+        ["v1.0.0", "P3",  "2 items (J-020 + J-021)",                           "~4.7 h", "Art.15(4) adversarial-robustness rows (+4) · Art.9(2) iterative-review cadence rows (+3) · MiCA + PSD3 explicit cross-walk for fintech · prompt 14 dependencies declare memory_schema_protocol + manifest as Hard · cache_hint rubric scoped to Complex tier only · wizard placeholders marked is_template"],
+    ],
+    widths=[0.7, 0.5, 1.7, 0.6, 3.2],
+)
+
+body("")
+
+body(
+    "Disagreement D1 deserves dedicated discussion because it was the one finding that survived "
+    "consolidation as a preserved cross-axis dissent. The systems-architect auditor cited the "
+    "per-artifact sha256 logging in tracking/project.json#artifacts_emitted as a 'chain' (S5 "
+    "strength, confidence 93%). The regulatory-compliance auditor pointed out, correctly, that "
+    "Article 12 audit-trail integrity requires a Merkle-style chain — a chain of hashes where "
+    "each entry references the prior entry's hash — not just per-entry hashing. The jury "
+    "preserved both views and resolved them as J-010 (P2). v0.4.0 implements the chain via the "
+    "prior_hash field and a deterministic test (T23) that verifies tamper detection."
+)
+
+figure(f"{FIG}/19_v10_hash_chain.png",
+       "Figure 19 · INV-LIF-004 · tamper-evident sha256 hash-chain shipped in v0.4.0 (J-010). "
+       "Top row: a clean 5-entry chain; each entry N≥2 carries prior_hash = sha256(serialised "
+       "entry[N-1]); entry 1 uses the literal string 'genesis'. The chain verifies cleanly "
+       "(T23 PASS · green check). Bottom row: an in-place edit to entry 3 leaves the recorded "
+       "prior_hash on entry 4 unchanged, so the chain breaks at the 2→3 transition; the auditor "
+       "rejects the chain (T23 detects · red ✗). Same discipline applies to tracking/decisions.md "
+       "ADR rows. The chain is opt-in at runtime: child orchestrators that haven't been "
+       "regenerated continue to write entries without prior_hash; the audit reports a P2 warn "
+       "on mixed mode. Resolves the panel's only preserved disagreement (D1).")
+
+body(
+    "Total minimum audit rows for high-risk projects increased across the closure window: 112 "
+    "(v0.3.x) → 116 (v0.4.0, after Art.72 four-sub-system enumeration) → 123 (v1.0.0, after the "
+    "Art.15(4) adversarial-robustness and Art.9(2) iterative-review additions). The dashboard "
+    "now surfaces 9 new v0.3.x KPI tiles mapped to tracking/project.json paths (consistency "
+    "score, memory-schema modules count and contract confidence, feedback pending count and "
+    "oldest-pending-age, mean classification confidence, adaptive-audit blockers and "
+    "improvements-queued, and Art.73 open-incident count)."
+)
+
+callout(
+    "Honest accounting · The calibrated 92% probability of APPROVED_AS_MATURE on a re-run is "
+    "not certainty. The residual ~8% covers heuristic items the panel could not fully verify in "
+    "their sandbox: the actual contents of the 13 AESIA xlsx checklists (Auditor 2 had Bash "
+    "python3 invocation denied), prior_hash adoption rate across child projects regenerated "
+    "from older manifests, and second-order interactions between SystemSpec.role and "
+    "domain-specific starters that have not yet seen production traffic. v1.0.0 declares "
+    "maturity, not perfection.",
+    color=NAVY,
 )
 
 page_break()

@@ -1243,6 +1243,187 @@ def fig_v03_two_tier_audit():
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# FIG 18 — External-audit topology + 21-finding closure pipeline (v1.0.0)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v10_external_audit():
+    fig, ax = plt.subplots(figsize=(13, 7.5))
+    ax.set_xlim(0, 13); ax.set_ylim(0, 9.5)
+    ax.axis("off")
+
+    ax.text(6.5, 9.0, "v1.0.0  ·  external-audit closure  ·  3 specialist auditors  →  consensus jury  →  21 findings  →  P1/P2/P3 batches",
+            ha="center", fontsize=12, fontweight="bold", color=NAVY)
+    ax.text(6.5, 8.6, "blind 3-axis panel · independent Opus context windows · jury_consensus_protocol applied · 21/21 closed",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Stage 1: 3 parallel auditors
+    auditors = [
+        ("Auditor 1\nai_systems_architect",   "orchestration · P4\ndependency graph\ndoc-drift",         0.5,  NAVY),
+        ("Auditor 2\nregulatory_compliance",  "EU AI Act · AESIA\nArt.14 HITL\nArt.12 audit-trail",     5.0,  TEAL),
+        ("Auditor 3\ncalibration_memory",     "P2 forbidden-tokens\n8-format taxonomy\nfeedback loop",   9.5,  GOLD),
+    ]
+    for (lbl, sub, x, color) in auditors:
+        b = FancyBboxPatch((x, 6.2), 3.0, 1.7,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.5, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        text_color = "white" if color != GOLD else DARK
+        ax.text(x + 1.5, 7.50, lbl, ha="center", color=text_color,
+                fontsize=10, fontweight="bold")
+        ax.text(x + 1.5, 6.65, sub, ha="center", color=text_color,
+                fontsize=8, style="italic")
+
+    ax.text(2.0, 5.85, "verdict: APPROVED_WITH_MINOR · 82%",   ha="center", fontsize=8, color=NAVY)
+    ax.text(6.5, 5.85, "verdict: APPROVED_WITH_MINOR · 84%",   ha="center", fontsize=8, color=TEAL)
+    ax.text(11.0, 5.85, "verdict: APPROVED_WITH_MINOR · 84%",  ha="center", fontsize=8, color=NAVY)
+
+    # Stage 2: jury
+    jury = FancyBboxPatch((4.0, 4.0), 5.0, 1.4,
+                          boxstyle="round,pad=0.05,rounding_size=0.13",
+                          linewidth=2, edgecolor=NAVY, facecolor=NAVY)
+    ax.add_patch(jury)
+    ax.text(6.5, 4.85, "Consensus Jury",
+            ha="center", color="white", fontsize=11, fontweight="bold")
+    ax.text(6.5, 4.40, "jury_consensus_protocol · dedup 33→21 · 1 dissent (D1) preserved",
+            ha="center", color="white", fontsize=8, style="italic")
+    ax.text(6.5, 4.10, "BATCH VERDICT  ·  APPROVED_WITH_MINOR · 83%",
+            ha="center", color=GOLD, fontsize=9, fontweight="bold")
+
+    # arrows from auditors to jury
+    for (_, _, x, _) in auditors:
+        ax.annotate("", xy=(6.5, 5.4), xytext=(x + 1.5, 6.2),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666", alpha=0.7))
+
+    # Stage 3: 3 release batches
+    batches = [
+        ("P1 → v0.3.2",  "9 items · ≈9h\nJ-001..J-009 + J-018",  GREEN, 0.5,  "#e7f4ec"),
+        ("P2 → v0.4.0",  "8 items · ≈12h\nJ-010 (D1) + J-011..J-019", GOLD, 5.0,  "#fff7d6"),
+        ("P3 → v1.0.0",  "2 items · ≈4.7h\nJ-020 + J-021 · MATURE", "#5a6b80", 9.5, LIGHT),
+    ]
+    for (lbl, sub, color, x, bgcolor) in batches:
+        b = FancyBboxPatch((x, 1.6), 3.0, 1.6,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.5, edgecolor=color, facecolor=bgcolor)
+        ax.add_patch(b)
+        ax.text(x + 1.5, 2.75, lbl,
+                ha="center", color=color, fontsize=11, fontweight="bold")
+        ax.text(x + 1.5, 2.10, sub,
+                ha="center", color=NAVY, fontsize=8, style="italic")
+
+    # arrow jury → batches
+    for (_, _, _, x, _) in batches:
+        rad = 0.15 if x < 5 else (-0.15 if x > 6 else 0)
+        ax.annotate("", xy=(x + 1.5, 3.2), xytext=(6.5, 4.0),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666",
+                                    connectionstyle=f"arc3,rad={rad}"))
+
+    # Bottom strip — closure status
+    closure = FancyBboxPatch((0.5, 0.4), 12.0, 0.95,
+                             boxstyle="round,pad=0.04,rounding_size=0.12",
+                             linewidth=1.5, edgecolor=GREEN, facecolor="#e7f4ec")
+    ax.add_patch(closure)
+    ax.text(6.5, 0.95,
+            "21/21 consolidated findings closed  ·  calibrated APPROVED_AS_MATURE re-run probability ≈92%  (range 85–96%)",
+            ha="center", color=GREEN, fontsize=9.5, fontweight="bold")
+    ax.text(6.5, 0.55,
+            "residual ~8% covers heuristic items the panel could not fully verify in their sandbox (e.g., AESIA xlsx contents)",
+            ha="center", color=SLATE, fontsize=8, style="italic")
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/18_v10_external_audit.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 19 — SHA256 tamper-evident hash-chain (v0.4.0 J-010, ratified at v1.0.0)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v10_hash_chain():
+    fig, ax = plt.subplots(figsize=(13, 6.5))
+    ax.set_xlim(0, 13); ax.set_ylim(0, 8)
+    ax.axis("off")
+
+    ax.text(6.5, 7.5, "INV-LIF-004  ·  tamper-evident sha256 hash-chain  (J-010 · v0.4.0)",
+            ha="center", fontsize=13, fontweight="bold", color=NAVY)
+    ax.text(6.5, 7.10, "every entry N≥2 in observations.jsonl carries  prior_hash = sha256(entry[N-1])  ·  entry 1 uses literal 'genesis'",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Top row — clean chain
+    ax.text(0.5, 5.95, "CLEAN CHAIN  (audited · T23 PASS)", fontsize=10, fontweight="bold", color=GREEN)
+    entries_clean = [
+        ("entry 1",       "prior=genesis",              0.7),
+        ("entry 2",       "prior=sha256(1)",            3.0),
+        ("entry 3",       "prior=sha256(2)",            5.3),
+        ("entry 4",       "prior=sha256(3)",            7.6),
+        ("entry 5",       "prior=sha256(4)",            9.9),
+    ]
+    for i, (lbl, prior, x) in enumerate(entries_clean):
+        b = FancyBboxPatch((x, 4.3), 2.0, 1.3,
+                           boxstyle="round,pad=0.04,rounding_size=0.10",
+                           linewidth=1.3, edgecolor=GREEN, facecolor="#e7f4ec")
+        ax.add_patch(b)
+        ax.text(x + 1.0, 5.10, lbl, ha="center", fontsize=9, fontweight="bold", color=NAVY)
+        ax.text(x + 1.0, 4.55, prior, ha="center", fontsize=7, color=SLATE, style="italic")
+
+    # arrows clean
+    for i in range(len(entries_clean) - 1):
+        x1 = entries_clean[i][2] + 2.0
+        x2 = entries_clean[i+1][2]
+        ax.annotate("", xy=(x2, 4.95), xytext=(x1, 4.95),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.0, color=GREEN))
+
+    # Verify badge
+    ax.text(12.4, 4.95, "✓\nverify\nOK", ha="center", va="center", fontsize=9,
+            color=GREEN, fontweight="bold")
+
+    # Bottom row — tampered chain
+    ax.text(0.5, 3.05, "TAMPERED CHAIN  (T23 detects break at entry 3)", fontsize=10, fontweight="bold", color=RED)
+    entries_tamp = [
+        ("entry 1",        "prior=genesis",              0.7,  False),
+        ("entry 2",        "prior=sha256(1)",            3.0,  False),
+        ("entry 3 ⚠",      "EDITED IN PLACE",            5.3,  True),
+        ("entry 4",        "prior=sha256(3) ✗",          7.6,  True),
+        ("entry 5",        "prior=sha256(4)",            9.9,  False),
+    ]
+    for i, (lbl, prior, x, tampered) in enumerate(entries_tamp):
+        edge = RED if tampered else GREEN
+        face = "#fdebe9" if tampered else "#e7f4ec"
+        b = FancyBboxPatch((x, 1.4), 2.0, 1.3,
+                           boxstyle="round,pad=0.04,rounding_size=0.10",
+                           linewidth=1.5 if tampered else 1.3, edgecolor=edge, facecolor=face)
+        ax.add_patch(b)
+        text_color = RED if tampered else NAVY
+        ax.text(x + 1.0, 2.20, lbl, ha="center", fontsize=9, fontweight="bold", color=text_color)
+        ax.text(x + 1.0, 1.65, prior, ha="center", fontsize=7,
+                color=RED if tampered else SLATE, style="italic")
+
+    # arrows tampered (red break at 2→3 mismatch)
+    for i in range(len(entries_tamp) - 1):
+        x1 = entries_tamp[i][2] + 2.0
+        x2 = entries_tamp[i+1][2]
+        is_break = (i == 1)  # arrow from entry 2 to entry 3 — that's where the break is detected
+        ax.annotate("", xy=(x2, 2.05), xytext=(x1, 2.05),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.5 if is_break else 1.0,
+                                    color=RED if is_break else "#888"))
+        if is_break:
+            ax.text((x1 + x2) / 2, 2.50, "⚡ BREAK",
+                    ha="center", fontsize=8, color=RED, fontweight="bold")
+
+    # Reject badge
+    ax.text(12.4, 2.05, "✗\nreject\nFAIL", ha="center", va="center", fontsize=9,
+            color=RED, fontweight="bold")
+
+    # Bottom note
+    ax.text(6.5, 0.5,
+            "T23 deterministic test in tests/run_all.sh builds a synthetic 5-entry chain, verifies it, then injects tamper at n=3 and confirms the chain breaks. Resolves disagreement D1 (Art. 12 audit-trail integrity).",
+            ha="center", fontsize=8, color=NAVY, style="italic", wrap=True)
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/19_v10_hash_chain.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Build all
 # ─────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
@@ -1252,7 +1433,8 @@ if __name__ == "__main__":
              fig_v02_phase_map, fig_v02_feedback_loop,
              fig_v02_adaptive_meta, fig_v02_improvement_jury,
              fig_v03_phase45, fig_v03_format_taxonomy,
-             fig_v03_two_tier_audit]
+             fig_v03_two_tier_audit,
+             fig_v10_external_audit, fig_v10_hash_chain]
     for f in funcs:
         print(f"  · {f.__name__}")
         f()
