@@ -24,6 +24,7 @@ RED    = "#c0392b"
 LIGHT  = "#eaf2f8"
 GREY   = "#7d8ca0"
 WHITE  = "#ffffff"
+DARK   = "#1a1a1a"
 
 plt.rcParams.update({
     "font.family": "DejaVu Sans",
@@ -583,12 +584,408 @@ def fig_auditors():
     plt.close()
 
 # ─────────────────────────────────────────────────────────────────────────
+# FIG 11 — v0.2.0 phase map (17 phases · 4 new + cross-phase hook)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v02_phase_map():
+    fig, ax = plt.subplots(figsize=(13, 8))
+    ax.set_xlim(0, 17); ax.set_ylim(0, 10)
+    ax.axis("off")
+
+    phases = [
+        ("1",    "read_context",          1.0, SLATE,  False),
+        ("1.5",  "context_setup",         2.0, GOLD,   True),     # NEW
+        ("2",    "interview",             3.0, SLATE,  False),
+        ("3",    "planning_brief",        4.0, SLATE,  False),
+        ("4",    "GATE_1 (HITL)",         5.0, RED,    False),
+        ("5",    "scaffold",              6.0, SLATE,  False),
+        ("6",    "compose_prompts",       7.0, SLATE,  False),
+        ("7",    "fetch_library_docs",    8.0, SLATE,  False),
+        ("8",    "seed_tracking",         9.0, SLATE,  False),
+        ("9",    "emit_audit_sheet",     10.0, SLATE,  False),
+        ("10",   "self_audit",           11.0, SLATE,  False),
+        ("11",   "reflection",           12.0, SLATE,  False),
+        ("11.5", "structural_consist.",  13.0, GOLD,   True),     # NEW
+        ("12",   "GATE_2 (HITL)",        14.0, RED,    False),
+        ("13",   "handoff",              15.0, GREEN,  False),
+        ("13.5", "feedback_session",     16.0, GOLD,   True),     # NEW
+        ("13.7", "improvement_audit",    17.0, GOLD,   True),     # NEW
+    ]
+    # Snake layout: 17 phases in 2 rows of ~9 each
+    cols = 9
+    cell_w, cell_h = 1.7, 1.6
+    x0, y0 = 0.4, 6.4
+    coords = []
+    for i, (num, name, _idx, color, is_new) in enumerate(phases):
+        row = i // cols
+        col = i % cols if row == 0 else (cols - 1) - (i % cols)
+        x = x0 + col * cell_w
+        y = y0 - row * (cell_h + 0.4)
+        coords.append((x, y))
+        # Highlight ring for NEW
+        if is_new:
+            ring = FancyBboxPatch((x - 0.05, y - 0.05), cell_w - 0.1 + 0.1, cell_h - 0.05 + 0.1,
+                                  boxstyle="round,pad=0.04,rounding_size=0.18",
+                                  linewidth=2.5, edgecolor=GOLD, facecolor="none")
+            ax.add_patch(ring)
+        # Phase tile
+        tile = FancyBboxPatch((x, y), cell_w - 0.15, cell_h - 0.15,
+                              boxstyle="round,pad=0.03,rounding_size=0.13",
+                              linewidth=1.2, edgecolor="#1a1a1a", facecolor=color)
+        ax.add_patch(tile)
+        ax.text(x + (cell_w - 0.15) / 2, y + cell_h - 0.45, num,
+                ha="center", va="center", fontsize=11, fontweight="bold",
+                color="white" if color != GOLD else DARK)
+        ax.text(x + (cell_w - 0.15) / 2, y + 0.30, name,
+                ha="center", va="center", fontsize=8,
+                color="white" if color != GOLD else DARK)
+
+    # Snake arrows (very simplified)
+    for i in range(len(coords) - 1):
+        x1, y1 = coords[i]
+        x2, y2 = coords[i + 1]
+        ax.annotate("", xy=(x2 + 0.4, y2 + 0.7), xytext=(x1 + 0.4, y1 + 0.7),
+                    arrowprops=dict(arrowstyle="-|>", lw=0.9, color="#888", alpha=0.6))
+
+    # Cross-phase adaptive_audit_meta band
+    band = FancyBboxPatch((0.4, 1.7), 16.4, 1.0,
+                          boxstyle="round,pad=0.05,rounding_size=0.18",
+                          linewidth=2, edgecolor=GOLD, facecolor="#fff7d6")
+    ax.add_patch(band)
+    ax.text(8.6, 2.45, "Cross-phase  ·  adaptive_audit_meta  (v0.2.0)",
+            ha="center", va="center", fontsize=11, fontweight="bold", color=NAVY)
+    ax.text(8.6, 2.05, "fires at end of every task and every session  ·  n=3..10 dynamic panel  ·  per-scope persona-fit  ·  inherited by child",
+            ha="center", va="center", fontsize=9, color=SLATE, style="italic")
+
+    # Legend
+    legend_items = [
+        ("base v0.1.0 phase",    SLATE),
+        ("HITL gate",            RED),
+        ("v0.2.0 NEW phase",     GOLD),
+        ("STOP / handoff",       GREEN),
+    ]
+    for i, (label, color) in enumerate(legend_items):
+        x = 0.5 + i * 4.2
+        sw = FancyBboxPatch((x, 0.5), 0.4, 0.4,
+                            boxstyle="round,pad=0.02,rounding_size=0.06",
+                            linewidth=1, edgecolor="#1a1a1a", facecolor=color)
+        ax.add_patch(sw)
+        ax.text(x + 0.55, 0.7, label, va="center", fontsize=9, color=SLATE)
+
+    ax.text(8.6, 9.4, "v0.2.0  ·  17-phase orchestration  +  cross-phase adaptive audit hook",
+            ha="center", fontsize=14, fontweight="bold", color=NAVY)
+    ax.text(8.6, 9.0, "13 base phases preserved verbatim  ·  4 new phases inserted at fixed points  ·  backward-compatible flag available",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/11_v02_phase_map.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 12 — Feedback learning loop (SQLite + MD mirror + per-correction HITL)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v02_feedback_loop():
+    fig, ax = plt.subplots(figsize=(12, 7))
+    ax.set_xlim(0, 12); ax.set_ylim(0, 9)
+    ax.axis("off")
+
+    # Title
+    ax.text(6, 8.5, "Phase 13.5  ·  feedback_learning_loop",
+            ha="center", fontsize=14, fontweight="bold", color=NAVY)
+    ax.text(6, 8.1, "capture · classify · per-correction HITL · persist (DB + MD) · trigger improvement at threshold",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # User feedback box (top-left)
+    user = FancyBboxPatch((0.4, 6.0), 2.8, 1.5,
+                          boxstyle="round,pad=0.05,rounding_size=0.15",
+                          linewidth=1.5, edgecolor=NAVY, facecolor=LIGHT)
+    ax.add_patch(user)
+    ax.text(1.8, 6.95, "USER", ha="center", fontsize=11, fontweight="bold", color=NAVY)
+    ax.text(1.8, 6.55, "free-text feedback\nat session close",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Auto-classifier box
+    cls = FancyBboxPatch((4.2, 6.0), 3.0, 1.5,
+                         boxstyle="round,pad=0.05,rounding_size=0.15",
+                         linewidth=1.5, edgecolor=TEAL, facecolor="#d6eaef")
+    ax.add_patch(cls)
+    ax.text(5.7, 6.95, "AUTO-CLASSIFY", ha="center", fontsize=11, fontweight="bold", color=TEAL)
+    ax.text(5.7, 6.55, "severity × category × recurrence\n+ confidence%",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # HITL box (red)
+    hitl = FancyBboxPatch((8.2, 6.0), 3.4, 1.5,
+                          boxstyle="round,pad=0.05,rounding_size=0.15",
+                          linewidth=2.0, edgecolor=RED, facecolor="#fdebe9")
+    ax.add_patch(hitl)
+    ax.text(9.9, 7.05, "HITL · per correction", ha="center", fontsize=11, fontweight="bold", color=RED)
+    ax.text(9.9, 6.55, "[Y]  promote to queue\n[N]  record only\n[SKIP]  defer",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    for x1, x2 in [(3.2, 4.2), (7.2, 8.2)]:
+        ax.annotate("", xy=(x2, 6.75), xytext=(x1, 6.75),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.2, color="#444"))
+
+    # SQLite (DB) box
+    db = FancyBboxPatch((1.5, 3.0), 3.6, 1.8,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=1.5, edgecolor=NAVY, facecolor=NAVY)
+    ax.add_patch(db)
+    ax.text(3.3, 4.40, "corrections.db", ha="center", color="white",
+            fontsize=11, fontweight="bold")
+    ax.text(3.3, 4.05, "SQLite + FTS5 (recurrence search)\nauthoritative · parameterised SQL\nlifecycle via status (no deletes)",
+            ha="center", color="white", fontsize=8, style="italic")
+
+    # MD mirror box
+    md = FancyBboxPatch((6.5, 3.0), 4.4, 1.8,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=1.5, edgecolor=TEAL, facecolor=LIGHT)
+    ax.add_patch(md)
+    ax.text(8.7, 4.40, "corrections.md  ·  pending_review.md",
+            ha="center", fontsize=11, fontweight="bold", color=TEAL)
+    ax.text(8.7, 4.05, "auto-regenerated each run from DB\nMarkdown table for git-diff visibility\nDB is single source of truth",
+            ha="center", fontsize=8, color=SLATE, style="italic")
+
+    # HITL → DB/MD arrows
+    ax.annotate("", xy=(3.3, 4.85), xytext=(9.0, 6.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color=NAVY,
+                                connectionstyle="arc3,rad=-0.2"))
+    ax.annotate("", xy=(8.7, 4.85), xytext=(10.5, 6.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color=TEAL,
+                                connectionstyle="arc3,rad=-0.1"))
+
+    # Threshold check (bottom)
+    th = FancyBboxPatch((1.5, 0.7), 9.4, 1.6,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=2.0, edgecolor=GOLD, facecolor="#fff7d6")
+    ax.add_patch(th)
+    ax.text(6.2, 1.85, "THRESHOLD  ·  count(learn=Y AND status=pending_review) ≥ 15  OR  user types  TRIGGER",
+            ha="center", fontsize=10, fontweight="bold", color=NAVY)
+    ax.text(6.2, 1.40, "→  emit improvement_proposal.md  →  signal phase 13.7  →  5-axis jury + mandatory HITL gate",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+    ax.text(6.2, 1.00, "no source change merges without explicit human approval",
+            ha="center", fontsize=8, color=RED, style="italic")
+
+    # arrow DB → threshold
+    ax.annotate("", xy=(6.2, 2.30), xytext=(3.3, 3.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666",
+                                connectionstyle="arc3,rad=-0.15"))
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/12_v02_feedback_loop.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 13 — Adaptive audit meta (3-10 dynamic panel · per-task / per-session)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v02_adaptive_meta():
+    fig, ax = plt.subplots(figsize=(12, 7.5))
+    ax.set_xlim(0, 12); ax.set_ylim(0, 10)
+    ax.axis("off")
+
+    ax.text(6, 9.4, "Cross-phase  ·  adaptive_audit_meta",
+            ha="center", fontsize=14, fontweight="bold", color=NAVY)
+    ax.text(6, 9.0, "fires at end of every task and every session  ·  in both the generator and the inherited child",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Top-left: scope envelope
+    sc = FancyBboxPatch((0.4, 6.5), 3.8, 2.0,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=1.5, edgecolor=NAVY, facecolor=LIGHT)
+    ax.add_patch(sc)
+    ax.text(2.3, 8.15, "SCOPE ENVELOPE", ha="center", fontsize=10, fontweight="bold", color=NAVY)
+    ax.text(2.3, 7.45, "scope_kind (task | session)\nartifacts_in_scope[]\neu_risk · touched_modules\nimportance_signals",
+            ha="center", fontsize=8, color=SLATE)
+
+    # Importance score formula (center top)
+    fm = FancyBboxPatch((4.6, 6.5), 3.6, 2.0,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=1.5, edgecolor=GOLD, facecolor="#fff7d6")
+    ax.add_patch(fm)
+    ax.text(6.4, 8.15, "IMPORTANCE SCORE  (0..100)", ha="center",
+            fontsize=10, fontweight="bold", color=NAVY)
+    ax.text(6.4, 7.50, "30 if eu_risk=high, 15 if limited\n+15 per touched safety module\n+ ceil(artifacts/5)\nclamp [0, 100]",
+            ha="center", fontsize=8, color=SLATE)
+
+    # n_auditors box
+    nb = FancyBboxPatch((8.6, 6.5), 3.0, 2.0,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=2.0, edgecolor=TEAL, facecolor="#d6eaef")
+    ax.add_patch(nb)
+    ax.text(10.1, 8.15, "n_auditors  ∈  [3, 10]", ha="center",
+            fontsize=11, fontweight="bold", color=TEAL)
+    ax.text(10.1, 7.50, "round(importance / 10)\nclamp [3, 10]",
+            ha="center", fontsize=8, color=SLATE, style="italic")
+    ax.text(10.1, 6.95, "every auditor freshly\ncomposed via prompt-architect\n(persona TAILORED to scope)",
+            ha="center", fontsize=8, color=NAVY)
+
+    # Connectors
+    ax.annotate("", xy=(4.6, 7.5), xytext=(4.2, 7.5),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color="#444"))
+    ax.annotate("", xy=(8.6, 7.5), xytext=(8.2, 7.5),
+                arrowprops=dict(arrowstyle="-|>", lw=1.2, color="#444"))
+
+    # 5 example auditors row
+    auditors = [
+        ("regulatory_archivist",      0.6, NAVY),
+        ("calibration_skeptic",       2.7, TEAL),
+        ("portability_engineer",      4.8, SLATE),
+        ("memory_steward",            6.9, "#5a6b80"),
+        ("simulation_designer",       9.0, GREEN),
+    ]
+    for (lbl, x, color) in auditors:
+        b = FancyBboxPatch((x, 4.0), 2.0, 1.4,
+                           boxstyle="round,pad=0.04,rounding_size=0.12",
+                           linewidth=1.2, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        # split slug at underscore for layout
+        words = lbl.split("_")
+        line1 = words[0]
+        line2 = " ".join(words[1:]) if len(words) > 1 else ""
+        ax.text(x + 1.0, 4.95, line1, ha="center", color="white",
+                fontsize=9, fontweight="bold")
+        ax.text(x + 1.0, 4.55, line2, ha="center", color="white",
+                fontsize=8, style="italic")
+        ax.text(x + 1.0, 4.20, "+ self KPIs",
+                ha="center", color="white", fontsize=7, style="italic")
+
+    # arrows from n_auditors → panel
+    for (_, x, _) in auditors:
+        ax.annotate("", xy=(x + 1.0, 5.4), xytext=(10.1, 6.5),
+                    arrowprops=dict(arrowstyle="-|>", lw=0.8, color="#888", alpha=0.6))
+
+    ax.text(6.0, 5.65, "panel composed (parallel · blind)",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Triage row (errors vs improvements)
+    err = FancyBboxPatch((0.6, 1.6), 5.2, 1.8,
+                         boxstyle="round,pad=0.05,rounding_size=0.15",
+                         linewidth=1.5, edgecolor=RED, facecolor="#fdebe9")
+    ax.add_patch(err)
+    ax.text(3.2, 3.05, "ERRORS path", ha="center", fontsize=11,
+            fontweight="bold", color=RED)
+    ax.text(3.2, 2.45, "any auditor conf ≥ 70  →  BLOCKER\n2+ auditors conf 50-69  →  WARNING\nelse  →  WEAK (logged, no action)",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(3.2, 1.90, "BLOCKERs pause next task  ·  surface immediately",
+            ha="center", fontsize=8, color=RED, style="italic")
+
+    imp = FancyBboxPatch((6.2, 1.6), 5.2, 1.8,
+                         boxstyle="round,pad=0.05,rounding_size=0.15",
+                         linewidth=1.5, edgecolor=GREEN, facecolor="#e7f4ec")
+    ax.add_patch(imp)
+    ax.text(8.8, 3.05, "IMPROVEMENTS path", ha="center", fontsize=11,
+            fontweight="bold", color=GREEN)
+    ax.text(8.8, 2.45, "weighted-mean ≥70 + spread ≤30  →  QUEUE_FOR_HITL\nweighted-mean ≥70 + spread >30  →  DISSENT_HITL_NOW\nelse  →  DEFER",
+            ha="center", fontsize=8, color=SLATE)
+    ax.text(8.8, 1.90, "queued rows feed phase 13.5  →  human Y/N",
+            ha="center", fontsize=8, color=GREEN, style="italic")
+
+    # arrows panel → triage
+    ax.annotate("", xy=(3.2, 3.40), xytext=(4.6, 4.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666"))
+    ax.annotate("", xy=(8.8, 3.40), xytext=(7.4, 4.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666"))
+
+    # bottom strip
+    ax.text(6, 0.7, "persona-fit enforced (generic personas trigger re-composition)  ·  every auditor composed via prompt-architect",
+            ha="center", fontsize=9, color=NAVY, style="italic")
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/13_v02_adaptive_meta.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 14 — Improvement jury (fixed 5 axes · confidence-weighted consensus)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v02_improvement_jury():
+    fig, ax = plt.subplots(figsize=(12, 7.2))
+    ax.set_xlim(0, 12); ax.set_ylim(0, 10)
+    ax.axis("off")
+
+    ax.text(6, 9.45, "Phase 13.7  ·  improvement_jury  ·  fixed 5-axis consensus",
+            ha="center", fontsize=14, fontweight="bold", color=NAVY)
+    ax.text(6, 9.05, "audits any improvement_proposal.md emitted by phase 13.5  ·  no source change merges without explicit human approval",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # 5 auditor axes (top row)
+    axes = [
+        ("regression",        "no AIE-NNN re-introduced",                    0.6,  NAVY),
+        ("calibration",       "P2 preserved · no forbidden tokens",          2.85, TEAL),
+        ("portability",       "P1 preserved · no platform leakage",          5.10, SLATE),
+        ("eu_ai_act_drift",   "mapping coverage not weakened",               7.35, GOLD),
+        ("memory_integrity",  "no pollution · index ↔ files coherent",       9.60, GREEN),
+    ]
+    for (lbl, sub, x, color) in axes:
+        b = FancyBboxPatch((x, 5.6), 2.05, 2.1,
+                           boxstyle="round,pad=0.05,rounding_size=0.15",
+                           linewidth=1.5, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        # darker text for gold
+        text_color = "white" if color != GOLD else DARK
+        ax.text(x + 1.025, 7.10, lbl, ha="center", color=text_color,
+                fontsize=11, fontweight="bold")
+        ax.text(x + 1.025, 6.55, sub, ha="center", color=text_color,
+                fontsize=7.5, style="italic", wrap=True)
+        ax.text(x + 1.025, 6.00, "approve · awc · dissent\nreject · n/a + conf%",
+                ha="center", color=text_color, fontsize=7, style="italic")
+
+    # Consensus rule box
+    cb = FancyBboxPatch((1.0, 2.7), 10.0, 1.9,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=1.5, edgecolor=NAVY, facecolor=LIGHT)
+    ax.add_patch(cb)
+    ax.text(6, 4.30, "CONFIDENCE-WEIGHTED CONSENSUS  (per row)",
+            ha="center", fontsize=11, fontweight="bold", color=NAVY)
+    ax.text(6, 3.85, "any axis  reject  with conf ≥ 70  →  REJECTED",
+            ha="center", fontsize=9, color=SLATE)
+    ax.text(6, 3.50, "any axis  dissent  →  DISSENT",
+            ha="center", fontsize=9, color=SLATE)
+    ax.text(6, 3.15, "≥ 4 axes approve / approve_with_caveat  AND  mean conf ≥ 75  →  APPROVED",
+            ha="center", fontsize=9, color=SLATE)
+    ax.text(6, 2.80, "otherwise  →  AMBIGUOUS",
+            ha="center", fontsize=9, color=SLATE)
+
+    # arrows from each axis → consensus
+    for (_, _, x, color) in axes:
+        ax.annotate("", xy=(x + 1.025, 4.6), xytext=(x + 1.025, 5.6),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666", alpha=0.7))
+
+    # HITL gate (mandatory)
+    hb = FancyBboxPatch((1.0, 0.5), 10.0, 1.7,
+                        boxstyle="round,pad=0.05,rounding_size=0.15",
+                        linewidth=2.5, edgecolor=RED, facecolor="#fdebe9")
+    ax.add_patch(hb)
+    ax.text(6, 1.85, "HITL GATE  (mandatory  ·  even on APPROVED batch)",
+            ha="center", fontsize=11, fontweight="bold", color=RED)
+    ax.text(6, 1.45, "[A] approve all   ·   [B] approve subset   ·   [C] reject batch   ·   [D] send back to phase 13.5",
+            ha="center", fontsize=9, color=SLATE)
+    ax.text(6, 1.05, "no auto-merge  ·  DB statuses updated transactionally on user decision",
+            ha="center", fontsize=8.5, color=RED, style="italic")
+
+    # arrow consensus → HITL
+    ax.annotate("", xy=(6, 2.2), xytext=(6, 2.7),
+                arrowprops=dict(arrowstyle="-|>", lw=1.5, color=NAVY))
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/14_v02_improvement_jury.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Build all
 # ─────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     funcs = [fig_architecture, fig_phases, fig_modules, fig_dataflow,
              fig_hitl, fig_euaiact, fig_memory, fig_errors,
-             fig_kpis, fig_auditors]
+             fig_kpis, fig_auditors,
+             fig_v02_phase_map, fig_v02_feedback_loop,
+             fig_v02_adaptive_meta, fig_v02_improvement_jury]
     for f in funcs:
         print(f"  · {f.__name__}")
         f()

@@ -1,6 +1,7 @@
 """
 Build the system-designer professional report (.docx).
-Cover page · TOC · 9 sections · embedded figures · publication-grade typography.
+Cover page · TOC · 10 sections (v0.2.0) · embedded figures · publication-grade typography.
+v0.2.0 update: adds §6 v0.2.0 Extensions with 5 subsections + 4 new figures.
 """
 import os
 from docx import Document
@@ -209,7 +210,7 @@ r1 = p.add_run("\nSYSTEM-DESIGNER\n")
 r1.font.size = Pt(40); r1.bold = True; r1.font.color.rgb = WHITE
 r2 = p.add_run("\nA Portable, LLM-Agnostic\nMeta-Generator for\nEU AI Act-Compliant\nSDD Projects\n\n")
 r2.font.size = Pt(18); r2.italic = True; r2.font.color.rgb = RGBColor(0xea, 0xf2, 0xf8)
-r3 = p.add_run("Technical Report  ·  v0.1.0\n")
+r3 = p.add_run("Technical Report  ·  v0.2.0\n")
 r3.font.size = Pt(13); r3.font.color.rgb = RGBColor(0xc9, 0xa2, 0x27)
 add_borders(cell, top=False, left=False, right=False, color="c9a227", sz="24")
 
@@ -222,7 +223,7 @@ ctx_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 ctx_p.paragraph_format.space_after = Pt(8)
 r = ctx_p.add_run("Comprehensive technical documentation of the system-designer meta-skill:\n")
 r.font.size = Pt(11); r.italic = True; r.font.color.rgb = SLATE
-r2 = ctx_p.add_run("architecture · 13-phase orchestration · modules · audit & compliance · calibration discipline · HITL governance")
+r2 = ctx_p.add_run("architecture · 17-phase orchestration (v0.2.0) · modules · context curation · feedback learning · adaptive audit · audit & compliance · calibration · HITL governance")
 r2.font.size = Pt(10); r2.italic = True; r2.font.color.rgb = GREY
 
 # Spacer
@@ -268,8 +269,8 @@ def label_cell(cell, label, val, label_color="0a6e7a"):
     r2 = p.add_run(val)
     r2.font.size = Pt(10); r2.font.color.rgb = NAVY
 
-label_cell(fc1, "DATE", "May 2026")
-label_cell(fc2, "VERSION", "0.1.0")
+label_cell(fc1, "DATE", "May 2026  (v0.2.0 update)")
+label_cell(fc2, "VERSION", "0.2.0")
 label_cell(fc3, "REPOSITORY", "github.com/Diego-M-C/system-designer")
 label_cell(fc4, "LICENSE", "MIT")
 
@@ -287,7 +288,7 @@ toc_items = [
     ("3.  Objectives",                                                  "5"),
     ("4.  System Methodology",                                          "6"),
     ("       4.1  Five Core Principles (P1–P5)",                        ""),
-    ("       4.2  The 13-Phase Orchestration",                          ""),
+    ("       4.2  The 17-Phase Orchestration  (v0.2.0)",                ""),
     ("       4.3  Two Inviolable HITL Gates",                           ""),
     ("       4.4  Spec-Driven Development Discipline",                  ""),
     ("5.  Results — System Modules",                                   "10"),
@@ -301,13 +302,19 @@ toc_items = [
     ("       5.8  Library-Doc Fetcher",                                 ""),
     ("       5.9  Living Documentation",                                ""),
     ("       5.10 Reporting Layer",                                     ""),
-    ("6.  Conclusions",                                                "22"),
-    ("7.  Strengths and Limitations",                                  "23"),
-    ("       7.1  Strengths",                                           ""),
-    ("       7.2  Limitations",                                         ""),
-    ("       7.3  Need for Domain-Specific Review and Validation",     ""),
-    ("8.  Final Conclusion",                                           "26"),
-    ("9.  References",                                                 "27"),
+    ("6.  v0.2.0 Extensions",                                          "22"),
+    ("       6.1  Phase 1.5 · Context Curator",                         ""),
+    ("       6.2  Phase 11.5 · Data Flow Validator + Simulation Agent", ""),
+    ("       6.3  Phase 13.5 · Feedback Learning Loop",                 ""),
+    ("       6.4  Phase 13.7 · Improvement Jury (5 specialist axes)",   ""),
+    ("       6.5  Cross-phase · Adaptive Audit Meta-Validator",         ""),
+    ("7.  Conclusions",                                                "32"),
+    ("8.  Strengths and Limitations",                                  "33"),
+    ("       8.1  Strengths",                                           ""),
+    ("       8.2  Limitations",                                         ""),
+    ("       8.3  Need for Domain-Specific Review and Validation",     ""),
+    ("9.  Final Conclusion",                                           "36"),
+    ("10. References",                                                 "37"),
 ]
 for txt, page in toc_items:
     p = doc.add_paragraph()
@@ -392,7 +399,10 @@ bullet("P2 Calibration (every estimate carries % or range; seven forbidden token
 bullet("P3 On-demand generation (only artifacts the interview confirmed)")
 bullet("P4 Prompt-architect dependency (every prompt audited via the co-located prompt-architect skill)")
 bullet("P5 Living documentation (continuous updates, never frozen)")
-bullet(" 13-phase state machine, with two inviolable HITL gates; resumable per current_phase pointer.",
+bullet(" 17-phase state machine in v0.2.0 (extended from 13 base phases by inserting 1.5 "
+       "context_setup, 11.5 structural_consistency, 13.5 feedback_session, 13.7 improvement_audit), "
+       "with two inviolable HITL gates plus mandatory HITL at 13.5 / 13.7; resumable per "
+       "current_phase pointer.",
        bold_lead="Orchestration · ")
 bullet(" 30 preloaded AI-error patterns (AIE-001 through AIE-030) covering hallucination, "
        "concurrency, security, logic, reliability, and prompt-engineering categories. Auto-extension "
@@ -401,17 +411,26 @@ bullet(" 30 preloaded AI-error patterns (AIE-001 through AIE-030) covering hallu
 bullet(" 13 EU AI Act checklists (drawn from AESIA implementation guides) mapped 1:1 to mandatory "
        "Articles. For high-risk systems: ≥112 audit rows produced as a baseline.",
        bold_lead="EU AI Act · ")
-bullet(" Default 3 independent auditors with distinct personas (risk-SME, ML-lead, security-lead). "
-       "Meta-jury aggregates with confidence weighting; dissent always escalates to HITL.",
+bullet(" Default 3 independent auditors with distinct personas (risk-SME, ML-lead, security-lead) "
+       "for the legacy v0.1.0 audit topology, plus the v0.2.0 fixed 5-axis improvement jury at "
+       "13.7 and the cross-phase adaptive_audit_meta engine that composes 3–10 dynamic auditors "
+       "per task or session via prompt-architect. Dissent always escalates to HITL.",
        bold_lead="Audit topology · ")
+bullet(" v0.2.0 introduces a calibrated source corpus before the interview (phase 1.5), a "
+       "structural-consistency check with simulation agent (phase 11.5), and a SQLite + Markdown "
+       "feedback-learning loop with per-correction HITL Y/N before any system improvement merges.",
+       bold_lead="v0.2.0 additions · ")
 
 body(
     "The deliverable for any invocation is a complete child-system tree with: child orchestrator "
     "contract (CLAUDE.md), 17-section SDD specification, architecture document with mermaid "
     "diagrams, audited prompt suite, fresh-fetched library docs, 30-AIE seeded error catalog, "
-    "13-sheet audit Excel, scientific report templates, and a hand-off document. "
-    "The generator self-validates through 10 tests covering portability, calibration, schema, "
-    "prompt-floor compliance, and EU AI Act mapping completeness."
+    "13-sheet audit Excel, scientific report templates, and a hand-off document. v0.2.0 adds "
+    "the context corpus, data-flow validation snapshots, the corrections database with auto-rendered "
+    "Markdown mirror, the improvement-audit consensus reports, and per-task / per-session adaptive "
+    "audit panels. The generator self-validates through 16 deterministic tests covering portability, "
+    "calibration, schema, prompt-floor compliance, EU AI Act mapping completeness, v0.2.0 prompts, "
+    "v0.2.0 references, the SQLite schema, the 5-axis discipline, and the n_auditors range."
 )
 
 figure(f"{FIG}/01_architecture.png",
@@ -510,18 +529,30 @@ t = table_basic(
 
 body("")
 
-heading("4.2  The 13-Phase Orchestration", level=2)
+heading("4.2  The 17-Phase Orchestration  (v0.2.0)", level=2)
 
 body(
-    "The master orchestrator at prompts/00_master_orchestrator.md owns a 13-phase finite "
-    "state machine. Phases are idempotent by construction (re-running a phase overwrites its "
-    "output deterministically). Every phase writes to tracking/project.json#current_phase "
-    "before returning, making the orchestrator resumable."
+    "The master orchestrator at prompts/00_master_orchestrator.md owns a 17-phase finite "
+    "state machine in v0.2.0 (extended from the original 13-phase v0.1.0 architecture). "
+    "Phases are idempotent by construction (re-running a phase overwrites its output "
+    "deterministically). Every phase writes to tracking/project.json#current_phase before "
+    "returning, making the orchestrator resumable. Four new phases (1.5 / 11.5 / 13.5 / 13.7) "
+    "are inserted at fixed points, plus a cross-phase adaptive_audit_meta hook that fires "
+    "at the end of every task and every session. The original 13 phases are preserved verbatim; "
+    "section §6 covers the additions in detail. Backward compatibility is available via "
+    "SystemSpec.compatibility.v0_1_0=true (legacy 13-phase mode)."
 )
 
 figure(f"{FIG}/02_phases.png",
-       "Figure 2 · 13-phase orchestration. Linear progression from read-context through "
-       "hand-off, with two blocking HITL gates (red).")
+       "Figure 2 · Original 13-phase orchestration (v0.1.0). Linear progression from read-context "
+       "through hand-off, with two blocking HITL gates (red). The v0.2.0 extensions are summarised "
+       "in Figure 11.")
+
+figure(f"{FIG}/11_v02_phase_map.png",
+       "Figure 11 · v0.2.0 17-phase orchestration. Four new phases (gold ring): 1.5 context_setup, "
+       "11.5 structural_consistency, 13.5 feedback_session, 13.7 improvement_audit. The bottom "
+       "band represents the cross-phase adaptive_audit_meta hook that fires at the end of every "
+       "task and every session.")
 
 heading("4.3  Two Inviolable HITL Gates", level=2)
 
@@ -822,9 +853,276 @@ body(
 page_break()
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 6 — CONCLUSIONS
+# SECTION 6 — v0.2.0 EXTENSIONS  (NEW)
 # ════════════════════════════════════════════════════════════════════════
-heading("6. Conclusions", level=1)
+heading("6. v0.2.0 Extensions", level=1)
+
+body(
+    "Version 0.2.0 inserts four new phases at fixed points in the 13-phase base architecture "
+    "and adds a cross-phase hook that fires at the end of every task and every session. The "
+    "additions address three operational gaps observed in pilot v0.1.0 runs: (a) the absence of "
+    "a calibrated, project-specific knowledge corpus before the interview phase; (b) the lack of "
+    "a structural-consistency check between scaffolding and Gate #2; and (c) the absence of a "
+    "lifelong-learning loop that captures human feedback after handoff and audits any system "
+    "improvement before merge. All five extensions inherit the five core principles (P1–P5) and "
+    "compose every emitted prompt via prompt-architect."
+)
+
+callout(
+    "Calibration of this section · ~85% confidence on the design choices (anchored to v0.2.0 "
+    "self-test suite at 12 PASS / 0 FAIL); ~75% confidence on the long-term fit of the "
+    "calibrated thresholds (15 corrections / 70% confidence floor / 80% APPROVED ratio) since "
+    "they are calibrated against a small pilot set and may need adjustment after wider use."
+)
+
+# ─── 6.1 Context Curator ────────────────────────────────────────────────
+heading("6.1  Phase 1.5 · Context Curator", level=2)
+
+body(
+    "Inserted between read_context (phase 1) and interview (phase 2). Builds the project's "
+    "task-specific knowledge corpus before any planning happens. Sources include implementation "
+    "guides, legislation when applicable, non-library documentation, peer-reviewed papers, "
+    "expert blogs, forum threads, and curated internet opinions. Each source carries a "
+    "calibrated confidence percentage drawn from a 10-category taxonomy (legislation_official "
+    "95–99% · regulator_implementation_guide 88–95% · standards_body_doc 85–92% · vendor_official_docs "
+    "85–92% · peer_reviewed_paper 80–90% · industry_standard_doc 80–90% · expert_blog 60–75% · "
+    "forum_discussion 30–50% · internet_opinion_general 20–50% · user_uploaded_doc 80% overridable). "
+    "Library documentation is explicitly out of scope here — that remains phase 7's domain."
+)
+
+body(
+    "The fetch tool ladder tries mcp.playwright (recommended) first, then plain fetch(), then "
+    "emits a download_recommendations.md row asking the user to upload sources the AI cannot "
+    "reach (paywalled, login-gated, or locally stored). The mandatory HITL fetch-plan approval "
+    "before any network call protects against accidental over-collection. The corpus is living: "
+    "the child orchestrator inherits the curator and re-runs it at every session boundary in "
+    "living_update mode. Pruning is deterministic and bounded — only sources with confidence "
+    "≤50% AND a tested-unhelpful flag from the session log are eligible. Sources are never "
+    "pruned solely on age."
+)
+
+bullet("≈30 invariants enforced via per-source manifest.json and the consult_websites.md / download_recommendations.md split.",
+       bold_lead="Outputs · ")
+bullet("Internet opinions default to consult_websites_only=true unless the user opts in (protects against drift).",
+       bold_lead="Conservativeness · ")
+bullet("Failed fetches are recorded with the full fallback chain in the manifest, never silently dropped.",
+       bold_lead="Provenance · ")
+
+# ─── 6.2 Data Flow Validator ────────────────────────────────────────────
+heading("6.2  Phase 11.5 · Data Flow Validator + Simulation Agent", level=2)
+
+body(
+    "Inserted between reflection (phase 11) and Gate #2 (phase 12). Captures a structural "
+    "snapshot of the freshly-scaffolded child tree and dispatches n ∈ [3, 10] specialist "
+    "validators plus one mandatory simulation agent. The validator count is task-driven by a "
+    "calibrated formula:"
+)
+
+callout(
+    "n_validators = clamp(3, ceil(artifacts/30) + ceil((100−audit%)/20) + (eu_risk==high ? 2 : 0), 10)",
+    color=NAVY,
+)
+
+body(
+    "Validator personas are drawn from a menu of ten specialised lenses: data_lineage_auditor, "
+    "memory_consistency_auditor, intercom_auditor, schema_integrity_auditor, lifecycle_auditor, "
+    "calibration_consistency_auditor, portability_consistency_auditor, error_catalog_drift_auditor, "
+    "and eu_act_traceability_auditor. The first three are the floor; the rest are added by the "
+    "formula based on importance signals. Every validator is composed fresh via prompt-architect "
+    "(P4) and runs in parallel when the runtime supports it; sequential fallback is documented "
+    "in the consolidated report."
+)
+
+body(
+    "The simulation agent is non-optional (P3 does not apply to phase 11.5). It runs five "
+    "synthetic scenarios as dry-run traces against the just-scaffolded child tree: "
+    "(S1) resumability — verify that an interrupt at phase 5 leads to unambiguous resumption "
+    "from tracking/project.json#current_phase; (S2) library-doc fetch failure — walk the "
+    "fallback ladder and confirm it ends at OFFLINE.md without aborting; (S3) jury dissent "
+    "preservation — inject conflicting auditor verdicts and confirm dissent surfaces (not "
+    "averaged); (S4) calibration drift — inject an 'always' token and confirm the regex + LLM "
+    "scan both fire; (S5) atomic-write race — sample five writes from observations.jsonl and "
+    "confirm each shows the tmp_path → final_path pattern."
+)
+
+body("The consistency score is derived deterministically:")
+
+callout(
+    "score = 100 − 5×dissents − 3×low_confidence_findings − 2×partial_status − 10×any_failed_simulation\n"
+    "         clamp [0, 100]\n"
+    "score < 80  →  Gate #2 escalation (no auto-pass)",
+    color=NAVY,
+)
+
+# ─── 6.3 Feedback Learning Loop ─────────────────────────────────────────
+heading("6.3  Phase 13.5 · Feedback Learning Loop", level=2)
+
+body(
+    "Fires at the very end of every fully-audited session, immediately after handoff. The loop "
+    "captures human feedback as free text, classifies each correction under a calibrated "
+    "taxonomy (severity × category × recurrence + confidence percentage), and persists to a "
+    "hybrid SQLite + Markdown store. The DB is authoritative; the MD mirror is regenerated "
+    "from the DB at the end of every run, so the two never drift."
+)
+
+figure(f"{FIG}/12_v02_feedback_loop.png",
+       "Figure 12 · Feedback learning loop. User feedback flows through auto-classification "
+       "(severity × category × recurrence with confidence%), then a per-correction HITL prompt "
+       "asks 'should the system learn from this? [Y / N / SKIP]'. Persistence is dual: SQLite + "
+       "FTS5 for indexed search and threshold counting; Markdown mirror for git-diff visibility. "
+       "When the pending learn-Y counter reaches the threshold (default 15) or the user types "
+       "TRIGGER, an improvement_proposal.md is emitted and phase 13.7 is signalled. No source "
+       "change merges without explicit human approval at phase 13.7.")
+
+body(
+    "The per-correction HITL block is the design decision that protects the system against "
+    "noise pollution. After every correction is classified, the user sees a one-screen summary "
+    "and answers Y / N / SKIP. The system never defaults this field — every value reflects an "
+    "explicit human keystroke. Y promotes the row to the improvement queue; N records it for "
+    "traceability only; SKIP defers it to the next session. The threshold rule then becomes "
+    "deterministic: when the count of (learn_in_system=Y AND status=pending_review) reaches "
+    "learn_threshold (default 15) — or when the user types TRIGGER — the system emits "
+    "feedback_learning/improvement_proposal.md and signals phase 13.7."
+)
+
+body(
+    "The taxonomy itself is calibrated. Severity is one of {info, warn, error, critical}. "
+    "Category is one of nine buckets (calibration, portability, memory, prompt_architect, HITL, "
+    "EU_AI_Act, tooling, documentation, other). Recurrence is one of {one_off, recurring (FTS5 "
+    "hits ≥2), systemic (≥4 hits OR cross-category cluster)}. A recurring hit on the same "
+    "feedback signature across sessions automatically promotes the row's recurrence field, "
+    "feeding the importance score that downstream improvements consider."
+)
+
+# ─── 6.4 Improvement Jury ───────────────────────────────────────────────
+heading("6.4  Phase 13.7 · Improvement Jury (5 Specialist Axes)", level=2)
+
+body(
+    "When phase 13.5 emits an improvement proposal, phase 13.7 audits it along five fixed axes "
+    "in parallel. The fixed-five design is intentional: these are the axes that protect the "
+    "system's invariants regardless of what the proposal touches."
+)
+
+figure(f"{FIG}/14_v02_improvement_jury.png",
+       "Figure 13 · Improvement jury topology. Five specialist auditors run in parallel "
+       "(regression, calibration, portability, eu_ai_act_drift, memory_integrity). Each emits a "
+       "verdict with confidence%. The consensus rule is confidence-weighted but dissent-respecting: "
+       "any reject ≥70% blocks; any dissent surfaces; ≥4 approve with mean conf ≥75% approves; "
+       "everything else is AMBIGUOUS. The HITL gate at the end is mandatory regardless of batch "
+       "verdict — there is no auto-merge.")
+
+t = table_basic(
+    headers=["Axis", "What it protects"],
+    rows=[
+        ["regression",        "no AIE-NNN re-introduced; no phase-11.5 invariant broken; no prior consolidated row reverted to dissent"],
+        ["calibration",       "P2 preserved; no forbidden tokens introduced; existing % bands not weakened"],
+        ["portability",       "P1 preserved; no Claude-Code-only or platform-specific identifiers added; abstract tool descriptions retained"],
+        ["eu_ai_act_drift",   "audit/eu_ai_act_mapping.md coverage not weakened; checklist links intact; risk class not lowered without decisions.md rationale"],
+        ["memory_integrity",  "no entries added without explicit learn_in_system=Y; index ↔ files coherent; 4-type taxonomy respected"],
+    ],
+    widths=[1.6, 5.0],
+)
+
+body("")
+
+body(
+    "The post-consensus HITL gate is the operational point where the system stops being "
+    "automated. The user sees a per-row verdict matrix (5 columns × proposal rows) and chooses "
+    "[A] approve all APPROVED rows; [B] approve a subset (the user lists row_ids); [C] reject "
+    "the entire batch; [D] send back to phase 13.5 with notes. On approval, "
+    "corrections.status='approved' is set in a single transaction. On rejection, the proposal "
+    "is archived and the rows return to status='rejected'. On send-back, statuses remain "
+    "pending_review and the proposal is marked for redraft."
+)
+
+# ─── 6.5 Adaptive Audit Meta ────────────────────────────────────────────
+heading("6.5  Cross-phase · Adaptive Audit Meta-Validator", level=2)
+
+body(
+    "The adaptive_audit_meta prompt is the general engine that prompts 6.2 and 6.4 specialise. "
+    "It fires at the end of every task and every session — in both the generator (per-phase) "
+    "and the inherited child orchestrator. Where the improvement jury at §6.4 uses a fixed "
+    "five-axis panel for one specific kind of audit, the meta-validator computes how many "
+    "auditors are needed (3–10) from a calibrated importance score and freshly composes each "
+    "auditor via prompt-architect with a persona that is an actual expert in the thing being "
+    "audited."
+)
+
+figure(f"{FIG}/13_v02_adaptive_meta.png",
+       "Figure 14 · Adaptive audit meta-validator. The orchestrator passes a scope envelope "
+       "(task or session). The meta-validator computes an importance score (0–100) from "
+       "eu_risk × touched_modules × artifacts_in_scope, then derives n_auditors via "
+       "round(importance/10) clamped to [3, 10]. Each auditor is freshly composed via "
+       "prompt-architect with a persona TAILORED to the scope and its own KPI block. The panel "
+       "runs in parallel and produces findings on two separate paths: errors (must address) "
+       "and improvements (queued for phase 13.5).")
+
+body("The importance score is calibrated:")
+
+callout(
+    "importance =  (eu_risk == high ? 30 : limited ? 15 : 5)\n"
+    "             + (touches safety_floor ? 20 : 0)\n"
+    "             + (touches calibration ? 15 : 0)\n"
+    "             + (touches memory ? 15 : 0)\n"
+    "             + (touches prompt_architect_floor ? 15 : 0)\n"
+    "             + (touches HITL_logic ? 15 : 0)\n"
+    "             + (touches eu_ai_act_mapping ? 10 : 0)\n"
+    "             + ceil(artifacts_in_scope / 5)\n"
+    "             clamp [0, 100]\n"
+    "n_auditors = clamp(3, round(importance / 10), 10)",
+    color=NAVY,
+)
+
+body(
+    "Examples calibrated against the v0.2.0 pilot: renaming a documentation heading produces "
+    "importance ≈ 5 → n=3; updating a calibration scan produces importance ≈ 50 → n=5; editing "
+    "the master orchestrator's HITL logic in a high-risk healthcare project produces importance "
+    "≈ 80 → n=8; scaffolding a fresh high-risk healthcare child produces importance ≈ 95 → n=10."
+)
+
+body(
+    "The persona library is illustrative rather than exhaustive — Factory may compose any "
+    "plausible expert whose lens is necessary for the scope. The reflection step explicitly "
+    "checks for generic personas (slugs containing 'generic_*') and triggers re-composition "
+    "(maximum 3 retries). This is what keeps the panel adaptive in practice rather than just "
+    "in name."
+)
+
+body(
+    "Findings split into two consensus paths. On the error path, any auditor with confidence "
+    "≥70% on a finding makes that finding a BLOCKER — the orchestrator pauses the next task "
+    "until the blocker is addressed. Two auditors with confidence 50–69% on the same group make "
+    "it a WARNING that surfaces at the next HITL gate. Anything weaker is logged but not "
+    "actioned. On the improvement path, the consensus rule blends weighted-mean confidence with "
+    "spread: weighted-mean ≥70% with spread ≤30 percentage points queues the row for HITL "
+    "review at phase 13.5; weighted-mean ≥70% with spread >30 surfaces immediately as "
+    "DISSENT_HITL_NOW; everything else defers."
+)
+
+callout(
+    "Why dynamic n_auditors? The historical fixed-N model treated every audit the same. "
+    "v0.2.0 makes audit depth proportional to risk: the structural-consistency formula loads on "
+    "artifacts × audit gap × eu_risk; the adaptive-meta formula loads on eu_risk × touched "
+    "modules × artifacts in scope. Both clamp at [3, 10] — the lower bound protects against "
+    "under-audit on small scopes; the upper bound caps cost. The improvement-jury at 13.7 "
+    "remains intentionally fixed at 5 (the five axes that protect the system's invariants).",
+    color=GOLD, bg_hex="fff7d6",
+)
+
+body(
+    "Together, the four new phases plus the adaptive cross-phase hook form what the meta-skill "
+    "documents call 'a meta-generator of validation-layer auditors inside the meta-generator of "
+    "AI architectures'. The intent is that audit depth, audit composition, and audit discipline "
+    "all become first-class outputs of the system rather than fixed conventions baked at "
+    "design time."
+)
+
+page_break()
+
+# ════════════════════════════════════════════════════════════════════════
+# SECTION 7 — CONCLUSIONS  (was §6 in v0.1.0)
+# ════════════════════════════════════════════════════════════════════════
+heading("7. Conclusions", level=1)
 
 body(
     "The system-designer meta-generator demonstrates that LLM-driven coding can be made "
@@ -885,11 +1183,11 @@ callout(
 page_break()
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 7 — STRENGTHS AND LIMITATIONS
+# SECTION 8 — STRENGTHS AND LIMITATIONS  (was §7 in v0.1.0)
 # ════════════════════════════════════════════════════════════════════════
-heading("7. Strengths and Limitations", level=1)
+heading("8. Strengths and Limitations", level=1)
 
-heading("7.1  Strengths", level=2)
+heading("8.1  Strengths", level=2)
 
 bullet("EU AI Act 2024/1689 alignment is built-in, not bolted on. ",
        bold_lead="Compliance-by-construction · ")
@@ -927,7 +1225,7 @@ body(
     "Cline, Gemini CLI, Copilot CLI, and Codex."
 )
 
-heading("7.2  Limitations", level=2)
+heading("8.2  Limitations", level=2)
 
 bullet("LLM-judged tests carry residual subjectivity. ",
        bold_lead="LLM-judged tests are not deterministic · ")
@@ -969,7 +1267,7 @@ body(
     "is non-high-risk."
 )
 
-heading("7.3  Need for Domain-Specific Review and Validation", level=2)
+heading("8.3  Need for Domain-Specific Review and Validation", level=2)
 
 body(
     "system-designer is intended as a starting point, not a finished compliance solution. "
@@ -1025,9 +1323,9 @@ callout(
 page_break()
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 8 — FINAL CONCLUSION
+# SECTION 9 — FINAL CONCLUSION  (was §8 in v0.1.0)
 # ════════════════════════════════════════════════════════════════════════
-heading("8. Final Conclusion", level=1)
+heading("9. Final Conclusion", level=1)
 
 body(
     "system-designer makes the disciplined parts of AI-driven software development "
@@ -1052,10 +1350,10 @@ body(
 )
 
 # ════════════════════════════════════════════════════════════════════════
-# SECTION 9 — REFERENCES
+# SECTION 10 — REFERENCES  (was §9 in v0.1.0)
 # ════════════════════════════════════════════════════════════════════════
 page_break()
-heading("9. References", level=1)
+heading("10. References", level=1)
 
 refs = [
     "EU AI Act 2024/1689 (Regulation (EU) 2024/1689 of the European Parliament and of the Council "
