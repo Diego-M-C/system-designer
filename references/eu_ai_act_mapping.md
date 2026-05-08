@@ -72,11 +72,13 @@ Each row in `<target_path>/audit/audit_sheet.xlsx` conforms to `system_generator
 | Art. 15 — accuracy | 6 | rows from `Precision_Checklist.xlsx` | ML lead |
 | Art. 15 — robustness | 6 | rows from `Solidez_Checklist.xlsx` | ML lead |
 | Art. 15 — cybersecurity | 8 | rows from `Ciberseguridad_Checklist.xlsx` | security lead |
+| Art. 15(4) — adversarial robustness *(v1.0.0)* | 4 | model-extraction defence (≥1) · adversarial-input testing protocol (≥1) · prompt-injection guardrails (≥1) · supply-chain integrity for fine-tune data (≥1) | ML lead + security lead |
+| Art. 9(2) — iterative review cadence *(v1.0.0)* | 3 | quarterly review row · post-incident review row · post-substantial-modification review (Art. 43(4)) row | risk SME |
 | Art. 17 — quality management | 10 | rows from `Gestión de Calidad_Checklist.xlsx` | QMS lead |
 | Art. 72 — post-market monitoring | 10 | rows from `Vigilancia Poscomercializacion_Checklist.xlsx` (4 sub-systems × ≥2 rows each per AESIA Guide 13: data collection, analysis, corrective action, regulator communication) | SRE / product |
 | Art. 73 — incident management | 6 | rows from `Gestión de incidentes_Checklist.xlsx` | incident commander |
 
-**Total minimum rows (high-risk):** ~116 (Art. 9: 12+6 example + Art. 10: 14 + Art. 11: 18 + Art. 12: 8 + Art. 13: 6 + Art. 50: 4 + Art. 14: 8 + Art. 15: 6+6+8 + Art. 17: 10 + Art. 72: 10 + Art. 73: 6). The audit sheet starts with these and grows incrementally as sessions add domain-specific evidence.
+**Total minimum rows (high-risk):** ~123 (Art. 9: 12+6 example + 3 cadence + Art. 10: 14 + Art. 11: 18 + Art. 12: 8 + Art. 13: 6 + Art. 50: 4 + Art. 14: 8 + Art. 15: 6+6+8+4 adversarial + Art. 17: 10 + Art. 72: 10 + Art. 73: 6). The audit sheet starts with these and grows incrementally as sessions add domain-specific evidence.
 
 **Limited-risk minimum rows (Art. 50 obligatory):** Art. 50 (4 rows · transparency to affected persons) + Art. 14 (8 rows · human oversight when applicable) + voluntary Art. 4 literacy row.
 
@@ -200,8 +202,10 @@ Auditor agents composed via `09_three_auditors_jury.md` (each an independent pro
 | **NIST AI RMF** | Cross-walks with Art. 9, 17 | informational |
 | **MDR 2017/745** (medical devices) | If domain=healthcare → also applicable | always for medical-device-classifiable systems |
 | **DORA** (2022/2554) | If domain=fintech (operational resilience) | always for financial entities |
+| **MiCA** (2023/1114) *(v1.0.0)* | If domain=fintech AND product touches crypto-assets — overlaps with EU AI Act Art. 9 (risk management for token classification systems) and Art. 14 (human oversight for white-paper review automations) | always for crypto-asset service providers / issuers |
+| **PSD3** *(v1.0.0)* | If domain=fintech AND product touches payment initiation / account information services — overlaps with Art. 14 (human oversight for fraud-decisioning) and Art. 15 (accuracy + cybersecurity) | always for PIS / AIS providers |
 
-The mapper agent surfaces relevant cross-references in `audit/eu_ai_act_mapping.md#cross_references` based on `SystemSpec.domain`.
+The mapper agent surfaces relevant cross-references in `audit/eu_ai_act_mapping.md#cross_references` based on `SystemSpec.domain`. For `domain=fintech`, the cross-walk explicitly enumerates DORA + MiCA + PSD3 + GDPR + ISO 42001 (since v1.0.0).
 
 ---
 

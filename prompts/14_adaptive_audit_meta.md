@@ -664,6 +664,8 @@ Hard:
 - `../prompt_architect/SKILL.md`
 - `prompts/03_prompt_factory.md`
 - `references/jury_consensus_protocol.md`
+- `references/memory_schema_protocol.md` *(v1.0.0)* — read by the mandatory `memory_completeness_auditor` persona
+- `<target_path>/memory_schema/manifest.json` *(v1.0.0)* — the audit contract the memory_completeness_auditor reads at runtime
 - `feedback_learning/corrections.db` (target for improvement rows)
 
 Soft:
@@ -674,6 +676,7 @@ Reference:
 - `prompts/00_master_orchestrator.md` (caller)
 - `prompts/12_improvement_jury.md` (fixed-5 special case)
 - `prompts/10_data_flow_validator.md` (scope-specialised special case)
+- `prompts/15_memory_schema_architect.md` *(v1.0.0)* — emits the manifest this prompt reads as audit contract
 </dependencies>
 
 <cache_hint>
