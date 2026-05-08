@@ -3,7 +3,7 @@
 > **Tier:** Complex (SDD) · target ~46 tags · actual 46
 > **Composed via:** prompt-architect (self-applied, principle G9=A)
 > **Audit status:** see `audit/self_audit.md` after runtime
-> **Version:** 0.1.0 · 2026-04-29
+> **Version:** 0.2.0 · 2026-05-08 (extends 13-phase orchestration to 17 phases via 1.5 / 11.5 / 13.5 / 13.7 + cross-phase adaptive audit meta)
 
 ---
 
@@ -53,18 +53,25 @@ Generate a complete child AI-system from a user's intent by:
 
 <sub_tasks>
 1. read_context — load all mandatory dependencies declared in `system_generator.json#/dependencies`.
+1.5. context_setup *(v0.2.0)* — invoke `prompts/13_context_curator.md`; ask user for project context; fetch authoritative implementation guides + legislation + non-library docs + curated internet sources via `mcp.playwright` (recommended) or `fetch()` fallback; persist `<target_path>/context/`.
 2. interview — execute `wizard/interview_questions.json`; default via `wizard/defaults.json` on skips.
 3. planning_brief — emit calibrated plan to `<target_path>/audit/planning_brief_session_0.md`.
 4. GATE_1 — present plan via `<final_output>`; block.
 5. scaffold — render every mandatory artifact from `templates/` to `<target_path>/`.
 6. compose_prompts — for each child prompt, delegate to prompt-architect (see `<delegation>`).
-7. fetch_library_docs — download every library declared in `SystemSpec.stack.libraries` into `<target_path>/library_docs/<lib>/<version>/`.
-8. seed_tracking — initialise `tracking/`, `memory/`, `errors_catalog.json`.
+7. fetch_library_docs — download every library declared in `SystemSpec.stack.libraries` into `<target_path>/library_docs/<lib>/<version>/`. Distinct from phase 1.5: this phase owns *library* docs only.
+8. seed_tracking — initialise `tracking/`, `memory/`, `errors_catalog.json` (≥30 AIE), `feedback_learning/corrections.db` (apply `templates/feedback_learning/corrections_schema.sql.tmpl`).
 9. emit_audit_sheet — generate `audit/audit_sheet.xlsx` Session-1 baseline.
 10. self_audit — run rubric in `system_generator.json#/self_audit/rubric` on every emitted prompt; emit `audit/self_audit.md`.
 11. reflection — emit `audit/reflection_session_0.md` (≤600 words).
-12. GATE_2 — present tree summary + reflection via `<final_output>`; block.
-13. handoff — emit `<target_path>/HANDOFF.md`; STOP.
+11.5. structural_consistency *(v0.2.0)* — invoke `prompts/10_data_flow_validator.md`; compute `n_validators ∈ [3,10]` + 1 mandatory simulation agent; consolidate `data_flow_validation/structural_consistency/consolidated_report.md`; surface dissents to Gate #2.
+12. GATE_2 — present tree summary + reflection + structural-consistency consolidation via `<final_output>`; block.
+13. handoff — emit `<target_path>/HANDOFF.md`. Generator does NOT continue developing the child system.
+13.5. feedback_session *(v0.2.0)* — invoke `prompts/11_feedback_learning_loop.md`; capture human feedback; classify under `references/feedback_taxonomy.md`; persist atomically to `corrections.db` + MD mirror; per-correction HITL learn-Y/N/SKIP; trigger improvement proposal at `learn_threshold` (default 15) or explicit user request.
+13.7. improvement_audit *(v0.2.0)* — when phase 13.5 triggers a proposal, invoke `prompts/12_improvement_jury.md`; 5 specialist auditors; mandatory HITL gate; no source change without explicit human approval.
+14. STOP — child orchestrator (`<target_path>/CLAUDE.md`) takes over.
+
+**Cross-phase (v0.2.0):** at the end of every task and every session, invoke `prompts/14_adaptive_audit_meta.md` with the scope envelope. The meta-validator computes `n_auditors ∈ [3,10]` from importance, freshly composes each auditor via prompt-architect with a persona tailored to the scope, runs them in parallel, separates errors (blockers) from improvements (queued for phase 13.5), and surfaces HITL only when needed.
 </sub_tasks>
 
 <success_criteria>
@@ -417,9 +424,13 @@ Capability-missing fallbacks (P1 hard requirement):
 
 <orchestration>
 Phase order is strict (no skipping, no reordering):
-`read_context → interview → planning_brief → GATE_1 → scaffold → compose_prompts → fetch_library_docs → seed_tracking → emit_audit_sheet → self_audit → reflection → GATE_2 → handoff → STOP`
+`read_context → context_setup → interview → planning_brief → GATE_1 → scaffold → compose_prompts → fetch_library_docs → seed_tracking → emit_audit_sheet → self_audit → reflection → structural_consistency → GATE_2 → handoff → feedback_session → improvement_audit (conditional) → STOP`
+
+After every task and every session inside any phase that emits artifacts, also invoke `prompts/14_adaptive_audit_meta.md` (cross-phase). Adaptive audit is mandatory; deviation requires logged rationale (P3 does NOT apply).
 
 Each phase writes a marker line to `tracking/sessions/0001_bootstrap/phase.log` (`<iso_timestamp>\t<phase_id>\t<status>\n`). Resumption after interruption: read `tracking/project.json#current_phase` and resume at next phase.
+
+Backward-compatibility: if `SystemSpec.compatibility.v0_1_0=true`, phases 1.5 / 11.5 / 13.5 / 13.7 / adaptive_audit_meta are skipped (legacy 13-phase mode). Default is `false` (v0.2.0 fully enabled).
 </orchestration>
 
 <guardrails>
@@ -574,11 +585,22 @@ Hard dependencies (mandatory at runtime):
 - `../references/ai_error_catalog.md`
 - `../references/eu_ai_act_mapping.md`
 - `../references/scientific_report_format.md`
+- *(v0.2.0)* `../references/data_flow_invariants.md`
+- *(v0.2.0)* `../references/feedback_taxonomy.md`
+- *(v0.2.0)* `../references/jury_consensus_protocol.md`
+- *(v0.2.0)* `../references/context_confidence_protocol.md`
+- *(v0.2.0)* `../prompts/10_data_flow_validator.md`
+- *(v0.2.0)* `../prompts/11_feedback_learning_loop.md`
+- *(v0.2.0)* `../prompts/12_improvement_jury.md`
+- *(v0.2.0)* `../prompts/13_context_curator.md`
+- *(v0.2.0)* `../prompts/14_adaptive_audit_meta.md`
 
 Soft dependencies (used if available, fallbacks otherwise):
 - Context7 MCP server
+- `mcp.playwright` (recommended for phase 1.5 fetches)
 - `xlsx.write` capability
 - Parallel sub-agent spawning
+- SQLite FTS5 module (used by phases 13.5 / 13.7 / 14)
 
 Reference dependencies (read-only context):
 - `../EU_AI_Act_guides/` (incl. AESIA)

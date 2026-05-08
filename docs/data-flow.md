@@ -1,6 +1,8 @@
 # Data flow — end-to-end
 
-> Visualises how data moves through the 13 phases of `system-designer`. Each phase reads inputs from declared sources, emits outputs to declared targets, and signals progression through `tracking/project.json`.
+> Visualises how data moves through the **17 phases** of `system-designer` (13 base + 4 inserted at v0.2.0: 1.5, 11.5, 13.5, 13.7) plus a cross-phase adaptive audit hook. Each phase reads inputs from declared sources, emits outputs to declared targets, and signals progression through `tracking/project.json`.
+>
+> **v0.2.0 supplement.** The original 13-phase diagram below is preserved verbatim. The new phases insert at fixed points; their data flows are summarised in §11 (`v0.2.0 phases supplement`) and detailed per-script in `docs/scripts/{10,11,12,13,14}_*.md`.
 
 ## 1. High-level sequence diagram
 
@@ -311,3 +313,182 @@ Each child tree artifact has provenance traceable back to its source:
 | `<child>/HANDOFF.md` | aggregation of all phases | 13 |
 
 The sha256 of every emitted file is logged in `tracking/project.json#artifacts_emitted`, giving end-to-end reproducibility.
+
+## 11. v0.2.0 phases supplement
+
+### 11.1 Insertion points (relative to the 13-phase diagram above)
+
+```
+1   read_context
+1.5 context_setup           ← NEW (prompts/13_context_curator.md)
+2   interview
+3   planning_brief
+4   GATE_1
+5   scaffold
+6   compose_prompts
+7   fetch_library_docs
+8   seed_tracking
+9   emit_audit_sheet
+10  self_audit
+11  reflection
+11.5 structural_consistency  ← NEW (prompts/10_data_flow_validator.md)
+12  GATE_2
+13  handoff
+13.5 feedback_session        ← NEW (prompts/11_feedback_learning_loop.md)
+13.7 improvement_audit       ← NEW (prompts/12_improvement_jury.md, conditional)
+14  STOP
+
+Cross-phase (fires at every task/session end):
+    adaptive_audit_meta      ← NEW (prompts/14_adaptive_audit_meta.md)
+```
+
+### 11.2 Phase 1.5 · context_setup (bootstrap mode)
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant MO as Master Orch.
+    participant CC as 13_context_curator
+    participant PA as prompt_architect
+    participant FS as Filesystem
+    participant Web as Internet (mcp.playwright | fetch)
+
+    MO->>CC: dispatch (mode=bootstrap)
+    CC->>U: questionnaire (≤25 lines)
+    U-->>CC: free-text context bullets
+    CC->>PA: compose source-classifier (Medium tier)
+    PA-->>CC: classified candidates with confidence%
+    CC->>U: HITL · fetch plan (Y/N/EDIT)
+    U-->>CC: approval
+    loop per approved candidate
+        CC->>Web: try mcp.playwright → fetch → fail
+        alt fetched
+            CC->>FS: write context/context_sources/<slug>/<file>+manifest.json
+        else unreachable
+            CC->>FS: append download_recommendations.md row
+        end
+    end
+    CC->>FS: regenerate context_manifest.json + consult_websites.md
+    CC->>FS: append curation_log.jsonl
+    CC->>FS: update tracking/project.json#context_curation
+    CC-->>MO: complete
+```
+
+### 11.3 Phase 11.5 · structural_consistency
+
+```mermaid
+sequenceDiagram
+    participant MO as Master Orch.
+    participant DV as 10_data_flow_validator
+    participant PA as prompt_architect
+    participant V as Validators (n=3..10)
+    participant SA as Simulation Agent
+    participant FS as Filesystem
+
+    MO->>DV: dispatch (after reflection, before Gate#2)
+    DV->>FS: read tracking/project.json (artifacts, audit%)
+    DV->>DV: compute n_validators (formula)
+    DV->>FS: write data_flow_validation/sequence_snapshots/snapshot.md
+    loop per validator (n_validators + 1)
+        DV->>PA: compose validator/simulation prompt
+        PA-->>DV: audited prompt
+    end
+    par parallel (or sequential fallback)
+        DV->>V: dispatch each validator (read-only over child tree)
+        V->>FS: write structural_consistency/validator_<n>_<persona>.md
+        DV->>SA: dispatch simulation_agent
+        SA->>FS: write structural_consistency/simulation_report.md (S1-S5)
+    end
+    DV->>FS: write structural_consistency/consolidated_report.md
+    DV->>FS: update tracking/project.json#data_flow_validation
+    DV-->>MO: complete (consistency_score; HITL escalations if any)
+```
+
+### 11.4 Phase 13.5 · feedback_session + Phase 13.7 · improvement_audit
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant MO as Master Orch.
+    participant FB as 11_feedback_learning_loop
+    participant DB as corrections.db (SQLite)
+    participant FS as Filesystem
+    participant IJ as 12_improvement_jury
+    participant PA as prompt_architect
+    participant J as 5 Auditors
+
+    MO->>FB: dispatch (after handoff, fully audited)
+    FB->>U: feedback solicitation
+    loop per correction (until DONE / TRIGGER)
+        U-->>FB: feedback line
+        FB->>FB: auto-classify (severity × category × recurrence + conf%)
+        FB->>U: HITL · learn? Y/N/SKIP
+        U-->>FB: keystroke
+        FB->>DB: INSERT correction (parameterised; FTS5 sync)
+        FB->>FS: regenerate corrections.md mirror
+    end
+    alt threshold reached OR TRIGGER
+        FB->>FS: write improvement_proposal.md
+        FB->>MO: signal phase 13.7
+        MO->>IJ: dispatch (proposal_path, session_id)
+        loop 5 axes
+            IJ->>PA: compose auditor (Complex)
+            PA-->>IJ: audited prompt
+        end
+        par parallel (or sequential fallback)
+            IJ->>J: dispatch (regression / calibration / portability / eu_drift / memory)
+            J->>FS: write improvement_audit/auditor_<n>_<axis>.md
+        end
+        IJ->>FS: write improvement_audit/consensus_report.md
+        IJ->>U: HITL gate · [A]/[B]/[C]/[D]
+        U-->>IJ: decision
+        IJ->>DB: UPDATE corrections.status (transactional)
+    else no trigger
+        FB->>FS: write session_close_<id>.md
+    end
+    FB-->>MO: complete (or, if 13.7 ran, IJ-->>MO)
+```
+
+### 11.5 Cross-phase · adaptive_audit_meta (per-task / per-session)
+
+```mermaid
+sequenceDiagram
+    participant Caller as Orchestrator (any phase end / task end / session end)
+    participant AM as 14_adaptive_audit_meta
+    participant PA as prompt_architect
+    participant A as n Auditors (3..10)
+    participant DB as corrections.db
+    participant FS as Filesystem
+    participant U as User (only if HITL)
+
+    Caller->>AM: scope envelope (kind, id, summary, artifacts, eu_risk, touched_modules)
+    AM->>AM: compute importance score → n_auditors
+    loop per auditor
+        AM->>PA: compose persona-tailored auditor (with KPI block)
+        PA-->>AM: audited prompt
+    end
+    par parallel (or sequential fallback)
+        AM->>A: dispatch (each auditor blind to others)
+        A->>FS: write adaptive_audit/.../auditor_<i>_<persona>.md
+    end
+    AM->>AM: consolidate (errors path + improvements path; rules I1/I2/I3 + E1/E2)
+    AM->>FS: write adaptive_audit/.../consensus.md
+    AM->>DB: INSERT improvement rows (status=pending_review; learn=SKIP until 13.5)
+    alt blockers OR DISSENT_HITL_NOW
+        AM->>U: HITL surface ([A]/[B]/[C]/[D])
+        U-->>AM: decision
+    else routine queueing
+        AM->>FS: silent; phase 13.5 picks up later
+    end
+    AM-->>Caller: signal (errors_blocking[], improvements_queued[])
+```
+
+### 11.6 Cross-component links
+
+| New artefact | Read by | Written by |
+|---|---|---|
+| `context/context_manifest.json` | every downstream phase that consults the corpus; `13_context_curator` (living updates) | `13_context_curator` (atomic regenerate) |
+| `data_flow_validation/.../consolidated_report.md` | Gate #2 (escalations), `12_improvement_jury` (regression baseline) | `10_data_flow_validator` |
+| `feedback_learning/corrections.db` | `12_improvement_jury` (audit), `14_adaptive_audit_meta` (insert improvements), child orchestrator (recurrence detection) | `11_feedback_learning_loop`, `14_adaptive_audit_meta` |
+| `improvement_audit/consensus_report.md` | post-jury HITL gate user; humans applying merge cycle | `12_improvement_jury` |
+| `adaptive_audit/.../consensus.md` | `00_master_orchestrator` (blockers), `11_feedback_learning_loop` (improvements queue) | `14_adaptive_audit_meta` |

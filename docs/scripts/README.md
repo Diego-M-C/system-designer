@@ -6,7 +6,7 @@
 
 | #  | File | Tier | Tags | Role |
 |----|------|------|------|------|
-| 00 | [`00_master_orchestrator.md`](00_master_orchestrator.md) | Complex | 46 | Drives the 13-phase loop, owns HITL gates, dispatches specialists |
+| 00 | [`00_master_orchestrator.md`](00_master_orchestrator.md) | Complex | 46 | Drives the 17-phase loop (v0.2.0), owns HITL gates, dispatches specialists |
 | 01 | [`01_interview_agent.md`](01_interview_agent.md) | Medium | ~22 | Wizard: one-question-per-turn, atomic persist to SPEC.json |
 | 02 | [`02_scaffolder.md`](02_scaffolder.md) | Medium | ~20 | Renders templates → child tree, sha256-logs every emit |
 | 03 | [`03_prompt_factory.md`](03_prompt_factory.md) | Complex | ~32 | P4 enforcer: composes & audits every emitted prompt via prompt-architect |
@@ -16,6 +16,11 @@
 | 07 | [`07_audit_designer.md`](07_audit_designer.md) | Medium | ~24 | 13-sheet xlsx (or csv+md) with ≥112 rows for high-risk |
 | 08 | [`08_report_writer.md`](08_report_writer.md) | Medium | ~22 | IMRaD/TRIPOD-AI/CONSORT-AI/STARD-AI/SPIRIT-AI selector + scaffolder |
 | 09 | [`09_three_auditors_jury.md`](09_three_auditors_jury.md) | Complex | ~36 | N independent auditors + meta-jury, dissent → HITL |
+| 10 | [`10_data_flow_validator.md`](10_data_flow_validator.md) *(v0.2.0)* | Complex | ~40 | Phase 11.5 — `n ∈ [3, 10]` validators + 1 mandatory simulation agent |
+| 11 | [`11_feedback_learning_loop.md`](11_feedback_learning_loop.md) *(v0.2.0)* | Complex | ~42 | Phase 13.5 — feedback DB + classify + learn-Y/N/SKIP HITL + threshold trigger |
+| 12 | [`12_improvement_jury.md`](12_improvement_jury.md) *(v0.2.0)* | Complex | ~38 | Phase 13.7 — fixed 5 specialist auditors + mandatory HITL gate |
+| 13 | [`13_context_curator.md`](13_context_curator.md) *(v0.2.0)* | Complex | ~40 | Phase 1.5 — calibrated source corpus + living updates per session |
+| 14 | [`14_adaptive_audit_meta.md`](14_adaptive_audit_meta.md) *(v0.2.0)* | Complex | ~44 | Cross-phase — per-task / per-session 3-10 dynamically composed auditors |
 
 ## Reading order
 
@@ -25,7 +30,7 @@ If you're debugging a specific phase: jump to the matching script doc.
 
 If you're extending the generator: read `00_master_orchestrator.md#extension-points` and the script doc closest to your change.
 
-## Doc structure (consistent across all 10 scripts)
+## Doc structure (consistent across all 15 scripts)
 
 Each doc has these sections:
 

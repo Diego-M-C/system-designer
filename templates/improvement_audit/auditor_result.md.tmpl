@@ -1,0 +1,39 @@
+---
+auditor_id: {{AUDITOR_ID}}                # 1..5
+axis: {{AXIS}}                              # regression | calibration | portability | eu_ai_act_drift | memory_integrity
+session_id: {{SESSION_ID}}
+ran_at: {{TEMPORAL_NOW}}
+proposal_id: {{PROPOSAL_ID}}
+overall_verdict: {{OVERALL_VERDICT}}        # approve | approve_with_caveat | reject | dissent | not_applicable
+overall_confidence_pct: {{OVERALL_CONF_PCT}}
+rows_audited: {{ROWS_AUDITED}}
+self_kpis:
+  rows_audited: {{ROWS_AUDITED}}
+  mean_confidence_pct: {{MEAN_CONF_PCT}}
+  evidence_citation_rate_pct: {{EVIDENCE_CITATION_RATE_PCT}}
+  rejection_rate_pct: {{REJECTION_RATE_PCT}}
+---
+
+# Improvement-Jury Auditor {{AUDITOR_ID}} · Axis: {{AXIS}}
+
+> Composed via prompt-architect (Factory). Reads `improvement_proposal.md` + axis-specific baseline. Read-only over `Sistem_designer/`.
+
+## Per-row verdicts
+
+| row_id | verdict | confidence_pct | evidence_path:line | comments |
+|---|---|---:|---|---|
+{{PER_ROW_VERDICTS_RENDERED}}
+
+## Axis-specific notes
+
+{{AXIS_SPECIFIC_NOTES}}
+
+## Cross-axis hand-off
+
+> Findings the consolidator should flag to other axes (e.g., calibration auditor surfacing a portability concern).
+
+{{CROSS_AXIS_HANDOFF}}
+
+---
+
+> Aggregation in `consensus_report.md`.

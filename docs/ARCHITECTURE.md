@@ -3,6 +3,7 @@
 > **Audience.** Contributors and reviewers who want to understand how the meta-generator works at every level.
 > **Companion docs.** `docs/scripts/*.md` (one file per prompt), `docs/data-flow.md`, `docs/references-explained.md`, `docs/templates-explained.md`.
 > **Calibration of this doc.** ~85% confidence on architecture facts; ~70% confidence on per-LLM tooling specifics (those evolve faster than this doc).
+> **Version coverage.** §1–18 describe the v0.1.0 base architecture verbatim. **§19 (new in v0.2.0)** covers phases 1.5 / 11.5 / 13.5 / 13.7 and the cross-phase `adaptive_audit_meta`. The base is unchanged; v0.2.0 inserts at fixed points.
 
 ---
 
@@ -587,9 +588,85 @@ For each prompt, see:
 - [`docs/scripts/07_audit_designer.md`](scripts/07_audit_designer.md)
 - [`docs/scripts/08_report_writer.md`](scripts/08_report_writer.md)
 - [`docs/scripts/09_three_auditors_jury.md`](scripts/09_three_auditors_jury.md)
+- *(v0.2.0)* [`docs/scripts/10_data_flow_validator.md`](scripts/10_data_flow_validator.md)
+- *(v0.2.0)* [`docs/scripts/11_feedback_learning_loop.md`](scripts/11_feedback_learning_loop.md)
+- *(v0.2.0)* [`docs/scripts/12_improvement_jury.md`](scripts/12_improvement_jury.md)
+- *(v0.2.0)* [`docs/scripts/13_context_curator.md`](scripts/13_context_curator.md)
+- *(v0.2.0)* [`docs/scripts/14_adaptive_audit_meta.md`](scripts/14_adaptive_audit_meta.md)
 
 For references and templates:
 
 - [`docs/references-explained.md`](references-explained.md)
 - [`docs/templates-explained.md`](templates-explained.md)
-- [`docs/data-flow.md`](data-flow.md)
+- [`docs/data-flow.md`](data-flow.md) *(includes §11 v0.2.0 supplement with 4 mermaid diagrams)*
+
+## 20. v0.2.0 supplement
+
+Where the new phases sit, why each one was added, what they own, and the cross-phase hook.
+
+### 20.1 Insertion points (relative to the 13-phase base)
+
+```
+1   read_context
+1.5 context_setup           ← NEW — calibrated source corpus before the interview
+2   interview
+3   planning_brief
+4   GATE_1
+5   scaffold
+6   compose_prompts
+7   fetch_library_docs       (library docs only — context corpus is phase 1.5's domain)
+8   seed_tracking            (now also creates feedback_learning/corrections.db)
+9   emit_audit_sheet
+10  self_audit
+11  reflection
+11.5 structural_consistency  ← NEW — n=3..10 validators + 1 mandatory simulation agent
+12  GATE_2
+13  handoff
+13.5 feedback_session        ← NEW — collect / classify / per-correction HITL Y/N
+13.7 improvement_audit       ← NEW — fixed 5-axis jury + mandatory HITL
+14  STOP
+```
+
+Cross-phase: **`adaptive_audit_meta`** fires at the end of every task and every session (in both the generator and the inherited child).
+
+### 20.2 What each new module owns (and what it deliberately does NOT)
+
+| Module | Owns | Does NOT |
+|---|---|---|
+| **Phase 1.5 · context_setup** | regulatory / methodological / domain context with calibrated `confidence_pct` | library documentation (phase 7's domain) |
+| **Phase 11.5 · structural_consistency** | data lineage, memory graph, inter-module communication, schema integrity, atomic-write discipline; 5 simulation scenarios | the live execution of the child system; modifying any file outside `data_flow_validation/` |
+| **Phase 13.5 · feedback_session** | classify + persist + per-correction HITL learn-Y/N/SKIP; threshold detection | patching `system-designer` source (advisory until 13.7) |
+| **Phase 13.7 · improvement_audit** | 5-axis confidence-weighted consensus; mandatory HITL gate | merging changes (still requires a separate regenerate-and-merge cycle the user initiates with this jury's approval as input) |
+| **Cross-phase · adaptive_audit_meta** | dynamic 3-10 panel composition with persona-fit; error / improvement triage | source-file modifications; auto-merging improvements |
+
+### 20.3 Why dynamic n_auditors
+
+The historical 3-N model treated every audit the same. v0.2.0 makes audit depth proportional to risk:
+
+- The structural-consistency formula (phase 11.5) loads on `artifacts × audit_gap × eu_risk`.
+- The adaptive-meta formula (cross-phase) loads on `eu_risk × touched_modules × artifacts_in_scope`.
+
+Both clamp at `[3, 10]`. The lower bound protects against under-audit on small scopes; the upper bound caps cost. The improvement-jury at 13.7 is intentionally **fixed** at 5 (the 5 axes that protect the system's invariants).
+
+### 20.4 Why dual persistence (corrections.db + corrections.md)
+
+- SQLite gives FTS5 (recurrence detection) and indexed counters (threshold check); it is Python stdlib and CLI on every OS, so P1 holds.
+- The MD mirror gives git-diff visibility and survives DB corruption.
+- The DB is authoritative; the MD is **regenerated** every run from the DB. There is exactly one source of truth.
+
+### 20.5 Why per-correction HITL (and not batched at threshold)
+
+Asking "should the system learn from this correction?" **per correction** has two effects:
+
+- It prevents the corpus from accumulating noisy generalisations (a single user keystroke filters every learn).
+- It surfaces classification ambiguity at the moment it matters (when the user remembers the context).
+
+Batched HITL at threshold would be cheaper but lossy. The trade-off is intentional.
+
+### 20.6 Why persona-fit is enforced
+
+The meta-validator (`14_adaptive_audit_meta`) could degrade into "always pick from a fixed roster" if the persona slug is generic. Reflection explicitly checks for `generic_*` slugs and triggers re-composition (max 3 retries). This keeps the panel adaptive in practice, not just in name.
+
+### 20.7 Backward compatibility
+
+`SystemSpec.compatibility.v0_1_0 = true` skips phases 1.5 / 11.5 / 13.5 / 13.7 / adaptive_audit_meta. Default `false`. Existing v0.1.0 children work unchanged when the meta-skill is upgraded; users opt into v0.2.0 features at wizard Q31–Q36.

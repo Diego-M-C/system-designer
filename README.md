@@ -4,10 +4,12 @@
 > Drop this folder into any LLM (Claude Code, Cursor, Cline, Gemini CLI, Copilot CLI, Codex) and run.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-0.2.0-informational.svg)](CHANGELOG.md)
 [![Portable](https://img.shields.io/badge/portable-Tier_A-blue.svg)](references/portable_invocation.md)
 [![EU AI Act](https://img.shields.io/badge/EU_AI_Act-2024%2F1689-brightgreen.svg)](references/eu_ai_act_mapping.md)
 [![Calibrated](https://img.shields.io/badge/calibration-mandatory-orange.svg)](references/calibrated_probabilities.md)
-[![Prompt tier](https://img.shields.io/badge/tier-Complex_(46_tags)-purple.svg)](prompt_architect/SKILL.md)
+[![Phases](https://img.shields.io/badge/orchestration-17_phases-blueviolet.svg)](docs/ARCHITECTURE.md)
+[![Prompt tier](https://img.shields.io/badge/tier-Complex_(46+_tags)-purple.svg)](prompt_architect/SKILL.md)
 
 ---
 
@@ -19,6 +21,18 @@ You give it: `"build a clinical-decision-support assistant for oncology triage"`
 It gives you: a complete project tree with master orchestrator, living tracking, calibrated planning, HITL governance, 30 pre-loaded AI-error patterns, audit Excel sheets per the 13 EU AI Act checklists, IMRaD/TRIPOD-AI report templates, and **every prompt composed through the co-located `prompt_architect/`** skill.
 
 It then **stops**. Handoff is explicit; the generator does not continue developing the child system.
+
+## What's new in v0.2.0
+
+| Phase | Prompt | Capability |
+|---|---|---|
+| **1.5 · context_setup** | [`prompts/13_context_curator.md`](prompts/13_context_curator.md) | Calibrated source corpus before the interview: implementation guides, legislation, non-library docs, curated internet sources. Each source carries confidence% under [`references/context_confidence_protocol.md`](references/context_confidence_protocol.md). Recommends `mcp.playwright`; falls back to `fetch()`; recommends user-uploaded docs when unreachable. Inherited by child sessions. |
+| **11.5 · structural_consistency** | [`prompts/10_data_flow_validator.md`](prompts/10_data_flow_validator.md) | `n ∈ [3, 10]` specialist validators (formula-driven) + 1 mandatory simulation agent run 5 synthetic scenarios (resumability, fetch-failure, jury dissent, calibration drift, atomic-write race). Surfaces dissents to Gate #2. Invariants in [`references/data_flow_invariants.md`](references/data_flow_invariants.md). |
+| **13.5 · feedback_session** | [`prompts/11_feedback_learning_loop.md`](prompts/11_feedback_learning_loop.md) | After handoff: capture human feedback, classify under [`references/feedback_taxonomy.md`](references/feedback_taxonomy.md) (severity × category × recurrence), persist to **SQLite + Markdown mirror**, ask **per-correction "should AI learn this? Y/N/SKIP"**, trigger improvement proposal at threshold (default 15) or explicit user request. |
+| **13.7 · improvement_audit** | [`prompts/12_improvement_jury.md`](prompts/12_improvement_jury.md) | Fixed **5 specialist auditors** (regression, calibration, portability, EU AI Act drift, memory integrity) with confidence-weighted consensus and mandatory HITL gate. No source change merges without explicit human approval. Protocol in [`references/jury_consensus_protocol.md`](references/jury_consensus_protocol.md). |
+| **cross-phase** | [`prompts/14_adaptive_audit_meta.md`](prompts/14_adaptive_audit_meta.md) | Fires at end of every task and end of every session. Computes `n_auditors ∈ [3, 10]` from importance score. **Each auditor freshly composed via prompt-architect with a persona tailored to the scope.** Errors block; improvements queue for phase 13.5. Persona-fit is enforced in reflection. |
+
+> **Backward compatible.** Set `SystemSpec.compatibility.v0_1_0 = true` (wizard Q36) to skip the new phases and run in legacy 13-phase mode.
 
 ## Core principles (non-negotiable)
 

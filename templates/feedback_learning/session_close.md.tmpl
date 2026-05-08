@@ -1,0 +1,28 @@
+# Feedback Session Close · {{SESSION_ID}}
+
+Generated at: `{{TEMPORAL_NOW}}` · Phase: `13.5 feedback_learning_loop`
+
+## Counters
+
+- Corrections collected this session: `{{COLLECTED_THIS_SESSION}}`
+- Distribution by severity: `{{SEV_DIST_THIS_SESSION}}`
+- Distribution by category: `{{CAT_DIST_THIS_SESSION}}`
+- Distribution by learn-decision: `{{LEARN_DIST_THIS_SESSION}}` (Y / N / SKIP)
+- Pending learn-Y total (across history): `{{PENDING_TOTAL}}`
+- Threshold: `{{LEARN_THRESHOLD}}` · Status: `{{THRESHOLD_STATUS}}`
+- Oldest pending row age (days): `{{OLDEST_PENDING_DAYS}}`
+
+## Reflection (≤200 words)
+
+- **Lowest-confidence classification:** `{{LOWEST_CONF_CLASSIFICATION}}`
+- **`category=other` items:** `{{OTHER_COUNT}}` (signal to refresh taxonomy if >3).
+- **Recommendation to master orchestrator:** `{{RECOMMENDATION}}`
+
+## Next phase
+
+- If proposal triggered → see `feedback_learning/improvement_proposal.md` and phase 13.7 invocation block.
+- Else → no proposal this session; continue to `STOP`.
+
+---
+
+> Source of truth for all rows: `feedback_learning/corrections.db`. This summary is regenerated at every session close.

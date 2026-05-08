@@ -1,0 +1,26 @@
+# Consult Websites · {{SYSTEM_NAME}}
+
+> Trustworthy URLs the AI **may visit at runtime** to keep its reasoning current. NOT downloaded into the corpus. Use `download_recommendations.md` if persistence is needed.
+>
+> Last updated: `{{TEMPORAL_NOW}}` · Total: `{{TOTAL}}`
+
+| url | category | confidence_pct | why_useful | suggested_query_pattern |
+|---|---|---:|---|---|
+{{CONSULT_WEBSITES_ROWS}}
+
+## Confidence taxonomy reminder
+
+| range | category examples |
+|---|---|
+| 95–99 | `legislation_official` (EUR-Lex, AESIA) |
+| 88–95 | `regulator_implementation_guide` |
+| 85–92 | `vendor_official_docs` (Anthropic, OpenAI policies) |
+| 80–90 | `peer_reviewed_paper`, `industry_standard_doc` |
+| 60–75 | `expert_blog` |
+| 30–50 | `forum_discussion`, `internet_opinion_general` |
+
+## Use guidance
+
+- Visit at runtime only when the offline corpus is insufficient.
+- Cite the URL + visit timestamp + confidence% in any artifact that depends on the visit.
+- If the visit changes a decision: log a row to `feedback_learning/corrections.db` (category=`documentation`) so phase 13.5 can promote the source's confidence over time.

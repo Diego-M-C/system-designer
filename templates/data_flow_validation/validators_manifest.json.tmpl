@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.2.0",
+  "phase": "11.5_structural_consistency",
+  "session_id": "{{SESSION_ID}}",
+  "ran_at": "{{TEMPORAL_NOW}}",
+  "n_validators": {{N_VALIDATORS}},
+  "formula_inputs": {
+    "artifacts_emitted": {{ARTIFACTS_EMITTED_COUNT}},
+    "audit_completeness_pct": {{AUDIT_COMPLETENESS_PCT}},
+    "eu_ai_act_risk": "{{EU_RISK}}"
+  },
+  "formula": "clamp(3, ceil(artifacts/30) + ceil((100-audit_pct)/20) + (risk==high?2:0), 10)",
+  "personas_chosen": {{PERSONAS_CHOSEN_JSON_ARRAY}},
+  "simulation_agent_included": true,
+  "parallelism_mode": "{{PARALLELISM_MODE}}",
+  "snapshot_path": "data_flow_validation/sequence_snapshots/snapshot_session_{{SESSION_ID}}.md",
+  "snapshot_sha256": "{{SNAPSHOT_SHA256}}",
+  "outputs": {
+    "validator_files": {{VALIDATOR_FILE_PATHS_JSON_ARRAY}},
+    "simulation_report": "data_flow_validation/structural_consistency/simulation_report.md",
+    "consolidated_report": "data_flow_validation/structural_consistency/consolidated_report.md"
+  },
+  "notes": "P3 does not apply to phase 11.5: simulation_agent is mandatory regardless of n_validators. The formula's output is the floor for n_validators; the simulation agent is added on top."
+}

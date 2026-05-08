@@ -44,6 +44,12 @@ Run test T3 only and report.
 | T8  | Atomic-write pattern       | no        | every `fs.write` example uses `*.tmp` + rename      |
 | T9  | Prompt-architect linkage   | yes       | every `prompts/*.md` references prompt-architect via Factory or P4 alignment rule |
 | T10 | HITL gates non-skip rule   | yes       | every prompt mentioning a gate forbids auto-skip    |
+| T11 *(v0.2.0)* | v0.2.0 prompts exist | yes | `prompts/{10,11,12,13,14}*.md` all present |
+| T12 *(v0.2.0)* | v0.2.0 references exist | yes | `references/{data_flow_invariants, feedback_taxonomy, jury_consensus_protocol, context_confidence_protocol}.md` all present |
+| T13 *(v0.2.0)* | corrections schema parseable | yes | `sqlite3 :memory: < templates/feedback_learning/corrections_schema.sql.tmpl` succeeds (or DDL structure check passes) |
+| T14 *(v0.2.0)* | improvement_jury 5 axes | yes | jury prompt mentions all 5 fixed axes |
+| T15 *(v0.2.0)* | adaptive_audit n_auditors range | yes | range 3..10 documented in adaptive prompt |
+| T16 *(v0.2.0)* | v0.2.0 templates exist | yes | 21 v0.2.0 templates present under `templates/{data_flow_validation, feedback_learning, improvement_audit, adaptive_audit, context}/` |
 
 ## Test specifications
 

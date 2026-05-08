@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer-interview",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "purpose": "Interview script run by 01_interview_agent.md against the user. Produces a SystemSpec (system_generator.json#/definitions/SystemSpec). Conducted in Spanish prose; identifiers / enum values in English (D-13C bilingual rule).",
   "rendering_rules": {
     "one_question_at_a_time": true,
@@ -45,6 +45,11 @@
     {
       "id": "spec_seed",
       "label": "Datos para semilla del SPEC"
+    },
+    {
+      "id": "v0_2_0_extensions",
+      "label": "Extensiones v0.2.0 (contexto, feedback, auditoría adaptativa)",
+      "since": "0.2.0"
     }
   ],
   "questions": [
@@ -375,6 +380,71 @@
       ],
       "default_ref": "report_standard_by_domain",
       "writes_to": "report_standard"
+    },
+    {
+      "id": "Q31_context_setup_enabled",
+      "phase": "v0_2_0_extensions",
+      "since": "0.2.0",
+      "prompt": "Activar fase 1.5 (context_setup) — recogida calibrada de contexto del proyecto antes de la entrevista (guías, legislación, fuentes web, recomendaciones de upload). Recomendado.",
+      "type": "boolean",
+      "required": true,
+      "default_ref": "context_setup_enabled",
+      "writes_to": "context.context_setup_enabled"
+    },
+    {
+      "id": "Q32_playwright_available",
+      "phase": "v0_2_0_extensions",
+      "since": "0.2.0",
+      "depends_on": {"Q31_context_setup_enabled": true},
+      "prompt": "¿El runtime tiene mcp.playwright disponible? Si no → fallback a fetch() y, en última instancia, recomendaciones de upload.",
+      "type": "boolean",
+      "required": false,
+      "default_ref": "context.playwright_available",
+      "writes_to": "context.playwright_available"
+    },
+    {
+      "id": "Q33_feedback_db_format",
+      "phase": "v0_2_0_extensions",
+      "since": "0.2.0",
+      "prompt": "Formato del store de correcciones (fase 13.5). Recomendado: SQLite + MD mirror (FTS5 para búsqueda de recurrencia + visibilidad git-diff).",
+      "type": "single_or_default",
+      "options": [
+        {"value": "sqlite_plus_md_mirror", "label": "SQLite + MD mirror — recomendado", "fit_pct_default": 70},
+        {"value": "md_only", "label": "Solo Markdown (cero deps; búsqueda regex)", "fit_pct_default": 20},
+        {"value": "sqlite_only", "label": "Solo SQLite", "fit_pct_default": 10}
+      ],
+      "default_ref": "feedback.db_format",
+      "writes_to": "feedback.db_format"
+    },
+    {
+      "id": "Q34_learn_threshold",
+      "phase": "v0_2_0_extensions",
+      "since": "0.2.0",
+      "prompt": "Umbral de correcciones learn-Y antes de disparar improvement_proposal automático (fase 13.7). Por defecto: 15. Rango: 5-50.",
+      "type": "number_or_default",
+      "default_ref": "feedback.learn_threshold",
+      "validation": {"min": 5, "max": 50},
+      "writes_to": "feedback.learn_threshold"
+    },
+    {
+      "id": "Q35_adaptive_audit_enabled",
+      "phase": "v0_2_0_extensions",
+      "since": "0.2.0",
+      "prompt": "Activar adaptive_audit_meta (3-10 auditores adaptados por tarea/sesión, compuestos vía prompt-architect, con KPIs propios). Recomendado.",
+      "type": "boolean",
+      "required": true,
+      "default_ref": "adaptive_audit.enabled",
+      "writes_to": "adaptive_audit.enabled"
+    },
+    {
+      "id": "Q36_compatibility_v0_1_0",
+      "phase": "v0_2_0_extensions",
+      "since": "0.2.0",
+      "prompt": "¿Modo legacy v0.1.0? (omite fases 1.5 / 11.5 / 13.5 / 13.7 / adaptive_audit_meta). Solo si necesitas compatibilidad con un proyecto previo.",
+      "type": "boolean",
+      "required": false,
+      "default_ref": "compatibility.v0_1_0",
+      "writes_to": "compatibility.v0_1_0"
     }
   ],
   "post_interview_actions": [

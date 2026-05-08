@@ -1,0 +1,30 @@
+---
+persona: simulation_agent
+session_id: {{SESSION_ID}}
+ran_at: {{TEMPORAL_NOW}}
+scenarios_total: 5
+scenarios_passed: {{SCENARIOS_PASSED}}
+scenarios_failed: {{SCENARIOS_FAILED}}
+scenarios_partial: {{SCENARIOS_PARTIAL}}
+overall_confidence_pct: {{OVERALL_CONF_PCT}}
+---
+
+# Simulation Report · Session {{SESSION_ID}}
+
+> The 5 mandatory scenarios for phase 11.5. Each is a synthetic dry-run on the freshly-scaffolded child tree (no live execution).
+
+| scenario | id | result | evidence_path | confidence_pct | comments |
+|---|----|--------|---------------|---------------:|----------|
+| Resumability                  | S1 | {{S1_RESULT}} | {{S1_EVIDENCE}} | {{S1_CONF}} | {{S1_COMMENTS}} |
+| Library-doc fetch failure     | S2 | {{S2_RESULT}} | {{S2_EVIDENCE}} | {{S2_CONF}} | {{S2_COMMENTS}} |
+| Jury dissent preservation     | S3 | {{S3_RESULT}} | {{S3_EVIDENCE}} | {{S3_CONF}} | {{S3_COMMENTS}} |
+| Calibration drift detection   | S4 | {{S4_RESULT}} | {{S4_EVIDENCE}} | {{S4_CONF}} | {{S4_COMMENTS}} |
+| Atomic-write race integrity   | S5 | {{S5_RESULT}} | {{S5_EVIDENCE}} | {{S5_CONF}} | {{S5_COMMENTS}} |
+
+## Findings summary
+
+{{SCENARIO_FINDINGS_NARRATIVE}}
+
+## Recommendation to consolidator
+
+{{RECOMMENDATION_TO_CONSOLIDATOR}}

@@ -1,0 +1,29 @@
+# Corrections · {{SYSTEM_NAME}}
+
+> Auto-generated mirror of `feedback_learning/corrections.db`. **Do not edit by hand** — regenerated at every session close from the database. Source of truth = `corrections.db`.
+>
+> Last regenerated: `{{TEMPORAL_NOW}}`
+> Total rows: `{{ROWS_TOTAL}}` · Pending learn-Y: `{{ROWS_PENDING_LEARN_YES}}` · Threshold: `{{LEARN_THRESHOLD}}`
+
+| id | ts | session | sev | cat | rec | learn | status | feedback (≤160 chars) | proposed_action |
+|---:|----|--------|----|-----|-----|-------|--------|-----------------------|------------------|
+{{ROWS_RENDERED}}
+
+## Legend
+- **learn**: 0 = No, 1 = Yes, 2 = Skip (deferred).
+- **status**: `pending_review` (newly logged), `approved` (jury approved at phase 13.7), `rejected` (jury rejected), `incorporated` (merged into a future generator version).
+- **rec(urrence)**: `one_off`, `recurring` (≥2 sessions), `systemic` (≥4 sessions or ≥2 categories linked).
+
+## Category taxonomy
+
+| code | description |
+|---|---|
+| `calibration`        | uncalibrated assertion / P2 violation |
+| `portability`        | platform-specific leakage / P1 violation |
+| `memory`             | wrong/missing memory capture or noisy pollution |
+| `prompt_architect`   | composition rubric miss (mandatory floor, ordering, tag misuse) |
+| `HITL`               | gate framing / dissent surfacing / consent capture |
+| `EU_AI_Act`          | mapping gap / weak evidence / mis-classified risk |
+| `tooling`            | abstraction or fallback ladder gap |
+| `documentation`      | outdated / missing / contradictory docs |
+| `other`              | does not fit; flag for taxonomy refresh |

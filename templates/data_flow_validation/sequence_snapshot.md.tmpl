@@ -1,0 +1,29 @@
+# Sequence Snapshot · Session {{SESSION_ID}}
+
+Generated at: `{{TEMPORAL_NOW}}` · Generator version: `{{GENERATOR_VERSION}}`
+
+> File-level inventory + dependency edges parsed from each prompt's `<context>` / `<dependencies>` / `<delegation>` / `<orchestration>` blocks. Used by phase 11.5 validators as the read-only source of truth for the child tree.
+
+## File inventory (top-level + tracking + memory + audit + prompts + library_docs + reports)
+
+| path | size_bytes | sha256 | producing_phase |
+|---|---:|---|---|
+{{FILE_INVENTORY_RENDERED}}
+
+## Dependency graph (extracted from prompt XML blocks)
+
+```
+{{DEPENDENCY_EDGES_DOT_OR_TEXT}}
+```
+
+## State machine snapshot (`tracking/project.json#current_phase`)
+
+```json
+{{PROJECT_JSON_SUMMARY}}
+```
+
+## Notes
+
+- Snapshot computed **before** validator dispatch. Validators read this, never the live tree.
+- `producing_phase` is derived from `tracking/project.json#artifacts_emitted[]` (each entry's `phase` field).
+- `dependency_edges` are parsed regex-cheap; semantic correctness is the validators' job.

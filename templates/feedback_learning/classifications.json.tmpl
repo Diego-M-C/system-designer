@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.2.0",
+  "snapshot_at": "{{TEMPORAL_NOW}}",
+  "session_id": "{{SESSION_ID}}",
+  "taxonomy": {
+    "severity": ["info", "warn", "error", "critical"],
+    "category": [
+      "calibration",
+      "portability",
+      "memory",
+      "prompt_architect",
+      "HITL",
+      "EU_AI_Act",
+      "tooling",
+      "documentation",
+      "other"
+    ],
+    "recurrence": ["one_off", "recurring", "systemic"],
+    "learn_in_system": {
+      "0": "N — record only, never feeds memory or proposals",
+      "1": "Y — promote to improvement queue at threshold",
+      "2": "SKIP — defer; revisit next session"
+    },
+    "status": ["pending_review", "approved", "rejected", "incorporated"]
+  },
+  "thresholds": {
+    "learn_threshold": {{LEARN_THRESHOLD}},
+    "min_classification_confidence_pct": 50
+  },
+  "notes": "Confidence percentages on classification and proposed_action are mandatory (P2). Lifecycle is via status field; rows are never deleted."
+}

@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "system-designer",
-  "version": "0.1.0",
-  "schema_version": 1,
-  "release_date": "2026-04-29",
-  "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, and on-demand orchestration. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
+  "version": "0.2.0",
+  "schema_version": 2,
+  "release_date": "2026-05-08",
+  "description": "Portable, LLM-agnostic meta-generator that scaffolds SDD-methodology AI systems with EU AI Act compliance, HITL governance, living documentation, on-demand orchestration, and (v0.2.0) calibrated context curation, structural-consistency validation, lifelong feedback learning, fixed-5-axis improvement audit, and per-task / per-session adaptive audit meta-validator. Every prompt emitted is composed via the co-located prompt-architect skill (P4 dependency).",
 
   "principles": [
     {
@@ -70,7 +70,22 @@
           "portable_invocation.md",
           "ai_error_catalog.md",
           "eu_ai_act_mapping.md",
-          "scientific_report_format.md"
+          "scientific_report_format.md",
+          "data_flow_invariants.md",
+          "feedback_taxonomy.md",
+          "jury_consensus_protocol.md",
+          "context_confidence_protocol.md"
+        ]
+      },
+      "v02_prompts": {
+        "path": "./prompts/",
+        "required_since": "0.2.0",
+        "files": [
+          "10_data_flow_validator.md",
+          "11_feedback_learning_loop.md",
+          "12_improvement_jury.md",
+          "13_context_curator.md",
+          "14_adaptive_audit_meta.md"
         ]
       },
       "templates": {
@@ -91,13 +106,23 @@
         "purpose": "Library docs fetching primary path",
         "fallback": "fetch() against URLs in templates/library_docs_manifest.tmpl"
       },
+      "playwright_mcp": {
+        "since": "0.2.0",
+        "purpose": "Phase 1.5 context_setup fetches (recommended)",
+        "fallback": "fetch() with sanitised URLs; on full fail emit download_recommendations.md"
+      },
       "xlsx_write": {
         "purpose": "Excel emission for audit_sheet",
         "fallback": "CSV + MD sidecar with same data"
       },
       "parallel_subagent_spawn": {
-        "purpose": "3 parallel auditors",
+        "purpose": "3 parallel auditors (phase 9, 10, 11.5, 13.7, adaptive_audit_meta)",
         "fallback": "sequential execution; documented in audit/self_audit.md#parallelism_fallbacks"
+      },
+      "sqlite_fts5": {
+        "since": "0.2.0",
+        "purpose": "Phase 13.5 corrections.db FTS5 similarity search",
+        "fallback": "regex search across corrections.md mirror"
       }
     },
     "reference": {
@@ -123,18 +148,36 @@
 
   "phases": [
     {"id": 1, "name": "read_context", "blocking": false, "outputs": ["scratchpad/context_loaded.json"]},
+    {"id": 1.5, "name": "context_setup", "since": "0.2.0", "blocking": false, "owner_prompt": "prompts/13_context_curator.md", "outputs": ["target_path/context/context_manifest.json", "target_path/context/context_sources/", "target_path/context/consult_websites.md", "target_path/context/download_recommendations.md", "target_path/context/curation_log.jsonl"], "skip_if": "SystemSpec.compatibility.v0_1_0 == true"},
     {"id": 2, "name": "interview", "blocking": false, "outputs": ["tracking/project.json#interview_answers"], "interruptible": true, "resumable": true},
     {"id": 3, "name": "planning_brief", "blocking": false, "outputs": ["audit/planning_brief_session_0.md", "audit/planning_brief_session_0.json"]},
     {"id": 4, "name": "GATE_1", "blocking": true, "type": "hitl_gate", "input_required": "user_approval"},
     {"id": 5, "name": "scaffold", "blocking": false, "outputs": ["target_path/<all mandatory artifacts>"]},
     {"id": 6, "name": "compose_prompts", "blocking": false, "outputs": ["target_path/<all child prompts>", "audit/self_audit.md#per_prompt_rubric"]},
     {"id": 7, "name": "fetch_library_docs", "blocking": false, "outputs": ["target_path/library_docs/<lib>/<version>/"]},
-    {"id": 8, "name": "seed_tracking", "blocking": false, "outputs": ["target_path/tracking/", "target_path/memory/", "target_path/tracking/errors_catalog.json"]},
+    {"id": 8, "name": "seed_tracking", "blocking": false, "outputs": ["target_path/tracking/", "target_path/memory/", "target_path/tracking/errors_catalog.json", "target_path/feedback_learning/corrections.db"]},
     {"id": 9, "name": "emit_audit_sheet", "blocking": false, "outputs": ["target_path/audit/audit_sheet.xlsx", "target_path/audit/eu_ai_act_mapping.md"]},
     {"id": 10, "name": "self_audit", "blocking": false, "outputs": ["target_path/audit/self_audit.md", "target_path/audit/evaluation_session_0.json"]},
     {"id": 11, "name": "reflection", "blocking": false, "outputs": ["target_path/audit/reflection_session_0.md"]},
+    {"id": 11.5, "name": "structural_consistency", "since": "0.2.0", "blocking": false, "owner_prompt": "prompts/10_data_flow_validator.md", "outputs": ["target_path/data_flow_validation/sequence_snapshots/", "target_path/data_flow_validation/structural_consistency/"], "skip_if": "SystemSpec.compatibility.v0_1_0 == true"},
     {"id": 12, "name": "GATE_2", "blocking": true, "type": "hitl_gate", "input_required": "user_approval"},
-    {"id": 13, "name": "handoff", "blocking": false, "outputs": ["target_path/HANDOFF.md"], "terminal": true}
+    {"id": 13, "name": "handoff", "blocking": false, "outputs": ["target_path/HANDOFF.md"]},
+    {"id": 13.5, "name": "feedback_session", "since": "0.2.0", "blocking": false, "owner_prompt": "prompts/11_feedback_learning_loop.md", "outputs": ["target_path/feedback_learning/corrections.db (rows)", "target_path/feedback_learning/corrections.md (mirror)", "target_path/feedback_learning/pending_review.md", "target_path/feedback_learning/improvement_proposal.md (when triggered)"], "skip_if": "SystemSpec.compatibility.v0_1_0 == true"},
+    {"id": 13.7, "name": "improvement_audit", "since": "0.2.0", "blocking": true, "type": "hitl_gate", "owner_prompt": "prompts/12_improvement_jury.md", "trigger": "feedback_session.proposal_emitted == true", "outputs": ["target_path/improvement_audit/auditor_*.md", "target_path/improvement_audit/consensus_report.md"], "skip_if": "SystemSpec.compatibility.v0_1_0 == true"},
+    {"id": 14, "name": "STOP", "terminal": true}
+  ],
+
+  "cross_phase_hooks": [
+    {
+      "id": "adaptive_audit_meta",
+      "since": "0.2.0",
+      "owner_prompt": "prompts/14_adaptive_audit_meta.md",
+      "fires_on": ["task_end", "session_end"],
+      "applies_to": ["generator", "child_inherited"],
+      "computes": "n_auditors in [3, 10] from importance score",
+      "outputs": ["target_path/adaptive_audit/<scope_kind>_<scope_id>_session_<sid>/{manifest.json, auditor_*.md, consensus.md}"],
+      "skip_if": "SystemSpec.compatibility.v0_1_0 == true"
+    }
   ],
 
   "hitl_gates": [
@@ -173,7 +216,7 @@
       {"path": "tracking/kpis.json", "template": "templates/tracking/kpis.json.tmpl", "living": true},
       {"path": "tracking/decisions.md", "template": "templates/tracking/decisions.md.tmpl", "living": true},
       {"path": "tracking/errors.md", "template": "templates/tracking/errors.md.tmpl", "living": true},
-      {"path": "tracking/errors_catalog.json", "template": "templates/tracking/errors_catalog.json.tmpl", "living": true, "preloaded_count": 25, "auto_extending": true},
+      {"path": "tracking/errors_catalog.json", "template": "templates/tracking/errors_catalog.json.tmpl", "living": true, "preloaded_count": 30, "auto_extending": true},
 
       {"path": "tracking/sessions/0001_bootstrap/session.json", "template": "templates/tracking/session.json.tmpl"},
       {"path": "tracking/sessions/0001_bootstrap/session.md", "template": "templates/tracking/session.md.tmpl"},
@@ -204,7 +247,17 @@
       {"path": "docs/reports/imrad.md.tmpl", "template": "templates/reports/imrad.md.tmpl"},
       {"path": "docs/reports/tripod_ai.md.tmpl", "template": "templates/reports/tripod_ai.md.tmpl"},
 
-      {"path": "library_docs/MANIFEST.md", "template": "templates/library_docs/MANIFEST.md.tmpl"}
+      {"path": "library_docs/MANIFEST.md", "template": "templates/library_docs/MANIFEST.md.tmpl"},
+
+      {"path": "context/context_manifest.json", "template": "templates/context/context_manifest.json.tmpl", "since": "0.2.0", "living": true},
+      {"path": "context/consult_websites.md", "template": "templates/context/consult_websites.md.tmpl", "since": "0.2.0", "living": true},
+      {"path": "context/download_recommendations.md", "template": "templates/context/download_recommendations.md.tmpl", "since": "0.2.0", "living": true},
+      {"path": "context/curation_log.jsonl", "template": "templates/context/curation_log.jsonl.tmpl", "since": "0.2.0", "append_only": true},
+
+      {"path": "feedback_learning/corrections.db", "template": "templates/feedback_learning/corrections_schema.sql.tmpl", "since": "0.2.0", "kind": "sqlite", "living": true},
+      {"path": "feedback_learning/corrections.md", "template": "templates/feedback_learning/corrections.md.tmpl", "since": "0.2.0", "regenerated_from": "feedback_learning/corrections.db"},
+      {"path": "feedback_learning/classifications.json", "template": "templates/feedback_learning/classifications.json.tmpl", "since": "0.2.0"},
+      {"path": "feedback_learning/pending_review.md", "template": "templates/feedback_learning/pending_review.md.tmpl", "since": "0.2.0", "regenerated_from": "feedback_learning/corrections.db"}
     ],
     "on_demand": [
       {"id": "child_orchestrator", "trigger": "interview.on_demand.orchestrator == true", "outputs": ["CLAUDE.md (autonomous orchestrator content)", ".claude/settings.json"]},

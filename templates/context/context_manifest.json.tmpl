@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.2.0",
+  "phase": "1.5_context_setup",
+  "session_id": "{{SESSION_ID}}",
+  "ran_at": "{{TEMPORAL_NOW}}",
+  "mode": "{{MODE}}",
+  "domain": "{{DOMAIN}}",
+  "eu_ai_act_risk": "{{EU_RISK}}",
+  "sources_count": {{SOURCES_COUNT}},
+  "mean_confidence_pct": {{MEAN_CONFIDENCE_PCT}},
+  "consult_websites_count": {{CONSULT_WEBSITES_COUNT}},
+  "pending_user_uploads": {{PENDING_USER_UPLOADS}},
+  "sources": [
+    {{SOURCES_INDEX_ROWS}}
+  ],
+  "consult_websites_path": "context/consult_websites.md",
+  "download_recommendations_path": "context/download_recommendations.md",
+  "curation_log_path": "context/curation_log.jsonl",
+  "notes": "Library docs are out of scope here (phase 7 owns library_docs/). Internet opinions default to consult_websites_only=true. Pruning bounded by confidence ≤50% AND tested-unhelpful flag."
+}

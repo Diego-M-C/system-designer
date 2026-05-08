@@ -1,0 +1,33 @@
+---
+validator_id: {{VALIDATOR_ID}}
+persona: {{PERSONA_SLUG}}
+persona_brief: "{{PERSONA_BRIEF}}"
+session_id: {{SESSION_ID}}
+ran_at: {{TEMPORAL_NOW}}
+overall_status: {{OVERALL_STATUS}}            # pass | fail | partial
+overall_confidence_pct: {{OVERALL_CONF_PCT}}
+findings_count: {{FINDINGS_COUNT}}
+self_kpis:
+  findings_total: {{FINDINGS_COUNT}}
+  mean_confidence_pct: {{MEAN_CONF_PCT}}
+  evidence_citation_rate_pct: {{EVIDENCE_CITATION_RATE_PCT}}
+  invariants_audited: {{INVARIANTS_AUDITED}}
+---
+
+# Validator {{VALIDATOR_ID}} · {{PERSONA_SLUG}}
+
+> Composed via prompt-architect (Factory). Read-only over the child tree. Outputs are advisory; the consolidator applies consensus rules.
+
+## Findings
+
+| finding_id | invariant | status | evidence_path:line | confidence_pct | comments |
+|---:|---|---|---|---:|---|
+{{FINDINGS_RENDERED}}
+
+## Notes
+
+{{FREE_TEXT_NOTES}}
+
+---
+
+> See `consolidated_report.md` for cross-validator agreement, dissents, and `consistency_score`.

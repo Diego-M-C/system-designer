@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "generator_version": "0.2.0",
+  "phase": "adaptive_audit_meta",
+  "scope_kind": "{{SCOPE_KIND}}",
+  "scope_id": "{{SCOPE_ID}}",
+  "session_id": "{{SESSION_ID}}",
+  "ran_at": "{{TEMPORAL_NOW}}",
+  "importance_score": {{IMPORTANCE_SCORE}},
+  "n_auditors": {{N_AUDITORS}},
+  "formula_inputs": {
+    "eu_risk": "{{EU_RISK}}",
+    "touched_modules": {{TOUCHED_MODULES_JSON_ARRAY}},
+    "artifacts_in_scope_count": {{ARTIFACTS_IN_SCOPE_COUNT}}
+  },
+  "parallelism_mode": "{{PARALLELISM_MODE}}",
+  "chosen_personas": [
+    {{CHOSEN_PERSONAS_JSON_ARRAY_ROWS}}
+  ],
+  "deviation_rationale": "{{DEVIATION_RATIONALE_OR_EMPTY}}",
+  "outputs": {
+    "auditor_files": {{AUDITOR_FILE_PATHS_JSON_ARRAY}},
+    "consensus_report": "{{CONSENSUS_PATH}}"
+  },
+  "notes": "Persona slugs are tailored to the scope (not picked from a fixed roster). Generic personas trigger re-composition per <reflection>."
+}

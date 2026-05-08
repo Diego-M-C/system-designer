@@ -1,0 +1,69 @@
+-- system-designer · feedback_learning corrections schema (v0.2.0)
+-- Apply once at first invocation of phase 13.5; idempotent (IF NOT EXISTS guards).
+-- Authoritative store; templates/feedback_learning/corrections.md.tmpl renders the human-readable mirror.
+
+PRAGMA foreign_keys = ON;
+PRAGMA journal_mode = WAL;
+
+CREATE TABLE IF NOT EXISTS corrections (
+  id                              INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_id                      TEXT NOT NULL,
+  ts                              TEXT NOT NULL,                                       -- ISO8601 UTC
+  human_feedback                  TEXT NOT NULL,
+  source_artifact                 TEXT,                                                -- file path or '-' for global feedback
+  severity                        TEXT NOT NULL CHECK(severity IN
+                                    ('info','warn','error','critical')),
+  category                        TEXT NOT NULL CHECK(category IN
+                                    ('calibration','portability','memory','prompt_architect',
+                                     'HITL','EU_AI_Act','tooling','documentation','other')),
+  recurrence                      TEXT NOT NULL CHECK(recurrence IN
+                                    ('one_off','recurring','systemic')),
+  classification_confidence_pct   INTEGER NOT NULL CHECK(classification_confidence_pct BETWEEN 0 AND 100),
+  learn_in_system                 INTEGER NOT NULL CHECK(learn_in_system IN (0,1,2)),  -- 0=N, 1=Y, 2=SKIP
+  status                          TEXT NOT NULL CHECK(status IN
+                                    ('pending_review','approved','rejected','incorporated')),
+  proposed_action                 TEXT,
+  proposed_action_confidence_pct  INTEGER CHECK(proposed_action_confidence_pct IS NULL
+                                                OR proposed_action_confidence_pct BETWEEN 0 AND 100),
+  incorporated_at                 TEXT,
+  incorporated_in_version         TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_corrections_status   ON corrections(status, learn_in_system);
+CREATE INDEX IF NOT EXISTS idx_corrections_session  ON corrections(session_id);
+CREATE INDEX IF NOT EXISTS idx_corrections_category ON corrections(category, severity);
+CREATE INDEX IF NOT EXISTS idx_corrections_ts       ON corrections(ts);
+
+-- Full-text similarity search (used to compute recurrence).
+CREATE VIRTUAL TABLE IF NOT EXISTS corrections_fts USING fts5(
+  human_feedback,
+  source_artifact,
+  content='corrections',
+  content_rowid='id'
+);
+
+-- FTS5 sync triggers.
+CREATE TRIGGER IF NOT EXISTS corrections_ai AFTER INSERT ON corrections BEGIN
+  INSERT INTO corrections_fts(rowid, human_feedback, source_artifact)
+    VALUES (new.id, new.human_feedback, new.source_artifact);
+END;
+CREATE TRIGGER IF NOT EXISTS corrections_ad AFTER DELETE ON corrections BEGIN
+  INSERT INTO corrections_fts(corrections_fts, rowid, human_feedback, source_artifact)
+    VALUES ('delete', old.id, old.human_feedback, old.source_artifact);
+END;
+CREATE TRIGGER IF NOT EXISTS corrections_au AFTER UPDATE ON corrections BEGIN
+  INSERT INTO corrections_fts(corrections_fts, rowid, human_feedback, source_artifact)
+    VALUES ('delete', old.id, old.human_feedback, old.source_artifact);
+  INSERT INTO corrections_fts(rowid, human_feedback, source_artifact)
+    VALUES (new.id, new.human_feedback, new.source_artifact);
+END;
+
+-- Optional: improvements queue rendered into proposals.
+CREATE VIEW IF NOT EXISTS v_pending_improvements AS
+  SELECT id, session_id, ts, severity, category, recurrence,
+         human_feedback, proposed_action,
+         classification_confidence_pct, proposed_action_confidence_pct
+  FROM corrections
+  WHERE learn_in_system = 1
+    AND status = 'pending_review'
+  ORDER BY ts ASC;

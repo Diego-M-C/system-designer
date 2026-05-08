@@ -1,0 +1,17 @@
+# Pending Review · Improvement Queue · {{SYSTEM_NAME}}
+
+> Filter view of `corrections.db`: rows where `learn_in_system = 1 (Y)` AND `status = 'pending_review'`. Sorted oldest → newest.
+>
+> Last regenerated: `{{TEMPORAL_NOW}}`
+> Pending count: `{{PENDING_COUNT}}` · Threshold: `{{LEARN_THRESHOLD}}` · Status: `{{THRESHOLD_STATUS}}`
+
+{{TRIGGER_NOTICE}}
+
+| id | ts | sev | cat | rec | feedback (≤160 chars) | proposed_action | conf% |
+|---:|----|----|-----|-----|------------------------|------------------|------:|
+{{ROWS_RENDERED}}
+
+## Threshold status legend
+- `BELOW`: pending_count < `learn_threshold`. Improvements accumulate; no action.
+- `AT_THRESHOLD`: pending_count = `learn_threshold`. Next correction (or explicit `TRIGGER`) will fire `improvement_proposal.md` and signal phase 13.7.
+- `ABOVE`: pending_count > `learn_threshold`. Proposal already pending; phase 13.7 should run.

@@ -1,0 +1,67 @@
+# Consolidated Validation Report · Session {{SESSION_ID}}
+
+Generated at: `{{TEMPORAL_NOW}}` · Phase: `11.5_structural_consistency`
+
+| Field | Value |
+|---|---|
+| n_validators | `{{N_VALIDATORS}}` (+1 mandatory simulation agent) |
+| Parallelism mode | `{{PARALLELISM_MODE}}` |
+| Snapshot path | `{{SNAPSHOT_PATH}}` (sha256 `{{SNAPSHOT_SHA256}}`) |
+| Consistency score | **`{{CONSISTENCY_SCORE}}/100`** |
+| HITL escalation required | `{{HITL_REQUIRED}}` |
+
+## Agreement matrix (invariant × validator)
+
+> Cells: `pass` | `fail` | `partial` | `na`. Rows order: by invariant; columns order: by validator_id (1..n). Last column is `simulation_agent`.
+
+| invariant | {{VALIDATOR_HEADER_CELLS}} | sim |
+|---|{{VALIDATOR_HEADER_DIVIDERS}}|---|
+{{AGREEMENT_MATRIX_ROWS}}
+
+## Dissents
+
+> Rows where ≥2 validators disagree on the same invariant (pass vs fail; partial half-vote).
+
+| invariant | dissenters | confidence_spread | recommended_owner |
+|---|---|---:|---|
+{{DISSENTS_ROWS}}
+
+## Escalations to Gate #2
+
+| row_id | reason | confidence_pct | recommended_action |
+|---|---|---:|---|
+{{ESCALATIONS_ROWS}}
+
+## Simulation summary
+
+| scenario | result | confidence_pct |
+|---|---|---:|
+| S1 · Resumability                | {{S1_RESULT}} | {{S1_CONF}} |
+| S2 · Library-doc fetch failure   | {{S2_RESULT}} | {{S2_CONF}} |
+| S3 · Jury dissent preservation   | {{S3_RESULT}} | {{S3_CONF}} |
+| S4 · Calibration drift detection | {{S4_RESULT}} | {{S4_CONF}} |
+| S5 · Atomic-write race integrity | {{S5_RESULT}} | {{S5_CONF}} |
+
+## Consistency score derivation
+
+```
+score = 100
+  - 5 × dissents_count                  ({{DISSENTS_COUNT}})
+  - 3 × low_confidence_findings (<70%)  ({{LOW_CONF_COUNT}})
+  - 2 × partial_status_count            ({{PARTIAL_COUNT}})
+  - 10 × any_failed_simulation_scenario ({{FAILED_SIM_COUNT}})
+  clamped at [0, 100]
+= {{CONSISTENCY_SCORE}}
+```
+
+## Reflection (≤200 words)
+
+{{REFLECTION_BODY}}
+
+## Fallbacks engaged
+
+{{FALLBACKS_LIST}}
+
+---
+
+> Updated `tracking/project.json#data_flow_validation` atomically. Next phase: `12_GATE_2_HITL`.

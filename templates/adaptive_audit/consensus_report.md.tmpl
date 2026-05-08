@@ -1,0 +1,69 @@
+# Adaptive Audit · Consensus Report · {{SCOPE_KIND}} `{{SCOPE_ID}}`
+
+Generated at: `{{TEMPORAL_NOW}}` · Session: `{{SESSION_ID}}` · Phase: `adaptive_audit_meta`
+
+| Field | Value |
+|---|---|
+| Importance score | `{{IMPORTANCE_SCORE}}/100` |
+| n_auditors | `{{N_AUDITORS}}` |
+| Mode | `{{PARALLELISM_MODE}}` |
+| Errors blocking | `{{ERRORS_BLOCKING}}` |
+| Warnings | `{{WARNINGS}}` |
+| Improvements queued (HITL at 13.5) | `{{IMPROVEMENTS_QUEUED}}` |
+| Improvements dissent now | `{{IMPROVEMENTS_DISSENT_NOW}}` |
+| HITL surface fired | `{{HITL_SURFACED}}` |
+
+## Persona panel
+
+| auditor_id | persona_slug | persona_brief (≤120 chars) |
+|---:|---|---|
+{{PANEL_ROWS}}
+
+## Errors (consolidated)
+
+> Rule E1: any auditor with conf ≥ 70 → BLOCKER. Rule E2: 2+ auditors with conf 50-69 → WARNING. Else → WEAK (logged, not actioned).
+
+| invariant | per-auditor (auditor:conf) | status | max_conf_pct | recommended_owner |
+|---|---|---|---:|---|
+{{ERRORS_CONSOLIDATED_ROWS}}
+
+## Improvements (consolidated)
+
+> Rule I1: weighted-mean conf ≥70 AND spread ≤30 → QUEUE_FOR_HITL (phase 13.5). Rule I2: ≥70 mean AND spread >30 → DISSENT_HITL_NOW. Rule I3: <70 mean → DEFER.
+
+| improvement_idea | per-auditor (auditor:conf) | status | weighted_mean_conf | spread |
+|---|---|---|---:|---:|
+{{IMPROVEMENTS_CONSOLIDATED_ROWS}}
+
+## Routing
+
+| corrections.db row_id | improvement_id | inserted_status | learn_in_system_initial |
+|---:|---|---|---|
+{{ROUTING_ROWS}}
+
+## Per-auditor KPI roll-up
+
+| auditor_id | persona | findings_total | mean_conf% | evidence_rate% | err/imp ratio |
+|---:|---|---:|---:|---:|---:|
+{{KPI_ROLLUP_ROWS}}
+
+## Reflection (≤200 words)
+
+- Persona-fit verdict per auditor: {{PERSONA_FIT_VERDICTS}}
+- Widest confidence spread: {{WIDEST_SPREAD}}
+- Self-KPI flag: {{SELF_KPI_FLAGS}}
+- Recommendation to master orchestrator: {{RECOMMENDATION}}
+
+## Fallbacks engaged
+
+{{FALLBACKS_LIST}}
+
+## Conversation surface (only if HITL fired)
+
+```
+{{HITL_BLOCK_OR_NONE}}
+```
+
+---
+
+> Updated `tracking/project.json#adaptive_audit` atomically. Improvements queued for phase 13.5 are now `pending_review` rows in `feedback_learning/corrections.db`.

@@ -1,0 +1,21 @@
+# Download Recommendations · {{SYSTEM_NAME}}
+
+> Sources the AI cannot fetch automatically (paywall, login wall, locally stored). Please upload these files to the suggested paths so the corpus is complete.
+>
+> Last updated: `{{TEMPORAL_NOW}}` · Pending: `{{PENDING_TOTAL}}`
+
+| # | description | candidate_url_or_source | recommended_save_path | why_needed | confidence_pct_when_uploaded_default |
+|--:|---|---|---|---|---:|
+{{ROWS_RENDERED}}
+
+## How to upload
+
+1. Save each file to the `recommended_save_path` exactly as listed.
+2. After upload, re-run phase 1.5 (`context_setup`) in `living_update` mode — the curator will detect the new files, sha256 them, and write per-file manifests.
+3. Confirm in the next session-close summary that `pending_user_uploads` has decreased.
+
+## Notes
+
+- Default `confidence_pct_when_uploaded_default = 80` for `user_uploaded_doc`. Override during the post-upload HITL.
+- The AI will not fetch on its own; this list is the only path for inaccessible sources.
+- If a recommended source is no longer needed, mark it as `[OBSOLETE]` in the description and re-run phase 1.5; the row will be moved to `context/archive/`.

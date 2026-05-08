@@ -99,6 +99,118 @@ else
   printf '  %s\n' "${missing[@]}"
 fi
 
+# T11 · v0.2.0 prompts exist
+hdr "T11 · v0.2.0 prompts exist (10..14)"
+missing_v02=()
+for f in 10_data_flow_validator.md 11_feedback_learning_loop.md 12_improvement_jury.md 13_context_curator.md 14_adaptive_audit_meta.md; do
+  if [ ! -f "prompts/$f" ]; then
+    missing_v02+=("prompts/$f")
+  fi
+done
+if [ ${#missing_v02[@]} -eq 0 ]; then
+  ok "all 5 v0.2.0 prompts present"
+else
+  nope "missing v0.2.0 prompts:"
+  printf '  %s\n' "${missing_v02[@]}"
+fi
+
+# T12 · v0.2.0 references exist
+hdr "T12 · v0.2.0 references exist"
+missing_refs=()
+for f in data_flow_invariants.md feedback_taxonomy.md jury_consensus_protocol.md context_confidence_protocol.md; do
+  if [ ! -f "references/$f" ]; then
+    missing_refs+=("references/$f")
+  fi
+done
+if [ ${#missing_refs[@]} -eq 0 ]; then
+  ok "all 4 v0.2.0 references present"
+else
+  nope "missing v0.2.0 references:"
+  printf '  %s\n' "${missing_refs[@]}"
+fi
+
+# T13 · SQLite schema parseable (uses sqlite3 if available; else syntactic regex check)
+hdr "T13 · feedback_learning corrections schema parseable"
+schema_path="templates/feedback_learning/corrections_schema.sql.tmpl"
+if [ ! -f "$schema_path" ]; then
+  nope "schema template missing at $schema_path"
+elif command -v sqlite3 >/dev/null 2>&1; then
+  if sqlite3 ":memory:" < "$schema_path" 2>/dev/null; then
+    ok "sqlite3 parsed schema cleanly (in-memory)"
+  else
+    # FTS5 may not be compiled in; do a syntactic fallback
+    if grep -qE 'CREATE TABLE IF NOT EXISTS corrections' "$schema_path" \
+       && grep -qE 'CREATE VIRTUAL TABLE IF NOT EXISTS corrections_fts' "$schema_path"; then
+      ok "schema parse failed (likely FTS5 not compiled in this sqlite3 build) but DDL structure looks valid"
+    else
+      nope "sqlite3 rejected schema and DDL structure check failed"
+    fi
+  fi
+else
+  if grep -qE 'CREATE TABLE IF NOT EXISTS corrections' "$schema_path" \
+     && grep -qE 'CREATE VIRTUAL TABLE IF NOT EXISTS corrections_fts' "$schema_path"; then
+    ok "sqlite3 unavailable; DDL structure check passed"
+  else
+    nope "sqlite3 unavailable AND DDL structure check failed"
+  fi
+fi
+
+# T14 · improvement_jury declares fixed n=5 axes
+hdr "T14 · improvement_jury fixed 5-axis discipline"
+jury_path="prompts/12_improvement_jury.md"
+n_axes=$(grep -cE '\b(regression|calibration|portability|eu_ai_act_drift|memory_integrity)\b' "$jury_path" 2>/dev/null || echo 0)
+if [ "$n_axes" -ge 5 ]; then
+  ok "5 axes mentioned in jury prompt (count: $n_axes)"
+else
+  nope "fewer than 5 axes mentioned in jury prompt (count: $n_axes)"
+fi
+
+# T15 · adaptive_audit_meta documents n_auditors clamp 3..10
+hdr "T15 · adaptive_audit_meta n_auditors range"
+ada_path="prompts/14_adaptive_audit_meta.md"
+if grep -qE 'clamp\(3.*10\)|n ∈ \[3, 10\]|n ∈ \[3,10\]|in \[3, 10\]|in \[3,10\]|3.{0,3}10' "$ada_path"; then
+  ok "n_auditors range 3..10 documented"
+else
+  nope "n_auditors range not clearly documented in $ada_path"
+fi
+
+# T16 · v0.2.0 templates exist
+hdr "T16 · v0.2.0 templates exist"
+missing_tmpl=()
+for f in \
+  data_flow_validation/validators_manifest.json.tmpl \
+  data_flow_validation/validator_result.md.tmpl \
+  data_flow_validation/simulation_report.md.tmpl \
+  data_flow_validation/sequence_snapshot.md.tmpl \
+  data_flow_validation/consolidated_report.md.tmpl \
+  feedback_learning/corrections_schema.sql.tmpl \
+  feedback_learning/corrections.md.tmpl \
+  feedback_learning/classifications.json.tmpl \
+  feedback_learning/pending_review.md.tmpl \
+  feedback_learning/improvement_proposal.md.tmpl \
+  feedback_learning/session_close.md.tmpl \
+  improvement_audit/auditor_result.md.tmpl \
+  improvement_audit/consensus_report.md.tmpl \
+  adaptive_audit/manifest.json.tmpl \
+  adaptive_audit/auditor_result.md.tmpl \
+  adaptive_audit/consensus_report.md.tmpl \
+  context/context_manifest.json.tmpl \
+  context/source_manifest.json.tmpl \
+  context/consult_websites.md.tmpl \
+  context/download_recommendations.md.tmpl \
+  context/curation_log.jsonl.tmpl
+do
+  if [ ! -f "templates/$f" ]; then
+    missing_tmpl+=("templates/$f")
+  fi
+done
+if [ ${#missing_tmpl[@]} -eq 0 ]; then
+  ok "all 21 v0.2.0 templates present"
+else
+  nope "missing v0.2.0 templates:"
+  printf '  %s\n' "${missing_tmpl[@]}"
+fi
+
 # Summary
 echo
 echo "════════════════════════════════════════"

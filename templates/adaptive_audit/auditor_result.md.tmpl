@@ -1,0 +1,42 @@
+---
+auditor_id: {{AUDITOR_ID}}                  # 1..n_auditors
+persona_slug: {{PERSONA_SLUG}}
+persona_brief: "{{PERSONA_BRIEF}}"
+session_id: {{SESSION_ID}}
+ran_at: {{TEMPORAL_NOW}}
+scope_kind: {{SCOPE_KIND}}                  # task | session
+scope_id: {{SCOPE_ID}}
+overall_confidence_pct: {{OVERALL_CONF_PCT}}
+findings_count: {{FINDINGS_COUNT}}
+errors_count: {{ERRORS_COUNT}}
+improvements_count: {{IMPROVEMENTS_COUNT}}
+self_kpis:
+  findings_total: {{FINDINGS_COUNT}}
+  mean_confidence_pct: {{MEAN_CONF_PCT}}
+  evidence_citation_rate_pct: {{EVIDENCE_CITATION_RATE_PCT}}
+  error_to_improvement_ratio: {{ERROR_TO_IMPROVEMENT_RATIO}}
+---
+
+# Adaptive Auditor {{AUDITOR_ID}} · {{PERSONA_SLUG}}
+
+> Composed fresh via prompt-architect for this specific scope. Persona-fit is mandatory; generic personas are flagged at consolidation.
+
+## Persona brief
+
+{{PERSONA_BRIEF}}
+
+## Findings
+
+> `type` ∈ {error, improvement}. `severity` is its severity inside its type domain.
+
+| finding_id | type | invariant_or_idea | severity | confidence_pct | evidence_path:line | comments |
+|---:|---|---|---|---:|---|---|
+{{FINDINGS_RENDERED}}
+
+## Notes for consolidator
+
+{{NOTES_FOR_CONSOLIDATOR}}
+
+---
+
+> Aggregation in `consensus.md`.

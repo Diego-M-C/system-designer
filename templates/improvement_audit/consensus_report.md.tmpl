@@ -1,0 +1,65 @@
+# Improvement Jury · Consensus Report · {{PROPOSAL_ID}}
+
+Generated at: `{{TEMPORAL_NOW}}` · Session: `{{SESSION_ID}}` · Phase: `13.7_improvement_audit`
+Mode: `{{PARALLELISM_MODE}}` · Auditors: 5 (regression · calibration · portability · eu_ai_act_drift · memory_integrity)
+
+## Per-row verdict matrix
+
+> Cells: `apr` (approve) · `awc` (approve with caveat) · `rej` (reject) · `dis` (dissent) · `n/a` (not applicable). Confidence in parentheses.
+
+| row_id | reg | cal | por | eu  | mem | consensus | conf% |
+|---|---|---|---|---|---|---|---:|
+{{MATRIX_ROWS_RENDERED}}
+
+## Batch verdict
+
+**`{{BATCH_VERDICT}}`** (APPROVED if ≥80% approved AND 0 rejected; else HITL_REQUIRED)
+
+| count | rows |
+|---|---|
+| approved | `{{APPROVED_COUNT}}` |
+| rejected | `{{REJECTED_COUNT}}` |
+| dissent  | `{{DISSENT_COUNT}}` |
+| ambiguous| `{{AMBIGUOUS_COUNT}}` |
+
+## Dissent / rejection / ambiguity detail
+
+| row_id | status | dissenting_axes | confidence_spread | recommended_owner |
+|---|---|---|---:|---|
+{{DISSENT_DETAIL_RENDERED}}
+
+## HITL gate (post-consensus)
+
+> The orchestrator surfaces this gate to the user. No source change merges without an explicit human reply.
+
+```
+=== HITL GATE · Improvement Audit ===
+Session: {{SESSION_ID}}
+Proposal: {{PROPOSAL_ID}}
+Auditors run: 5 (regression, calibration, portability, eu_ai_act_drift, memory_integrity)
+Mode: {{PARALLELISM_MODE}}
+Batch verdict: {{BATCH_VERDICT}}
+
+Options:
+[A] Approve all APPROVED rows; reject DISSENT/REJECTED rows; archive AMBIGUOUS — fit ≈{{FIT_A}}%
+[B] Approve subset (you list the row_ids) — fit ≈{{FIT_B}}%
+[C] Reject the entire batch — fit ≈{{FIT_C}}%
+[D] Send back to phase 13.5 with these notes — fit ≈{{FIT_D}}%
+
+My recommendation: {{RECOMMENDATION_LETTER}} · Confidence ≈{{RECOMMENDATION_CONF}}%
+=== /HITL GATE ===
+```
+
+## Reflection (≤200 words)
+
+{{REFLECTION_BODY}}
+
+## Audit lineage
+
+| auditor | axis | output_path | sha256 |
+|---:|---|---|---|
+{{AUDITOR_LINEAGE_ROWS}}
+
+---
+
+> Source of truth for batched corrections: `feedback_learning/corrections.db`. After the user decision, this report is updated atomically and `corrections.status` is set in a single transaction.
