@@ -56,10 +56,94 @@
 
   "compliance": {
     "eu_ai_act_risk": "{{eu_ai_act_risk}}",
+    "role": "{{role}}",
+    "hitl_mode": "{{hitl_mode}}",
+    "special_category_data": {{special_category_data}},
     "mapping_doc_ref": "audit/eu_ai_act_mapping.md",
     "mapping_completeness_pct": null,
     "last_audit_session": null,
-    "next_audit_milestone": "{{next_audit_milestone}}"
+    "next_audit_milestone": "{{next_audit_milestone}}",
+    "art73_open_incidents": 0
+  },
+
+  "feedback_learning": {
+    "last_session_id": null,
+    "ran_at": null,
+    "corrections_collected_this_session": 0,
+    "learn_yes_count_total": 0,
+    "pending_count": 0,
+    "learn_threshold": {{learn_threshold}},
+    "last_trigger_session_id": null,
+    "db_path": "feedback_learning/corrections.db",
+    "md_mirror_sha256": null,
+    "oldest_pending_days": null,
+    "mean_classification_confidence_pct": null,
+    "fts_rebuild_count": 0
+  },
+
+  "improvement_audit": {
+    "last_session_id": null,
+    "ran_at": null,
+    "proposal_id": null,
+    "batch_verdict": null,
+    "approved_rows_count": 0,
+    "rejected_rows_count": 0,
+    "dissent_rows_count": 0,
+    "ambiguous_rows_count": 0,
+    "consensus_report_sha256": null,
+    "hitl_decision": null,
+    "send_back_count": 0
+  },
+
+  "merge_verification": {
+    "last_session_id": null,
+    "ran_at": null,
+    "verified_proposals_count": 0,
+    "verification_failures_count": 0,
+    "last_incorporated_commit_sha": null,
+    "cycle_trail_path": "improvement_audit/cycle_trail.jsonl"
+  },
+
+  "data_flow_validation": {
+    "session_id": null,
+    "ran_at": null,
+    "n_validators": 0,
+    "consistency_score": null,
+    "dissent_count": 0,
+    "escalations": []
+  },
+
+  "memory_schema": {
+    "negotiated_at": null,
+    "negotiated_session_id": null,
+    "starter_used": null,
+    "modules_count": 0,
+    "mandatory_fields_count": 0,
+    "manifest_path": "memory_schema/manifest.json",
+    "agent_confidence_pct": null
+  },
+
+  "context_curation": {
+    "last_session_id": null,
+    "ran_at": null,
+    "mode": null,
+    "sources_count": 0,
+    "mean_confidence_pct": null,
+    "pending_user_uploads": 0,
+    "consult_websites_count": 0
+  },
+
+  "adaptive_audit": {
+    "last_session_id": null,
+    "last_scope_id": null,
+    "ran_at": null,
+    "importance_score": null,
+    "n_auditors": 0,
+    "errors_blocking_count": 0,
+    "warnings_count": 0,
+    "improvements_queued_count": 0,
+    "improvements_dissent_count": 0,
+    "consensus_path": null
   },
 
   "configs": {

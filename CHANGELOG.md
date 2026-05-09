@@ -2,6 +2,51 @@
 
 All notable changes to `system-designer`. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-05-09 · feedback-layer closure release
+
+Closes the consumption-side seams identified by a focused 3-axis external audit on the feedback-learning layer. The audit (jury report at `external_audit/feedback_layer/jury_consensus.md`) reached `NEEDS_IMPROVEMENT` at 83% confidence — 2 of 3 auditors voted `NEEDS_IMPROVEMENT` (routing, implementation), 1 voted `APPROVED_WITH_MINOR` (HITL). The system was declared mature globally at v1.0.0 by a global audit; this focused audit found the layer was *not broken; half-routed* — capture and gating mature, consumption side mostly unspecified. v1.1.0 ships the full P0 + P1 batch (7 items + 1 P2 pulled in).
+
+### Added
+
+- **J-101 · new phase 13.8 `merge_verification`** (`prompts/13_8_merge_verification.md`, Complex tier ~38 tags). Closes the proposal → jury → HITL → MERGE → **VERIFIED** → `incorporated` loop. Reads the latest `improvement_audit/consensus_report.md` + the proposal, computes the actual `git diff` between the pre-jury commit and the post-merge commit (restricted to proposal-cited files), composes a `merge_verification_auditor` via Factory with persona tailored to the proposal's content, dispatches per-row verification (`MATCH | DIVERGED_MINOR | DIVERGED_MATERIAL | MISSING | EXTRA_DIFF`), and only on PASS transitions `corrections.status='approved' → 'incorporated'` with the `incorporation_kind` discriminator written. Appends a row to `improvement_audit/cycle_trail.jsonl` with `prior_hash` per INV-LIF-004 (the same chain discipline as v0.4.0 J-010 on observations.jsonl + decisions.md).
+- **J-102 · consumption-gap wiring** in `prompts/11_feedback_learning_loop.md` — when phase 13.7 returns `corrections.status='approved'` for a row, route per `category` BEFORE phase 13.8 marks `incorporated`:
+  - `category=memory` → signal `prompts/15_memory_schema_architect.md` `living_update` mode → append row to `memory_schema/manifest.json#evolution_log[]` + re-render `manifest.md`. `incorporation_kind = manifest_evolution`.
+  - `category in {tooling, calibration, prompt_architect, portability}` AND `recurrence in {recurring, systemic}` → draft new AIE-NNN entry → append to BOTH `references/ai_error_catalog.md` AND `tracking/errors_catalog.json`. `incorporation_kind = aie_extension` (or `both` if also touches source).
+  - `category=documentation` → no automatic consumer; phase 13.8 verifies the explicit source edits. `incorporation_kind = source`.
+  - `category in {HITL, EU_AI_Act}` → ALWAYS require explicit source edits; phase 13.8 verifies. `incorporation_kind = source`.
+- **J-100 · CLAUDE.md.tmpl mandatory-reads** — bullet 5b reads `feedback_learning/corrections.md` filtered to `status IN ('approved','incorporated') AND learn_in_system=1` at child-orchestrator session start. Closes the user's anchor concern: *"el agente lo lea para no cometer esos errores"*. The adaptive_audit_meta pre-action guard (J-106) automates the same read for any session that invokes the auditor first; this manual read is the belt-and-braces path.
+- **J-106 · adaptive_audit_meta pre-action FTS5 recurrence guard** in `prompts/14_adaptive_audit_meta.md` `<sub_tasks>` step 2. Before composing any auditor, query `corrections_fts` for `status IN ('approved','incorporated') AND learn_in_system=1 AND recurrence IN ('recurring','systemic')` filtered by FTS5 match against the scope envelope's summary + artifact paths. Surface matches as `prior_lessons[]` field consumed by every auditor's `<context>` block — the panel cannot re-flag a known-and-already-addressed pattern as a fresh error.
+- **J-107 · T24 deterministic test** in `tests/run_all.sh` — closes the 10th anchor of the never-default `learn_in_system` invariant (executable test, complementing the 9 prose + SQL anchors). Greps `prompts/11_feedback_learning_loop.md` for default/auto-set patterns outside negation context; FAIL on any remaining hit.
+
+### Changed
+
+- **J-103 · `corrections` schema** in `templates/feedback_learning/corrections_schema.sql.tmpl` — adds 4 nullable columns: `proposal_id` (cycle-trail join key) · `consensus_report_sha256` (forensic anchor) · `incorporated_commit_sha` (merge anchor) · `incorporation_kind` (CHECK ∈ {`memory`, `source`, `both`, `manifest_evolution`, `aie_extension`}). Resolves the prior overload of `status='incorporated'` across two semantically distinct outcomes. Backwards-compatible (NULLable; legacy rows carry NULL kind).
+- **J-104 · tracking template alignment** in `templates/tracking/project.json.tmpl` — adds 7 new top-level blocks matching the keys prompts 11/12/13/14/15 already write to: `feedback_learning`, `improvement_audit`, `merge_verification` (new in v1.1.0 for J-101), `data_flow_validation`, `memory_schema`, `context_curation`, `adaptive_audit`. Plus `compliance.role`, `compliance.hitl_mode`, `compliance.special_category_data`, `compliance.art73_open_incidents` per v0.3.2/v0.4.0. Eliminates the prompts-vs-template schema drift (auditor C F-IC-08).
+- **J-105 · dashboard `m.path` resolution** in `dashboard/index.html` — adds `getNested(data, m.path)` fallback when `kpis[m.key]` is undefined, so the 9 v0.3.x KPI tiles (`feedback_learning.pending_count`, `memory_schema.modules_count`, `adaptive_audit.errors_blocking_count`, `compliance.art73_open_incidents`, etc.) render the surfaces they declare instead of `"—"`. Header KPI count now dynamic (`KPIs (${KPI_META.length})`).
+
+### Test suite
+
+21 PASS / 0 FAIL — T24 added; T22 / T20 / T13 / T16 unchanged.
+
+### Verdict on the v1.1.0 ship
+
+Calibrated probability that the focused 3-axis feedback-layer audit re-run lifts the panel to `APPROVED_AS_MATURE` after this batch: **~78%** (range 70–85%). The remaining ~22% covers the deferred P2 items (J-108..J-117 in v1.2.0) and the calibration debate around J-114 (consensus-rule 5pp band) which is itself a meta-audit obligation per `references/jury_consensus_protocol.md#versioning`.
+
+### Backward compatibility
+
+- All v1.0.0 manifests parse unchanged. New `corrections` columns are NULLable; legacy rows carry NULL discriminator and continue to function (auditor C P2 follow-up may add a one-shot upcast script in v1.2.0).
+- New tracking blocks are additive; legacy `tracking/project.json` files without the v1.1.0 blocks initialise to defaults on first read.
+- New phase 13.8 is opt-in via `SystemSpec.merge_verification.enabled` (defaults `true`); legacy projects that never trigger phase 13.7 also never invoke 13.8, so the change is no-op for them.
+- `prior_lessons[]` in adaptive_audit_meta scope envelope is empty when `corrections.db` is absent; legacy v0.1.0 projects continue to function.
+
+### Deferred to v1.2.0
+
+J-108 (auxiliary axes via adaptive panel for cross-walk audits) · J-109 (eat-own-dog-food: phase 14 fires on `Sistem_designer/` after each merged J-NNN) · J-110 (`cycle_trail.jsonl` consolidated artifact at improvement_audit level) · J-111 (max-iteration counter on 13.5↔13.7 send-back loop) · J-112 (alternatives presentation `<format>` for low-confidence classification) · J-113 (cross-child correction portability decision) · J-115..J-117 (taxonomy-refresh proposal · FTS5 rebuild trigger · per-correction HITL clarifications).
+
+### Deferred to v1.3.0+ / re-calibration
+
+J-114 (consensus-rule 5pp uncertainty band) — the protocol thresholds (75/70/30) are explicitly self-described as calibrated at ~85% confidence per `references/jury_consensus_protocol.md#versioning`; modifying them is itself a meta-audit obligation requiring its own jury session.
+
 ## [1.0.0] — 2026-05-09 · stable mature release · external-audit jury fully closed
 
 Ships the 2 P3 items from the v0.3.1 external-audit consensus jury, closing the entire 21-item consolidated checklist (P1 + P2 + P3 = 21/21).
@@ -296,6 +341,7 @@ The 8-format catalogue + the calibrated selection matrix + the HITL alternatives
 - Static HTML dashboard for the generator's own state.
 - Repo README, LICENSE (MIT), CHANGELOG.
 
+[1.1.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v1.0.0
 [0.4.0]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.4.0
 [0.3.2]: https://github.com/Diego-M-C/system-designer/releases/tag/v0.3.2

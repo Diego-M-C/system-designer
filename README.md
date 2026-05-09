@@ -4,8 +4,9 @@
 > Drop this folder into any LLM (Claude Code, Cursor, Cline, Gemini CLI, Copilot CLI, Codex) and run.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-success.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.1.0-success.svg)](CHANGELOG.md)
 [![Maturity](https://img.shields.io/badge/maturity-stable-brightgreen.svg)](external_audit/jury_consensus.md)
+[![Feedback layer](https://img.shields.io/badge/feedback_layer-v1.1.0_closed-success.svg)](external_audit/feedback_layer/jury_consensus.md)
 [![Portable](https://img.shields.io/badge/portable-Tier_A-blue.svg)](references/portable_invocation.md)
 [![EU AI Act](https://img.shields.io/badge/EU_AI_Act-2024%2F1689-brightgreen.svg)](references/eu_ai_act_mapping.md)
 [![Calibrated](https://img.shields.io/badge/calibration-mandatory-orange.svg)](references/calibrated_probabilities.md)

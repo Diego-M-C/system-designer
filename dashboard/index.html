@@ -274,9 +274,20 @@ function renderDashboard(data) {
     return `<span class="phase ${cls}">${escapeHtml(p)}</span>`;
   }).join("");
 
+  // v1.1.0 (J-105) — getNested falls back to m.path when kpis[m.key] is undefined
+  // so the v0.3.x feedback / adaptive_audit / Art.73 / data-flow tiles render the
+  // surfaces they declare instead of "—".
+  function getNested(obj, path) {
+    if (!path) return undefined;
+    return path.split(".").reduce((acc, key) => (acc != null ? acc[key] : undefined), obj);
+  }
+
   const kpis = data.kpis_running || {};
   const kpiHtml = KPI_META.map(m => {
-    const v = kpis[m.key];
+    let v = kpis[m.key];
+    if (v === undefined && m.path) {
+      v = getNested(data, m.path);
+    }
     return `<div class="kpi ${m.color || ""}">
       <div class="label">${m.label}</div>
       <div class="value">${fmtKpi(v)}</div>
@@ -334,7 +345,7 @@ function renderDashboard(data) {
     </div>
 
     <div class="card full">
-      <h2>KPIs (11)</h2>
+      <h2>KPIs (${KPI_META.length})</h2>
       <div class="kpi-grid">${kpiHtml}</div>
     </div>
 

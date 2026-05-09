@@ -47,15 +47,16 @@ Meta-auditing of SDD generators and their child systems. Disciplines: dynamic pa
 
 <sub_tasks>
 1. Read scope envelope from orchestrator.
-2. Compute importance score + `n_auditors`.
-3. For each auditor: derive persona spec → call Factory → receive audited prompt.
-4. Build the input pack (artifact paths + scope metadata).
-5. Dispatch auditors (parallel or sequential).
-6. Collect outputs.
-7. Run consensus aggregation (error path + improvement path).
-8. Emit consensus report + per-auditor outputs.
-9. Write any improvements as `pending_review` rows to `corrections.db`.
-10. Update state; signal orchestrator with `errors_blocking[]` and `improvements_queued[]`.
+2. **Pre-action recurrence guard (since v1.1.0 · J-106):** before composing any auditor, query `feedback_learning/corrections.db` (or its FTS5 mirror) for `status IN ('approved','incorporated') AND learn_in_system=1 AND recurrence IN ('recurring','systemic')` filtered by FTS5 match against the scope's `scope_summary` + `artifacts_in_scope[]` paths. Surface matches as `prior_lessons[]` field in the scope envelope. The intent is: every dynamically-composed auditor sees the lessons the human authorised the system to learn before issuing its own findings, so the panel cannot re-flag a known-and-already-addressed pattern as a new error. Empty result is acceptable; absent corrections.db (legacy v0.1.0 mode) falls back to `prior_lessons=[]` with a note in the manifest.
+3. Compute importance score + `n_auditors`.
+4. For each auditor: derive persona spec → call Factory → receive audited prompt. **Each auditor's `<context>` block now includes the `prior_lessons[]` from step 2.**
+5. Build the input pack (artifact paths + scope metadata + `prior_lessons[]`).
+6. Dispatch auditors (parallel or sequential).
+7. Collect outputs.
+8. Run consensus aggregation (error path + improvement path).
+9. Emit consensus report + per-auditor outputs.
+10. Write any improvements as `pending_review` rows to `corrections.db`.
+11. Update state; signal orchestrator with `errors_blocking[]` and `improvements_queued[]`.
 </sub_tasks>
 
 <success_criteria>
@@ -89,6 +90,7 @@ Meta-auditing of SDD generators and their child systems. Disciplines: dynamic pa
 <context>
 Inputs:
 - Orchestrator-passed scope envelope: `scope_kind` (`task | session`), `scope_id`, `scope_summary` (≤300 words), `artifacts_in_scope[]` (paths), `eu_risk`, `touched_modules[]`, `importance_signals` (object).
+- **`prior_lessons[]` (since v1.1.0 · J-106):** array of `{correction_id, ts, severity, category, recurrence, summary (≤160 chars), proposed_action, fts5_match_terms[]}` rows derived from `feedback_learning/corrections.db` by the pre-action recurrence guard. Empty array if no matches or DB absent. The recurrence guard surfaces these so dynamic auditors do not re-flag known-and-already-addressed patterns as fresh errors.
 - `<target_path>/tracking/project.json` (for invocation history + thresholds).
 - `references/jury_consensus_protocol.md` (shared protocol with prompt 12).
 - `prompt_architect/prompt_editor_skill.json` (persona / focus tag taxonomy).
@@ -657,6 +659,7 @@ prompt_architect_version_required: ≥0.1.0
 - changelog:
   - "0.2.0 — initial meta-validator engine: per-task / per-session 3-10 dynamically composed auditors with persona-fit and error/improvement triage"
   - "0.3.0 — memory_completeness_auditor promoted to MANDATORY (always added on top of n_auditors); reads memory_schema/manifest.json as the contract; two-tier audit (particular + global)"
+  - "1.1.0 — pre-action recurrence guard (J-106): every dispatch first queries corrections.db FTS5 for approved+recurring/systemic matches and surfaces them as prior_lessons[] in the scope envelope; auditors consume the guard so the panel cannot re-flag a known-and-already-addressed pattern as a fresh error"
 </metadata>
 
 <dependencies>

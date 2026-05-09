@@ -50,6 +50,12 @@ Continuous-improvement post-mortems for SDD AI systems. Disciplines: structured 
 6. If triggered: aggregate, draft improvement proposal, signal phase 13.7.
 7. Else: emit session-close summary.
 8. Update `tracking/project.json#feedback_learning` with counters + last-session id.
+9. **Consumption-gap dispatch (since v1.1.0 · J-102):** when phase 13.7 returns and signals `corrections.status='approved'` for a row, route per `category` to the downstream consumer BEFORE phase 13.8 attempts to mark it `incorporated`:
+   - `category=memory` AND `status=approved` → signal `prompts/15_memory_schema_architect.md` in `living_update` mode with the correction's `proposed_action` and the affected `memory/*` path; the architect appends a row to `memory_schema/manifest.json#evolution_log[]` describing the schema change (added field / new module / threshold tweak) and re-renders `manifest.md`. The correction's `incorporation_kind = manifest_evolution`.
+   - `category IN {tooling, calibration, prompt_architect, portability}` AND `status=approved` AND `recurrence IN {recurring, systemic}` → draft a new AIE-NNN entry: open `references/ai_error_catalog.md`, find the next free AIE-NNN number, append an entry with `pattern` derived from `human_feedback`, `mitigation` derived from `proposed_action`, `discovered_in_session` = `correction.session_id`, `first_seen_at` = `correction.ts`, `confidence_pct` = `proposed_action_confidence_pct`, and `preloaded: false`. Mirror the entry into `tracking/errors_catalog.json` (the runtime catalog the orchestrator consults). The correction's `incorporation_kind = aie_extension` (or `both` if it also touches source).
+   - `category=documentation` AND `status=approved` → no automatic consumer; phase 13.8 will verify the source change (the proposal carried explicit target_file edits) and write `incorporation_kind = source`.
+   - `category=HITL` OR `category=EU_AI_Act` → these touch orchestration semantics; they ALWAYS require explicit source edits in the proposal. Phase 13.8 verifies; `incorporation_kind = source`.
+   The dispatch is non-destructive: it appends evolution rows / AIE entries but does NOT change `corrections.status`. Status transition `approved → incorporated` is exclusively phase 13.8's job. This phase emits the **content** the consumers need; phase 13.8 emits the **verification** that the content was actually incorporated.
 </sub_tasks>
 
 <success_criteria>
@@ -221,6 +227,11 @@ After every correction is persisted:
 After the loop ends:
 - If threshold or explicit trigger fired: confirm `improvement_proposal.md` written, `tracking/project.json#feedback_learning.last_trigger_session_id` updated, and the orchestrator notified.
 - Else: confirm session-close summary appended.
+
+After consumption-gap dispatch (v1.1.0 · J-102) on rows that come back from phase 13.7 with `status='approved'`:
+- For `category=memory` rows dispatched to `prompts/15_memory_schema_architect.md`: confirm `memory_schema/manifest.json#evolution_log[]` length increased by 1 per row + `manifest.md` mirror regenerated atomically. Failure to reflect the row in `evolution_log` is a P0 finding (`AIE-FBL-EVOLUTION-MISSING`).
+- For `category in {tooling, calibration, prompt_architect, portability}` rows with recurrence `recurring|systemic`: confirm the next free AIE-NNN was allocated AND the entry was written to BOTH `references/ai_error_catalog.md` AND `tracking/errors_catalog.json` AND the AIE count parity test (T6) still passes after the appends. Failure is a P0 finding (`AIE-FBL-CATALOG-DRIFT`).
+- For all other categories: confirm `incorporation_kind` annotation has been pre-staged for phase 13.8 (the actual write happens at 13.8).
 </verification>
 
 <reflection>

@@ -319,6 +319,30 @@ else
   fi
 fi
 
+# T24 · never-default learn_in_system regression guard (J-107 · v1.1.0)
+# Closes the 10th anchor of the never-default invariant (executable test, not just prose).
+# Fail if prompts/11_feedback_learning_loop.md contains any default-pattern for
+# learn_in_system OUTSIDE explicit negation/refusal context.
+hdr "T24 · never-default learn_in_system invariant (executable guard)"
+prompt11="prompts/11_feedback_learning_loop.md"
+if [ ! -f "$prompt11" ]; then
+  nope "missing $prompt11"
+else
+  # Suspicious patterns: any line that suggests defaulting/auto-setting learn_in_system
+  # without an immediately-adjacent negation. We grep for the field reference; then exclude
+  # lines that explicitly forbid defaulting; then any remaining hit is a candidate violation.
+  candidates=$(grep -nE '(default|auto.?set|skip.?prompt|silent.?default|presume).*learn_in_system|learn_in_system.*(default|auto|silent|presume)' "$prompt11" 2>/dev/null \
+    | grep -vE 'NEVER|never|Never|forbidden|do NOT|Do NOT|do not|MUST NOT|Must NOT|not.?defaulted|not.*default|never default|never-default|always.*explicit|explicit human|always.?ask|no implicit default|implicit default' \
+    || true)
+  if [ -z "$candidates" ]; then
+    ok "no default/auto-set patterns for learn_in_system outside negation context"
+  else
+    nope "candidate never-default-invariant violations:"
+    echo "$candidates" | head -10
+    echo "  (T24 is the executable layer of the 9-prose-anchor never-default invariant; review manually if these are legitimate negation context)"
+  fi
+fi
+
 # T23 · sha256 hash-chain (prior_hash) — synthetic chain integrity test (J-010 · v0.4.0)
 hdr "T23 · sha256 hash-chain integrity (prior_hash) on a synthetic observations.jsonl"
 if command -v python3 >/dev/null 2>&1; then

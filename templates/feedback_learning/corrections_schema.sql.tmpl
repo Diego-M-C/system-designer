@@ -26,13 +26,23 @@ CREATE TABLE IF NOT EXISTS corrections (
   proposed_action_confidence_pct  INTEGER CHECK(proposed_action_confidence_pct IS NULL
                                                 OR proposed_action_confidence_pct BETWEEN 0 AND 100),
   incorporated_at                 TEXT,
-  incorporated_in_version         TEXT
+  incorporated_in_version         TEXT,
+
+  -- v1.1.0 (J-103) · cycle-trail join keys + status-semantics discriminator
+  proposal_id                     TEXT,
+  consensus_report_sha256         TEXT,
+  incorporated_commit_sha         TEXT,
+  incorporation_kind              TEXT CHECK(incorporation_kind IS NULL OR incorporation_kind IN
+                                    ('memory', 'source', 'both', 'manifest_evolution', 'aie_extension'))
 );
 
-CREATE INDEX IF NOT EXISTS idx_corrections_status   ON corrections(status, learn_in_system);
-CREATE INDEX IF NOT EXISTS idx_corrections_session  ON corrections(session_id);
-CREATE INDEX IF NOT EXISTS idx_corrections_category ON corrections(category, severity);
-CREATE INDEX IF NOT EXISTS idx_corrections_ts       ON corrections(ts);
+CREATE INDEX IF NOT EXISTS idx_corrections_status            ON corrections(status, learn_in_system);
+CREATE INDEX IF NOT EXISTS idx_corrections_session            ON corrections(session_id);
+CREATE INDEX IF NOT EXISTS idx_corrections_category           ON corrections(category, severity);
+CREATE INDEX IF NOT EXISTS idx_corrections_ts                 ON corrections(ts);
+-- v1.1.0 (J-103) · cycle-trail lookup by proposal/commit
+CREATE INDEX IF NOT EXISTS idx_corrections_proposal           ON corrections(proposal_id);
+CREATE INDEX IF NOT EXISTS idx_corrections_incorporation_kind ON corrections(incorporation_kind);
 
 -- Full-text similarity search (used to compute recurrence).
 CREATE VIRTUAL TABLE IF NOT EXISTS corrections_fts USING fts5(
