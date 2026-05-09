@@ -1424,6 +1424,191 @@ def fig_v10_hash_chain():
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# FIG 20 — Focused feedback-layer audit panel (v1.1.0)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v11_feedback_audit():
+    fig, ax = plt.subplots(figsize=(13, 7.5))
+    ax.set_xlim(0, 13); ax.set_ylim(0, 9.5)
+    ax.axis("off")
+
+    ax.text(6.5, 9.05, "v1.1.0  ·  focused feedback-layer audit  ·  3 specialist auditors  →  consensus jury  →  NEEDS_IMPROVEMENT",
+            ha="center", fontsize=12, fontweight="bold", color=NAVY)
+    ax.text(6.5, 8.65, "where the global v1.0.0 audit was APPROVED_AS_MATURE, this focused lens found the layer was 'not broken; half-routed'",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # 3 specialist lenses
+    auditors = [
+        ("Auditor A\nrouting",          "classification → action\nFTS5 recurrence detect\nAIE auto-extension\nthe agent reads-loop",  0.5,  NAVY,    "NEEDS_IMPROVEMENT\n82%"),
+        ("Auditor B\nhitl + comms",     "per-correction Y/N/SKIP\nnever-default invariant\nthreshold semantics\ndashboard tiles",     5.0,  TEAL,    "APPROVED_WITH_MINOR\n84%"),
+        ("Auditor C\nimplementation",   "translation gap\npost-merge cadence\ndog-food principle\ncycle observability",                9.5,  GOLD,    "NEEDS_IMPROVEMENT\n82%"),
+    ]
+    for (lbl, sub, x, color, verdict) in auditors:
+        b = FancyBboxPatch((x, 6.1), 3.0, 2.0,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.5, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        text_color = "white" if color != GOLD else DARK
+        ax.text(x + 1.5, 7.75, lbl, ha="center", color=text_color,
+                fontsize=10, fontweight="bold")
+        ax.text(x + 1.5, 6.85, sub, ha="center", color=text_color,
+                fontsize=7.5, style="italic")
+        ax.text(x + 1.5, 6.30, verdict, ha="center", color=text_color,
+                fontsize=8, fontweight="bold")
+
+    # Jury
+    jury = FancyBboxPatch((4.0, 4.0), 5.0, 1.7,
+                          boxstyle="round,pad=0.05,rounding_size=0.13",
+                          linewidth=2, edgecolor=NAVY, facecolor=NAVY)
+    ax.add_patch(jury)
+    ax.text(6.5, 5.20, "Consensus Jury",
+            ha="center", color="white", fontsize=11, fontweight="bold")
+    ax.text(6.5, 4.75, "33 raw findings → 17 J-NNNs (J-100..J-117)\n3 cross-axis clusters preserved",
+            ha="center", color="white", fontsize=8, style="italic")
+    ax.text(6.5, 4.20, "BATCH VERDICT  ·  NEEDS_IMPROVEMENT · 83%",
+            ha="center", color=GOLD, fontsize=10, fontweight="bold")
+
+    for (_, _, x, _, _) in auditors:
+        ax.annotate("", xy=(6.5, 5.7), xytext=(x + 1.5, 6.1),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.0, color="#666", alpha=0.7))
+
+    # The framing line
+    ax.text(6.5, 3.45,
+            "the system is NOT broken — the substrate (SQLite + FTS5 + dual mirror + status lifecycle + 5-axis jury) is production-grade",
+            ha="center", fontsize=8.5, color=GREEN, style="italic")
+    ax.text(6.5, 3.15,
+            "the SEAMS are in the routing graph: capture → consumption (lane A) and proposal-approval → post-merge verification (lane C)",
+            ha="center", fontsize=8.5, color=RED, style="italic")
+
+    # v1.1.0 batch summary
+    batch = FancyBboxPatch((0.5, 0.7), 12.0, 2.1,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.5, edgecolor=GREEN, facecolor="#e7f4ec")
+    ax.add_patch(batch)
+    ax.text(6.5, 2.50, "v1.1.0 ships P0+P1 batch  ·  8 J-NNNs  ·  ~9–12h",
+            ha="center", color=GREEN, fontsize=11, fontweight="bold")
+    ax.text(6.5, 2.05,
+            "J-100 child reads memorised corrections at session start  ·  J-101 NEW phase 13.8 merge_verification  ·  J-102 consumption-gap wiring",
+            ha="center", color=NAVY, fontsize=8.5)
+    ax.text(6.5, 1.70,
+            "J-103 schema 4 cycle-trail join keys  ·  J-104 tracking template aligned  ·  J-105 dashboard m.path fallback  ·  J-106 prior_lessons[]",
+            ha="center", color=NAVY, fontsize=8.5)
+    ax.text(6.5, 1.35,
+            "J-107 T24 never-default test (10th anchor)  ·  re-audit calibrated APPROVED_AS_MATURE prob ≈78%",
+            ha="center", color=NAVY, fontsize=8.5)
+    ax.text(6.5, 0.95,
+            "P2 (J-108..J-117) deferred to v1.2.0  ·  J-114 deferred per protocol's own meta-audit obligation",
+            ha="center", color=SLATE, fontsize=7.5, style="italic")
+
+    ax.annotate("", xy=(6.5, 2.85), xytext=(6.5, 4.0),
+                arrowprops=dict(arrowstyle="-|>", lw=1.5, color=NAVY))
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/20_v11_feedback_audit.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# FIG 21 — Phase 13.8 merge_verification cycle + cycle_trail.jsonl (v1.1.0)
+# ─────────────────────────────────────────────────────────────────────────
+def fig_v11_merge_verification():
+    fig, ax = plt.subplots(figsize=(13, 8))
+    ax.set_xlim(0, 13); ax.set_ylim(0, 10)
+    ax.axis("off")
+
+    ax.text(6.5, 9.5, "v1.1.0  ·  Phase 13.8 merge_verification  ·  closes the proposal → MERGE → VERIFIED → 'incorporated' loop",
+            ha="center", fontsize=12, fontweight="bold", color=NAVY)
+    ax.text(6.5, 9.15, "every transition writes incorporation_kind discriminator + appends cycle_trail.jsonl row with prior_hash chain (INV-LIF-004)",
+            ha="center", fontsize=9, color=SLATE, style="italic")
+
+    # Pipeline boxes (left to right)
+    stages = [
+        ("13.5\nfeedback_session", "human Y/N/SKIP\nthreshold or TRIGGER",  0.4,  TEAL),
+        ("13.7\nimprovement_jury", "5 axes parallel\nconsensus + HITL",      2.7,  GOLD),
+        ("MERGE\n(human)",         "regenerate-and-merge\nor manual edit",   5.0,  SLATE),
+        ("13.8 NEW\nmerge_verification", "git diff vs proposal\nFactory auditor\nper-row verdict", 7.4,  NAVY),
+        ("'incorporated'\n+ kind",  "manifest_evolution\nmemory · source\naie_extension · both", 10.0, GREEN),
+    ]
+    for (lbl, sub, x, color) in stages:
+        b = FancyBboxPatch((x, 5.6), 2.3, 2.0,
+                           boxstyle="round,pad=0.05,rounding_size=0.13",
+                           linewidth=1.5, edgecolor=color, facecolor=color)
+        ax.add_patch(b)
+        text_color = "white" if color != GOLD else DARK
+        ax.text(x + 1.15, 6.85, lbl, ha="center", color=text_color,
+                fontsize=10, fontweight="bold")
+        ax.text(x + 1.15, 6.05, sub, ha="center", color=text_color,
+                fontsize=7.5, style="italic")
+
+    # arrows
+    for i in range(len(stages) - 1):
+        x1 = stages[i][2] + 2.3
+        x2 = stages[i + 1][2]
+        ax.annotate("", xy=(x2, 6.6), xytext=(x1, 6.6),
+                    arrowprops=dict(arrowstyle="-|>", lw=1.3, color="#444"))
+
+    # FAIL branch from 13.8
+    ax.annotate("", xy=(8.55, 4.2), xytext=(8.55, 5.55),
+                arrowprops=dict(arrowstyle="-|>", lw=1.3, color=RED))
+    fail_box = FancyBboxPatch((6.7, 3.4), 3.7, 0.85,
+                              boxstyle="round,pad=0.04,rounding_size=0.11",
+                              linewidth=1.5, edgecolor=RED, facecolor="#fdebe9")
+    ax.add_patch(fail_box)
+    ax.text(8.55, 3.95, "DISSENT_HITL_NOW", ha="center", color=RED, fontsize=9, fontweight="bold")
+    ax.text(8.55, 3.60, "no transition · revert / override / send-back to 13.5",
+            ha="center", color=SLATE, fontsize=7.5, style="italic")
+
+    # cycle_trail.jsonl chain (bottom)
+    ax.text(0.4, 2.85, "cycle_trail.jsonl  ·  prior_hash chain (INV-LIF-004)  ·  forensically reconstructable",
+            fontsize=9.5, fontweight="bold", color=NAVY)
+    events = [
+        ("proposal\nemitted",       0.4),
+        ("jury\nstarted",           2.0),
+        ("hitl\ndecision",          3.6),
+        ("merge\napplied",          5.2),
+        ("merge\nverified",         6.8),
+        ("re_audit\nran",           8.4),
+    ]
+    for i, (lbl, x) in enumerate(events):
+        b = FancyBboxPatch((x, 1.4), 1.4, 1.2,
+                           boxstyle="round,pad=0.04,rounding_size=0.10",
+                           linewidth=1.2, edgecolor=NAVY, facecolor=LIGHT)
+        ax.add_patch(b)
+        ax.text(x + 0.7, 2.20, lbl, ha="center", color=NAVY, fontsize=8, fontweight="bold")
+        ax.text(x + 0.7, 1.65, f"prior_hash\n=sha256(N-1)" if i > 0 else "prior_hash\n='genesis'",
+                ha="center", color=SLATE, fontsize=6, style="italic")
+
+    for i in range(len(events) - 1):
+        x1 = events[i][1] + 1.4
+        x2 = events[i + 1][1]
+        ax.annotate("", xy=(x2, 2.0), xytext=(x1, 2.0),
+                    arrowprops=dict(arrowstyle="-|>", lw=0.9, color=NAVY))
+
+    # Right side: incorporation_kind discriminator legend
+    legend = FancyBboxPatch((10.2, 1.3), 2.6, 1.4,
+                            boxstyle="round,pad=0.05,rounding_size=0.10",
+                            linewidth=1.2, edgecolor=GREEN, facecolor="#e7f4ec")
+    ax.add_patch(legend)
+    ax.text(11.5, 2.50, "incorporation_kind", ha="center", color=GREEN, fontsize=9, fontweight="bold")
+    ax.text(11.5, 2.05,
+            "memory · source · both\nmanifest_evolution\naie_extension",
+            ha="center", color=SLATE, fontsize=7, style="italic")
+
+    # Bottom note
+    ax.text(6.5, 0.65,
+            "every transitioned row carries proposal_id + consensus_report_sha256 + incorporated_commit_sha + incorporation_kind (J-103 schema columns)",
+            ha="center", fontsize=8, color=NAVY, style="italic")
+    ax.text(6.5, 0.35,
+            "without phase 13.8 the loop ended at 'approved' and the merge was opaque — Art. 12 audit-trail integrity now closed end-to-end",
+            ha="center", fontsize=8, color=SLATE, style="italic")
+
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/21_v11_merge_verification.png", dpi=300, bbox_inches="tight",
+                facecolor="white")
+    plt.close()
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Build all
 # ─────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
@@ -1434,7 +1619,8 @@ if __name__ == "__main__":
              fig_v02_adaptive_meta, fig_v02_improvement_jury,
              fig_v03_phase45, fig_v03_format_taxonomy,
              fig_v03_two_tier_audit,
-             fig_v10_external_audit, fig_v10_hash_chain]
+             fig_v10_external_audit, fig_v10_hash_chain,
+             fig_v11_feedback_audit, fig_v11_merge_verification]
     for f in funcs:
         print(f"  · {f.__name__}")
         f()

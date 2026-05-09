@@ -1,10 +1,12 @@
 """
 Build the system-designer professional report (.docx).
-Cover page · TOC · 10 sections (v1.0.0) · embedded figures · publication-grade typography.
+Cover page · TOC · 10 sections (v1.1.0) · embedded figures · publication-grade typography.
 v0.2.0: §6 Extensions with 5 subsections + 4 new figures.
 v0.3.1: extends §6 with §6.6 Phase 4.5 Memory Schema + §6.7 8-Format Taxonomy + 3 figures.
-v1.0.0: adds §6.8 External-Audit Closure (v0.3.2 → v0.4.0 → v1.0.0) + 2 figures (audit
-        topology + sha256 hash-chain). Cover labelled 'mature stable release'.
+v1.0.0: adds §6.8 External-Audit Closure (v0.3.2 → v0.4.0 → v1.0.0) + 2 figures.
+v1.1.0: adds §6.9 Feedback-Layer Closure (focused 3-axis audit · NEW phase 13.8
+        merge_verification) + 2 figures (focused audit panel + cycle_trail topology).
+        Cover labelled 'feedback-layer closure release'.
 """
 import os
 from docx import Document
@@ -213,7 +215,7 @@ r1 = p.add_run("\nSYSTEM-DESIGNER\n")
 r1.font.size = Pt(40); r1.bold = True; r1.font.color.rgb = WHITE
 r2 = p.add_run("\nA Portable, LLM-Agnostic\nMeta-Generator for\nEU AI Act-Compliant\nSDD Projects\n\n")
 r2.font.size = Pt(18); r2.italic = True; r2.font.color.rgb = RGBColor(0xea, 0xf2, 0xf8)
-r3 = p.add_run("Technical Report  ·  v1.0.0  ·  stable mature release\n")
+r3 = p.add_run("Technical Report  ·  v1.1.0  ·  feedback-layer closure release\n")
 r3.font.size = Pt(13); r3.font.color.rgb = RGBColor(0xc9, 0xa2, 0x27)
 add_borders(cell, top=False, left=False, right=False, color="c9a227", sz="24")
 
@@ -226,7 +228,7 @@ ctx_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 ctx_p.paragraph_format.space_after = Pt(8)
 r = ctx_p.add_run("Comprehensive technical documentation of the system-designer meta-skill:\n")
 r.font.size = Pt(11); r.italic = True; r.font.color.rgb = SLATE
-r2 = ctx_p.add_run("architecture · 18-phase orchestration · per-project memory contract · 8-format memory taxonomy · two-tier completeness audit · adaptive audit · feedback learning · sha256 hash-chain · external-audit closure (21/21) · calibration · HITL governance")
+r2 = ctx_p.add_run("architecture · 19-phase orchestration · per-project memory contract · 8-format memory taxonomy · two-tier completeness audit · phase 13.8 merge_verification · cycle_trail prior-hash chain · feedback-layer closure (J-100..J-107) · external-audit closure (21/21) · calibration · HITL governance")
 r2.font.size = Pt(10); r2.italic = True; r2.font.color.rgb = GREY
 
 # Spacer
@@ -272,8 +274,8 @@ def label_cell(cell, label, val, label_color="0a6e7a"):
     r2 = p.add_run(val)
     r2.font.size = Pt(10); r2.font.color.rgb = NAVY
 
-label_cell(fc1, "DATE", "May 2026  (v1.0.0 stable)")
-label_cell(fc2, "VERSION", "1.0.0")
+label_cell(fc1, "DATE", "May 2026  (v1.1.0 update)")
+label_cell(fc2, "VERSION", "1.1.0")
 label_cell(fc3, "REPOSITORY", "github.com/Diego-M-C/system-designer")
 label_cell(fc4, "LICENSE", "MIT")
 
@@ -291,7 +293,7 @@ toc_items = [
     ("3.  Objectives",                                                  "5"),
     ("4.  System Methodology",                                          "6"),
     ("       4.1  Five Core Principles (P1–P5)",                        ""),
-    ("       4.2  The 18-Phase Orchestration  (v0.3.x)",                ""),
+    ("       4.2  The 19-Phase Orchestration  (v1.1.0)",                ""),
     ("       4.3  Two Inviolable HITL Gates",                           ""),
     ("       4.4  Spec-Driven Development Discipline",                  ""),
     ("5.  Results — System Modules",                                   "10"),
@@ -314,13 +316,14 @@ toc_items = [
     ("       6.6  Phase 4.5 · Memory Schema Negotiator  (v0.3.0)",      ""),
     ("       6.7  8-Format Memory Taxonomy + Selection  (v0.3.1)",      ""),
     ("       6.8  External-Audit Closure  (v0.3.2 → v0.4.0 → v1.0.0)",  ""),
-    ("7.  Conclusions",                                                "40"),
-    ("8.  Strengths and Limitations",                                  "41"),
+    ("       6.9  Feedback-Layer Closure  (v1.1.0 · J-100..J-107)",     ""),
+    ("7.  Conclusions",                                                "44"),
+    ("8.  Strengths and Limitations",                                  "45"),
     ("       8.1  Strengths",                                           ""),
     ("       8.2  Limitations",                                         ""),
     ("       8.3  Need for Domain-Specific Review and Validation",     ""),
-    ("9.  Final Conclusion",                                           "44"),
-    ("10. References",                                                 "45"),
+    ("9.  Final Conclusion",                                           "48"),
+    ("10. References",                                                 "49"),
 ]
 for txt, page in toc_items:
     p = doc.add_paragraph()
@@ -439,6 +442,15 @@ bullet(" v0.3.1 expands the memory format taxonomy from 3 to 8 (structured_md, c
        "pattern × relationship density × audit-rule needs) and surfaces 2 calibrated alternatives "
        "with fit% at HITL.",
        bold_lead="v0.3.1 additions · ")
+bullet(" v1.1.0 then ships a focused 3-axis follow-up audit on the feedback-learning layer "
+       "specifically — the layer that lifelong learning depends on. The focused audit returned "
+       "NEEDS_IMPROVEMENT at 83% confidence (where the global audit had returned APPROVED_WITH_MINOR), "
+       "framing the layer as 'not broken; half-routed' — capture and gating mature, consumption "
+       "side mostly unspecified. v1.1.0 ships the full P0+P1 batch (J-100..J-107) plus a NEW "
+       "phase 13.8 merge_verification that closes the proposal → jury → MERGE → VERIFIED → "
+       "incorporated loop with cycle_trail.jsonl + INV-LIF-004 prior_hash chain. Calibrated "
+       "probability of APPROVED_AS_MATURE on focused-audit re-run: ≈78% (range 70–85%).",
+       bold_lead="Feedback-layer closure (v1.1.0) · ")
 bullet(" v0.3.2 / v0.4.0 / v1.0.0 close the entire 21-item consolidated checklist from a blind "
        "external-audit panel. Three specialist auditors (systems-architect / regulatory-compliance "
        "/ calibration-memory-feedback) ran in independent Opus context windows; a consensus jury "
@@ -560,21 +572,24 @@ t = table_basic(
 
 body("")
 
-heading("4.2  The 18-Phase Orchestration  (v0.3.x · stable in v1.0.0)", level=2)
+heading("4.2  The 19-Phase Orchestration  (v1.1.0)", level=2)
 
 body(
-    "The master orchestrator at prompts/00_master_orchestrator.md owns an 18-phase finite "
-    "state machine in v0.3.x (extended from the original 13-phase v0.1.0 architecture). "
+    "The master orchestrator at prompts/00_master_orchestrator.md owns a 19-phase finite "
+    "state machine in v1.1.0 (extended from the original 13-phase v0.1.0 architecture). "
     "Phases are idempotent by construction (re-running a phase overwrites its output "
     "deterministically). Every phase writes to tracking/project.json#current_phase before "
-    "returning, making the orchestrator resumable. Five new phases — 1.5 (context_setup), "
-    "4.5 (memory_schema_setup, added in v0.3.0), 11.5 (structural_consistency), 13.5 "
-    "(feedback_session), and 13.7 (improvement_audit) — are inserted at fixed points, plus "
-    "a cross-phase adaptive_audit_meta hook that fires at the end of every task and every "
-    "session and which (since v0.3.0) always includes a mandatory memory_completeness_auditor. "
-    "The original 13 phases are preserved verbatim; section §6 covers the additions in detail. "
-    "Backward compatibility is available via SystemSpec.compatibility.v0_1_0=true (legacy "
-    "13-phase mode); SystemSpec.memory_schema.negotiation_enabled=false skips just phase 4.5."
+    "returning, making the orchestrator resumable. Six new phases — 1.5 (context_setup), "
+    "4.5 (memory_schema_setup, v0.3.0), 11.5 (structural_consistency), 13.5 (feedback_session), "
+    "13.7 (improvement_audit), and 13.8 (merge_verification, NEW in v1.1.0) — are inserted "
+    "at fixed points, plus a cross-phase adaptive_audit_meta hook that fires at the end of "
+    "every task and every session and which (since v0.3.0) always includes a mandatory "
+    "memory_completeness_auditor. Phase 13.8 is the architectural addition that closes the "
+    "previously-open loop after improvement-jury approval (covered in §6.9 with Figures 20 + 21). "
+    "The original 13 phases are preserved verbatim. Backward compatibility is available via "
+    "SystemSpec.compatibility.v0_1_0=true (legacy 13-phase mode); SystemSpec.memory_schema."
+    "negotiation_enabled=false skips just phase 4.5; SystemSpec.merge_verification.enabled=false "
+    "skips just phase 13.8."
 )
 
 figure(f"{FIG}/02_phases.png",
@@ -1358,6 +1373,113 @@ callout(
     "domain-specific starters that have not yet seen production traffic. v1.0.0 declares "
     "maturity, not perfection.",
     color=NAVY,
+)
+
+# ─── 6.9 Feedback-Layer Closure (v1.1.0) ────────────────────────────────
+heading("6.9  Feedback-Layer Closure  (v1.1.0 · J-100..J-107)", level=2)
+
+body(
+    "After v1.0.0 the global audit had declared the system mature. A focused follow-up audit "
+    "was then commissioned specifically on the feedback-learning layer — the layer that lifelong "
+    "learning depends on, and the layer that the user explicitly identified as critical: "
+    "captured errors must travel from HITL through classification through database through the "
+    "agent's session-start consciousness so the agent does not repeat them. Three new specialist "
+    "auditors were dispatched in parallel with independent Opus context windows."
+)
+
+figure(f"{FIG}/20_v11_feedback_audit.png",
+       "Figure 20 · Focused feedback-layer audit panel and v1.1.0 batch composition. Top row: "
+       "the three specialist auditors (routing / hitl + comms / implementation) ran blind in "
+       "independent Opus context windows on the feedback layer specifically, not the whole "
+       "repo. Their verdicts split: 2 of 3 voted NEEDS_IMPROVEMENT (routing at 82%, "
+       "implementation at 82%); 1 voted APPROVED_WITH_MINOR (HITL at 84%). The consensus jury "
+       "preserved the dissent and reached a batch verdict of NEEDS_IMPROVEMENT at 83%. The "
+       "middle text frames the finding precisely: the substrate is production-grade; the seams "
+       "are in the routing graph between capture and consumption. Bottom band: v1.1.0 ships the "
+       "full P0+P1 batch (8 J-NNNs in ~9–12 hours) plus T24 as the 10th anchor of the "
+       "never-default invariant. P2 items (J-108..J-117) deferred to v1.2.0; J-114 deferred per "
+       "the protocol's own meta-audit obligation.")
+
+body(
+    "The audit's central finding was framed as 'not broken; half-routed'. Capture and gating "
+    "(phases 13.5 + 13.7) were mature: 6-anchor never-default invariant, FTS5 idiomatic, "
+    "dual-mirror atomicity, dissent preserved, mandatory HITL gate. Consumption was largely "
+    "unspecified: child orchestrators did not read corrections.md at session start (the user's "
+    "anchor concern); the FTS5 index was a write-time classifier never queried at read-time; "
+    "approved memory-corrections never produced manifest_evolution rows; approved tooling-"
+    "corrections never produced AIE catalog extensions; and most consequentially, the post-jury "
+    "merge had no verification step at all — `corrections.status='approved'` was the end of the "
+    "chain, with the actual diff opaque."
+)
+
+body("The 8 J-NNNs shipped in v1.1.0:")
+
+t = table_basic(
+    headers=["J-id", "Concrete change", "Lens", "Effort"],
+    rows=[
+        ["J-100", "templates/CLAUDE.md.tmpl mandatory-reads at session start now includes feedback_learning/corrections.md filtered to status IN ('approved','incorporated') AND learn_in_system=1. Closes the user's anchor concern: the agent reads memorised corrections at session start.", "routing",                       "1–2 h"],
+        ["J-101", "NEW Phase 13.8 merge_verification (prompts/13_8_merge_verification.md, Complex tier ~38 tags). Reads consensus_report APPROVED + proposal, computes git diff between pre-jury and post-merge commits, composes a merge_verification_auditor via Factory with persona tailored to the proposal's content, dispatches per-row verdict (MATCH | DIVERGED_MINOR | DIVERGED_MATERIAL | MISSING | EXTRA_DIFF), transitions corrections.status='approved' → 'incorporated' only on PASS with incorporation_kind discriminator written. Appends cycle_trail.jsonl row with prior_hash per INV-LIF-004.", "implementation",                "5–7 h"],
+        ["J-102", "Consumption-gap wiring in prompts/11_feedback_learning_loop.md: category=memory → manifest.json#evolution_log[]; category in {tooling, calibration, prompt_architect, portability} & recurrence in {recurring, systemic} → AIE-NNN auto-extension in references/ai_error_catalog.md + tracking/errors_catalog.json.", "routing + implementation",      "9–14 h"],
+        ["J-103", "Schema 4 new nullable columns on corrections: proposal_id (cycle-trail join key) · consensus_report_sha256 (forensic anchor) · incorporated_commit_sha (merge anchor) · incorporation_kind (CHECK enum: memory | source | both | manifest_evolution | aie_extension). Resolves status='incorporated' semantic overload.", "routing + implementation",      "2–3 h"],
+        ["J-104", "templates/tracking/project.json.tmpl 7 new top-level blocks matching prompts 11/12/13/14/15: feedback_learning, improvement_audit, merge_verification, data_flow_validation, memory_schema, context_curation, adaptive_audit. Plus 4 fields under compliance (role, hitl_mode, special_category_data, art73_open_incidents). Eliminates schema drift.", "implementation",                "1 h"],
+        ["J-105", "dashboard/index.html getNested(data, m.path) fallback resolves the 9 v0.3.x KPI tiles previously rendering '—'. Heading KPI count now dynamic.",                                                                                                                                                          "hitl + implementation",         "1.2–1.8 h"],
+        ["J-106", "prompts/14_adaptive_audit_meta.md pre-action FTS5 recurrence guard. Before composing any auditor, query corrections_fts for approved/incorporated + recurring/systemic matches against the scope envelope; surface as prior_lessons[] consumed by every auditor's <context>. Panel cannot re-flag known-and-already-addressed patterns as fresh errors.", "routing",                       "4–6 h"],
+        ["J-107", "NEW T24 deterministic test in tests/run_all.sh — 10th anchor of the never-default learn_in_system invariant (9 prose+SQL anchors + 1 executable test).",                                                                                                                                                  "hitl",                          "1.2–1.8 h"],
+    ],
+    widths=[0.6, 4.0, 1.4, 0.7],
+)
+
+body("")
+
+body(
+    "The headline architectural addition is phase 13.8 merge_verification. Without it the cycle "
+    "ended at `corrections.status='approved'` and the merge that actually shipped was opaque. "
+    "Phase 13.8 closes this gap: every approved proposal undergoes a deterministic diff check "
+    "against the actual landed commit, a Factory-composed auditor with persona-fit verifies the "
+    "diff, and only on PASS does the transition to `'incorporated'` occur with an explicit "
+    "discriminator (`incorporation_kind ∈ {memory, source, both, manifest_evolution, aie_extension}`). "
+    "Every transition appends a row to `improvement_audit/cycle_trail.jsonl` with the prior_hash "
+    "discipline shipped in v0.4.0 (INV-LIF-004) — the same Merkle-style chain that protects "
+    "observations.jsonl and decisions.md."
+)
+
+figure(f"{FIG}/21_v11_merge_verification.png",
+       "Figure 21 · Phase 13.8 merge_verification cycle and cycle_trail.jsonl topology. Top row: "
+       "the full pipeline from phase 13.5 feedback_session through phase 13.7 improvement_jury "
+       "through human-applied merge through the new phase 13.8 merge_verification to the final "
+       "transition to 'incorporated' with the incorporation_kind discriminator. The red branch "
+       "shows the FAIL path: when the diff diverges materially from the proposal, no transition "
+       "occurs and DISSENT_HITL_NOW surfaces (revert / override / send-back to 13.5). Bottom row: "
+       "the cycle_trail.jsonl prior_hash chain. Each row references the prior row's sha256, "
+       "creating a tamper-evident forensic trail of the entire proposal → jury → HITL → merge → "
+       "verified → re_audit cycle, integrated with the Art. 12 audit-trail integrity discipline "
+       "shipped in v0.4.0. Right inset: the five values of the incorporation_kind enum that the "
+       "v1.1.0 schema (J-103) introduces to resolve the prior overload of 'incorporated'.")
+
+body(
+    "The other six J-NNNs reinforce the loop. The user's anchor concern is closed at two "
+    "complementary points: J-100 wires `feedback_learning/corrections.md` into the child "
+    "orchestrator's session-start mandatory reads (the read-time consumption that was missing); "
+    "J-106 wires the same query into the adaptive_audit_meta scope envelope as `prior_lessons[]` "
+    "(so every dynamically-composed auditor sees the human-authorised lessons before issuing its "
+    "own findings). J-102 makes approved memory-corrections actually evolve the manifest and "
+    "approved tooling-corrections actually extend the AIE catalog. J-103 + J-104 align the "
+    "schema and tracking template so the cycle-trail join keys exist where the prompts already "
+    "wrote to. J-105 fixes the dashboard's silent failure of v0.3.x KPI tiles. J-107 closes the "
+    "10th and most under-defended layer of the never-default invariant — an executable test, "
+    "complementing the 9 prose and SQL anchors."
+)
+
+callout(
+    "Re-audit calibration · The focused audit's calibrated probability of APPROVED_AS_MATURE on "
+    "a re-run after this batch is ≈78% (range 70–85%). The remaining ~22% covers the deferred "
+    "P2 items (J-108..J-117 in v1.2.0 — auxiliary audit axes, eat-own-dog-food on Sistem_designer, "
+    "consolidated cycle_trail at improvement_audit level, max-iteration counter on send-back, "
+    "alternatives-presentation block, cross-child portability decision, taxonomy-refresh proposal, "
+    "FTS5 rebuild trigger) and the calibration debate around J-114 (consensus-rule 5pp uncertainty "
+    "band) which is itself a meta-audit obligation per references/jury_consensus_protocol.md "
+    "versioning rules.",
+    color=GOLD, bg_hex="fff7d6",
 )
 
 page_break()
